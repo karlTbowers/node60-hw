@@ -1,0 +1,3 @@
+[submodule "lib/dropout-kicad-library"]
+	path = lib/dropout-kicad-library
+	url = https://github.com/karlTbowers/dropout-kicad-library.git

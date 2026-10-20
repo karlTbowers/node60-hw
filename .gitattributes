@@ -1,0 +1,14 @@
+# KiCad files are text; keep LF line endings across Windows/macOS/Linux
+*.kicad_pro   text eol=lf
+*.kicad_sch   text eol=lf
+*.kicad_pcb   text eol=lf
+*.kicad_sym   text eol=lf
+*.kicad_mod   text eol=lf
+*.kicad_dru   text eol=lf
+*-lib-table   text eol=lf
+*.md          text eol=lf
+*.yml         text eol=lf
+
+# Hide generated or bulky files from diffs and language stats
+*.step  -diff linguist-generated
+*.pdf   binary

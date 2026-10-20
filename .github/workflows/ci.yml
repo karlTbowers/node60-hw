@@ -1,0 +1,81 @@
+name: KiCad checks and fab outputs
+
+on:
+  push:
+    branches: [main]
+    tags: ["rev-*"]
+  pull_request:
+
+permissions:
+  contents: write   # needed to create releases on rev-* tags
+
+env:
+  PROJECT: node60
+
+jobs:
+  kicad:
+    runs-on: ubuntu-latest
+    container:
+      image: kicad/kicad:10.0
+      options: --user root
+    steps:
+      - name: Install git (needed to fetch the library submodule)
+        run: apt-get update && apt-get install -y --no-install-recommends git ca-certificates
+
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Skip if the KiCad project has not been created yet
+        id: guard
+        run: |
+          if [ -f "$PROJECT.kicad_pro" ]; then echo "present=true" >> "$GITHUB_OUTPUT";
+          else echo "No $PROJECT.kicad_pro yet - skipping."; echo "present=false" >> "$GITHUB_OUTPUT"; fi
+
+      - name: ERC
+        if: steps.guard.outputs.present == 'true'
+        run: |
+          mkdir -p outputs
+          kicad-cli sch erc --exit-code-violations --severity-error \
+            --output outputs/erc.rpt "$PROJECT.kicad_sch" || { cat outputs/erc.rpt; exit 1; }
+
+      - name: DRC (with schematic parity)
+        if: steps.guard.outputs.present == 'true' && hashFiles('*.kicad_pcb') != ''
+        run: |
+          kicad-cli pcb drc --exit-code-violations --severity-error --schematic-parity \
+            --output outputs/drc.rpt "$PROJECT.kicad_pcb" || { cat outputs/drc.rpt; exit 1; }
+
+      - name: Schematic PDF and BOM
+        if: steps.guard.outputs.present == 'true'
+        run: |
+          kicad-cli sch export pdf --output "outputs/$PROJECT-schematic.pdf" "$PROJECT.kicad_sch"
+          kicad-cli sch export bom --output "outputs/$PROJECT-bom.csv" \
+            --fields 'Reference,Value,Manufacturer,MPN,DigiKey_PN,Mouser_PN,${QUANTITY}' \
+            --labels 'Refs,Value,Manufacturer,MPN,DigiKey,Mouser,Qty' \
+            --group-by MPN --exclude-dnp "$PROJECT.kicad_sch"
+
+      - name: Fabrication outputs
+        if: steps.guard.outputs.present == 'true' && hashFiles('*.kicad_pcb') != ''
+        run: |
+          mkdir -p outputs/gerbers
+          kicad-cli pcb export gerbers --output outputs/gerbers/ "$PROJECT.kicad_pcb"
+          kicad-cli pcb export drill   --output outputs/gerbers/ "$PROJECT.kicad_pcb"
+          kicad-cli pcb export pos --format csv --units mm --side both \
+            --output "outputs/$PROJECT-pos.csv" "$PROJECT.kicad_pcb"
+          kicad-cli pcb export step --output "outputs/$PROJECT.step" "$PROJECT.kicad_pcb" || true
+
+      - uses: actions/upload-artifact@v4
+        if: always() && steps.guard.outputs.present == 'true'
+        with:
+          name: ${{ env.PROJECT }}-outputs
+          path: outputs/
+
+      - name: Package and release (rev-* tags only)
+        if: startsWith(github.ref, 'refs/tags/rev-') && steps.guard.outputs.present == 'true'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            outputs/*.pdf
+            outputs/*.csv
+            outputs/*.step
+            outputs/gerbers/*

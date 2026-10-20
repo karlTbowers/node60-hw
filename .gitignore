@@ -1,0 +1,25 @@
+# KiCad backups, caches, locks
+*-backups/
+*.bak
+*.bck
+*.kicad_pcb-bak
+*.kicad_sch-bak
+*~
+_autosave-*
+\#auto_saved_files#
+fp-info-cache
+*.lck
+~*.lck
+
+# Per-user view state (layer visibility, open sheets, zoom)
+*.kicad_prl
+
+# Generated outputs (CI produces these; attach to releases instead of committing)
+outputs/
+*.zip
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
