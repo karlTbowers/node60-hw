@@ -1,4 +1,7 @@
-# Architecture
+# Node60 architecture
 
-Place the Rev C architecture document (10 A variant) here, e.g.
-`Node60-Architecture-RevC.html`.
+| Revision | File | Status |
+|---|---|---|
+| **Rev C**, 10 A variant (2026-10-13) | [`Node60-Architecture-RevC.html`](Node60-Architecture-RevC.html) | Current baseline for schematic capture. Frozen; later revisions are separate documents. |
+
+Open the HTML file in a browser (GitHub shows its source, not the rendered page).
