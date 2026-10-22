@@ -3,7 +3,7 @@ id: DEC-003
 title: XLD8A24CA as primary load-dump TVS
 status: accepted
 date: 2026-10-13
-revision: C
+revision: A
 page: subsystems/power
 requirements: [REQ-PWR-002]
 parts: [XLD8A24CA]
@@ -24,4 +24,4 @@ A 24 V bidirectional **XLD8A24CA** TVS (7 kW class, AEC-Q101) is preferred after
 ## Consequences
 
 - Verify the clamp against regulator and MOSFET limits.
-- Price and stock were not verified for Rev C.
+- Price and stock were not verified for Rev A.

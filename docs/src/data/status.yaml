@@ -1,4 +1,4 @@
-# Status grid on the decision overview (Architecture Rev C, 2026-10-13).
+# Status grid on the decision overview (Architecture Rev A, 2026-10-13).
 # state: locked / risk / blocked
 - id: compute
   area: Compute

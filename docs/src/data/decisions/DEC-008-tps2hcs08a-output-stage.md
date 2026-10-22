@@ -3,7 +3,7 @@ id: DEC-008
 title: Three TPS2HCS08A-Q1 dual smart high-side switches
 status: accepted
 date: 2026-10-13
-revision: C
+revision: A
 page: subsystems/outputs
 requirements: [REQ-OUT-001, REQ-OUT-002, REQ-MON-001]
 parts: [TPS2HCS08AQPWPRQ1]

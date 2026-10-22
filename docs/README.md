@@ -4,7 +4,7 @@ This folder is the Node60 documentation site ([Astro Starlight](https://starligh
 
 | Document | Status |
 |---|---|
-| Architecture Rev C, 10 A variant | Baseline. Ported from the frozen single-file HTML (`public/legacy/`) on 2026-10-21 |
+| Architecture Rev A, 10 A variant | Baseline for schematic capture |
 | Power-entry calculations (OV/UV divider, breaker, TMR) | Open |
 | Thermal budget and dual-channel test plan | Open |
 | Bring-up and verification checklist | Open |
@@ -18,8 +18,7 @@ src/data/                facts with IDs: requirements.yaml, parts.yaml, gates.ya
 src/content.config.ts    schemas; every cross-reference is checked at build time
 src/diagrams/            power.d2 (dagre), signals.d2 (ELK), power-cycle.mmd (Mermaid)
 src/components/          StatusGrid, RequirementTable, PartTable, GateList, DecisionList, Ref, D2Diagram, …
-scripts/                 render-diagrams.mjs, parity.mjs (Rev C port check)
-public/legacy/           frozen pre-Starlight documents, served as-is
+scripts/                 render-diagrams.mjs
 ```
 
 ## Build locally
@@ -31,7 +30,6 @@ cd docs
 npm install
 npm run dev        # renders diagrams, then serves http://localhost:4321/node60-hw/
 npm run build      # renders diagrams, validates data, builds dist/
-npm run parity     # after build: every MPN and number with a unit in frozen Rev C is on the site
 ```
 
 To change a fact, edit its data file, not the page. A reference to an ID that doesn't exist fails the build (`<Ref id="DEC-001" />` in pages, `verified_by`, `parts`, `gates`, … in data).

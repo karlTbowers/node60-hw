@@ -3,7 +3,7 @@ id: DEC-007
 title: T1S-only wake with controller-commanded shutdown
 status: accepted
 date: 2026-10-13
-revision: C
+revision: A
 page: subsystems/network
 requirements: [REQ-NET-001, REQ-PWR-001, REQ-PWR-003]
 parts: [LAN8670D0-E/LMXVAO, IS25LP032D-JNLA3]

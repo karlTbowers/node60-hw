@@ -9,7 +9,6 @@
     "dev": "npm run diagrams && astro dev",
     "build": "npm run diagrams && astro build",
     "preview": "astro preview",
-    "parity": "node scripts/parity.mjs",
     "astro": "astro"
   },
   "dependencies": {

@@ -3,7 +3,7 @@ id: DEC-011
 title: IS25LP032D-JNLA3 diagnostic log flash
 status: accepted
 date: 2026-10-13
-revision: C
+revision: A
 page: subsystems/firmware
 requirements: [REQ-PWR-003]
 parts: [IS25LP032D-JNLA3, W25Q32JVSSSQ]

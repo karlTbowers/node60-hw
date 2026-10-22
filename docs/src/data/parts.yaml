@@ -1,4 +1,4 @@
-# Node60 component baseline, Architecture Rev C.
+# Node60 component baseline, Architecture Rev A.
 # id is the orderable MPN, the part family where the exact orderable code is still open,
 # or TBD-… where no part is chosen yet (mpn: null in both of those cases).
 # Prices and stock are dated observations (2026-10-13), not quotations: re-check at purchase.
@@ -191,7 +191,7 @@
   subsystem: supervision
   status: future
   decision_note: Not fitted; internal S32K344 SWT is plan of record
-  supply_note: Observed in stock; price not carried into Rev C
+  supply_note: Observed in stock; price not carried into Rev A
   decisions: [DEC-005]
 
 - id: XLD8A24CA

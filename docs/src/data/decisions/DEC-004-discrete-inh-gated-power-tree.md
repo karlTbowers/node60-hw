@@ -3,13 +3,13 @@ id: DEC-004
 title: Discrete INH-gated power tree; FS26 removed
 status: accepted
 date: 2026-10-13
-revision: C
+revision: A
 page: subsystems/power
 requirements: [REQ-PWR-001, REQ-PWR-003]
 parts: [LMQ66430QMC5RXBRQ1, TBD-VDDAU-LDO]
 gates: [GATE-NET-01]
 rejected:
-  - option: NXP FS26 system basis chip (Rev A)
+  - option: NXP FS26 system basis chip (earlier draft)
     outcome: removed
     reason: "Its original roles are covered by the two LMQ66430 bucks, the S32K344 internal windowed SWT, the TPS3702 rail supervisor, and the LAN8670 INH gatekeeper. Reconsider an SBC only in a later revision if wake or sequencing requirements outgrow direct INH gating and EN-pin chaining."
   - option: Wake latch or MCU-controlled gate in the INH → EN path
@@ -18,11 +18,11 @@ rejected:
 
 ## Context
 
-The parked node must draw very little from the battery, and the S32K3 Zephyr standby implementation is missing. Rev A used an FS26 SBC for sequencing and supervision.
+The parked node must draw very little from the battery, and the S32K3 Zephyr standby implementation is missing. An earlier draft used an FS26 SBC for sequencing and supervision.
 
 ## Decision
 
-FS26 is removed. A nanopower LDO supplies only LAN8670 VDDAU while parked; LAN8670 INH directly enables the two LMQ66430-Q1 bucks. EN-pin chaining establishes the 3.3 V / 1.5 V order without an SBC, wake latch, or extra logic. Do not place FS26 in the Rev C schematic or BOM.
+FS26 is removed. A nanopower LDO supplies only LAN8670 VDDAU while parked; LAN8670 INH directly enables the two LMQ66430-Q1 bucks. EN-pin chaining establishes the 3.3 V / 1.5 V order without an SBC, wake latch, or extra logic. Do not place FS26 in the Rev A schematic or BOM.
 
 ## Consequences
 

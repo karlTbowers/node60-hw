@@ -1,6 +1,6 @@
 ---
 title: Power distribution node, 10 A variant
-description: Node60 Architecture Rev C decision overview, status, and primary release blocker.
+description: Node60 Architecture Rev A decision overview, status, and primary release blocker.
 tableOfContents: false
 ---
 
@@ -8,12 +8,12 @@ import { Aside } from '@astrojs/starlight/components';
 import StatusGrid from '../../components/StatusGrid.astro';
 import Ref from '../../components/Ref.astro';
 
-**Architecture Rev C · dated 2026-10-13 · schematic baseline.** Automotive, six outputs, 10BASE-T1S.
+**Architecture Rev A · dated 2026-10-13 · schematic baseline.** Automotive, six outputs, 10BASE-T1S.
 
 Six protected high-side outputs with current and voltage telemetry, built around S32K344EHT1MMMST and LAN8670D0-E/LMXVAO. Output stage: 3 × TPS2HCS08A-Q1.
 
 <Aside type="tip" title="Architecture decision">
-Use three TPS2HCS08A-Q1 dual-channel smart high-side switches for the six-output active design (<Ref id="DEC-008" />). At the input, **LM74910H-Q1** and INA228A-Q1 Kelvin-share one 0.25 mΩ RSENSE (<Ref id="DEC-001" />, <Ref id="DEC-002" />). For Rev C, keep power sequencing **discrete**: LAN8670 INH directly enables the LMQ66430 bucks, with no FS26, wake latch, or MCU standby dependency (<Ref id="DEC-004" />). An automotive 32 Mbit SPI NOR retains the diagnostic log across complete power-down (<Ref id="DEC-011" />).
+Use three TPS2HCS08A-Q1 dual-channel smart high-side switches for the six-output active design (<Ref id="DEC-008" />). At the input, **LM74910H-Q1** and INA228A-Q1 Kelvin-share one 0.25 mΩ RSENSE (<Ref id="DEC-001" />, <Ref id="DEC-002" />). For Rev A, keep power sequencing **discrete**: LAN8670 INH directly enables the LMQ66430 bucks, with no FS26, wake latch, or MCU standby dependency (<Ref id="DEC-004" />). An automotive 32 Mbit SPI NOR retains the diagnostic log across complete power-down (<Ref id="DEC-011" />).
 </Aside>
 
 <StatusGrid />
@@ -24,7 +24,7 @@ TI specifies 13 A continuous at 85 °C with one channel enabled, but only **8 A 
 
 ## Decision summary
 
-Three TPS2HCS08A-Q1 devices provide six cost-optimized outputs. LM74910H-Q1 and INA228A-Q1 Kelvin-share one 0.25 mΩ RSENSE for total-current telemetry and input protection. Rev C uses a discrete power tree: a nanopower LDO keeps only LAN8670 VDDAU alive at roughly 50 µA typical / 65 µA maximum parked draw, and PHY INH directly enables the LMQ66430 bucks. The controller ECU wakes the node over the T1S pair and explicitly commands shutdown; the node turns all outputs off, flushes its IS25LP032D-JNLA3 diagnostic log, then commands PHY sleep and powers down (<Ref id="DEC-007" />). FS26 is not fitted. TMP175-Q1 plus four NTCs provide hotspot coverage (<Ref id="DEC-010" />); the S32K344 SWT remains the watchdog (<Ref id="DEC-005" />), and TPS3702-Q1 independently supervises 3V3_MAIN (<Ref id="DEC-006" />). The 10 A target remains release-blocked by the 8 A-per-channel both-on rating at 85 °C.
+Three TPS2HCS08A-Q1 devices provide six cost-optimized outputs. LM74910H-Q1 and INA228A-Q1 Kelvin-share one 0.25 mΩ RSENSE for total-current telemetry and input protection. Rev A uses a discrete power tree: a nanopower LDO keeps only LAN8670 VDDAU alive at roughly 50 µA typical / 65 µA maximum parked draw, and PHY INH directly enables the LMQ66430 bucks. The controller ECU wakes the node over the T1S pair and explicitly commands shutdown; the node turns all outputs off, flushes its IS25LP032D-JNLA3 diagnostic log, then commands PHY sleep and powers down (<Ref id="DEC-007" />). FS26 is not fitted. TMP175-Q1 plus four NTCs provide hotspot coverage (<Ref id="DEC-010" />); the S32K344 SWT remains the watchdog (<Ref id="DEC-005" />), and TPS3702-Q1 independently supervises 3V3_MAIN (<Ref id="DEC-006" />). The 10 A target remains release-blocked by the 8 A-per-channel both-on rating at 85 °C.
 
 ## Reading this site
 
@@ -32,4 +32,4 @@ Three TPS2HCS08A-Q1 devices provide six cost-optimized outputs. LM74910H-Q1 and 
 - [System architecture](system/): the power and signals views; every block links to its subsystem page.
 - Subsystem pages carry the reasoning; [decisions](decisions/) record each choice with its rejected alternatives.
 - [Component baseline](components/), [schematic interfaces](interfaces/), [verification gates](verification/), and the [source register](sources/).
-- The frozen single-file Rev C document is kept under [Revisions](revisions/).
+- [Revisions](revisions/): the architecture's revision history.

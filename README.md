@@ -2,7 +2,7 @@
 
 Open-hardware six-output automotive power distribution node by DropOut. Each output is a protected smart high-side switch with current and voltage telemetry, reported over a multidrop 10BASE-T1S network.
 
-**Status:** Architecture Rev C, schematic capture starting. Not yet validated hardware.
+**Status:** Architecture Rev A, schematic capture starting. Not yet validated hardware.
 
 **Architecture and design documentation:** https://karltbowers.github.io/node60-hw/ (source in [`docs/`](docs/)).
 

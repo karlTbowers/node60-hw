@@ -7,14 +7,14 @@ Architecture revisions are lettered and tagged in git as `arch-rev-<letter>`. Th
 
 | Revision | Date | Tag | Summary |
 |---|---|---|---|
-| **Rev C**, 10 A variant | 2026-10-13 | `arch-rev-c` | Current baseline for schematic capture. |
+| **Rev A**, 10 A variant | 2026-10-13 | `arch-rev-a` | First complete architecture; baseline for schematic capture. |
 
-## Rev C
+## Rev A
 
-Changes from the prior revision (from Rev C’s BOM delta):
+The first complete architecture. Earlier drafts were incomplete and are not numbered revisions. Rev A replaced these draft choices:
 
 - LM74800QDRRRQ1 and its standalone 0.5 mΩ shunt replaced by LM74910HQRGERQ1 with a shared 0.25 mΩ RSENSE, adding input-rail overcurrent protection ([DEC-001](../decisions/dec-001/)), with INA228A-Q1 as total-current monitor ([DEC-002](../decisions/dec-002/)).
-- The Rev A FS26 SBC removed in favour of a discrete INH-gated power tree with a nanopower VDDAU LDO ([DEC-004](../decisions/dec-004/)).
+- The FS26 SBC removed in favour of a discrete INH-gated power tree with a nanopower VDDAU LDO ([DEC-004](../decisions/dec-004/)).
 - IS25LP032D-JNLA3 diagnostic flash added ([DEC-011](../decisions/dec-011/)), with T1S-only wake and controller-commanded shutdown ([DEC-007](../decisions/dec-007/)).
 
-Rev C was written as a single-file HTML document. It is kept frozen, served as-is: [Node60 Architecture Rev C (original HTML)](../legacy/Node60-Architecture-RevC.html). On 2026-10-21 it was ported to this site without content changes (handbook chapter 08); the port is still Rev C. Earlier revisions predate this repository.
+Rev A was first written as a single-file HTML document (labelled Rev C at the time) and ported to this site on 2026-10-21 (handbook chapter 08). That file is no longer published; it remains in the repository's git history.

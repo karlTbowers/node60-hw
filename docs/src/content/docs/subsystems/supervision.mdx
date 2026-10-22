@@ -28,7 +28,7 @@ Use the MCU’s hardened internal window watchdog for software failure detection
 
 The S32K344 SWT is the plan-of-record watchdog; no external watchdog is fitted (<Ref id="DEC-005" />). Configure a legal service window, verify reset action, hard-lock its configuration after startup checks, and test early, late, missing, and malformed service sequences. The S32K3 Clock Monitoring Unit already converts monitored clock failure into reset, closing the other major gap an ordinary external watchdog would address. The upstream Zephyr `nxp,s32-swt` driver avoids custom driver work.
 
-<Aside type="tip" title="No external watchdog in Rev C">
+<Aside type="tip" title="No external watchdog in Rev A">
 An external watchdog duplicates the internal windowed SWT without improving rail-fault coverage because it dies with the same supply. If a later revision must support an ASIL safety case, evaluate **TPS3430WQDRCRQ1**: windowed, AEC-Q100 Grade 1, and observed in stock. It is a future safety-case option, not part of the current BOM. Do not use a TPS3823-Q1-class supervisor/watchdog combination: its non-windowed watchdog is a functional downgrade from the internal SWT.
 </Aside>
 

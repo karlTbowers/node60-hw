@@ -28,7 +28,7 @@ Node identity, uptime, **VBAT_RAW voltage**, **INA228 digital protected-rail vol
 
 Fit **IS25LP032D-JNLA3**, a 32 Mbit AEC-Q100 Grade 1 SPI NOR, on switched 3V3_MAIN (<Ref id="DEC-011" />). The capacity holds 65,536 fixed 64-byte records—about 1.8 years before wrap at 100 events per day. Although 16 Mbit is sufficient, 32 Mbit is the commodity availability sweet spot.
 
-| Property | Rev C implementation | Design consequence |
+| Property | Rev A implementation | Design consequence |
 |---|---|---|
 | Geometry / endurance | 4 KB uniform sectors; 256-byte pages; 100,000 program/erase cycles minimum | Zephyr FCB circular buffer for timestamped events; NVS for energy and wake/sleep counters |
 | Write timing | 0.8 ms maximum page program; up to 10 pages = ≤8 ms worst-case pre-sleep flush | Controller-commanded shutdown provides the flush window before PHY sleep |
