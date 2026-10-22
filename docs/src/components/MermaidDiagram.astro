@@ -1,0 +1,27 @@
+---
+// Inline a Mermaid diagram rendered at build time by scripts/render-diagrams.mjs.
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
+interface Props {
+	name: string;
+	caption?: string;
+}
+const { name, caption } = Astro.props;
+// Resolved from the project root: this component runs from a bundled chunk at build time.
+const file = join(process.cwd(), 'src/diagrams/build', `${name}.svg`);
+let svg: string;
+try {
+	svg = readFileSync(file, 'utf8');
+} catch {
+	throw new Error(`Diagram "${name}" is not rendered: run \`npm run diagrams\`.`);
+}
+---
+
+<figure class="diagram mermaid not-content">
+	<div class="diagram-scroll" set:html={svg} />
+	{caption && <figcaption>{caption}</figcaption>}
+	<a class="diagram-source" href={`https://github.com/karlTbowers/node60-hw/blob/main/docs/src/diagrams/${name}.mmd`}
+		>Source: {name}.mmd</a
+	>
+</figure>

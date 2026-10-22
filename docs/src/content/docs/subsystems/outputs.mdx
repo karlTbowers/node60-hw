@@ -1,0 +1,96 @@
+---
+title: Three dual-channel smart eFuses
+description: Node60 TPS2HCS08A-Q1 output stage, SPI control, SNS current telemetry and accuracy, I²t protection, and thermal budget.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import Metrics from '../../../components/Metrics.astro';
+import PartTable from '../../../components/PartTable.astro';
+import GateList from '../../../components/GateList.astro';
+import DecisionList from '../../../components/DecisionList.astro';
+import Ref from '../../../components/Ref.astro';
+
+Three TPS2HCS08A-Q1 devices provide six SPI-controlled outputs, shared analog SNS telemetry, diagnostics, and programmable I²t wire protection (<Ref id="DEC-008" />).
+
+<Metrics items={[
+  ['8.9 mΩ', 'RON typical at 25 °C'],
+  ['17.8 mΩ', 'RON typical at 150 °C'],
+  ['8 A/ch', 'both channels on at 85 °C'],
+  ['13 A', 'one channel only at 85 °C'],
+]} />
+
+| Attribute | Verified value | Design consequence |
+|---|---|---|
+| Qualification | AEC-Q100 Grade 1 | −40 °C to +125 °C ambient qualification |
+| Package | HTSSOP-16 PowerPAD, PWP | Exposed VBB pad; broad copper and via array required |
+| Orderable part | TPS2HCS08AQPWPRQ1 | Production data; May 2025 datasheet |
+| Channels | 2 per device | 3 packages for six outputs; paired thermal behavior |
+
+<Aside type="danger" title="The 13 A number needs context">
+The 13 A value is available only with one channel enabled. The all-channels-on line is 8 A per channel at 85 °C. If direct thermal proof fails, derate the output, improve thermal spreading, or move the higher-current revision forward (<Ref id="GATE-THM-01" long />).
+</Aside>
+
+## SPI control, diagnosis, and reset behavior
+
+Use a simple daisy chain: shared SCLK and CSN, each SDO feeding the next SDI, and the final SDO returning to the MCU. Enable CRC, read back every protection register, and retain one FLT/WAKE line per device. All channels remain off after reset; LHI is hardware-held inactive.
+
+| Function | Implementation | Failure behavior |
+|---|---|---|
+| Output command | SPI CHx control bits | All channels commanded off after reset |
+| Fault summary | 3 × FLT/WAKE to MCU | Interrupt identifies the affected dual device |
+| Detailed diagnosis | SPI status and ADC registers | Log channel, raw reading, mode, and timestamp |
+| SPI integrity | Daisy chain with CRC | Fault on CRC, timeout, or readback mismatch |
+
+## SNS path and 100 mA resolution
+
+Each device’s shared SNS output feeds one MCU ADC channel through a 698 Ω resistor and a low-leakage filter. SPI selects the observed output. The selection state is stored with every sample. No per-output shunt or external monitor is fitted; the shared 0.25 mΩ LM74910H RSENSE and INA228A-Q1 independently monitor the total input rail.
+
+| Quantity | Calculation | Result |
+|---|---|---|
+| MCU ADC LSB | 3.3 V / 4096 | 0.806 mV |
+| 100 mA, KSNS1 | 0.1 A / 5,000 × 698 Ω | 13.96 mV · 17.3 counts |
+| 10 A, KSNS1 | 10 A / 5,000 × 698 Ω | 1.396 V · 1,732 counts |
+| 100 mA, KSNS2 | 0.1 A / 1,400 × 698 Ω | 49.86 mV · 61.9 counts |
+
+<Aside type="tip" title="Resolution, not absolute accuracy">
+The nominal count separation supports a 100 mA resolution claim after filtering and calibration. It does not imply ±100 mA absolute accuracy. Baseline KSNS1 ratio error is ±18% at 100 mA, improving to ±5% at 1 A and ±4% at 10 A.
+</Aside>
+
+### Accuracy by mode
+
+| Load current | KSNS1 error | KSNS2 error |
+|---|---|---|
+| 10 A | ±4% | Not applicable |
+| 1 A | ±5% | Not applicable |
+| 500 mA | ±7% | Transition region |
+| 250 mA | ±10% | ±10% |
+| 100 mA | ±18% | ±10% |
+| 25 mA | Not specified | ±20% |
+
+<Aside type="caution" title="I²t and low-current mode interact">
+KSNS2 improves low-current ratio accuracy, but TI recommends using KSNS2 and 8× ADC scaling only with I²t disabled; altered scaling can lower the effective I²t trip threshold. Rev C keeps KSNS1 while I²t is active and budgets ±18% at 100 mA (<Ref id="DEC-009" />).
+</Aside>
+
+## I²t protection profile
+
+- Program nominal current, I²t trip, fixed-delay overcurrent, immediate shutdown, cooldown, and retry from a harness-specific profile.
+- Enable I²t only after register readback and verified current-sense operation.
+- Keep immediate shutdown active for hard shorts; I²t handles sustained overload energy.
+- Unlimited automatic retry is prohibited. Retain source and branch fusing wherever the switch cannot protect upstream conductors.
+- Log accumulation, trip source, retries, raw current, supply, and temperature.
+
+## Conduction and thermal budget
+
+At 10 A, 8.9 mΩ produces 0.89 W per channel at 25 °C; 17.8 mΩ hot typical produces 1.78 W. Six outputs therefore dissipate approximately **5.34 W cold** or **10.68 W hot**, before connector, copper, regulator, and switching losses.
+
+## Decisions
+
+<DecisionList page="subsystems/outputs" />
+
+## Parts
+
+<PartTable subsystem="outputs" />
+
+## Gates
+
+<GateList page="subsystems/outputs" />

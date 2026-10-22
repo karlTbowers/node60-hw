@@ -1,0 +1,17 @@
+---
+// Source register from src/data/sources.yaml.
+import { loadData, anchor, isoDate } from '../lib/data';
+
+const { sources } = await loadData();
+---
+
+<ul class="source-list">
+	{
+		sources.map((s) => (
+			<li id={anchor(s.id)}>
+				<b>{s.id}</b> {s.url ? <a href={s.url}>{s.title}</a> : s.title}
+				{s.verified && <span class="muted"> · verified {isoDate(s.verified)}</span>}
+			</li>
+		))
+	}
+</ul>

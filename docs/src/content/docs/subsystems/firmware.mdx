@@ -1,0 +1,71 @@
+---
+title: Firmware architecture & data contract
+description: Node60 firmware services, status and command frames, diagnostic flash log, and operating states.
+---
+
+import { Aside, Card, CardGrid } from '@astrojs/starlight/components';
+import PartTable from '../../../components/PartTable.astro';
+import GateList from '../../../components/GateList.astro';
+import DecisionList from '../../../components/DecisionList.astro';
+import Ref from '../../../components/Ref.astro';
+
+Ownership is separated by service so network availability never weakens local protection.
+
+| Service | Responsibility | Failure behavior |
+|---|---|---|
+| Power-state manager | RUN, controller-commanded shutdown, cold boot; coordinate outputs, log flush, and PHY sleep | Never command PHY sleep until every output is off and the flash flush has completed |
+| Output manager | Commands, interlocks, retries, aggregate-current budget | Hardware-off on reset; bounded retries; latch critical faults |
+| Telemetry acquisition | Select SNS, sample ADC, average, calibrate, timestamp | Attach mode validity; never mislabel muxed data |
+| T1S service | RMII/MDIO, link, PLCA, filtering, wake reason | Loss of link does not disable local protection |
+| Supervision service | Windowed SWT service, reset-cause capture, CMU and TPS3702 fault reporting | Hard-locked watchdog; no service until startup checks pass; retain last reset cause |
+| Diagnostics & NVM | FCB fault/event log; NVS energy and wake/sleep counters; calibration and identity | Ahead-erase during run; CRC/version every record; bounded pre-sleep page flush |
+
+## Recommended status frame
+
+Node identity, uptime, **VBAT_RAW voltage**, **INA228 digital protected-rail voltage, total current, and power**, TMP175 NFET-bank temperature, RSENSE NTC temperature, three switch-package NTC temperatures, LM74910H FLT state, temperature-validity and I²t-blackout flags, six command states, six measured currents, six measured output voltages, reset cause, supervisor status, channel fault bitmap, link/PLCA state, wake reason, and monotonic sequence counter. Command frames include target node, channel mask, desired state, optional timeout, sequence counter, and an application-layer integrity check.
+
+## Diagnostic flash log
+
+Fit **IS25LP032D-JNLA3**, a 32 Mbit AEC-Q100 Grade 1 SPI NOR, on switched 3V3_MAIN (<Ref id="DEC-011" />). The capacity holds 65,536 fixed 64-byte records—about 1.8 years before wrap at 100 events per day. Although 16 Mbit is sufficient, 32 Mbit is the commodity availability sweet spot.
+
+| Property | Rev C implementation | Design consequence |
+|---|---|---|
+| Geometry / endurance | 4 KB uniform sectors; 256-byte pages; 100,000 program/erase cycles minimum | Zephyr FCB circular buffer for timestamped events; NVS for energy and wake/sleep counters |
+| Write timing | 0.8 ms maximum page program; up to 10 pages = ≤8 ms worst-case pre-sleep flush | Controller-commanded shutdown provides the flush window before PHY sleep |
+| Erase timing | 300 ms maximum sector erase; suspend/resume supported | Ahead-erase during normal operation; never begin sector erase at sleep entry |
+| Contents | Channel trip plus current, voltage, and temperature; OCP, thermal, UV/OV; wake/sleep counts; energy counters | Log readback is exposed through the T1S application interface |
+
+<Aside type="caution" title="Flash sourcing & substitution">
+Observed on 2026-10-13: $1.74 at one / $1.40 at 1,000, about 2,588 at DigiKey and 65 at Mouser. DigiKey showed constrained supply—no backorders and 2,000 units per 30 days—and an aggregator showed a 50-week factory lead. Reconfirm at BOM lock. Winbond W25Q32JVSSSQ is the Grade 1 second-source candidate; verify its price and stock. Do not substitute W25Q32JVSSIG, MX25L12833F, ISSI non-A3 grades, Micron -0SIT standard versions, or GD25Q128C.
+</Aside>
+
+## Operating states
+
+<CardGrid>
+  <Card title="RUN">
+    All rails, MCU, full PHY, flash, oscillator, and diagnostics active. Outputs remain off until firmware validates configuration and receives commands.
+
+    `ENTRY: T1S wake → cold boot → PHY re-init`
+  </Card>
+  <Card title="PARKED / TC10 SLEEP">
+    Only LM74910H SLEEP, the nanopower LDO, and LAN8670 VDDAU remain powered. No logging occurs while parked.
+
+    `WAKE: controller ECU over T1S only`
+  </Card>
+</CardGrid>
+
+<Aside type="tip" title="Defined shutdown transaction">
+The controller sends an application-level “go to sleep” message. The node then turns off all six outputs, flushes pending records, waits for page-program completion, commands LAN8670 sleep, and allows INH to collapse the rails. Bus-idle timeout is not used (<Ref id="DEC-007" />).
+</Aside>
+
+## Decisions
+
+<DecisionList page="subsystems/firmware" />
+
+## Parts
+
+<PartTable subsystem="firmware" />
+
+## Gates
+
+<GateList page="subsystems/firmware" />

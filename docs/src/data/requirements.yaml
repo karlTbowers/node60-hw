@@ -1,0 +1,110 @@
+# Node60 design basis, Architecture Rev C (2026-10-13).
+# group: basis = design-requirement list; parameter = parameter table.
+# verified_by lists the gates (gates.yaml) that turn each requirement into evidence.
+
+- id: REQ-OUT-001
+  group: basis
+  text: Six independently commanded battery-side outputs, each targeting 10 A continuous.
+  page: subsystems/outputs
+  verified_by: [GATE-THM-01, GATE-THM-02]
+
+- id: REQ-MON-001
+  group: basis
+  text: Per-output current and voltage monitoring reported over a multidrop 10BASE-T1S network.
+  page: subsystems/outputs
+  verified_by: [GATE-MON-02]
+
+- id: REQ-MON-002
+  group: basis
+  text: Current measurement resolves 100 mA steps over the full 0–10 A range; absolute accuracy is specified separately.
+  page: subsystems/outputs
+  verified_by: [GATE-MON-02]
+
+- id: REQ-QUAL-001
+  group: basis
+  text: AEC-Q100 Grade 1 target (−40 °C to +125 °C ambient) or better for active ICs.
+  verified_by: [GATE-BOM-01]
+
+- id: REQ-NET-001
+  group: basis
+  text: "Four-wire node connection only: T1S twisted pair, battery-direct power, and ground. The controller ECU is solely responsible for bus wake."
+  page: subsystems/harness
+  verified_by: [GATE-NET-01]
+
+- id: REQ-PWR-001
+  group: basis
+  text: Low parked-vehicle battery draw.
+  page: subsystems/network
+  verified_by: [GATE-NET-01]
+
+- id: REQ-NET-002
+  group: basis
+  text: RMII host interface.
+  page: subsystems/compute
+  verified_by: [GATE-MCU-01]
+
+- id: REQ-NET-003
+  group: basis
+  text: PLCA follower operation.
+  page: subsystems/network
+  verified_by: [GATE-NET-01, GATE-FW-02]
+
+- id: REQ-FW-001
+  group: basis
+  text: Zephyr RTOS.
+  page: subsystems/firmware
+  verified_by: [GATE-FW-02]
+
+- id: REQ-SAF-001
+  group: basis
+  text: Hardware safety must not depend on the network stack.
+  page: subsystems/safety
+  verified_by: [GATE-OUT-02, GATE-SUP-04]
+
+- id: REQ-PWR-002
+  group: parameter
+  parameter: Vehicle supply
+  text: 12 V nominal; protected automotive transients
+  consequence: 40 V-class regulators behind a load-dump clamp
+  page: subsystems/power
+  verified_by: [GATE-PWR-01, GATE-THM-02]
+
+- id: REQ-OUT-002
+  group: parameter
+  parameter: Output channel
+  text: 10 A continuous target
+  consequence: TPS2HCS08A-Q1; 14 AWG minimum; dual-channel thermal proof
+  page: subsystems/outputs
+  verified_by: [GATE-THM-01]
+
+- id: REQ-MON-003
+  group: parameter
+  parameter: Current telemetry
+  text: 100 mA resolution per output; independent total-rail measurement
+  consequence: 3 × SPI-selected SNS ADC inputs plus INA228A-Q1 digital input-current monitor
+  page: subsystems/outputs
+  verified_by: [GATE-MON-01, GATE-MON-02]
+
+- id: REQ-MON-004
+  group: parameter
+  parameter: Input voltage telemetry
+  text: Battery-side brownout and load-dump visibility
+  consequence: 1:12-concept LM74910H SW-pin OV/UV divider tap into a filtered 12-bit ADC input
+  page: subsystems/power
+  verified_by: [GATE-MON-01]
+
+- id: REQ-NET-004
+  group: parameter
+  parameter: T1S role
+  text: Multidrop follower
+  consequence: Configurable 100 Ω termination only at a physical endpoint
+  page: subsystems/network
+  verified_by: [GATE-NET-01]
+
+- id: REQ-PWR-003
+  group: parameter
+  parameter: Parked state
+  text: Only LAN8670 VDDAU remains powered; all six outputs and main rails off
+  consequence: Bus-only TC10 wake; INH directly enables discrete bucks; MCU cold-boots
+  page: subsystems/network
+  verified_by: [GATE-NET-01, GATE-PWR-02]

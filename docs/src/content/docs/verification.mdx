@@ -1,0 +1,43 @@
+---
+title: Verification & release gates
+description: Node60 bring-up sequence and every verification and freeze gate, with what each blocks.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import GateList from '../../components/GateList.astro';
+
+The baseline is ready for schematic capture, not production release. These tests convert architectural assumptions into evidence.
+
+## Bring-up sequence
+
+1. **Power-entry coupon:** reverse battery, OV disconnect, TVS clamp, cold crank, hot plug, parked leakage, the recalculated 0.6 V OV/UV thresholds, and BATT_MON wake-state accuracy without compromising the parked-current budget.
+2. **Input protection:** prove the 75 A OCP breaker threshold, default 80 A fast SCP trip, FLT pre-trip signaling, TMR ride-through versus inrush, and SLEEP-mode auto-retry behavior.
+3. **Shared-RSENSE path:** verify separate star Kelvin routing, INA228A-Q1 I²C communication, SHUNT_CAL for 0.25 mΩ, RSENSE temperature at 60 A continuous, 0–60 A accuracy across temperature, and total-vs-sum cross-check. Confirm buck/MCU rails originate at VOUT after Q2.
+4. **Temperature network:** verify shared-bus TMP175 communication and optional ALERT, inspect all four NTC placements, spot-check conversion accuracy against a calibrated reference, and test derating/logging thresholds including the TPS2HCS08 I²t telemetry blackout.
+5. **Reset supervision:** inject 3V3_MAIN undervoltage and overvoltage events, scope TPS3702-to-RESET_b timing, spot-check thresholds across temperature, and fault-inject SWT and CMU reset paths.
+6. **Bus-wake power cycle:** measure parked current, T1S wake detection, INH assertion, sub-1 ms rail ramp, EN-chain order, whole-board inrush, cold boot, IRQ_N ready, PHY re-initialization, PLCA restore, and application readiness within the accepted ≈1 s budget.
+7. **Commanded shutdown:** inject the controller’s application-level go-to-sleep message; prove all outputs turn off, pending pages finish programming, PHY sleep is commanded only afterward, INH releases after tSLPINHDLY, and no bus-idle timeout can trigger shutdown.
+8. **Flash endurance and recovery:** worst-case ten-page pre-sleep flush, ahead-erase, FCB wrap, erase suspend/resume, CRC recovery after interrupted power, log readback over T1S, and NVS counter persistence.
+9. **Regulator board:** startup, shutdown, load transient, current limit, EN-pin sequencing, and thermal margin across temperature.
+10. **MCU-only:** package map, clocks, reset, SWD, ADC reference, both LPSPI instances, and Zephyr baseline.
+11. **One-switch fixture:** daisy-chain framing and CRC, reset-off, SNS mux, FLT/WAKE, output control, and register readback.
+12. **Current sweep:** all channels 0–10 A; every 100 mA point from 0–1 A; noise, settling, monotonicity, error, supply, and temperature.
+13. **I²t fixture:** correlate each protection setting against current, temperature, supply, wire, connector, inrush, and short impedance.
+14. **Dual-channel thermal:** both channels at 10 A at worst ambient in the sealed enclosure—release-blocking qualification.
+15. **Six-channel assembly:** 60 A matrix, fuse coordination, harness faults, ground offsets, switching during network traffic, EMC, and enclosure thermal.
+
+## Freeze gates
+
+<GateList group="freeze" anchors />
+
+## Supervision release gates
+
+<GateList group="supervision" anchors />
+
+## Temperature-sensing release gates
+
+<GateList group="temperature" anchors />
+
+<Aside type="danger" title="Schematic baseline with a hard thermal gate">
+Rev C records the selected architecture and is suitable for schematic capture. It does not substantiate 10 A continuous on all six outputs. Production release requires thermal proof plus SNS accuracy, I²t correlation, SPI robustness, 60 A input, connector, sequencing, EMC, package-map, and exact-target Zephyr evidence.
+</Aside>

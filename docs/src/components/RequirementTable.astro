@@ -1,0 +1,48 @@
+---
+// Requirements from src/data/requirements.yaml, with traceability to gates and decisions.
+import { loadData, url, anchor } from '../lib/data';
+import Ref from './Ref.astro';
+
+interface Props {
+	group: 'basis' | 'parameter';
+}
+const { group } = Astro.props;
+const { requirements, decisions } = await loadData();
+const rows = requirements.filter((r) => r.group === group);
+const decidedBy = (id: string) => decisions.filter((d) => d.requirements.some((r) => r.id === id));
+---
+
+<table class="data-table">
+	<thead>
+		<tr>
+			<th>ID</th>
+			{group === 'parameter' && <th>Parameter</th>}
+			<th>{group === 'parameter' ? 'Rev C requirement' : 'Requirement'}</th>
+			{group === 'parameter' && <th>Design consequence</th>}
+			<th>Decisions</th>
+			<th>Verified by</th>
+		</tr>
+	</thead>
+	<tbody>
+		{
+			rows.map((r) => (
+				<tr id={anchor(r.id)}>
+					<td class="id">{r.page ? <a href={url(r.page)}>{r.id}</a> : r.id}</td>
+					{group === 'parameter' && <td>{r.parameter}</td>}
+					<td>{r.text}</td>
+					{group === 'parameter' && <td>{r.consequence}</td>}
+					<td class="refs">
+						{decidedBy(r.id).map((d) => (
+							<Ref id={d.id} />
+						))}
+					</td>
+					<td class="refs">
+						{r.verified_by.map((g) => (
+							<Ref id={g.id} />
+						))}
+					</td>
+				</tr>
+			))
+		}
+	</tbody>
+</table>

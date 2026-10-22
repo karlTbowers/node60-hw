@@ -4,6 +4,8 @@ Open-hardware six-output automotive power distribution node by DropOut. Each out
 
 **Status:** Architecture Rev C, schematic capture starting. Not yet validated hardware.
 
+**Architecture and design documentation:** https://karltbowers.github.io/node60-hw/ (source in [`docs/`](docs/)).
+
 | | |
 |---|---|
 | MCU | NXP S32K344 |
@@ -28,8 +30,9 @@ Already cloned without it? Run `git submodule update --init`.
 node60.kicad_pro / .kicad_sch / .kicad_pcb    KiCad 10 project (created in KiCad)
 sym-lib-table, fp-lib-table                   point into lib/ — do not use global DropOut tables
 lib/dropout-kicad-library/                    submodule: symbols, footprints, 3D models
-docs/                                         architecture, calculations, test plans
+docs/                                         Starlight documentation site: architecture, calculations, test plans
 .github/workflows/ci.yml                      ERC/DRC on every push; fab outputs on tags
+.github/workflows/docs.yml                    builds docs/ on PRs; deploys main to GitHub Pages
 ```
 
 ## Library

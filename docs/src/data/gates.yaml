@@ -1,0 +1,190 @@
+# Node60 verification and release gates, Architecture Rev C (2026-10-13).
+# group: supervision / temperature = subsystem release gates; freeze = architecture freeze gates.
+# Every gate is open until its evidence is linked in `result`.
+
+# Supervision release gates
+- id: GATE-SUP-01
+  title: Brownout injection
+  group: supervision
+  evidence: Sweep and pulse 3V3_MAIN through its undervoltage window under idle, network traffic, and output-switch activity
+  blocks: Reset claim
+  status: open
+  page: subsystems/supervision
+
+- id: GATE-SUP-02
+  title: RESET_b timing
+  group: supervision
+  evidence: Scope supervisor assertion and release against rail slew, MCU reset requirements, clock startup, and regulator power-good
+  blocks: Netlist
+  status: open
+  page: subsystems/supervision
+
+- id: GATE-SUP-03
+  title: Threshold spot-check
+  group: supervision
+  evidence: Measure overvoltage and undervoltage trip/release points across temperature on representative assemblies
+  blocks: Supervisor release
+  status: open
+  page: subsystems/supervision
+
+- id: GATE-SUP-04
+  title: SWT / CMU fault injection
+  group: supervision
+  evidence: Prove early, late, missing, and invalid watchdog service plus monitored-clock failure all produce the intended reset and event log
+  blocks: Software release
+  status: open
+  page: subsystems/supervision
+
+# Temperature-sensing release gates
+- id: GATE-TMP-01
+  title: NTC layout review
+  group: temperature
+  evidence: Confirm thermal coupling, copper isolation, divider tolerance, ADC range, and routing for shared RSENSE and all three switch-package sensors
+  blocks: PCB release
+  status: open
+  page: subsystems/temperature
+
+- id: GATE-TMP-02
+  title: TMP175 interface
+  group: temperature
+  evidence: Verify address straps, shared-bus operation with INA228, startup, readback, fault handling, and optional ALERT interrupt
+  blocks: Firmware baseline
+  status: open
+  page: subsystems/temperature
+
+- id: GATE-TMP-03
+  title: Accuracy spot-check
+  group: temperature
+  evidence: Compare all five added sensors against a calibrated reference at ambient, hot operating, and +125 °C points
+  blocks: Derating claim
+  status: open
+  page: subsystems/temperature
+
+- id: GATE-TMP-04
+  title: Threshold tests
+  group: temperature
+  evidence: Inject and heat-test warning, derating, logging, ALERT, and safe-state transitions, including the switch I²t telemetry blackout
+  blocks: Thermal policy
+  status: open
+  page: subsystems/temperature
+
+# Freeze gates
+- id: GATE-THM-01
+  title: Dual-channel current
+  group: freeze
+  evidence: Both channels at 10 A across ambient, supply, enclosure, and aging
+  blocks: 10 A rating
+  status: open
+  page: subsystems/outputs
+
+- id: GATE-PWR-01
+  title: Input protection
+  group: freeze
+  evidence: 75 A OCP breaker threshold; 80 A fast SCP trip; FLT pre-trip warning; TMR ride-through versus inrush; SLEEP-mode auto-retry
+  blocks: 60 A input
+  status: open
+  page: subsystems/power
+
+- id: GATE-MON-01
+  title: Input telemetry
+  group: freeze
+  evidence: 0.6 V-threshold BATT_MON divider verification; INA228 I²C; SHUNT_CAL for 0.25 mΩ; shared-RSENSE thermal; 0–60 A accuracy; total-vs-sum cross-check
+  blocks: Input telemetry
+  status: open
+  page: subsystems/power
+
+- id: GATE-TMP-05
+  title: Temperature network
+  group: freeze
+  evidence: TMP175 I²C/ALERT; four NTC placements; calibrated-reference spot-check; threshold, logging, and I²t-blackout tests
+  blocks: Thermal policy
+  status: open
+  page: subsystems/temperature
+
+- id: GATE-SUP-05
+  title: Reset supervision
+  group: freeze
+  evidence: TPS3702 3.3 V variant; OV/UV threshold sweep; RESET_b timing; SWT and CMU fault injection
+  blocks: Reset release
+  status: open
+  page: subsystems/supervision
+
+- id: GATE-MON-02
+  title: SNS telemetry
+  group: freeze
+  evidence: 0–10 A sweeps; 100 mA separation; KSNS1 error and drift
+  blocks: Telemetry
+  status: open
+  page: subsystems/outputs
+
+- id: GATE-OUT-01
+  title: I²t correlation
+  group: freeze
+  evidence: Measured trip curves and cooling/retry behavior per harness/load class
+  blocks: Fuse profile
+  status: open
+  page: subsystems/outputs
+
+- id: GATE-OUT-02
+  title: SPI robustness
+  group: freeze
+  evidence: CRC, reset, timeout, stuck bus, readback, and chain fault injection
+  blocks: Control
+  status: open
+  page: subsystems/outputs
+
+- id: GATE-NET-01
+  title: Bus wake / inrush
+  group: freeze
+  evidence: T1S-only wake, INH-to-EN timing, ≤1 ms supply ramp, LM74910H TMR ride-through, cold boot, IRQ_N ready, PHY/PLCA re-initialization
+  blocks: Netlist
+  status: open
+  page: subsystems/network
+
+- id: GATE-PWR-02
+  title: Commanded shutdown
+  group: freeze
+  evidence: Controller message, all outputs off, ≤8 ms pending-page flush, PHY sleep, tSLPINHDLY, and INH release; prove bus idle alone cannot sleep the node
+  blocks: Power policy
+  status: open
+  page: subsystems/network
+
+- id: GATE-FW-01
+  title: Diagnostic flash
+  group: freeze
+  evidence: FCB wrap/ahead-erase, NVS counters, T1S readback, endurance policy, and content integrity across interrupted power cycles
+  blocks: Logging
+  status: open
+  page: subsystems/firmware
+
+- id: GATE-MCU-01
+  title: Package map
+  group: freeze
+  evidence: S32K344EHT1MMMST package-specific pin audit
+  blocks: Schematic
+  status: open
+  page: subsystems/compute
+
+- id: GATE-FW-02
+  title: Zephyr target
+  group: freeze
+  evidence: Build, link, PLCA, dual SPI, controller-commanded shutdown, cold-boot re-initialization, and wake logs
+  blocks: Software
+  status: open
+  page: subsystems/firmware
+
+- id: GATE-THM-02
+  title: Thermal / EMC
+  group: freeze
+  evidence: Six-channel 60 A enclosure matrix and vehicle-standard results
+  blocks: Production
+  status: open
+  page: subsystems/safety
+
+- id: GATE-BOM-01
+  title: Supply chain
+  group: freeze
+  evidence: Authorized-source quote and lifecycle confirmation
+  blocks: Purchase
+  status: open
+  page: components

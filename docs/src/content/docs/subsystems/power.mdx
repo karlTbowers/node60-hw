@@ -1,0 +1,130 @@
+---
+title: Power entry & regulated rails
+description: Node60 protected 60 A VBAT path, input current and voltage telemetry, overcurrent protection, and the discrete INH-gated power tree.
+---
+
+import { Aside, Card, CardGrid } from '@astrojs/starlight/components';
+import Metrics from '../../../components/Metrics.astro';
+import PartTable from '../../../components/PartTable.astro';
+import GateList from '../../../components/GateList.astro';
+import DecisionList from '../../../components/DecisionList.astro';
+import Ref from '../../../components/Ref.astro';
+
+A protected 60 A-capable VBAT path and deliberately split low-power rails support load control and network wake.
+
+## Protected battery path
+
+**LM74910HQRGERQ1** controls the DGATE ideal-diode MOSFET bank and HGATE disconnect MOSFET bank for reverse-battery blocking, overvoltage disconnect, programmable overcurrent circuit breaking, and fast short-circuit protection (<Ref id="DEC-001" />). A shared 0.25 mΩ RSENSE sits between the two FET stages and carries the complete rail current. At 60 A, device count, RDS(on), sharing, copper/bus structure, resistor heating, and fault energy must be calculated together. A 24 V bidirectional XLD8A24CA TVS is preferred after the source fuse; SMBJ24CA is not accepted as the sole primary load-dump element (<Ref id="DEC-003" />).
+
+| Element | Selected device / value | Open detail |
+|---|---|---|
+| Ideal-diode controller | LM74910HQRGERQ1, VQFN-24 (4 × 4 mm), AEC-Q100 Grade 1 | Choose 80–100 V AEC-Q101 MOSFETs after surge/thermal calculation; verify VOUT tap after Q2 |
+| Primary TVS | XLD8A24CA, 24 V, 7 kW class | Verify clamp against regulator and MOSFET limits |
+| Input fuse | Source-mounted; one per feed when dual-fed | Coordinate 60 A load, wire ampacity, inrush, and fault clearing |
+| EMI filter | Damped π filter after protection | Finalize current and damping after emissions test |
+
+## VBAT_RAW voltage telemetry
+
+**BATT_MON is a divider tap, not a controller pin.** Move it to the LM74910H-Q1 SW-pin OV/UV divider. Retain the 1:12 monitor-ratio concept so the S32K344 ADC stays in range, but recalculate all divider values at schematic review because the LM74910H OV threshold is 0.6 V rather than the LM74800’s 1.23 V.
+
+| Divider item | Rev C requirement | Electrical result |
+|---|---|---|
+| OV/UV ladder | Recalculate from SW; 1% resistors; no more than 120 kΩ total | Meets leakage-error rule while setting the required cutoffs |
+| OV reference | 0.6 V | Old LM74800 divider values are invalid; final cutoff requires schematic calculation |
+| Monitor ratio | Retain 1:12 concept from SW to BATT_MON | Keeps the ADC in range through the intended protected transient window |
+| ADC interface | Spare ADC input + 10 nF to ground | Set ADC sample time from the final divider’s Thevenin resistance |
+
+<Aside type="caution" title="Measurement semantics">
+The divider is connected to SW and reports **VBAT_RAW** on the battery side, before the DGATE ideal-diode FET—not VBAT_PROT. BATT_MON is not sampled while parked; qualify or gate its ADC tap so it does not compromise the ≈50 µA parked budget, then restore it on wake. Use the LM74910H’s separate UVLO pin to define cold-crank behavior and document both networks at schematic review.
+</Aside>
+
+## Shared protection and total-current measurement
+
+Fit one **0.25 mΩ, 1%, AEC-Q200 RSENSE** between the DGATE ideal-diode FET and the HGATE disconnect FET. Both the LM74910H current-sense amplifier and INA228A-Q1 Kelvin-connect with independent star taps at the resistor pads; the high-impedance measurement paths do not interact. Route every downstream branch—including buck, MCU, PHY, and switches—from VOUT after Q2 so RSENSE captures true total node current.
+
+<Metrics items={[
+  ['0.25 mΩ', 'shared protection/measurement RSENSE'],
+  ['15 mV', 'drop at 60 A'],
+  ['0.9 W', 'RSENSE dissipation at 60 A'],
+  ['37%', 'of ±40.96 mV ADC range at 60 A'],
+]} />
+
+The arithmetic: 60 A × 0.25 mΩ = 15 mV; (60 A)² × 0.25 mΩ = 0.9 W; 15 mV / 40.96 mV ≈ 37%.
+
+| Monitor option | Verified specification | Price / availability observed 2026-10-13 | Decision |
+|---|---|---|---|
+| INA228AQDGSRQ1 | AEC-Q100 automotive qualified; 20-bit delta-sigma ADC; ±1 µV maximum shunt offset; ±0.05% maximum gain error; ±85 V bus range; I²C; VSSOP-10 (DGS) | $5.43 @1 / ≈$3.20 @1k; 32,413 DigiKey stock | **Plan of record.** ADCRANGE = 1 gives ±40.96 mV; 15 mV at 60 A uses ≈37% of range. Configure and verify SHUNT_CAL for 0.25 mΩ |
+| INA281A2QDBVRQ1 | AEC-Q100 Grade 1; −40…+125 °C; −4…+110 V common-mode; gain 50; ±300 µV maximum offset; ±0.5% maximum gain error; SOT-23-5 | $3.21 @1 / ≈$1.80 @1k; 8,138 DigiKey stock | **Budget fallback.** Analog output needs an S32K344 ADC channel; offset refers to about 1.2 A at 0.25 mΩ |
+
+<Aside type="tip" title="Why INA228A-Q1 is plan of record">
+The shared resistor sees regulator, MCU, PHY, controller, and load current that the six channel readings cannot fully reconstruct. INA228A-Q1 adds only about $0.90 at 1,000 pieces versus an INA240-class analog implementation, avoids an MCU ADC channel, and preserves useful low-current accuracy despite the 0.25 mΩ resistor. Current diverted ahead of RSENSE—including through the primary TVS—remains outside this measurement. See <Ref id="DEC-002" long />.
+</Aside>
+
+<Aside type="note" title="Keep both voltage measurements">
+INA228A-Q1 digitizes the protected rail while the LM74910H SW divider and MCU ADC measure **VBAT_RAW** before the ideal-diode FET. They observe different nodes and support different diagnostics, so neither replaces the other. The INA228 also reports current and power after firmware programs and verifies SHUNT_CAL for 0.25 mΩ.
+</Aside>
+
+<Aside type="caution" title="Dynamic range & sourcing">
+A single 60 A RSENSE cannot also resolve parked sleep current. Parked-drain verification remains a validation-lab measurement. INA240-Q1 and INA229-Q1 were both zero-stock with restocks indicated around February 2027. INA228AQDGSRQ1 is the in-stock plan of record; INA281A2QDBVRQ1 remains the documented lower-cost fallback with substantially higher offset and lower low-current accuracy.
+</Aside>
+
+## Input overcurrent protection
+
+| Protection path | Rev C setting | Implementation / test |
+|---|---|---|
+| Circuit breaker OCP | 75 A | R(ILIM) = 32 kΩ, 1%; RSET = 50 Ω, within the 50–100 Ω datasheet range |
+| Fast SCP | 20 mV default = 80 A with 0.25 mΩ | No RISCP resistor fitted; validate threshold and fault energy on the power-entry coupon |
+| Breaker delay | TMR ≈68 nF for ≈1 ms starting point | Tune against output bulk-capacitance inrush at schematic review |
+| Fault response | FLT to S32K344; SLEEP OCP auto-retry | FLT supplies pre-trip warning; auto-retry lets the input breaker recover after a cleared fault without intervention from a parked, sleeping MCU |
+| IMON | Not populated | Leave the optional ±2% analog current-monitor pin floating per datasheet while INA228 is fitted |
+
+<Aside type="tip" title="Why LM74910H-Q1 replaces LM74800-Q1">
+One resistor now serves both protection and precise measurement, cutting shunt heat in half at 60 A. More importantly, the prior LM74800 architecture had no input-rail overcurrent protection; LM74910H adds a programmable breaker, fast short-circuit trip, separate UVLO, FLT warning, and SLEEP-mode OCP auto-retry.
+</Aside>
+
+<Aside type="note" title="Rejected alternative — LM74900-Q1">
+LM74900-Q1 saves about $1 at 1,000 pieces but latches off after SLEEP-mode overcurrent instead of auto-retrying. That is the wrong trade for a battery-parked node whose MCU may be asleep when the fault occurs.
+</Aside>
+
+### Current-monitor alternatives not carried forward
+
+- **INA186-Q1:** 40 V common-mode ceiling leaves no margin for clamped load-dump transients; no authorized stock observed.
+- **ST TSC2011:** automotive grade, exact part number, and pricing were not verified.
+- **Microchip PAC1932/34:** no AEC-Q100 qualification.
+
+## Power domains
+
+<CardGrid>
+  <Card title="VDDAU_AON">
+    A nanopower LDO supplies only LAN8670 VDDAU while parked. Target LDO quiescent current is about 1–2 µA; exact automotive part remains a schematic-selection item.
+  </Card>
+  <Card title="3V3_MAIN">
+    S32K344 I/O/analog, LAN8670 VDDA/VDDP, switch VDD, SPI NOR, and clock. The first LMQ66430 is enabled directly by PHY INH.
+  </Card>
+  <Card title="1V5_CORE">
+    S32K344 VDD_LV via the second LMQ66430-Q1. EN-pin chaining establishes the order and allows at least 250 mA transient margin.
+  </Card>
+  <Card title="VBAT_PROT">
+    VOUT after Q2 feeds the always-on LDO, both bucks, and all three TPS2HCS08A-Q1 devices so shared RSENSE sees the complete downstream current.
+  </Card>
+</CardGrid>
+
+<Aside type="caution" title="Power-sequencing hold point">
+On bus wake, LAN8670 drives INH high and the external supplies must ramp within 1 ms. Verify EN-chain delay, regulator soft-start, MCU reset release, PHY-ready IRQ_N, and whole-board inrush together. VDDA must never exceed VDDAU by more than 0.5 V; the always-on-first topology satisfies that rule by construction.
+</Aside>
+
+## FS26 removed from Rev C
+
+The first version stays discrete. FS26’s original roles are now covered by the two LMQ66430 bucks, the S32K344 internal windowed SWT, the TPS3702 rail supervisor, and the LAN8670 INH gatekeeper. Do not place FS26 in the Rev C schematic or BOM. Reconsider an SBC only in a later revision if wake or sequencing requirements outgrow direct INH gating and EN-pin chaining. See <Ref id="DEC-004" long />.
+
+## Decisions
+
+<DecisionList page="subsystems/power" />
+
+## Parts
+
+<PartTable subsystem="power" />
+
+## Gates
+
+<GateList page="subsystems/power" />

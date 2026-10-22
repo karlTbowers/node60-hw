@@ -1,0 +1,30 @@
+---
+title: Connector & harness architecture
+description: Node60 output and input connectors, four-conductor node cable, and fusing.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import PartTable from '../../../components/PartTable.astro';
+import Ref from '../../../components/Ref.astro';
+
+Each output gets a sealed, independently protected path; the aggregate input is treated as a 60 A interconnect problem.
+
+| Interface | Architecture | Release condition |
+|---|---|---|
+| Six outputs | MX150 sealed; 10 A each; 14 AWG minimum | Validate contact, wire, cavity loading, and derating at +125 °C |
+| Battery input | Metri-Pack 480/630 class or dual feed | Prove complete 60 A path; use multiple contacts or feeds |
+| Power return | Matched high-current return | No chassis-only return assumption |
+| 10BASE-T1S | Separate sealed two-way twisted pair | Vehicle-level protection and termination strategy |
+| Complete node cable | Exactly four conductors: T1S twisted pair + battery-direct power + ground | No KL15, ignition, or local hardwire wake input; controller ECU must provide T1S wake (<Ref id="REQ-NET-001" />) |
+
+## Fusing
+
+Place the primary fuse at the battery/source end. If the 60 A path is split, fuse each feed and prevent back-powering through an undersized path. Final values coordinate wire ampacity, contact derating, load inrush, PCB fault energy, and the smart-switch curve. Use branch fuses wherever the main fuse cannot protect an output conductor or connector fault.
+
+<Aside type="caution" title="Connector freeze condition">
+Connector families are architectural selections, not released mating sets. Freeze exact housings, terminals, seals, wire sizes, and keys together; validate temperature rise with all intended adjacent circuits loaded.
+</Aside>
+
+## Parts
+
+<PartTable subsystem="harness" />

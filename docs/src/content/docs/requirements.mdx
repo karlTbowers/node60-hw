@@ -1,0 +1,26 @@
+---
+title: Purpose & design basis
+description: Node60 design requirements and parameter table, with traceability to decisions and verification gates.
+---
+
+import Metrics from '../../components/Metrics.astro';
+import RequirementTable from '../../components/RequirementTable.astro';
+
+A buildable product architecture defining power domains, signal paths, switching channels, telemetry, software responsibilities, and the preliminary production BOM.
+
+<Metrics items={[
+  ['6 × 10 A', 'independent protected outputs'],
+  ['60 A', 'worst-case aggregate output'],
+  ['100 mA', 'required current resolution'],
+  ['−40…125 °C', 'active-IC temperature target'],
+]} />
+
+## Design requirements
+
+<RequirementTable group="basis" />
+
+## Parameter table
+
+<RequirementTable group="parameter" />
+
+Each requirement links to the decisions that answer it and the gates that will verify it. Requirement data lives in `src/data/requirements.yaml`; an ID that doesn't resolve fails the build.

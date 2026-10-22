@@ -1,0 +1,40 @@
+---
+// Decision records from src/data/decisions/, optionally only those owned by one page.
+import { loadData, decisionUrl, isoDate } from '../lib/data';
+
+interface Props {
+	page?: string;
+}
+const { page } = Astro.props;
+const { decisions } = await loadData();
+const rows = page ? decisions.filter((d) => d.page === page) : decisions;
+---
+
+<table class="data-table">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Decision</th>
+			<th>Status</th>
+			<th>Rejected alternatives</th>
+		</tr>
+	</thead>
+	<tbody>
+		{
+			rows.map((d) => (
+				<tr>
+					<td class="id">
+						<a href={decisionUrl(d.id)}>{d.id}</a>
+					</td>
+					<td>
+						<a href={decisionUrl(d.id)}>{d.title}</a>
+					</td>
+					<td>
+						{d.status} · Rev {d.revision} · {isoDate(d.date)}
+					</td>
+					<td>{d.rejected.map((r) => r.option).join('; ') || '—'}</td>
+				</tr>
+			))
+		}
+	</tbody>
+</table>

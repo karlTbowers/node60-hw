@@ -1,0 +1,26 @@
+---
+title: Preliminary component baseline
+description: Node60 component baseline with dated price and stock observations, second sources, and status.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import PartTable from '../../components/PartTable.astro';
+import GateList from '../../components/GateList.astro';
+
+Prices and stock are dated procurement observations through 2026-10-13, not live quotations.
+
+<PartTable />
+
+<Aside type="tip" title="BOM delta — protection, shutdown & logging">
+Remove LM74800QDRRRQ1, the standalone 0.5 mΩ shunt, and the Rev A FS26 SBC. Add LM74910HQRGERQ1 with shared 0.25 mΩ RSENSE, a nanopower VDDAU LDO, and IS25LP032D-JNLA3 diagnostic flash. LM74910H adds about $1.70 at 1,000 pieces versus the prior controller/shunt pair; flash adds $1.40 at the recorded 1,000-piece price. The discrete power tree avoids an SBC whose remaining functions are already covered elsewhere.
+</Aside>
+
+<Aside type="caution" title="Lifecycle & sourcing">
+Re-check every quote at purchase. LAN8670D0-E/LMXVAO and TPS2HCS08AQPWPRQ1 gate prototype timing. LM74910HQRGERQ1 had 773 units at DigiKey on 2026-10-13 and carries a 26-week manufacturer lead if depleted. IS25LP032D-JNLA3 had authorized stock but a constrained-supply notice; confirm availability before BOM lock. TPS481HS04-Q1 remains a future higher-current revision only after production release.
+</Aside>
+
+None of these parts is in `dropout-kicad-library` yet; each row gains a library reference when its symbol and footprint are added.
+
+## Gate
+
+<GateList page="components" />

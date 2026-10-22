@@ -1,0 +1,240 @@
+# Node60 component baseline, Architecture Rev C.
+# id is the orderable MPN, the part family where the exact orderable code is still open,
+# or TBD-… where no part is chosen yet (mpn: null in both of those cases).
+# Prices and stock are dated observations (2026-10-13), not quotations: re-check at purchase.
+# status: locked / plan-of-record / selected / alternative / future / open
+# library: DropOut_<Lib>:<Symbol> once the part exists in lib/dropout-kicad-library (none yet).
+
+- id: S32K344EHT1MMMST
+  mpn: S32K344EHT1MMMST
+  manufacturer: NXP
+  qty: 1
+  function: Grade 1 MCU, 257 MAPBGA
+  subsystem: compute
+  status: locked
+  decision_note: Locked; verify exact ball map
+  observations:
+    - { date: 2026-10-13, source: DigiKey, prices: [{ qty: "1", usd: 23.17 }], stock: 760 }
+
+- id: LAN8670D0-E/LMXVAO
+  mpn: LAN8670D0-E/LMXVAO
+  manufacturer: Microchip
+  qty: 1
+  function: Automotive 10BASE-T1S PHY
+  subsystem: network
+  status: locked
+  decision_note: Locked; highest procurement risk
+  supply_note: 11–20 week leads
+  observations:
+    - { date: 2026-10-13, source: distributors, prices: [{ qty: tray class, usd: 2.80 }], stock: 0 }
+  decisions: [DEC-007]
+
+- id: LMQ66430QMC5RXBRQ1
+  mpn: LMQ66430QMC5RXBRQ1
+  manufacturer: Texas Instruments
+  qty: 2
+  function: INH-gated 3.3 V and 1.5 V low-Iq bucks
+  subsystem: power
+  status: selected
+  decision_note: "Selected discrete power tree. Direct INH enable plus EN-pin chaining; no FS26"
+  supply_note: Not verified
+  decisions: [DEC-004]
+
+- id: TBD-VDDAU-LDO
+  mpn: null
+  manufacturer: null
+  qty: 1
+  label: Nanopower automotive LDO
+  function: Always-on LAN8670 VDDAU supply
+  subsystem: power
+  status: open
+  decision_note: Target ≈1–2 µA Iq; must meet transient and VDDAU requirements
+  supply_note: Exact part and price open
+  decisions: [DEC-004]
+
+- id: LM74910HQRGERQ1
+  mpn: LM74910HQRGERQ1
+  manufacturer: Texas Instruments
+  qty: 1
+  function: Grade 1 ideal-diode / reverse-battery / OCP / SCP controller; VQFN-24, 4 × 4 mm
+  subsystem: power
+  status: plan-of-record
+  decision_note: "Plan of record. 75 A breaker, 80 A fast trip, SLEEP auto-retry, FLT to MCU"
+  supply_note: 26-week manufacturer lead if depleted
+  observations:
+    - { date: 2026-10-13, source: DigiKey, prices: [{ qty: "1", usd: 5.65 }, { qty: 1k, usd: 3.26 }], stock: 773 }
+  decisions: [DEC-001]
+
+- id: TBD-RSENSE-0R25
+  mpn: null
+  manufacturer: null
+  qty: 1
+  label: 0.25 mΩ RSENSE
+  function: Shared LM74910H protection and INA228 total-current sense
+  subsystem: power
+  status: open
+  decision_note: Star Kelvin taps; 15 mV / 0.9 W at 60 A
+  supply_note: Exact 1%, AEC-Q200 code open
+  observations:
+    - { date: 2026-10-13, source: planning allowance, prices: [{ qty: 1k, usd: 1, approx: true }] }
+  decisions: [DEC-001, DEC-002]
+
+- id: TBD-OCP-NETWORK
+  mpn: null
+  manufacturer: null
+  qty: 1
+  label: OCP timing/set network
+  function: R(ILIM) 32 kΩ 1%, RSET 50 Ω, TMR ≈68 nF
+  subsystem: power
+  status: open
+  decision_note: 75 A breaker; ≈1 ms starting delay; tune against inrush
+  supply_note: Minor passives; confirm at BOM lock
+  decisions: [DEC-001]
+
+- id: INA228AQDGSRQ1
+  mpn: INA228AQDGSRQ1
+  manufacturer: Texas Instruments
+  qty: 1
+  function: 20-bit I²C total-current, power, and protected-rail monitor
+  subsystem: power
+  status: plan-of-record
+  decision_note: "Plan of record. SHUNT_CAL for 0.25 mΩ; monitor + shared RSENSE ≈$4.20 @1k"
+  second_source: INA281A2QDBVRQ1
+  observations:
+    - { date: 2026-10-13, source: DigiKey, prices: [{ qty: "1", usd: 5.43 }, { qty: 1k, usd: 3.20, approx: true }], stock: 32413 }
+  decisions: [DEC-002]
+
+- id: INA281A2QDBVRQ1
+  mpn: INA281A2QDBVRQ1
+  manufacturer: Texas Instruments
+  qty: 0
+  function: Grade 1, gain-50 analog total-current monitor
+  subsystem: power
+  status: alternative
+  decision_note: Budget fallback; ≈0.6 A offset-equivalent at the shunt
+  observations:
+    - { date: 2026-10-13, source: DigiKey, prices: [{ qty: "1", usd: 3.21 }, { qty: 1k, usd: 1.80, approx: true }], stock: 8138 }
+  decisions: [DEC-002]
+
+- id: TMP175-Q1
+  mpn: null
+  manufacturer: Texas Instruments
+  qty: 1
+  label: TMP175-Q1
+  function: Grade 1 digital NFET-bank / board-ambient temperature sensor
+  subsystem: temperature
+  status: plan-of-record
+  decision_note: "Plan of record. Shares INA228 I²C bus; optional ALERT to MCU"
+  supply_note: ≈$0.60–1.00 @1k estimate; verify at BOM lock
+  decisions: [DEC-010]
+
+- id: TBD-NTC-10K
+  mpn: null
+  manufacturer: null
+  qty: 4
+  label: 10 kΩ NTC, AEC-Q200
+  function: Shared-RSENSE and 3 × switch-package temperature sensing
+  subsystem: temperature
+  status: open
+  decision_note: 0603, ±1% R25 / ±1% B; exact −55…+150 °C code at BOM lock
+  supply_note: ≈$0.15–0.35 each @1k estimate
+  decisions: [DEC-010]
+
+- id: TPS3702-Q1
+  mpn: null
+  manufacturer: Texas Instruments
+  qty: 1
+  label: TPS3702-Q1
+  function: Independent 3V3_MAIN OV/UV window supervisor to RESET_b
+  subsystem: supervision
+  status: plan-of-record
+  decision_note: "Plan of record. Confirm exact 3.3 V variant, price, and stock at BOM lock"
+  supply_note: ≈$1 planning estimate
+  decisions: [DEC-006]
+
+- id: IS25LP032D-JNLA3
+  mpn: IS25LP032D-JNLA3
+  manufacturer: ISSI
+  qty: 1
+  function: 32 Mbit Grade 1 SPI NOR diagnostic log; SOIC-8 150 mil
+  subsystem: firmware
+  status: plan-of-record
+  decision_note: "Plan of record. Switched 3.3 V; PPAP available; constrained-supply flag—recheck at BOM lock"
+  second_source: W25Q32JVSSSQ
+  observations:
+    - date: 2026-10-13
+      source: DigiKey
+      prices: [{ qty: "1", usd: 1.74 }, { qty: 1k, usd: 1.40 }]
+      stock: 2588
+      stock_approx: true
+      note: constrained supply—no backorders and 2,000 units per 30 days
+    - { date: 2026-10-13, source: Mouser, stock: 65 }
+    - { date: 2026-10-13, source: aggregator, note: 50-week factory lead }
+  decisions: [DEC-011]
+
+- id: W25Q32JVSSSQ
+  mpn: W25Q32JVSSSQ
+  manufacturer: Winbond
+  qty: 0
+  function: Automotive Grade 1 32 Mbit SPI NOR second source
+  subsystem: firmware
+  status: alternative
+  decision_note: Candidate only; hardware/software interchangeability review required
+  supply_note: Verify at BOM lock
+  decisions: [DEC-011]
+
+- id: TPS3430WQDRCRQ1
+  mpn: TPS3430WQDRCRQ1
+  manufacturer: Texas Instruments
+  qty: 0
+  function: External window watchdog for a later ASIL safety case
+  subsystem: supervision
+  status: future
+  decision_note: Not fitted; internal S32K344 SWT is plan of record
+  supply_note: Observed in stock; price not carried into Rev C
+  decisions: [DEC-005]
+
+- id: XLD8A24CA
+  mpn: XLD8A24CA
+  manufacturer: Vishay
+  qty: 1
+  function: 24 V, 7 kW AEC-Q101 TVS
+  subsystem: power
+  status: selected
+  decision_note: Primary load-dump choice
+  supply_note: Not verified
+  decisions: [DEC-003]
+
+- id: TPS2HCS08AQPWPRQ1
+  mpn: TPS2HCS08AQPWPRQ1
+  manufacturer: Texas Instruments
+  qty: 3
+  function: Dual smart eFuse, Grade 1
+  subsystem: outputs
+  status: selected
+  decision_note: Selected; 20-week standard lead observed
+  observations:
+    - { date: 2026-10-13, source: distributors, prices: [{ qty: 1k, usd: 1.952 }], stock: 0, note: $5.86 total for three }
+  decisions: [DEC-008, DEC-009]
+
+- id: ECS-3225SMVQ-500-DS-TR
+  mpn: ECS-3225SMVQ-500-DS-TR
+  manufacturer: ECS
+  qty: 1
+  function: 50 MHz ±20 ppm oscillator
+  subsystem: network
+  status: selected
+  decision_note: Selected
+  observations:
+    - { date: 2026-10-13, source: distributor, prices: [{ qty: "1", usd: 1.82 }], stock: 421 }
+
+- id: TBD-MX150-SETS
+  mpn: null
+  manufacturer: Molex
+  qty: 6
+  label: MX150-class sets
+  function: Sealed 18 A-class output connectors
+  subsystem: harness
+  status: open
+  decision_note: Exact mating sets open
+  supply_note: Not verified

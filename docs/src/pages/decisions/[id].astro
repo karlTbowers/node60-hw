@@ -1,0 +1,61 @@
+---
+// One page per decision record (src/data/decisions/DEC-NNN-*.md).
+import StarlightPage from '@astrojs/starlight/components/StarlightPage.astro';
+import { Aside } from '@astrojs/starlight/components';
+import { getCollection, render } from 'astro:content';
+import Ref from '../../components/Ref.astro';
+import { loadData, url, isoDate } from '../../lib/data';
+
+export async function getStaticPaths() {
+	const entries = await getCollection('decisions');
+	return entries.map((entry) => ({ params: { id: entry.id.toLowerCase() }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const d = entry.data;
+await loadData(); // validates every reference before rendering
+const { Content, headings } = await render(entry);
+const { decisions } = await loadData();
+const supersededBy = decisions.filter((x) => x.supersedes.some((s) => s.id === d.id));
+---
+
+<StarlightPage frontmatter={{ title: `${d.id}: ${d.title}`, description: `Node60 decision record ${d.id}` }} headings={d.rejected.length ? [...headings, { depth: 2, slug: 'alternatives', text: 'Alternatives not carried forward' }] : headings}>
+	{
+		d.status === 'superseded' && (
+			<Aside type="caution" title="Superseded">
+				Superseded by{' '}
+				{supersededBy.map((x) => (
+					<Ref id={x.id} long />
+				))}
+			</Aside>
+		)
+	}
+	<table>
+		<tbody>
+			<tr><th>Status</th><td>{d.status} · Architecture Rev {d.revision} · {isoDate(d.date)}</td></tr>
+			<tr><th>Section</th><td><a href={url(d.page)}>{d.page.replace('subsystems/', '')}</a></td></tr>
+			{d.requirements.length > 0 && <tr><th>Requirements</th><td class="refs">{d.requirements.map((r) => <Ref id={r.id} long />)}</td></tr>}
+			{d.parts.length > 0 && <tr><th>Parts</th><td class="refs">{d.parts.map((p) => <Ref id={p.id} />)}</td></tr>}
+			{d.gates.length > 0 && <tr><th>Gates</th><td class="refs">{d.gates.map((g) => <Ref id={g.id} long />)}</td></tr>}
+			{d.supersedes.length > 0 && <tr><th>Supersedes</th><td class="refs">{d.supersedes.map((s) => <Ref id={s.id} long />)}</td></tr>}
+		</tbody>
+	</table>
+
+	<Content />
+
+	{
+		d.rejected.length > 0 && (
+			<>
+				<h2 id="alternatives">Alternatives not carried forward</h2>
+				<table>
+					<thead><tr><th>Option</th><th>Outcome</th><th>Reason</th></tr></thead>
+					<tbody>
+						{d.rejected.map((r) => (
+							<tr><td><b>{r.option}</b></td><td>{r.outcome}</td><td>{r.reason}</td></tr>
+						))}
+					</tbody>
+				</table>
+			</>
+		)
+	}
+</StarlightPage>

@@ -1,0 +1,74 @@
+# Source register, Architecture Rev C. Manufacturer documents are the design authority;
+# distributor observations only expose price and lifecycle risk.
+- id: S1
+  title: Microchip LAN8670/1/2 data sheet
+  url: https://static6.arrow.com/aropdfconversion/2db1d7cc20951d63322c97a1ad89069b0f85a2e1/lan867012datasheet60001573.pdf
+- id: S2
+  title: EVB-LAN8670-RMII User’s Guide
+  url: https://my.mouser.com/pdfDocs/EVB-LAN8670-RMII-Users-Guide-600017081.pdf
+- id: S3
+  title: TI LM74910H-Q1 data sheet and product information
+  verified: 2026-10-13
+- id: S4
+  title: TI TPS2HCS08-Q1 data sheet
+  url: https://www.ti.com/lit/gpn/TPS2HCS08-Q1
+- id: S4A
+  title: TI TPS481HS04-Q1 Advance Information
+  url: https://www.ti.com/document-viewer/TPS481HS04-Q1/datasheet
+- id: S4B
+  title: TI TPS481HS04-Q1 product page
+  url: https://www.ti.com/product/TPS481HS04-Q1
+- id: S5
+  title: TI TPS7B83-Q1 data sheet
+  url: https://www.ti.com/lit/gpn/TPS7B83-Q1
+- id: S6
+  title: NXP FS26 product data sheet
+  url: https://static6.arrow.com/aropdfconversion/5400c51d4e841bea3c13cbb954d1324e20b70865/ds616030-fs26%20product%20datasheet%203.0(3.0)%20(4).pdf
+- id: S7
+  title: NXP example FS26 OTP report
+  url: https://www.nxp.com/docs/en/data-sheet/R_MFS2613AMDA3.pdf
+- id: S8
+  title: ECS-3225SMVQ product page
+  url: https://www.mouser.com/new/ecs/ecs-ecs-3225smvq-multi-volt-hcmos-oscillators/
+- id: S9
+  title: Molex MX150 sealed connector data sheet
+  url: https://www.avnet.com/wps/wcm/connect/onesite/fb3f3a4e-a2ae-45d4-8f1f-7a28bc4aa72c/mx150-sealed-connector-system-datasheet.pdf?MOD=AJPERES&CVID=onFYSK2
+- id: S10
+  title: Aptiv Metri-Pack 630 specifications
+  url: https://www.mouser.ca/new/aptiv/aptiv-metri-pack-630-connectors/
+- id: S11
+  title: Vishay load-dump TVS report
+  url: https://www.electronicsweekly.com/news/products/discretes/transient-suppressors-accurately-protect-24v-lines-2022-06/
+- id: S12
+  title: TI INA281-Q1 data sheet
+  verified: 2026-10-13
+- id: S13
+  title: TI INA228-Q1 data sheet
+  verified: 2026-10-13
+- id: S14
+  title: TI TMP175-Q1 and TMP126-Q1 data sheets
+  verified: 2026-10-13
+- id: S15
+  title: TI TPS3702-Q1 and TPS3430-Q1 data sheets
+  verified: 2026-10-13
+- id: S16
+  title: NXP S32K3 watchdog, Clock Monitoring Unit, low-voltage detector, and TempSense documentation
+  verified: 2026-10-13
+- id: S17
+  title: Zephyr nxp,s32-swt watchdog binding and driver
+  verified: 2026-10-13
+- id: S18
+  title: TI LM74900-Q1 comparison data
+  verified: 2026-10-13
+- id: S19
+  title: ISSI IS25LP032D-JNLA3 data sheet and distributor observations
+  verified: 2026-10-13
+- id: S20
+  title: OPEN Alliance TC10 wake/sleep timing requirements
+  verified: 2026-10-13
+- id: Z1
+  title: Upstream Zephyr S32 SoC tree
+  url: https://github.com/zephyrproject-rtos/zephyr/tree/main/soc/nxp/s32
+- id: Z2
+  title: NXP downstream S32K3 tree
+  url: https://github.com/nxp-zephyr/nxp-zephyr/tree/nxp-v4.4-branch/soc/nxp/s32/s32k3

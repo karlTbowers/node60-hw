@@ -1,0 +1,22 @@
+---
+// Decision-overview status grid, from src/data/status.yaml.
+import { loadData, url } from '../lib/data';
+
+const { status } = await loadData();
+const label = { locked: 'Locked', risk: 'Risk', blocked: 'Blocked' };
+---
+
+<div class="status-grid not-content" aria-label="Architecture status">
+	{
+		status.map((s) => (
+			<a class="status-item" href={url(s.page)}>
+				<small>{s.area}</small>
+				<b>{s.selection}</b>
+				<span class={`state state-${s.state}`} title={label[s.state]}>
+					<i class="dot" />
+					{s.note}
+				</span>
+			</a>
+		))
+	}
+</div>

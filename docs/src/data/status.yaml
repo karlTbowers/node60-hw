@@ -1,0 +1,32 @@
+# Status grid on the decision overview (Architecture Rev C, 2026-10-13).
+# state: locked / risk / blocked
+- id: compute
+  area: Compute
+  selection: S32K344EHT1MMMST
+  state: locked
+  note: Locked · production
+  page: subsystems/compute
+- id: network
+  area: Network
+  selection: LAN8670D0 over RMII
+  state: risk
+  note: Procurement risk
+  page: subsystems/network
+- id: power
+  area: Power
+  selection: LM74910H + discrete INH gating
+  state: risk
+  note: Wake/inrush validation open
+  page: subsystems/power
+- id: outputs
+  area: Outputs
+  selection: 3 × TPS2HCS08A-Q1
+  state: blocked
+  note: Thermal proof required
+  page: subsystems/outputs
+- id: software
+  area: Software
+  selection: Zephyr + SPI/I²t + PLCA
+  state: blocked
+  note: Exact target open
+  page: subsystems/firmware

@@ -1,0 +1,18 @@
+---
+// A row of headline figures: [["60 A", "worst-case aggregate output"], …]
+interface Props {
+	items: [string, string][];
+}
+const { items } = Astro.props;
+---
+
+<div class="metrics not-content">
+	{
+		items.map(([value, label]) => (
+			<div class="metric">
+				<b>{value}</b>
+				<span>{label}</span>
+			</div>
+		))
+	}
+</div>
