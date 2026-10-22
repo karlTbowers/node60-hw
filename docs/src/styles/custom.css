@@ -1,7 +1,9 @@
 /* Node60 docs: domain colours match the D2 diagrams (handbook chapter 08). */
 :root {
-	/* Starlight's default 45rem is too narrow for the data tables; the column still shrinks on small screens */
-	--sl-content-width: 68rem;
+	/* Content column: Starlight caps it at 45rem and gives all leftover width to the
+	   "On this page" column. Here the TOC has a fixed width and the content takes the rest. */
+	--sl-content-width: 120rem;
+	--n60-toc-width: 15rem;
 	--n60-locked: #087c77;
 	--n60-risk: #bd6b00;
 	--n60-blocked: #a9392d;
@@ -11,6 +13,19 @@
 :root[data-theme='light'] {
 	--n60-card: var(--sl-color-gray-7);
 	--n60-border: var(--sl-color-gray-5);
+}
+
+/* Fixed-width TOC column (Starlight shows it as a side column from 72rem up) */
+@media (min-width: 72rem) {
+	:root .right-sidebar-container { width: var(--n60-toc-width); }
+	:root .right-sidebar-container .sl-container {
+		width: calc(var(--n60-toc-width) - 2 * var(--sl-sidebar-pad-x));
+		max-width: none;
+	}
+	:root[data-has-sidebar][data-has-toc] .main-pane {
+		--sl-content-margin-inline: 0 auto;
+		width: calc(100% - var(--n60-toc-width));
+	}
 }
 
 .muted { color: var(--sl-color-gray-3); font-size: var(--sl-text-sm); }
