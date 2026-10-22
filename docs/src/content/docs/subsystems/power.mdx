@@ -27,7 +27,7 @@ A protected 60 A-capable VBAT path and deliberately split low-power rails suppor
 
 **BATT_MON is a divider tap, not a controller pin.** Move it to the LM74910H-Q1 SW-pin OV/UV divider. Retain the 1:12 monitor-ratio concept so the S32K344 ADC stays in range, but recalculate all divider values at schematic review because the LM74910H OV threshold is 0.6 V rather than the LM74800’s 1.23 V.
 
-| Divider item | Rev C requirement | Electrical result |
+| Divider item | Rev A requirement | Electrical result |
 |---|---|---|
 | OV/UV ladder | Recalculate from SW; 1% resistors; no more than 120 kΩ total | Meets leakage-error rule while setting the required cutoffs |
 | OV reference | 0.6 V | Old LM74800 divider values are invalid; final cutoff requires schematic calculation |
@@ -70,7 +70,7 @@ A single 60 A RSENSE cannot also resolve parked sleep current. Parked-drain veri
 
 ## Input overcurrent protection
 
-| Protection path | Rev C setting | Implementation / test |
+| Protection path | Rev A setting | Implementation / test |
 |---|---|---|
 | Circuit breaker OCP | 75 A | R(ILIM) = 32 kΩ, 1%; RSET = 50 Ω, within the 50–100 Ω datasheet range |
 | Fast SCP | 20 mV default = 80 A with 0.25 mΩ | No RISCP resistor fitted; validate threshold and fault energy on the power-entry coupon |
@@ -113,9 +113,9 @@ LM74900-Q1 saves about $1 at 1,000 pieces but latches off after SLEEP-mode overc
 On bus wake, LAN8670 drives INH high and the external supplies must ramp within 1 ms. Verify EN-chain delay, regulator soft-start, MCU reset release, PHY-ready IRQ_N, and whole-board inrush together. VDDA must never exceed VDDAU by more than 0.5 V; the always-on-first topology satisfies that rule by construction.
 </Aside>
 
-## FS26 removed from Rev C
+## FS26 removed from Rev A
 
-The first version stays discrete. FS26’s original roles are now covered by the two LMQ66430 bucks, the S32K344 internal windowed SWT, the TPS3702 rail supervisor, and the LAN8670 INH gatekeeper. Do not place FS26 in the Rev C schematic or BOM. Reconsider an SBC only in a later revision if wake or sequencing requirements outgrow direct INH gating and EN-pin chaining. See <Ref id="DEC-004" long />.
+The first version stays discrete. FS26’s original roles are now covered by the two LMQ66430 bucks, the S32K344 internal windowed SWT, the TPS3702 rail supervisor, and the LAN8670 INH gatekeeper. Do not place FS26 in the Rev A schematic or BOM. Reconsider an SBC only in a later revision if wake or sequencing requirements outgrow direct INH gating and EN-pin chaining. See <Ref id="DEC-004" long />.
 
 ## Decisions
 

@@ -3,7 +3,7 @@ id: DEC-001
 title: LM74910H-Q1 input protection with shared RSENSE
 status: accepted
 date: 2026-10-13
-revision: C
+revision: A
 page: subsystems/power
 requirements: [REQ-PWR-002, REQ-PWR-001, REQ-MON-004]
 parts: [LM74910HQRGERQ1, TBD-RSENSE-0R25, TBD-OCP-NETWORK]

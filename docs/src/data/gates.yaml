@@ -1,4 +1,4 @@
-# Node60 verification and release gates, Architecture Rev C (2026-10-13).
+# Node60 verification and release gates, Architecture Rev A (2026-10-13).
 # group: supervision / temperature = subsystem release gates; freeze = architecture freeze gates.
 # Every gate is open until its evidence is linked in `result`.
 

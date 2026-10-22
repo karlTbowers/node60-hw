@@ -3,7 +3,7 @@ id: DEC-006
 title: TPS3702-Q1 window supervisor on 3V3_MAIN
 status: accepted
 date: 2026-10-13
-revision: C
+revision: A
 page: subsystems/supervision
 requirements: [REQ-SAF-001]
 parts: [TPS3702-Q1]

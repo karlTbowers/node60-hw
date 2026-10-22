@@ -3,7 +3,7 @@ id: DEC-010
 title: TMP175-Q1 plus four NTCs for hotspot coverage
 status: accepted
 date: 2026-10-13
-revision: C
+revision: A
 page: subsystems/temperature
 requirements: [REQ-OUT-001]
 parts: [TMP175-Q1, TBD-NTC-10K]

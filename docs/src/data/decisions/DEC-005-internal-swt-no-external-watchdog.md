@@ -3,7 +3,7 @@ id: DEC-005
 title: S32K344 internal SWT; no external watchdog
 status: accepted
 date: 2026-10-13
-revision: C
+revision: A
 page: subsystems/supervision
 requirements: [REQ-SAF-001]
 parts: [S32K344EHT1MMMST, TPS3430WQDRCRQ1]

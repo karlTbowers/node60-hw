@@ -22,7 +22,7 @@ Battery protection, low-power control, logic, network, and six load channels are
 
 Keep dirty load current outside the logic return path. The protected battery node feeds both the smart switches and the logic converters. Each output returns directly to the power-entry ground/star region; ADC and PHY grounds join through the quiet logic plane. The T1S coupling and ESD network sit at the connector boundary.
 
-<Aside type="tip" title="Rev C power-gate decision">
+<Aside type="tip" title="Rev A power-gate decision">
 FS26 is removed. A nanopower LDO supplies only LAN8670 VDDAU while parked; LAN8670 INH directly enables the two LMQ66430-Q1 bucks. EN-pin chaining establishes the 3.3 V / 1.5 V order without an SBC, wake latch, or extra logic. See <Ref id="DEC-004" long />.
 </Aside>
 

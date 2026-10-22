@@ -3,7 +3,7 @@ id: DEC-009
 title: KSNS1 current-sense gain while I²t is active
 status: accepted
 date: 2026-10-13
-revision: C
+revision: A
 page: subsystems/outputs
 requirements: [REQ-MON-002]
 parts: [TPS2HCS08AQPWPRQ1]
@@ -21,4 +21,4 @@ KSNS2 improves low-current ratio accuracy (±10% at 100 mA versus ±18% for KSNS
 
 ## Decision
 
-Rev C keeps KSNS1 while I²t is active and budgets ±18% at 100 mA. The nominal count separation supports a 100 mA **resolution** claim after filtering and calibration; it does not imply ±100 mA absolute accuracy.
+Rev A keeps KSNS1 while I²t is active and budgets ±18% at 100 mA. The nominal count separation supports a 100 mA **resolution** claim after filtering and calibration; it does not imply ±100 mA absolute accuracy.

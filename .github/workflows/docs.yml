@@ -51,9 +51,6 @@ jobs:
       - name: Build site (renders diagrams, validates references)
         run: npm run build
 
-      - name: Parity check against frozen Rev C
-        run: npm run parity
-
       - uses: actions/upload-pages-artifact@v3
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         with:

@@ -1,4 +1,4 @@
-# Node60 design basis, Architecture Rev C (2026-10-13).
+# Node60 design basis, Architecture Rev A (2026-10-13).
 # group: basis = design-requirement list; parameter = parameter table.
 # verified_by lists the gates (gates.yaml) that turn each requirement into evidence.
 

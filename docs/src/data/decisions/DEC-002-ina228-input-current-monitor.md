@@ -3,7 +3,7 @@ id: DEC-002
 title: INA228A-Q1 total-current monitor on the shared RSENSE
 status: accepted
 date: 2026-10-13
-revision: C
+revision: A
 page: subsystems/power
 requirements: [REQ-MON-003]
 parts: [INA228AQDGSRQ1, INA281A2QDBVRQ1, TBD-RSENSE-0R25]
