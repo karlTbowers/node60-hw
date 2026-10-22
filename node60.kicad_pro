@@ -1,0 +1,18 @@
+{
+  "meta": {
+    "filename": "node60.kicad_pro",
+    "version": 1
+  },
+  "board": {
+    "design_settings": {}
+  },
+  "schematic": {
+    "legacy_lib_dir": "",
+    "legacy_lib_list": [],
+    "annotation": {
+      "method": 1,
+      "sort_order": 0
+    },
+    "annotate_start_num": 0
+  }
+}

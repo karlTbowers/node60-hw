@@ -27,7 +27,9 @@ Already cloned without it? Run `git submodule update --init`.
 ## Layout
 
 ```
-node60.kicad_pro / .kicad_sch / .kicad_pcb    KiCad 10 project (created in KiCad)
+node60.kicad_pro / .kicad_sch / .kicad_pcb    KiCad 10 project; node60.kicad_sch is the root sheet (page 1, index)
+sheets/                                       every other schematic sheet, flat (handbook ch. 05)
+scripts/check_schematic.py                    CI check: sheet files, page numbers, reference designators
 sym-lib-table, fp-lib-table                   point into lib/ — do not use global DropOut tables
 lib/dropout-kicad-library/                    submodule: symbols, footprints, 3D models
 docs/                                         Starlight documentation site: architecture, calculations, test plans
