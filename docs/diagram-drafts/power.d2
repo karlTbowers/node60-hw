@@ -1,0 +1,72 @@
+# Node60 · Power architecture (Architecture Rev C)
+# Line weight = current: thick = battery path (up to 60 A), medium = VBAT_PROT branches, thin = regulated rails.
+# Every block links to its section of the architecture site.
+
+direction: right
+
+classes: {
+  external: {style: {fill: "#f1f4f6"; stroke: "#7d8f9b"; stroke-width: 2; border-radius: 8; font-color: "#13283a"}}
+  battery: {style: {fill: "#fff2d9"; stroke: "#bd6b00"; stroke-width: 2; border-radius: 8; font-color: "#13283a"}}
+  bus: {style: {fill: "#bd6b00"; stroke: "#bd6b00"; border-radius: 4; font-color: "#ffffff"; bold: true}}
+  aon: {style: {fill: "#e2f3f1"; stroke: "#087c77"; stroke-width: 2; border-radius: 8; font-color: "#13283a"}}
+  rail: {style: {fill: "#e6f1f7"; stroke: "#176a96"; stroke-width: 2; border-radius: 8; font-color: "#13283a"}}
+  load: {style: {fill: "#fce9e6"; stroke: "#a9392d"; stroke-width: 2; border-radius: 8; font-color: "#13283a"}}
+  consumer: {style: {fill: "#ffffff"; stroke: "#a8bac6"; stroke-width: 1; border-radius: 6; font-color: "#536776"; font-size: 13}}
+  group: {style: {fill: "#f7f9fa"; stroke: "#a8bac6"; stroke-dash: 4; border-radius: 10; font-color: "#536776"; font-size: 15}}
+  hi: {style: {stroke: "#bd6b00"; stroke-width: 6; font-color: "#bd6b00"}}
+  branch: {style: {stroke: "#bd6b00"; stroke-width: 3; font-color: "#bd6b00"}}
+  r_aon: {style: {stroke: "#087c77"; stroke-width: 2; font-color: "#087c77"}}
+  r_main: {style: {stroke: "#176a96"; stroke-width: 2; font-color: "#176a96"}}
+  monitor: {style: {stroke: "#735590"; stroke-width: 2; stroke-dash: 5; font-color: "#735590"}}
+}
+
+vehicle: "Vehicle harness" {
+  class: group
+  bat: "12 V battery\nsource fuse at battery\nbattery-direct + ground" {class: external; link: "#harness"}
+}
+
+entry: "Power entry · always connected" {
+  class: group
+  tvs: "Primary TVS\nXLD8A24CA\n24 V · 7 kW" {class: battery; link: "#power"}
+  lm: "LM74910H-Q1 ideal diode + breaker\nQ1 (DGATE) → RSENSE 0.25 mΩ → Q2 (HGATE)\nreverse · OV · 75 A breaker · 80 A SCP" {class: battery; link: "#power"}
+  emi: "Damped π\nEMI filter" {class: battery; link: "#power"}
+}
+
+bus: "VBAT_PROT" {class: bus; link: "#power"; width: 120}
+
+aon: "Always on · ≈50 µA parked" {
+  class: group
+  ldo: "Nanopower LDO\nIq ≈1–2 µA (part TBD)" {class: aon; link: "#power"}
+  vddau: "LAN8670 VDDAU\n(TC10 wake detector)" {class: consumer; link: "#network"}
+}
+
+rails: "Switched rails · enabled by LAN8670 INH" {
+  class: group
+  buck1: "LMQ66430-Q1 #1\nEN ← LAN8670 INH" {class: rail; link: "#power"}
+  buck2: "LMQ66430-Q1 #2\nEN ← 3V3 (EN chain)" {class: rail; link: "#power"}
+  c3v3: "S32K344 I/O + analog · LAN8670 VDDA/VDDP\nswitch VDD · SPI NOR · 50 MHz osc\nINA228 · TMP175" {class: consumer; link: "#compute"}
+  c1v5: "S32K344 VDD_LV (core)" {class: consumer; link: "#compute"}
+  sup: "TPS3702-Q1\nOV/UV window → RESET_b" {class: rail; link: "#supervision"}
+}
+
+loads: "Switched loads · all off when parked" {
+  class: group
+  sw: "3 × TPS2HCS08A-Q1\ndual smart high-side switches\nI²t wire protection" {class: load; link: "#outputs"}
+  out: "OUT1–OUT6\n6 × 10 A target\nMX150 · 14 AWG min" {class: load; link: "#harness"}
+}
+
+vehicle.bat -> entry.tvs: "VBAT_RAW · 60 A" {class: hi}
+entry.tvs -> entry.lm {class: hi}
+entry.lm -> entry.emi {class: hi}
+entry.emi -> bus {class: hi}
+
+bus -> loads.sw: "60 A" {class: hi}
+loads.sw -> loads.out: "6 × 10 A" {class: hi}
+bus -> aon.ldo {class: branch}
+bus -> rails.buck1 {class: branch}
+bus -> rails.buck2 {class: branch}
+
+aon.ldo -> aon.vddau: "VDDAU_AON" {class: r_aon}
+rails.buck1 -> rails.c3v3: "3V3_MAIN" {class: r_main}
+rails.buck2 -> rails.c1v5: "1V5_CORE" {class: r_main}
+rails.buck1 -> rails.sup: "monitors 3V3_MAIN" {class: monitor}
