@@ -1,0 +1,14 @@
+(kicad_sch
+	(version 20250610)
+	(generator "eeschema")
+	(generator_version "10.0")
+	(uuid "5d62b570-10e4-4596-9a77-bbd0bb603689")
+	(paper "A3")
+	(title_block
+		(title "Node60")
+		(company "DropOut")
+		(comment 1 "Architecture Rev A")
+	)
+	(lib_symbols)
+	(embedded_fonts no)
+)

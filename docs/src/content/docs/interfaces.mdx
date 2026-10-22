@@ -5,14 +5,16 @@ description: Node60 schematic sheet plan, the nets each sheet exposes, and net-l
 
 The page split and net rules expose every decision that still needs evidence.
 
-| Sheet | Contents | Must expose |
-|---|---|---|
-| A · Power entry | Fuse, TVS, LM74910H-Q1, DGATE/HGATE MOSFETs, shared 0.25 mΩ RSENSE, EMI, SW-pin OV/UV monitor divider, INA228A-Q1, TMP175-Q1, RSENSE NTC | VBAT_RAW, BATT_MON, VOUT/VBAT_PROT, RSENSE± star taps, INA228_IN+/IN−, FLT, shared I2C, TMP175 ALERT, NTC_RSENSE, reverse/OV/OCP/SCP faults |
-| B · Regulators | Nanopower VDDAU LDO, 2 × LMQ66430, direct INH gating, EN-pin chaining, TPS3702-Q1 | VDDAU_AON, INH, 3V3_MAIN, 1V5_CORE, startup timing, RESET_b supervisor path; no FS26 or wake latch |
-| C · MCU / NVM | S32K344, IS25LP032D SPI NOR, reset, SWT/CMU, debug, ADC, dual LPSPI, LPI2C | RMII, MDIO, 3 SNS, BATT_MON ADC, 4 NTC ADCs, INA228/TMP175 I2C, flash SPI/CS, output-switch SPI chain, faults |
-| D · T1S | LAN8670, VDDAU/VDDA/VDDP domain split, clock, straps, coupling, ESD | TRXP/N, direct INH-to-buck-EN path, IRQ_N, PHYAD; no local wake input |
-| E–G · Outputs | One dual-channel switch block and one package NTC per sheet | SPI, SNS, LHI, FLT/WAKE, NTC ADC net, two outputs, thermal pad |
-| K · Connectors | Outputs, high-current input, T1S pair | Pin/net table, wire gauge, fusing, no hidden joins |
+| Sheet | Page | Contents | Must expose |
+|---|---|---|---|
+| A · Power entry | 2 | Fuse, TVS, LM74910H-Q1, DGATE/HGATE MOSFETs, shared 0.25 mΩ RSENSE, EMI, SW-pin OV/UV monitor divider, INA228A-Q1, TMP175-Q1, RSENSE NTC | VBAT_RAW, BATT_MON, VOUT/VBAT_PROT, RSENSE± star taps, INA228_IN+/IN−, FLT, shared I2C, TMP175 ALERT, NTC_RSENSE, reverse/OV/OCP/SCP faults |
+| B · Regulators | 3 | Nanopower VDDAU LDO, 2 × LMQ66430, direct INH gating, EN-pin chaining, TPS3702-Q1 | VDDAU_AON, INH, 3V3_MAIN, 1V5_CORE, startup timing, RESET_b supervisor path; no FS26 or wake latch |
+| C · MCU / NVM | 4 | S32K344, IS25LP032D SPI NOR, reset, SWT/CMU, debug, ADC, dual LPSPI, LPI2C | RMII, MDIO, 3 SNS, BATT_MON ADC, 4 NTC ADCs, INA228/TMP175 I2C, flash SPI/CS, output-switch SPI chain, faults |
+| D · T1S | 5 | LAN8670, VDDAU/VDDA/VDDP domain split, clock, straps, coupling, ESD | TRXP/N, direct INH-to-buck-EN path, IRQ_N, PHYAD; no local wake input |
+| E–G · Outputs | 6–8 | One dual-channel switch block and one package NTC per sheet | SPI, SNS, LHI, FLT/WAKE, NTC ADC net, two outputs, thermal pad |
+| K · Connectors | 9 | Outputs, high-current input, T1S pair | Pin/net table, wire gauge, fusing, no hidden joins |
+
+Schematic page numbers: page 1 is the root (index) sheet. Reference designators carry the page (R201 is the first resistor on page 2; handbook chapter 05). E–G are three placements of one sheet file, so their parts get page 6, 7 and 8 designators.
 
 ## Net-level rules
 
