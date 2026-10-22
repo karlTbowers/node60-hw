@@ -1,0 +1,66 @@
+---
+title: 10BASE-T1S subsystem
+description: Node60 LAN8670D0 PHY, line interface, PLCA identity, TC10 bus wake and controller-commanded shutdown.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import Metrics from '../../../components/Metrics.astro';
+import MermaidDiagram from '../../../components/MermaidDiagram.astro';
+import PartTable from '../../../components/PartTable.astro';
+import GateList from '../../../components/GateList.astro';
+import DecisionList from '../../../components/DecisionList.astro';
+import Ref from '../../../components/Ref.astro';
+
+LAN8670D0 connects over RMII/MDIO and operates as a commissioned PLCA follower on the multidrop segment.
+
+## PHY and line interface
+
+| Circuit | Selection | Implementation |
+|---|---|---|
+| Reference clock | ECS-3225SMVQ-500-DS-TR | 50 MHz HCMOS, ±20 ppm; oscillator enable controlled with main power |
+| Line coupling | 2 × 100 nF series capacitors | Automotive C0G/film-equivalent behavior with voltage and DC-bias margin |
+| Termination | Switchable 100 Ω across TRXP/TRXN | Populate or enable only at a physical segment endpoint |
+| Protection | Low-capacitance automotive ESD pair | Select exact code after return-loss and ESD co-design |
+
+## Identity and PLCA
+
+Firmware stores a unique locally administered MAC address and commissioned PLCA node ID in protected flash. Node ID must be unique and is not hard-coded identically across production units. Coordinator mode is disabled by default.
+
+## TC10 bus-wake and complete shutdown
+
+The parked node is not an MCU standby system. It is powered down except for the LAN8670 always-on domain, so the missing S32K3 Zephyr standby implementation is no longer on the critical path. The controller ECU—powered from battery and switched ignition—owns the only wake source and sends the T1S wake-up pattern over the same pair used for data (<Ref id="DEC-007" />).
+
+<Metrics items={[
+  ['40 µA typ', 'LAN8670 VDDAU sleep current'],
+  ['56 µA max', 'LAN8670 VDDAU sleep current'],
+  ['≈50 µA', 'complete node parked, typical'],
+  ['≈65 µA', 'complete node parked, maximum'],
+]} />
+
+| Phase | Defined sequence | Contract / evidence |
+|---|---|---|
+| Parked | Battery → LM74910H-Q1 in SLEEP (6 µA, ideal diode active) → nanopower LDO → LAN8670 VDDAU only. VDDA, VDDP, MCU, flash, bucks, and all outputs are off. | LDO Iq target ≈1–2 µA remains to be verified at part selection. LAN8670 sleep current is 40 µA typical / 56 µA maximum. |
+| Wake | Controller sends T1S wake-up tone → PHY detects it → INH high → bucks ramp → S32K344 cold boot → PHY re-initialization → link up → outputs become commandable. | External supplies must ramp within 1 ms. PHY registers are lost while VDDA/VDDP are down; IRQ_N indicates readiness for configuration. A roughly 1 s application-ready latency is acceptable. |
+| Shutdown | Controller sends application-level “go to sleep” message → firmware turns all six outputs off → flushes pending log entries → commands PHY sleep → INH releases after tSLPINHDLY → power tree collapses. | Write-before-sleep ordering is mandatory. Bus-idle timeout is rejected as the sleep source. |
+
+<MermaidDiagram name="power-cycle" caption="The controlled power cycle." />
+
+<Aside type="danger" title="Four-wire system dependency">
+The T1S pair is the only wake path. The node cannot wake itself and has no KL15 input; if the controller ECU does not emit the wake pattern, the node stays off. This is a controller-interface requirement, not a recoverable local condition.
+</Aside>
+
+<Aside type="caution" title="Wake inrush & exact-target validation">
+INH powers the complete switched tree at once. Size the LM74910H TMR breaker ride-through for regulator, bulk-capacitance, MCU, PHY, and output-stage startup inrush. Validate TC10 sleep/wake, INH timing, cold boot, lost-register PHY re-initialization, IRQ_N ready behavior, PLCA restoration, and application readiness on the exact S32K344EHT1MMMST target.
+</Aside>
+
+## Decisions
+
+<DecisionList page="subsystems/network" />
+
+## Parts
+
+<PartTable subsystem="network" />
+
+## Gates
+
+<GateList page="subsystems/network" />

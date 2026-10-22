@@ -1,0 +1,34 @@
+---
+title: Schematic-capture interfaces
+description: Node60 schematic sheet plan, the nets each sheet exposes, and net-level rules.
+---
+
+The page split and net rules expose every decision that still needs evidence.
+
+| Sheet | Contents | Must expose |
+|---|---|---|
+| A · Power entry | Fuse, TVS, LM74910H-Q1, DGATE/HGATE MOSFETs, shared 0.25 mΩ RSENSE, EMI, SW-pin OV/UV monitor divider, INA228A-Q1, TMP175-Q1, RSENSE NTC | VBAT_RAW, BATT_MON, VOUT/VBAT_PROT, RSENSE± star taps, INA228_IN+/IN−, FLT, shared I2C, TMP175 ALERT, NTC_RSENSE, reverse/OV/OCP/SCP faults |
+| B · Regulators | Nanopower VDDAU LDO, 2 × LMQ66430, direct INH gating, EN-pin chaining, TPS3702-Q1 | VDDAU_AON, INH, 3V3_MAIN, 1V5_CORE, startup timing, RESET_b supervisor path; no FS26 or wake latch |
+| C · MCU / NVM | S32K344, IS25LP032D SPI NOR, reset, SWT/CMU, debug, ADC, dual LPSPI, LPI2C | RMII, MDIO, 3 SNS, BATT_MON ADC, 4 NTC ADCs, INA228/TMP175 I2C, flash SPI/CS, output-switch SPI chain, faults |
+| D · T1S | LAN8670, VDDAU/VDDA/VDDP domain split, clock, straps, coupling, ESD | TRXP/N, direct INH-to-buck-EN path, IRQ_N, PHYAD; no local wake input |
+| E–G · Outputs | One dual-channel switch block and one package NTC per sheet | SPI, SNS, LHI, FLT/WAKE, NTC ADC net, two outputs, thermal pad |
+| K · Connectors | Outputs, high-current input, T1S pair | Pin/net table, wire gauge, fusing, no hidden joins |
+
+## Net-level rules
+
+- Name all six outputs and all three SNS nets; document every SPI diagnostic-mux mapping.
+- Route LAN8670 INH directly to the first LMQ66430 EN and chain regulator EN pins for rail order. Do not add FS26, a wake latch, or an MCU-controlled gate in this path.
+- Keep VDDAU on the nanopower always-on LDO and put LAN8670 VDDA/VDDP, MCU, flash, and all remaining logic on switched rails. Enforce VDDA ≤ VDDAU + 0.5 V through all transients.
+- Place IS25LP032D-JNLA3 on switched 3V3_MAIN with dedicated chip select, decoupling, and accessible SPI test pads.
+- Label the SW-divider ADC net **BATT_MON** and its reported quantity **VBAT_RAW**; ensure its ADC tap does not add material parked current, and set cold-crank behavior with the separate UVLO pin.
+- Place the shared 0.25 mΩ RSENSE between the DGATE and HGATE FET stages. Route separate star Kelvin pairs from the resistor pads to LM74910H and INA228A-Q1, expose both nodes as test points, and couple NTC_RSENSE tightly to the resistor body.
+- Route every buck/MCU and output branch from VOUT after the Q2 disconnect FET so shared RSENSE measures the complete downstream current.
+- Fit R(ILIM) = 32 kΩ 1%, RSET = 50 Ω, and TMR ≈68 nF; route LM74910H FLT to the MCU and leave IMON floating when INA228 is populated.
+- Name and route NTC_RSENSE plus NTC_SW1–NTC_SW3 to separate ADC channels; keep divider returns quiet and document each thermistor’s exact coefficients.
+- Place TMP175-Q1 beside the ideal-diode NFET bank, share the INA228 I²C bus with a distinct address, and reserve ALERT routing to the MCU.
+- Route TPS3702-Q1 directly from 3V3_MAIN to RESET_b; document threshold variant, reset timing, pull-up domain, and interaction with MCU POR/LVD.
+- Annotate every 10 A net with copper weight, geometry, via array, connector contact, and 14 AWG minimum harness.
+- Keep PHYAD hardware strapping separate from commissioned PLCA node identity.
+- Add test points on all rails, INH, IRQ_N, MDC/MDIO, reference clock, SPI, and all SNS nets.
+- Show reset states for CSN, LHI, FLT/WAKE, and the daisy chain.
+- Mark every unverified sequence, package ball, and connector mate as release-blocking.

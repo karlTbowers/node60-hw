@@ -1,0 +1,55 @@
+---
+title: Watchdog & power-rail supervision
+description: Node60 internal S32K344 SWT watchdog and TPS3702-Q1 3.3 V window supervisor.
+---
+
+import { Aside, Card, CardGrid } from '@astrojs/starlight/components';
+import PartTable from '../../../components/PartTable.astro';
+import GateList from '../../../components/GateList.astro';
+import DecisionList from '../../../components/DecisionList.astro';
+import Ref from '../../../components/Ref.astro';
+
+Use the MCU’s hardened internal window watchdog for software failure detection, and add an independent tight-window supervisor for the 3.3 V MCU/PHY rail.
+
+<CardGrid>
+  <Card title="POR watchdog · S32K344 SWT">
+    Use the internal Software Watchdog Timer. It is window-capable, enabled by default out of reset, and can be hard-locked so runaway code cannot disable or reconfigure it.
+
+    `Zephyr: nxp,s32-swt · upstream driver`
+  </Card>
+  <Card title="POR rail supervisor · TPS3702-Q1">
+    Add one automotive window supervisor on 3V3_MAIN. Its independent overvoltage and undervoltage detection drives RESET_b.
+
+    `±0.9% threshold · −40…+125 °C · SOT-6`
+  </Card>
+</CardGrid>
+
+## Watchdog decision
+
+The S32K344 SWT is the plan-of-record watchdog; no external watchdog is fitted (<Ref id="DEC-005" />). Configure a legal service window, verify reset action, hard-lock its configuration after startup checks, and test early, late, missing, and malformed service sequences. The S32K3 Clock Monitoring Unit already converts monitored clock failure into reset, closing the other major gap an ordinary external watchdog would address. The upstream Zephyr `nxp,s32-swt` driver avoids custom driver work.
+
+<Aside type="tip" title="No external watchdog in Rev C">
+An external watchdog duplicates the internal windowed SWT without improving rail-fault coverage because it dies with the same supply. If a later revision must support an ASIL safety case, evaluate **TPS3430WQDRCRQ1**: windowed, AEC-Q100 Grade 1, and observed in stock. It is a future safety-case option, not part of the current BOM. Do not use a TPS3823-Q1-class supervisor/watchdog combination: its non-windowed watchdog is a functional downgrade from the internal SWT.
+</Aside>
+
+## 3.3 V independent window supervision
+
+Add **1 × TPS3702-Q1** to supervise the 3.3 V MCU/PHY rail (<Ref id="DEC-006" />). The device provides separate overvoltage and undervoltage detection with ±0.9% threshold accuracy over −40…+125 °C and is AEC-Q100 Grade 1 in SOT-6. Its reset output drives **RESET_b**. Budget about $1; confirm the exact fixed-threshold 3.3 V orderable code, pricing, and authorized stock at BOM lock.
+
+<Aside type="caution" title="Why a supervisor, not another watchdog">
+Cold-crank droops and load-dump disturbances can move 3V3_MAIN outside the MCU/PHY operating window. A tight, MCU-independent OV/UV detector catches those conditions before software becomes unreliable; no watchdog can detect a rail fault after its own supply has collapsed. Do not add a separate 1.5 V supervisor: the S32K344 internal low-voltage detector already monitors the core domain.
+</Aside>
+
+## Supervision release gates
+
+<GateList group="supervision" />
+
+The freeze gate for this subsystem is <Ref id="GATE-SUP-05" long />.
+
+## Decisions
+
+<DecisionList page="subsystems/supervision" />
+
+## Parts
+
+<PartTable subsystem="supervision" />

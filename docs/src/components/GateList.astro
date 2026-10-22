@@ -1,0 +1,56 @@
+---
+// Verification gates from src/data/gates.yaml, by group or by page.
+import { loadData, anchor, url } from '../lib/data';
+import Ref from './Ref.astro';
+
+interface Props {
+	group?: 'supervision' | 'temperature' | 'freeze';
+	page?: string;
+	/** Anchor each gate (only on the page that owns the gate list) */
+	anchors?: boolean;
+}
+const { group, page, anchors = false } = Astro.props;
+const { gates, requirements, decisions } = await loadData();
+const rows = gates.filter((g) => (!group || g.group === group) && (!page || g.page === page));
+const verifies = (id: string) => requirements.filter((r) => r.verified_by.some((g) => g.id === id));
+const decided = (id: string) => decisions.filter((d) => d.gates.some((g) => g.id === id));
+---
+
+<div class="gate-list not-content">
+	{
+		rows.map((g) => (
+			<div class="gate" id={anchors ? anchor(g.id) : undefined}>
+				<div class="gate-head">
+					<code>{g.id}</code>
+					<b>{g.title}</b>
+					<em>Blocks {g.blocks.toUpperCase()}</em>
+				</div>
+				<p>{g.evidence}</p>
+				<div class="gate-foot">
+					<span class={`state state-${g.status === 'open' ? 'risk' : g.status === 'passed' ? 'locked' : 'blocked'}`}>
+						<i class="dot" />
+						{g.status === 'open' ? 'Open' : g.status === 'passed' ? 'Passed' : 'Failed'}
+					</span>
+					{g.result && <a href={g.result}>Result</a>}
+					{verifies(g.id).length > 0 && (
+						<span class="refs">
+							Verifies{' '}
+							{verifies(g.id).map((r) => (
+								<Ref id={r.id} />
+							))}
+						</span>
+					)}
+					{decided(g.id).length > 0 && (
+						<span class="refs">
+							Decisions{' '}
+							{decided(g.id).map((d) => (
+								<Ref id={d.id} />
+							))}
+						</span>
+					)}
+					{!anchors && <a href={url(`verification/#${anchor(g.id)}`)}>All gates</a>}
+				</div>
+			</div>
+		))
+	}
+</div>

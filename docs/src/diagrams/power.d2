@@ -1,6 +1,6 @@
 # Node60 · Power architecture (Architecture Rev C)
 # Line weight = current: thick = battery path (up to 60 A), medium = VBAT_PROT branches, thin = regulated rails.
-# Every block links to its section of the architecture site.
+# Every block links to its subsystem page (site-relative; the D2Diagram component adds the base path).
 
 direction: right
 
@@ -28,37 +28,37 @@ classes: {
 
 vehicle: "Vehicle harness" {
   class: group
-  bat: "12 V battery\nsource fuse at battery\nbattery-direct + ground" {class: external; link: "#harness"}
+  bat: "12 V battery\nsource fuse at battery\nbattery-direct + ground" {class: external; link: "/subsystems/harness/"}
 }
 
 entry: "Power entry · always connected" {
   class: group
-  tvs: "Primary TVS\nXLD8A24CA\n24 V · 7 kW" {class: battery; link: "#power"}
-  lm: "LM74910H-Q1 ideal diode + breaker\nQ1 (DGATE) → RSENSE 0.25 mΩ → Q2 (HGATE)\nreverse · OV · 75 A breaker · 80 A SCP" {class: battery; link: "#power"}
-  emi: "Damped π\nEMI filter" {class: battery; link: "#power"}
+  tvs: "Primary TVS\nXLD8A24CA\n24 V · 7 kW" {class: battery; link: "/subsystems/power/"}
+  lm: "LM74910H-Q1 ideal diode + breaker\nQ1 (DGATE) → RSENSE 0.25 mΩ → Q2 (HGATE)\nreverse · OV · 75 A breaker · 80 A SCP" {class: battery; link: "/subsystems/power/"}
+  emi: "Damped π\nEMI filter" {class: battery; link: "/subsystems/power/"}
 }
 
-bus: "VBAT_PROT" {class: bus; link: "#power"; width: 120}
+bus: "VBAT_PROT" {class: bus; link: "/subsystems/power/"; width: 120}
 
 aon: "Always on · ≈50 µA parked" {
   class: group
-  ldo: "Nanopower LDO\nIq ≈1–2 µA (part TBD)" {class: aon; link: "#power"}
-  vddau: "LAN8670 VDDAU\n(TC10 wake detector)" {class: consumer; link: "#network"}
+  ldo: "Nanopower LDO\nIq ≈1–2 µA (part TBD)" {class: aon; link: "/subsystems/power/"}
+  vddau: "LAN8670 VDDAU\n(TC10 wake detector)" {class: consumer; link: "/subsystems/network/"}
 }
 
 rails: "Switched rails · enabled by LAN8670 INH" {
   class: group
-  buck1: "LMQ66430-Q1 #1\nEN ← LAN8670 INH" {class: rail; link: "#power"}
-  buck2: "LMQ66430-Q1 #2\nEN ← 3V3 (EN chain)" {class: rail; link: "#power"}
-  c3v3: "S32K344 I/O + analog · LAN8670 VDDA/VDDP\nswitch VDD · SPI NOR · 50 MHz osc\nINA228 · TMP175" {class: consumer; link: "#compute"}
-  c1v5: "S32K344 VDD_LV (core)" {class: consumer; link: "#compute"}
-  sup: "TPS3702-Q1\nOV/UV window → RESET_b" {class: rail; link: "#supervision"}
+  buck1: "LMQ66430-Q1 #1\nEN ← LAN8670 INH" {class: rail; link: "/subsystems/power/"}
+  buck2: "LMQ66430-Q1 #2\nEN ← 3V3 (EN chain)" {class: rail; link: "/subsystems/power/"}
+  c3v3: "S32K344 I/O + analog · LAN8670 VDDA/VDDP\nswitch VDD · SPI NOR · 50 MHz osc\nINA228 · TMP175" {class: consumer; link: "/subsystems/compute/"}
+  c1v5: "S32K344 VDD_LV (core)" {class: consumer; link: "/subsystems/compute/"}
+  sup: "TPS3702-Q1\nOV/UV window → RESET_b" {class: rail; link: "/subsystems/supervision/"}
 }
 
 loads: "Switched loads · all off when parked" {
   class: group
-  sw: "3 × TPS2HCS08A-Q1\ndual smart high-side switches\nI²t wire protection" {class: load; link: "#outputs"}
-  out: "OUT1–OUT6\n6 × 10 A target\nMX150 · 14 AWG min" {class: load; link: "#harness"}
+  sw: "3 × TPS2HCS08A-Q1\ndual smart high-side switches\nI²t wire protection" {class: load; link: "/subsystems/outputs/"}
+  out: "OUT1–OUT6\n6 × 10 A target\nMX150 · 14 AWG min" {class: load; link: "/subsystems/harness/"}
 }
 
 vehicle.bat -> entry.tvs: "VBAT_RAW · 60 A" {class: hi}

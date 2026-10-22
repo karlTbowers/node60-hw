@@ -1,7 +1,7 @@
 # Node60 · Signal architecture, digital and analog (Architecture Rev C)
 # Inputs on the left, MCU in the middle, outputs on the right.
 # Solid = digital (purple: network, blue: control buses). Dashed green = analog into the MCU ADC.
-# Every block links to its section of the architecture site.
+# Every block links to its subsystem page (site-relative; the D2Diagram component adds the base path).
 
 direction: right
 
@@ -26,30 +26,30 @@ classes: {
 
 network: "10BASE-T1S" {
   class: group
-  ecu: "Controller ECU\nPLCA coordinator\nsole wake source" {class: external; link: "#harness"}
-  line: "Line interface\n2 × 100 nF · ESD pair\nswitchable 100 Ω termination" {class: network; link: "#network"}
-  phy: "LAN8670D0\nPLCA follower · TC10 wake" {class: network; link: "#network"}
-  osc: "50 MHz oscillator\nECS-3225SMVQ" {class: network; link: "#network"}
+  ecu: "Controller ECU\nPLCA coordinator\nsole wake source" {class: external; link: "/subsystems/harness/"}
+  line: "Line interface\n2 × 100 nF · ESD pair\nswitchable 100 Ω termination" {class: network; link: "/subsystems/network/"}
+  phy: "LAN8670D0\nPLCA follower · TC10 wake" {class: network; link: "/subsystems/network/"}
+  osc: "50 MHz oscillator\nECS-3225SMVQ" {class: network; link: "/subsystems/network/"}
 }
 
 sensing: "Measurement inputs" {
   class: group
-  lm: "LM74910H-Q1\ninput protection" {class: battery; link: "#power"}
-  rsense: "RSENSE 0.25 mΩ" {class: battery; link: "#power"}
-  div: "SW-pin OV/UV divider\n1:12 · VBAT_RAW" {class: sense; link: "#power"}
-  ina: "INA228A-Q1\n20-bit total I · V · P" {class: sense; link: "#power"}
-  tmp: "TMP175-Q1\nNFET-bank temperature" {class: sense; link: "#temperature"}
-  ntc: "4 × 10 kΩ NTC dividers\nRSENSE · SW1 · SW2 · SW3" {class: sense; link: "#temperature"}
-  sup: "TPS3702-Q1\n3V3 OV/UV supervisor" {class: compute; link: "#supervision"}
+  lm: "LM74910H-Q1\ninput protection" {class: battery; link: "/subsystems/power/"}
+  rsense: "RSENSE 0.25 mΩ" {class: battery; link: "/subsystems/power/"}
+  div: "SW-pin OV/UV divider\n1:12 · VBAT_RAW" {class: sense; link: "/subsystems/power/"}
+  ina: "INA228A-Q1\n20-bit total I · V · P" {class: sense; link: "/subsystems/power/"}
+  tmp: "TMP175-Q1\nNFET-bank temperature" {class: sense; link: "/subsystems/temperature/"}
+  ntc: "4 × 10 kΩ NTC dividers\nRSENSE · SW1 · SW2 · SW3" {class: sense; link: "/subsystems/temperature/"}
+  sup: "TPS3702-Q1\n3V3 OV/UV supervisor" {class: compute; link: "/subsystems/supervision/"}
 }
 
-mcu: "S32K344\nLPSPI ×2 · LPI2C · 12-bit ADC · GPIO\ninternal SWT watchdog · CMU" {class: compute; link: "#compute"}
+mcu: "S32K344\nLPSPI ×2 · LPI2C · 12-bit ADC · GPIO\ninternal SWT watchdog · CMU" {class: compute; link: "/subsystems/compute/"}
 
 outputs: "Controlled devices" {
   class: group
-  sw: "3 × TPS2HCS08A-Q1\nSPI daisy chain with CRC\nLHI held inactive" {class: load; link: "#outputs"}
-  flash: "IS25LP032D-JNLA3\n32 Mbit diagnostic log" {class: compute; link: "#firmware"}
-  dbg: "SWD/JTAG + UART pads\ninternal service only" {class: compute; link: "#compute"}
+  sw: "3 × TPS2HCS08A-Q1\nSPI daisy chain with CRC\nLHI held inactive" {class: load; link: "/subsystems/outputs/"}
+  flash: "IS25LP032D-JNLA3\n32 Mbit diagnostic log" {class: compute; link: "/subsystems/firmware/"}
+  dbg: "SWD/JTAG + UART pads\ninternal service only" {class: compute; link: "/subsystems/compute/"}
 }
 
 network.ecu <-> network.line: "T1S pair" {class: net}

@@ -1,0 +1,15 @@
+---
+// Inline link to any requirement, decision, gate, source, or part by ID.
+// An unknown ID fails the build.
+import { resolveRef } from '../lib/data';
+
+interface Props {
+	id: string;
+	/** Show the title after the ID */
+	long?: boolean;
+}
+const { id, long = false } = Astro.props;
+const ref = await resolveRef(id);
+---
+
+<a class="ref" href={ref.href} title={ref.title}>{ref.label}</a>{long && <> ({ref.title})</>}

@@ -1,0 +1,35 @@
+---
+// Inline a D2 diagram rendered by scripts/render-diagrams.mjs (src/diagrams/build/<name>.svg).
+// Inlined, not <img>, so every block's link works. D2 links are site-relative
+// ("/subsystems/power/"); the base path is added here.
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { url } from '../lib/data';
+
+interface Props {
+	name: string;
+	caption?: string;
+}
+const { name, caption } = Astro.props;
+// Resolved from the project root: this component runs from a bundled chunk at build time.
+const file = join(process.cwd(), 'src/diagrams/build', `${name}.svg`);
+let svg: string;
+try {
+	svg = readFileSync(file, 'utf8');
+} catch {
+	throw new Error(`Diagram "${name}" is not rendered: run \`npm run diagrams\` (needs the d2 binary).`);
+}
+svg = svg
+	.replace(/^<\?xml[^>]*>/, '')
+	.replace(/(xlink:)?href="\/(?!\/)([^"]*)"/g, (_m, xl, path) => `${xl ?? ''}href="${url(path)}"`);
+// Show at 75% of D2's natural size so labels stay legible; the figure scrolls sideways.
+const viewBoxWidth = Number(svg.match(/viewBox="[\d.-]+ [\d.-]+ ([\d.]+)/)?.[1] ?? 1400);
+---
+
+<figure class="diagram d2 not-content" style={`--d2-width: ${Math.round(viewBoxWidth * 0.75)}px`}>
+	<div class="diagram-scroll" set:html={svg} />
+	{caption && <figcaption>{caption}</figcaption>}
+	<a class="diagram-source" href={`https://github.com/karlTbowers/node60-hw/blob/main/docs/src/diagrams/${name}.d2`}
+		>Source: {name}.d2</a
+	>
+</figure>

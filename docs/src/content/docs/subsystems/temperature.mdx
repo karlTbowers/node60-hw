@@ -1,0 +1,71 @@
+---
+title: Temperature sensing & hotspot coverage
+description: Node60 TMP175-Q1 and four NTCs, existing IC telemetry limits, firmware contract, and temperature gates.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import Metrics from '../../../components/Metrics.astro';
+import PartTable from '../../../components/PartTable.astro';
+import GateList from '../../../components/GateList.astro';
+import DecisionList from '../../../components/DecisionList.astro';
+import Ref from '../../../components/Ref.astro';
+
+Five added sensors close the input-stage and overload blind spots: one digital sensor at the ideal-diode FET bank and four local thermistors at shared RSENSE and the smart-switch packages (<Ref id="DEC-010" />).
+
+<Metrics items={[
+  ['5', 'added temperature sensors'],
+  ['±2 °C', 'TMP175-Q1 maximum error'],
+  ['4 × NTC', 'RSENSE plus three switch packages'],
+  ['≈$1.50–2.50', 'total added BOM estimate'],
+]} />
+
+## Plan-of-record sensor placement
+
+| Sensor / quantity | Placement and interface | Accuracy and role |
+|---|---|---|
+| 1 × TMP175-Q1 | Place adjacent to the LM74910H-controlled DGATE/HGATE NFET bank on the 60 A path. Share the INA228 I²C/SMBus bus; use a distinct address. Optionally route ALERT to the S32K344 as a hardware overtemperature interrupt. | ±1 °C typical / ±2 °C maximum from −40…+125 °C; 12-bit, 0.0625 °C resolution. Measures the NFET-bank neighborhood and doubles as the power-input board-ambient reference. |
+| 1 × 10 kΩ NTC | AEC-Q200, 0603, ±1% R25 / ±1% B; place tight to the 0.25 mΩ shared-RSENSE body. Read through a resistor divider on a dedicated S32K344 ADC channel. | About ±0.5–1 °C mid-range and about ±1.5 °C at +125 °C after lookup-table or Steinhart–Hart linearization. These are tolerance-derived planning estimates, not guaranteed datasheet maxima. |
+| 3 × 10 kΩ NTC | One AEC-Q200 0603 thermistor beside each TPS2HCS08A-Q1 package; each gets its own resistor divider and S32K344 ADC channel. | Same tolerance-derived estimate as the shunt NTC. Preserves package-temperature visibility when switch FET telemetry is unavailable during an I²t event. |
+
+<Aside type="tip" title="Digital sensor baseline">
+**TMP175-Q1 remains the plan-of-record choice.** It is AEC-Q100 Grade 1 with a 2.7–5.5 V supply, SOIC-8 or VSSOP-8 package, I²C/SMBus interface, and up to 27 devices per bus. It adds no address conflict to the INA228 bus. Budget approximately $0.60–1.00 at 1,000 pieces and verify at BOM lock.
+</Aside>
+
+<Aside type="note" title="Higher-accuracy alternative — not selected">
+TI **TMP126-Q1** was the only verified higher-accuracy option: ±0.4 °C maximum, AEC-Q100 Grade 0, approximately $1.80 at 1,000 pieces, and observed in DigiKey stock. It is SPI-only, so its 3-wire interface needs a chip-select and LPSPI allocation and cannot share the INA228 I²C bus. The added interface cost and complexity outweigh the accuracy gain for the NFET-bank ambient role.
+</Aside>
+
+## What the existing ICs can—and cannot—tell us
+
+| Existing telemetry | Accuracy / behavior | Coverage decision |
+|---|---|---|
+| TPS2HCS08A-Q1 FET temperature | 10-bit per-channel reading, ±17 °C maximum. Measurement is disabled on all channels whenever any channel enters the I²t loop; warning bits and thermal shutdown remain active. | Do not use it as the only package-temperature evidence during faults. Fit one NTC per dual-channel package. |
+| INA228A-Q1 die temperature | ±2 °C maximum, but it measures the monitor IC die rather than the high-dissipation shunt body. | Retain for monitor health; fit the shunt NTC for shunt temperature. |
+| S32K344 internal TempSense | ±10 °C maximum. | Use only for MCU die-health checks, not hotspot derating. |
+| LM74910H-Q1 / external NFETs | The adopted interface provides current/fault protection but no NFET temperature measurement. | The external FET bank remains the primary thermal blind spot; TMP175-Q1 closes it. |
+| LMQ66430-Q1 / LAN8670 | Buck converters provide thermal shutdown only; LAN8670 provides a binary overtemperature indication based on characterization data. | Treat these as protection/fault indications, not hotspot measurements. |
+
+<Aside type="caution" title="I²t telemetry blackout">
+Firmware must never trust TPS2HCS08A-Q1 temperature registers during an I²t event. Record the blackout state with every temperature sample, use the three package NTCs for fault-time thermal decisions, and continue honoring the switch warning and shutdown bits.
+</Aside>
+
+## Firmware and calibration contract
+
+- Apply per-sensor alert thresholds, debouncing, plausibility checks, and derating-policy hooks for the NFET bank, shared RSENSE, and three switch packages.
+- Log raw and converted temperature, sensor identity, operating state, active I²t status, threshold crossings, derating actions, and shutdown events.
+- Linearize each NTC with a component-specific lookup table or Steinhart–Hart coefficients; do not reuse generic coefficients at production release.
+- Use TMP175 ALERT as an optional independent interrupt path while retaining periodic I²C polling and communication-fault detection.
+
+## Temperature-sensing release gates
+
+<GateList group="temperature" />
+
+The freeze gate for this subsystem is <Ref id="GATE-TMP-05" long />.
+
+## Decisions
+
+<DecisionList page="subsystems/temperature" />
+
+## Parts
+
+<PartTable subsystem="temperature" />

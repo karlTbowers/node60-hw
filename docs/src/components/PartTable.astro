@@ -1,0 +1,70 @@
+---
+// Component baseline rows from src/data/parts.yaml, optionally filtered by subsystem.
+import { loadData, anchor, partName, formatObservation, isoDate } from '../lib/data';
+import Ref from './Ref.astro';
+
+interface Props {
+	subsystem?: string;
+}
+const { subsystem } = Astro.props;
+const { parts } = await loadData();
+const rows = subsystem ? parts.filter((p) => p.subsystem === subsystem) : parts;
+const prefix = (p: (typeof parts)[number]) =>
+	p.status === 'alternative' ? 'ALT · ' : p.status === 'future' ? 'FUTURE · ' : `${p.qty} × `;
+const statusLabel: Record<string, string> = {
+	locked: 'Locked',
+	'plan-of-record': 'Plan of record',
+	selected: 'Selected',
+	alternative: 'Alternative',
+	future: 'Future',
+	open: 'Open',
+};
+---
+
+<table class="data-table parts">
+	<thead>
+		<tr>
+			<th>Qty / part</th>
+			<th>Function</th>
+			<th>Observed price / supply</th>
+			<th>Second source</th>
+			<th>Decision note</th>
+		</tr>
+	</thead>
+	<tbody>
+		{
+			rows.map((p) => (
+				<tr id={anchor(p.id)}>
+					<td>
+						<b>
+							{prefix(p)}
+							{partName(p)}
+						</b>
+						{p.manufacturer && <div class="muted">{p.manufacturer}</div>}
+						<span class={`badge badge-${p.status}`}>{statusLabel[p.status]}</span>
+					</td>
+					<td>{p.function}</td>
+					<td>
+						{p.observations.map((o) => (
+							<div>
+								{formatObservation(o)} <span class="muted">· {isoDate(o.date)}</span>
+							</div>
+						))}
+						{p.supply_note && <div>{p.supply_note}</div>}
+					</td>
+					<td>{p.second_source ? <Ref id={p.second_source} /> : <span class="muted">None recorded</span>}</td>
+					<td>
+						{p.decision_note}
+						{p.decisions.length > 0 && (
+							<div class="refs">
+								{p.decisions.map((d) => (
+									<Ref id={d.id} />
+								))}
+							</div>
+						)}
+					</td>
+				</tr>
+			))
+		}
+	</tbody>
+</table>

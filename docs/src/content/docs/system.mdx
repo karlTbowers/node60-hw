@@ -1,0 +1,33 @@
+---
+title: System architecture
+description: Node60 power and signals views, partitioning rule, and the controlled power cycle.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import D2Diagram from '../../components/D2Diagram.astro';
+import MermaidDiagram from '../../components/MermaidDiagram.astro';
+import Ref from '../../components/Ref.astro';
+
+Battery protection, low-power control, logic, network, and six load channels are kept as explicit domains.
+
+## Power view
+
+<D2Diagram name="power" caption="Battery, control, network wake, and switched-load domains. LAN8670 VDDAU is the sole always-on load; its INH output gates the main rails directly. Line weight shows current: thick = battery path (up to 60 A), medium = VBAT_PROT branches, thin = regulated rails; dashed = supervision. Click a block for its subsystem page." />
+
+## Signals view
+
+<D2Diagram name="signals" caption="Digital and analog signals between the S32K344 and everything it talks to. Inputs on the left, controlled devices on the right. Solid = digital (purple: network, blue: control buses); dashed green = analog into the MCU ADC. Click a block for its subsystem page." />
+
+## Partitioning rule
+
+Keep dirty load current outside the logic return path. The protected battery node feeds both the smart switches and the logic converters. Each output returns directly to the power-entry ground/star region; ADC and PHY grounds join through the quiet logic plane. The T1S coupling and ESD network sit at the connector boundary.
+
+<Aside type="tip" title="Rev C power-gate decision">
+FS26 is removed. A nanopower LDO supplies only LAN8670 VDDAU while parked; LAN8670 INH directly enables the two LMQ66430-Q1 bucks. EN-pin chaining establishes the 3.3 V / 1.5 V order without an SBC, wake latch, or extra logic. See <Ref id="DEC-004" long />.
+</Aside>
+
+## Controlled power cycle
+
+The node has no local wake input. The controller ECU wakes it over the T1S pair and explicitly commands shutdown (<Ref id="DEC-007" />). Details: [10BASE-T1S](../subsystems/network/#tc10-bus-wake-and-complete-shutdown).
+
+<MermaidDiagram name="power-cycle" caption="Parked → wake → run → shutdown. Bus-idle timeout is rejected as a sleep source." />

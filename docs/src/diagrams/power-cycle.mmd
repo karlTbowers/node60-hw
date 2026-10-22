@@ -1,0 +1,31 @@
+---
+title: Node60 controlled power cycle (Architecture Rev C)
+---
+stateDiagram-v2
+    [*] --> Parked: battery connected
+
+    Parked: PARKED · TC10 sleep
+    Parked: LM74910H-Q1 SLEEP (6 µA), nanopower LDO, LAN8670 VDDAU only
+    Parked: ≈50 µA typical / ≈65 µA maximum, no logging
+
+    Wake: WAKE
+    Wake: PHY detects wake-up tone → INH high
+    Wake: bucks ramp within 1 ms → S32K344 cold boot
+    Wake: IRQ_N ready → PHY re-init → link up
+
+    Run: RUN
+    Run: all rails, MCU, PHY, flash, oscillator active
+    Run: outputs off until configuration validated and commanded
+
+    Shutdown: SHUTDOWN
+    Shutdown: all six outputs off → flush log (≤8 ms)
+    Shutdown: command PHY sleep → INH releases after tSLPINHDLY
+
+    Parked --> Wake: controller ECU sends T1S wake-up pattern (only wake source)
+    Wake --> Run: application ready (≈1 s accepted)
+    Run --> Shutdown: controller "go to sleep" message
+    Shutdown --> Parked: power tree collapses
+
+    note right of Run
+        Bus-idle timeout is rejected as a sleep source
+    end note
