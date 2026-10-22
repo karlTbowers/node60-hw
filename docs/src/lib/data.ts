@@ -123,7 +123,7 @@ export const partName = (p: Part) => p.mpn ?? p.label ?? p.id;
 const usd = (n: number) =>
 	`$${Number.isInteger(n) ? n : n.toFixed(Math.max(2, (String(n).split('.')[1] ?? '').length))}`;
 
-/** One observation as Rev C wrote it, e.g. "$5.43 @1 / ≈$3.20 @1k; 32,413 DigiKey". */
+/** One observation in the usual notation, e.g. "$5.43 @1 / ≈$3.20 @1k; 32,413 DigiKey". */
 export function formatObservation(o: Part['observations'][number]): string {
 	const prices = o.prices
 		.map((p) => `${p.approx ? '≈' : ''}${usd(p.usd)} ${/^\d|k$/.test(p.qty) ? '@' + p.qty : p.qty}`)
