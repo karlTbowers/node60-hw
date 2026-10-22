@@ -1,5 +1,7 @@
 /* Node60 docs: domain colours match the D2 diagrams (handbook chapter 08). */
 :root {
+	/* Starlight's default 45rem is too narrow for the data tables; the column still shrinks on small screens */
+	--sl-content-width: 68rem;
 	--n60-locked: #087c77;
 	--n60-risk: #bd6b00;
 	--n60-blocked: #a9392d;
