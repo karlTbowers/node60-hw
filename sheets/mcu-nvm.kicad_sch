@@ -18248,9 +18248,27 @@
 		)
 		(uuid "6265d356-5815-5c0a-be46-57def59f476c")
 	)
-	(no_connect
-		(at 505.46 210.82)
-		(uuid "3ca9b94b-0b81-58fd-b7c2-c76e46b90f10")
+	(wire
+		(pts
+			(xy 505.46 210.82)
+			(xy 502.92 210.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b99e1945-9021-54c2-8140-7e246540a531")
+	)
+	(hierarchical_label "SW_LHI"
+		(shape output)
+		(at 502.92 210.82 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "e5da8c22-6e70-5101-bbd1-e6bd4b8ab643")
 	)
 	(no_connect
 		(at 535.94 228.6)
@@ -18505,7 +18523,7 @@
 			)
 		)
 	)
-	(text "Fault lines are open drain with pull-ups at the source; EIRQ on falling edge.\nNTC_SW2/3 on ADC2_P3/P4."
+	(text "Fault lines are open drain with pull-ups at the source; EIRQ on falling edge.\nNTC_SW2/3 on ADC2_P3/P4. SW_LHI (PTE4) output, driven low; never asserted in normal operation."
 		(exclude_from_sim no)
 		(at 457.2 248.92 0)
 		(effects
@@ -23705,7 +23723,7 @@
 			)
 		)
 	)
-	(text "DESIGN NOTES (S32K3xx data sheet; S32K3 Hardware Design Guidelines Rev E2; Node60 compute page)\nRELEASE-BLOCKING (GATE-MCU-01): ball map from the library symbol (NXP IOMUX attachment, Nov 2025). Check every\n  ball and ALT setting here against the S32K344EHT1MMMST package before layout. The pin table above each unit is the plan.\nSupplies: VDD_HV_A = VDD_HV_B = VREFH = 3V3_MAIN, V15 = 1V5_CORE (U303), V11/V25 internal (decoupling only).\n  NTC dividers are ratiometric to 3V3_MAIN = VREFH. Check the S32K3 supply ramp-rate limits against the LMQ66430\n  soft start (HDG 2.10.1) during bring-up.\nClock: FIRC; no FXOSC crystal in Rev A (EXTAL/XTAL no-connect; confirm the unused-pin rule in the data sheet).\nWatchdog: internal SWT, hard-locked after start-up (DEC-005). Clock monitor CMU -> reset.\nRESET_B (PTA5) on RESET_L: TPS3702 window supervisor (p3) wired-OR, PHY RESET_N, debug header pin 10.\nFlash IS25LP032D-JNLA3 on LPSPI2, mode 0 or 3, own CS with 10k pull-up so it is deselected through reset;\n  WP and HOLD pulled up (single-IO SPI). Powered from switched 3V3_MAIN; log flush before PHY sleep (DEC-007).\nDebug: Cortex 10-pin (project default). Pin 7 is the key, pin 8 unused. SWDIO 10k up, SWCLK 10k down.\nDefault states: all port pins are disabled inputs out of reset; LPSPI4 PCS0 and LPSPI2 PCS0 are held high by\n  the switch's internal pull-up and R4xx respectively; FLT and IRQ lines idle high via their pull-ups.\n"
+	(text "DESIGN NOTES (S32K3xx data sheet; S32K3 Hardware Design Guidelines Rev E2; Node60 compute page)\nRELEASE-BLOCKING (GATE-MCU-01): ball map from the library symbol (NXP IOMUX attachment, Nov 2025). Check every\n  ball and ALT setting here against the S32K344EHT1MMMST package before layout. The pin table above each unit is the plan.\nSupplies: VDD_HV_A = VDD_HV_B = VREFH = 3V3_MAIN, V15 = 1V5_CORE (U303), V11/V25 internal (decoupling only).\n  NTC dividers are ratiometric to 3V3_MAIN = VREFH. Check the S32K3 supply ramp-rate limits against the LMQ66430\n  soft start (HDG 2.10.1) during bring-up.\nClock: FIRC; no FXOSC crystal in Rev A. EXTAL/XTAL unconnected and unused GPIOs unconnected (disabled), as NXP\n  HDG Rev E2 Table 33 requires. RESET_B pulled up to VDD_HV_A (4.7k on p3), as Table 33 requires.\nWatchdog: internal SWT, hard-locked after start-up (DEC-005). Clock monitor CMU -> reset.\nRESET_B (PTA5) on RESET_L: TPS3702 window supervisor (p3) wired-OR, PHY RESET_N, debug header pin 10.\nFlash IS25LP032D-JNLA3 on LPSPI2, mode 0 or 3, own CS with 10k pull-up so it is deselected through reset;\n  WP and HOLD pulled up (single-IO SPI). Powered from switched 3V3_MAIN; log flush before PHY sleep (DEC-007).\nDebug: Cortex 10-pin (project default). Pin 7 is the key, pin 8 unused. SWDIO 10k up, SWCLK 10k down.\nDefault states: all port pins are disabled inputs out of reset; LPSPI4 PCS0 and LPSPI2 PCS0 are held high by\n  the switch's internal pull-up and R4xx respectively; FLT and IRQ lines idle high via their pull-ups.\n"
 		(exclude_from_sim no)
 		(at 236.22 368.3 0)
 		(effects

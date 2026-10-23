@@ -835,7 +835,7 @@
 		)
 		(uuid "3e844a2a-2ca9-504c-83fa-0a3155d0e6f7")
 	)
-	(label "SPI4_SWITCH_MOSI"
+	(label "SW_LHI"
 		(at 373.38 53.34 0)
 		(effects
 			(font
@@ -843,7 +843,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "3728ee3e-3f3a-5dbe-a3f3-7f1eabba6aa7")
+		(uuid "b194d0ab-45b2-58fa-9891-cbcde158bd6c")
 	)
 	(wire
 		(pts
@@ -856,7 +856,7 @@
 		)
 		(uuid "56be0d83-95cf-5133-87ff-fdbb6d8f6614")
 	)
-	(label "SPI4_SWITCH_SCK"
+	(label "SPI4_SWITCH_MOSI"
 		(at 373.38 55.88 0)
 		(effects
 			(font
@@ -864,7 +864,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "6a372441-7ed0-59b4-a990-759fa49ac91f")
+		(uuid "3460d7de-3e90-52da-88c3-2d9eace9d1c6")
 	)
 	(wire
 		(pts
@@ -877,7 +877,7 @@
 		)
 		(uuid "89125b8d-3857-507b-91a9-01ed5f3c7579")
 	)
-	(label "SPI4_SWITCH_CS_L"
+	(label "SPI4_SWITCH_SCK"
 		(at 373.38 58.42 0)
 		(effects
 			(font
@@ -885,7 +885,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "24a83dd9-f035-5cb8-b41f-55c95778bb38")
+		(uuid "b537a74c-31fc-572d-a8d1-d85966849490")
 	)
 	(wire
 		(pts
@@ -898,7 +898,7 @@
 		)
 		(uuid "4ac46c1f-073d-544a-9e8a-2de364b48744")
 	)
-	(label "RMII0_T1S_TXD0"
+	(label "SPI4_SWITCH_CS_L"
 		(at 373.38 60.96 0)
 		(effects
 			(font
@@ -906,7 +906,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "c76944b4-660d-56f4-8fa5-ca6389af5102")
+		(uuid "2430f461-8bcb-50c0-8079-9ed7c81f574c")
 	)
 	(wire
 		(pts
@@ -919,7 +919,7 @@
 		)
 		(uuid "58297ad7-9e29-5b60-915c-362088517e7e")
 	)
-	(label "RMII0_T1S_TXD1"
+	(label "RMII0_T1S_TXD0"
 		(at 373.38 63.5 0)
 		(effects
 			(font
@@ -927,7 +927,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "d44af8b1-ab32-5d5d-919d-5544904f13d4")
+		(uuid "24c6704b-5db8-52c0-89bf-58334baaca82")
 	)
 	(wire
 		(pts
@@ -940,7 +940,7 @@
 		)
 		(uuid "0018fc3f-8683-5218-856b-51d2bd00c0ec")
 	)
-	(label "RMII0_T1S_TX_EN"
+	(label "RMII0_T1S_TXD1"
 		(at 373.38 66.04 0)
 		(effects
 			(font
@@ -948,7 +948,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "fe4e720b-f1fc-5b23-92ef-ee88d8aa342d")
+		(uuid "260ef418-e21c-552b-9ed6-a51b9900a967")
 	)
 	(wire
 		(pts
@@ -961,7 +961,7 @@
 		)
 		(uuid "514d5cf7-212c-55c2-9f90-6986f8943142")
 	)
-	(label "MDIO0_T1S_MDC"
+	(label "RMII0_T1S_TX_EN"
 		(at 373.38 68.58 0)
 		(effects
 			(font
@@ -969,7 +969,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "fde8e44d-2b0c-5302-a67a-a047a36759de")
+		(uuid "abba86c5-83c5-5973-b07d-c9f174fc8fcf")
 	)
 	(wire
 		(pts
@@ -982,7 +982,7 @@
 		)
 		(uuid "af6e249c-c4d0-5f44-8795-69f631459951")
 	)
-	(label "I2C0_TELEMETRY_SCL"
+	(label "MDIO0_T1S_MDC"
 		(at 373.38 71.12 0)
 		(effects
 			(font
@@ -990,7 +990,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "c679fad7-8232-5706-ac0a-224f7238e41d")
+		(uuid "6b9fd906-fa68-5bbb-80b9-677844c6e4a8")
 	)
 	(wire
 		(pts
@@ -1003,7 +1003,7 @@
 		)
 		(uuid "b4d7cdd6-3914-53ea-b459-7043c1a41f30")
 	)
-	(label "RESET_L"
+	(label "I2C0_TELEMETRY_SCL"
 		(at 373.38 73.66 0)
 		(effects
 			(font
@@ -1011,7 +1011,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "0b72fb16-bf61-5d43-ab12-0ea916c5a1f4")
+		(uuid "ec96e4ec-80b1-5d92-b260-e2318ed3c05e")
 	)
 	(wire
 		(pts
@@ -1024,7 +1024,7 @@
 		)
 		(uuid "776de9b5-9b0c-5094-9c97-c264bb519954")
 	)
-	(label "MDIO0_T1S_MDIO"
+	(label "RESET_L"
 		(at 373.38 76.2 0)
 		(effects
 			(font
@@ -1032,7 +1032,7 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "93ea7b62-4ee8-5245-a5ad-dde12bb562c5")
+		(uuid "c444234e-5c94-53e3-b2d1-0db72799dcba")
 	)
 	(wire
 		(pts
@@ -1045,7 +1045,7 @@
 		)
 		(uuid "e8aa32ff-1644-5123-b669-39b6e8a5f5ef")
 	)
-	(label "I2C0_TELEMETRY_SDA"
+	(label "MDIO0_T1S_MDIO"
 		(at 373.38 78.74 0)
 		(effects
 			(font
@@ -1053,7 +1053,28 @@
 			)
 			(justify left bottom)
 		)
-		(uuid "4caa2e33-5a6c-5b42-858a-c1bd3bc15d71")
+		(uuid "71773d4d-95f6-50d0-a3ff-8491f7719400")
+	)
+	(wire
+		(pts
+			(xy 370.84 81.28)
+			(xy 373.38 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ce3a02e6-dc08-532c-9589-8ee4a29988f1")
+	)
+	(label "I2C0_TELEMETRY_SDA"
+		(at 373.38 81.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "9e83046a-6a9a-59ea-8b07-21445d9720ca")
 	)
 	(sheet
 		(at 309.88 50.8)
@@ -1289,8 +1310,18 @@
 				(justify left)
 			)
 		)
-		(pin "SPI4_SWITCH_MOSI" output
+		(pin "SW_LHI" output
 			(at 370.84 53.34 0)
+			(uuid "e9b358d8-0c8b-5972-aa6f-f7b353beaa25")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "SPI4_SWITCH_MOSI" output
+			(at 370.84 55.88 0)
 			(uuid "12898cb7-397c-51dc-a377-06a379a9d60d")
 			(effects
 				(font
@@ -1300,7 +1331,7 @@
 			)
 		)
 		(pin "SPI4_SWITCH_SCK" output
-			(at 370.84 55.88 0)
+			(at 370.84 58.42 0)
 			(uuid "31177375-5f3a-5da7-a2d7-22aa3d9ec23a")
 			(effects
 				(font
@@ -1310,7 +1341,7 @@
 			)
 		)
 		(pin "SPI4_SWITCH_CS_L" output
-			(at 370.84 58.42 0)
+			(at 370.84 60.96 0)
 			(uuid "7e8cd1de-df2b-5f9e-a165-df86ea01400e")
 			(effects
 				(font
@@ -1320,7 +1351,7 @@
 			)
 		)
 		(pin "RMII0_T1S_TXD0" output
-			(at 370.84 60.96 0)
+			(at 370.84 63.5 0)
 			(uuid "3c73e3ea-8bb4-5a71-9b80-a4aa70bc7c56")
 			(effects
 				(font
@@ -1330,7 +1361,7 @@
 			)
 		)
 		(pin "RMII0_T1S_TXD1" output
-			(at 370.84 63.5 0)
+			(at 370.84 66.04 0)
 			(uuid "b8c3a00d-d3ab-5b07-9ae6-6ee7ca36fd7b")
 			(effects
 				(font
@@ -1340,7 +1371,7 @@
 			)
 		)
 		(pin "RMII0_T1S_TX_EN" output
-			(at 370.84 66.04 0)
+			(at 370.84 68.58 0)
 			(uuid "7dc51725-6951-5604-8bd4-230c09b384ca")
 			(effects
 				(font
@@ -1350,7 +1381,7 @@
 			)
 		)
 		(pin "MDIO0_T1S_MDC" output
-			(at 370.84 68.58 0)
+			(at 370.84 71.12 0)
 			(uuid "cdd8a066-a74d-5418-918f-de6b3246d6dd")
 			(effects
 				(font
@@ -1360,7 +1391,7 @@
 			)
 		)
 		(pin "I2C0_TELEMETRY_SCL" output
-			(at 370.84 71.12 0)
+			(at 370.84 73.66 0)
 			(uuid "9168fee4-7a1d-594d-8e7b-728e6fd82557")
 			(effects
 				(font
@@ -1370,7 +1401,7 @@
 			)
 		)
 		(pin "RESET_L" bidirectional
-			(at 370.84 73.66 0)
+			(at 370.84 76.2 0)
 			(uuid "97c64b43-7e04-5400-9e35-aa0afdb3bb24")
 			(effects
 				(font
@@ -1380,7 +1411,7 @@
 			)
 		)
 		(pin "MDIO0_T1S_MDIO" bidirectional
-			(at 370.84 76.2 0)
+			(at 370.84 78.74 0)
 			(uuid "91546b0e-e290-5735-93ff-e8e04a5ba5b7")
 			(effects
 				(font
@@ -1390,7 +1421,7 @@
 			)
 		)
 		(pin "I2C0_TELEMETRY_SDA" bidirectional
-			(at 370.84 78.74 0)
+			(at 370.84 81.28 0)
 			(uuid "939b8c9a-ccba-50ca-b9f8-839cd0bdf9bf")
 			(effects
 				(font
@@ -1979,6 +2010,27 @@
 	)
 	(wire
 		(pts
+			(xy 444.5 60.96)
+			(xy 441.96 60.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "232c8b60-dee7-51d5-8104-33137e9b824b")
+	)
+	(label "SW_LHI"
+		(at 441.96 60.96 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "1943fb22-3139-516d-90fc-9e01abda8e39")
+	)
+	(wire
+		(pts
 			(xy 505.46 53.34)
 			(xy 508 53.34)
 		)
@@ -2167,6 +2219,16 @@
 				(justify left)
 			)
 		)
+		(pin "SW_LHI" input
+			(at 444.5 60.96 180)
+			(uuid "e3c28838-e892-5397-8022-6eb740400977")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
 		(pin "SDO" output
 			(at 505.46 53.34 0)
 			(uuid "c92c20ae-7c6e-5cb5-b0f9-6211417df5d1")
@@ -2297,6 +2359,27 @@
 			(justify right bottom)
 		)
 		(uuid "0eb57ecd-1d50-509c-b911-d6bdfc65bfec")
+	)
+	(wire
+		(pts
+			(xy 444.5 170.18)
+			(xy 441.96 170.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "971689eb-69e6-5ca0-ace9-1fb10340802a")
+	)
+	(label "SW_LHI"
+		(at 441.96 170.18 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "845ca321-951c-5279-9823-e005d0f39196")
 	)
 	(wire
 		(pts
@@ -2488,6 +2571,16 @@
 				(justify left)
 			)
 		)
+		(pin "SW_LHI" input
+			(at 444.5 170.18 180)
+			(uuid "832d2d10-5dbe-5c65-8b79-451809dee87e")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
 		(pin "SDO" output
 			(at 505.46 162.56 0)
 			(uuid "2fec0e99-caf0-502a-bded-6fa61dfaf95c")
@@ -2618,6 +2711,27 @@
 			(justify right bottom)
 		)
 		(uuid "a8eba6c3-8bb6-5e6e-99a0-95e9f28edce8")
+	)
+	(wire
+		(pts
+			(xy 444.5 279.4)
+			(xy 441.96 279.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a2b34615-a354-53cd-9804-c1f1b7c00a92")
+	)
+	(label "SW_LHI"
+		(at 441.96 279.4 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "76969230-972e-5444-93d0-32d5e28e6f5b")
 	)
 	(wire
 		(pts
@@ -2802,6 +2916,16 @@
 		(pin "SPI4_SWITCH_CS_L" input
 			(at 444.5 276.86 180)
 			(uuid "7c109a45-711d-5b14-9107-5518ddc9f84b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "SW_LHI" input
+			(at 444.5 279.4 180)
+			(uuid "38bee2d7-72c5-51c7-ae9c-372aafdc4dbd")
 			(effects
 				(font
 					(size 1.27 1.27)

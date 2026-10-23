@@ -6388,15 +6388,16 @@
 			)
 		)
 	)
-	(label "SW_LHI"
+	(hierarchical_label "SW_LHI"
+		(shape input)
 		(at 144.78 162.56 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify left)
 		)
-		(uuid "8fd4ea14-fe57-5a73-86be-cbe07afa0bb8")
+		(uuid "e1e87142-103b-58c7-ac27-625baee964fd")
 	)
 	(wire
 		(pts
@@ -9688,7 +9689,7 @@
 			)
 		)
 	)
-	(text "DESIGN VALUES (TPS2HCS08-Q1 SLVSHR0 sec. 9.1, Table 9-1; Node60 DEC-008, DEC-009)\nOne file placed three times: pages 6, 7, 8 = U601 (OUT1/OUT2), U701 (OUT3/OUT4), U801 (OUT5/OUT6).\nSPI daisy chain (root sheet): MCU SOUT -> U601 SDI, U601 SDO -> U701 SDI, U701 SDO -> U801 SDI, U801 SDO -> MCU SIN.\n  SCLK and CS_L shared. CRC enabled in firmware; read back every protection register (GATE-OUT-02).\n  CSN and SDO are pulled up internally to VDD; CSN idles high, so all channels stay off after reset.\nVDD: 3V3_MAIN through RVDD 10R (limits VDD slew), CVDD 470nF at the pin (TI Table 9-1). Same 3.3 V as the MCU I/O.\nVBB (exposed pad) on VBAT_PROT, CVBB2 1uF + 100nF 100 V. Broad copper and a via array under the pad.\nDI and LHI held low through 10k (TI: DI needs 10k protection): limp-home not used, LHI hardware-inactive.\nFLT/WAKE_SIG open drain, 4.7k pull-up to the VDD pin (TI Table 9-1) -> one fault line per device to the MCU.\nSNS: RSNS 698R 0.1 % 25 ppm || CSNS 4.7nF C0G at the pin (TI: 0.2-1.5k, 1-4.7nF), RPROT 10k to the MCU ADC.\n  KSNS1 = 5000: 10 A -> 2 mA x 698R = 1.396 V; 100 mA -> 13.96 mV = 17.3 counts (3.3 V / 4096).\n  The SPI-selected channel is stored with every sample. Rev A keeps KSNS1 while I2t is active (DEC-009).\nCOUT 100nF 100 V per channel (TI: 22-100nF; 100nF for hot short in MANUAL_LPM).\nEach output path: 10 A target, 14 AWG minimum; 8 A/ch is the datasheet limit with both channels on at 85 C.\nRELEASE BLOCKER: 10 A continuous unproven until GATE-THM-01 passes (dual-channel thermal test).\nPackage NTC: 10k 0.1 % over NTC to GND, 100nF C0G; place beside U?01 (GATE-TMP-01).\n"
+	(text "DESIGN VALUES (TPS2HCS08-Q1 SLVSHR0 sec. 9.1, Table 9-1; Node60 DEC-008, DEC-009)\nOne file placed three times: pages 6, 7, 8 = U601 (OUT1/OUT2), U701 (OUT3/OUT4), U801 (OUT5/OUT6).\nSPI daisy chain (root sheet): MCU SOUT -> U601 SDI, U601 SDO -> U701 SDI, U701 SDO -> U801 SDI, U801 SDO -> MCU SIN.\n  SCLK and CS_L shared. CRC enabled in firmware; read back every protection register (GATE-OUT-02).\n  CSN and SDO are pulled up internally to VDD; CSN idles high, so all channels stay off after reset.\nVDD: 3V3_MAIN through RVDD 10R (limits VDD slew), CVDD 470nF at the pin (TI Table 9-1). Same 3.3 V as the MCU I/O.\nVBB (exposed pad) on VBAT_PROT, CVBB2 1uF + 100nF 100 V. Broad copper and a via array under the pad.\nDI held low through 10k (TI: DI needs 10k protection). LHI (limp home, active high) comes from MCU PTE4 as SW_LHI,\n  shared by all three switches, with a 10k pull-down per device (3.3k total): inactive through reset and while the\n  MCU is unpowered; firmware never asserts it in normal operation.\nCURRENT (layout): OUT_A / OUT_B carry 10 A each. IPC-2221 external-layer estimate for 20 C rise: about 2.3 mm on\n  2 oz copper (256 mil2); use pours on several layers and >= 10 x 0.3 mm vias per layer change, then check with\n  IPC-2152 at +125 C ambient. Each DT13-2P pin 2 return is sized the same.\nFLT/WAKE_SIG open drain, 4.7k pull-up to the VDD pin (TI Table 9-1) -> one fault line per device to the MCU.\nSNS: RSNS 698R 0.1 % 25 ppm || CSNS 4.7nF C0G at the pin (TI: 0.2-1.5k, 1-4.7nF), RPROT 10k to the MCU ADC.\n  KSNS1 = 5000: 10 A -> 2 mA x 698R = 1.396 V; 100 mA -> 13.96 mV = 17.3 counts (3.3 V / 4096).\n  The SPI-selected channel is stored with every sample. Rev A keeps KSNS1 while I2t is active (DEC-009).\nCOUT 100nF 100 V per channel (TI: 22-100nF; 100nF for hot short in MANUAL_LPM).\nEach output path: 10 A target, 14 AWG minimum; 8 A/ch is the datasheet limit with both channels on at 85 C.\nRELEASE BLOCKER: 10 A continuous unproven until GATE-THM-01 passes (dual-channel thermal test).\nPackage NTC: 10k 0.1 % over NTC to GND, 100nF C0G; place beside U?01 (GATE-TMP-01).\n"
 		(exclude_from_sim no)
 		(at 304.8 40.64 0)
 		(effects
