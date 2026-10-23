@@ -297,280 +297,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Connector_Generic:Conn_01x06"
-			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "J"
-				(at 0 7.62 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "Conn_01x06"
-				(at 0 -10.16 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Generic connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "connector"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "Connector*:*_1x??_*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "Conn_01x06_1_1"
-				(rectangle
-					(start -1.27 6.35)
-					(end 1.27 -8.89)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(rectangle
-					(start -1.27 5.207)
-					(end 0 4.953)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 2.667)
-					(end 0 2.413)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 0.127)
-					(end 0 -0.127)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 -2.413)
-					(end 0 -2.667)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 -4.953)
-					(end 0 -5.207)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 -7.493)
-					(end 0 -7.747)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin passive line
-					(at -5.08 5.08 0)
-					(length 3.81)
-					(name "Pin_1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 2.54 0)
-					(length 3.81)
-					(name "Pin_2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "Pin_3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -2.54 0)
-					(length 3.81)
-					(name "Pin_4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -5.08 0)
-					(length 3.81)
-					(name "Pin_5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -7.62 0)
-					(length 3.81)
-					(name "Pin_6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "power:GND"
 			(power global)
 			(pin_numbers
@@ -1386,7 +1112,7 @@
 	)
 	(rectangle
 		(start 25.4 208.28)
-		(end 152.4 266.7)
+		(end 152.4 381)
 		(stroke
 			(width 0.254)
 			(type dash)
@@ -1397,7 +1123,7 @@
 		)
 		(uuid "d3c03fc4-1569-5673-a446-be5741f3faf7")
 	)
-	(text "Outputs 1-6, MX150 sealed, 10 A each (J904)"
+	(text "Outputs 1-6: TE Deutsch DT13-2P, one 2-pin header per output (J904-J909)"
 		(exclude_from_sim no)
 		(at 25.4 207.01 0)
 		(effects
@@ -1410,9 +1136,13 @@
 		)
 		(uuid "9dd20771-bcf8-59fd-b350-c78653a3a48c")
 	)
+	(no_connect
+		(at 55.88 231.14)
+		(uuid "eec5a257-f6bc-5843-a01d-9be19f00d62b")
+	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_01x06")
-		(at 50.8 223.52 0)
+		(lib_id "Connector_Generic:Conn_01x02")
+		(at 50.8 228.6 0)
 		(mirror y)
 		(unit 1)
 		(body_style 1)
@@ -1424,7 +1154,7 @@
 		(fields_autoplaced no)
 		(uuid "faaec0e5-5ddf-59ab-a487-921841f96987")
 		(property "Reference" "J"
-			(at 48.26 212.09 0)
+			(at 48.26 222.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1432,8 +1162,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "MX150 outputs (TBD)"
-			(at 48.26 214.39 0)
+		(property "Value" "DT13-2P"
+			(at 48.26 224.55 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1442,7 +1172,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 50.8 223.52 0)
+			(at 50.8 228.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1451,7 +1181,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 50.8 223.52 0)
+			(at 50.8 228.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1459,8 +1189,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Generic connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)"
-			(at 50.8 223.52 0)
+		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 50.8 228.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1469,7 +1199,7 @@
 			)
 		)
 		(property "MPN" ""
-			(at 50.8 223.52 0)
+			(at 50.8 228.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1478,7 +1208,7 @@
 			)
 		)
 		(property "Manufacturer" ""
-			(at 50.8 223.52 0)
+			(at 50.8 228.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1487,7 +1217,7 @@
 			)
 		)
 		(property "DigiKey_PN" ""
-			(at 50.8 223.52 0)
+			(at 50.8 228.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1496,7 +1226,7 @@
 			)
 		)
 		(property "Mouser_PN" ""
-			(at 50.8 223.52 0)
+			(at 50.8 228.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1504,8 +1234,8 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: TBD part: selection pending user decision (find-part), then a library session (TBD-MX150-SETS: sealed, 10 A per output, 14 AWG minimum)"
-			(at 50.8 223.52 0)
+		(property "Placeholder" "PLACEHOLDER: selected 2026-10-23 (DEC-013): TE DT13-2P; library part DropOut_Connector:DT13-2P in dropout-kicad-library PR #19 (not merged)"
+			(at 50.8 228.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1514,22 +1244,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "ff92c66e-18a9-5fbc-a030-5720e258de34")
+			(uuid "9590061a-e9ff-58b1-9057-ba25197569be")
 		)
 		(pin "2"
-			(uuid "1c946c16-6634-51ba-81de-3ab15b4d77cc")
-		)
-		(pin "3"
-			(uuid "df2a4e12-dcb2-5ada-be7c-c50dc76a0839")
-		)
-		(pin "4"
-			(uuid "0d29b22f-2960-54ae-b2b3-f4e4e32cd19d")
-		)
-		(pin "5"
-			(uuid "bf41efc6-b4e7-5f39-a412-0133ef8822a7")
-		)
-		(pin "6"
-			(uuid "f0e8e152-1dda-52eb-8f33-6e5031e0f8f0")
+			(uuid "3f603bb1-74c3-5bb2-87fe-c8c63f86bffe")
 		)
 		(instances
 			(project "node60"
@@ -1542,94 +1260,6 @@
 	)
 	(wire
 		(pts
-			(xy 55.88 218.44)
-			(xy 66.04 218.44)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "aab36a0f-4e4b-5ffd-a5bd-26afe229e541")
-	)
-	(hierarchical_label "OUT1"
-		(shape input)
-		(at 66.04 218.44 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "a2aab621-efdb-5de4-b5b4-e999cd715639")
-	)
-	(wire
-		(pts
-			(xy 55.88 220.98)
-			(xy 66.04 220.98)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "619375db-543e-506d-a8fc-7770a9a11ae7")
-	)
-	(hierarchical_label "OUT2"
-		(shape input)
-		(at 66.04 220.98 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "88de939e-e6d1-509c-8dbf-6483f8fd569e")
-	)
-	(wire
-		(pts
-			(xy 55.88 223.52)
-			(xy 66.04 223.52)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "59a15b31-bf55-529f-ad87-4bc93182df60")
-	)
-	(hierarchical_label "OUT3"
-		(shape input)
-		(at 66.04 223.52 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "f2d75677-a8e8-573b-aaae-05b0baabe909")
-	)
-	(wire
-		(pts
-			(xy 55.88 226.06)
-			(xy 66.04 226.06)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "0f663c75-b5bf-5c07-a8c1-3fce27ff2ee2")
-	)
-	(hierarchical_label "OUT4"
-		(shape input)
-		(at 66.04 226.06 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left)
-		)
-		(uuid "7c2d2020-00f6-56c2-bf55-0d3097458670")
-	)
-	(wire
-		(pts
 			(xy 55.88 228.6)
 			(xy 66.04 228.6)
 		)
@@ -1639,7 +1269,7 @@
 		)
 		(uuid "28bbdc87-fb57-52d1-acc8-d0efe489865c")
 	)
-	(hierarchical_label "OUT5"
+	(hierarchical_label "OUT1"
 		(shape input)
 		(at 66.04 228.6 0)
 		(effects
@@ -1648,29 +1278,738 @@
 			)
 			(justify left)
 		)
-		(uuid "023a2158-8885-500a-8ee9-909364a54c5e")
+		(uuid "ebb87c44-38a4-57eb-9780-582a3ba8feb0")
+	)
+	(no_connect
+		(at 55.88 254)
+		(uuid "393f6cce-9ab7-565b-a079-9984cb1d652b")
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x02")
+		(at 50.8 251.46 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "a179ddb0-f6ec-5142-998a-fa11c6e7ad57")
+		(property "Reference" "J"
+			(at 48.26 245.11 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "DT13-2P"
+			(at 48.26 247.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 50.8 251.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 50.8 251.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 50.8 251.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
+			(at 50.8 251.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 50.8 251.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" ""
+			(at 50.8 251.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" ""
+			(at 50.8 251.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Placeholder" "PLACEHOLDER: selected 2026-10-23 (DEC-013): TE DT13-2P; library part DropOut_Connector:DT13-2P in dropout-kicad-library PR #19 (not merged)"
+			(at 50.8 251.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ca5360da-22fb-57e9-9eb8-8259609b59ea")
+		)
+		(pin "2"
+			(uuid "e0f39c17-431c-5454-b364-06d6f9f0cbca")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e"
+					(reference "J905")
+					(unit 1)
+				)
+			)
+		)
 	)
 	(wire
 		(pts
-			(xy 55.88 231.14)
-			(xy 66.04 231.14)
+			(xy 55.88 251.46)
+			(xy 66.04 251.46)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "33bb1e7c-c221-553c-9407-bc74f015a6dd")
+		(uuid "3076534b-b38c-5d90-a888-e8dd87716412")
 	)
-	(hierarchical_label "OUT6"
+	(hierarchical_label "OUT2"
 		(shape input)
-		(at 66.04 231.14 0)
+		(at 66.04 251.46 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left)
 		)
-		(uuid "8b6c69c3-fa55-5b65-80b4-4253b63818f3")
+		(uuid "6144499e-54f1-5a26-9134-93d4bef8065d")
+	)
+	(no_connect
+		(at 55.88 276.86)
+		(uuid "db28933c-03fe-5b02-bfef-d1e818da4cc2")
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x02")
+		(at 50.8 274.32 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "69c7f5de-94ef-5680-8e07-d3e8899abeec")
+		(property "Reference" "J"
+			(at 48.26 267.97 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "DT13-2P"
+			(at 48.26 270.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 50.8 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 50.8 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 50.8 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
+			(at 50.8 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 50.8 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" ""
+			(at 50.8 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" ""
+			(at 50.8 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Placeholder" "PLACEHOLDER: selected 2026-10-23 (DEC-013): TE DT13-2P; library part DropOut_Connector:DT13-2P in dropout-kicad-library PR #19 (not merged)"
+			(at 50.8 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "37d593df-018e-52b7-b6bf-d930db9ad073")
+		)
+		(pin "2"
+			(uuid "27b7ea0e-4235-5949-85b2-88edbf45bdbe")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e"
+					(reference "J906")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 55.88 274.32)
+			(xy 66.04 274.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f7fb42e1-3794-558f-9361-c45e35a32ebc")
+	)
+	(hierarchical_label "OUT3"
+		(shape input)
+		(at 66.04 274.32 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "e25822f0-d871-5f74-919e-888f3c52d160")
+	)
+	(no_connect
+		(at 55.88 299.72)
+		(uuid "e3b50550-d838-5ee3-a618-219ecb725b1e")
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x02")
+		(at 50.8 297.18 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "0831d111-dac1-5f8d-958f-ece0016ea350")
+		(property "Reference" "J"
+			(at 48.26 290.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "DT13-2P"
+			(at 48.26 293.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 50.8 297.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 50.8 297.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 50.8 297.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
+			(at 50.8 297.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 50.8 297.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" ""
+			(at 50.8 297.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" ""
+			(at 50.8 297.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Placeholder" "PLACEHOLDER: selected 2026-10-23 (DEC-013): TE DT13-2P; library part DropOut_Connector:DT13-2P in dropout-kicad-library PR #19 (not merged)"
+			(at 50.8 297.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8db7a586-9d76-5818-acfd-1b33ce6720fd")
+		)
+		(pin "2"
+			(uuid "cb4e4cfd-4c85-543b-8c23-3cc413ca88cf")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e"
+					(reference "J907")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 55.88 297.18)
+			(xy 66.04 297.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a658e38d-9c6d-5d68-80ae-8cf6c7894940")
+	)
+	(hierarchical_label "OUT4"
+		(shape input)
+		(at 66.04 297.18 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "94784535-4049-5e6d-9746-367191844df0")
+	)
+	(no_connect
+		(at 55.88 322.58)
+		(uuid "e23ae0fb-b017-527d-9e86-072284cd1d9a")
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x02")
+		(at 50.8 320.04 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "4b87b287-fcb1-55e1-bbf8-58f7c1317597")
+		(property "Reference" "J"
+			(at 48.26 313.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "DT13-2P"
+			(at 48.26 315.99 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 50.8 320.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 50.8 320.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 50.8 320.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
+			(at 50.8 320.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 50.8 320.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" ""
+			(at 50.8 320.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" ""
+			(at 50.8 320.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Placeholder" "PLACEHOLDER: selected 2026-10-23 (DEC-013): TE DT13-2P; library part DropOut_Connector:DT13-2P in dropout-kicad-library PR #19 (not merged)"
+			(at 50.8 320.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6e0e1ee0-92a0-5400-9845-6144a3a8eea3")
+		)
+		(pin "2"
+			(uuid "9c75c13f-f488-5271-8b01-49165af1cbbc")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e"
+					(reference "J908")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 55.88 320.04)
+			(xy 66.04 320.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "86e56d2f-2cc0-560d-a81f-adf8fb73fe16")
+	)
+	(hierarchical_label "OUT5"
+		(shape input)
+		(at 66.04 320.04 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "41cf5233-31dc-50d8-a1bf-f1a590fdcb70")
+	)
+	(no_connect
+		(at 55.88 345.44)
+		(uuid "30674b5b-e998-5d22-986c-5b97f20cfcd5")
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x02")
+		(at 50.8 342.9 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "a460752d-dc7b-54ab-8b8f-c82763d4efaa")
+		(property "Reference" "J"
+			(at 48.26 336.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "DT13-2P"
+			(at 48.26 338.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 50.8 342.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 50.8 342.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 50.8 342.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
+			(at 50.8 342.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 50.8 342.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" ""
+			(at 50.8 342.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" ""
+			(at 50.8 342.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Placeholder" "PLACEHOLDER: selected 2026-10-23 (DEC-013): TE DT13-2P; library part DropOut_Connector:DT13-2P in dropout-kicad-library PR #19 (not merged)"
+			(at 50.8 342.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "028cb362-9b00-5844-9288-008bfee04278")
+		)
+		(pin "2"
+			(uuid "c4dc9918-c22e-5d3d-860e-1eae12185120")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e"
+					(reference "J909")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 55.88 342.9)
+			(xy 66.04 342.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0e01f26f-1659-542b-8936-d007c4476bec")
+	)
+	(hierarchical_label "OUT6"
+		(shape input)
+		(at 66.04 342.9 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "1fc9d090-832f-569a-a329-2cccff026ee7")
+	)
+	(text "Pin 2 left unconnected ON PURPOSE until the pin assignment is decided (DEC-013, open):\n  A: pin 2 = local GND return (load current returns through the node ground)\n  B: pin 2 = OUTx in parallel with pin 1\nAlso open: which physical hole is pin 1 (TE drawing vs application spec)."
+		(exclude_from_sim no)
+		(at 30.48 355.6 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "81c50a33-39a1-5d8c-86fa-75696e907d30")
 	)
 	(rectangle
 		(start 186.69 72.39)
@@ -1905,7 +2244,7 @@
 			)
 		)
 	)
-	(text "CONNECTORS (Node60 harness page; REQ-NET-001: exactly four node conductors: T1S pair, battery, ground)\nAll connector parts are PLACEHOLDERS (generic symbols) until the mating sets are selected and frozen together:\n  housings, terminals, seals, wire sizes and keys (harness page, connector freeze condition).\nJ901 battery input: Metri-Pack 480/630 class, or a dual feed with each feed fused; prove the full 60 A path.\nJ902 power return: matched high-current return; no chassis-only return.\n  Fuse: primary fuse at the battery/source end (off-board); per-feed fuses if dual-fed.\nJ903 T1S: separate sealed two-way twisted pair. ESD (D501/D502) sits right behind this connector (DEC-012).\nJ904 outputs: MX150 sealed, 10 A per output, 14 AWG minimum; validate contact and cavity derating at +125 C.\n  Drawn as one 6-way placeholder: the split into housings is part of the TBD-MX150-SETS selection.\nNo KL15, ignition or local wake input (DEC-007).\nUNVERIFIED (release-blocking): every connector mate, pinout and current rating.\n"
+	(text "CONNECTORS (Node60 harness page; REQ-NET-001: exactly four node conductors: T1S pair, battery, ground)\nAll connector parts are PLACEHOLDERS (generic symbols) until the mating sets are selected and frozen together:\n  housings, terminals, seals, wire sizes and keys (harness page, connector freeze condition).\nJ901 battery input: Metri-Pack 480/630 class, or a dual feed with each feed fused; prove the full 60 A path.\nJ902 power return: matched high-current return; no chassis-only return.\n  Fuse: primary fuse at the battery/source end (off-board); per-feed fuses if dual-fed.\nJ903 T1S: separate sealed two-way twisted pair. ESD (D501/D502) sits right behind this connector (DEC-012).\nJ904-J909 outputs: TE Deutsch DT13-2P right-angle headers, one per output (DEC-013 replaces the MX150 plan),\n  10 A per output, 14 AWG minimum; validate contact derating at +125 C. Mating plug DT06-2S.\nNo KL15, ignition or local wake input (DEC-007).\nUNVERIFIED (release-blocking): every connector mate, pinout and current rating.\n"
 		(exclude_from_sim no)
 		(at 190.5 116.84 0)
 		(effects
