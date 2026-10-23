@@ -318,13 +318,45 @@
   observations:
     - { date: 2026-10-13, source: distributor, prices: [{ qty: "1", usd: 1.82 }], stock: 421 }
 
-- id: TBD-MX150-SETS
-  mpn: null
-  manufacturer: Molex
+- id: DT13-2P
+  mpn: DT13-2P
+  manufacturer: TE Connectivity
   qty: 6
-  label: MX150-class sets
-  function: Sealed 18 A-class output connectors
+  label: DT13-2P (DEUTSCH DT)
+  function: Output connector, one per output; DEUTSCH DT 2-pin right-angle PCB header, 13 A per contact (14 AWG), panel flange seal; mates DT06-2S
   subsystem: harness
-  status: open
-  decision_note: Exact mating sets open
-  supply_note: Not verified
+  status: selected
+  decision_note: Selected (user's decision 2026-10-22); replaces the MX150 plan. Pin assignment open; 10 A at +125 °C needs thermal proof
+  supply_note: DigiKey and Mouser stock; marketplace copies are alternates only
+  observations:
+    - { date: 2026-10-22, source: DigiKey 1734-1452-ND, prices: [{ qty: "1", usd: 8.23 }, { qty: "10", usd: 6.991 }, { qty: "200", usd: 5.658 }], stock: 217 }
+    - { date: 2026-10-22, source: Mouser 571-DT13-2P, prices: [{ qty: "1", usd: 8.15 }, { qty: "10", usd: 6.99 }, { qty: "100", usd: 5.65 }], stock: 508 }
+  second_source: CH-AK-DT13-02
+  decisions: [DEC-013]
+
+- id: CH-AK-DT13-02
+  mpn: CH-AK-DT13-02
+  manufacturer: Shenzhen Haisheng Hongye Technology (HISENG)
+  qty: 0
+  function: DT13-2P-compatible right-angle PCB header (seller claims 13 A, 250 V, IP67)
+  subsystem: harness
+  status: alternative
+  decision_note: Marketplace alternate; no drawing or qualification data; sample check against the TE drawing before use
+  supply_note: Alibaba only, MOQ 100
+  observations:
+    - { date: 2026-10-22, source: Alibaba listing 1601383533915, note: "listed $0.10-0.50 each, MOQ 100, shipping negotiated" }
+  decisions: [DEC-013]
+
+- id: DT13-2P_Jorch
+  mpn: DT13-2P
+  manufacturer: Jorch
+  qty: 0
+  label: DT13-2P (Jorch)
+  function: DT13-2P copy sold as a set with a DT06-2S plug; no seller ratings
+  subsystem: harness
+  status: alternative
+  decision_note: Marketplace alternate; possible counterfeit; sample check against the TE drawing before use
+  supply_note: AliExpress only
+  observations:
+    - { date: 2026-10-22, source: AliExpress listing 3256804973396267, prices: [{ qty: "1", usd: 5.02 }, { qty: "10", usd: 3.832 }], note: "per header + DT06-2S plug set; 10 sets $38.32" }
+  decisions: [DEC-013]
