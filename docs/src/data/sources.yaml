@@ -66,6 +66,17 @@
 - id: S20
   title: OPEN Alliance TC10 wake/sleep timing requirements
   verified: 2026-10-13
+- id: S21
+  title: OPEN Alliance IEEE 10BASE-T1S Implementation Specification V1.0 (bus interface network, CMDI budget)
+  url: https://opensig.org/wp-content/uploads/2023/12/20230215_10BASE-T1S_system_implementation_V1_0.pdf
+  verified: 2026-10-22
+- id: S22
+  title: OPEN Alliance IEEE 10BASE-T1S EMC Test Specification for Common Mode Chokes V1.1
+  url: https://opensig.org/wp-content/uploads/2023/12/2025-03-IEEE-10BASE-T1S-EMC-Test-Specification-for-Common-Mode-Chokes_v1-1.pdf
+  verified: 2026-10-22
+- id: S23
+  title: TDK ACT1210E, Murata DLW32MH, Vishay VETH100A1DD1 and Nexperia PESD1ETH10L(S)-Q data sheets and distributor observations
+  verified: 2026-10-22
 - id: Z1
   title: Upstream Zephyr S32 SoC tree
   url: https://github.com/zephyrproject-rtos/zephyr/tree/main/soc/nxp/s32

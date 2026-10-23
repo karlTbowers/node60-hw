@@ -20,7 +20,8 @@ LAN8670D0 connects over RMII/MDIO and operates as a commissioned PLCA follower o
 | Reference clock | ECS-3225SMVQ-500-DS-TR | 50 MHz HCMOS, ±20 ppm; oscillator enable controlled with main power |
 | Line coupling | 2 × 100 nF series capacitors | Automotive C0G/film-equivalent behavior with voltage and DC-bias margin |
 | Termination | Switchable 100 Ω across TRXP/TRXN | Populate or enable only at a physical segment endpoint |
-| Protection | Low-capacitance automotive ESD pair | Select exact code after return-loss and ESD co-design |
+| Common mode choke | ACT1210E-241-2P-TL00 | TDK 240 µH 10BASE-T1S choke, AEC-Q200; alternates ACT1210E-131 and Murata DLW32MH241MX2L (<Ref id="DEC-012" />) |
+| Protection | 2 × VETH100A1DD1HG3-08 | Vishay OPEN Alliance T1S ESD diode, ≤2.0 pF, AEC-Q101, at the connector ahead of the choke; Nexperia PESD1ETH10L(S)-Q alternates (<Ref id="DEC-012" />) |
 
 ## Identity and PLCA
 
