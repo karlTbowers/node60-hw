@@ -5636,7 +5636,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10k"
+		(property "Value" "NCU18XH103F6SRB"
 			(at 66.548 312.42 0)
 			(effects
 				(font
@@ -5708,7 +5708,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: TBD part: selection pending user decision (find-part), then a library session (TBD-NTC-10K: 0603, R25 1 %, B 1 %, AEC-Q200)"
+		(property "Placeholder" "PLACEHOLDER: selected 2026-10-22: Murata NCU18XH103F6SRB; library part pending (session node60-ldo-ntc)"
 			(at 63.5 311.15 0)
 			(effects
 				(font

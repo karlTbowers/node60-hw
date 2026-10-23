@@ -131,15 +131,18 @@
   decisions: [DEC-004]
 
 - id: TBD-VDDAU-LDO
-  mpn: null
-  manufacturer: null
+  mpn: TPS7B8133QWDRVRQ1
+  manufacturer: Texas Instruments
   qty: 1
-  label: Nanopower automotive LDO
-  function: Always-on LAN8670 VDDAU supply
+  label: TPS7B8133-Q1 nanopower automotive LDO
+  function: Always-on LAN8670 VDDAU supply, 3.3 V fixed, 40 V input
   subsystem: power
-  status: open
-  decision_note: Target ≈1–2 µA Iq; must meet transient and VDDAU requirements
-  supply_note: Exact part and price open
+  status: selected
+  decision_note: "Selected 2026-10-22 (user). 40 V, 150 mA, Iq 3.5 µA (DigiKey listing): no candidate met the 1–2 µA target at 40 V. WSON 2 × 2 with wettable flanks, TJ to 150 °C. Rejected: NCV8730BMTW330TBG (3 µA, but 38 V max leaves 4 V above the 34 V OV cut-off). Verify Iq over temperature from the datasheet"
+  supply_note: Library part pending (dropout-kicad-library session, 2026-10-22)
+  second_source: NCV8730BMTW330TBG
+  observations:
+    - { date: 2026-10-22, source: DigiKey, prices: [{ qty: "1", usd: 1.56 }], stock: 2080 }
   decisions: [DEC-004]
 
 - id: LM74910HQRGERQ1
@@ -156,18 +159,34 @@
   decisions: [DEC-001]
 
 - id: TBD-RSENSE-0R25
-  mpn: null
-  manufacturer: null
+  mpn: CSS2725FTL250
+  manufacturer: Stackpole Electronics
   qty: 1
-  label: 0.25 mΩ RSENSE
+  label: 0.25 mΩ RSENSE (CSS2725FTL250)
   function: Shared LM74910H protection and INA228 total-current sense
   subsystem: power
-  status: open
-  decision_note: Star Kelvin taps; 15 mV / 0.9 W at 60 A
-  supply_note: Exact 1%, AEC-Q200 code open
+  status: selected
+  decision_note: "Selected 2026-10-22 (user). 0.25 mΩ 1 %, 4 W, ±50 ppm/°C, 2725 metal strip; star Kelvin taps from the pads; 15 mV / 0.9 W at 60 A (≥ 1.5 W needed for 60 % derating). Rejected: HCS2512FTL250 (3 W, ±150 ppm/°C). A 4-terminal shunt is being sought for a later revision. Confirm AEC-Q200 on the datasheet"
+  supply_note: Library part pending (dropout-kicad-library session, 2026-10-22)
+  second_source: HCS2512FTL250
   observations:
     - { date: 2026-10-13, source: planning allowance, prices: [{ qty: 1k, usd: 1, approx: true }] }
+    - { date: 2026-10-22, source: DigiKey, prices: [{ qty: "1", usd: 1.70 }], stock: 519 }
   decisions: [DEC-001, DEC-002]
+
+- id: IAUTN08S5N012LATMA1
+  mpn: IAUTN08S5N012LATMA1
+  manufacturer: Infineon
+  qty: 4
+  function: DGATE ideal-diode and HGATE disconnect MOSFETs, 2 per bank, 80 V, PG-HSOF-8
+  subsystem: power
+  status: selected
+  decision_note: "Selected 2026-10-22 (user). 80 V, 1.15 mΩ max at 10 V, AEC-Q101: two in parallel per bank ≈ 0.6 mΩ. Ciss 15.3 nF each sets LM74910H CCAP ≥ 10 × ΣCiss = 0.61 µF (1 µF fitted). Surge/thermal calculation still to confirm the count (DEC-001)"
+  supply_note: Library part pending (dropout-kicad-library session, 2026-10-22)
+  second_source: AOTL66810Q
+  observations:
+    - { date: 2026-10-22, source: DigiKey, prices: [{ qty: "1", usd: 6.71 }], stock: 1051 }
+  decisions: [DEC-001]
 
 - id: TBD-OCP-NETWORK
   mpn: null
@@ -219,15 +238,18 @@
   decisions: [DEC-010]
 
 - id: TBD-NTC-10K
-  mpn: null
-  manufacturer: null
+  mpn: NCU18XH103F6SRB
+  manufacturer: Murata
   qty: 4
-  label: 10 kΩ NTC, AEC-Q200
+  label: 10 kΩ NTC, AEC-Q200 (NCU18XH103F6SRB)
   function: Shared-RSENSE and 3 × switch-package temperature sensing
   subsystem: temperature
-  status: open
-  decision_note: 0603, ±1% R25 / ±1% B; exact −55…+150 °C code at BOM lock
-  supply_note: ≈$0.15–0.35 each @1k estimate
+  status: selected
+  decision_note: "Selected 2026-10-22 (user). 0603, 10 kΩ ±1 %, B25/50 3380 K ±1 %, −55…+150 °C, AEC-Q200: meets every Rev A limit. Second source NTCS0603E3103FMT (B25/85 3610 K: needs its own lookup table); NTCG163JF103FTDS rejected (+125 °C max)"
+  second_source: NTCS0603E3103FMT
+  supply_note: ≈$0.15–0.35 each @1k estimate; library part pending (2026-10-22)
+  observations:
+    - { date: 2026-10-22, source: DigiKey, prices: [{ qty: "1", usd: 0.14 }], stock: 67028 }
   decisions: [DEC-010]
 
 - id: TPS3702-Q1
@@ -328,3 +350,47 @@
   status: open
   decision_note: Exact mating sets open
   supply_note: Not verified
+
+- id: NCV8730BMTW330TBG
+  mpn: NCV8730BMTW330TBG
+  manufacturer: onsemi
+  qty: 0
+  function: Always-on VDDAU LDO alternative, 3.3 V, 38 V input, Iq 3 µA, WDFNW 2 × 2
+  subsystem: power
+  status: alternative
+  decision_note: Not selected 2026-10-22; 38 V maximum leaves only 4 V above the 34 V OV cut-off. Built in the library as a candidate
+  observations:
+    - { date: 2026-10-22, source: DigiKey, prices: [{ qty: "1", usd: 0.84 }], stock: 8622 }
+
+- id: HCS2512FTL250
+  mpn: HCS2512FTL250
+  manufacturer: Stackpole Electronics
+  qty: 0
+  function: 0.25 mΩ 1 % shunt alternative, 3 W, ±150 ppm/°C, 2512
+  subsystem: power
+  status: alternative
+  decision_note: Not selected 2026-10-22; three times the tempco of CSS2725FTL250. Built in the library as a candidate
+  observations:
+    - { date: 2026-10-22, source: DigiKey, prices: [{ qty: "1", usd: 1.70 }], stock: 3265 }
+
+- id: AOTL66810Q
+  mpn: AOTL66810Q
+  manufacturer: Alpha & Omega Semiconductor
+  qty: 0
+  function: 80 V, 1.25 mΩ AEC-Q101 MOSFET alternative, TOLLA
+  subsystem: power
+  status: alternative
+  decision_note: Second-source candidate for IAUTN08S5N012L; confirm land-pattern compatibility (HSOF-8 vs TOLLA) before calling it drop-in
+  observations:
+    - { date: 2026-10-22, source: DigiKey, prices: [{ qty: "1", usd: 8.30 }], stock: 1418 }
+
+- id: NTCS0603E3103FMT
+  mpn: NTCS0603E3103FMT
+  manufacturer: Vishay
+  qty: 0
+  function: 10 kΩ NTC alternative, 0603, ±1 %, B25/85 3610 K ±1 %, AEC-Q200
+  subsystem: temperature
+  status: alternative
+  decision_note: Second source for NCU18XH103F6SRB; different B value, so firmware needs its own lookup table
+  observations:
+    - { date: 2026-10-22, source: DigiKey, prices: [{ qty: "1", usd: 0.64 }], stock: 104744 }
