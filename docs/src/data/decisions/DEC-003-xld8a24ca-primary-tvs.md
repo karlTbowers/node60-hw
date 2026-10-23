@@ -6,7 +6,7 @@ date: 2026-10-13
 revision: A
 page: subsystems/power
 requirements: [REQ-PWR-002]
-parts: [XLD8A24CA]
+parts: [XLD8A24CAHM3_A/I]
 gates: [GATE-PWR-01, GATE-THM-02]
 rejected:
   - option: SMBJ24CA

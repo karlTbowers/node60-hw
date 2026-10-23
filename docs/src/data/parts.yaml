@@ -29,14 +29,26 @@
     - { date: 2026-10-13, source: distributors, prices: [{ qty: tray class, usd: 2.80 }], stock: 0 }
   decisions: [DEC-007]
 
-- id: LMQ66430QMC5RXBRQ1
-  mpn: LMQ66430QMC5RXBRQ1
+- id: LAN8670D0T-E/LMX
+  mpn: LAN8670D0T-E/LMX
+  manufacturer: Microchip
+  qty: 0
+  function: 10BASE-T1S PHY, same die and package, non-automotive code
+  subsystem: network
+  status: alternative
+  decision_note: Prototype stand-in for LAN8670D0-E/LMXVAO; Microchip designates only the Vxx code automotive (datasheet DS60001573K ordering guide)
+  observations:
+    - { date: 2026-10-22, source: Microchip Direct, stock: 1549 }
+  decisions: [DEC-007]
+
+- id: LMQ66430MC3RXBRQ1
+  mpn: LMQ66430MC3RXBRQ1
   manufacturer: Texas Instruments
   qty: 2
   function: INH-gated 3.3 V and 1.5 V low-Iq bucks
   subsystem: power
   status: selected
-  decision_note: "Selected discrete power tree. Direct INH enable plus EN-pin chaining; no FS26"
+  decision_note: "Selected discrete power tree. Direct INH enable plus EN-pin chaining; no FS26. MC3 variant (2.2 MHz, fixed 3.3 V or adjustable) chosen 2026-10-22; the earlier code LMQ66430QMC5RXBRQ1 does not exist"
   supply_note: Not verified
   decisions: [DEC-004]
 
@@ -194,14 +206,14 @@
   supply_note: Observed in stock; price not carried into Rev A
   decisions: [DEC-005]
 
-- id: XLD8A24CA
-  mpn: XLD8A24CA
+- id: XLD8A24CAHM3_A/I
+  mpn: XLD8A24CAHM3_A/I
   manufacturer: Vishay
   qty: 1
   function: 24 V, 7 kW AEC-Q101 TVS
   subsystem: power
   status: selected
-  decision_note: Primary load-dump choice
+  decision_note: Primary load-dump choice. Orderable automotive code XLD8A24CAHM3_A/I (2026-10-22); XLD8A24CAHM3/I is obsolete
   supply_note: Not verified
   decisions: [DEC-003]
 

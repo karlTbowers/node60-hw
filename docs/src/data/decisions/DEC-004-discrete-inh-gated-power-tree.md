@@ -6,7 +6,7 @@ date: 2026-10-13
 revision: A
 page: subsystems/power
 requirements: [REQ-PWR-001, REQ-PWR-003]
-parts: [LMQ66430QMC5RXBRQ1, TBD-VDDAU-LDO]
+parts: [LMQ66430MC3RXBRQ1, TBD-VDDAU-LDO]
 gates: [GATE-NET-01]
 rejected:
   - option: NXP FS26 system basis chip (earlier draft)
