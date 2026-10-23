@@ -8,6 +8,8 @@
   (lib (name "DropOut_Power")(type "KiCad")(uri "${KIPRJMOD}/lib/dropout-kicad-library/symbols/DropOut_Power.kicad_sym")(options "")(descr "DropOut library"))
   (lib (name "DropOut_PowerSwitch")(type "KiCad")(uri "${KIPRJMOD}/lib/dropout-kicad-library/symbols/DropOut_PowerSwitch.kicad_sym")(options "")(descr "DropOut library"))
   (lib (name "DropOut_Protection")(type "KiCad")(uri "${KIPRJMOD}/lib/dropout-kicad-library/symbols/DropOut_Protection.kicad_sym")(options "")(descr "DropOut library"))
+  (lib (name "DropOut_Resistor")(type "KiCad")(uri "${KIPRJMOD}/lib/dropout-kicad-library/symbols/DropOut_Resistor.kicad_sym")(options "")(descr "DropOut library"))
   (lib (name "DropOut_Sensor")(type "KiCad")(uri "${KIPRJMOD}/lib/dropout-kicad-library/symbols/DropOut_Sensor.kicad_sym")(options "")(descr "DropOut library"))
+  (lib (name "DropOut_Thermistor")(type "KiCad")(uri "${KIPRJMOD}/lib/dropout-kicad-library/symbols/DropOut_Thermistor.kicad_sym")(options "")(descr "DropOut library"))
   (lib (name "DropOut_Timing")(type "KiCad")(uri "${KIPRJMOD}/lib/dropout-kicad-library/symbols/DropOut_Timing.kicad_sym")(options "")(descr "DropOut library"))
 )

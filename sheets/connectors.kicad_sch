@@ -297,6 +297,204 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "DropOut_Connector:DT13-2P"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "DT13-2P"
+				(at 0 -7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "DropOut_Connector_TE-Connectivity:TE_DEUTSCH-DT_DT13-2P_1x02_P5.46mm_Horizontal"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=DT13-2P&DocType=Customer%20Drawing&DocLang=English&DocFormat=pdf&PartCntxt=DT13-2P"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "TE DEUTSCH DT series 2-pin right-angle PCB header, 5.46 mm pitch, panel flange seal, 13 A per contact (14/16 AWG), 250 V, -55 to +125 °C; mates DT06-2S plug"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "TE Connectivity"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "DT13-2P"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "DigiKey_PN" "1734-1452-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "571-DT13-2P"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "-55 to +125 °C (not AEC qualified)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Notes" "Mates DT06-2S + W2S wedgelock. No current derating curve; +125 °C is the maximum including self-heating. Header ingress protection not tested by TE (108-151009). Pin numbering per the drawing's cavity marks; TE 114-151046 layout figure shows the opposite, verify on a sample."
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "connector header right angle DEUTSCH DT DT13 DT06-2S sealed automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "TE*DEUTSCH?DT*DT13?2P*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "DT13-2P_1_1"
+				(rectangle
+					(start -7.62 5.08)
+					(end 7.62 -5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at -12.7 2.54 0)
+					(length 5.08)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 0 0)
+					(length 5.08)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "power:GND"
 			(power global)
 			(pin_numbers
@@ -1137,7 +1335,7 @@
 		(uuid "9dd20771-bcf8-59fd-b350-c78653a3a48c")
 	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_01x02")
+		(lib_id "DropOut_Connector:DT13-2P")
 		(at 50.8 228.6 0)
 		(mirror y)
 		(unit 1)
@@ -1150,7 +1348,7 @@
 		(fields_autoplaced no)
 		(uuid "faaec0e5-5ddf-59ab-a487-921841f96987")
 		(property "Reference" "J"
-			(at 48.26 222.25 0)
+			(at 43.18 219.71 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1159,7 +1357,7 @@
 			)
 		)
 		(property "Value" "DT13-2P"
-			(at 48.26 224.55 0)
+			(at 43.18 222.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1167,7 +1365,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Connector_TE-Connectivity:TE_DEUTSCH-DT_DT13-2P_1x02_P5.46mm_Horizontal"
 			(at 50.8 228.6 0)
 			(effects
 				(font
@@ -1176,7 +1374,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=DT13-2P&DocType=Customer%20Drawing&DocLang=English&DocFormat=pdf&PartCntxt=DT13-2P"
 			(at 50.8 228.6 0)
 			(effects
 				(font
@@ -1185,7 +1383,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+		(property "Description" "TE DEUTSCH DT series 2-pin right-angle PCB header, 5.46 mm pitch, panel flange seal, 13 A per contact (14/16 AWG), 250 V, -55 to +125 °C; mates DT06-2S plug"
 			(at 50.8 228.6 0)
 			(effects
 				(font
@@ -1194,7 +1392,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "TE Connectivity"
 			(at 50.8 228.6 0)
 			(effects
 				(font
@@ -1203,7 +1401,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "DT13-2P"
 			(at 50.8 228.6 0)
 			(effects
 				(font
@@ -1212,7 +1410,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "1734-1452-ND"
 			(at 50.8 228.6 0)
 			(effects
 				(font
@@ -1221,7 +1419,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "571-DT13-2P"
 			(at 50.8 228.6 0)
 			(effects
 				(font
@@ -1230,7 +1428,16 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: selected 2026-10-23 (DEC-013): TE DT13-2P; library part DropOut_Connector:DT13-2P in dropout-kicad-library PR #19 (not merged)"
+		(property "Temperature_Grade" "-55 to +125 °C (not AEC qualified)"
+			(at 50.8 228.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "Mates DT06-2S + W2S wedgelock. No current derating curve; +125 °C is the maximum including self-heating. Header ingress protection not tested by TE (108-151009). Pin numbering per the drawing's cavity marks; TE 114-151046 layout figure shows the opposite, verify on a sample."
 			(at 50.8 228.6 0)
 			(effects
 				(font
@@ -1240,10 +1447,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "9590061a-e9ff-58b1-9057-ba25197569be")
+			(uuid "55acfef2-dab9-5619-baa1-e6e79c8dd42d")
 		)
 		(pin "2"
-			(uuid "3f603bb1-74c3-5bb2-87fe-c8c63f86bffe")
+			(uuid "62b63d9a-8a89-52a9-8395-6aa81d1e033b")
 		)
 		(instances
 			(project "node60"
@@ -1256,51 +1463,51 @@
 	)
 	(wire
 		(pts
-			(xy 55.88 228.6)
-			(xy 66.04 228.6)
+			(xy 63.5 226.06)
+			(xy 73.66 226.06)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "28bbdc87-fb57-52d1-acc8-d0efe489865c")
+		(uuid "646c4a5c-3484-50e9-b389-ef6fe04f6db0")
 	)
 	(hierarchical_label "OUT1"
 		(shape input)
-		(at 66.04 228.6 0)
+		(at 73.66 226.06 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left)
 		)
-		(uuid "ebb87c44-38a4-57eb-9780-582a3ba8feb0")
+		(uuid "6e58cc33-b62c-54b0-a9cd-ae8c4d2cc766")
 	)
 	(wire
 		(pts
-			(xy 55.88 231.14)
-			(xy 60.96 231.14)
+			(xy 63.5 228.6)
+			(xy 68.58 228.6)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "eaf8d949-3488-527a-a384-8176e8b2825f")
+		(uuid "68433b1c-4124-5e8b-9c88-bd4bc056e5b5")
 	)
 	(wire
 		(pts
-			(xy 60.96 231.14)
-			(xy 60.96 233.68)
+			(xy 68.58 228.6)
+			(xy 68.58 231.14)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "80fd588f-d085-540c-9412-f80da3f904d2")
+		(uuid "6d5568d6-9f44-517b-a546-3a4f16f871e1")
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 60.96 233.68 0)
+		(at 68.58 231.14 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -1310,7 +1517,7 @@
 		(dnp no)
 		(uuid "dbb7d4b7-4011-575e-a114-1dfd8298e178")
 		(property "Reference" "#PWR002"
-			(at 60.96 233.68 0)
+			(at 68.58 231.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1319,7 +1526,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 60.96 238.58 0)
+			(at 68.58 236.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1327,7 +1534,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 60.96 233.68 0)
+			(at 68.58 231.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1336,7 +1543,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 60.96 233.68 0)
+			(at 68.58 231.14 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1357,7 +1564,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_01x02")
+		(lib_id "DropOut_Connector:DT13-2P")
 		(at 50.8 251.46 0)
 		(mirror y)
 		(unit 1)
@@ -1370,7 +1577,7 @@
 		(fields_autoplaced no)
 		(uuid "a179ddb0-f6ec-5142-998a-fa11c6e7ad57")
 		(property "Reference" "J"
-			(at 48.26 245.11 0)
+			(at 43.18 242.57 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1379,7 +1586,7 @@
 			)
 		)
 		(property "Value" "DT13-2P"
-			(at 48.26 247.41 0)
+			(at 43.18 244.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1387,7 +1594,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Connector_TE-Connectivity:TE_DEUTSCH-DT_DT13-2P_1x02_P5.46mm_Horizontal"
 			(at 50.8 251.46 0)
 			(effects
 				(font
@@ -1396,7 +1603,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=DT13-2P&DocType=Customer%20Drawing&DocLang=English&DocFormat=pdf&PartCntxt=DT13-2P"
 			(at 50.8 251.46 0)
 			(effects
 				(font
@@ -1405,7 +1612,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+		(property "Description" "TE DEUTSCH DT series 2-pin right-angle PCB header, 5.46 mm pitch, panel flange seal, 13 A per contact (14/16 AWG), 250 V, -55 to +125 °C; mates DT06-2S plug"
 			(at 50.8 251.46 0)
 			(effects
 				(font
@@ -1414,7 +1621,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "TE Connectivity"
 			(at 50.8 251.46 0)
 			(effects
 				(font
@@ -1423,7 +1630,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "DT13-2P"
 			(at 50.8 251.46 0)
 			(effects
 				(font
@@ -1432,7 +1639,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "1734-1452-ND"
 			(at 50.8 251.46 0)
 			(effects
 				(font
@@ -1441,7 +1648,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "571-DT13-2P"
 			(at 50.8 251.46 0)
 			(effects
 				(font
@@ -1450,7 +1657,16 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: selected 2026-10-23 (DEC-013): TE DT13-2P; library part DropOut_Connector:DT13-2P in dropout-kicad-library PR #19 (not merged)"
+		(property "Temperature_Grade" "-55 to +125 °C (not AEC qualified)"
+			(at 50.8 251.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "Mates DT06-2S + W2S wedgelock. No current derating curve; +125 °C is the maximum including self-heating. Header ingress protection not tested by TE (108-151009). Pin numbering per the drawing's cavity marks; TE 114-151046 layout figure shows the opposite, verify on a sample."
 			(at 50.8 251.46 0)
 			(effects
 				(font
@@ -1460,10 +1676,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "ca5360da-22fb-57e9-9eb8-8259609b59ea")
+			(uuid "d0958456-cdf4-5032-a29b-54d00a0dcd43")
 		)
 		(pin "2"
-			(uuid "e0f39c17-431c-5454-b364-06d6f9f0cbca")
+			(uuid "9645324e-ca4a-52db-bd8a-a19f154c1377")
 		)
 		(instances
 			(project "node60"
@@ -1476,51 +1692,51 @@
 	)
 	(wire
 		(pts
-			(xy 55.88 251.46)
-			(xy 66.04 251.46)
+			(xy 63.5 248.92)
+			(xy 73.66 248.92)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "3076534b-b38c-5d90-a888-e8dd87716412")
+		(uuid "68c0eeff-f301-5aec-9f51-b9f9daaee5e6")
 	)
 	(hierarchical_label "OUT2"
 		(shape input)
-		(at 66.04 251.46 0)
+		(at 73.66 248.92 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left)
 		)
-		(uuid "6144499e-54f1-5a26-9134-93d4bef8065d")
+		(uuid "4608b584-d556-5fd8-8bc4-e5355ecc4ba9")
 	)
 	(wire
 		(pts
-			(xy 55.88 254)
-			(xy 60.96 254)
+			(xy 63.5 251.46)
+			(xy 68.58 251.46)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "af2c1468-4daf-5b2b-80a8-2b8c22773afb")
+		(uuid "e7ffbe2b-0a81-5daa-a7ec-afd98ca27d40")
 	)
 	(wire
 		(pts
-			(xy 60.96 254)
-			(xy 60.96 256.54)
+			(xy 68.58 251.46)
+			(xy 68.58 254)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "370404f3-8446-52bb-bfaa-34bfdb632266")
+		(uuid "1de8a0ef-3ee7-5377-a524-9fa63f55ed1d")
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 60.96 256.54 0)
+		(at 68.58 254 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -1530,7 +1746,7 @@
 		(dnp no)
 		(uuid "47d40548-5c57-5bba-b4bd-302fc60275e3")
 		(property "Reference" "#PWR003"
-			(at 60.96 256.54 0)
+			(at 68.58 254 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1539,7 +1755,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 60.96 261.44 0)
+			(at 68.58 258.9 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1547,7 +1763,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 60.96 256.54 0)
+			(at 68.58 254 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1556,7 +1772,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 60.96 256.54 0)
+			(at 68.58 254 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1577,7 +1793,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_01x02")
+		(lib_id "DropOut_Connector:DT13-2P")
 		(at 50.8 274.32 0)
 		(mirror y)
 		(unit 1)
@@ -1590,7 +1806,7 @@
 		(fields_autoplaced no)
 		(uuid "69c7f5de-94ef-5680-8e07-d3e8899abeec")
 		(property "Reference" "J"
-			(at 48.26 267.97 0)
+			(at 43.18 265.43 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1599,7 +1815,7 @@
 			)
 		)
 		(property "Value" "DT13-2P"
-			(at 48.26 270.27 0)
+			(at 43.18 267.73 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1607,7 +1823,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Connector_TE-Connectivity:TE_DEUTSCH-DT_DT13-2P_1x02_P5.46mm_Horizontal"
 			(at 50.8 274.32 0)
 			(effects
 				(font
@@ -1616,7 +1832,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=DT13-2P&DocType=Customer%20Drawing&DocLang=English&DocFormat=pdf&PartCntxt=DT13-2P"
 			(at 50.8 274.32 0)
 			(effects
 				(font
@@ -1625,7 +1841,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+		(property "Description" "TE DEUTSCH DT series 2-pin right-angle PCB header, 5.46 mm pitch, panel flange seal, 13 A per contact (14/16 AWG), 250 V, -55 to +125 °C; mates DT06-2S plug"
 			(at 50.8 274.32 0)
 			(effects
 				(font
@@ -1634,7 +1850,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "TE Connectivity"
 			(at 50.8 274.32 0)
 			(effects
 				(font
@@ -1643,7 +1859,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "DT13-2P"
 			(at 50.8 274.32 0)
 			(effects
 				(font
@@ -1652,7 +1868,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "1734-1452-ND"
 			(at 50.8 274.32 0)
 			(effects
 				(font
@@ -1661,7 +1877,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "571-DT13-2P"
 			(at 50.8 274.32 0)
 			(effects
 				(font
@@ -1670,7 +1886,16 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: selected 2026-10-23 (DEC-013): TE DT13-2P; library part DropOut_Connector:DT13-2P in dropout-kicad-library PR #19 (not merged)"
+		(property "Temperature_Grade" "-55 to +125 °C (not AEC qualified)"
+			(at 50.8 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "Mates DT06-2S + W2S wedgelock. No current derating curve; +125 °C is the maximum including self-heating. Header ingress protection not tested by TE (108-151009). Pin numbering per the drawing's cavity marks; TE 114-151046 layout figure shows the opposite, verify on a sample."
 			(at 50.8 274.32 0)
 			(effects
 				(font
@@ -1680,10 +1905,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "37d593df-018e-52b7-b6bf-d930db9ad073")
+			(uuid "59246912-2759-5c26-a0f8-60c0632d8a1e")
 		)
 		(pin "2"
-			(uuid "27b7ea0e-4235-5949-85b2-88edbf45bdbe")
+			(uuid "d30546e4-a1c6-5f45-9b95-03d7691865dc")
 		)
 		(instances
 			(project "node60"
@@ -1696,51 +1921,51 @@
 	)
 	(wire
 		(pts
-			(xy 55.88 274.32)
-			(xy 66.04 274.32)
+			(xy 63.5 271.78)
+			(xy 73.66 271.78)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "f7fb42e1-3794-558f-9361-c45e35a32ebc")
+		(uuid "d8ead411-ca59-5eba-a415-2cb30bba416d")
 	)
 	(hierarchical_label "OUT3"
 		(shape input)
-		(at 66.04 274.32 0)
+		(at 73.66 271.78 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left)
 		)
-		(uuid "e25822f0-d871-5f74-919e-888f3c52d160")
+		(uuid "10ac5889-7d99-5e58-a097-043a41b11a3c")
 	)
 	(wire
 		(pts
-			(xy 55.88 276.86)
-			(xy 60.96 276.86)
+			(xy 63.5 274.32)
+			(xy 68.58 274.32)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "e9593219-e9cc-5720-a1ae-02064310ec9e")
+		(uuid "73a834e4-4406-51ab-9b3d-4f773f36a1ec")
 	)
 	(wire
 		(pts
-			(xy 60.96 276.86)
-			(xy 60.96 279.4)
+			(xy 68.58 274.32)
+			(xy 68.58 276.86)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "50a5f0d9-e3de-506d-a728-17a2a3a19640")
+		(uuid "f4ae7bc3-6a0a-5168-a977-9f02c4e06a64")
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 60.96 279.4 0)
+		(at 68.58 276.86 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -1750,7 +1975,7 @@
 		(dnp no)
 		(uuid "8e6cfd72-24e3-5589-bc2f-95541d327559")
 		(property "Reference" "#PWR004"
-			(at 60.96 279.4 0)
+			(at 68.58 276.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1759,7 +1984,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 60.96 284.3 0)
+			(at 68.58 281.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1767,7 +1992,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 60.96 279.4 0)
+			(at 68.58 276.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1776,7 +2001,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 60.96 279.4 0)
+			(at 68.58 276.86 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1797,7 +2022,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_01x02")
+		(lib_id "DropOut_Connector:DT13-2P")
 		(at 50.8 297.18 0)
 		(mirror y)
 		(unit 1)
@@ -1810,7 +2035,7 @@
 		(fields_autoplaced no)
 		(uuid "0831d111-dac1-5f8d-958f-ece0016ea350")
 		(property "Reference" "J"
-			(at 48.26 290.83 0)
+			(at 43.18 288.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1819,7 +2044,7 @@
 			)
 		)
 		(property "Value" "DT13-2P"
-			(at 48.26 293.13 0)
+			(at 43.18 290.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1827,7 +2052,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Connector_TE-Connectivity:TE_DEUTSCH-DT_DT13-2P_1x02_P5.46mm_Horizontal"
 			(at 50.8 297.18 0)
 			(effects
 				(font
@@ -1836,7 +2061,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=DT13-2P&DocType=Customer%20Drawing&DocLang=English&DocFormat=pdf&PartCntxt=DT13-2P"
 			(at 50.8 297.18 0)
 			(effects
 				(font
@@ -1845,7 +2070,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+		(property "Description" "TE DEUTSCH DT series 2-pin right-angle PCB header, 5.46 mm pitch, panel flange seal, 13 A per contact (14/16 AWG), 250 V, -55 to +125 °C; mates DT06-2S plug"
 			(at 50.8 297.18 0)
 			(effects
 				(font
@@ -1854,7 +2079,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "TE Connectivity"
 			(at 50.8 297.18 0)
 			(effects
 				(font
@@ -1863,7 +2088,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "DT13-2P"
 			(at 50.8 297.18 0)
 			(effects
 				(font
@@ -1872,7 +2097,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "1734-1452-ND"
 			(at 50.8 297.18 0)
 			(effects
 				(font
@@ -1881,7 +2106,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "571-DT13-2P"
 			(at 50.8 297.18 0)
 			(effects
 				(font
@@ -1890,7 +2115,16 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: selected 2026-10-23 (DEC-013): TE DT13-2P; library part DropOut_Connector:DT13-2P in dropout-kicad-library PR #19 (not merged)"
+		(property "Temperature_Grade" "-55 to +125 °C (not AEC qualified)"
+			(at 50.8 297.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "Mates DT06-2S + W2S wedgelock. No current derating curve; +125 °C is the maximum including self-heating. Header ingress protection not tested by TE (108-151009). Pin numbering per the drawing's cavity marks; TE 114-151046 layout figure shows the opposite, verify on a sample."
 			(at 50.8 297.18 0)
 			(effects
 				(font
@@ -1900,10 +2134,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "8db7a586-9d76-5818-acfd-1b33ce6720fd")
+			(uuid "a1aa875e-af79-56a2-aaba-6205a664b115")
 		)
 		(pin "2"
-			(uuid "cb4e4cfd-4c85-543b-8c23-3cc413ca88cf")
+			(uuid "22240b84-80b1-55f3-b214-72669833ed6d")
 		)
 		(instances
 			(project "node60"
@@ -1916,51 +2150,51 @@
 	)
 	(wire
 		(pts
-			(xy 55.88 297.18)
-			(xy 66.04 297.18)
+			(xy 63.5 294.64)
+			(xy 73.66 294.64)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "a658e38d-9c6d-5d68-80ae-8cf6c7894940")
+		(uuid "2cbf5cd8-73ed-5199-8992-bd2e7b48755f")
 	)
 	(hierarchical_label "OUT4"
 		(shape input)
-		(at 66.04 297.18 0)
+		(at 73.66 294.64 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left)
 		)
-		(uuid "94784535-4049-5e6d-9746-367191844df0")
+		(uuid "f2b318fa-890e-5ba4-b218-fb443f5d3085")
 	)
 	(wire
 		(pts
-			(xy 55.88 299.72)
-			(xy 60.96 299.72)
+			(xy 63.5 297.18)
+			(xy 68.58 297.18)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "977f44aa-61b0-5ba8-96e0-7b9893573038")
+		(uuid "6ce203ec-f144-5fa6-a0ac-91b7e95a76b4")
 	)
 	(wire
 		(pts
-			(xy 60.96 299.72)
-			(xy 60.96 302.26)
+			(xy 68.58 297.18)
+			(xy 68.58 299.72)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "250aaa1c-f6e8-5019-946f-fc0b747dbf2c")
+		(uuid "a7815cc3-ff9b-5f71-a41d-bdc3f09399c0")
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 60.96 302.26 0)
+		(at 68.58 299.72 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -1970,7 +2204,7 @@
 		(dnp no)
 		(uuid "bd1ef0ed-e980-51da-a480-2f8271234913")
 		(property "Reference" "#PWR005"
-			(at 60.96 302.26 0)
+			(at 68.58 299.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1979,7 +2213,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 60.96 307.16 0)
+			(at 68.58 304.62 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1987,7 +2221,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 60.96 302.26 0)
+			(at 68.58 299.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1996,7 +2230,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 60.96 302.26 0)
+			(at 68.58 299.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2017,7 +2251,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_01x02")
+		(lib_id "DropOut_Connector:DT13-2P")
 		(at 50.8 320.04 0)
 		(mirror y)
 		(unit 1)
@@ -2030,7 +2264,7 @@
 		(fields_autoplaced no)
 		(uuid "4b87b287-fcb1-55e1-bbf8-58f7c1317597")
 		(property "Reference" "J"
-			(at 48.26 313.69 0)
+			(at 43.18 311.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2039,7 +2273,7 @@
 			)
 		)
 		(property "Value" "DT13-2P"
-			(at 48.26 315.99 0)
+			(at 43.18 313.45 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2047,7 +2281,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Connector_TE-Connectivity:TE_DEUTSCH-DT_DT13-2P_1x02_P5.46mm_Horizontal"
 			(at 50.8 320.04 0)
 			(effects
 				(font
@@ -2056,7 +2290,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=DT13-2P&DocType=Customer%20Drawing&DocLang=English&DocFormat=pdf&PartCntxt=DT13-2P"
 			(at 50.8 320.04 0)
 			(effects
 				(font
@@ -2065,7 +2299,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+		(property "Description" "TE DEUTSCH DT series 2-pin right-angle PCB header, 5.46 mm pitch, panel flange seal, 13 A per contact (14/16 AWG), 250 V, -55 to +125 °C; mates DT06-2S plug"
 			(at 50.8 320.04 0)
 			(effects
 				(font
@@ -2074,7 +2308,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "TE Connectivity"
 			(at 50.8 320.04 0)
 			(effects
 				(font
@@ -2083,7 +2317,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "DT13-2P"
 			(at 50.8 320.04 0)
 			(effects
 				(font
@@ -2092,7 +2326,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "1734-1452-ND"
 			(at 50.8 320.04 0)
 			(effects
 				(font
@@ -2101,7 +2335,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "571-DT13-2P"
 			(at 50.8 320.04 0)
 			(effects
 				(font
@@ -2110,7 +2344,16 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: selected 2026-10-23 (DEC-013): TE DT13-2P; library part DropOut_Connector:DT13-2P in dropout-kicad-library PR #19 (not merged)"
+		(property "Temperature_Grade" "-55 to +125 °C (not AEC qualified)"
+			(at 50.8 320.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "Mates DT06-2S + W2S wedgelock. No current derating curve; +125 °C is the maximum including self-heating. Header ingress protection not tested by TE (108-151009). Pin numbering per the drawing's cavity marks; TE 114-151046 layout figure shows the opposite, verify on a sample."
 			(at 50.8 320.04 0)
 			(effects
 				(font
@@ -2120,10 +2363,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "6e0e1ee0-92a0-5400-9845-6144a3a8eea3")
+			(uuid "338fb58c-8db2-572e-94bf-ad4241fbee78")
 		)
 		(pin "2"
-			(uuid "9c75c13f-f488-5271-8b01-49165af1cbbc")
+			(uuid "a021fb8d-5dc6-51ee-801c-d5708dd36a81")
 		)
 		(instances
 			(project "node60"
@@ -2136,51 +2379,51 @@
 	)
 	(wire
 		(pts
-			(xy 55.88 320.04)
-			(xy 66.04 320.04)
+			(xy 63.5 317.5)
+			(xy 73.66 317.5)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "86e56d2f-2cc0-560d-a81f-adf8fb73fe16")
+		(uuid "ea0bf648-a418-55b5-8e8c-80d2c8c55d04")
 	)
 	(hierarchical_label "OUT5"
 		(shape input)
-		(at 66.04 320.04 0)
+		(at 73.66 317.5 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left)
 		)
-		(uuid "41cf5233-31dc-50d8-a1bf-f1a590fdcb70")
+		(uuid "a400e3e0-edf7-5fcc-ab45-fa28be3cf8fd")
 	)
 	(wire
 		(pts
-			(xy 55.88 322.58)
-			(xy 60.96 322.58)
+			(xy 63.5 320.04)
+			(xy 68.58 320.04)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "294e97f3-8b77-5148-a984-b50b675a1fa5")
+		(uuid "4e6ffdec-6409-50ae-ae07-9c00980506ce")
 	)
 	(wire
 		(pts
-			(xy 60.96 322.58)
-			(xy 60.96 325.12)
+			(xy 68.58 320.04)
+			(xy 68.58 322.58)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "2ea8e6f7-f549-5d97-bed8-8376c8689741")
+		(uuid "40426553-d2fa-5ac7-b853-46eabd8d987b")
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 60.96 325.12 0)
+		(at 68.58 322.58 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2190,7 +2433,7 @@
 		(dnp no)
 		(uuid "791d1862-1c5e-52a3-be0f-6dd5d1aa59dc")
 		(property "Reference" "#PWR006"
-			(at 60.96 325.12 0)
+			(at 68.58 322.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2199,7 +2442,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 60.96 330.02 0)
+			(at 68.58 327.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2207,7 +2450,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 60.96 325.12 0)
+			(at 68.58 322.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2216,7 +2459,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 60.96 325.12 0)
+			(at 68.58 322.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2237,7 +2480,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_01x02")
+		(lib_id "DropOut_Connector:DT13-2P")
 		(at 50.8 342.9 0)
 		(mirror y)
 		(unit 1)
@@ -2250,7 +2493,7 @@
 		(fields_autoplaced no)
 		(uuid "a460752d-dc7b-54ab-8b8f-c82763d4efaa")
 		(property "Reference" "J"
-			(at 48.26 336.55 0)
+			(at 43.18 334.01 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2259,7 +2502,7 @@
 			)
 		)
 		(property "Value" "DT13-2P"
-			(at 48.26 338.85 0)
+			(at 43.18 336.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2267,7 +2510,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Connector_TE-Connectivity:TE_DEUTSCH-DT_DT13-2P_1x02_P5.46mm_Horizontal"
 			(at 50.8 342.9 0)
 			(effects
 				(font
@@ -2276,7 +2519,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=DT13-2P&DocType=Customer%20Drawing&DocLang=English&DocFormat=pdf&PartCntxt=DT13-2P"
 			(at 50.8 342.9 0)
 			(effects
 				(font
@@ -2285,7 +2528,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Generic connector, single row, 01x02, script generated (kicad-library-utils/schlib/autogen/connector/)"
+		(property "Description" "TE DEUTSCH DT series 2-pin right-angle PCB header, 5.46 mm pitch, panel flange seal, 13 A per contact (14/16 AWG), 250 V, -55 to +125 °C; mates DT06-2S plug"
 			(at 50.8 342.9 0)
 			(effects
 				(font
@@ -2294,7 +2537,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "TE Connectivity"
 			(at 50.8 342.9 0)
 			(effects
 				(font
@@ -2303,7 +2546,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "DT13-2P"
 			(at 50.8 342.9 0)
 			(effects
 				(font
@@ -2312,7 +2555,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "1734-1452-ND"
 			(at 50.8 342.9 0)
 			(effects
 				(font
@@ -2321,7 +2564,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "571-DT13-2P"
 			(at 50.8 342.9 0)
 			(effects
 				(font
@@ -2330,7 +2573,16 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: selected 2026-10-23 (DEC-013): TE DT13-2P; library part DropOut_Connector:DT13-2P in dropout-kicad-library PR #19 (not merged)"
+		(property "Temperature_Grade" "-55 to +125 °C (not AEC qualified)"
+			(at 50.8 342.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "Mates DT06-2S + W2S wedgelock. No current derating curve; +125 °C is the maximum including self-heating. Header ingress protection not tested by TE (108-151009). Pin numbering per the drawing's cavity marks; TE 114-151046 layout figure shows the opposite, verify on a sample."
 			(at 50.8 342.9 0)
 			(effects
 				(font
@@ -2340,10 +2592,10 @@
 			)
 		)
 		(pin "1"
-			(uuid "028cb362-9b00-5844-9288-008bfee04278")
+			(uuid "fafc456a-276a-5294-bb21-28adae3ef3da")
 		)
 		(pin "2"
-			(uuid "c4dc9918-c22e-5d3d-860e-1eae12185120")
+			(uuid "0aebaadf-744a-52ad-a12c-880f8d6b4274")
 		)
 		(instances
 			(project "node60"
@@ -2356,51 +2608,51 @@
 	)
 	(wire
 		(pts
-			(xy 55.88 342.9)
-			(xy 66.04 342.9)
+			(xy 63.5 340.36)
+			(xy 73.66 340.36)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "0e01f26f-1659-542b-8936-d007c4476bec")
+		(uuid "4e9cd5f3-d4c3-5f74-9856-35c18916628b")
 	)
 	(hierarchical_label "OUT6"
 		(shape input)
-		(at 66.04 342.9 0)
+		(at 73.66 340.36 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left)
 		)
-		(uuid "1fc9d090-832f-569a-a329-2cccff026ee7")
+		(uuid "0f6eb6a5-cd42-57a7-8cab-7d06ccfe3d80")
 	)
 	(wire
 		(pts
-			(xy 55.88 345.44)
-			(xy 60.96 345.44)
+			(xy 63.5 342.9)
+			(xy 68.58 342.9)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "4ad5ad74-5db8-59ed-bf68-201817b8bae5")
+		(uuid "6221cd9a-932f-5df2-935c-beca65be7807")
 	)
 	(wire
 		(pts
-			(xy 60.96 345.44)
-			(xy 60.96 347.98)
+			(xy 68.58 342.9)
+			(xy 68.58 345.44)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "99025c77-3a9e-5d18-a338-e1f5ab5b8488")
+		(uuid "a2547c14-e2d5-59cf-8f0a-ef16b51b0fd3")
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 60.96 347.98 0)
+		(at 68.58 345.44 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2410,7 +2662,7 @@
 		(dnp no)
 		(uuid "b499c888-3759-5283-9799-3af6284c334a")
 		(property "Reference" "#PWR007"
-			(at 60.96 347.98 0)
+			(at 68.58 345.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2419,7 +2671,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 60.96 352.88 0)
+			(at 68.58 350.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2427,7 +2679,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 60.96 347.98 0)
+			(at 68.58 345.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2436,7 +2688,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 60.96 347.98 0)
+			(at 68.58 345.44 0)
 			(effects
 				(font
 					(size 1.27 1.27)

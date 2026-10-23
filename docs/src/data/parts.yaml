@@ -139,11 +139,11 @@
   subsystem: power
   status: selected
   decision_note: "Selected 2026-10-22 (user). 40 V, 150 mA, Iq 3.5 µA (DigiKey listing): no candidate met the 1–2 µA target at 40 V. WSON 2 × 2 with wettable flanks, TJ to 150 °C. Rejected: NCV8730BMTW330TBG (3 µA, but 38 V max leaves 4 V above the 34 V OV cut-off). Verify Iq over temperature from the datasheet"
-  supply_note: Library part pending (dropout-kicad-library session, 2026-10-22)
   second_source: NCV8730BMTW330TBG
   observations:
     - { date: 2026-10-22, source: DigiKey, prices: [{ qty: "1", usd: 1.56 }], stock: 2080 }
   decisions: [DEC-004]
+  library: DropOut_Power:TPS7B8133QWDRVRQ1
 
 - id: LM74910HQRGERQ1
   mpn: LM74910HQRGERQ1
@@ -167,12 +167,12 @@
   subsystem: power
   status: selected
   decision_note: "Selected 2026-10-22 (user). 0.25 mΩ 1 %, 4 W, ±50 ppm/°C, 2725 metal strip; star Kelvin taps from the pads; 15 mV / 0.9 W at 60 A (≥ 1.5 W needed for 60 % derating). Rejected: HCS2512FTL250 (3 W, ±150 ppm/°C). A 4-terminal shunt is being sought for a later revision. Confirm AEC-Q200 on the datasheet"
-  supply_note: Library part pending (dropout-kicad-library session, 2026-10-22)
   second_source: HCS2512FTL250
   observations:
     - { date: 2026-10-13, source: planning allowance, prices: [{ qty: 1k, usd: 1, approx: true }] }
     - { date: 2026-10-22, source: DigiKey, prices: [{ qty: "1", usd: 1.70 }], stock: 519 }
   decisions: [DEC-001, DEC-002]
+  library: DropOut_Resistor:CSS2725FTL250
 
 - id: IAUTN08S5N012LATMA1
   mpn: IAUTN08S5N012LATMA1
@@ -182,11 +182,11 @@
   subsystem: power
   status: selected
   decision_note: "Selected 2026-10-22 (user). 80 V, 1.15 mΩ max at 10 V, AEC-Q101: two in parallel per bank ≈ 0.6 mΩ. Ciss 15.3 nF each sets LM74910H CCAP ≥ 10 × ΣCiss = 0.61 µF (1 µF fitted). Surge/thermal calculation still to confirm the count (DEC-001)"
-  supply_note: Library part pending (dropout-kicad-library session, 2026-10-22)
   second_source: AOTL66810Q
   observations:
     - { date: 2026-10-22, source: DigiKey, prices: [{ qty: "1", usd: 6.71 }], stock: 1051 }
   decisions: [DEC-001]
+  library: DropOut_PowerSwitch:IAUTN08S5N012LATMA1
 
 - id: TBD-OCP-NETWORK
   mpn: null
@@ -247,10 +247,11 @@
   status: selected
   decision_note: "Selected 2026-10-22 (user). 0603, 10 kΩ ±1 %, B25/50 3380 K ±1 %, −55…+150 °C, AEC-Q200: meets every Rev A limit. Second source NTCS0603E3103FMT (B25/85 3610 K: needs its own lookup table); NTCG163JF103FTDS rejected (+125 °C max)"
   second_source: NTCS0603E3103FMT
-  supply_note: ≈$0.15–0.35 each @1k estimate; library part pending (2026-10-22)
+  supply_note: ≈$0.15–0.35 each @1k estimate
   observations:
     - { date: 2026-10-22, source: DigiKey, prices: [{ qty: "1", usd: 0.14 }], stock: 67028 }
   decisions: [DEC-010]
+  library: DropOut_Thermistor:NCU18XH103F6SRB
 
 - id: TPS3702-Q1
   mpn: null

@@ -133,222 +133,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Connector_Generic:Conn_01x04"
-			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "J"
-				(at 0 5.08 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "Conn_01x04"
-				(at 0 -7.62 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "connector"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "Connector*:*_1x??_*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "Conn_01x04_1_1"
-				(rectangle
-					(start -1.27 3.81)
-					(end 1.27 -6.35)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(rectangle
-					(start -1.27 2.667)
-					(end 0 2.413)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 0.127)
-					(end 0 -0.127)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 -2.413)
-					(end 0 -2.667)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(rectangle
-					(start -1.27 -4.953)
-					(end 0 -5.207)
-					(stroke
-						(width 0.1524)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(pin passive line
-					(at -5.08 2.54 0)
-					(length 3.81)
-					(name "Pin_1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 0 0)
-					(length 3.81)
-					(name "Pin_2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -2.54 0)
-					(length 3.81)
-					(name "Pin_3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at -5.08 -5.08 0)
-					(length 3.81)
-					(name "Pin_4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Device:C"
 			(pin_numbers
 				(hide yes)
@@ -506,184 +290,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Device:L"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "L"
-				(at -1.27 0 90)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "L"
-				(at 1.905 0 90)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Inductor"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "inductor choke coil reactor magnetic"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "Choke_* *Coil* Inductor_* L_*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "L_0_1"
-				(arc
-					(start 0 2.54)
-					(mid 0.6323 1.905)
-					(end 0 1.27)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 0 1.27)
-					(mid 0.6323 0.635)
-					(end 0 0)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 0 0)
-					(mid 0.6323 -0.635)
-					(end 0 -1.27)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start 0 -1.27)
-					(mid 0.6323 -1.905)
-					(end 0 -2.54)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "L_1_1"
-				(pin passive line
-					(at 0 3.81 270)
-					(length 1.27)
-					(name "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 1.27)
-					(name "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Device:R"
 			(pin_numbers
 				(hide yes)
@@ -807,6 +413,472 @@
 					(at 0 -3.81 90)
 					(length 1.27)
 					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DropOut_Inductor:74438356010HT"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "L"
+				(at 2.54 1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "74438356010HT"
+				(at 2.54 -1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Inductor_SMD:L_Wuerth_MAPI-4020"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.we-online.com/components/products/datasheet/74438356010HT.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Würth Elektronik WE-MAPI 4020 power inductor, 1.0 µH ±20 %, Isat 4.25 A (-10 %) / 9.3 A (-30 %), IRP 8.75 A (40 K rise), DCR 15.5 mΩ max, metal alloy composite, molded, AEC-Q200, 4.1x4.1x2.1 mm"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Würth Elektronik"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "74438356010HT"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "DigiKey_PN" "732-74438356010HTCT-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "710-74438356010HT"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200 Grade 0, -55 to +150 °C operating (-55 to +110 °C ambient at IRP)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "inductor choke coil power buck shielded automotive AEC-Q200"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "L*Wuerth*MAPI?4020*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "74438356010HT_1_1"
+				(arc
+					(start 0 2.54)
+					(mid 0.6323 1.905)
+					(end 0 1.27)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 1.27)
+					(mid 0.6323 0.635)
+					(end 0 0)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 0)
+					(mid 0.6323 -0.635)
+					(end 0 -1.27)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 -1.27)
+					(mid 0.6323 -1.905)
+					(end 0 -2.54)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DropOut_Inductor:74438356022HT"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "L"
+				(at 2.54 1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "74438356022HT"
+				(at 2.54 -1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Inductor_SMD:L_Wuerth_MAPI-4020"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.we-online.com/components/products/datasheet/74438356022HT.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Würth Elektronik WE-MAPI 4020 power inductor, 2.2 µH ±20 %, Isat 3.7 A (-10 %) / 7.6 A (-30 %), IRP 5.9 A (40 K rise), DCR 32.2 mΩ max, metal alloy composite, molded, AEC-Q200, 4.1x4.1x2.1 mm"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Würth Elektronik"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "74438356022HT"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "DigiKey_PN" "732-74438356022HTCT-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "710-74438356022HT"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200 Grade 0, -55 to +150 °C operating (-55 to +110 °C ambient at IRP)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "inductor choke coil power buck shielded automotive AEC-Q200"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "L*Wuerth*MAPI?4020*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "74438356022HT_1_1"
+				(arc
+					(start 0 2.54)
+					(mid 0.6323 1.905)
+					(end 0 1.27)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 1.27)
+					(mid 0.6323 0.635)
+					(end 0 0)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 0)
+					(mid 0.6323 -0.635)
+					(end 0 -1.27)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 -1.27)
+					(mid 0.6323 -1.905)
+					(end 0 -2.54)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1152,7 +1224,7 @@
 						)
 					)
 				)
-				(pin power_out line
+				(pin input line
 					(at 17.78 5.08 180)
 					(length 5.08)
 					(name "VOUT/FB"
@@ -1494,6 +1566,283 @@
 						)
 					)
 					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DropOut_Power:TPS7B8133QWDRVRQ1"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "U"
+				(at 0 17.78 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TPS7B8133QWDRVRQ1"
+				(at 0 -22.86 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "DropOut_Package_DFN_QFN:Texas_DRV0006A_WSON-6-1EP_2x2mm_P0.65mm_EP1x1.6mm"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps7b81-q1.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "TI TPS7B81-Q1 40 V 150 mA ultra-low-Iq LDO, fixed 3.3 V, 2.7 µA typ / 4.5 µA max Iq, enable, AEC-Q100 Grade 1, WSON-6 2x2 mm with wettable flanks"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Texas Instruments"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "TPS7B8133QWDRVRQ1"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "DigiKey_PN" "296-TPS7B8133QWDRVRQ1CT-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "595-PS7B8133QWDRVRQ1"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q100 Grade 1, TJ -40 to +150 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "LDO low-dropout linear voltage regulator 3.3V ultra-low-Iq battery standby automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Texas*DRV0006A*WSON*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "TPS7B8133QWDRVRQ1_1_1"
+				(rectangle
+					(start -7.62 15.24)
+					(end 7.62 -15.24)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin power_in line
+					(at -12.7 5.08 0)
+					(length 5.08)
+					(name "IN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.7 0 0)
+					(length 5.08)
+					(name "EN"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -2.54 -20.32 90)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -20.32 90)
+					(length 5.08)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at -12.7 -5.08 0)
+					(length 5.08)
+					(name "DNC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_out line
+					(at 12.7 5.08 180)
+					(length 5.08)
+					(name "OUT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -20.32 90)
+					(length 5.08)
+					(name "EP"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2173,7 +2522,7 @@
 	)
 	(rectangle
 		(start 30.48 40.64)
-		(end 160.02 109.22)
+		(end 172.72 116.84)
 		(stroke
 			(width 0.254)
 			(type dash)
@@ -2184,7 +2533,7 @@
 		)
 		(uuid "8acb7061-bb04-5dcb-a3c1-e6e70e9657f5")
 	)
-	(text "Always-on LAN8670 VDDAU supply: nanopower LDO, PLACEHOLDER (U301)"
+	(text "Always-on LAN8670 VDDAU supply: TPS7B8133-Q1 nanopower LDO (U301)"
 		(exclude_from_sim no)
 		(at 30.48 39.37 0)
 		(effects
@@ -2197,8 +2546,12 @@
 		)
 		(uuid "05003afa-56ff-5d8b-8ace-d484203f281c")
 	)
+	(no_connect
+		(at 83.82 81.28)
+		(uuid "21a06d95-a23f-5436-ab7a-e0bf0929425c")
+	)
 	(symbol
-		(lib_id "Connector_Generic:Conn_01x04")
+		(lib_id "DropOut_Power:TPS7B8133QWDRVRQ1")
 		(at 96.52 76.2 0)
 		(unit 1)
 		(body_style 1)
@@ -2210,22 +2563,24 @@
 		(fields_autoplaced no)
 		(uuid "9d5870f8-aa82-5e2d-a609-1962073d3666")
 		(property "Reference" "U"
-			(at 96.52 84.45 0)
+			(at 83.82 57.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Value" "LDO"
-			(at 96.52 86.75 0)
+		(property "Value" "TPS7B8133QWDRVRQ1"
+			(at 83.82 59.36 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Package_DFN_QFN:Texas_DRV0006A_WSON-6-1EP_2x2mm_P0.65mm_EP1x1.6mm"
 			(at 96.52 76.2 0)
 			(effects
 				(font
@@ -2234,7 +2589,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps7b81-q1.pdf"
 			(at 96.52 76.2 0)
 			(effects
 				(font
@@ -2243,7 +2598,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Generic connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
+		(property "Description" "TI TPS7B81-Q1 40 V 150 mA ultra-low-Iq LDO, fixed 3.3 V, 2.7 µA typ / 4.5 µA max Iq, enable, AEC-Q100 Grade 1, WSON-6 2x2 mm with wettable flanks"
 			(at 96.52 76.2 0)
 			(effects
 				(font
@@ -2252,7 +2607,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Texas Instruments"
 			(at 96.52 76.2 0)
 			(effects
 				(font
@@ -2261,7 +2616,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "TPS7B8133QWDRVRQ1"
 			(at 96.52 76.2 0)
 			(effects
 				(font
@@ -2270,7 +2625,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "296-TPS7B8133QWDRVRQ1CT-ND"
 			(at 96.52 76.2 0)
 			(effects
 				(font
@@ -2279,7 +2634,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "595-PS7B8133QWDRVRQ1"
 			(at 96.52 76.2 0)
 			(effects
 				(font
@@ -2288,7 +2643,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: TBD part: selection pending user decision (find-part), then a library session (TBD-VDDAU-LDO: Iq 1-2 uA, >= 40 V in, Grade 1). Stand-in pins: 1 IN, 2 EN, 3 OUT, 4 GND"
+		(property "Temperature_Grade" "AEC-Q100 Grade 1, TJ -40 to +150 °C"
 			(at 96.52 76.2 0)
 			(effects
 				(font
@@ -2298,16 +2653,25 @@
 			)
 		)
 		(pin "1"
-			(uuid "026a5d5b-0f90-57e2-addf-b66bd859f74a")
+			(uuid "2cb555da-8c41-5d98-aea9-8b3a3d8e2188")
 		)
 		(pin "2"
-			(uuid "f29136e2-06d9-5771-b8f7-e1df26378665")
+			(uuid "af8109a0-592f-54c7-999d-adcf4957b842")
 		)
 		(pin "3"
-			(uuid "503004f6-6905-543f-8f56-786182950cfa")
+			(uuid "c6481c2b-e5d1-5aa6-9b12-36e7e1c24cfe")
 		)
 		(pin "4"
-			(uuid "6cd8442a-dff6-5291-9b19-06e677ef4fc5")
+			(uuid "cca937e5-d0ca-539c-900d-2fd7f3edbf8b")
+		)
+		(pin "5"
+			(uuid "662a3ab2-bc96-5552-ac39-5ac5fb230ed4")
+		)
+		(pin "6"
+			(uuid "0c96aa5b-ee9d-5427-a41d-a9b52eff5d03")
+		)
+		(pin "7"
+			(uuid "89948927-de5f-5924-b976-a807a40ba686")
 		)
 		(instances
 			(project "node60"
@@ -2320,95 +2684,84 @@
 	)
 	(wire
 		(pts
-			(xy 91.44 73.66)
-			(xy 86.36 73.66)
+			(xy 83.82 76.2)
+			(xy 78.74 76.2)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "da195560-019a-5fc9-9c5d-af78d5d4d566")
+		(uuid "085c8531-493f-5768-be11-46964b079965")
 	)
 	(wire
 		(pts
-			(xy 86.36 73.66)
-			(xy 86.36 76.2)
+			(xy 78.74 76.2)
+			(xy 78.74 71.12)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "1864ff78-8c01-5af8-a7da-d5bcac9b759e")
+		(uuid "d0cd8dda-619d-537e-a975-b92d349b9fa8")
 	)
 	(wire
 		(pts
-			(xy 91.44 76.2)
-			(xy 86.36 76.2)
+			(xy 83.82 71.12)
+			(xy 63.5 71.12)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "37c31d27-5067-55c4-85c1-b9c78b48052b")
+		(uuid "782ae40c-48f5-51e7-8314-e4ceb0ddeb68")
 	)
 	(wire
 		(pts
-			(xy 86.36 76.2)
-			(xy 71.12 76.2)
+			(xy 63.5 71.12)
+			(xy 63.5 55.88)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "05d65afb-c85d-5e1c-b671-b8acb4f7c90c")
+		(uuid "bdec3976-0a6e-595f-ba16-5b0277e9ce8c")
 	)
 	(wire
 		(pts
-			(xy 71.12 76.2)
-			(xy 71.12 58.42)
+			(xy 63.5 55.88)
+			(xy 53.34 55.88)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "59cfd4eb-bcc4-5836-b62b-9ebe166be519")
+		(uuid "d154a1be-d884-5d11-b4d8-12b42575620e")
 	)
 	(wire
 		(pts
-			(xy 71.12 58.42)
-			(xy 60.96 58.42)
+			(xy 53.34 55.88)
+			(xy 53.34 58.42)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "3f29bf65-44a9-52b7-887a-e890152ec16e")
+		(uuid "de088021-3974-5612-af1e-e5404a431f53")
 	)
 	(wire
 		(pts
-			(xy 60.96 58.42)
-			(xy 60.96 60.96)
+			(xy 53.34 66.04)
+			(xy 53.34 68.58)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "1b0fb95d-2e57-5d3c-826c-a2bbc5cca26c")
-	)
-	(wire
-		(pts
-			(xy 60.96 68.58)
-			(xy 60.96 71.12)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c9c01a10-2253-5860-9762-01052abd7a67")
+		(uuid "c4b71a2f-b3ce-57b7-affb-f5dacdc253cf")
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 60.96 71.12 0)
+		(at 53.34 68.58 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2418,7 +2771,7 @@
 		(dnp no)
 		(uuid "e57cb80c-5186-546e-a290-eaf97f221801")
 		(property "Reference" "#PWR001"
-			(at 60.96 71.12 0)
+			(at 53.34 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2427,7 +2780,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 60.96 76.02 0)
+			(at 53.34 73.48 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2435,7 +2788,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 60.96 71.12 0)
+			(at 53.34 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2444,7 +2797,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 60.96 71.12 0)
+			(at 53.34 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2466,7 +2819,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 60.96 64.77 0)
+		(at 53.34 62.23 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2477,7 +2830,7 @@
 		(fields_autoplaced no)
 		(uuid "5f84372e-6ae2-59a6-b01f-36839e94c7db")
 		(property "Reference" "C"
-			(at 64.262 63.5 0)
+			(at 56.642 60.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2486,7 +2839,7 @@
 			)
 		)
 		(property "Value" "1uF"
-			(at 64.262 66.04 0)
+			(at 56.642 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2495,7 +2848,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 60.96 64.77 0)
+			(at 53.34 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2504,7 +2857,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 60.96 64.77 0)
+			(at 53.34 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2513,7 +2866,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 60.96 64.77 0)
+			(at 53.34 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2522,7 +2875,7 @@
 			)
 		)
 		(property "MPN" ""
-			(at 60.96 64.77 0)
+			(at 53.34 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2531,7 +2884,7 @@
 			)
 		)
 		(property "Manufacturer" ""
-			(at 60.96 64.77 0)
+			(at 53.34 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2540,7 +2893,7 @@
 			)
 		)
 		(property "DigiKey_PN" ""
-			(at 60.96 64.77 0)
+			(at 53.34 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2549,7 +2902,7 @@
 			)
 		)
 		(property "Mouser_PN" ""
-			(at 60.96 64.77 0)
+			(at 53.34 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2558,7 +2911,7 @@
 			)
 		)
 		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
-			(at 60.96 64.77 0)
+			(at 53.34 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2567,7 +2920,7 @@
 			)
 		)
 		(property "Voltage" "100V"
-			(at 60.96 64.77 0)
+			(at 53.34 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2576,7 +2929,7 @@
 			)
 		)
 		(property "Dielectric" "X7R"
-			(at 60.96 64.77 0)
+			(at 53.34 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2585,7 +2938,7 @@
 			)
 		)
 		(property "Package" "1206"
-			(at 60.96 64.77 0)
+			(at 53.34 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2594,7 +2947,7 @@
 			)
 		)
 		(property "Tolerance" "10%"
-			(at 60.96 64.77 0)
+			(at 53.34 62.23 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2619,18 +2972,18 @@
 	)
 	(wire
 		(pts
-			(xy 71.12 58.42)
-			(xy 71.12 55.88)
+			(xy 63.5 55.88)
+			(xy 63.5 53.34)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "19a9177e-5983-533f-9d4b-b3c7def436ac")
+		(uuid "385f810b-c56c-5b04-b1dc-136a4d59bfd9")
 	)
 	(symbol
 		(lib_id "power:+BATT")
-		(at 71.12 55.88 0)
+		(at 63.5 53.34 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2640,7 +2993,7 @@
 		(dnp no)
 		(uuid "f6582259-02b1-591b-94c5-5c511cbfdef6")
 		(property "Reference" "#PWR002"
-			(at 71.12 55.88 0)
+			(at 63.5 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2649,7 +3002,7 @@
 			)
 		)
 		(property "Value" "VBAT_PROT"
-			(at 71.12 51.48 0)
+			(at 63.5 48.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2657,7 +3010,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 71.12 55.88 0)
+			(at 63.5 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2666,7 +3019,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 71.12 55.88 0)
+			(at 63.5 53.34 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2688,29 +3041,62 @@
 	)
 	(wire
 		(pts
-			(xy 91.44 81.28)
-			(xy 88.9 81.28)
+			(xy 93.98 96.52)
+			(xy 93.98 99.06)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "7364eb4e-4313-5fd3-b142-f9d6424ff762")
+		(uuid "81d0fbad-70ff-5fab-a6a3-9bc12160095e")
 	)
 	(wire
 		(pts
-			(xy 88.9 81.28)
-			(xy 88.9 83.82)
+			(xy 96.52 96.52)
+			(xy 96.52 99.06)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "4d727f2d-3fa7-51bf-82d4-551be7c9a99a")
+		(uuid "245d7f6b-f1b4-525e-a099-24398e9f1f4f")
+	)
+	(wire
+		(pts
+			(xy 99.06 96.52)
+			(xy 99.06 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "12e52677-b56d-5c1d-9e5a-4e0db857a3b7")
+	)
+	(wire
+		(pts
+			(xy 93.98 99.06)
+			(xy 104.14 99.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8f05e14f-fba6-541f-bb6d-35b6874317c0")
+	)
+	(wire
+		(pts
+			(xy 104.14 99.06)
+			(xy 104.14 101.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0aa1a7ff-ece1-5243-9398-a4283f282cc4")
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 88.9 83.82 0)
+		(at 104.14 101.6 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2720,7 +3106,7 @@
 		(dnp no)
 		(uuid "29669c90-b70d-50a5-b351-9bfe5e5d3c6b")
 		(property "Reference" "#PWR003"
-			(at 88.9 83.82 0)
+			(at 104.14 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2729,7 +3115,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 88.9 88.72 0)
+			(at 104.14 106.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2737,7 +3123,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 88.9 83.82 0)
+			(at 104.14 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2746,7 +3132,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 88.9 83.82 0)
+			(at 104.14 101.6 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2768,72 +3154,50 @@
 	)
 	(wire
 		(pts
-			(xy 91.44 78.74)
-			(xy 83.82 78.74)
+			(xy 109.22 71.12)
+			(xy 134.62 71.12)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "1c8ad6b2-42cb-5efa-9d59-20e9f5024d53")
-	)
-	(wire
-		(pts
-			(xy 83.82 78.74)
-			(xy 83.82 96.52)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ac6939d3-7d18-599e-b7c1-681a86fca2e6")
-	)
-	(wire
-		(pts
-			(xy 83.82 96.52)
-			(xy 121.92 96.52)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d197364a-5fe9-59e8-95dd-cb73c007079e")
+		(uuid "ce1c6ed8-ea93-5a4e-ae81-c6654c8d8b9b")
 	)
 	(label "VDDAU_AON_REG"
-		(at 86.36 96.52 0)
+		(at 110.49 71.12 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left bottom)
 		)
-		(uuid "e02b5264-fa18-573f-9887-44f056d7b386")
+		(uuid "808e37d4-9d85-56c2-8b24-37f8200a17cd")
 	)
 	(wire
 		(pts
-			(xy 106.68 96.52)
-			(xy 106.68 99.06)
+			(xy 127 71.12)
+			(xy 127 73.66)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "4f75f45c-785c-5cd9-98d2-550f2a885712")
+		(uuid "d68d6e0c-eb38-54c3-8e62-cfeb29471f18")
 	)
 	(wire
 		(pts
-			(xy 106.68 106.68)
-			(xy 106.68 109.22)
+			(xy 127 81.28)
+			(xy 127 83.82)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "9cf24b11-a5f4-5e80-a3b9-379e99f6ea98")
+		(uuid "5f3ad888-6e20-5064-81c3-2bb22518e7df")
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 106.68 109.22 0)
+		(at 127 83.82 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2843,7 +3207,7 @@
 		(dnp no)
 		(uuid "644c97ff-750d-5cb2-a9f6-82ac3575e0e7")
 		(property "Reference" "#PWR004"
-			(at 106.68 109.22 0)
+			(at 127 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2852,7 +3216,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 106.68 114.12 0)
+			(at 127 88.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2860,7 +3224,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 106.68 109.22 0)
+			(at 127 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2869,7 +3233,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 106.68 109.22 0)
+			(at 127 83.82 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2891,7 +3255,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 106.68 102.87 0)
+		(at 127 77.47 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -2902,7 +3266,7 @@
 		(fields_autoplaced no)
 		(uuid "0babf284-cf09-5eb8-b862-4caca33d9016")
 		(property "Reference" "C"
-			(at 109.982 101.6 0)
+			(at 130.302 76.2 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2910,8 +3274,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "1uF"
-			(at 109.982 104.14 0)
+		(property "Value" "2.2uF"
+			(at 130.302 78.74 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2920,7 +3284,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 106.68 102.87 0)
+			(at 127 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2929,7 +3293,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 106.68 102.87 0)
+			(at 127 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2938,7 +3302,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 106.68 102.87 0)
+			(at 127 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2947,7 +3311,7 @@
 			)
 		)
 		(property "MPN" ""
-			(at 106.68 102.87 0)
+			(at 127 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2956,7 +3320,7 @@
 			)
 		)
 		(property "Manufacturer" ""
-			(at 106.68 102.87 0)
+			(at 127 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2965,7 +3329,7 @@
 			)
 		)
 		(property "DigiKey_PN" ""
-			(at 106.68 102.87 0)
+			(at 127 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2974,7 +3338,7 @@
 			)
 		)
 		(property "Mouser_PN" ""
-			(at 106.68 102.87 0)
+			(at 127 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2983,7 +3347,7 @@
 			)
 		)
 		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
-			(at 106.68 102.87 0)
+			(at 127 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -2991,8 +3355,8 @@
 				(hide yes)
 			)
 		)
-		(property "Voltage" "16V"
-			(at 106.68 102.87 0)
+		(property "Voltage" "10V"
+			(at 127 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3001,7 +3365,7 @@
 			)
 		)
 		(property "Dielectric" "X7R"
-			(at 106.68 102.87 0)
+			(at 127 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3009,8 +3373,8 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0402"
-			(at 106.68 102.87 0)
+		(property "Package" "0603"
+			(at 127 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3019,7 +3383,7 @@
 			)
 		)
 		(property "Tolerance" "10%"
-			(at 106.68 102.87 0)
+			(at 127 77.47 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3044,7 +3408,7 @@
 	)
 	(symbol
 		(lib_id "Device:R")
-		(at 125.73 96.52 90)
+		(at 138.43 71.12 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3055,7 +3419,7 @@
 		(fields_autoplaced no)
 		(uuid "be6e0946-53e3-5a61-9857-96b8a74f3e7a")
 		(property "Reference" "R"
-			(at 125.73 93.98 90)
+			(at 138.43 68.58 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3063,7 +3427,7 @@
 			)
 		)
 		(property "Value" "0R"
-			(at 125.73 99.31 90)
+			(at 138.43 73.91 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3071,7 +3435,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 125.73 96.52 0)
+			(at 138.43 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3080,7 +3444,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 125.73 96.52 0)
+			(at 138.43 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3089,7 +3453,7 @@
 			)
 		)
 		(property "Description" "Resistor"
-			(at 125.73 96.52 0)
+			(at 138.43 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3098,7 +3462,7 @@
 			)
 		)
 		(property "MPN" ""
-			(at 125.73 96.52 0)
+			(at 138.43 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3107,7 +3471,7 @@
 			)
 		)
 		(property "Manufacturer" ""
-			(at 125.73 96.52 0)
+			(at 138.43 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3116,7 +3480,7 @@
 			)
 		)
 		(property "DigiKey_PN" ""
-			(at 125.73 96.52 0)
+			(at 138.43 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3125,7 +3489,7 @@
 			)
 		)
 		(property "Mouser_PN" ""
-			(at 125.73 96.52 0)
+			(at 138.43 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3134,7 +3498,7 @@
 			)
 		)
 		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
-			(at 125.73 96.52 0)
+			(at 138.43 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3143,7 +3507,7 @@
 			)
 		)
 		(property "Tolerance" "5%"
-			(at 125.73 96.52 0)
+			(at 138.43 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3152,7 +3516,7 @@
 			)
 		)
 		(property "Package" "0402"
-			(at 125.73 96.52 0)
+			(at 138.43 71.12 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3177,29 +3541,29 @@
 	)
 	(wire
 		(pts
-			(xy 129.54 96.52)
-			(xy 134.62 96.52)
+			(xy 142.24 71.12)
+			(xy 147.32 71.12)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "171f6665-6570-5547-b6a9-f15ddd915e21")
+		(uuid "7ab5a4ca-0bc4-5c04-bfae-787618053e22")
 	)
 	(wire
 		(pts
-			(xy 134.62 96.52)
-			(xy 134.62 93.98)
+			(xy 147.32 71.12)
+			(xy 147.32 68.58)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "f884d50a-931c-597f-9fe0-750da43372a2")
+		(uuid "6fae9373-c44e-505c-889d-87998d1b6e91")
 	)
 	(symbol
 		(lib_id "power:+3V3")
-		(at 134.62 93.98 0)
+		(at 147.32 68.58 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -3209,7 +3573,7 @@
 		(dnp no)
 		(uuid "7b0ebf47-da57-56db-8030-1deba0045d02")
 		(property "Reference" "#PWR005"
-			(at 134.62 93.98 0)
+			(at 147.32 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3218,7 +3582,7 @@
 			)
 		)
 		(property "Value" "VDDAU_AON"
-			(at 134.62 89.58 0)
+			(at 147.32 64.18 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3226,7 +3590,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 134.62 93.98 0)
+			(at 147.32 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3235,7 +3599,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 134.62 93.98 0)
+			(at 147.32 68.58 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4804,7 +5168,7 @@
 		(uuid "5ee3ebbc-ded1-54d7-acc6-0eb64973d745")
 	)
 	(symbol
-		(lib_id "Device:L")
+		(lib_id "DropOut_Inductor:74438356022HT")
 		(at 142.24 167.64 90)
 		(unit 1)
 		(body_style 1)
@@ -4823,7 +5187,7 @@
 				)
 			)
 		)
-		(property "Value" "2.2uH"
+		(property "Value" "74438356022HT"
 			(at 142.24 170.43 90)
 			(effects
 				(font
@@ -4831,7 +5195,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Inductor_SMD:L_Wuerth_MAPI-4020"
 			(at 142.24 167.64 0)
 			(effects
 				(font
@@ -4840,7 +5204,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.we-online.com/components/products/datasheet/74438356022HT.pdf"
 			(at 142.24 167.64 0)
 			(effects
 				(font
@@ -4849,7 +5213,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Inductor"
+		(property "Description" "Würth Elektronik WE-MAPI 4020 power inductor, 2.2 µH ±20 %, Isat 3.7 A (-10 %) / 7.6 A (-30 %), IRP 5.9 A (40 K rise), DCR 32.2 mΩ max, metal alloy composite, molded, AEC-Q200, 4.1x4.1x2.1 mm"
 			(at 142.24 167.64 0)
 			(effects
 				(font
@@ -4858,7 +5222,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Würth Elektronik"
 			(at 142.24 167.64 0)
 			(effects
 				(font
@@ -4867,7 +5231,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "74438356022HT"
 			(at 142.24 167.64 0)
 			(effects
 				(font
@@ -4876,7 +5240,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "732-74438356022HTCT-ND"
 			(at 142.24 167.64 0)
 			(effects
 				(font
@@ -4885,7 +5249,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "710-74438356022HT"
 			(at 142.24 167.64 0)
 			(effects
 				(font
@@ -4894,7 +5258,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Inductor buck inductor (library brief 02-buck-inductors)"
+		(property "Temperature_Grade" "AEC-Q200 Grade 0, -55 to +150 °C operating (-55 to +110 °C ambient at IRP)"
 			(at 142.24 167.64 0)
 			(effects
 				(font
@@ -7430,7 +7794,7 @@
 		(uuid "2e36f475-3244-5316-b866-d74921219850")
 	)
 	(symbol
-		(lib_id "Device:L")
+		(lib_id "DropOut_Inductor:74438356010HT")
 		(at 142.24 278.13 90)
 		(unit 1)
 		(body_style 1)
@@ -7449,7 +7813,7 @@
 				)
 			)
 		)
-		(property "Value" "1uH"
+		(property "Value" "74438356010HT"
 			(at 142.24 280.92 90)
 			(effects
 				(font
@@ -7457,7 +7821,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Inductor_SMD:L_Wuerth_MAPI-4020"
 			(at 142.24 278.13 0)
 			(effects
 				(font
@@ -7466,7 +7830,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.we-online.com/components/products/datasheet/74438356010HT.pdf"
 			(at 142.24 278.13 0)
 			(effects
 				(font
@@ -7475,7 +7839,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Inductor"
+		(property "Description" "Würth Elektronik WE-MAPI 4020 power inductor, 1.0 µH ±20 %, Isat 4.25 A (-10 %) / 9.3 A (-30 %), IRP 8.75 A (40 K rise), DCR 15.5 mΩ max, metal alloy composite, molded, AEC-Q200, 4.1x4.1x2.1 mm"
 			(at 142.24 278.13 0)
 			(effects
 				(font
@@ -7484,7 +7848,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Würth Elektronik"
 			(at 142.24 278.13 0)
 			(effects
 				(font
@@ -7493,7 +7857,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "74438356010HT"
 			(at 142.24 278.13 0)
 			(effects
 				(font
@@ -7502,7 +7866,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "732-74438356010HTCT-ND"
 			(at 142.24 278.13 0)
 			(effects
 				(font
@@ -7511,7 +7875,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "710-74438356010HT"
 			(at 142.24 278.13 0)
 			(effects
 				(font
@@ -7520,7 +7884,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Inductor buck inductor (library brief 02-buck-inductors)"
+		(property "Temperature_Grade" "AEC-Q200 Grade 0, -55 to +150 °C operating (-55 to +110 °C ambient at IRP)"
 			(at 142.24 278.13 0)
 			(effects
 				(font
@@ -12278,7 +12642,7 @@
 			)
 		)
 	)
-	(text "DESIGN VALUES (LMQ66430-Q1 SNVSBV1F; TPS3702-Q1 SBVS261C; Node60 DEC-004, DEC-006). Values per D-45.\nPower-up order (DEC-004): VDDAU_AON always on -> LAN8670 INH high -> U302 3V3_MAIN -> 3V3_MAIN > 2.46 V\n  -> U303 1V5_CORE. VDDA <= VDDAU + 0.5 V holds because VDDAU is up first. No FS26, latch or MCU gate.\n0R debug links (project default: every regulator output): R on each *_REG -> rail, 0603 rated 2 A.\n  Feedback senses the regulator side, so opening the link leaves the regulator in regulation.\nU302 3V3_MAIN: LMQ66430MC3 fixed 3.3 V (VOUT/FB on the output), 2.2 MHz, MODE/SYNC = GND (auto PFM/PWM).\n  TI Table 8-4: L 2.2uH, COUT >= 40 uF effective -> 2 x 22uF 10V 1210 + 100nF; CIN 2 x 4.7uF 100V + 100nF 100V\n  (100 V = >= 2x the 34 V OV cut-off). CVCC 1uF. BOOT: internal 0.1 uF (TI: CBOOT DNP), so no-connect. PG unused.\nU303 1V5_CORE: adjustable. VOUT = 1 V x (1 + 14k / 28k) = 1.50 V. RFBT || RFBB = 9.33 k: inside the 5-10 k\n  window that selects adjustable mode (Eq. 4); RFBT <= 15 k (Eq. 5).\n  L = (VIN - VOUT) / (fSW x K x 3 A) x VOUT / VIN = 0.99 uH (12 V in, K = 0.2) -> 1uH. COUT 3 x 22uF.\n  At 12 V in the on-time is 57 ns, below tON-MIN (65-75 ns): the part stretches off-time at high VIN.\n  Check ripple and EMI from 14 to 34 V on the bench.\nEN chain: 3V3_MAIN - 100k - 1V5_EN - 100k - GND. EN rises at 1.23 V (1.16-1.30 V): 1V5 starts at\n  3V3_MAIN > 2.32-2.60 V and stops below 1.66-2.00 V.\nInductors: Isat >= 5 A (IPEAKMAX max), saturation vs peak current (derating rule).\nWake timing (GATE-NET-01, accepted 2026-10-23, to be measured): OPEN Alliance limit is supply ramp + PHY init\n  <= 15 ms (Sleep/Wake-Up Electrical Interface Spec v1.0 sec. 5.2); the LAN8670 \"1 ms\" is Microchip's allocation.\n  3V3_MAIN ~2.5 ms EN delay + 2-4.6 ms soft start, LAN8670 D0 ~2 ms POR + 0.9 ms init: ~10 ms expected.\nU304 TPS3702AX33, SET = GND: UV 3.10 V / OV 3.50 V (+/-6 % window, 0.55 % hysteresis, +/-0.9 %).\n  The SET-high +/-2 % window (3.23 / 3.37 V) is too tight for buck transients. UV and OV open drains are\n  wired-OR onto RESET_L with 4.7k to 3V3_MAIN. No internal reset delay: release timing comes from\n  the S32K344 reset sequence (GATE-SUP-02).\nU301 TPS7B8133-Q1 (selected 2026-10-22; 40 V, Iq 3.5 uA, above the 1-2 uA target): drawn as a generic 4-pin stand-in\n  (1 IN, 2 EN tied to IN, 3 OUT, 4 GND) until the library part exists. Check its output-cap requirement then.\n"
+	(text "DESIGN VALUES (LMQ66430-Q1 SNVSBV1F; TPS3702-Q1 SBVS261C; Node60 DEC-004, DEC-006). Values per D-45.\nPower-up order (DEC-004): VDDAU_AON always on -> LAN8670 INH high -> U302 3V3_MAIN -> 3V3_MAIN > 2.46 V\n  -> U303 1V5_CORE. VDDA <= VDDAU + 0.5 V holds because VDDAU is up first. No FS26, latch or MCU gate.\n0R debug links (project default: every regulator output): R on each *_REG -> rail, 0603 rated 2 A.\n  Feedback senses the regulator side, so opening the link leaves the regulator in regulation.\nU302 3V3_MAIN: LMQ66430MC3 fixed 3.3 V (VOUT/FB on the output), 2.2 MHz, MODE/SYNC = GND (auto PFM/PWM).\n  TI Table 8-4: L 2.2uH, COUT >= 40 uF effective -> 2 x 22uF 10V 1210 + 100nF; CIN 2 x 4.7uF 100V + 100nF 100V\n  (100 V = >= 2x the 34 V OV cut-off). CVCC 1uF. BOOT: internal 0.1 uF (TI: CBOOT DNP), so no-connect. PG unused.\nU303 1V5_CORE: adjustable. VOUT = 1 V x (1 + 14k / 28k) = 1.50 V. RFBT || RFBB = 9.33 k: inside the 5-10 k\n  window that selects adjustable mode (Eq. 4); RFBT <= 15 k (Eq. 5).\n  L = (VIN - VOUT) / (fSW x K x 3 A) x VOUT / VIN = 0.99 uH (12 V in, K = 0.2) -> 1uH. COUT 3 x 22uF.\n  At 12 V in the on-time is 57 ns, below tON-MIN (65-75 ns): the part stretches off-time at high VIN.\n  Check ripple and EMI from 14 to 34 V on the bench.\nEN chain: 3V3_MAIN - 100k - 1V5_EN - 100k - GND. EN rises at 1.23 V (1.16-1.30 V): 1V5 starts at\n  3V3_MAIN > 2.32-2.60 V and stops below 1.66-2.00 V.\nWake timing (GATE-NET-01, accepted 2026-10-23, to be measured): OPEN Alliance limit is supply ramp + PHY init\n  <= 15 ms (Sleep/Wake-Up Electrical Interface Spec v1.0 sec. 5.2); the LAN8670 \"1 ms\" is Microchip's allocation.\n  3V3_MAIN ~2.5 ms EN delay + 2-4.6 ms soft start, LAN8670 D0 ~2 ms POR + 0.9 ms init: ~10 ms expected.\nU304 TPS3702AX33, SET = GND: UV 3.10 V / OV 3.50 V (+/-6 % window, 0.55 % hysteresis, +/-0.9 %).\n  The SET-high +/-2 % window (3.23 / 3.37 V) is too tight for buck transients. UV and OV open drains are\n  wired-OR onto RESET_L with 4.7k to 3V3_MAIN. No internal reset delay: release timing comes from\n  the S32K344 reset sequence (GATE-SUP-02).\nU301 TPS7B8133QWDRVRQ1: 40 V, Iq 3.5 uA (above the 1-2 uA Rev A target). EN tied to IN (always on); DNC open;\n  thermal pad to GND. COUT 2.2uF 10V 0603 (datasheet: 1-200 uF effective, ESR 1 mOhm-5 Ohm), CIN 1uF 100V.\nInductors (user choice 2026-10-23): Wurth 74438356022HT 2.2 uH (Isat 7.6 A) and 74438356010HT 1.0 uH (Isat 9.3 A),\n  -55..+150 C. Check the 2.2 MHz core loss in Wurth REDEXPERT before release.\n"
 		(exclude_from_sim no)
 		(at 330.2 40.64 0)
 		(effects
@@ -12288,6 +12652,12 @@
 			(justify left top)
 		)
 		(uuid "52a02569-4b88-5ac3-864a-3e6073513676")
+	)
+	(junction
+		(at 63.5 55.88)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a6ef8cff-7226-5aa0-88c3-c7b6df149b4e")
 	)
 	(junction
 		(at 64.77 147.32)
@@ -12314,12 +12684,6 @@
 		(uuid "eebf6a17-cdf4-5fe4-9a21-c6d6c0e5ff1b")
 	)
 	(junction
-		(at 71.12 58.42)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "50e0a782-735c-5ae0-8ad0-d1abc3042771")
-	)
-	(junction
 		(at 74.93 147.32)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -12330,6 +12694,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "eb9788d7-3dbb-50e9-ad91-e320df09e147")
+	)
+	(junction
+		(at 78.74 71.12)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "603d6681-bf1c-59b9-9341-2288e7e9911d")
 	)
 	(junction
 		(at 85.09 147.32)
@@ -12344,16 +12714,16 @@
 		(uuid "9afe323a-b47d-5146-8301-3bfcbe69d560")
 	)
 	(junction
-		(at 86.36 76.2)
+		(at 96.52 99.06)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "9f80e311-c164-57a0-b355-fcb6cd0639d7")
+		(uuid "5fb893b2-5131-54b7-9de0-e430ba3e45c7")
 	)
 	(junction
-		(at 106.68 96.52)
+		(at 99.06 99.06)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "b752d2df-1ad0-5776-9a49-2c5294383fe9")
+		(uuid "f09ad791-8f31-587f-a647-a1e2a70cc700")
 	)
 	(junction
 		(at 110.49 210.82)
@@ -12366,6 +12736,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f9d62956-1667-5e8f-bb5e-4dc98ba35fbd")
+	)
+	(junction
+		(at 127 71.12)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "abf4b381-7178-570f-bae0-3f9c58e57790")
 	)
 	(junction
 		(at 153.67 167.64)

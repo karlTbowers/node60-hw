@@ -430,292 +430,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Device:Thermistor_NTC"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TH"
-				(at -4.445 0 90)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "Thermistor_NTC"
-				(at 3.175 0 90)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 0 1.27 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 1.27 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Temperature dependent resistor, negative temperature coefficient"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "thermistor NTC resistor sensor RTD"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "R_* RV_*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "Thermistor_NTC_0_1"
-				(arc
-					(start -3.175 2.413)
-					(mid -3.0506 2.3165)
-					(end -3.048 2.159)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -3.048 2.794)
-					(mid -2.9736 2.9736)
-					(end -2.794 3.048)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -2.794 3.048)
-					(mid -2.6144 2.9736)
-					(end -2.54 2.794)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -2.794 2.54)
-					(mid -2.9736 2.6144)
-					(end -3.048 2.794)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -2.794 1.905)
-					(mid -2.9736 1.9794)
-					(end -3.048 2.159)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -2.54 2.159)
-					(mid -2.6144 1.9794)
-					(end -2.794 1.905)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(arc
-					(start -2.159 2.794)
-					(mid -2.434 2.5608)
-					(end -2.794 2.54)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.54 2.159)
-						(xy -2.54 2.794)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.54 -3.683)
-						(xy -2.54 -1.397)
-						(xy -2.794 -2.159)
-						(xy -2.286 -2.159)
-						(xy -2.54 -1.397)
-						(xy -2.54 -1.651)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.778 2.54)
-						(xy -1.778 1.524)
-						(xy 1.778 -1.524)
-						(xy 1.778 -2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.778 -1.397)
-						(xy -1.778 -3.683)
-						(xy -2.032 -2.921)
-						(xy -1.524 -2.921)
-						(xy -1.778 -3.683)
-						(xy -1.778 -3.429)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-				(rectangle
-					(start -1.016 2.54)
-					(end 1.016 -2.54)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "Thermistor_NTC_1_1"
-				(pin passive line
-					(at 0 3.81 270)
-					(length 1.27)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 1.27)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "DropOut_PowerSwitch:TPS2HCS08AQPWPRQ1"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -972,7 +686,7 @@
 						)
 					)
 				)
-				(pin power_out line
+				(pin passive line
 					(at 17.78 12.7 180)
 					(length 5.08)
 					(name "VOUT1"
@@ -990,7 +704,7 @@
 						)
 					)
 				)
-				(pin power_out line
+				(pin passive line
 					(at 17.78 10.16 180)
 					(length 5.08)
 					(name "VOUT1"
@@ -1026,7 +740,7 @@
 						)
 					)
 				)
-				(pin power_out line
+				(pin passive line
 					(at 17.78 2.54 180)
 					(length 5.08)
 					(name "VOUT2"
@@ -1044,7 +758,7 @@
 						)
 					)
 				)
-				(pin power_out line
+				(pin passive line
 					(at 17.78 0 180)
 					(length 5.08)
 					(name "VOUT2"
@@ -1163,6 +877,362 @@
 						)
 					)
 					(number "17"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DropOut_Thermistor:NCU18XH103F6SRB"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "RT"
+				(at 0 5.985 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "NCU18XH103F6SRB"
+				(at 0 -5.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "DropOut_Resistor_SMD:R_NTC_0603_1608Metric_Pad0.7x0.7mm"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=NCU18XH103F6SRB"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Murata NCU18 NTC thermistor 10 kΩ ±1 %, B25/50 3380 K ±1 %, -55 to +150 °C, automotive (AEC-Q200), 0603 (1608 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Murata Electronics"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "NCU18XH103F6SRB"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "DigiKey_PN" "490-18139-1-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "81-NCU18XH103F6SRB"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +150 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Notes" "R-T table on Murata's product page (Resistance-Temperature Characteristics); XH103 centre values in catalog R44E p. 15"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "thermistor NTC temperature sensor 10k automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R?NTC?0603?1608Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "NCU18XH103F6SRB_1_1"
+				(polyline
+					(pts
+						(xy -3.683 2.54)
+						(xy -1.397 2.54)
+						(xy -2.159 2.794)
+						(xy -2.159 2.286)
+						(xy -1.397 2.54)
+						(xy -1.651 2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 1.016)
+						(xy 2.54 1.016)
+						(xy 2.54 -1.016)
+						(xy -2.54 -1.016)
+						(xy -2.54 1.016)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.397 1.778)
+						(xy -3.683 1.778)
+						(xy -2.921 2.032)
+						(xy -2.921 1.524)
+						(xy -3.683 1.778)
+						(xy -3.429 1.778)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 1.905 2.794)
+					(mid 1.9794 2.9736)
+					(end 2.159 3.048)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.159 2.54)
+						(xy 2.794 2.54)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 2.159 2.54)
+					(mid 1.9794 2.6144)
+					(end 1.905 2.794)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 2.413 3.175)
+					(mid 2.3165 3.0506)
+					(end 2.159 3.048)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 1.778)
+						(xy 1.524 1.778)
+						(xy -1.524 -1.778)
+						(xy -2.54 -1.778)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 2.54 2.794)
+					(mid 2.6144 2.9736)
+					(end 2.794 3.048)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 2.794 3.048)
+					(mid 2.9736 2.9736)
+					(end 3.048 2.794)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 3.048 2.794)
+					(mid 2.9736 2.6144)
+					(end 2.794 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 2.794 2.159)
+					(mid 2.5608 2.434)
+					(end 2.54 2.794)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5296,7 +5366,7 @@
 		)
 		(uuid "c8b2c7b6-63d9-559b-902c-552b104739ca")
 	)
-	(text "Switch-package temperature: NTC divider (R?xx, TH?01)"
+	(text "Switch-package temperature: NTC divider (R?xx, RT?01)"
 		(exclude_from_sim no)
 		(at 38.1 283.21 0)
 		(effects
@@ -5540,18 +5610,18 @@
 	)
 	(wire
 		(pts
-			(xy 63.5 314.96)
 			(xy 63.5 317.5)
+			(xy 63.5 320.04)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "bd94fff3-cef1-5bb9-92dc-83334d5170b9")
+		(uuid "aac8c035-f87a-5562-861c-a39fadcb7b21")
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 63.5 317.5 0)
+		(at 63.5 320.04 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5561,7 +5631,7 @@
 		(dnp no)
 		(uuid "7925459d-40ce-50e3-aa49-4a22454b4d60")
 		(property "Reference" "#PWR015"
-			(at 63.5 317.5 0)
+			(at 63.5 320.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5570,7 +5640,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 63.5 322.4 0)
+			(at 63.5 324.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5578,7 +5648,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 63.5 317.5 0)
+			(at 63.5 320.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5587,7 +5657,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 63.5 317.5 0)
+			(at 63.5 320.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5616,8 +5686,8 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Thermistor_NTC")
-		(at 63.5 311.15 0)
+		(lib_id "DropOut_Thermistor:NCU18XH103F6SRB")
+		(at 63.5 312.42 270)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5626,36 +5696,27 @@
 		(in_pos_files yes)
 		(dnp no)
 		(fields_autoplaced no)
-		(uuid "c822f4cc-22e2-5893-907d-ecd38f704516")
-		(property "Reference" "TH"
-			(at 66.548 309.88 0)
+		(uuid "6e3349e5-5814-54ea-b203-abb873924331")
+		(property "Reference" "RT"
+			(at 67.564 311.15 270)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
 		(property "Value" "NCU18XH103F6SRB"
-			(at 66.548 312.42 0)
+			(at 67.564 313.69 270)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
-				(justify left)
+				(justify right)
 			)
 		)
-		(property "Footprint" ""
-			(at 63.5 311.15 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 63.5 311.15 0)
+		(property "Footprint" "DropOut_Resistor_SMD:R_NTC_0603_1608Metric_Pad0.7x0.7mm"
+			(at 63.5 312.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5663,8 +5724,8 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Temperature dependent resistor, negative temperature coefficient"
-			(at 63.5 311.15 0)
+		(property "Datasheet" "https://www.murata.com/en-us/products/productdetail?partno=NCU18XH103F6SRB"
+			(at 63.5 312.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5672,8 +5733,8 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
-			(at 63.5 311.15 0)
+		(property "Description" "Murata NCU18 NTC thermistor 10 kΩ ±1 %, B25/50 3380 K ±1 %, -55 to +150 °C, automotive (AEC-Q200), 0603 (1608 metric)"
+			(at 63.5 312.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5681,8 +5742,8 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
-			(at 63.5 311.15 0)
+		(property "Manufacturer" "Murata Electronics"
+			(at 63.5 312.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5690,8 +5751,8 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
-			(at 63.5 311.15 0)
+		(property "MPN" "NCU18XH103F6SRB"
+			(at 63.5 312.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5699,8 +5760,8 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
-			(at 63.5 311.15 0)
+		(property "DigiKey_PN" "490-18139-1-ND"
+			(at 63.5 312.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5708,8 +5769,8 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: selected 2026-10-22: Murata NCU18XH103F6SRB; library part pending (session node60-ldo-ntc)"
-			(at 63.5 311.15 0)
+		(property "Mouser_PN" "81-NCU18XH103F6SRB"
+			(at 63.5 312.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5717,8 +5778,17 @@
 				(hide yes)
 			)
 		)
-		(property "Tolerance" "1%"
-			(at 63.5 311.15 0)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +150 °C"
+			(at 63.5 312.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "R-T table on Murata's product page (Resistance-Temperature Characteristics); XH103 centre values in catalog R44E p. 15"
+			(at 63.5 312.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5727,23 +5797,23 @@
 			)
 		)
 		(pin "1"
-			(uuid "37f22063-9188-57e5-a53a-b54662fadc9d")
+			(uuid "87f1e9b8-53fb-51ba-bce0-12d1d37a06ff")
 		)
 		(pin "2"
-			(uuid "079de821-7163-5d78-a527-37e2b3fbe1a4")
+			(uuid "d21bfc1a-1476-54db-9d0b-13aaebc29c6a")
 		)
 		(instances
 			(project "node60"
 				(path "/55f51841-30a3-4965-b848-b796f60054d0/ceecbbf6-496b-4919-aa4d-b8194f44838e"
-					(reference "TH601")
+					(reference "RT601")
 					(unit 1)
 				)
 				(path "/55f51841-30a3-4965-b848-b796f60054d0/68ca6db2-fb88-4c17-b54b-7131815c5345"
-					(reference "TH701")
+					(reference "RT701")
 					(unit 1)
 				)
 				(path "/55f51841-30a3-4965-b848-b796f60054d0/618ad5c3-1fe8-46d2-96b6-b9e1aa40313d"
-					(reference "TH801")
+					(reference "RT801")
 					(unit 1)
 				)
 			)
@@ -5752,39 +5822,39 @@
 	(wire
 		(pts
 			(xy 63.5 307.34)
-			(xy 96.52 307.34)
+			(xy 101.6 307.34)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "513ea1e3-9b2c-5a9a-afac-51663eda083b")
+		(uuid "c5914632-ca82-5635-ad15-0c1fdb2d8274")
 	)
 	(wire
 		(pts
-			(xy 76.2 307.34)
-			(xy 76.2 309.88)
+			(xy 88.9 307.34)
+			(xy 88.9 309.88)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "f6f6f6ae-aa59-5cc5-8500-39c920b89805")
+		(uuid "5e97b122-83af-53a0-a192-d356deacb179")
 	)
 	(wire
 		(pts
-			(xy 76.2 317.5)
-			(xy 76.2 320.04)
+			(xy 88.9 317.5)
+			(xy 88.9 320.04)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "ac23663f-35f3-5255-b405-cc98fa4a5fc7")
+		(uuid "254405a1-1b11-536c-917f-8854273f4b96")
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 76.2 320.04 0)
+		(at 88.9 320.04 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5794,7 +5864,7 @@
 		(dnp no)
 		(uuid "88327bc6-ed07-5944-942a-1579a5d56356")
 		(property "Reference" "#PWR016"
-			(at 76.2 320.04 0)
+			(at 88.9 320.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5803,7 +5873,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 76.2 324.94 0)
+			(at 88.9 324.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5811,7 +5881,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 76.2 320.04 0)
+			(at 88.9 320.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5820,7 +5890,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 76.2 320.04 0)
+			(at 88.9 320.04 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5850,7 +5920,7 @@
 	)
 	(symbol
 		(lib_id "Device:C")
-		(at 76.2 313.69 0)
+		(at 88.9 313.69 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -5861,7 +5931,7 @@
 		(fields_autoplaced no)
 		(uuid "087152bb-3def-5633-905a-f8e7629c3538")
 		(property "Reference" "C"
-			(at 79.502 312.42 0)
+			(at 92.202 312.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5870,7 +5940,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 79.502 314.96 0)
+			(at 92.202 314.96 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5879,7 +5949,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 76.2 313.69 0)
+			(at 88.9 313.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5888,7 +5958,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 76.2 313.69 0)
+			(at 88.9 313.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5897,7 +5967,7 @@
 			)
 		)
 		(property "Description" "Unpolarized capacitor"
-			(at 76.2 313.69 0)
+			(at 88.9 313.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5906,7 +5976,7 @@
 			)
 		)
 		(property "MPN" ""
-			(at 76.2 313.69 0)
+			(at 88.9 313.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5915,7 +5985,7 @@
 			)
 		)
 		(property "Manufacturer" ""
-			(at 76.2 313.69 0)
+			(at 88.9 313.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5924,7 +5994,7 @@
 			)
 		)
 		(property "DigiKey_PN" ""
-			(at 76.2 313.69 0)
+			(at 88.9 313.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5933,7 +6003,7 @@
 			)
 		)
 		(property "Mouser_PN" ""
-			(at 76.2 313.69 0)
+			(at 88.9 313.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5942,7 +6012,7 @@
 			)
 		)
 		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
-			(at 76.2 313.69 0)
+			(at 88.9 313.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5951,7 +6021,7 @@
 			)
 		)
 		(property "Voltage" "25V"
-			(at 76.2 313.69 0)
+			(at 88.9 313.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5960,7 +6030,7 @@
 			)
 		)
 		(property "Dielectric" "C0G"
-			(at 76.2 313.69 0)
+			(at 88.9 313.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5969,7 +6039,7 @@
 			)
 		)
 		(property "Package" "0805"
-			(at 76.2 313.69 0)
+			(at 88.9 313.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -5978,7 +6048,7 @@
 			)
 		)
 		(property "Tolerance" "5%"
-			(at 76.2 313.69 0)
+			(at 88.9 313.69 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -6011,14 +6081,14 @@
 	)
 	(hierarchical_label "NTC_SW"
 		(shape output)
-		(at 96.52 307.34 0)
+		(at 101.6 307.34 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
 			(justify left)
 		)
-		(uuid "16476987-37bb-5b15-8dd5-1dbe01f5e095")
+		(uuid "a21d6f5b-00aa-5bea-a070-cbbb751bce94")
 	)
 	(rectangle
 		(start 147.32 246.38)
@@ -7031,10 +7101,10 @@
 		(uuid "1727a0d1-32c1-564c-bb45-80394c71e550")
 	)
 	(junction
-		(at 76.2 307.34)
+		(at 88.9 307.34)
 		(diameter 0)
 		(color 0 0 0 0)
-		(uuid "b1d4866b-4aa4-5e6d-b5c9-86d54f350337")
+		(uuid "efb79ab1-e08a-5436-b25e-b480b288e0ef")
 	)
 	(junction
 		(at 114.3 251.46)

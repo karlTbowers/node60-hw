@@ -1237,7 +1237,7 @@
 						)
 					)
 				)
-				(pin power_out line
+				(pin passive line
 					(at 30.48 2.54 180)
 					(length 5.08)
 					(name "V11"
@@ -1273,7 +1273,7 @@
 						)
 					)
 				)
-				(pin power_out line
+				(pin passive line
 					(at 30.48 0 180)
 					(length 5.08)
 					(name "V11"
@@ -1345,7 +1345,7 @@
 						)
 					)
 				)
-				(pin power_out line
+				(pin passive line
 					(at 30.48 -2.54 180)
 					(length 5.08)
 					(name "V11"
@@ -19482,7 +19482,34 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: test point part pending (library brief 03)"
+		(property "Manufacturer" ""
+			(at 170.18 355.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" ""
+			(at 170.18 355.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" ""
+			(at 170.18 355.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Placeholder" "PLACEHOLDER: awaiting DropOut test-point part (library brief 03-connectors-testpoints)"
 			(at 170.18 355.6 0)
 			(effects
 				(font
@@ -19599,7 +19626,34 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: test point part pending (library brief 03)"
+		(property "Manufacturer" ""
+			(at 193.04 355.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" ""
+			(at 193.04 355.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" ""
+			(at 193.04 355.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Placeholder" "PLACEHOLDER: awaiting DropOut test-point part (library brief 03-connectors-testpoints)"
 			(at 193.04 355.6 0)
 			(effects
 				(font
