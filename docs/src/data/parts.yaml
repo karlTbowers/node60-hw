@@ -326,7 +326,7 @@
   function: Output connector, one per output; DEUTSCH DT 2-pin right-angle PCB header, 13 A per contact (14 AWG), panel flange seal; mates DT06-2S
   subsystem: harness
   status: selected
-  decision_note: Selected (user's decision 2026-10-22); replaces the MX150 plan. Pin assignment open; 10 A at +125 °C needs thermal proof
+  decision_note: Selected (user's decision 2026-10-22); replaces the MX150 plan. Pin 1 = OUTx, pin 2 = local ground return; 10 A at +125 °C needs thermal proof
   supply_note: DigiKey and Mouser stock; marketplace copies are alternates only
   observations:
     - { date: 2026-10-22, source: DigiKey 1734-1452-ND, prices: [{ qty: "1", usd: 8.23 }, { qty: "10", usd: 6.991 }, { qty: "200", usd: 5.658 }], stock: 217 }
