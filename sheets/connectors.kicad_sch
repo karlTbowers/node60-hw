@@ -852,7 +852,7 @@
 		(fields_autoplaced no)
 		(uuid "49607dfa-1cb3-5485-9619-25578d04c073")
 		(property "Reference" "J"
-			(at 53.34 74.93 0)
+			(at 48.26 69.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -861,7 +861,7 @@
 			)
 		)
 		(property "Value" "Battery input (TBD)"
-			(at 53.34 77.47 0)
+			(at 48.26 72.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1015,7 +1015,7 @@
 		(fields_autoplaced no)
 		(uuid "75821323-2509-502e-9f92-634ac89157ab")
 		(property "Reference" "J"
-			(at 53.34 120.65 0)
+			(at 48.26 115.57 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1024,7 +1024,7 @@
 			)
 		)
 		(property "Value" "Power return (TBD)"
-			(at 53.34 123.19 0)
+			(at 48.26 117.87 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1236,7 +1236,7 @@
 		(fields_autoplaced no)
 		(uuid "653f24f9-413a-5358-9c6f-ec1114af29d8")
 		(property "Reference" "J"
-			(at 53.34 166.37 0)
+			(at 48.26 161.29 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1245,7 +1245,7 @@
 			)
 		)
 		(property "Value" "T1S 2-way (TBD)"
-			(at 53.34 168.91 0)
+			(at 48.26 163.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1424,7 +1424,7 @@
 		(fields_autoplaced no)
 		(uuid "faaec0e5-5ddf-59ab-a487-921841f96987")
 		(property "Reference" "J"
-			(at 45.72 213.36 0)
+			(at 48.26 212.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1433,7 +1433,7 @@
 			)
 		)
 		(property "Value" "MX150 outputs (TBD)"
-			(at 45.72 215.57 0)
+			(at 48.26 214.39 0)
 			(effects
 				(font
 					(size 1.27 1.27)
