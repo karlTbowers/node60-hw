@@ -1778,7 +1778,7 @@
 		)
 		(uuid "0873c5de-bc17-5865-aa0c-e4aa39f0788c")
 	)
-	(hierarchical_label "SPI1_SWITCH_SCK"
+	(hierarchical_label "SPI4_SWITCH_SCK"
 		(shape input)
 		(at 170.18 170.18 180)
 		(effects
@@ -1787,7 +1787,7 @@
 			)
 			(justify right)
 		)
-		(uuid "5d8e743f-edde-572e-9bfa-87d5abb7328c")
+		(uuid "4daa2802-db82-53a5-add4-cf53d1255dc9")
 	)
 	(wire
 		(pts
@@ -1800,7 +1800,7 @@
 		)
 		(uuid "66cc2180-dc37-5700-bfab-244512cf7dca")
 	)
-	(hierarchical_label "SPI1_SWITCH_CS_L"
+	(hierarchical_label "SPI4_SWITCH_CS_L"
 		(shape input)
 		(at 170.18 167.64 180)
 		(effects
@@ -1809,7 +1809,7 @@
 			)
 			(justify right)
 		)
-		(uuid "e99f065e-9dc9-587b-a400-ba37ef7a81a9")
+		(uuid "93f32d5a-4341-5f25-8557-a36b2645d80c")
 	)
 	(wire
 		(pts

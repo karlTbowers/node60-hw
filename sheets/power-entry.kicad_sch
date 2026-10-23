@@ -14456,7 +14456,7 @@
 	)
 	(rectangle
 		(start 26.67 334.01)
-		(end 109.22 350.52)
+		(end 88.9 350.52)
 		(stroke
 			(width 0.254)
 			(type dash)
@@ -14808,133 +14808,6 @@
 			(project "node60"
 				(path "/55f51841-30a3-4965-b848-b796f60054d0/822dbac5-68ee-4519-a5d1-8bcf1992c5d9"
 					(reference "#PWR02039")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(symbol
-		(lib_id "power:PWR_FLAG")
-		(at 91.44 342.9 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "80be60ae-b5e3-5ecf-a8f0-7f0516a2d997")
-		(property "Reference" "#FLG040"
-			(at 91.44 342.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "PWR_FLAG"
-			(at 91.44 339.1 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 91.44 342.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 91.44 342.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "ed8c4fc0-0be7-5f7d-9c45-379f91104495")
-		)
-		(instances
-			(project "node60"
-				(path "/55f51841-30a3-4965-b848-b796f60054d0/822dbac5-68ee-4519-a5d1-8bcf1992c5d9"
-					(reference "#FLG02040")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 91.44 342.9)
-			(xy 96.52 342.9)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "00a1a367-2343-5963-b90e-4f004b8076d9")
-	)
-	(symbol
-		(lib_id "power:GND")
-		(at 96.52 342.9 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp no)
-		(uuid "a858e87f-d109-5dd9-8df9-d9888c8e7224")
-		(property "Reference" "#PWR041"
-			(at 96.52 342.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Value" "GND"
-			(at 96.52 347.8 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Footprint" ""
-			(at 96.52 342.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" ""
-			(at 96.52 342.9 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "815a6c3d-67d8-5842-8145-c2bbfdd95ef9")
-		)
-		(instances
-			(project "node60"
-				(path "/55f51841-30a3-4965-b848-b796f60054d0/822dbac5-68ee-4519-a5d1-8bcf1992c5d9"
-					(reference "#PWR02041")
 					(unit 1)
 				)
 			)

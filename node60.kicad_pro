@@ -14,5 +14,77 @@
       "sort_order": 0
     },
     "annotate_start_num": 0
+  },
+  "erc": {
+    "erc_exclusions": [
+      [
+        "pin_to_pin|1574800|1270000|0f2c3d28-744d-5320-9450-47961cc0fe16|8220397a-7c72-583f-97bc-9c8a51ee0dcd|/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453|/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453|/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453",
+        "Parallel balls/pins of one output (each pin is its own symbol pin, handbook ch. 04), all typed power output in the library: one physical output, not a conflict. Library follow-up: retype the extra pins (library brief 04)."
+      ],
+      [
+        "pin_to_pin|1574800|1295400|8220397a-7c72-583f-97bc-9c8a51ee0dcd|b52d06db-4e82-5dbb-8d5c-9edd6d7816ff|/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453|/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453|/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453",
+        "Parallel balls/pins of one output (each pin is its own symbol pin, handbook ch. 04), all typed power output in the library: one physical output, not a conflict. Library follow-up: retype the extra pins (library brief 04)."
+      ],
+      [
+        "pin_to_pin|1574800|1320800|b52d06db-4e82-5dbb-8d5c-9edd6d7816ff|96febb48-830e-5952-9d0d-cee77b31081c|/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453|/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453|/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453",
+        "Parallel balls/pins of one output (each pin is its own symbol pin, handbook ch. 04), all typed power output in the library: one physical output, not a conflict. Library follow-up: retype the extra pins (library brief 04)."
+      ],
+      [
+        "pin_to_pin|1676400|1778000|cf0f5a95-3f08-5105-bf9b-1dd1339b559c|1b3d802a-c148-5a46-9c4a-db3580b22dc7|/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e|/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e|/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e",
+        "LAN8670 pin tied to VSS as the datasheet requires when unused (TXER in RMII; WAKE_IN with no local wake, DEC-007). Bidirectional pin on GND is intended."
+      ],
+      [
+        "pin_to_pin|2336800|1752600|8db82c9a-fec9-5b28-a456-9232b462af81|1b3d802a-c148-5a46-9c4a-db3580b22dc7|/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e|/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e|/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e",
+        "LAN8670 pin tied to VSS as the datasheet requires when unused (TXER in RMII; WAKE_IN with no local wake, DEC-007). Bidirectional pin on GND is intended."
+      ],
+      [
+        "pin_to_pin|2082800|1498600|b6df439c-f6de-501a-8630-fba4452dac7a|4c2d2cd7-1d90-5e7f-a254-abd627760353|/55f51841-30a3-4965-b848-b796f60054d0/ceecbbf6-496b-4919-aa4d-b8194f44838e|/55f51841-30a3-4965-b848-b796f60054d0/ceecbbf6-496b-4919-aa4d-b8194f44838e|/55f51841-30a3-4965-b848-b796f60054d0/ceecbbf6-496b-4919-aa4d-b8194f44838e",
+        "Parallel balls/pins of one output (each pin is its own symbol pin, handbook ch. 04), all typed power output in the library: one physical output, not a conflict. Library follow-up: retype the extra pins (library brief 04)."
+      ],
+      [
+        "pin_to_pin|2082800|1524000|4c2d2cd7-1d90-5e7f-a254-abd627760353|c02dd19f-94f1-5443-a484-7e1cfc14a1fc|/55f51841-30a3-4965-b848-b796f60054d0/ceecbbf6-496b-4919-aa4d-b8194f44838e|/55f51841-30a3-4965-b848-b796f60054d0/ceecbbf6-496b-4919-aa4d-b8194f44838e|/55f51841-30a3-4965-b848-b796f60054d0/ceecbbf6-496b-4919-aa4d-b8194f44838e",
+        "Parallel balls/pins of one output (each pin is its own symbol pin, handbook ch. 04), all typed power output in the library: one physical output, not a conflict. Library follow-up: retype the extra pins (library brief 04)."
+      ],
+      [
+        "pin_to_pin|2082800|1600200|697e75f5-9d9d-546c-9ab2-08bf56a11edb|2979d358-ca17-5238-a2f9-630576cff97e|/55f51841-30a3-4965-b848-b796f60054d0/ceecbbf6-496b-4919-aa4d-b8194f44838e|/55f51841-30a3-4965-b848-b796f60054d0/ceecbbf6-496b-4919-aa4d-b8194f44838e|/55f51841-30a3-4965-b848-b796f60054d0/ceecbbf6-496b-4919-aa4d-b8194f44838e",
+        "Parallel balls/pins of one output (each pin is its own symbol pin, handbook ch. 04), all typed power output in the library: one physical output, not a conflict. Library follow-up: retype the extra pins (library brief 04)."
+      ],
+      [
+        "pin_to_pin|2082800|1625600|2979d358-ca17-5238-a2f9-630576cff97e|751760a8-a3c0-56bf-afc7-2b91ccbbdfe8|/55f51841-30a3-4965-b848-b796f60054d0/ceecbbf6-496b-4919-aa4d-b8194f44838e|/55f51841-30a3-4965-b848-b796f60054d0/ceecbbf6-496b-4919-aa4d-b8194f44838e|/55f51841-30a3-4965-b848-b796f60054d0/ceecbbf6-496b-4919-aa4d-b8194f44838e",
+        "Parallel balls/pins of one output (each pin is its own symbol pin, handbook ch. 04), all typed power output in the library: one physical output, not a conflict. Library follow-up: retype the extra pins (library brief 04)."
+      ],
+      [
+        "pin_to_pin|2082800|1498600|b6df439c-f6de-501a-8630-fba4452dac7a|4c2d2cd7-1d90-5e7f-a254-abd627760353|/55f51841-30a3-4965-b848-b796f60054d0/68ca6db2-fb88-4c17-b54b-7131815c5345|/55f51841-30a3-4965-b848-b796f60054d0/68ca6db2-fb88-4c17-b54b-7131815c5345|/55f51841-30a3-4965-b848-b796f60054d0/68ca6db2-fb88-4c17-b54b-7131815c5345",
+        "Parallel balls/pins of one output (each pin is its own symbol pin, handbook ch. 04), all typed power output in the library: one physical output, not a conflict. Library follow-up: retype the extra pins (library brief 04)."
+      ],
+      [
+        "pin_to_pin|2082800|1524000|4c2d2cd7-1d90-5e7f-a254-abd627760353|c02dd19f-94f1-5443-a484-7e1cfc14a1fc|/55f51841-30a3-4965-b848-b796f60054d0/68ca6db2-fb88-4c17-b54b-7131815c5345|/55f51841-30a3-4965-b848-b796f60054d0/68ca6db2-fb88-4c17-b54b-7131815c5345|/55f51841-30a3-4965-b848-b796f60054d0/68ca6db2-fb88-4c17-b54b-7131815c5345",
+        "Parallel balls/pins of one output (each pin is its own symbol pin, handbook ch. 04), all typed power output in the library: one physical output, not a conflict. Library follow-up: retype the extra pins (library brief 04)."
+      ],
+      [
+        "pin_to_pin|2082800|1600200|697e75f5-9d9d-546c-9ab2-08bf56a11edb|2979d358-ca17-5238-a2f9-630576cff97e|/55f51841-30a3-4965-b848-b796f60054d0/68ca6db2-fb88-4c17-b54b-7131815c5345|/55f51841-30a3-4965-b848-b796f60054d0/68ca6db2-fb88-4c17-b54b-7131815c5345|/55f51841-30a3-4965-b848-b796f60054d0/68ca6db2-fb88-4c17-b54b-7131815c5345",
+        "Parallel balls/pins of one output (each pin is its own symbol pin, handbook ch. 04), all typed power output in the library: one physical output, not a conflict. Library follow-up: retype the extra pins (library brief 04)."
+      ],
+      [
+        "pin_to_pin|2082800|1625600|2979d358-ca17-5238-a2f9-630576cff97e|751760a8-a3c0-56bf-afc7-2b91ccbbdfe8|/55f51841-30a3-4965-b848-b796f60054d0/68ca6db2-fb88-4c17-b54b-7131815c5345|/55f51841-30a3-4965-b848-b796f60054d0/68ca6db2-fb88-4c17-b54b-7131815c5345|/55f51841-30a3-4965-b848-b796f60054d0/68ca6db2-fb88-4c17-b54b-7131815c5345",
+        "Parallel balls/pins of one output (each pin is its own symbol pin, handbook ch. 04), all typed power output in the library: one physical output, not a conflict. Library follow-up: retype the extra pins (library brief 04)."
+      ],
+      [
+        "pin_to_pin|2082800|1498600|b6df439c-f6de-501a-8630-fba4452dac7a|4c2d2cd7-1d90-5e7f-a254-abd627760353|/55f51841-30a3-4965-b848-b796f60054d0/618ad5c3-1fe8-46d2-96b6-b9e1aa40313d|/55f51841-30a3-4965-b848-b796f60054d0/618ad5c3-1fe8-46d2-96b6-b9e1aa40313d|/55f51841-30a3-4965-b848-b796f60054d0/618ad5c3-1fe8-46d2-96b6-b9e1aa40313d",
+        "Parallel balls/pins of one output (each pin is its own symbol pin, handbook ch. 04), all typed power output in the library: one physical output, not a conflict. Library follow-up: retype the extra pins (library brief 04)."
+      ],
+      [
+        "pin_to_pin|2082800|1524000|4c2d2cd7-1d90-5e7f-a254-abd627760353|c02dd19f-94f1-5443-a484-7e1cfc14a1fc|/55f51841-30a3-4965-b848-b796f60054d0/618ad5c3-1fe8-46d2-96b6-b9e1aa40313d|/55f51841-30a3-4965-b848-b796f60054d0/618ad5c3-1fe8-46d2-96b6-b9e1aa40313d|/55f51841-30a3-4965-b848-b796f60054d0/618ad5c3-1fe8-46d2-96b6-b9e1aa40313d",
+        "Parallel balls/pins of one output (each pin is its own symbol pin, handbook ch. 04), all typed power output in the library: one physical output, not a conflict. Library follow-up: retype the extra pins (library brief 04)."
+      ],
+      [
+        "pin_to_pin|2082800|1600200|697e75f5-9d9d-546c-9ab2-08bf56a11edb|2979d358-ca17-5238-a2f9-630576cff97e|/55f51841-30a3-4965-b848-b796f60054d0/618ad5c3-1fe8-46d2-96b6-b9e1aa40313d|/55f51841-30a3-4965-b848-b796f60054d0/618ad5c3-1fe8-46d2-96b6-b9e1aa40313d|/55f51841-30a3-4965-b848-b796f60054d0/618ad5c3-1fe8-46d2-96b6-b9e1aa40313d",
+        "Parallel balls/pins of one output (each pin is its own symbol pin, handbook ch. 04), all typed power output in the library: one physical output, not a conflict. Library follow-up: retype the extra pins (library brief 04)."
+      ],
+      [
+        "pin_to_pin|2082800|1625600|2979d358-ca17-5238-a2f9-630576cff97e|751760a8-a3c0-56bf-afc7-2b91ccbbdfe8|/55f51841-30a3-4965-b848-b796f60054d0/618ad5c3-1fe8-46d2-96b6-b9e1aa40313d|/55f51841-30a3-4965-b848-b796f60054d0/618ad5c3-1fe8-46d2-96b6-b9e1aa40313d|/55f51841-30a3-4965-b848-b796f60054d0/618ad5c3-1fe8-46d2-96b6-b9e1aa40313d",
+        "Parallel balls/pins of one output (each pin is its own symbol pin, handbook ch. 04), all typed power output in the library: one physical output, not a conflict. Library follow-up: retype the extra pins (library brief 04)."
+      ]
+    ]
   }
 }
