@@ -77,6 +77,18 @@
 - id: S23
   title: TDK ACT1210E, Murata DLW32MH, Vishay VETH100A1DD1 and Nexperia PESD1ETH10L(S)-Q data sheets and distributor observations
   verified: 2026-10-22
+- id: S24
+  title: TE DEUTSCH DT13-2P customer drawing, rev. B
+  url: https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=DT13-2P&DocType=Customer%20Drawing&DocLang=English&DocFormat=pdf&PartCntxt=DT13-2P
+  verified: 2026-10-22
+- id: S25
+  title: TE 108-151009 DEUTSCH DT Series Connector System product specification, rev. E
+  url: https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=108-151009&DocType=Specification%20Or%20Standard&DocLang=English&DocFormat=pdf&PartCntxt=DT13-2P
+  verified: 2026-10-22
+- id: S26
+  title: TE 114-151046 DEUTSCH DT Header Connector System application specification, rev. A
+  url: https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=114-151046&DocType=Specification%20Or%20Standard&DocLang=English&DocFormat=pdf&PartCntxt=DT13-2P
+  verified: 2026-10-22
 - id: Z1
   title: Upstream Zephyr S32 SoC tree
   url: https://github.com/zephyrproject-rtos/zephyr/tree/main/soc/nxp/s32
