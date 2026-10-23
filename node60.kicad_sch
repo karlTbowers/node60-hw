@@ -3,27 +3,184 @@
 	(generator "eeschema")
 	(generator_version "10.0")
 	(uuid "55f51841-30a3-4965-b848-b796f60054d0")
-	(paper "A3")
+	(paper "A2")
 	(title_block
 		(title "Node60")
 		(company "DropOut")
 		(comment 1 "Architecture Rev A")
 	)
 	(lib_symbols)
-	(text "Page 1: index. Sheets are numbered by page; reference designators are page x 100 + n\n(R201 is the first resistor on page 2). Handbook chapter 05."
-		(exclude_from_sim no)
-		(at 25.4 30.48 0)
+	(wire
+		(pts
+			(xy 40.64 162.56)
+			(xy 38.1 162.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "63d05e91-10c2-52f9-92fe-35c804e8972c")
+	)
+	(label "VBAT_IN"
+		(at 38.1 162.56 180)
 		(effects
 			(font
-				(size 2 2)
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "f4bf3572-1497-5768-ae10-9c3ba52c7b81")
+	)
+	(wire
+		(pts
+			(xy 40.64 165.1)
+			(xy 38.1 165.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fa5e31a9-1371-57d2-bcd9-fbe7712ec56e")
+	)
+	(label "INH"
+		(at 38.1 165.1 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "d0a1eb4f-c105-54a8-869d-67ef0acee5ec")
+	)
+	(wire
+		(pts
+			(xy 40.64 167.64)
+			(xy 38.1 167.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "be810d8c-1c0d-5429-b79d-8a4423bfa157")
+	)
+	(label "I2C0_TELEMETRY_SCL"
+		(at 38.1 167.64 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "fcecacb4-a2a6-502a-8878-b1f3b358a116")
+	)
+	(wire
+		(pts
+			(xy 101.6 162.56)
+			(xy 104.14 162.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "23b28a23-262f-5713-9c32-db2170bb4216")
+	)
+	(label "I2C0_TELEMETRY_SDA"
+		(at 104.14 162.56 0)
+		(effects
+			(font
+				(size 1.27 1.27)
 			)
 			(justify left bottom)
 		)
-		(uuid "f1cf8e1e-609d-42d0-a435-140e727dc2e1")
+		(uuid "f58b8be9-4494-508b-a659-c69b795b0ccd")
+	)
+	(wire
+		(pts
+			(xy 101.6 165.1)
+			(xy 104.14 165.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "838928b3-8844-5367-ae9d-a11ec533e1ea")
+	)
+	(label "BATT_MON"
+		(at 104.14 165.1 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "75999ff1-26dd-502a-a01e-e99d7cc09a71")
+	)
+	(wire
+		(pts
+			(xy 101.6 167.64)
+			(xy 104.14 167.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3989c4d5-0ee4-56f8-a76b-3c49bfb70d54")
+	)
+	(label "LM_FLT_L"
+		(at 104.14 167.64 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "5c453e8d-ea37-574b-a908-53283267a151")
+	)
+	(wire
+		(pts
+			(xy 101.6 170.18)
+			(xy 104.14 170.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2f91868b-8158-5be3-8b9a-8e6f086ad229")
+	)
+	(label "TMP175_ALERT_L"
+		(at 104.14 170.18 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "46447126-9dbf-5e65-ad5f-4075819ba6c4")
+	)
+	(wire
+		(pts
+			(xy 101.6 172.72)
+			(xy 104.14 172.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "41c08ac5-915e-5fca-80c5-313aa20b22a1")
+	)
+	(label "NTC_RSENSE"
+		(at 104.14 172.72 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "c2d10b2f-4f15-561d-9455-b0791003f76a")
 	)
 	(sheet
-		(at 25.40 50.80)
-		(size 55.88 22.86)
+		(at 40.64 160.02)
+		(size 60.96 17.78)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -34,11 +191,11 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "822dbac5-68ee-4519-a5d1-8bcf1992c5d9")
 		(property "Sheetname" "Power entry"
-			(at 25.40 50.09 0)
+			(at 40.64 159.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -47,12 +204,92 @@
 			)
 		)
 		(property "Sheetfile" "sheets/power-entry.kicad_sch"
-			(at 25.40 74.25 0)
+			(at 40.64 178.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left top)
+			)
+		)
+		(pin "VBAT_IN" input
+			(at 40.64 162.56 180)
+			(uuid "16da7e7c-297a-574c-bbad-ea66bf43ca85")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "INH" input
+			(at 40.64 165.1 180)
+			(uuid "9eaf5d40-eb95-5e23-a3e6-2fdbc1bb5199")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "I2C0_TELEMETRY_SCL" input
+			(at 40.64 167.64 180)
+			(uuid "95065313-6729-541e-8dc5-6df8ab47bc46")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "I2C0_TELEMETRY_SDA" bidirectional
+			(at 101.6 162.56 0)
+			(uuid "e29da792-98fa-5f9a-a231-d0d2d3d29e52")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "BATT_MON" output
+			(at 101.6 165.1 0)
+			(uuid "305c26b8-cb2a-584e-981b-010ff3890e55")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "LM_FLT_L" output
+			(at 101.6 167.64 0)
+			(uuid "c7c6ba37-2379-551f-a5c9-1590bed6fa26")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "TMP175_ALERT_L" output
+			(at 101.6 170.18 0)
+			(uuid "f0070b8e-1b60-5e13-bed1-0b159cff7b2a")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "NTC_RSENSE" output
+			(at 101.6 172.72 0)
+			(uuid "66bc592f-8b3d-5b93-a195-f782a1e912e8")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 			)
 		)
 		(instances
@@ -63,9 +300,51 @@
 			)
 		)
 	)
+	(wire
+		(pts
+			(xy 175.26 53.34)
+			(xy 172.72 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8a699e1e-cae1-5b17-ac2b-9edb81fc16f9")
+	)
+	(label "INH"
+		(at 172.72 53.34 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "d6e1ce9a-8831-5e4f-841d-f72e1354162c")
+	)
+	(wire
+		(pts
+			(xy 236.22 53.34)
+			(xy 238.76 53.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9cca2e1e-4731-51bf-806d-7912a26e4396")
+	)
+	(label "RESET_L"
+		(at 238.76 53.34 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e80ccb93-1568-5242-9db4-84ac0ad8c51d")
+	)
 	(sheet
-		(at 93.98 50.80)
-		(size 55.88 22.86)
+		(at 175.26 50.8)
+		(size 60.96 12.7)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -76,11 +355,11 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "0b1fdde0-4dcf-41c8-a0be-e22a76779263")
 		(property "Sheetname" "Regulators"
-			(at 93.98 50.09 0)
+			(at 175.26 50.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -89,12 +368,32 @@
 			)
 		)
 		(property "Sheetfile" "sheets/regulators.kicad_sch"
-			(at 93.98 74.25 0)
+			(at 175.26 64.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(justify left top)
+			)
+		)
+		(pin "INH" input
+			(at 175.26 53.34 180)
+			(uuid "46b3170e-dec9-545b-b8ae-9654656c487e")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "RESET_L" bidirectional
+			(at 236.22 53.34 0)
+			(uuid "2a810c3c-fc61-5d11-a9e0-50e491dffa00")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 			)
 		)
 		(instances
@@ -106,8 +405,8 @@
 		)
 	)
 	(sheet
-		(at 162.56 50.80)
-		(size 55.88 22.86)
+		(at 309.88 50.8)
+		(size 60.96 12.7)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -118,11 +417,11 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "0ad74954-de59-42a0-82d0-e554fbd19453")
 		(property "Sheetname" "MCU and NVM"
-			(at 162.56 50.09 0)
+			(at 309.88 50.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -131,7 +430,7 @@
 			)
 		)
 		(property "Sheetfile" "sheets/mcu-nvm.kicad_sch"
-			(at 162.56 74.25 0)
+			(at 309.88 64.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -148,8 +447,8 @@
 		)
 	)
 	(sheet
-		(at 231.14 50.80)
-		(size 55.88 22.86)
+		(at 175.26 160.02)
+		(size 60.96 12.7)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -160,11 +459,11 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "3875e4cc-63e7-4387-b67f-49f6a7b34a4e")
 		(property "Sheetname" "T1S"
-			(at 231.14 50.09 0)
+			(at 175.26 159.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -173,7 +472,7 @@
 			)
 		)
 		(property "Sheetfile" "sheets/t1s.kicad_sch"
-			(at 231.14 74.25 0)
+			(at 175.26 173.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -190,8 +489,8 @@
 		)
 	)
 	(sheet
-		(at 25.40 96.52)
-		(size 55.88 22.86)
+		(at 444.5 50.8)
+		(size 60.96 12.7)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -202,11 +501,11 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "ceecbbf6-496b-4919-aa4d-b8194f44838e")
 		(property "Sheetname" "Outputs 1-2"
-			(at 25.40 95.81 0)
+			(at 444.5 50.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -215,7 +514,7 @@
 			)
 		)
 		(property "Sheetfile" "sheets/output-switch.kicad_sch"
-			(at 25.40 119.97 0)
+			(at 444.5 64.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -232,8 +531,8 @@
 		)
 	)
 	(sheet
-		(at 93.98 96.52)
-		(size 55.88 22.86)
+		(at 444.5 160.02)
+		(size 60.96 12.7)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -244,11 +543,11 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "68ca6db2-fb88-4c17-b54b-7131815c5345")
 		(property "Sheetname" "Outputs 3-4"
-			(at 93.98 95.81 0)
+			(at 444.5 159.31 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -257,7 +556,7 @@
 			)
 		)
 		(property "Sheetfile" "sheets/output-switch.kicad_sch"
-			(at 93.98 119.97 0)
+			(at 444.5 173.32 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -274,8 +573,8 @@
 		)
 	)
 	(sheet
-		(at 162.56 96.52)
-		(size 55.88 22.86)
+		(at 444.5 269.24)
+		(size 60.96 12.7)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -286,11 +585,11 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "618ad5c3-1fe8-46d2-96b6-b9e1aa40313d")
 		(property "Sheetname" "Outputs 5-6"
-			(at 162.56 95.81 0)
+			(at 444.5 268.53 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -299,7 +598,7 @@
 			)
 		)
 		(property "Sheetfile" "sheets/output-switch.kicad_sch"
-			(at 162.56 119.97 0)
+			(at 444.5 282.54 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -316,8 +615,8 @@
 		)
 	)
 	(sheet
-		(at 231.14 96.52)
-		(size 55.88 22.86)
+		(at 40.64 50.8)
+		(size 60.96 12.7)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -328,11 +627,11 @@
 			(type solid)
 		)
 		(fill
-			(color 0 0 0 0.0000)
+			(color 0 0 0 0)
 		)
 		(uuid "e572f86f-2725-4aae-a9c5-04dc01b6640e")
 		(property "Sheetname" "Connectors"
-			(at 231.14 95.81 0)
+			(at 40.64 50.09 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -341,7 +640,7 @@
 			)
 		)
 		(property "Sheetfile" "sheets/connectors.kicad_sch"
-			(at 231.14 119.97 0)
+			(at 40.64 64.1 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -356,6 +655,17 @@
 				)
 			)
 		)
+	)
+	(text "Node60 schematic, Architecture Rev A. Page 1 is the index.\nSheets are numbered by page; reference designators are page x 100 + nn (R201 = first resistor on page 2).\nThe index is laid out along the power and signal path (D-01/D-02); page numbers follow the Rev A sheet plan.\nDrawing rules: DropOut handbook chapter 05 (ee-schematic-rules D-rules adopted 2026-10-22).\nParts marked PLACEHOLDER (field 'Placeholder') are not yet in the DropOut library; see the PR for status."
+		(exclude_from_sim no)
+		(at 25 25 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "586f6c82-927c-5c37-af91-4ed490a34ad9")
 	)
 	(sheet_instances
 		(path "/"
