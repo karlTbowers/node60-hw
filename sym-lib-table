@@ -1,5 +1,6 @@
 (sym_lib_table
   (version 7)
+  (lib (name "DropOut_Capacitor")(type "KiCad")(uri "${KIPRJMOD}/lib/dropout-kicad-library/symbols/DropOut_Capacitor.kicad_sym")(options "")(descr "DropOut library"))
   (lib (name "DropOut_Connector")(type "KiCad")(uri "${KIPRJMOD}/lib/dropout-kicad-library/symbols/DropOut_Connector.kicad_sym")(options "")(descr "DropOut library"))
   (lib (name "DropOut_Inductor")(type "KiCad")(uri "${KIPRJMOD}/lib/dropout-kicad-library/symbols/DropOut_Inductor.kicad_sym")(options "")(descr "DropOut library"))
   (lib (name "DropOut_Interface")(type "KiCad")(uri "${KIPRJMOD}/lib/dropout-kicad-library/symbols/DropOut_Interface.kicad_sym")(options "")(descr "DropOut library"))

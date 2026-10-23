@@ -10,286 +10,6 @@
 		(comment 1 "Architecture Rev A")
 	)
 	(lib_symbols
-		(symbol "Connector:TestPoint"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0.762)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "TP"
-				(at 0 6.858 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "TestPoint"
-				(at 0 5.08 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 5.08 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 5.08 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "test point"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "test point tp"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "Pin* Test*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "TestPoint_0_1"
-				(circle
-					(center 0 3.302)
-					(radius 0.762)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "TestPoint_1_1"
-				(pin passive line
-					(at 0 0 90)
-					(length 2.54)
-					(name "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Device:C"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0.254)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "C"
-				(at 0.635 2.54 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "C"
-				(at 0.635 -2.54 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" ""
-				(at 0.9652 -3.81 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Unpolarized capacitor"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "cap capacitor"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "C_*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "C_0_1"
-				(polyline
-					(pts
-						(xy -2.032 0.762)
-						(xy 2.032 0.762)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -2.032 -0.762)
-						(xy 2.032 -0.762)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-			)
-			(symbol "C_1_1"
-				(pin passive line
-					(at 0 3.81 270)
-					(length 2.794)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 2.794)
-					(name ""
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "Device:C_Polarized"
 			(pin_numbers
 				(hide yes)
@@ -647,50 +367,42 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "Device:R"
+		(symbol "DropOut_Capacitor:CGA5L2X7R2A105K160AA"
 			(pin_numbers
 				(hide yes)
 			)
 			(pin_names
-				(offset 0)
+				(offset 1.016)
+				(hide yes)
 			)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "R"
-				(at 2.032 0 90)
+			(property "Reference" "C"
+				(at 2.54 2.858 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left)
 				)
 			)
-			(property "Value" "R"
-				(at 0 0 90)
+			(property "Value" "1uF"
+				(at 2.54 0.953 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
 					(font
 						(size 1.27 1.27)
 					)
+					(justify left)
 				)
 			)
-			(property "Footprint" ""
-				(at -1.778 0 90)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" ""
+			(property "Footprint" "DropOut_Capacitor_SMD:C_1206_3216Metric"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -701,7 +413,7 @@
 					)
 				)
 			)
-			(property "Description" "Resistor"
+			(property "Datasheet" "https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/mlcc/catalog/mlcc_automotive_midvoltage_en.pdf"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -712,7 +424,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "R res resistor"
+			(property "Description" "TDK CGA automotive mid voltage MLCC, 1 µF ±10%, 100 V, X7R, AEC-Q200, -55 to +125 °C, 1206 (3216 metric)"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -723,7 +435,7 @@
 					)
 				)
 			)
-			(property "ki_fp_filters" "R_*"
+			(property "Manufacturer" "TDK"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -734,24 +446,147 @@
 					)
 				)
 			)
-			(symbol "R_0_1"
-				(rectangle
-					(start -1.016 -2.54)
-					(end 1.016 2.54)
+			(property "MPN" "CGA5L2X7R2A105K160AA"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "445-5845-1-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "810-CGA5L2X7R2A105K"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "100V"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Tolerance" "±10%"
+				(at 13.97 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Dielectric" "X7R"
+				(at 8.89 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "1206"
+				(at 20.32 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ki_keywords" "capacitor ceramic MLCC automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "C?1206?3216Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "CGA5L2X7R2A105K160AA_1_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762)
+						(xy 2.032 0.762)
+					)
 					(stroke
-						(width 0.254)
+						(width 0.508)
 						(type default)
 					)
 					(fill
 						(type none)
 					)
 				)
-			)
-			(symbol "R_1_1"
+				(polyline
+					(pts
+						(xy -2.032 -0.762)
+						(xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
 				(pin passive line
 					(at 0 3.81 270)
-					(length 1.27)
-					(name ""
+					(length 2.54)
+					(name "~"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -768,8 +603,8 @@
 				)
 				(pin passive line
 					(at 0 -3.81 90)
-					(length 1.27)
-					(name ""
+					(length 2.54)
+					(name "~"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -777,6 +612,2198 @@
 						)
 					)
 					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DropOut_Capacitor:CNA6P1X7R2A475K250AE"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 2.54 2.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "4.7uF"
+				(at 2.54 0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Capacitor_SMD:C_1210_3225Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://product.tdk.com/en/system/files/dam/doc/product/capacitor/ceramic/mlcc/catalog/mlcc_automotive_soft_cna_en.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "TDK CNA soft termination automotive MLCC, 4.7 µF ±10%, 100 V, X7R, AEC-Q200, -55 to +125 °C, 1210 (3225 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "TDK"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "CNA6P1X7R2A475K250AE"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "445-181409-1-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "810-CNA6P1X7R2A475K2"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "100V"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Tolerance" "±10%"
+				(at 13.97 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Dielectric" "X7R"
+				(at 8.89 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "1210"
+				(at 20.32 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Notes" "TDK makes this value only in its CNA soft termination series."
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "capacitor ceramic MLCC soft termination automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "C?1210?3225Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "CNA6P1X7R2A475K250AE_1_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762)
+						(xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762)
+						(xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DropOut_Capacitor:GCJ188R72A104KA01D"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 2.54 2.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "100nF"
+				(at 2.54 0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Capacitor_SMD:C_0603_1608Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCJ188R72A104KA01-02B-EN_PDF_CERAMICCAPACITORSMD"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Murata GCJ soft termination MLCC for automotive, 100 nF ±10%, 100 V, X7R, AEC-Q200, -55 to +125 °C, 0603 (1608 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Murata"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "GCJ188R72A104KA01D"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "490-13420-1-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "81-GCJ188R72A104KA1D"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "100V"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Tolerance" "±10%"
+				(at 13.97 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Dielectric" "X7R"
+				(at 8.89 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "0603"
+				(at 20.32 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Notes" "Murata makes no 100 V 100 nF X7R GCM in 0603; GCJ is Murata's AEC-Q200 soft termination series."
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "capacitor ceramic MLCC soft termination automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "C?0603?1608Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "GCJ188R72A104KA01D_1_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762)
+						(xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762)
+						(xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DropOut_Capacitor:GCM155R71C104KA55D"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 2.54 2.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "100nF"
+				(at 2.54 0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Capacitor_SMD:C_0402_1005Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM155R71C104KA55-01A-EN_PDF_CERAMICCAPACITORSMD"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 100 nF ±10%, 16 V, X7R, AEC-Q200, -55 to +125 °C, 0402 (1005 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Murata"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "GCM155R71C104KA55D"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "490-4759-1-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "81-GCM155R71C104KA5D"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "16V"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Tolerance" "±10%"
+				(at 12.7 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Dielectric" "X7R"
+				(at 7.62 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "0402"
+				(at 19.05 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ki_keywords" "capacitor ceramic MLCC automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "C?0402?1005Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "GCM155R71C104KA55D_1_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762)
+						(xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762)
+						(xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DropOut_Capacitor:GCM1885C1H103GA16D"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 2.54 2.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "10nF"
+				(at 2.54 0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Capacitor_SMD:C_0603_1608Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM1885C1H103GA16-01A-EN_PDF_CERAMICCAPACITORSMD"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 10 nF ±2%, 50 V, C0G, AEC-Q200, -55 to +125 °C, 0603 (1608 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Murata"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "GCM1885C1H103GA16D"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "490-GCM1885C1H103GA16DCT-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "81-GCM1885C1H103GA6D"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "50V"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Tolerance" "±2%"
+				(at 12.7 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Dielectric" "C0G"
+				(at 7.62 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "0603"
+				(at 17.78 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Notes" "No AEC-Q200 part exists in the drawn 0402 package (DigiKey parametric search, 2026-10-22); built in the next larger package, 0603. Murata makes the 50 V GCM 10 nF C0G only in ±2 % or tighter."
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "capacitor ceramic MLCC automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "C?0603?1608Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "GCM1885C1H103GA16D_1_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762)
+						(xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762)
+						(xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DropOut_Capacitor:GCM1885C2A103JE02D"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 2.54 2.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "10nF"
+				(at 2.54 0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Capacitor_SMD:C_0603_1608Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM1885C2A103JE02-01A-EN_PDF_CERAMICCAPACITORSMD"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 10 nF ±5%, 100 V, C0G, AEC-Q200, -55 to +125 °C, 0603 (1608 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Murata"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "GCM1885C2A103JE02D"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "490-GCM1885C2A103JE02DCT-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "81-GCM1885C2A103JE2D"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "100V"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Tolerance" "±5%"
+				(at 13.97 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Dielectric" "C0G"
+				(at 8.89 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "0603"
+				(at 19.05 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ki_keywords" "capacitor ceramic MLCC automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "C?0603?1608Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "GCM1885C2A103JE02D_1_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762)
+						(xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762)
+						(xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DropOut_Capacitor:GCM31C5C1H683JA16L"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 2.54 2.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "68nF"
+				(at 2.54 0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Capacitor_SMD:C_1206_3216Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM31C5C1H683JA16-01A-EN_PDF_CERAMICCAPACITORSMD"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 68 nF ±5%, 50 V, C0G, AEC-Q200, -55 to +125 °C, 1206 (3216 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Murata"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "GCM31C5C1H683JA16L"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "490-5323-1-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "81-GCM31C5C1H683JA6L"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "50V"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Tolerance" "±5%"
+				(at 12.7 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Dielectric" "C0G"
+				(at 7.62 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "1206"
+				(at 17.78 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Notes" "No AEC-Q200 68 nF C0G part exists in the drawn 0805 package (DigiKey parametric search, 2026-10-22); built in the next larger package, 1206."
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "capacitor ceramic MLCC automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "C?1206?3216Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "GCM31C5C1H683JA16L_1_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762)
+						(xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762)
+						(xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DropOut_Capacitor:GCM31C5C2A104JE02L"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 2.54 2.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "100nF"
+				(at 2.54 0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Capacitor_SMD:C_1206_3216Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM31C5C2A104JE02-02A-EN_PDF_CERAMICCAPACITORSMD"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 100 nF ±5%, 100 V, C0G, AEC-Q200, -55 to +125 °C, 1206 (3216 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Murata"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "GCM31C5C2A104JE02L"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "490-GCM31C5C2A104JE02LCT-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "81-GCM31C5C2A104JE2L"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "100V"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Tolerance" "±5%"
+				(at 13.97 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Dielectric" "C0G"
+				(at 8.89 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "1206"
+				(at 19.05 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ki_keywords" "capacitor ceramic MLCC automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "C?1206?3216Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "GCM31C5C2A104JE02L_1_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762)
+						(xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762)
+						(xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DropOut_Connector:S1751-46R"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "TP"
+				(at 0 6.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "S1751-46R"
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "DropOut_TestPoint:TestPoint_Harwin_S1751"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://content.harwin.com/m/c5b84e6a45e9b9f6/original/DRG-02202-Technical-Drawing-Datasheet-S1751R-pdf.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Harwin SMD test terminal, closed loop 3.25x1.63mm, 2.0mm high, brass, 100% tin, 2 A, -55 to +125 °C, tape and reel"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Harwin"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "S1751-46R"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "DigiKey_PN" "952-1478-1-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "855-S1751-46R"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "-55 to +125 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Notes" "Ground test point (probe loop) for a scope ground spring or clip. Same part loose: S1751-46."
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "test point loop ground probe SMD Harwin"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "TestPoint?Harwin?S1751*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "S1751-46R_1_1"
+				(circle
+					(center 0 3.302)
+					(radius 0.762)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 0 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DropOut_Connector:TestPoint_Pad_D1.0mm"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(in_pos_files no)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "TP"
+				(at 0 6.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "TestPoint_Pad_D1.0mm"
+				(at 0 5.08 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/TestPoint.py"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Test point, exposed copper pad, diameter 1.0mm, solder mask opening only; a PCB feature with nothing to buy or place (excluded from BOM and position files)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "DropOut"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "TestPoint_Pad_D1.0mm"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "DigiKey_PN" "-"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "-"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Notes" "PCB copper only; nothing to order. Excluded from BOM and position files."
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "test point pad exposed copper signal"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "TestPoint?Pad?D1?0mm*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "TestPoint_Pad_D1.0mm_1_1"
+				(circle
+					(center 0 3.302)
+					(radius 0.762)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 0 90)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2393,6 +4420,1893 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "DropOut_Resistor:AC0402JR-070RL"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.54 2.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "0R"
+				(at 2.54 0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Yageo AC thick film chip jumper, 0 Ω, 1 A rated, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Yageo"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "AC0402JR-070RL"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "311-0.0LBCT-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "603-AC0402JR-070RL"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Case" "0402"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ki_keywords" "resistor thick film automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R?0402?1005Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "AC0402JR-070RL_1_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DropOut_Resistor:AC0402JR-0710KL"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.54 2.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "10k"
+				(at 2.54 0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Yageo AC thick film chip resistor, 10 kΩ ±5%, 1/16 W, 50 V, ±200 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Yageo"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "AC0402JR-0710KL"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "YAG3517CT-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "603-AC0402JR-0710KL"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Tolerance" "±5%"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Power" "1/16W"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "50V"
+				(at 7.62 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "0402"
+				(at 12.7 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ki_keywords" "resistor thick film automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R?0402?1005Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "AC0402JR-0710KL_1_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DropOut_Resistor:AC0402JR-0710RL"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.54 2.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "10R"
+				(at 2.54 0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Yageo AC thick film chip resistor, 10 Ω ±5%, 1/16 W, 50 V, ±200 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Yageo"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "AC0402JR-0710RL"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "YAG3519CT-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "603-AC0402JR-0710RL"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Tolerance" "±5%"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Power" "1/16W"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "50V"
+				(at 7.62 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "0402"
+				(at 12.7 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ki_keywords" "resistor thick film automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R?0402?1005Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "AC0402JR-0710RL_1_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DropOut_Resistor:AC0603FR-07107KL"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.54 2.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "107k"
+				(at 2.54 0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Resistor_SMD:R_0603_1608Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Yageo AC thick film chip resistor, 107 kΩ ±1%, 1/10 W, 75 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 0603 (1608 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Yageo"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "AC0603FR-07107KL"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "13-AC0603FR-07107KLCT-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "603-AC0603FR-07107KL"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Tolerance" "±1%"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Power" "1/10W"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "75V"
+				(at 7.62 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "0603"
+				(at 12.7 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ki_keywords" "resistor thick film automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R?0603?1608Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "AC0603FR-07107KL_1_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DropOut_Resistor:AC0603FR-072K1L"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.54 2.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "2.1k"
+				(at 2.54 0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Resistor_SMD:R_0603_1608Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Yageo AC thick film chip resistor, 2.1 kΩ ±1%, 1/10 W, 75 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 0603 (1608 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Yageo"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "AC0603FR-072K1L"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "13-AC0603FR-072K1LCT-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "603-AC0603FR-072K1L"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Tolerance" "±1%"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Power" "1/10W"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "75V"
+				(at 7.62 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "0603"
+				(at 12.7 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ki_keywords" "resistor thick film automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R?0603?1608Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "AC0603FR-072K1L_1_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DropOut_Resistor:AC0603FR-072KL"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.54 2.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "2k"
+				(at 2.54 0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Resistor_SMD:R_0603_1608Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Yageo AC thick film chip resistor, 2 kΩ ±1%, 1/10 W, 75 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 0603 (1608 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Yageo"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "AC0603FR-072KL"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "YAG3590CT-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "603-AC0603FR-072KL"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Tolerance" "±1%"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Power" "1/10W"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "75V"
+				(at 7.62 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "0603"
+				(at 12.7 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ki_keywords" "resistor thick film automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R?0603?1608Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "AC0603FR-072KL_1_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DropOut_Resistor:AC0603FR-0749R9L"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.54 2.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "49.9R"
+				(at 2.54 0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Resistor_SMD:R_0603_1608Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Yageo AC thick film chip resistor, 49.9 Ω ±1%, 1/10 W, 75 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 0603 (1608 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Yageo"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "AC0603FR-0749R9L"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "YAG3611CT-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "603-AC0603FR-0749R9L"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Tolerance" "±1%"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Power" "1/10W"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "75V"
+				(at 7.62 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "0603"
+				(at 12.7 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ki_keywords" "resistor thick film automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R?0603?1608Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "AC0603FR-0749R9L_1_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DropOut_Resistor:AC0603FR-077K87L"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.54 2.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "7.87k"
+				(at 2.54 0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Resistor_SMD:R_0603_1608Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Yageo AC thick film chip resistor, 7.87 kΩ ±1%, 1/10 W, 75 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 0603 (1608 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Yageo"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "AC0603FR-077K87L"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "13-AC0603FR-077K87LCT-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "603-AC0603FR-077K87L"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Tolerance" "±1%"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Power" "1/10W"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "75V"
+				(at 7.62 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "0603"
+				(at 12.7 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ki_keywords" "resistor thick film automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R?0603?1608Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "AC0603FR-077K87L_1_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "DropOut_Resistor:CSS2725FTL250"
 			(pin_numbers
 				(hide yes)
@@ -2570,6 +6484,508 @@
 					(at 0 -3.81 90)
 					(length 1.27)
 					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DropOut_Resistor:ERA-3AEB103V"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.54 2.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "10k"
+				(at 2.54 0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Resistor_SMD:R_0603_1608Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Panasonic ERA-A thin film chip resistor, 10 kΩ ±0.1%, 0.1 W, 75 V, ±25 ppm/K, AEC-Q200, -55 to +155 °C, 0603 (1608 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Panasonic"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "ERA-3AEB103V"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "P10KDBCT-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "667-ERA-3AEB103V"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Tolerance" "±0.1%"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Power" "0.1W"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "75V"
+				(at 10.16 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "0603"
+				(at 15.24 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Notes" "Precision part: not substitutable (0.1 %, ±25 ppm/K thin film)."
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "resistor thin film precision automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R?0603?1608Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "ERA-3AEB103V_1_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DropOut_Resistor:TNPW060332K0BEEA"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.54 2.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "32k"
+				(at 2.54 0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Resistor_SMD:R_0603_1608Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.vishay.com/docs/28758/tnpw_e3.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Vishay TNPW e3 thin film chip resistor, 32 kΩ ±0.1%, 0.11 W, 100 V, ±25 ppm/K, AEC-Q200, -55 to +175 °C, 0603 (1608 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Vishay"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "TNPW060332K0BEEA"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "541-TNPW060332K0BEEACT-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "71-TNPW060332K0BEEA"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +175 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Tolerance" "±0.1%"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Power" "0.11W"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "100V"
+				(at 10.16 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "0603"
+				(at 16.51 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Notes" "32 kΩ is an E192 value: no AEC-Q200 1 % thick film part offers it (Yageo AC and Panasonic ERJ-3EKF are E24/E96 only), so this 0.1 % thin film part serves the 1 % line."
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "resistor thin film precision automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R?0603?1608Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "TNPW060332K0BEEA_1_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4398,7 +8814,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
+		(lib_id "DropOut_Capacitor:GCJ188R72A104KA01D")
 		(at 55.88 95.25 0)
 		(unit 1)
 		(body_style 1)
@@ -4427,7 +8843,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Capacitor_SMD:C_0603_1608Metric"
 			(at 55.88 95.25 0)
 			(effects
 				(font
@@ -4436,7 +8852,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCJ188R72A104KA01-02B-EN_PDF_CERAMICCAPACITORSMD"
 			(at 55.88 95.25 0)
 			(effects
 				(font
@@ -4445,7 +8861,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "Murata GCJ soft termination MLCC for automotive, 100 nF ±10%, 100 V, X7R, AEC-Q200, -55 to +125 °C, 0603 (1608 metric)"
 			(at 55.88 95.25 0)
 			(effects
 				(font
@@ -4454,7 +8870,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Murata"
 			(at 55.88 95.25 0)
 			(effects
 				(font
@@ -4463,7 +8879,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "GCJ188R72A104KA01D"
 			(at 55.88 95.25 0)
 			(effects
 				(font
@@ -4472,7 +8888,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "490-13420-1-ND"
 			(at 55.88 95.25 0)
 			(effects
 				(font
@@ -4481,7 +8897,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "81-GCJ188R72A104KA1D"
 			(at 55.88 95.25 0)
 			(effects
 				(font
@@ -4490,7 +8906,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
 			(at 55.88 95.25 0)
 			(effects
 				(font
@@ -4508,6 +8924,15 @@
 				(hide yes)
 			)
 		)
+		(property "Tolerance" "±10%"
+			(at 55.88 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Dielectric" "X7R"
 			(at 55.88 95.25 0)
 			(effects
@@ -4517,7 +8942,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0603"
+		(property "Case" "0603"
 			(at 55.88 95.25 0)
 			(effects
 				(font
@@ -4526,7 +8951,7 @@
 				(hide yes)
 			)
 		)
-		(property "Tolerance" "10%"
+		(property "Notes" "Murata makes no 100 V 100 nF X7R GCM in 0603; GCJ is Murata's AEC-Q200 soft termination series."
 			(at 55.88 95.25 0)
 			(effects
 				(font
@@ -5986,7 +10411,7 @@
 		(uuid "5802a10c-e6e0-5eeb-a6b0-376332e016a2")
 	)
 	(symbol
-		(lib_id "Device:R")
+		(lib_id "DropOut_Resistor:AC0402JR-0710RL")
 		(at 255.27 101.6 90)
 		(unit 1)
 		(body_style 1)
@@ -6013,7 +10438,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
 			(at 255.27 101.6 0)
 			(effects
 				(font
@@ -6022,7 +10447,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
 			(at 255.27 101.6 0)
 			(effects
 				(font
@@ -6031,7 +10456,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "Yageo AC thick film chip resistor, 10 Ω ±5%, 1/16 W, 50 V, ±200 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
 			(at 255.27 101.6 0)
 			(effects
 				(font
@@ -6040,7 +10465,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Yageo"
 			(at 255.27 101.6 0)
 			(effects
 				(font
@@ -6049,7 +10474,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "AC0402JR-0710RL"
 			(at 255.27 101.6 0)
 			(effects
 				(font
@@ -6058,7 +10483,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "YAG3519CT-ND"
 			(at 255.27 101.6 0)
 			(effects
 				(font
@@ -6067,7 +10492,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "603-AC0402JR-0710RL"
 			(at 255.27 101.6 0)
 			(effects
 				(font
@@ -6076,7 +10501,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
 			(at 255.27 101.6 0)
 			(effects
 				(font
@@ -6085,7 +10510,7 @@
 				(hide yes)
 			)
 		)
-		(property "Tolerance" "5%"
+		(property "Tolerance" "±5%"
 			(at 255.27 101.6 0)
 			(effects
 				(font
@@ -6094,7 +10519,25 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0402"
+		(property "Power" "1/16W"
+			(at 255.27 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "50V"
+			(at 255.27 101.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Case" "0402"
 			(at 255.27 101.6 0)
 			(effects
 				(font
@@ -6199,7 +10642,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
+		(lib_id "DropOut_Capacitor:GCM1885C2A103JE02D")
 		(at 248.92 107.95 0)
 		(unit 1)
 		(body_style 1)
@@ -6228,7 +10671,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Capacitor_SMD:C_0603_1608Metric"
 			(at 248.92 107.95 0)
 			(effects
 				(font
@@ -6237,7 +10680,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM1885C2A103JE02-01A-EN_PDF_CERAMICCAPACITORSMD"
 			(at 248.92 107.95 0)
 			(effects
 				(font
@@ -6246,7 +10689,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 10 nF ±5%, 100 V, C0G, AEC-Q200, -55 to +125 °C, 0603 (1608 metric)"
 			(at 248.92 107.95 0)
 			(effects
 				(font
@@ -6255,7 +10698,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Murata"
 			(at 248.92 107.95 0)
 			(effects
 				(font
@@ -6264,7 +10707,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "GCM1885C2A103JE02D"
 			(at 248.92 107.95 0)
 			(effects
 				(font
@@ -6273,7 +10716,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "490-GCM1885C2A103JE02DCT-ND"
 			(at 248.92 107.95 0)
 			(effects
 				(font
@@ -6282,7 +10725,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "81-GCM1885C2A103JE2D"
 			(at 248.92 107.95 0)
 			(effects
 				(font
@@ -6291,7 +10734,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
 			(at 248.92 107.95 0)
 			(effects
 				(font
@@ -6309,6 +10752,15 @@
 				(hide yes)
 			)
 		)
+		(property "Tolerance" "±5%"
+			(at 248.92 107.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Dielectric" "C0G"
 			(at 248.92 107.95 0)
 			(effects
@@ -6318,16 +10770,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0603"
-			(at 248.92 107.95 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Tolerance" "5%"
+		(property "Case" "0603"
 			(at 248.92 107.95 0)
 			(effects
 				(font
@@ -6443,7 +10886,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
+		(lib_id "DropOut_Capacitor:GCJ188R72A104KA01D")
 		(at 266.7 95.25 0)
 		(unit 1)
 		(body_style 1)
@@ -6472,7 +10915,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Capacitor_SMD:C_0603_1608Metric"
 			(at 266.7 95.25 0)
 			(effects
 				(font
@@ -6481,7 +10924,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCJ188R72A104KA01-02B-EN_PDF_CERAMICCAPACITORSMD"
 			(at 266.7 95.25 0)
 			(effects
 				(font
@@ -6490,7 +10933,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "Murata GCJ soft termination MLCC for automotive, 100 nF ±10%, 100 V, X7R, AEC-Q200, -55 to +125 °C, 0603 (1608 metric)"
 			(at 266.7 95.25 0)
 			(effects
 				(font
@@ -6499,7 +10942,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Murata"
 			(at 266.7 95.25 0)
 			(effects
 				(font
@@ -6508,7 +10951,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "GCJ188R72A104KA01D"
 			(at 266.7 95.25 0)
 			(effects
 				(font
@@ -6517,7 +10960,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "490-13420-1-ND"
 			(at 266.7 95.25 0)
 			(effects
 				(font
@@ -6526,7 +10969,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "81-GCJ188R72A104KA1D"
 			(at 266.7 95.25 0)
 			(effects
 				(font
@@ -6535,7 +10978,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
 			(at 266.7 95.25 0)
 			(effects
 				(font
@@ -6553,6 +10996,15 @@
 				(hide yes)
 			)
 		)
+		(property "Tolerance" "±10%"
+			(at 266.7 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Dielectric" "X7R"
 			(at 266.7 95.25 0)
 			(effects
@@ -6562,7 +11014,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0603"
+		(property "Case" "0603"
 			(at 266.7 95.25 0)
 			(effects
 				(font
@@ -6571,7 +11023,7 @@
 				(hide yes)
 			)
 		)
-		(property "Tolerance" "10%"
+		(property "Notes" "Murata makes no 100 V 100 nF X7R GCM in 0603; GCJ is Murata's AEC-Q200 soft termination series."
 			(at 266.7 95.25 0)
 			(effects
 				(font
@@ -6676,7 +11128,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
+		(lib_id "DropOut_Capacitor:GCJ188R72A104KA01D")
 		(at 276.86 95.25 0)
 		(unit 1)
 		(body_style 1)
@@ -6705,7 +11157,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Capacitor_SMD:C_0603_1608Metric"
 			(at 276.86 95.25 0)
 			(effects
 				(font
@@ -6714,7 +11166,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCJ188R72A104KA01-02B-EN_PDF_CERAMICCAPACITORSMD"
 			(at 276.86 95.25 0)
 			(effects
 				(font
@@ -6723,7 +11175,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "Murata GCJ soft termination MLCC for automotive, 100 nF ±10%, 100 V, X7R, AEC-Q200, -55 to +125 °C, 0603 (1608 metric)"
 			(at 276.86 95.25 0)
 			(effects
 				(font
@@ -6732,7 +11184,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Murata"
 			(at 276.86 95.25 0)
 			(effects
 				(font
@@ -6741,7 +11193,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "GCJ188R72A104KA01D"
 			(at 276.86 95.25 0)
 			(effects
 				(font
@@ -6750,7 +11202,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "490-13420-1-ND"
 			(at 276.86 95.25 0)
 			(effects
 				(font
@@ -6759,7 +11211,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "81-GCJ188R72A104KA1D"
 			(at 276.86 95.25 0)
 			(effects
 				(font
@@ -6768,7 +11220,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
 			(at 276.86 95.25 0)
 			(effects
 				(font
@@ -6786,6 +11238,15 @@
 				(hide yes)
 			)
 		)
+		(property "Tolerance" "±10%"
+			(at 276.86 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Dielectric" "X7R"
 			(at 276.86 95.25 0)
 			(effects
@@ -6795,7 +11256,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0603"
+		(property "Case" "0603"
 			(at 276.86 95.25 0)
 			(effects
 				(font
@@ -6804,7 +11265,7 @@
 				(hide yes)
 			)
 		)
-		(property "Tolerance" "10%"
+		(property "Notes" "Murata makes no 100 V 100 nF X7R GCM in 0603; GCJ is Murata's AEC-Q200 soft termination series."
 			(at 276.86 95.25 0)
 			(effects
 				(font
@@ -7004,7 +11465,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
+		(lib_id "DropOut_Capacitor:CNA6P1X7R2A475K250AE")
 		(at 299.72 95.25 0)
 		(unit 1)
 		(body_style 1)
@@ -7033,7 +11494,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Capacitor_SMD:C_1210_3225Metric"
 			(at 299.72 95.25 0)
 			(effects
 				(font
@@ -7042,7 +11503,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://product.tdk.com/en/system/files/dam/doc/product/capacitor/ceramic/mlcc/catalog/mlcc_automotive_soft_cna_en.pdf"
 			(at 299.72 95.25 0)
 			(effects
 				(font
@@ -7051,7 +11512,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "TDK CNA soft termination automotive MLCC, 4.7 µF ±10%, 100 V, X7R, AEC-Q200, -55 to +125 °C, 1210 (3225 metric)"
 			(at 299.72 95.25 0)
 			(effects
 				(font
@@ -7060,7 +11521,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "TDK"
 			(at 299.72 95.25 0)
 			(effects
 				(font
@@ -7069,7 +11530,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "CNA6P1X7R2A475K250AE"
 			(at 299.72 95.25 0)
 			(effects
 				(font
@@ -7078,7 +11539,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "445-181409-1-ND"
 			(at 299.72 95.25 0)
 			(effects
 				(font
@@ -7087,7 +11548,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "810-CNA6P1X7R2A475K2"
 			(at 299.72 95.25 0)
 			(effects
 				(font
@@ -7096,7 +11557,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
 			(at 299.72 95.25 0)
 			(effects
 				(font
@@ -7114,6 +11575,15 @@
 				(hide yes)
 			)
 		)
+		(property "Tolerance" "±10%"
+			(at 299.72 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Dielectric" "X7R"
 			(at 299.72 95.25 0)
 			(effects
@@ -7123,7 +11593,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "1210"
+		(property "Case" "1210"
 			(at 299.72 95.25 0)
 			(effects
 				(font
@@ -7132,7 +11602,7 @@
 				(hide yes)
 			)
 		)
-		(property "Tolerance" "10%"
+		(property "Notes" "TDK makes this value only in its CNA soft termination series."
 			(at 299.72 95.25 0)
 			(effects
 				(font
@@ -7374,7 +11844,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
+		(lib_id "DropOut_Capacitor:CNA6P1X7R2A475K250AE")
 		(at 330.2 95.25 0)
 		(unit 1)
 		(body_style 1)
@@ -7403,7 +11873,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Capacitor_SMD:C_1210_3225Metric"
 			(at 330.2 95.25 0)
 			(effects
 				(font
@@ -7412,7 +11882,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://product.tdk.com/en/system/files/dam/doc/product/capacitor/ceramic/mlcc/catalog/mlcc_automotive_soft_cna_en.pdf"
 			(at 330.2 95.25 0)
 			(effects
 				(font
@@ -7421,7 +11891,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "TDK CNA soft termination automotive MLCC, 4.7 µF ±10%, 100 V, X7R, AEC-Q200, -55 to +125 °C, 1210 (3225 metric)"
 			(at 330.2 95.25 0)
 			(effects
 				(font
@@ -7430,7 +11900,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "TDK"
 			(at 330.2 95.25 0)
 			(effects
 				(font
@@ -7439,7 +11909,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "CNA6P1X7R2A475K250AE"
 			(at 330.2 95.25 0)
 			(effects
 				(font
@@ -7448,7 +11918,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "445-181409-1-ND"
 			(at 330.2 95.25 0)
 			(effects
 				(font
@@ -7457,7 +11927,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "810-CNA6P1X7R2A475K2"
 			(at 330.2 95.25 0)
 			(effects
 				(font
@@ -7466,7 +11936,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
 			(at 330.2 95.25 0)
 			(effects
 				(font
@@ -7484,6 +11954,15 @@
 				(hide yes)
 			)
 		)
+		(property "Tolerance" "±10%"
+			(at 330.2 95.25 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Dielectric" "X7R"
 			(at 330.2 95.25 0)
 			(effects
@@ -7493,7 +11972,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "1210"
+		(property "Case" "1210"
 			(at 330.2 95.25 0)
 			(effects
 				(font
@@ -7502,7 +11981,7 @@
 				(hide yes)
 			)
 		)
-		(property "Tolerance" "10%"
+		(property "Notes" "TDK makes this value only in its CNA soft termination series."
 			(at 330.2 95.25 0)
 			(effects
 				(font
@@ -8525,7 +13004,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
+		(lib_id "DropOut_Capacitor:GCJ188R72A104KA01D")
 		(at 187.96 168.91 0)
 		(unit 1)
 		(body_style 1)
@@ -8554,7 +13033,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Capacitor_SMD:C_0603_1608Metric"
 			(at 187.96 168.91 0)
 			(effects
 				(font
@@ -8563,7 +13042,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCJ188R72A104KA01-02B-EN_PDF_CERAMICCAPACITORSMD"
 			(at 187.96 168.91 0)
 			(effects
 				(font
@@ -8572,7 +13051,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "Murata GCJ soft termination MLCC for automotive, 100 nF ±10%, 100 V, X7R, AEC-Q200, -55 to +125 °C, 0603 (1608 metric)"
 			(at 187.96 168.91 0)
 			(effects
 				(font
@@ -8581,7 +13060,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Murata"
 			(at 187.96 168.91 0)
 			(effects
 				(font
@@ -8590,7 +13069,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "GCJ188R72A104KA01D"
 			(at 187.96 168.91 0)
 			(effects
 				(font
@@ -8599,7 +13078,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "490-13420-1-ND"
 			(at 187.96 168.91 0)
 			(effects
 				(font
@@ -8608,7 +13087,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "81-GCJ188R72A104KA1D"
 			(at 187.96 168.91 0)
 			(effects
 				(font
@@ -8617,7 +13096,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
 			(at 187.96 168.91 0)
 			(effects
 				(font
@@ -8635,6 +13114,15 @@
 				(hide yes)
 			)
 		)
+		(property "Tolerance" "±10%"
+			(at 187.96 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Dielectric" "X7R"
 			(at 187.96 168.91 0)
 			(effects
@@ -8644,7 +13132,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0603"
+		(property "Case" "0603"
 			(at 187.96 168.91 0)
 			(effects
 				(font
@@ -8653,7 +13141,7 @@
 				(hide yes)
 			)
 		)
-		(property "Tolerance" "10%"
+		(property "Notes" "Murata makes no 100 V 100 nF X7R GCM in 0603; GCJ is Murata's AEC-Q200 soft termination series."
 			(at 187.96 168.91 0)
 			(effects
 				(font
@@ -8721,7 +13209,7 @@
 		(uuid "ecb75254-cc38-5c29-891b-96cfc1189db5")
 	)
 	(symbol
-		(lib_id "Device:C")
+		(lib_id "DropOut_Capacitor:CGA5L2X7R2A105K160AA")
 		(at 223.52 168.91 0)
 		(unit 1)
 		(body_style 1)
@@ -8750,7 +13238,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Capacitor_SMD:C_1206_3216Metric"
 			(at 223.52 168.91 0)
 			(effects
 				(font
@@ -8759,7 +13247,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/mlcc/catalog/mlcc_automotive_midvoltage_en.pdf"
 			(at 223.52 168.91 0)
 			(effects
 				(font
@@ -8768,7 +13256,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "TDK CGA automotive mid voltage MLCC, 1 µF ±10%, 100 V, X7R, AEC-Q200, -55 to +125 °C, 1206 (3216 metric)"
 			(at 223.52 168.91 0)
 			(effects
 				(font
@@ -8777,7 +13265,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "TDK"
 			(at 223.52 168.91 0)
 			(effects
 				(font
@@ -8786,7 +13274,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "CGA5L2X7R2A105K160AA"
 			(at 223.52 168.91 0)
 			(effects
 				(font
@@ -8795,7 +13283,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "445-5845-1-ND"
 			(at 223.52 168.91 0)
 			(effects
 				(font
@@ -8804,7 +13292,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "810-CGA5L2X7R2A105K"
 			(at 223.52 168.91 0)
 			(effects
 				(font
@@ -8813,7 +13301,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
 			(at 223.52 168.91 0)
 			(effects
 				(font
@@ -8822,7 +13310,16 @@
 				(hide yes)
 			)
 		)
-		(property "Voltage" "50V"
+		(property "Voltage" "100V"
+			(at 223.52 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Tolerance" "±10%"
 			(at 223.52 168.91 0)
 			(effects
 				(font
@@ -8840,16 +13337,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0805"
-			(at 223.52 168.91 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Tolerance" "10%"
+		(property "Case" "1206"
 			(at 223.52 168.91 0)
 			(effects
 				(font
@@ -8986,7 +13474,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
+		(lib_id "DropOut_Resistor:AC0402JR-0710KL")
 		(at 231.14 196.85 0)
 		(unit 1)
 		(body_style 1)
@@ -9015,7 +13503,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
 			(at 231.14 196.85 0)
 			(effects
 				(font
@@ -9024,7 +13512,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
 			(at 231.14 196.85 0)
 			(effects
 				(font
@@ -9033,7 +13521,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "Yageo AC thick film chip resistor, 10 kΩ ±5%, 1/16 W, 50 V, ±200 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
 			(at 231.14 196.85 0)
 			(effects
 				(font
@@ -9042,7 +13530,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Yageo"
 			(at 231.14 196.85 0)
 			(effects
 				(font
@@ -9051,7 +13539,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "AC0402JR-0710KL"
 			(at 231.14 196.85 0)
 			(effects
 				(font
@@ -9060,7 +13548,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "YAG3517CT-ND"
 			(at 231.14 196.85 0)
 			(effects
 				(font
@@ -9069,7 +13557,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "603-AC0402JR-0710KL"
 			(at 231.14 196.85 0)
 			(effects
 				(font
@@ -9078,7 +13566,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
 			(at 231.14 196.85 0)
 			(effects
 				(font
@@ -9087,7 +13575,7 @@
 				(hide yes)
 			)
 		)
-		(property "Tolerance" "5%"
+		(property "Tolerance" "±5%"
 			(at 231.14 196.85 0)
 			(effects
 				(font
@@ -9096,7 +13584,25 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0402"
+		(property "Power" "1/16W"
+			(at 231.14 196.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "50V"
+			(at 231.14 196.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Case" "0402"
 			(at 231.14 196.85 0)
 			(effects
 				(font
@@ -9143,7 +13649,7 @@
 		(uuid "6d21c5f0-570f-5644-baff-cac3940cd925")
 	)
 	(symbol
-		(lib_id "Device:R")
+		(lib_id "DropOut_Resistor:AC0603FR-07107KL")
 		(at 129.54 201.93 0)
 		(unit 1)
 		(body_style 1)
@@ -9172,7 +13678,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Resistor_SMD:R_0603_1608Metric"
 			(at 129.54 201.93 0)
 			(effects
 				(font
@@ -9181,7 +13687,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
 			(at 129.54 201.93 0)
 			(effects
 				(font
@@ -9190,7 +13696,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "Yageo AC thick film chip resistor, 107 kΩ ±1%, 1/10 W, 75 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 0603 (1608 metric)"
 			(at 129.54 201.93 0)
 			(effects
 				(font
@@ -9199,7 +13705,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Yageo"
 			(at 129.54 201.93 0)
 			(effects
 				(font
@@ -9208,7 +13714,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "AC0603FR-07107KL"
 			(at 129.54 201.93 0)
 			(effects
 				(font
@@ -9217,7 +13723,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "13-AC0603FR-07107KLCT-ND"
 			(at 129.54 201.93 0)
 			(effects
 				(font
@@ -9226,7 +13732,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "603-AC0603FR-07107KL"
 			(at 129.54 201.93 0)
 			(effects
 				(font
@@ -9235,7 +13741,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
 			(at 129.54 201.93 0)
 			(effects
 				(font
@@ -9244,7 +13750,7 @@
 				(hide yes)
 			)
 		)
-		(property "Tolerance" "1%"
+		(property "Tolerance" "±1%"
 			(at 129.54 201.93 0)
 			(effects
 				(font
@@ -9253,7 +13759,25 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0603"
+		(property "Power" "1/10W"
+			(at 129.54 201.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "75V"
+			(at 129.54 201.93 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Case" "0603"
 			(at 129.54 201.93 0)
 			(effects
 				(font
@@ -9278,7 +13802,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
+		(lib_id "DropOut_Resistor:AC0603FR-072KL")
 		(at 129.54 209.55 0)
 		(unit 1)
 		(body_style 1)
@@ -9307,7 +13831,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Resistor_SMD:R_0603_1608Metric"
 			(at 129.54 209.55 0)
 			(effects
 				(font
@@ -9316,7 +13840,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
 			(at 129.54 209.55 0)
 			(effects
 				(font
@@ -9325,7 +13849,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "Yageo AC thick film chip resistor, 2 kΩ ±1%, 1/10 W, 75 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 0603 (1608 metric)"
 			(at 129.54 209.55 0)
 			(effects
 				(font
@@ -9334,7 +13858,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Yageo"
 			(at 129.54 209.55 0)
 			(effects
 				(font
@@ -9343,7 +13867,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "AC0603FR-072KL"
 			(at 129.54 209.55 0)
 			(effects
 				(font
@@ -9352,7 +13876,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "YAG3590CT-ND"
 			(at 129.54 209.55 0)
 			(effects
 				(font
@@ -9361,7 +13885,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "603-AC0603FR-072KL"
 			(at 129.54 209.55 0)
 			(effects
 				(font
@@ -9370,7 +13894,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
 			(at 129.54 209.55 0)
 			(effects
 				(font
@@ -9379,7 +13903,7 @@
 				(hide yes)
 			)
 		)
-		(property "Tolerance" "1%"
+		(property "Tolerance" "±1%"
 			(at 129.54 209.55 0)
 			(effects
 				(font
@@ -9388,7 +13912,25 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0603"
+		(property "Power" "1/10W"
+			(at 129.54 209.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "75V"
+			(at 129.54 209.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Case" "0603"
 			(at 129.54 209.55 0)
 			(effects
 				(font
@@ -9413,7 +13955,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
+		(lib_id "DropOut_Resistor:AC0603FR-077K87L")
 		(at 129.54 217.17 0)
 		(unit 1)
 		(body_style 1)
@@ -9442,7 +13984,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Resistor_SMD:R_0603_1608Metric"
 			(at 129.54 217.17 0)
 			(effects
 				(font
@@ -9451,7 +13993,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
 			(at 129.54 217.17 0)
 			(effects
 				(font
@@ -9460,7 +14002,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "Yageo AC thick film chip resistor, 7.87 kΩ ±1%, 1/10 W, 75 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 0603 (1608 metric)"
 			(at 129.54 217.17 0)
 			(effects
 				(font
@@ -9469,7 +14011,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Yageo"
 			(at 129.54 217.17 0)
 			(effects
 				(font
@@ -9478,7 +14020,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "AC0603FR-077K87L"
 			(at 129.54 217.17 0)
 			(effects
 				(font
@@ -9487,7 +14029,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "13-AC0603FR-077K87LCT-ND"
 			(at 129.54 217.17 0)
 			(effects
 				(font
@@ -9496,7 +14038,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "603-AC0603FR-077K87L"
 			(at 129.54 217.17 0)
 			(effects
 				(font
@@ -9505,7 +14047,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
 			(at 129.54 217.17 0)
 			(effects
 				(font
@@ -9514,7 +14056,7 @@
 				(hide yes)
 			)
 		)
-		(property "Tolerance" "1%"
+		(property "Tolerance" "±1%"
 			(at 129.54 217.17 0)
 			(effects
 				(font
@@ -9523,7 +14065,25 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0603"
+		(property "Power" "1/10W"
+			(at 129.54 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "75V"
+			(at 129.54 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Case" "0603"
 			(at 129.54 217.17 0)
 			(effects
 				(font
@@ -9617,7 +14177,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
+		(lib_id "DropOut_Resistor:AC0603FR-072K1L")
 		(at 129.54 224.79 0)
 		(unit 1)
 		(body_style 1)
@@ -9646,7 +14206,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Resistor_SMD:R_0603_1608Metric"
 			(at 129.54 224.79 0)
 			(effects
 				(font
@@ -9655,7 +14215,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
 			(at 129.54 224.79 0)
 			(effects
 				(font
@@ -9664,7 +14224,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "Yageo AC thick film chip resistor, 2.1 kΩ ±1%, 1/10 W, 75 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 0603 (1608 metric)"
 			(at 129.54 224.79 0)
 			(effects
 				(font
@@ -9673,7 +14233,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Yageo"
 			(at 129.54 224.79 0)
 			(effects
 				(font
@@ -9682,7 +14242,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "AC0603FR-072K1L"
 			(at 129.54 224.79 0)
 			(effects
 				(font
@@ -9691,7 +14251,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "13-AC0603FR-072K1LCT-ND"
 			(at 129.54 224.79 0)
 			(effects
 				(font
@@ -9700,7 +14260,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "603-AC0603FR-072K1L"
 			(at 129.54 224.79 0)
 			(effects
 				(font
@@ -9709,7 +14269,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
 			(at 129.54 224.79 0)
 			(effects
 				(font
@@ -9718,7 +14278,7 @@
 				(hide yes)
 			)
 		)
-		(property "Tolerance" "1%"
+		(property "Tolerance" "±1%"
 			(at 129.54 224.79 0)
 			(effects
 				(font
@@ -9727,7 +14287,25 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0603"
+		(property "Power" "1/10W"
+			(at 129.54 224.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "75V"
+			(at 129.54 224.79 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Case" "0603"
 			(at 129.54 224.79 0)
 			(effects
 				(font
@@ -9961,7 +14539,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
+		(lib_id "DropOut_Capacitor:GCM1885C1H103GA16D")
 		(at 121.92 219.71 0)
 		(unit 1)
 		(body_style 1)
@@ -9990,7 +14568,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Capacitor_SMD:C_0603_1608Metric"
 			(at 121.92 219.71 0)
 			(effects
 				(font
@@ -9999,7 +14577,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM1885C1H103GA16-01A-EN_PDF_CERAMICCAPACITORSMD"
 			(at 121.92 219.71 0)
 			(effects
 				(font
@@ -10008,7 +14586,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 10 nF ±2%, 50 V, C0G, AEC-Q200, -55 to +125 °C, 0603 (1608 metric)"
 			(at 121.92 219.71 0)
 			(effects
 				(font
@@ -10017,7 +14595,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Murata"
 			(at 121.92 219.71 0)
 			(effects
 				(font
@@ -10026,7 +14604,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "GCM1885C1H103GA16D"
 			(at 121.92 219.71 0)
 			(effects
 				(font
@@ -10035,7 +14613,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "490-GCM1885C1H103GA16DCT-ND"
 			(at 121.92 219.71 0)
 			(effects
 				(font
@@ -10044,7 +14622,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "81-GCM1885C1H103GA6D"
 			(at 121.92 219.71 0)
 			(effects
 				(font
@@ -10053,7 +14631,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
 			(at 121.92 219.71 0)
 			(effects
 				(font
@@ -10071,6 +14649,15 @@
 				(hide yes)
 			)
 		)
+		(property "Tolerance" "±2%"
+			(at 121.92 219.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Dielectric" "C0G"
 			(at 121.92 219.71 0)
 			(effects
@@ -10080,7 +14667,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0402"
+		(property "Case" "0603"
 			(at 121.92 219.71 0)
 			(effects
 				(font
@@ -10089,7 +14676,7 @@
 				(hide yes)
 			)
 		)
-		(property "Tolerance" "5%"
+		(property "Notes" "No AEC-Q200 part exists in the drawn 0402 package (DigiKey parametric search, 2026-10-22); built in the next larger package, 0603. Murata makes the 50 V GCM 10 nF C0G only in ±2 % or tighter."
 			(at 121.92 219.71 0)
 			(effects
 				(font
@@ -10216,7 +14803,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
+		(lib_id "DropOut_Capacitor:GCM31C5C1H683JA16L")
 		(at 147.32 234.95 0)
 		(unit 1)
 		(body_style 1)
@@ -10245,7 +14832,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Capacitor_SMD:C_1206_3216Metric"
 			(at 147.32 234.95 0)
 			(effects
 				(font
@@ -10254,7 +14841,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM31C5C1H683JA16-01A-EN_PDF_CERAMICCAPACITORSMD"
 			(at 147.32 234.95 0)
 			(effects
 				(font
@@ -10263,7 +14850,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 68 nF ±5%, 50 V, C0G, AEC-Q200, -55 to +125 °C, 1206 (3216 metric)"
 			(at 147.32 234.95 0)
 			(effects
 				(font
@@ -10272,7 +14859,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Murata"
 			(at 147.32 234.95 0)
 			(effects
 				(font
@@ -10281,7 +14868,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "GCM31C5C1H683JA16L"
 			(at 147.32 234.95 0)
 			(effects
 				(font
@@ -10290,7 +14877,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "490-5323-1-ND"
 			(at 147.32 234.95 0)
 			(effects
 				(font
@@ -10299,7 +14886,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "81-GCM31C5C1H683JA6L"
 			(at 147.32 234.95 0)
 			(effects
 				(font
@@ -10308,7 +14895,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
 			(at 147.32 234.95 0)
 			(effects
 				(font
@@ -10326,6 +14913,15 @@
 				(hide yes)
 			)
 		)
+		(property "Tolerance" "±5%"
+			(at 147.32 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Dielectric" "C0G"
 			(at 147.32 234.95 0)
 			(effects
@@ -10335,7 +14931,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0805"
+		(property "Case" "1206"
 			(at 147.32 234.95 0)
 			(effects
 				(font
@@ -10344,7 +14940,7 @@
 				(hide yes)
 			)
 		)
-		(property "Tolerance" "5%"
+		(property "Notes" "No AEC-Q200 68 nF C0G part exists in the drawn 0805 package (DigiKey parametric search, 2026-10-22); built in the next larger package, 1206."
 			(at 147.32 234.95 0)
 			(effects
 				(font
@@ -10460,7 +15056,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:R")
+		(lib_id "DropOut_Resistor:TNPW060332K0BEEA")
 		(at 157.48 234.95 0)
 		(unit 1)
 		(body_style 1)
@@ -10489,7 +15085,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Resistor_SMD:R_0603_1608Metric"
 			(at 157.48 234.95 0)
 			(effects
 				(font
@@ -10498,7 +15094,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.vishay.com/docs/28758/tnpw_e3.pdf"
 			(at 157.48 234.95 0)
 			(effects
 				(font
@@ -10507,7 +15103,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "Vishay TNPW e3 thin film chip resistor, 32 kΩ ±0.1%, 0.11 W, 100 V, ±25 ppm/K, AEC-Q200, -55 to +175 °C, 0603 (1608 metric)"
 			(at 157.48 234.95 0)
 			(effects
 				(font
@@ -10516,7 +15112,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Vishay"
 			(at 157.48 234.95 0)
 			(effects
 				(font
@@ -10525,7 +15121,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "TNPW060332K0BEEA"
 			(at 157.48 234.95 0)
 			(effects
 				(font
@@ -10534,7 +15130,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "541-TNPW060332K0BEEACT-ND"
 			(at 157.48 234.95 0)
 			(effects
 				(font
@@ -10543,7 +15139,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "71-TNPW060332K0BEEA"
 			(at 157.48 234.95 0)
 			(effects
 				(font
@@ -10552,7 +15148,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +175 °C"
 			(at 157.48 234.95 0)
 			(effects
 				(font
@@ -10561,7 +15157,7 @@
 				(hide yes)
 			)
 		)
-		(property "Tolerance" "1%"
+		(property "Tolerance" "±0.1%"
 			(at 157.48 234.95 0)
 			(effects
 				(font
@@ -10570,7 +15166,34 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0603"
+		(property "Power" "0.11W"
+			(at 157.48 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "100V"
+			(at 157.48 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Case" "0603"
+			(at 157.48 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "32 kΩ is an E192 value: no AEC-Q200 1 % thick film part offers it (Yageo AC and Panasonic ERJ-3EKF are E24/E96 only), so this 0.1 % thin film part serves the 1 % line."
 			(at 157.48 234.95 0)
 			(effects
 				(font
@@ -10662,7 +15285,7 @@
 		(uuid "83db0ae3-eed0-5892-b015-8374d091c1c0")
 	)
 	(symbol
-		(lib_id "Device:R")
+		(lib_id "DropOut_Resistor:AC0603FR-0749R9L")
 		(at 44.45 162.56 90)
 		(unit 1)
 		(body_style 1)
@@ -10689,7 +15312,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Resistor_SMD:R_0603_1608Metric"
 			(at 44.45 162.56 0)
 			(effects
 				(font
@@ -10698,7 +15321,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
 			(at 44.45 162.56 0)
 			(effects
 				(font
@@ -10707,7 +15330,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "Yageo AC thick film chip resistor, 49.9 Ω ±1%, 1/10 W, 75 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 0603 (1608 metric)"
 			(at 44.45 162.56 0)
 			(effects
 				(font
@@ -10716,7 +15339,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Yageo"
 			(at 44.45 162.56 0)
 			(effects
 				(font
@@ -10725,7 +15348,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "AC0603FR-0749R9L"
 			(at 44.45 162.56 0)
 			(effects
 				(font
@@ -10734,7 +15357,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "YAG3611CT-ND"
 			(at 44.45 162.56 0)
 			(effects
 				(font
@@ -10743,7 +15366,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "603-AC0603FR-0749R9L"
 			(at 44.45 162.56 0)
 			(effects
 				(font
@@ -10752,7 +15375,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
 			(at 44.45 162.56 0)
 			(effects
 				(font
@@ -10761,7 +15384,7 @@
 				(hide yes)
 			)
 		)
-		(property "Tolerance" "1%"
+		(property "Tolerance" "±1%"
 			(at 44.45 162.56 0)
 			(effects
 				(font
@@ -10770,7 +15393,25 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0603"
+		(property "Power" "1/10W"
+			(at 44.45 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "75V"
+			(at 44.45 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Case" "0603"
 			(at 44.45 162.56 0)
 			(effects
 				(font
@@ -10838,7 +15479,7 @@
 		(uuid "f9772cc7-f92a-58a5-963a-dd1feff65f9a")
 	)
 	(symbol
-		(lib_id "Device:R")
+		(lib_id "DropOut_Resistor:AC0402JR-070RL")
 		(at 44.45 182.88 90)
 		(unit 1)
 		(body_style 1)
@@ -10865,7 +15506,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
 			(at 44.45 182.88 0)
 			(effects
 				(font
@@ -10874,7 +15515,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
 			(at 44.45 182.88 0)
 			(effects
 				(font
@@ -10883,7 +15524,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "Yageo AC thick film chip jumper, 0 Ω, 1 A rated, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
 			(at 44.45 182.88 0)
 			(effects
 				(font
@@ -10892,7 +15533,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Yageo"
 			(at 44.45 182.88 0)
 			(effects
 				(font
@@ -10901,7 +15542,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "AC0402JR-070RL"
 			(at 44.45 182.88 0)
 			(effects
 				(font
@@ -10910,7 +15551,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "311-0.0LBCT-ND"
 			(at 44.45 182.88 0)
 			(effects
 				(font
@@ -10919,7 +15560,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "603-AC0402JR-070RL"
 			(at 44.45 182.88 0)
 			(effects
 				(font
@@ -10928,7 +15569,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
 			(at 44.45 182.88 0)
 			(effects
 				(font
@@ -10937,16 +15578,7 @@
 				(hide yes)
 			)
 		)
-		(property "Tolerance" "5%"
-			(at 44.45 182.88 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Package" "0402"
+		(property "Case" "0402"
 			(at 44.45 182.88 0)
 			(effects
 				(font
@@ -10992,7 +15624,7 @@
 		(uuid "1550620f-e4c6-52f2-b583-7b8859334ddc")
 	)
 	(symbol
-		(lib_id "Device:C")
+		(lib_id "DropOut_Capacitor:GCM1885C1H103GA16D")
 		(at 63.5 156.21 0)
 		(unit 1)
 		(body_style 1)
@@ -11021,7 +15653,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Capacitor_SMD:C_0603_1608Metric"
 			(at 63.5 156.21 0)
 			(effects
 				(font
@@ -11030,7 +15662,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM1885C1H103GA16-01A-EN_PDF_CERAMICCAPACITORSMD"
 			(at 63.5 156.21 0)
 			(effects
 				(font
@@ -11039,7 +15671,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 10 nF ±2%, 50 V, C0G, AEC-Q200, -55 to +125 °C, 0603 (1608 metric)"
 			(at 63.5 156.21 0)
 			(effects
 				(font
@@ -11048,7 +15680,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Murata"
 			(at 63.5 156.21 0)
 			(effects
 				(font
@@ -11057,7 +15689,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "GCM1885C1H103GA16D"
 			(at 63.5 156.21 0)
 			(effects
 				(font
@@ -11066,7 +15698,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "490-GCM1885C1H103GA16DCT-ND"
 			(at 63.5 156.21 0)
 			(effects
 				(font
@@ -11075,7 +15707,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "81-GCM1885C1H103GA6D"
 			(at 63.5 156.21 0)
 			(effects
 				(font
@@ -11084,7 +15716,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
 			(at 63.5 156.21 0)
 			(effects
 				(font
@@ -11102,6 +15734,15 @@
 				(hide yes)
 			)
 		)
+		(property "Tolerance" "±2%"
+			(at 63.5 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Dielectric" "C0G"
 			(at 63.5 156.21 0)
 			(effects
@@ -11111,7 +15752,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0402"
+		(property "Case" "0603"
 			(at 63.5 156.21 0)
 			(effects
 				(font
@@ -11120,7 +15761,7 @@
 				(hide yes)
 			)
 		)
-		(property "Tolerance" "5%"
+		(property "Notes" "No AEC-Q200 part exists in the drawn 0402 package (DigiKey parametric search, 2026-10-22); built in the next larger package, 0603. Murata makes the 50 V GCM 10 nF C0G only in ±2 % or tighter."
 			(at 63.5 156.21 0)
 			(effects
 				(font
@@ -11188,7 +15829,7 @@
 		(uuid "a0f037b5-2a5b-54fa-a7e6-af81ed43978d")
 	)
 	(symbol
-		(lib_id "Device:C")
+		(lib_id "DropOut_Capacitor:GCM1885C1H103GA16D")
 		(at 63.5 189.23 0)
 		(unit 1)
 		(body_style 1)
@@ -11217,7 +15858,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Capacitor_SMD:C_0603_1608Metric"
 			(at 63.5 189.23 0)
 			(effects
 				(font
@@ -11226,7 +15867,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM1885C1H103GA16-01A-EN_PDF_CERAMICCAPACITORSMD"
 			(at 63.5 189.23 0)
 			(effects
 				(font
@@ -11235,7 +15876,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 10 nF ±2%, 50 V, C0G, AEC-Q200, -55 to +125 °C, 0603 (1608 metric)"
 			(at 63.5 189.23 0)
 			(effects
 				(font
@@ -11244,7 +15885,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Murata"
 			(at 63.5 189.23 0)
 			(effects
 				(font
@@ -11253,7 +15894,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "GCM1885C1H103GA16D"
 			(at 63.5 189.23 0)
 			(effects
 				(font
@@ -11262,7 +15903,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "490-GCM1885C1H103GA16DCT-ND"
 			(at 63.5 189.23 0)
 			(effects
 				(font
@@ -11271,7 +15912,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "81-GCM1885C1H103GA6D"
 			(at 63.5 189.23 0)
 			(effects
 				(font
@@ -11280,7 +15921,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
 			(at 63.5 189.23 0)
 			(effects
 				(font
@@ -11298,6 +15939,15 @@
 				(hide yes)
 			)
 		)
+		(property "Tolerance" "±2%"
+			(at 63.5 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Dielectric" "C0G"
 			(at 63.5 189.23 0)
 			(effects
@@ -11307,7 +15957,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0402"
+		(property "Case" "0603"
 			(at 63.5 189.23 0)
 			(effects
 				(font
@@ -11316,7 +15966,7 @@
 				(hide yes)
 			)
 		)
-		(property "Tolerance" "5%"
+		(property "Notes" "No AEC-Q200 part exists in the drawn 0402 package (DigiKey parametric search, 2026-10-22); built in the next larger package, 0603. Murata makes the 50 V GCM 10 nF C0G only in ±2 % or tighter."
 			(at 63.5 189.23 0)
 			(effects
 				(font
@@ -11871,7 +16521,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
+		(lib_id "DropOut_Capacitor:GCM155R71C104KA55D")
 		(at 312.42 186.69 0)
 		(unit 1)
 		(body_style 1)
@@ -11900,7 +16550,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Capacitor_SMD:C_0402_1005Metric"
 			(at 312.42 186.69 0)
 			(effects
 				(font
@@ -11909,7 +16559,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM155R71C104KA55-01A-EN_PDF_CERAMICCAPACITORSMD"
 			(at 312.42 186.69 0)
 			(effects
 				(font
@@ -11918,7 +16568,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 100 nF ±10%, 16 V, X7R, AEC-Q200, -55 to +125 °C, 0402 (1005 metric)"
 			(at 312.42 186.69 0)
 			(effects
 				(font
@@ -11927,7 +16577,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Murata"
 			(at 312.42 186.69 0)
 			(effects
 				(font
@@ -11936,7 +16586,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "GCM155R71C104KA55D"
 			(at 312.42 186.69 0)
 			(effects
 				(font
@@ -11945,7 +16595,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "490-4759-1-ND"
 			(at 312.42 186.69 0)
 			(effects
 				(font
@@ -11954,7 +16604,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "81-GCM155R71C104KA5D"
 			(at 312.42 186.69 0)
 			(effects
 				(font
@@ -11963,7 +16613,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
 			(at 312.42 186.69 0)
 			(effects
 				(font
@@ -11981,6 +16631,15 @@
 				(hide yes)
 			)
 		)
+		(property "Tolerance" "±10%"
+			(at 312.42 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Dielectric" "X7R"
 			(at 312.42 186.69 0)
 			(effects
@@ -11990,16 +16649,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0402"
-			(at 312.42 186.69 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Tolerance" "10%"
+		(property "Case" "0402"
 			(at 312.42 186.69 0)
 			(effects
 				(font
@@ -12571,7 +17221,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
+		(lib_id "DropOut_Capacitor:GCM155R71C104KA55D")
 		(at 396.24 189.23 0)
 		(unit 1)
 		(body_style 1)
@@ -12600,7 +17250,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Capacitor_SMD:C_0402_1005Metric"
 			(at 396.24 189.23 0)
 			(effects
 				(font
@@ -12609,7 +17259,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM155R71C104KA55-01A-EN_PDF_CERAMICCAPACITORSMD"
 			(at 396.24 189.23 0)
 			(effects
 				(font
@@ -12618,7 +17268,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 100 nF ±10%, 16 V, X7R, AEC-Q200, -55 to +125 °C, 0402 (1005 metric)"
 			(at 396.24 189.23 0)
 			(effects
 				(font
@@ -12627,7 +17277,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Murata"
 			(at 396.24 189.23 0)
 			(effects
 				(font
@@ -12636,7 +17286,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "GCM155R71C104KA55D"
 			(at 396.24 189.23 0)
 			(effects
 				(font
@@ -12645,7 +17295,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "490-4759-1-ND"
 			(at 396.24 189.23 0)
 			(effects
 				(font
@@ -12654,7 +17304,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "81-GCM155R71C104KA5D"
 			(at 396.24 189.23 0)
 			(effects
 				(font
@@ -12663,7 +17313,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
 			(at 396.24 189.23 0)
 			(effects
 				(font
@@ -12681,6 +17331,15 @@
 				(hide yes)
 			)
 		)
+		(property "Tolerance" "±10%"
+			(at 396.24 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
 		(property "Dielectric" "X7R"
 			(at 396.24 189.23 0)
 			(effects
@@ -12690,16 +17349,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0402"
-			(at 396.24 189.23 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Tolerance" "10%"
+		(property "Case" "0402"
 			(at 396.24 189.23 0)
 			(effects
 				(font
@@ -12815,7 +17465,7 @@
 		(uuid "25071071-d3d3-5f63-bfcf-c3a69077d1f7")
 	)
 	(symbol
-		(lib_id "Device:R")
+		(lib_id "DropOut_Resistor:AC0402JR-0710KL")
 		(at 426.72 189.23 0)
 		(unit 1)
 		(body_style 1)
@@ -12844,7 +17494,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
 			(at 426.72 189.23 0)
 			(effects
 				(font
@@ -12853,7 +17503,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
 			(at 426.72 189.23 0)
 			(effects
 				(font
@@ -12862,7 +17512,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "Yageo AC thick film chip resistor, 10 kΩ ±5%, 1/16 W, 50 V, ±200 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
 			(at 426.72 189.23 0)
 			(effects
 				(font
@@ -12871,7 +17521,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Yageo"
 			(at 426.72 189.23 0)
 			(effects
 				(font
@@ -12880,7 +17530,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "AC0402JR-0710KL"
 			(at 426.72 189.23 0)
 			(effects
 				(font
@@ -12889,7 +17539,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "YAG3517CT-ND"
 			(at 426.72 189.23 0)
 			(effects
 				(font
@@ -12898,7 +17548,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "603-AC0402JR-0710KL"
 			(at 426.72 189.23 0)
 			(effects
 				(font
@@ -12907,7 +17557,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
 			(at 426.72 189.23 0)
 			(effects
 				(font
@@ -12916,7 +17566,7 @@
 				(hide yes)
 			)
 		)
-		(property "Tolerance" "5%"
+		(property "Tolerance" "±5%"
 			(at 426.72 189.23 0)
 			(effects
 				(font
@@ -12925,7 +17575,25 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0402"
+		(property "Power" "1/16W"
+			(at 426.72 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "50V"
+			(at 426.72 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Case" "0402"
 			(at 426.72 189.23 0)
 			(effects
 				(font
@@ -13180,7 +17848,7 @@
 		(uuid "69ce1569-c278-54a2-bbd5-510132201126")
 	)
 	(symbol
-		(lib_id "Device:R")
+		(lib_id "DropOut_Resistor:ERA-3AEB103V")
 		(at 476.25 194.31 0)
 		(unit 1)
 		(body_style 1)
@@ -13209,7 +17877,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Resistor_SMD:R_0603_1608Metric"
 			(at 476.25 194.31 0)
 			(effects
 				(font
@@ -13218,7 +17886,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDM0000/AOA0000C307.pdf"
 			(at 476.25 194.31 0)
 			(effects
 				(font
@@ -13227,7 +17895,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Resistor"
+		(property "Description" "Panasonic ERA-A thin film chip resistor, 10 kΩ ±0.1%, 0.1 W, 75 V, ±25 ppm/K, AEC-Q200, -55 to +155 °C, 0603 (1608 metric)"
 			(at 476.25 194.31 0)
 			(effects
 				(font
@@ -13236,7 +17904,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Panasonic"
 			(at 476.25 194.31 0)
 			(effects
 				(font
@@ -13245,7 +17913,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "ERA-3AEB103V"
 			(at 476.25 194.31 0)
 			(effects
 				(font
@@ -13254,7 +17922,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "P10KDBCT-ND"
 			(at 476.25 194.31 0)
 			(effects
 				(font
@@ -13263,7 +17931,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "667-ERA-3AEB103V"
 			(at 476.25 194.31 0)
 			(effects
 				(font
@@ -13272,7 +17940,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
 			(at 476.25 194.31 0)
 			(effects
 				(font
@@ -13281,7 +17949,7 @@
 				(hide yes)
 			)
 		)
-		(property "Tolerance" "0.1%"
+		(property "Tolerance" "±0.1%"
 			(at 476.25 194.31 0)
 			(effects
 				(font
@@ -13290,7 +17958,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0603"
+		(property "Power" "0.1W"
 			(at 476.25 194.31 0)
 			(effects
 				(font
@@ -13299,7 +17967,25 @@
 				(hide yes)
 			)
 		)
-		(property "Tempco" "25ppm"
+		(property "Voltage" "75V"
+			(at 476.25 194.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Case" "0603"
+			(at 476.25 194.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "Precision part: not substitutable (0.1 %, ±25 ppm/K thin film)."
 			(at 476.25 194.31 0)
 			(effects
 				(font
@@ -13610,7 +18296,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:C")
+		(lib_id "DropOut_Capacitor:GCM31C5C2A104JE02L")
 		(at 501.65 204.47 0)
 		(unit 1)
 		(body_style 1)
@@ -13639,7 +18325,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_Capacitor_SMD:C_1206_3216Metric"
 			(at 501.65 204.47 0)
 			(effects
 				(font
@@ -13648,7 +18334,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM31C5C2A104JE02-02A-EN_PDF_CERAMICCAPACITORSMD"
 			(at 501.65 204.47 0)
 			(effects
 				(font
@@ -13657,7 +18343,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Unpolarized capacitor"
+		(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 100 nF ±5%, 100 V, C0G, AEC-Q200, -55 to +125 °C, 1206 (3216 metric)"
 			(at 501.65 204.47 0)
 			(effects
 				(font
@@ -13666,7 +18352,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Murata"
 			(at 501.65 204.47 0)
 			(effects
 				(font
@@ -13675,7 +18361,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "GCM31C5C2A104JE02L"
 			(at 501.65 204.47 0)
 			(effects
 				(font
@@ -13684,7 +18370,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "490-GCM31C5C2A104JE02LCT-ND"
 			(at 501.65 204.47 0)
 			(effects
 				(font
@@ -13693,7 +18379,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "81-GCM31C5C2A104JE2L"
 			(at 501.65 204.47 0)
 			(effects
 				(font
@@ -13702,7 +18388,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut_Resistor/DropOut_Capacitor part (library brief 01-passives)"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
 			(at 501.65 204.47 0)
 			(effects
 				(font
@@ -13711,7 +18397,16 @@
 				(hide yes)
 			)
 		)
-		(property "Voltage" "25V"
+		(property "Voltage" "100V"
+			(at 501.65 204.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Tolerance" "±5%"
 			(at 501.65 204.47 0)
 			(effects
 				(font
@@ -13729,16 +18424,7 @@
 				(hide yes)
 			)
 		)
-		(property "Package" "0805"
-			(at 501.65 204.47 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Tolerance" "5%"
+		(property "Case" "1206"
 			(at 501.65 204.47 0)
 			(effects
 				(font
@@ -13822,7 +18508,7 @@
 		(uuid "8dbbc801-9bf1-5a27-9721-5c4b2b9bf8a6")
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
+		(lib_id "DropOut_Connector:TestPoint_Pad_D1.0mm")
 		(at 30.48 297.18 0)
 		(unit 1)
 		(body_style 1)
@@ -13842,7 +18528,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TP_VBAT_IN"
+		(property "Value" "TestPoint_Pad_D1.0mm"
 			(at 32.512 298.45 0)
 			(effects
 				(font
@@ -13851,7 +18537,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
 			(at 30.48 297.18 0)
 			(effects
 				(font
@@ -13860,7 +18546,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/TestPoint.py"
 			(at 30.48 297.18 0)
 			(effects
 				(font
@@ -13869,7 +18555,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "test point"
+		(property "Description" "Test point, exposed copper pad, diameter 1.0mm, solder mask opening only; a PCB feature with nothing to buy or place (excluded from BOM and position files)"
 			(at 30.48 297.18 0)
 			(effects
 				(font
@@ -13878,7 +18564,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "DropOut"
 			(at 30.48 297.18 0)
 			(effects
 				(font
@@ -13887,7 +18573,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "TestPoint_Pad_D1.0mm"
 			(at 30.48 297.18 0)
 			(effects
 				(font
@@ -13896,7 +18582,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "-"
 			(at 30.48 297.18 0)
 			(effects
 				(font
@@ -13905,7 +18591,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "-"
 			(at 30.48 297.18 0)
 			(effects
 				(font
@@ -13914,16 +18600,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut test-point part (library brief 03-connectors-testpoints)"
-			(at 30.48 297.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Type" "1mm pad"
+		(property "Notes" "PCB copper only; nothing to order. Excluded from BOM and position files."
 			(at 30.48 297.18 0)
 			(effects
 				(font
@@ -13966,7 +18643,7 @@
 		(uuid "956e24c3-ee92-51ef-b745-ed9eaca03225")
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
+		(lib_id "DropOut_Connector:TestPoint_Pad_D1.0mm")
 		(at 53.34 297.18 0)
 		(unit 1)
 		(body_style 1)
@@ -13986,7 +18663,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TP_VBAT_D"
+		(property "Value" "TestPoint_Pad_D1.0mm"
 			(at 55.372 298.45 0)
 			(effects
 				(font
@@ -13995,7 +18672,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
 			(at 53.34 297.18 0)
 			(effects
 				(font
@@ -14004,7 +18681,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/TestPoint.py"
 			(at 53.34 297.18 0)
 			(effects
 				(font
@@ -14013,7 +18690,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "test point"
+		(property "Description" "Test point, exposed copper pad, diameter 1.0mm, solder mask opening only; a PCB feature with nothing to buy or place (excluded from BOM and position files)"
 			(at 53.34 297.18 0)
 			(effects
 				(font
@@ -14022,7 +18699,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "DropOut"
 			(at 53.34 297.18 0)
 			(effects
 				(font
@@ -14031,7 +18708,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "TestPoint_Pad_D1.0mm"
 			(at 53.34 297.18 0)
 			(effects
 				(font
@@ -14040,7 +18717,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "-"
 			(at 53.34 297.18 0)
 			(effects
 				(font
@@ -14049,7 +18726,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "-"
 			(at 53.34 297.18 0)
 			(effects
 				(font
@@ -14058,16 +18735,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut test-point part (library brief 03-connectors-testpoints)"
-			(at 53.34 297.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Type" "1mm pad"
+		(property "Notes" "PCB copper only; nothing to order. Excluded from BOM and position files."
 			(at 53.34 297.18 0)
 			(effects
 				(font
@@ -14110,7 +18778,7 @@
 		(uuid "708de4be-a0b3-58bf-81dd-008862267ba5")
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
+		(lib_id "DropOut_Connector:TestPoint_Pad_D1.0mm")
 		(at 76.2 297.18 0)
 		(unit 1)
 		(body_style 1)
@@ -14130,7 +18798,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TP_VBAT_Q2D"
+		(property "Value" "TestPoint_Pad_D1.0mm"
 			(at 78.232 298.45 0)
 			(effects
 				(font
@@ -14139,7 +18807,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
 			(at 76.2 297.18 0)
 			(effects
 				(font
@@ -14148,7 +18816,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/TestPoint.py"
 			(at 76.2 297.18 0)
 			(effects
 				(font
@@ -14157,7 +18825,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "test point"
+		(property "Description" "Test point, exposed copper pad, diameter 1.0mm, solder mask opening only; a PCB feature with nothing to buy or place (excluded from BOM and position files)"
 			(at 76.2 297.18 0)
 			(effects
 				(font
@@ -14166,7 +18834,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "DropOut"
 			(at 76.2 297.18 0)
 			(effects
 				(font
@@ -14175,7 +18843,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "TestPoint_Pad_D1.0mm"
 			(at 76.2 297.18 0)
 			(effects
 				(font
@@ -14184,7 +18852,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "-"
 			(at 76.2 297.18 0)
 			(effects
 				(font
@@ -14193,7 +18861,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "-"
 			(at 76.2 297.18 0)
 			(effects
 				(font
@@ -14202,16 +18870,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut test-point part (library brief 03-connectors-testpoints)"
-			(at 76.2 297.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Type" "1mm pad"
+		(property "Notes" "PCB copper only; nothing to order. Excluded from BOM and position files."
 			(at 76.2 297.18 0)
 			(effects
 				(font
@@ -14302,7 +18961,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
+		(lib_id "DropOut_Connector:TestPoint_Pad_D1.0mm")
 		(at 99.06 297.18 0)
 		(unit 1)
 		(body_style 1)
@@ -14322,7 +18981,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TP_VBAT_PROT"
+		(property "Value" "TestPoint_Pad_D1.0mm"
 			(at 101.092 298.45 0)
 			(effects
 				(font
@@ -14331,7 +18990,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
 			(at 99.06 297.18 0)
 			(effects
 				(font
@@ -14340,7 +18999,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/TestPoint.py"
 			(at 99.06 297.18 0)
 			(effects
 				(font
@@ -14349,7 +19008,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "test point"
+		(property "Description" "Test point, exposed copper pad, diameter 1.0mm, solder mask opening only; a PCB feature with nothing to buy or place (excluded from BOM and position files)"
 			(at 99.06 297.18 0)
 			(effects
 				(font
@@ -14358,7 +19017,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "DropOut"
 			(at 99.06 297.18 0)
 			(effects
 				(font
@@ -14367,7 +19026,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "TestPoint_Pad_D1.0mm"
 			(at 99.06 297.18 0)
 			(effects
 				(font
@@ -14376,7 +19035,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "-"
 			(at 99.06 297.18 0)
 			(effects
 				(font
@@ -14385,7 +19044,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "-"
 			(at 99.06 297.18 0)
 			(effects
 				(font
@@ -14394,16 +19053,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut test-point part (library brief 03-connectors-testpoints)"
-			(at 99.06 297.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Type" "1mm pad"
+		(property "Notes" "PCB copper only; nothing to order. Excluded from BOM and position files."
 			(at 99.06 297.18 0)
 			(effects
 				(font
@@ -14494,7 +19144,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
+		(lib_id "DropOut_Connector:TestPoint_Pad_D1.0mm")
 		(at 121.92 297.18 0)
 		(unit 1)
 		(body_style 1)
@@ -14514,7 +19164,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TP_VBAT_FILT"
+		(property "Value" "TestPoint_Pad_D1.0mm"
 			(at 123.952 298.45 0)
 			(effects
 				(font
@@ -14523,7 +19173,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
 			(at 121.92 297.18 0)
 			(effects
 				(font
@@ -14532,7 +19182,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/TestPoint.py"
 			(at 121.92 297.18 0)
 			(effects
 				(font
@@ -14541,7 +19191,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "test point"
+		(property "Description" "Test point, exposed copper pad, diameter 1.0mm, solder mask opening only; a PCB feature with nothing to buy or place (excluded from BOM and position files)"
 			(at 121.92 297.18 0)
 			(effects
 				(font
@@ -14550,7 +19200,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "DropOut"
 			(at 121.92 297.18 0)
 			(effects
 				(font
@@ -14559,7 +19209,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "TestPoint_Pad_D1.0mm"
 			(at 121.92 297.18 0)
 			(effects
 				(font
@@ -14568,7 +19218,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "-"
 			(at 121.92 297.18 0)
 			(effects
 				(font
@@ -14577,7 +19227,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "-"
 			(at 121.92 297.18 0)
 			(effects
 				(font
@@ -14586,16 +19236,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut test-point part (library brief 03-connectors-testpoints)"
-			(at 121.92 297.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Type" "1mm pad"
+		(property "Notes" "PCB copper only; nothing to order. Excluded from BOM and position files."
 			(at 121.92 297.18 0)
 			(effects
 				(font
@@ -14639,7 +19280,7 @@
 		(uuid "aa4645f8-1c29-5fb4-950c-c3a3adc77817")
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
+		(lib_id "DropOut_Connector:TestPoint_Pad_D1.0mm")
 		(at 144.78 297.18 0)
 		(unit 1)
 		(body_style 1)
@@ -14659,7 +19300,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TP_BATT_MON"
+		(property "Value" "TestPoint_Pad_D1.0mm"
 			(at 146.812 298.45 0)
 			(effects
 				(font
@@ -14668,7 +19309,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
 			(at 144.78 297.18 0)
 			(effects
 				(font
@@ -14677,7 +19318,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/TestPoint.py"
 			(at 144.78 297.18 0)
 			(effects
 				(font
@@ -14686,7 +19327,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "test point"
+		(property "Description" "Test point, exposed copper pad, diameter 1.0mm, solder mask opening only; a PCB feature with nothing to buy or place (excluded from BOM and position files)"
 			(at 144.78 297.18 0)
 			(effects
 				(font
@@ -14695,7 +19336,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "DropOut"
 			(at 144.78 297.18 0)
 			(effects
 				(font
@@ -14704,7 +19345,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "TestPoint_Pad_D1.0mm"
 			(at 144.78 297.18 0)
 			(effects
 				(font
@@ -14713,7 +19354,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "-"
 			(at 144.78 297.18 0)
 			(effects
 				(font
@@ -14722,7 +19363,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "-"
 			(at 144.78 297.18 0)
 			(effects
 				(font
@@ -14731,16 +19372,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut test-point part (library brief 03-connectors-testpoints)"
-			(at 144.78 297.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Type" "1mm pad"
+		(property "Notes" "PCB copper only; nothing to order. Excluded from BOM and position files."
 			(at 144.78 297.18 0)
 			(effects
 				(font
@@ -14784,7 +19416,7 @@
 		(uuid "5ca9c55c-5320-533e-8cbd-5bcba015853f")
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
+		(lib_id "DropOut_Connector:TestPoint_Pad_D1.0mm")
 		(at 167.64 297.18 0)
 		(unit 1)
 		(body_style 1)
@@ -14804,7 +19436,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TP_LM_FLT_L"
+		(property "Value" "TestPoint_Pad_D1.0mm"
 			(at 169.672 298.45 0)
 			(effects
 				(font
@@ -14813,7 +19445,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
 			(at 167.64 297.18 0)
 			(effects
 				(font
@@ -14822,7 +19454,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/TestPoint.py"
 			(at 167.64 297.18 0)
 			(effects
 				(font
@@ -14831,7 +19463,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "test point"
+		(property "Description" "Test point, exposed copper pad, diameter 1.0mm, solder mask opening only; a PCB feature with nothing to buy or place (excluded from BOM and position files)"
 			(at 167.64 297.18 0)
 			(effects
 				(font
@@ -14840,7 +19472,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "DropOut"
 			(at 167.64 297.18 0)
 			(effects
 				(font
@@ -14849,7 +19481,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "TestPoint_Pad_D1.0mm"
 			(at 167.64 297.18 0)
 			(effects
 				(font
@@ -14858,7 +19490,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "-"
 			(at 167.64 297.18 0)
 			(effects
 				(font
@@ -14867,7 +19499,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "-"
 			(at 167.64 297.18 0)
 			(effects
 				(font
@@ -14876,16 +19508,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut test-point part (library brief 03-connectors-testpoints)"
-			(at 167.64 297.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Type" "1mm pad"
+		(property "Notes" "PCB copper only; nothing to order. Excluded from BOM and position files."
 			(at 167.64 297.18 0)
 			(effects
 				(font
@@ -14929,7 +19552,7 @@
 		(uuid "64ae630c-5ab4-5fdd-bb5f-2342e4674715")
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
+		(lib_id "DropOut_Connector:TestPoint_Pad_D1.0mm")
 		(at 190.5 297.18 0)
 		(unit 1)
 		(body_style 1)
@@ -14949,7 +19572,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TP_INH"
+		(property "Value" "TestPoint_Pad_D1.0mm"
 			(at 192.532 298.45 0)
 			(effects
 				(font
@@ -14958,7 +19581,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
 			(at 190.5 297.18 0)
 			(effects
 				(font
@@ -14967,7 +19590,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/TestPoint.py"
 			(at 190.5 297.18 0)
 			(effects
 				(font
@@ -14976,7 +19599,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "test point"
+		(property "Description" "Test point, exposed copper pad, diameter 1.0mm, solder mask opening only; a PCB feature with nothing to buy or place (excluded from BOM and position files)"
 			(at 190.5 297.18 0)
 			(effects
 				(font
@@ -14985,7 +19608,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "DropOut"
 			(at 190.5 297.18 0)
 			(effects
 				(font
@@ -14994,7 +19617,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "TestPoint_Pad_D1.0mm"
 			(at 190.5 297.18 0)
 			(effects
 				(font
@@ -15003,7 +19626,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "-"
 			(at 190.5 297.18 0)
 			(effects
 				(font
@@ -15012,7 +19635,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "-"
 			(at 190.5 297.18 0)
 			(effects
 				(font
@@ -15021,16 +19644,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut test-point part (library brief 03-connectors-testpoints)"
-			(at 190.5 297.18 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Type" "1mm pad"
+		(property "Notes" "PCB copper only; nothing to order. Excluded from BOM and position files."
 			(at 190.5 297.18 0)
 			(effects
 				(font
@@ -15121,7 +19735,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:TestPoint")
+		(lib_id "DropOut_Connector:S1751-46R")
 		(at 213.36 297.18 0)
 		(unit 1)
 		(body_style 1)
@@ -15141,7 +19755,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TP_GND"
+		(property "Value" "S1751-46R"
 			(at 215.392 298.45 0)
 			(effects
 				(font
@@ -15150,7 +19764,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "DropOut_TestPoint:TestPoint_Harwin_S1751"
 			(at 213.36 297.18 0)
 			(effects
 				(font
@@ -15159,7 +19773,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://content.harwin.com/m/c5b84e6a45e9b9f6/original/DRG-02202-Technical-Drawing-Datasheet-S1751R-pdf.pdf"
 			(at 213.36 297.18 0)
 			(effects
 				(font
@@ -15168,7 +19782,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "test point"
+		(property "Description" "Harwin SMD test terminal, closed loop 3.25x1.63mm, 2.0mm high, brass, 100% tin, 2 A, -55 to +125 °C, tape and reel"
 			(at 213.36 297.18 0)
 			(effects
 				(font
@@ -15177,7 +19791,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" ""
+		(property "Manufacturer" "Harwin"
 			(at 213.36 297.18 0)
 			(effects
 				(font
@@ -15186,7 +19800,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" ""
+		(property "MPN" "S1751-46R"
 			(at 213.36 297.18 0)
 			(effects
 				(font
@@ -15195,7 +19809,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" ""
+		(property "DigiKey_PN" "952-1478-1-ND"
 			(at 213.36 297.18 0)
 			(effects
 				(font
@@ -15204,7 +19818,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" ""
+		(property "Mouser_PN" "855-S1751-46R"
 			(at 213.36 297.18 0)
 			(effects
 				(font
@@ -15213,7 +19827,7 @@
 				(hide yes)
 			)
 		)
-		(property "Placeholder" "PLACEHOLDER: awaiting DropOut test-point part (library brief 03-connectors-testpoints)"
+		(property "Temperature_Grade" "-55 to +125 °C"
 			(at 213.36 297.18 0)
 			(effects
 				(font
@@ -15222,7 +19836,7 @@
 				(hide yes)
 			)
 		)
-		(property "Type" "probe loop"
+		(property "Notes" "Ground test point (probe loop) for a scope ground spring or clip. Same part loose: S1751-46."
 			(at 213.36 297.18 0)
 			(effects
 				(font
