@@ -41,6 +41,84 @@
     - { date: 2026-10-22, source: Microchip Direct, stock: 1549 }
   decisions: [DEC-007]
 
+- id: ACT1210E-241-2P-TL00
+  mpn: ACT1210E-241-2P-TL00
+  manufacturer: TDK
+  qty: 1
+  function: 10BASE-T1S common mode choke, 240 µH, AEC-Q200, 3.2 × 2.5 mm
+  subsystem: network
+  status: selected
+  decision_note: "Selected T1S line choke; matches the OPEN Alliance 200 µH Class III example. Confirm its CMC class with TDK's test report"
+  observations:
+    - { date: 2026-10-22, source: DigiKey, prices: [{ qty: "1", usd: 1.89 }, { qty: 1k, usd: 1.12 }], stock: 42488 }
+    - { date: 2026-10-22, source: Mouser, prices: [{ qty: "1", usd: 1.88 }], stock: 0, note: 70-day lead }
+  second_source: DLW32MH241MX2L
+  decisions: [DEC-012]
+
+- id: ACT1210E-131-2P-TL00
+  mpn: ACT1210E-131-2P-TL00
+  manufacturer: TDK
+  qty: 0
+  function: 10BASE-T1S common mode choke, 130 µH, OPEN Alliance Class IV (TDK), AEC-Q200
+  subsystem: network
+  status: alternative
+  decision_note: Lower-capacitance alternate on the same footprint, for more nodes or longer segments
+  observations:
+    - { date: 2026-10-22, source: DigiKey, prices: [{ qty: "1", usd: 1.92 }], stock: 494 }
+    - { date: 2026-10-22, source: Mouser, prices: [{ qty: "1", usd: 1.92 }], stock: 9516 }
+  decisions: [DEC-012]
+
+- id: DLW32MH241MX2L
+  mpn: DLW32MH241MX2L
+  manufacturer: Murata
+  qty: 0
+  function: 10BASE-T1S common mode choke, 240 µH, CMC Class 3, AEC-Q200
+  subsystem: network
+  status: alternative
+  decision_note: Second source for ACT1210E-241; same land pattern, different pad numbering and footprint
+  supply_note: Released July 2026; not stocked at DigiKey or Mouser on 2026-10-22
+  decisions: [DEC-012]
+
+- id: VETH100A1DD1HG3-08
+  mpn: VETH100A1DD1HG3-08
+  manufacturer: Vishay
+  qty: 2
+  function: OPEN Alliance 10BASE-T1S ESD diode, ≤2.0 pF, 24 V working, AEC-Q101, DFN1006-2B
+  subsystem: network
+  status: selected
+  decision_note: One per T1S line, between connector and choke
+  observations:
+    - { date: 2026-10-22, source: DigiKey, prices: [{ qty: "1", usd: 0.48 }], stock: 15582 }
+    - { date: 2026-10-22, source: Mouser, prices: [{ qty: "1", usd: 0.48 }, { qty: 1k, usd: 0.13 }], stock: 30510 }
+  second_source: PESD1ETH10LS-QYL
+  decisions: [DEC-012]
+
+- id: PESD1ETH10LS-QYL
+  mpn: PESD1ETH10LS-QYL
+  manufacturer: Nexperia
+  qty: 0
+  function: OPEN Alliance 10BASE-T1S ESD diode, 0.4 pF, 75 V standoff, AEC-Q101, DFN1006BD-2 side-wettable
+  subsystem: network
+  status: alternative
+  decision_note: Electrically better alternate (capacitance, standoff); different footprint
+  supply_note: No distributor stock; Mouser 365-day lead (2026-10-22)
+  observations:
+    - { date: 2026-10-22, source: Mouser, prices: [{ qty: "1", usd: 0.66 }, { qty: 1k, usd: 0.165 }], stock: 0 }
+  decisions: [DEC-012]
+
+- id: PESD1ETH10L-QYL
+  mpn: PESD1ETH10L-QYL
+  manufacturer: Nexperia
+  qty: 0
+  function: OPEN Alliance 10BASE-T1S ESD diode, 0.4 pF, 75 V standoff, AEC-Q101, DFN1006-2
+  subsystem: network
+  status: alternative
+  decision_note: Same die as PESD1ETH10LS-Q without wettable flanks; different footprint
+  supply_note: No distributor stock (2026-10-22)
+  observations:
+    - { date: 2026-10-22, source: Mouser, prices: [{ qty: "1", usd: 0.60 }, { qty: 1k, usd: 0.154 }], stock: 0 }
+  decisions: [DEC-012]
+
 - id: LMQ66430MC3RXBRQ1
   mpn: LMQ66430MC3RXBRQ1
   manufacturer: Texas Instruments
