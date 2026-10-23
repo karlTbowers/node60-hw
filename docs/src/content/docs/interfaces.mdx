@@ -28,9 +28,29 @@ Schematic page numbers: page 1 is the root (index) sheet. Reference designators 
 - Fit R(ILIM) = 32 kΩ 1%, RSET = 50 Ω, and TMR ≈68 nF; route LM74910H FLT to the MCU and leave IMON floating when INA228 is populated.
 - Name and route NTC_RSENSE plus NTC_SW1–NTC_SW3 to separate ADC channels; keep divider returns quiet and document each thermistor’s exact coefficients.
 - Place TMP175-Q1 beside the ideal-diode NFET bank, share the INA228 I²C bus with a distinct address, and reserve ALERT routing to the MCU.
-- Route TPS3702-Q1 directly from 3V3_MAIN to RESET_b; document threshold variant, reset timing, pull-up domain, and interaction with MCU POR/LVD.
+- Route TPS3702-Q1 directly from 3V3_MAIN to RESET_L (S32K344 RESET_b); document threshold variant, reset timing, pull-up domain, and interaction with MCU POR/LVD.
 - Annotate every 10 A net with copper weight, geometry, via array, connector contact, and 14 AWG minimum harness.
 - Keep PHYAD hardware strapping separate from commissioned PLCA node identity.
-- Add test points on all rails, INH, IRQ_N, MDC/MDIO, reference clock, SPI, and all SNS nets.
+- Add test points on all rails, INH, T1S_IRQ_L (PHY IRQ_N), MDC/MDIO, reference clock, SPI, and all SNS nets.
 - Show reset states for CSN, LHI, FLT/WAKE, and the daisy chain.
 - Mark every unverified sequence, package ball, and connector mate as release-blocking.
+
+## Schematic net names
+
+The schematic follows the naming rules adopted on 2026-10-22 (handbook chapter 05): rails keep their Rev A names, active-low signals end in `_L`, buses are `<BUS><n>_<PURPOSE>_<SIGNAL>`, differential pairs end in `_P` / `_N`.
+
+| Architecture term | Schematic net(s) |
+|---|---|
+| RESET_b (S32K344 reset, TPS3702 output, PHY RESET_N) | `RESET_L` |
+| PHY IRQ_N | `T1S_IRQ_L` |
+| Output-switch FLT/WAKE (×3) | `SW1_FLT_L`, `SW2_FLT_L`, `SW3_FLT_L` |
+| LM74910H FLT | `LM_FLT_L` |
+| TMP175 ALERT | `TMP175_ALERT_L` |
+| LHI | `SW_LHI` (MCU PTE4, pulled low on each switch) |
+| SNS (×3) | `SW1_SNS`, `SW2_SNS`, `SW3_SNS` |
+| Switch SPI daisy chain | `SPI4_SWITCH_SCK`, `SPI4_SWITCH_CS_L`, `SPI4_SWITCH_MOSI`, `SPI4_SWITCH_CHAIN1`, `SPI4_SWITCH_CHAIN2`, `SPI4_SWITCH_MISO` |
+| Flash SPI | `SPI2_FLASH_SCK`, `SPI2_FLASH_MOSI`, `SPI2_FLASH_MISO`, `SPI2_FLASH_CS_L` |
+| Shared I²C | `I2C0_TELEMETRY_SCL`, `I2C0_TELEMETRY_SDA` |
+| RMII / MDIO | `RMII0_T1S_*`, `MDIO0_T1S_MDC`, `MDIO0_T1S_MDIO` |
+| T1S pair | `T1S_P`, `T1S_N` |
+| RSENSE± star taps | `VBAT_D`, `VBAT_Q2D` (the shunt is 2-terminal; Kelvin taps start at its pads) |

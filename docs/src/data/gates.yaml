@@ -136,7 +136,7 @@
 - id: GATE-NET-01
   title: Bus wake / inrush
   group: freeze
-  evidence: T1S-only wake, INH-to-EN timing, ≤1 ms supply ramp, LM74910H TMR ride-through, cold boot, IRQ_N ready, PHY/PLCA re-initialization
+  evidence: T1S-only wake, INH-to-EN timing, supply ramp + PHY initialization ≤ 15 ms (OPEN Alliance; ≈10 ms estimated), LM74910H TMR ride-through, cold boot, IRQ_N ready, PHY/PLCA re-initialization
   blocks: Netlist
   status: open
   page: subsystems/network

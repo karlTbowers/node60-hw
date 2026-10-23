@@ -11,6 +11,17 @@ Node60 is DropOut's open-hardware automotive power distribution node: six protec
 - **Qualification:** AEC-Q100/Q101/Q200 Grade 1 (−40…+125 °C) for all active parts.
 - **Sheet plan** (Rev A) → schematic pages: 1 root/index · A Power entry = p2 (`sheets/power-entry.kicad_sch`) · B Regulators = p3 · C MCU/NVM = p4 · D T1S = p5 · E–G Outputs 1-2 / 3-4 / 5-6 = p6–p8 (one file, `sheets/output-switch.kicad_sch`, placed three times) · K Connectors = p9. Reference designators follow the page (R201 on page 2); the project's annotation is set to sheet number × 100.
 
+## Schematic project answers
+
+The schematic rules adopted on 2026-10-22 (handbook chapter 05, from ee-schematic-rules) ask four project questions. The user accepted the defaults for Node60 on 2026-10-22:
+
+- **0201 passives:** not used; 0402 minimum.
+- **Signal test points:** 1 mm exposed pads. Ground test points are probe loops.
+- **0R debug resistors:** on every regulator output (VDDAU_AON, 3V3_MAIN, 1V5_CORE), with feedback taken on the regulator side.
+- **Debug header:** 2 × 5 1.27 mm Cortex Debug (Samtec FTSH-105, in the library).
+
+Net names: Node60 keeps its Rev A rail names (`VBAT_PROT`, `VDDAU_AON`, `3V3_MAIN`, `1V5_CORE`), as rule O-1 allows. Everything else follows the new naming: active-low signals end in `_L`, buses are `<BUS><n>_<PURPOSE>_<SIGNAL>` (`I2C0_TELEMETRY_SDA`), differential pairs end in `_P` / `_N`.
+
 ## Deviations from the handbook
 
 One-time exceptions, decided by the user on 2026-10-22 when the first complete architecture was renumbered from Rev C to **Rev A** (earlier drafts were incomplete and are not revisions):
