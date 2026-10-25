@@ -56,4 +56,4 @@ It is not AEC qualified, like DT13-2P.
 - **Mating set:** freeze the ATM06-2S plug, its size 20 sockets, wedgelock, seals and wire size with the harness. Match the socket plating to the receptacle: tin with tin, gold with gold. Don't mix them.
 - **Contact plating:** T1S is a low-current signal. If dry-circuit contact reliability is a concern over the vehicle life, the gold BM02 is a drop-in: same potting, same footprint.
 - **The ATM is not an OPEN Alliance-qualified T1S connector.** Check its effect on the channel (return loss and mode conversion of the connector and harness) as part of EMC validation (GATE-THM-02). Keep the pair symmetric and short from the connector to the ESD diodes and the choke (DEC-012).
-- **Library:** all four versions are in dropout-kicad-library PR #26, footprint `DropOut_Connector_Amphenol:Amphenol_SINE_ATM13-2P-BMxx_1x02_P4.20mm_Horizontal`.
+- **Library:** all four versions are in dropout-kicad-library PR #26, footprint `DropOut_Connector_Amphenol:Amphenol_ATM13-2P-BMxx_1x02_P4.20mm_Horizontal`.
