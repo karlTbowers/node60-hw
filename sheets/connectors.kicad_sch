@@ -165,7 +165,7 @@
 					)
 				)
 			)
-			(property "Footprint" "DropOut_Connector_Amphenol:Amphenol_SINE_ATM13-2P-BMxx_1x02_P4.20mm_Horizontal"
+			(property "Footprint" "DropOut_Connector_Amphenol:Amphenol_ATM13-2P-BMxx_1x02_P4.20mm_Horizontal"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -275,7 +275,7 @@
 					)
 				)
 			)
-			(property "ki_fp_filters" "Amphenol*SINE*ATM13?2P*"
+			(property "ki_fp_filters" "Amphenol*ATM13?2P*"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -1217,7 +1217,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "DropOut_Connector_Amphenol:Amphenol_SINE_ATM13-2P-BMxx_1x02_P4.20mm_Horizontal"
+		(property "Footprint" "DropOut_Connector_Amphenol:Amphenol_ATM13-2P-BMxx_1x02_P4.20mm_Horizontal"
 			(at 50.8 172.72 0)
 			(effects
 				(font
