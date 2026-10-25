@@ -89,6 +89,10 @@
   title: TE 114-151046 DEUTSCH DT Header Connector System application specification, rev. A
   url: https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=114-151046&DocType=Specification%20Or%20Standard&DocLang=English&DocFormat=pdf&PartCntxt=DT13-2P
   verified: 2026-10-22
+- id: S27
+  title: Amphenol SINE ATM13-2P-BMXX drawing rev. A2, BoardLock family flyer, and distributor observations
+  url: https://www.amphenol-sine.com/pdf/datasheet/ATM13-2P-BM04.pdf
+  verified: 2026-10-25
 - id: Z1
   title: Upstream Zephyr S32 SoC tree
   url: https://github.com/zephyrproject-rtos/zephyr/tree/main/soc/nxp/s32

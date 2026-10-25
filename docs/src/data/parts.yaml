@@ -334,6 +334,58 @@
   second_source: CH-AK-DT13-02
   decisions: [DEC-013]
 
+- id: ATM13-2P-BM04
+  mpn: ATM13-2P-BM04
+  manufacturer: Amphenol SINE Systems
+  qty: 1
+  function: 10BASE-T1S connector; BoardLock ATM13 2-pin right-angle PCB receptacle, flange seal, tin-plated size 20 pins, potted, 7.5 A, IP67 mated; mates ATM06-2S
+  subsystem: harness
+  status: selected
+  decision_note: "Selected (user's decision 2026-10-25), tin-plated and potted; verify pin 1 on a sample"
+  observations:
+    - { date: 2026-10-25, source: DigiKey 889-3357-ND, prices: [{ qty: "1", usd: 8.23 }, { qty: "600", usd: 5.2387 }], stock: 14 }
+    - { date: 2026-10-25, source: Mouser 654-ATM13-2P-BM04, prices: [{ qty: "1", usd: 8.23 }, { qty: "1050", usd: 5.03 }], stock: 120 }
+  decisions: [DEC-014]
+
+- id: ATM13-2P-BM02
+  mpn: ATM13-2P-BM02
+  manufacturer: Amphenol SINE Systems
+  qty: 0
+  function: 10BASE-T1S connector; BoardLock ATM13 2-pin right-angle PCB receptacle, flange seal, gold-plated size 20 pins, potted, 7.5 A, IP67 mated; mates ATM06-2S
+  subsystem: harness
+  status: alternative
+  decision_note: Gold-plated, potted drop-in on the same footprint
+  observations:
+    - { date: 2026-10-25, source: DigiKey 889-3356-ND, prices: [{ qty: "1", usd: 8.90 }, { qty: "600", usd: 5.66323 }], stock: 24 }
+    - { date: 2026-10-25, source: Mouser 654-ATM13-2P-BM02, prices: [{ qty: "1", usd: 8.90 }, { qty: "1050", usd: 5.44 }], stock: 25 }
+  decisions: [DEC-014]
+
+- id: ATM13-2P-BM01
+  mpn: ATM13-2P-BM01
+  manufacturer: Amphenol SINE Systems
+  qty: 0
+  function: 10BASE-T1S connector; BoardLock ATM13 2-pin right-angle PCB receptacle, flange seal, gold-plated size 20 pins, unpotted, 7.5 A, IP67 mated; mates ATM06-2S
+  subsystem: harness
+  status: alternative
+  decision_note: Gold-plated, unpotted version on the same footprint
+  observations:
+    - { date: 2026-10-25, source: DigiKey 889-3355-ND, prices: [{ qty: "1", usd: 8.47 }, { qty: "600", usd: 5.3934 }], stock: 150 }
+    - { date: 2026-10-25, source: Mouser 654-ATM13-2P-BM01, prices: [{ qty: "1", usd: 8.15 }, { qty: "1050", usd: 4.86 }], stock: 146 }
+  decisions: [DEC-014]
+
+- id: ATM13-2P-BM03
+  mpn: ATM13-2P-BM03
+  manufacturer: Amphenol SINE Systems
+  qty: 0
+  function: 10BASE-T1S connector; BoardLock ATM13 2-pin right-angle PCB receptacle, flange seal, tin-plated size 20 pins, unpotted, 7.5 A, IP67 mated; mates ATM06-2S
+  subsystem: harness
+  status: alternative
+  decision_note: Tin-plated, unpotted version on the same footprint
+  observations:
+    - { date: 2026-10-25, source: DigiKey 889-3289-ND, prices: [{ qty: "1", usd: 7.76 }, { qty: "600", usd: 4.9409 }], stock: 7 }
+    - { date: 2026-10-25, source: Mouser 654-ATM13-2P-BM03, prices: [{ qty: "1", usd: 7.76 }, { qty: "1050", usd: 4.74 }], stock: 27 }
+  decisions: [DEC-014]
+
 - id: CH-AK-DT13-02
   mpn: CH-AK-DT13-02
   manufacturer: Shenzhen Haisheng Hongye Technology (HISENG)
