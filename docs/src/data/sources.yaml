@@ -97,6 +97,10 @@
   title: Amphenol Sine BoardLock Family flyer, updated 09-2026
   url: https://www.amphenol-sine.com/pdf/catalog/BoardLock-Family-Flyer-2018.pdf
   verified: 2026-10-25
+- id: S29
+  title: Amphenol SINE ATM13-2P-BMXX drawing rev. A2 and distributor observations (T1S connector, DEC-014)
+  url: https://www.amphenol-sine.com/pdf/datasheet/ATM13-2P-BM04.pdf
+  verified: 2026-10-25
 - id: Z1
   title: Upstream Zephyr S32 SoC tree
   url: https://github.com/zephyrproject-rtos/zephyr/tree/main/soc/nxp/s32
