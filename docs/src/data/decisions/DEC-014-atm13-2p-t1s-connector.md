@@ -19,7 +19,7 @@ rejected:
 
 ## Context
 
-Rev A's harness plan gives the T1S link its own **sealed two-way connector** carrying the twisted pair. It is one of the node's exactly four conductors (REQ-NET-001), and no part had been chosen for it. The schematic had a placeholder (J903). The output connectors are TE DEUTSCH DT13-2P (DEC-013); the power input and return connectors are still open.
+Rev A's harness plan gives the T1S link its own **sealed two-way connector** carrying the twisted pair. It is one of the node's exactly four conductors (REQ-NET-001), and no part had been chosen for it. The schematic had a placeholder (J903). The output connectors are Amphenol Sine AT13-2P-BM04, the same BoardLock family (DEC-013 rev. B); the power input and return connectors are still open.
 
 The OPEN Alliance 10BASE-T1S Implementation Specification (S21, §5.4.3) says the ECU connector and the complete channel must meet the OPEN Alliance channel and connector RF requirements.
 
@@ -42,7 +42,7 @@ It is a BoardLock ATM series 2-pin right-angle PCB receptacle with a flange and 
 | Durability | 100 mating cycles |
 | Potted versions | rated for up to 5 psi |
 
-It is not AEC qualified, like DT13-2P.
+It is not AEC qualified, like the AT13-2P-BM04 output connectors.
 
 **Observed 2026-10-25 (not quotes):**
 - DigiKey 889-3357-ND: $8.23 @1, $5.24 @600, 14 in stock.
@@ -52,7 +52,7 @@ It is not AEC qualified, like DT13-2P.
 
 ## Consequences
 
-- **Pin 1 must be verified before release.** The drawing marks pin 1 only in its mounting-face view. The library footprint mirrors that to the component side; check it against the cavity marks on a sample, as for DT13-2P. The schematic assigns the pair to pins 1 and 2.
+- **Pin 1 must be verified before release.** The drawing marks pin 1 only in its mounting-face view. The library footprint mirrors that to the component side; check it against the cavity marks on a sample, as for AT13-2P-BM04. The schematic assigns the pair to pins 1 and 2.
 - **Mating set:** freeze the ATM06-2S plug, its size 20 sockets, wedgelock, seals and wire size with the harness. Match the socket plating to the receptacle: tin with tin, gold with gold. Don't mix them.
 - **Contact plating:** T1S is a low-current signal. If dry-circuit contact reliability is a concern over the vehicle life, the gold BM02 is a drop-in: same potting, same footprint.
 - **The ATM is not an OPEN Alliance-qualified T1S connector.** Check its effect on the channel (return loss and mode conversion of the connector and harness) as part of EMC validation (GATE-THM-02). Keep the pair symmetric and short from the connector to the ESD diodes and the choke (DEC-012).

@@ -90,7 +90,15 @@
   url: https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=114-151046&DocType=Specification%20Or%20Standard&DocLang=English&DocFormat=pdf&PartCntxt=DT13-2P
   verified: 2026-10-22
 - id: S27
-  title: Amphenol SINE ATM13-2P-BMXX drawing rev. A2, BoardLock family flyer, and distributor observations
+  title: Amphenol Sine drawing C-AT13-2P-BMXX (AT13-2P-BM01 to BM04), rev. A2
+  url: https://www.amphenol-sine.com/pdf/datasheet/AT13-2P-BM04.pdf
+  verified: 2026-10-25
+- id: S28
+  title: Amphenol Sine BoardLock Family flyer, updated 09-2026
+  url: https://www.amphenol-sine.com/pdf/catalog/BoardLock-Family-Flyer-2018.pdf
+  verified: 2026-10-25
+- id: S29
+  title: Amphenol SINE ATM13-2P-BMXX drawing rev. A2 and distributor observations (T1S connector, DEC-014)
   url: https://www.amphenol-sine.com/pdf/datasheet/ATM13-2P-BM04.pdf
   verified: 2026-10-25
 - id: Z1

@@ -11,7 +11,7 @@ Each output gets a sealed, independently protected path; the aggregate input is 
 
 | Interface | Architecture | Release condition |
 |---|---|---|
-| Six outputs | TE DEUTSCH DT13-2P, one 2-pin right-angle header per output (<Ref id="DEC-013" />); 10 A each; 14 AWG minimum | Pin 1 = OUTx, pin 2 = local return; contact temperature rise at 10 A proven up to +125 °C ambient; DT06-2S, sockets, wedgelock, wire, and panel seal frozen together |
+| Six outputs | Amphenol Sine AT13-2P-BM04, one 2-pin right-angle header per output (<Ref id="DEC-013" />); 10 A each; 14 AWG minimum | Pin 1 = OUTx, pin 2 = local return; contact temperature rise at 10 A proven up to +125 °C ambient; DT06-2S, sockets, wedgelock, wire, and panel seal frozen together |
 | Battery input | Metri-Pack 480/630 class or dual feed | Prove complete 60 A path; use multiple contacts or feeds |
 | Power return | Matched high-current return: all six output returns come back through the node (<Ref id="DEC-013" />) | 60 A continuous ground conductor and contacts; no chassis-only return assumption |
 | 10BASE-T1S | Amphenol SINE ATM13-2P-BM04: sealed 2-pin right-angle PCB receptacle, mates ATM06-2S (<Ref id="DEC-014" />) | Vehicle-level protection and termination strategy; verify pin 1 on a sample |
@@ -19,12 +19,12 @@ Each output gets a sealed, independently protected path; the aggregate input is 
 
 ## Output connectors
 
-Each output has its own **TE DT13-2P** header: DEUTSCH DT series, 2 pins at 5.46 mm, right angle, with a panel flange seal. It mates a DT06-2S plug with a W2S wedgelock and size 16 sockets. TE rates the contact 13 A with 14 or 16 AWG wire, −55 to +125 °C, with no derating curve. TE has not tested the header's ingress protection; it seals against the enclosure wall through TE's panel cutout. HISENG CH-AK-DT13-02 (Alibaba) and Jorch DT13-2P (AliExpress) are alternates on the same footprint, fitted only after a sample check. See <Ref id="DEC-013" long />.
+Each output has its own **Amphenol Sine AT13-2P-BM04** header: BoardLock AT13, 2 pins at 5.40 mm, right angle, with a panel flange gasket and a potted rear. It mates an AT06-2S plug (Amphenol's DT06-2S equivalent) with size 16 sockets for 14 to 20 AWG. Amphenol rates it 13 A, 250 V, −55 to +125 °C at rated current, and IP67 mated. It seals against the enclosure wall through the same panel cutout as the DT13-2P. See <Ref id="DEC-013" long />.
 
 **Pin assignment:** pin 1 = OUTx, pin 2 = that output's local ground return. Up to 60 A of load return current (six outputs at 10 A) therefore flows back through the node to the power-entry star ground and out through the node's ground conductor. That conductor, its input contacts, and the board's return path must carry 60 A, matched to the battery feed.
 
-<Aside type="caution" title="Verify pin 1 before release">
-TE's drawing and application-spec layout figure disagree on which hole is pin 1. Check the moulded cavity numbers on a real DT13-2P before PCB release so OUTx and ground are not swapped at the harness.
+<Aside type="caution" title="Confirm pin 1 on the first sample">
+Amphenol's drawing labels pins 1 and 2 on the mounting face, and the footprint follows it. Confirm the moulded cavity numbers on the first sample and label them on the harness drawing, so OUTx and ground cannot be swapped at the harness.
 </Aside>
 
 ## Fusing

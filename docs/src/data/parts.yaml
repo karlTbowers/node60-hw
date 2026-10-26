@@ -318,20 +318,19 @@
   observations:
     - { date: 2026-10-13, source: distributor, prices: [{ qty: "1", usd: 1.82 }], stock: 421 }
 
-- id: DT13-2P
-  mpn: DT13-2P
-  manufacturer: TE Connectivity
+- id: AT13-2P-BM04
+  mpn: AT13-2P-BM04
+  manufacturer: Amphenol Sine Systems
   qty: 6
-  label: DT13-2P (DEUTSCH DT)
-  function: Output connector, one per output; DEUTSCH DT 2-pin right-angle PCB header, 13 A per contact (14 AWG), panel flange seal; mates DT06-2S
+  label: AT13-2P-BM04 (BoardLock AT13)
+  function: Output connector, one per output; 2-pin right-angle flanged PCB header, potted, 13 A, -55 to +125 °C at rated current, IP67 mated; mates AT06-2S (DT06-2S equivalent)
   subsystem: harness
   status: selected
-  decision_note: Selected (user's decision 2026-10-22); replaces the MX150 plan. Pin 1 = OUTx, pin 2 = local ground return; 10 A at +125 °C needs thermal proof
-  supply_note: DigiKey and Mouser stock; marketplace copies are alternates only
+  decision_note: Selected (user's decision 2026-10-25), replacing TE DT13-2P. Pin 1 = OUTx, pin 2 = local ground return
+  supply_note: DigiKey and Mouser stock; no second source chosen
   observations:
-    - { date: 2026-10-22, source: DigiKey 1734-1452-ND, prices: [{ qty: "1", usd: 8.23 }, { qty: "10", usd: 6.991 }, { qty: "200", usd: 5.658 }], stock: 217 }
-    - { date: 2026-10-22, source: Mouser 571-DT13-2P, prices: [{ qty: "1", usd: 8.15 }, { qty: "10", usd: 6.99 }, { qty: "100", usd: 5.65 }], stock: 508 }
-  second_source: CH-AK-DT13-02
+    - { date: 2026-10-25, source: DigiKey 889-3345-ND, prices: [{ qty: "1", usd: 5.93 }, { qty: "10", usd: 5.035 }, { qty: "180", usd: 4.106 }, { qty: "1080", usd: 3.618 }], stock: 174 }
+    - { date: 2026-10-25, source: Mouser 654-AT13-2P-BM04, prices: [{ qty: "1", usd: 5.41 }, { qty: "10", usd: 5.04 }, { qty: "100", usd: 4.11 }, { qty: "1080", usd: 3.26 }], stock: 129 }
   decisions: [DEC-013]
 
 - id: ATM13-2P-BM04
@@ -385,30 +384,3 @@
     - { date: 2026-10-25, source: DigiKey 889-3289-ND, prices: [{ qty: "1", usd: 7.76 }, { qty: "600", usd: 4.9409 }], stock: 7 }
     - { date: 2026-10-25, source: Mouser 654-ATM13-2P-BM03, prices: [{ qty: "1", usd: 7.76 }, { qty: "1050", usd: 4.74 }], stock: 27 }
   decisions: [DEC-014]
-
-- id: CH-AK-DT13-02
-  mpn: CH-AK-DT13-02
-  manufacturer: Shenzhen Haisheng Hongye Technology (HISENG)
-  qty: 0
-  function: DT13-2P-compatible right-angle PCB header (seller claims 13 A, 250 V, IP67)
-  subsystem: harness
-  status: alternative
-  decision_note: Marketplace alternate; no drawing or qualification data; sample check against the TE drawing before use
-  supply_note: Alibaba only, MOQ 100
-  observations:
-    - { date: 2026-10-22, source: Alibaba listing 1601383533915, note: "listed $0.10-0.50 each, MOQ 100, shipping negotiated" }
-  decisions: [DEC-013]
-
-- id: DT13-2P_Jorch
-  mpn: DT13-2P
-  manufacturer: Jorch
-  qty: 0
-  label: DT13-2P (Jorch)
-  function: DT13-2P copy sold as a set with a DT06-2S plug; no seller ratings
-  subsystem: harness
-  status: alternative
-  decision_note: Marketplace alternate; possible counterfeit; sample check against the TE drawing before use
-  supply_note: AliExpress only
-  observations:
-    - { date: 2026-10-22, source: AliExpress listing 3256804973396267, prices: [{ qty: "1", usd: 5.02 }, { qty: "10", usd: 3.832 }], note: "per header + DT06-2S plug set; 10 sets $38.32" }
-  decisions: [DEC-013]
