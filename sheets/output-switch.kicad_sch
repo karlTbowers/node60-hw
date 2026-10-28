@@ -3426,7 +3426,7 @@
 					)
 				)
 			)
-			(property "Manufacturer" "Murata Electronics"
+			(property "Manufacturer" "Murata"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -8387,7 +8387,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "Murata Electronics"
+		(property "Manufacturer" "Murata"
 			(at 63.5 312.42 0)
 			(effects
 				(font
