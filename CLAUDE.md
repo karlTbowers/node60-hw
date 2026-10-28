@@ -35,7 +35,7 @@ The user settled the open questions from the first schematic draft:
 - **TMP175:** VSSOP (DGK) package.
 - **Page order:** Rev A page numbers stay.
 - **Connector pin 1:** confirmed on samples (GATE-HAR-01). Blocks board release, not the schematic or layout.
-- **GATE-MCU-01:** the user audits all 257 balls, unused ones included.
+- **GATE-MCU-01:** passed 2026-10-28. All 257 balls cross-checked against NXP's IOMUX table, IBIS model and BSDL file; the user signed off. Re-run it if U401's pin plan changes.
 
 ## Deviations from the handbook
 
@@ -50,7 +50,6 @@ The next architecture revision is **Rev B**.
 
 - **10 A continuous is unproven.** TPS2HCS08A-Q1 is rated 8 A per channel with both channels on at 85 °C. The 10 A rating stays blocked until the dual-channel thermal test passes.
 - LAN8670D0-E/LMXVAO and TPS2HCS08AQPWPRQ1 had zero distributor stock at the last observation (2026-10-13): procurement risk.
-- The S32K344EHT1MMMST package ball map must be verified during schematic capture (GATE-MCU-01: all 257 balls).
 - Output and T1S connector pin 1 must be confirmed on AT13/ATM13 samples (GATE-HAR-01).
 
 ## History

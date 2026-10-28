@@ -12,7 +12,7 @@
   function: Grade 1 MCU, 257 MAPBGA
   subsystem: compute
   status: locked
-  decision_note: Locked; verify exact ball map
+  decision_note: Locked; ball map and pin functions verified 2026-10-28 (GATE-MCU-01)
   observations:
     - { date: 2026-10-13, source: DigiKey, prices: [{ qty: "1", usd: 23.17 }], stock: 760 }
 

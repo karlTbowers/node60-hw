@@ -22,7 +22,7 @@ The 257-ball S32K344 owns commands, telemetry, diagnostics, network policy, even
 | Debug | SWD/JTAG + UART pads | Internal service access only; no unsealed external connector |
 
 <Aside type="note" title="Package-map gate">
-RMII signal names carry over from the proven S32K344 implementation, but the exact ball mapping must be checked for S32K344EHT1MMMST during schematic capture (<Ref id="GATE-MCU-01" />).
+The S32K344EHT1MMMST ball map and every planned pin function were audited on 2026-10-28: all 257 balls match NXP's IOMUX table, IBIS model and BSDL file (<Ref id="GATE-MCU-01" />, passed).
 </Aside>
 
 ## Parts

@@ -162,8 +162,9 @@
   group: freeze
   evidence: S32K344EHT1MMMST package-specific pin audit of all 257 balls (signal, power and unused) against NXP's ball map and IOMUX table, including EXTAL/XTAL for the 16 MHz crystal (DEC-015) and the unused-pin handling
   blocks: Schematic
-  status: open
+  status: passed
   page: subsystems/compute
+  result: /node60-hw/validation/gate-mcu-01/
 
 - id: GATE-FW-02
   title: Zephyr target
