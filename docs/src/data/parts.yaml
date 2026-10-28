@@ -341,16 +341,48 @@
   observations:
     - { date: 2026-10-13, source: distributor, prices: [{ qty: "1", usd: 1.82 }], stock: 421 }
 
-- id: TBD-XTAL-16M
-  mpn: null
-  manufacturer: null
+- id: ABM8AIG-16.000MHZ-8-1Z-T
+  mpn: ABM8AIG-16.000MHZ-8-1Z-T
+  manufacturer: Abracon
   qty: 1
-  label: 16 MHz MCU crystal (part TBD)
-  function: S32K344 FXOSC crystal, 16 MHz, AEC-Q200, 3225 or smaller
+  function: S32K344 FXOSC crystal, 16 MHz, CL 8 pF, ±10 ppm at 25 °C, ±50 ppm −40 to +125 °C, ESR 70 Ω max, AEC-Q200, 3.2 × 2.5 mm
   subsystem: compute
-  status: open
-  decision_note: "Decided 2026-10-28 (user): fit a crystal for better timing accuracy than FIRC. Part selection open"
+  status: selected
+  decision_note: "Selected 2026-10-28 (user): the most accurate of the three Grade 1 candidates, lowest ESR. Load: 2 × 10 pF C0G plus a 0 Ω series resistor, as on NXP's FRDM-A-S32K344"
+  second_source: CX3225CA16000D0HSSCC
+  observations:
+    - { date: 2026-10-28, source: DigiKey, prices: [{ qty: "1", usd: 0.79 }, { qty: "100", usd: 0.596 }], stock: 1916 }
+    - { date: 2026-10-28, source: Mouser, prices: [{ qty: "1", usd: 0.79 }, { qty: 1k, usd: 0.47 }], stock: 884 }
   decisions: [DEC-015]
+  library: DropOut_Timing:ABM8AIG-16.000MHZ-8-1Z-T
+
+- id: CX3225CA16000D0HSSCC
+  mpn: CX3225CA16000D0HSSCC
+  manufacturer: KYOCERA AVX
+  qty: 1
+  function: 16 MHz crystal, CL 8 pF, ±20 ppm at 25 °C, ±50 ppm −40 to +125 °C, ESR 100 Ω max, 3.2 × 2.5 mm
+  subsystem: compute
+  status: alternative
+  decision_note: "Second source for ABM8AIG-16.000MHZ-8-1Z-T: same size and load, ±20 ppm instead of ±10 ppm at 25 °C. Not a footprint drop-in: its own land pattern, and pads 2/4 are not connected (no grounded lid)"
+  observations:
+    - { date: 2026-10-28, source: DigiKey, prices: [{ qty: "1", usd: 0.88 }, { qty: 1k, usd: 0.58 }], stock: 6715 }
+    - { date: 2026-10-28, source: Mouser, prices: [{ qty: "1", usd: 0.88 }, { qty: 1k, usd: 0.564 }], stock: 34864 }
+  decisions: [DEC-015]
+  library: DropOut_Timing:CX3225CA16000D0HSSCC
+
+- id: ECS-160-8-36Q-AES-TR
+  mpn: ECS-160-8-36Q-AES-TR
+  manufacturer: ECS
+  qty: 1
+  function: 16 MHz crystal, CL 8 pF, ±25 ppm at 25 °C, ±50 ppm, ESR 80 Ω max, AEC-Q200, 2.5 × 2.0 mm
+  subsystem: compute
+  status: alternative
+  decision_note: "Not selected 2026-10-28: least accurate at 25 °C of the three; smaller footprint, not a drop-in"
+  observations:
+    - { date: 2026-10-28, source: DigiKey, prices: [{ qty: "1", usd: 0.68 }, { qty: 1k, usd: 0.447 }], stock: 28198 }
+    - { date: 2026-10-28, source: Mouser, prices: [{ qty: "1", usd: 0.65 }, { qty: 1k, usd: 0.463 }], stock: 6256 }
+  decisions: [DEC-015]
+  library: DropOut_Timing:ECS-160-8-36Q-AES-TR
 
 - id: AT13-2P-BM04
   mpn: AT13-2P-BM04

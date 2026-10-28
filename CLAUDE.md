@@ -28,7 +28,7 @@ The user settled the open questions from the first schematic draft:
 
 - **LM74910H:** OV cut-off 34.0 V, UVLO 5.47 V falling, SLEEP_OV on OUT. Accepted.
 - **TPS3702AX33:** SET low, 3.10 / 3.50 V window on 3V3_MAIN. Accepted.
-- **MCU clock:** fit a 16 MHz crystal on FXOSC (DEC-015); part to be selected and added to the library.
+- **MCU clock:** fit a 16 MHz crystal on FXOSC (DEC-015). The user chose Abracon ABM8AIG-16.000MHZ-8-1Z-T (Y401), with 10 pF C0G loads and a 0 Ω RsEXT, as on NXP's FRDM-A-S32K344.
 - **PHY reset:** RESET_N stays on RESET_L, shared with the MCU. Measure the MCU's reset hold time at GATE-NET-01.
 - **EMI filter:** regulator branch only (VBAT_PROT to VBAT_FILT). L201/C208 values follow the emissions test.
 - **Parked current:** TPS7B8133-Q1 (3.5 µA) stays; the parked budget is ≈52 µA typical.
