@@ -20,7 +20,22 @@ The schematic rules adopted on 2026-10-22 (handbook chapter 05, from ee-schemati
 - **0R debug resistors:** on every regulator output (VDDAU_AON, 3V3_MAIN, 1V5_CORE), with feedback taken on the regulator side.
 - **Debug header:** 2 × 5 1.27 mm Cortex Debug (Samtec FTSH-105, in the library).
 
-Net names: Node60 keeps its Rev A rail names (`VBAT_PROT`, `VDDAU_AON`, `3V3_MAIN`, `1V5_CORE`), as rule O-1 allows. Everything else follows the new naming: active-low signals end in `_L`, buses are `<BUS><n>_<PURPOSE>_<SIGNAL>` (`I2C0_TELEMETRY_SDA`), differential pairs end in `_P` / `_N`.
+Net names: Node60 keeps its Rev A rail names (`VBAT_PROT`, `VDDAU_AON`, `3V3_MAIN`, `1V5_CORE`), as rule O-1 allows. Everything else follows the new naming: active-low signals end in `_L`, buses are `<BUS><n>_<PURPOSE>_<SIGNAL>` (`I2C0_TELEMETRY_SDA`), differential pairs end in `_P` / `_N`. The architecture site uses the same net names (2026-10-28); the device pin names map to them in the table on its interfaces page.
+
+## Schematic review answers (2026-10-28)
+
+The user settled the open questions from the first schematic draft:
+
+- **LM74910H:** OV cut-off 34.0 V, UVLO 5.47 V falling, SLEEP_OV on OUT. Accepted.
+- **TPS3702AX33:** SET low, 3.10 / 3.50 V window on 3V3_MAIN. Accepted.
+- **MCU clock:** fit a 16 MHz crystal on FXOSC (DEC-015); part to be selected and added to the library.
+- **PHY reset:** RESET_N stays on RESET_L, shared with the MCU. Measure the MCU's reset hold time at GATE-NET-01.
+- **EMI filter:** regulator branch only (VBAT_PROT to VBAT_FILT). L201/C208 values follow the emissions test.
+- **Parked current:** TPS7B8133-Q1 (3.5 µA) stays; the parked budget is ≈52 µA typical.
+- **TMP175:** VSSOP (DGK) package.
+- **Page order:** Rev A page numbers stay.
+- **Connector pin 1:** confirmed on samples (GATE-HAR-01). Blocks board release, not the schematic or layout.
+- **GATE-MCU-01:** the user audits all 257 balls, unused ones included.
 
 ## Deviations from the handbook
 
@@ -35,7 +50,8 @@ The next architecture revision is **Rev B**.
 
 - **10 A continuous is unproven.** TPS2HCS08A-Q1 is rated 8 A per channel with both channels on at 85 °C. The 10 A rating stays blocked until the dual-channel thermal test passes.
 - LAN8670D0-E/LMXVAO and TPS2HCS08AQPWPRQ1 had zero distributor stock at the last observation (2026-10-13): procurement risk.
-- The S32K344EHT1MMMST package ball map must be verified during schematic capture.
+- The S32K344EHT1MMMST package ball map must be verified during schematic capture (GATE-MCU-01: all 257 balls).
+- Output and T1S connector pin 1 must be confirmed on AT13/ATM13 samples (GATE-HAR-01).
 
 ## History
 

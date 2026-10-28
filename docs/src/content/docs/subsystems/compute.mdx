@@ -12,12 +12,13 @@ The 257-ball S32K344 owns commands, telemetry, diagnostics, network policy, even
 
 | Interface | Allocation | Design note |
 |---|---|---|
-| RMII + MDIO | LAN8670D0-E/LMXVAO | 50 MHz reference; MDC/MDIO management; IRQ_N interrupt |
+| RMII + MDIO | LAN8670D0-E/LMXVAO | 50 MHz reference; MDC/MDIO management; T1S_IRQ_L interrupt |
 | LPSPI #1 | Three-device TPS2HCS08A daisy chain | Shared CSN/SCLK; cascaded SDI/SDO; CRC enabled |
 | LPSPI #2 | IS25LP032D-JNLA3 diagnostic flash | Standard SPI mode 0 or 3; dedicated chip select; switched 3.3 V rail |
 | ADC | 3 × shared SNS + VBAT_RAW + 4 × NTC | Eight ADC inputs baseline; INA228 current and TMP175 temperature need no MCU ADC channels |
 | LPI2C | INA228A-Q1 total-rail monitor + TMP175-Q1 temperature sensor | Shared bus with distinct addresses; standard or fast mode is sufficient |
-| GPIO | 3 × output FLT/WAKE, LM74910H FLT, LHI, optional TMP175 ALERT | Defined reset state; PHY INH drives regulator EN directly rather than passing through the MCU |
+| GPIO | 3 × output FLT/WAKE (`SWn_FLT_L`), LM74910H FLT (`LM_FLT_L`), LHI, optional TMP175 ALERT | Defined reset state; PHY INH drives regulator EN directly rather than passing through the MCU |
+| Clock | 16 MHz crystal on FXOSC (EXTAL/XTAL) | Core and peripheral clocks from FXOSC through the PLL (<Ref id="DEC-015" />) |
 | Debug | SWD/JTAG + UART pads | Internal service access only; no unsealed external connector |
 
 <Aside type="note" title="Package-map gate">

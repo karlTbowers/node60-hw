@@ -12,7 +12,7 @@
   page: subsystems/supervision
 
 - id: GATE-SUP-02
-  title: RESET_b timing
+  title: RESET_L timing
   group: supervision
   evidence: Scope supervisor assertion and release against rail slew, MCU reset requirements, clock startup, and regulator power-good
   blocks: Netlist
@@ -30,7 +30,7 @@
 - id: GATE-SUP-04
   title: SWT / CMU fault injection
   group: supervision
-  evidence: Prove early, late, missing, and invalid watchdog service plus monitored-clock failure all produce the intended reset and event log
+  evidence: Prove early, late, missing, and invalid watchdog service plus monitored-clock failure (FIRC and the 16 MHz FXOSC crystal) all produce the intended reset and event log
   blocks: Software release
   status: open
   page: subsystems/supervision
@@ -104,7 +104,7 @@
 - id: GATE-SUP-05
   title: Reset supervision
   group: freeze
-  evidence: TPS3702 3.3 V variant; OV/UV threshold sweep; RESET_b timing; SWT and CMU fault injection
+  evidence: TPS3702 3.3 V variant; OV/UV threshold sweep; RESET_L timing; SWT and CMU fault injection
   blocks: Reset release
   status: open
   page: subsystems/supervision
@@ -136,7 +136,7 @@
 - id: GATE-NET-01
   title: Bus wake / inrush
   group: freeze
-  evidence: T1S-only wake, INH-to-EN timing, supply ramp + PHY initialization ≤ 15 ms (OPEN Alliance; ≈10 ms estimated), LM74910H TMR ride-through, cold boot, IRQ_N ready, PHY/PLCA re-initialization
+  evidence: T1S-only wake, INH-to-EN timing, supply ramp + PHY initialization ≤ 15 ms (OPEN Alliance; ≈10 ms estimated), LM74910H TMR ride-through, cold boot, T1S_IRQ_L ready, PHY/PLCA re-initialization
   blocks: Netlist
   status: open
   page: subsystems/network
@@ -160,7 +160,7 @@
 - id: GATE-MCU-01
   title: Package map
   group: freeze
-  evidence: S32K344EHT1MMMST package-specific pin audit
+  evidence: S32K344EHT1MMMST package-specific pin audit of all 257 balls (signal, power and unused) against NXP's ball map and IOMUX table, including EXTAL/XTAL for the 16 MHz crystal (DEC-015) and the unused-pin handling
   blocks: Schematic
   status: open
   page: subsystems/compute
@@ -188,3 +188,11 @@
   blocks: Purchase
   status: open
   page: components
+
+- id: GATE-HAR-01
+  title: Connector pin numbering
+  group: freeze
+  evidence: On AT13-2P-BM04 and ATM13-2P-BM04 samples, confirm the moulded cavity numbers match the footprint (pin 1 = OUTx on J904-J909, T1S_P / T1S_N polarity on J903); label the cavities on the harness drawing
+  blocks: Board release
+  status: open
+  page: subsystems/harness

@@ -258,7 +258,7 @@
   manufacturer: Texas Instruments
   qty: 1
   label: TPS3702-Q1
-  function: Independent 3V3_MAIN OV/UV window supervisor to RESET_b
+  function: Independent 3V3_MAIN OV/UV window supervisor to RESET_L
   subsystem: supervision
   status: plan-of-record
   decision_note: "Plan of record. Confirm exact 3.3 V variant, price, and stock at BOM lock"
@@ -340,6 +340,17 @@
   decision_note: Selected
   observations:
     - { date: 2026-10-13, source: distributor, prices: [{ qty: "1", usd: 1.82 }], stock: 421 }
+
+- id: TBD-XTAL-16M
+  mpn: null
+  manufacturer: null
+  qty: 1
+  label: 16 MHz MCU crystal (part TBD)
+  function: S32K344 FXOSC crystal, 16 MHz, AEC-Q200, 3225 or smaller
+  subsystem: compute
+  status: open
+  decision_note: "Decided 2026-10-28 (user): fit a crystal for better timing accuracy than FIRC. Part selection open"
+  decisions: [DEC-015]
 
 - id: AT13-2P-BM04
   mpn: AT13-2P-BM04

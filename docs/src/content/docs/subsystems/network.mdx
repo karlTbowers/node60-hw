@@ -34,14 +34,14 @@ The parked node is not an MCU standby system. It is powered down except for the 
 <Metrics items={[
   ['40 µA typ', 'LAN8670 VDDAU sleep current'],
   ['56 µA max', 'LAN8670 VDDAU sleep current'],
-  ['≈50 µA', 'complete node parked, typical'],
-  ['≈65 µA', 'complete node parked, maximum'],
+  ['≈52 µA', 'complete node parked, typical'],
+  ['≈65 µA', 'complete node parked, maximum (Rev A estimate; recheck with the TPS7B8133 maximum Iq)'],
 ]} />
 
 | Phase | Defined sequence | Contract / evidence |
 |---|---|---|
-| Parked | Battery → LM74910H-Q1 in SLEEP (6 µA, ideal diode active) → nanopower LDO → LAN8670 VDDAU only. VDDA, VDDP, MCU, flash, bucks, and all outputs are off. | LDO Iq target ≈1–2 µA remains to be verified at part selection. LAN8670 sleep current is 40 µA typical / 56 µA maximum. |
-| Wake | Controller sends T1S wake-up tone → PHY detects it → INH high → bucks ramp → S32K344 cold boot → PHY re-initialization → link up → outputs become commandable. | Supply ramp plus PHY initialization must stay within 15 ms (OPEN Alliance Sleep/Wake-Up Electrical Interface Specification v1.0, §5.2); estimated ≈10 ms, measured at GATE-NET-01. PHY registers are lost while VDDA/VDDP are down; IRQ_N indicates readiness for configuration. A roughly 1 s application-ready latency is acceptable. |
+| Parked | Battery → LM74910H-Q1 in SLEEP (6 µA, ideal diode active) → TPS7B8133-Q1 LDO → LAN8670 VDDAU only. VDDA, VDDP, MCU, flash, bucks, and all outputs are off. | The selected TPS7B8133-Q1 draws 3.5 µA, above the ≈1–2 µA Rev A target; the parked budget is ≈52 µA typical (accepted 2026-10-28). LAN8670 sleep current is 40 µA typical / 56 µA maximum. |
+| Wake | Controller sends T1S wake-up tone → PHY detects it → INH high → bucks ramp → S32K344 cold boot → PHY re-initialization → link up → outputs become commandable. | Supply ramp plus PHY initialization must stay within 15 ms (OPEN Alliance Sleep/Wake-Up Electrical Interface Specification v1.0, §5.2); estimated ≈10 ms, measured at GATE-NET-01. PHY registers are lost while VDDA/VDDP are down; T1S_IRQ_L indicates readiness for configuration. A roughly 1 s application-ready latency is acceptable. |
 | Shutdown | Controller sends application-level “go to sleep” message → firmware turns all six outputs off → flushes pending log entries → commands PHY sleep → INH releases after tSLPINHDLY → power tree collapses. | Write-before-sleep ordering is mandatory. Bus-idle timeout is rejected as the sleep source. |
 
 <MermaidDiagram name="power-cycle" caption="The controlled power cycle." />
@@ -51,7 +51,7 @@ The T1S pair is the only wake path. The node cannot wake itself and has no KL15 
 </Aside>
 
 <Aside type="caution" title="Wake inrush & exact-target validation">
-INH powers the complete switched tree at once. Size the LM74910H TMR breaker ride-through for regulator, bulk-capacitance, MCU, PHY, and output-stage startup inrush. Validate TC10 sleep/wake, INH timing, cold boot, lost-register PHY re-initialization, IRQ_N ready behavior, PLCA restoration, and application readiness on the exact S32K344EHT1MMMST target.
+INH powers the complete switched tree at once. Size the LM74910H TMR breaker ride-through for regulator, bulk-capacitance, MCU, PHY, and output-stage startup inrush. Validate TC10 sleep/wake, INH timing, cold boot, lost-register PHY re-initialization, T1S_IRQ_L ready behavior, PLCA restoration, and application readiness on the exact S32K344EHT1MMMST target.
 </Aside>
 
 ## Decisions

@@ -40,9 +40,9 @@ entry: "Power entry · always connected" {
 
 bus: "VBAT_PROT" {class: bus; link: "/subsystems/power/"; width: 120}
 
-aon: "Always on · ≈50 µA parked" {
+aon: "Always on · ≈52 µA parked" {
   class: group
-  ldo: "Nanopower LDO\nIq ≈1–2 µA (part TBD)" {class: aon; link: "/subsystems/power/"}
+  ldo: "TPS7B8133-Q1 LDO\nIq 3.5 µA" {class: aon; link: "/subsystems/power/"}
   vddau: "LAN8670 VDDAU\n(TC10 wake detector)" {class: consumer; link: "/subsystems/network/"}
 }
 
@@ -52,7 +52,7 @@ rails: "Switched rails · enabled by LAN8670 INH" {
   buck2: "LMQ66430-Q1 #2\nEN ← 3V3 (EN chain)" {class: rail; link: "/subsystems/power/"}
   c3v3: "S32K344 I/O + analog · LAN8670 VDDA/VDDP\nswitch VDD · SPI NOR · 50 MHz osc\nINA228 · TMP175" {class: consumer; link: "/subsystems/compute/"}
   c1v5: "S32K344 VDD_LV (core)" {class: consumer; link: "/subsystems/compute/"}
-  sup: "TPS3702-Q1\nOV/UV window → RESET_b" {class: rail; link: "/subsystems/supervision/"}
+  sup: "TPS3702-Q1\nOV/UV window → RESET_L" {class: rail; link: "/subsystems/supervision/"}
 }
 
 loads: "Switched loads · all off when parked" {

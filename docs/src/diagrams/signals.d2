@@ -56,7 +56,7 @@ network.ecu <-> network.line: "T1S pair" {class: net}
 network.line <-> network.phy: "TRXP/N" {class: net}
 network.osc -> network.phy: "REF_CLK" {class: dig}
 network.phy <-> mcu: "RMII + MDC/MDIO" {class: net}
-network.phy -> mcu: "IRQ_N" {class: dig}
+network.phy -> mcu: "T1S_IRQ_L" {class: dig}
 
 sensing.rsense -- sensing.ina: "Kelvin IN+/IN−" {class: ana}
 sensing.lm -- sensing.div: "SW pin" {class: ana}
@@ -65,7 +65,7 @@ sensing.ntc -- mcu: "4 × → ADC" {class: ana}
 sensing.ina <-> mcu: "LPI2C" {class: dig}
 sensing.tmp <-> mcu: "LPI2C · ALERT" {class: dig}
 sensing.lm -> mcu: "FLT" {class: dig}
-sensing.sup -> mcu: "RESET_b" {class: dig}
+sensing.sup -> mcu: "RESET_L" {class: dig}
 
 mcu -> outputs.sw: "LPSPI #1 · shared CSN/SCLK" {class: dig}
 mcu <-> outputs.sw: "3 × FLT/WAKE" {class: dig}

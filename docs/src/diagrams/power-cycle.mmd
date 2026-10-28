@@ -6,12 +6,12 @@ stateDiagram-v2
 
     Parked: PARKED · TC10 sleep
     Parked: LM74910H-Q1 SLEEP (6 µA), nanopower LDO, LAN8670 VDDAU only
-    Parked: ≈50 µA typical / ≈65 µA maximum, no logging
+    Parked: ≈52 µA typical / ≈65 µA maximum (Rev A estimate), no logging
 
     Wake: WAKE
     Wake: PHY detects wake-up tone → INH high
     Wake: bucks ramp within 1 ms → S32K344 cold boot
-    Wake: IRQ_N ready → PHY re-init → link up
+    Wake: T1S_IRQ_L ready → PHY re-init → link up
 
     Run: RUN
     Run: all rails, MCU, PHY, flash, oscillator active
