@@ -1,0 +1,483 @@
+---
+// U401 (S32K344EHT1MMMST) pin map: the generated ball map (src/data/mcu-pins.json, from the
+// schematic and the library pin table) merged with the firmware pin plan
+// (src/data/mcu-config.yaml). Fails the build if the two disagree.
+import { getCollection } from 'astro:content';
+import pins from '../data/mcu-pins.json';
+
+interface Props {
+	/** Which part of the page to draw */
+	view: 'map' | 'used' | 'config' | 'free' | 'pools' | 'supplies';
+}
+const { view } = Astro.props;
+
+export const groups: Record<string, { label: string; color: string; ink: string }> = {
+	t1s: { label: '10BASE-T1S PHY: RMII + MDIO', color: '#2f6fd0', ink: '#fff' },
+	'spi-switch': { label: 'Output switches: LPSPI4', color: '#d2602a', ink: '#fff' },
+	'spi-flash': { label: 'Log flash: LPSPI2', color: '#8455cc', ink: '#fff' },
+	i2c: { label: 'Telemetry: LPI2C0', color: '#178a60', ink: '#fff' },
+	adc: { label: 'Analog inputs: ADC1, ADC2', color: '#d8ae2a', ink: '#1b1b1b' },
+	irq: { label: 'Fault and alert interrupts: EIRQ', color: '#c2385a', ink: '#fff' },
+	gpio: { label: 'GPIO outputs', color: '#5f9130', ink: '#fff' },
+	uart: { label: 'Debug UART: LPUART0', color: '#1f9bb2', ink: '#fff' },
+	debug: { label: 'SWD debug', color: '#5d6478', ink: '#fff' },
+	system: { label: 'Reset and clock', color: '#9a5230', ink: '#fff' },
+};
+
+type Ball = (typeof pins.balls)[number];
+const config = new Map((await getCollection('mcuConfig')).map((e) => [e.id, e.data]));
+
+// Cross-check the plan against the schematic
+const errors: string[] = [];
+const byNet = new Map<string, Ball>();
+for (const b of pins.balls) {
+	if (!b.net || b.kind === 'supply') continue;
+	byNet.set(b.net, b);
+	const c = config.get(b.net);
+	if (!c) {
+		errors.push(`${b.ball} ${b.name}: net ${b.net} has no entry in mcu-config.yaml`);
+		continue;
+	}
+	const allowed = b.kind === 'osc' ? [b.name] : ['GPIO', ...b.alternates];
+	if (!allowed.includes(c.function))
+		errors.push(`${b.net}: ${c.function} is not a function of ball ${b.ball} (${b.name})`);
+}
+for (const net of config.keys()) if (!byNet.has(net)) errors.push(`mcu-config.yaml: ${net} is not on a U401 ball`);
+if (errors.length) throw new Error(`MCU pin plan does not match the schematic:\n  ${errors.join('\n  ')}`);
+
+const supplyClass = (b: Ball) => (b.net === 'GND' || /^VSS|VREFL/.test(b.name) ? 'gnd' : 'pwr');
+const cellClass = (b: Ball) => {
+	if (b.kind === 'supply') return supplyClass(b);
+	if (!b.net) return 'free';
+	return `g-${config.get(b.net)!.group}`;
+};
+const groupOf = (b: Ball) => (b.net && b.kind !== 'supply' ? config.get(b.net)!.group : null);
+
+// Data for the browser script
+const clientData = {
+	rows: pins.rows,
+	groups,
+	balls: pins.balls.map((b) => ({
+		...b,
+		cfg: b.net && b.kind !== 'supply' ? config.get(b.net) : null,
+	})),
+	interfaces: pins.interfaces,
+};
+
+const used = pins.balls.filter((b) => b.net && b.kind !== 'supply');
+const free = pins.balls.filter((b) => !b.net && b.kind === 'signal');
+const supplies = pins.balls.filter((b) => b.kind === 'supply');
+const port = (b: Ball) => b.name.split('/')[0];
+
+// Peripherals in use: instance -> signals, in group order
+const instanceOf = (fn: string) =>
+	fn === 'GPIO'
+		? 'GPIO'
+		: (fn.match(/^(EMAC|LPSPI\d+|LPI2C\d+|LPUART\d+|ADC\d|EIRQ|SWD|TRACEnoETM|RESET_b|EXTAL|XTAL)/)?.[1] ?? fn);
+const instanceName: Record<string, string> = { TRACEnoETM: 'SWD', RESET_b: 'Reset', EXTAL: 'FXOSC', XTAL: 'FXOSC' };
+const inUse = new Map<string, Ball[]>();
+for (const g of Object.keys(groups))
+	for (const b of used.filter((x) => groupOf(x) === g)) {
+		const raw = instanceOf(config.get(b.net!)!.function);
+		const inst = instanceName[raw] ?? raw;
+		inUse.set(inst, [...(inUse.get(inst) ?? []), b]);
+	}
+
+const ifaceKinds = ['LPUART', 'LPSPI', 'LPI2C', 'CAN', 'QuadSPI', 'SAI'];
+const kindLabel: Record<string, string> = {
+	LPUART: 'UART (LPUART)',
+	LPSPI: 'SPI (LPSPI)',
+	LPI2C: 'I²C (LPI2C)',
+	CAN: 'CAN FD (FlexCAN)',
+	QuadSPI: 'Quad SPI',
+	SAI: 'Audio (SAI)',
+};
+const ballPort = (id: string) => port(pins.balls.find((b) => b.ball === id)!);
+const poolLabel: Record<string, string> = {
+	ADC: 'ADC channels',
+	eMIOS: 'Timer channels (eMIOS)',
+	FlexIO: 'FlexIO pins',
+	EIRQ: 'External interrupt lines',
+	WKPU: 'Wake-up inputs (WKPU)',
+	CMP: 'Comparator inputs/outputs',
+	LCU: 'Logic control unit',
+	TRGMUX: 'Trigger mux',
+};
+const supplyNets = [...new Set(supplies.map((b) => b.net ?? '(none)'))].sort();
+
+const dirLabel = { in: 'Input', out: 'Output', io: 'In/out', analog: 'Analog', od: 'Open-drain' };
+
+// Two-line cell labels for the three map modes (CubeMX-style: configured function on the ball)
+const portLabel = (b: Ball) => [port(b).replace(/^VDD_HV_/, 'HV_'), ''];
+function funcLabel(b: Ball): string[] {
+	if (!b.net || b.kind === 'supply') return portLabel(b);
+	const c = config.get(b.net)!;
+	if (c.function === 'GPIO') return ['GPIO', c.dir === 'out' ? 'Output' : 'Input'];
+	let m = c.function.match(/^EMAC_MII_RMII_(.+)$/);
+	if (m) return [m[1].startsWith('MD') ? 'MDIO' : 'RMII', m[1]];
+	m = c.function.match(/^(EIRQ)\[(\d+)\]$/);
+	if (m) return ['EIRQ', m[2]];
+	m = c.function.match(/^TRACEnoETM_(.+)$/);
+	if (m) return ['SWD', m[1]];
+	m = c.function.match(/^([^_]+)_(.+)$/);
+	return m ? [m[1], m[2]] : [c.function, ''];
+}
+function netLabel(b: Ball): string[] {
+	if (!b.net) return portLabel(b);
+	const n = b.net;
+	const cut = n.lastIndexOf('_', Math.ceil(n.length / 2) + 3);
+	return n.length <= 9 || cut <= 0 ? [n, ''] : [n.slice(0, cut), n.slice(cut + 1)];
+}
+const CELL = 54;
+const FIT = CELL - 8;
+// Squeeze a label that would overrun the cell (about 6 px per character at 10 px)
+const fit = (t: string) => (t.length * 6 > FIT ? { textLength: FIT, lengthAdjust: 'spacingAndGlyphs' } : {});
+const PAD = 22;
+---
+
+{
+	view === 'map' && (
+		<div class="mcu not-content" data-mcu>
+			<script type="application/json" data-mcu-data set:html={JSON.stringify(clientData)} />
+			<div class="mcu-stats">
+				<span><b>{used.length}</b> signal balls used</span>
+				<span><b>{free.length}</b> free GPIO balls</span>
+				<span><b>{supplies.length}</b> supply balls</span>
+				<span><b>{pins.interfaces.filter((i) => i.status === 'available').length}</b> spare interface instances</span>
+			</div>
+			<div class="mcu-tools">
+				<input type="search" placeholder="Find a net, port or function (e.g. CAN0, LPUART3, PTB4, SW1)" data-mcu-search aria-label="Find on the ball map" />
+				<button type="button" data-mcu-clear>Clear</button>
+				<span class="mcu-modes" role="group" aria-label="Ball labels">
+					<span class="muted">Label balls with</span>
+					<button type="button" data-mcu-mode="func" aria-pressed="true">Function</button>
+					<button type="button" data-mcu-mode="net" aria-pressed="false">Net</button>
+					<button type="button" data-mcu-mode="port" aria-pressed="false">Port</button>
+				</span>
+			</div>
+			<div class="mcu-top">
+				<svg class="mcu-bga" viewBox={`0 0 ${PAD + 17 * CELL + 4} ${PAD + 17 * CELL + 4}`} role="img" aria-label="S32K344 257-ball map, top view">
+					{Array.from({ length: 17 }, (_, i) => (
+						<text class="mcu-axis" x={PAD + i * CELL + CELL / 2} y={14}>{i + 1}</text>
+					))}
+					{[...pins.rows].map((r, i) => (
+						<text class="mcu-axis" x={9} y={PAD + i * CELL + CELL / 2 + 4}>{r}</text>
+					))}
+					{pins.balls.map((b) => (
+						<g class={`mcu-ball ${cellClass(b)}`} data-ball={b.ball} transform={`translate(${PAD + b.col * CELL},${PAD + b.row * CELL})`} tabindex="0" role="button" aria-label={`${b.ball} ${b.name}${b.net ? ' ' + b.net : ''}`}>
+							<title>{`${b.ball} · ${b.name}${b.net ? ' · ' + b.net : ''}`}</title>
+							<rect x="2" y="2" width={CELL - 4} height={CELL - 4} rx="6" style={groupOf(b) ? `fill:${groups[groupOf(b)!].color}` : undefined} />
+							<text class="mcu-id" x={CELL / 2} y="13" style={groupOf(b) ? `fill:${groups[groupOf(b)!].ink}` : undefined}>{b.ball}</text>
+							{[0, 1].map((i) => (
+								<text class={`mcu-name mcu-l${i + 1}`} x={CELL / 2} y={i ? 40 : 28} style={groupOf(b) ? `fill:${groups[groupOf(b)!].ink}` : undefined}
+									data-func={funcLabel(b)[i]} data-net={netLabel(b)[i]} data-port={portLabel(b)[i]} {...fit(funcLabel(b)[i])}>
+									{funcLabel(b)[i]}
+								</text>
+							))}
+						</g>
+					))}
+				</svg>
+				<aside class="mcu-detail" data-mcu-detail aria-live="polite">
+					<p class="muted">Top view, ball A1 at top left. Select a ball for its net, configuration and alternate functions. Select a legend entry or a peripheral in the tables below to show where it sits or could go.</p>
+				</aside>
+			</div>
+			<div class="mcu-legend">
+				{Object.entries(groups).map(([k, g]) => (
+					<button type="button" data-mcu-group={k}><i style={`background:${g.color}`} />{g.label}</button>
+				))}
+				<button type="button" data-mcu-group="free"><i class="free" />Free (no net)</button>
+				<button type="button" data-mcu-group="pwr"><i class="pwr" />Supply</button>
+				<button type="button" data-mcu-group="gnd"><i class="gnd" />Ground</button>
+			</div>
+		</div>
+	)
+}
+
+{
+	view === 'used' && (
+		<table class="mcu-table">
+			<thead><tr><th>Peripheral</th><th>Used for</th><th>Signals (ball · port · net)</th></tr></thead>
+			<tbody>
+				{[...inUse.entries()].map(([inst, balls]) => (
+					<tr>
+						<td><button type="button" class="mcu-show" data-mcu-balls={balls.map((b) => b.ball).join(' ')}>{inst}</button></td>
+						<td><i class="mcu-swatch" style={`background:${groups[groupOf(balls[0])!].color}`} />{groups[groupOf(balls[0])!].label.split(':')[0]}</td>
+						<td class="mcu-sigs">
+							{balls.map((b) => (
+								<span><code>{config.get(b.net!)!.function}</code> {b.ball} · {port(b)} · <code>{b.net}</code></span>
+							))}
+						</td>
+					</tr>
+				))}
+			</tbody>
+		</table>
+	)
+}
+
+{
+	view === 'config' && (
+		<div class="mcu-scroll">
+			<table class="mcu-table mcu-config">
+				<thead>
+					<tr><th>Ball</th><th>Port</th><th>Net</th><th>Function</th><th>Mode</th><th>Internal pull</th><th>External</th><th>Edge / init</th><th>Notes</th></tr>
+				</thead>
+				<tbody>
+					{Object.keys(groups).map((g) => (
+						<>
+							<tr class="mcu-grouprow"><th colspan="9"><i class="mcu-swatch" style={`background:${groups[g].color}`} />{groups[g].label}</th></tr>
+							{used.filter((b) => groupOf(b) === g).map((b) => {
+								const c = config.get(b.net!)!;
+								return (
+									<tr>
+										<td><button type="button" class="mcu-show" data-mcu-balls={b.ball}>{b.ball}</button></td>
+										<td>{port(b)}</td>
+										<td><code>{b.net}</code></td>
+										<td><code>{c.function}</code></td>
+										<td>{dirLabel[c.dir]}</td>
+										<td>{c.pull === 'none' ? '–' : c.pull}</td>
+										<td>{c.dir === 'analog' ? (b.connects.filter((x) => /^[RC]\d/.test(x)).join(', ') || '–') : (b.externalPull ?? '–')}</td>
+										<td>{[c.edge && `${c.edge} edge`, c.init && `${c.init} at init`].filter(Boolean).join(', ') || '–'}</td>
+										<td>{c.note ?? ''}</td>
+									</tr>
+								);
+							})}
+						</>
+					))}
+				</tbody>
+			</table>
+		</div>
+	)
+}
+
+{
+	view === 'free' && (
+		<div class="mcu-free">
+			{ifaceKinds.map((k) => (
+				<>
+					<h4>{kindLabel[k]}</h4>
+					<table class="mcu-table">
+						<thead><tr><th>Instance</th><th>Status</th><th>One placement on free balls</th><th>Free balls per signal</th></tr></thead>
+						<tbody>
+							{pins.interfaces.filter((i) => i.kind === k).map((i) => (
+								<tr class={`st-${i.status}`}>
+									<td>
+										<button type="button" class="mcu-show" data-mcu-balls={Object.values(i.status === 'used' ? i.used : i.example).join(' ')} data-mcu-query={i.status === 'used' ? undefined : `${i.name}_`}>{i.name}</button>
+									</td>
+									<td><span class={`mcu-chip st-${i.status}`}>{i.status === 'used' ? 'In use' : i.status === 'available' ? 'Available' : 'Conflict'}</span></td>
+									<td>
+										{i.status === 'used'
+											? Object.entries(i.used).map(([s, ball]) => <span class="mcu-pl"><code>{s}</code> {ball}</span>)
+											: i.status === 'available'
+												? Object.entries(i.example).map(([s, ball]) => <span class="mcu-pl"><code>{s}</code> {ball} · {ballPort(ball)}</span>)
+												: Object.entries(i.blockedBy).map(([s, nets]) => (
+														<span class="mcu-pl"><code>{s}</code> only on {nets.length ? nets.map((n) => <code>{n}</code>) : 'no ball in this package'}</span>
+													))}
+									</td>
+									<td class="mcu-sigs">
+										{Object.entries(i.signals).map(([s, o]) => (
+											<span><code>{s}</code> {o.free.length ? o.free.join(' ') : <em>none free</em>}</span>
+										))}
+									</td>
+								</tr>
+							))}
+						</tbody>
+					</table>
+				</>
+			))}
+		</div>
+	)
+}
+
+{
+	view === 'pools' && (
+		<table class="mcu-table">
+			<thead><tr><th>Resource</th><th>Instance</th><th>Used</th><th>On free balls</th><th>Free channels</th></tr></thead>
+			<tbody>
+				{pins.pools.map((p) => (
+					<tr>
+						<td>{poolLabel[p.kind]}</td>
+						<td><button type="button" class="mcu-show" data-mcu-balls={p.freeBalls.join(' ')} data-mcu-query={p.kind === 'FlexIO' ? 'FXIO_' : p.kind === 'eMIOS' ? `eMIOS_${p.name.slice(-1)}_` : `${p.name}`}>{p.name}</button></td>
+						<td>{p.used.length ? p.used.map((s) => <code>{s}</code>) : '–'}</td>
+						<td>{p.free.length}</td>
+						<td class="mcu-wrap">{p.free.join(', ')}</td>
+					</tr>
+				))}
+			</tbody>
+		</table>
+	)
+}
+
+{
+	view === 'supplies' && (
+		<table class="mcu-table">
+			<thead><tr><th>Net</th><th>Pin names</th><th>Balls</th></tr></thead>
+			<tbody>
+				{supplyNets.map((n) => {
+					const bs = supplies.filter((b) => (b.net ?? '(none)') === n);
+					return (
+						<tr>
+							<td><button type="button" class="mcu-show" data-mcu-balls={bs.map((b) => b.ball).join(' ')}><code>{n}</code></button></td>
+							<td>{[...new Set(bs.map((b) => b.name))].join(', ')}</td>
+							<td>{bs.length}: {bs.map((b) => b.ball).join(', ')}</td>
+						</tr>
+					);
+				})}
+			</tbody>
+		</table>
+	)
+}
+
+{
+	view === 'map' && (
+		<script>
+			type Ball = {
+				ball: string; name: string; port: string | null; kind: string; net: string | null;
+				alternates: string[]; connects: string[]; externalPull: string | null;
+				cfg: { function: string; group: string; dir: string; pull: string; edge?: string; init?: string; note?: string } | null;
+			};
+			const root = document.querySelector<HTMLElement>('[data-mcu]');
+			if (root) {
+				const data = JSON.parse(root.querySelector('[data-mcu-data]')!.textContent!);
+				const balls: Ball[] = data.balls;
+				const byId = new Map(balls.map((b) => [b.ball, b]));
+				const cells = new Map([...root.querySelectorAll<SVGGElement>('.mcu-ball')].map((g) => [g.dataset.ball!, g]));
+				const detail = root.querySelector<HTMLElement>('[data-mcu-detail]')!;
+				const search = root.querySelector<HTMLInputElement>('[data-mcu-search]')!;
+				const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+				const dirs: Record<string, string> = { in: 'Input', out: 'Output', io: 'In/out', analog: 'Analog', od: 'Open-drain' };
+
+				let mode = 'func';
+				let current: Map<string, string> | null = null;
+				const FIT = 46;
+				function setText(t: SVGTextElement, s: string) {
+					t.textContent = s;
+					if (s.length * 6 > FIT) {
+						t.setAttribute('textLength', String(FIT));
+						t.setAttribute('lengthAdjust', 'spacingAndGlyphs');
+					} else t.removeAttribute('textLength');
+				}
+				// Highlight a set of balls; a per-ball label (e.g. the signal a search matched)
+				// replaces the second line of the cell label
+				function highlight(sel: Map<string, string> | null) {
+					current = sel;
+					root!.classList.toggle('mcu-filtering', !!sel);
+					for (const [id, g] of cells) {
+						const on = !!sel?.has(id);
+						g.classList.remove('pick');
+						g.classList.toggle('hl', on);
+						const [l1, l2] = g.querySelectorAll<SVGTextElement>('.mcu-name');
+						const label = on ? sel!.get(id) : '';
+						if (label) {
+							setText(l1, label.split(' ')[0]);
+							setText(l2, label.split(' ').slice(1).join(' '));
+						} else {
+							setText(l1, l1.dataset[mode]!);
+							setText(l2, l2.dataset[mode]!);
+						}
+					}
+				}
+				function setMode(m: string) {
+					mode = m;
+					root!.querySelectorAll<HTMLElement>('[data-mcu-mode]').forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.mcuMode === m)));
+					try { localStorage.setItem('n60-mcu-mode', m); } catch {}
+					highlight(current);
+				}
+				root.querySelectorAll<HTMLElement>('[data-mcu-mode]').forEach((b) => b.addEventListener('click', () => setMode(b.dataset.mcuMode!)));
+				try {
+					const saved = localStorage.getItem('n60-mcu-mode');
+					if (saved && saved !== 'func' && ['net', 'port'].includes(saved)) setMode(saved);
+				} catch {}
+				function select(id: string | null) {
+					for (const [k, g] of cells) g.classList.toggle('sel', k === id);
+					if (!id) return;
+					const b = byId.get(id)!;
+					const c = b.cfg;
+					const row = (k: string, v: string | null | undefined) => (v ? `<dt>${k}</dt><dd>${v}</dd>` : '');
+					const status = b.kind === 'supply' ? 'Supply' : !b.net ? 'Free' : data.groups[c!.group].label;
+					const color = c ? data.groups[c.group].color : '';
+					// Alternates grouped by peripheral instance, each a link that searches for it
+					const inst = (s: string) => s.match(/^(eMIOS_\d|[^_\[]+)/)?.[1] ?? s;
+					const alts = b.alternates
+						.map((s) => `<button type="button" class="mcu-alt${c?.function === s ? ' on' : ''}" data-q="${esc(inst(s))}_">${esc(s)}</button>`)
+						.join('');
+					detail.innerHTML = `
+						<h3>${b.ball} <span>${esc(b.name)}</span></h3>
+						<p class="mcu-status"><i style="background:${color}"></i>${esc(status)}</p>
+						<dl>
+							${row('Net', b.net && `<code>${esc(b.net)}</code>`)}
+							${row('Function', c && `<code>${esc(c.function)}</code>`)}
+							${row('Mode', c && dirs[c.dir])}
+							${row('Internal pull', c && (c.pull === 'none' ? 'none' : c.pull))}
+							${row('External pull', c?.dir !== 'analog' ? b.externalPull && esc(b.externalPull) : null)}
+							${row('Interrupt', c?.edge && `${c.edge} edge`)}
+							${row('Initial level', c?.init)}
+							${row('Notes', c?.note && esc(c.note))}
+							${row('Connects to', b.connects.length ? b.connects.map(esc).join('<br>') : null)}
+						</dl>
+						${b.alternates.length ? `<h4>Functions on this ball</h4><div class="mcu-alts">${alts}</div>` : ''}
+						${!b.net && b.kind === 'signal' ? '<p class="muted">Unconnected: GPIO stays disabled (Hardware Design Guidelines Table 33).</p>' : ''}`;
+				}
+				function query(q: string) {
+					q = q.trim().toLowerCase();
+					if (!q) return highlight(null);
+					const sel = new Map<string, string>();
+					for (const b of balls) {
+						const sig = b.alternates.find((s) => s.toLowerCase().startsWith(q));
+						const m = sig?.match(/^(eMIOS_\d|[^_\[]+)_(.*)$/);
+						if (sig) sel.set(b.ball, m ? `${m[1].replace('eMIOS_', 'eMIOS')} ${m[2]}` : sig);
+						else if ([b.net, b.name, b.cfg?.function].some((v) => v?.toLowerCase().includes(q))) sel.set(b.ball, '');
+					}
+					highlight(sel);
+				}
+
+				root.addEventListener('click', (e) => {
+					const t = e.target as Element;
+					const cell = t.closest<SVGGElement>('.mcu-ball');
+					if (cell) return select(cell.dataset.ball!);
+					const alt = t.closest<HTMLElement>('.mcu-alt');
+					if (alt) {
+						search.value = alt.dataset.q!;
+						return query(search.value);
+					}
+					const grp = t.closest<HTMLElement>('[data-mcu-group]');
+					if (grp) {
+						search.value = '';
+						const k = grp.dataset.mcuGroup!;
+						return highlight(new Map([...cells].filter(([, g]) => g.classList.contains(k === 'free' || k === 'pwr' || k === 'gnd' ? k : `g-${k}`)).map(([id]) => [id, ''])));
+					}
+				});
+				root.addEventListener('keydown', (e) => {
+					const cell = (e.target as Element).closest<SVGGElement>('.mcu-ball');
+					if (cell && (e.key === 'Enter' || e.key === ' ')) {
+						e.preventDefault();
+						select(cell.dataset.ball!);
+					}
+				});
+				search.addEventListener('input', () => query(search.value));
+				root.querySelector('[data-mcu-clear]')!.addEventListener('click', () => {
+					search.value = '';
+					highlight(null);
+					select(null);
+				});
+
+				// "Show on map" buttons in the tables further down the page
+				document.addEventListener('click', (e) => {
+					const btn = (e.target as Element).closest<HTMLElement>('.mcu-show');
+					if (!btn) return;
+					const ids = (btn.dataset.mcuBalls ?? '').split(' ').filter(Boolean);
+					if (btn.dataset.mcuQuery) {
+						search.value = btn.dataset.mcuQuery;
+						query(search.value);
+						// Mark the suggested placement on top of every candidate
+						for (const id of ids) cells.get(id)?.classList.add('pick');
+					} else {
+						search.value = '';
+						highlight(new Map(ids.map((id) => [id, ''])));
+					}
+					if (ids.length === 1) select(ids[0]);
+					root.scrollIntoView({ behavior: 'smooth', block: 'start' });
+				});
+			}
+		</script>
+	)
+}

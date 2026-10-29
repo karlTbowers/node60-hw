@@ -1,0 +1,51 @@
+---
+title: MCU pinout
+description: S32K344EHT1MMMST (U401) ball map, pin configuration, peripherals in use and the interfaces still free, drawn from the schematic.
+tableOfContents: false
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import McuPinout from '../../components/McuPinout.astro';
+import Ref from '../../components/Ref.astro';
+
+U401 is the S32K344EHT1MMMST in the 257-ball MAPBGA. This page works like a pin configurator: the ball map shows every ball's configured function, and the tables list the pad settings, the peripherals in use and the peripheral instances that still fit on free balls.
+
+<Aside type="note" title="Where the data comes from">
+- **Balls, nets and external parts:** the schematic netlist and the library pin table (NXP IOMUX). `python3 scripts/mcu_pinmap.py` writes `src/data/mcu-pins.json`. CI checks it is current.
+- **Function, pull, edge and initial level:** the firmware pin plan in `src/data/mcu-config.yaml`. The build fails if a net is missing, or if a function is not available on its ball.
+- **Package map:** audited against NXP's IOMUX table, IBIS model and BSDL file (<Ref id="GATE-MCU-01" />, passed). The pad settings are the proposed firmware plan. No hardware has checked them yet.
+</Aside>
+
+## Ball map
+
+<McuPinout view="map" />
+
+## Peripherals in use
+
+<McuPinout view="used" />
+
+## Pin configuration
+
+Internal pulls are left off wherever the schematic fits an external pull or a PHY strap resistor, so the strap reads correctly at reset. Analog inputs use the pad's analog path (digital input buffer off). Interrupt lines each use a different EIRQ line.
+
+<McuPinout view="config" />
+
+## Free interfaces
+
+An instance is **available** when each of its required signals can go on a different free ball (a ball with no net). The placement shown is one example. Select an instance to see every free ball that offers its signals, with the example outlined. **Conflict** means a required signal exists only on balls already in use.
+
+Required signals: UART TX + RX · SPI SCK + SIN + SOUT + one PCS · I²C SCL + SDA · CAN TX + RX · Quad SPI SCK + PCS + IO0 + IO1 · SAI BCLK + SYNC + D0.
+
+<McuPinout view="free" />
+
+## Timers, ADC and other channels
+
+Channels offered by at least one free ball. Several channels often share a ball, so the counts are upper limits.
+
+<McuPinout view="pools" />
+
+## Supplies
+
+<McuPinout view="supplies" />
+
+Unused GPIO balls stay unconnected and disabled, as NXP's Hardware Design Guidelines Rev. E2 (Table 33) require. JTAG_TDI (F8) is unused: debug is SWD only.

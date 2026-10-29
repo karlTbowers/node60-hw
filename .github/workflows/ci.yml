@@ -41,6 +41,10 @@ jobs:
           command -v python3 >/dev/null || { apt-get update && apt-get install -y --no-install-recommends python3; }
           python3 scripts/check_schematic.py "$PROJECT"
 
+      - name: MCU pin map for the docs site is current
+        if: steps.guard.outputs.present == 'true'
+        run: python3 scripts/mcu_pinmap.py --check
+
       - name: ERC
         if: steps.guard.outputs.present == 'true'
         run: |

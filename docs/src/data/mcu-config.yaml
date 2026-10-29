@@ -1,0 +1,307 @@
+# Firmware pin plan for U401 (S32K344EHT1MMMST): one entry per schematic net on an MCU ball,
+# keyed by net name.
+# Drawn by the MCU pinout page (mcu-pinout.mdx) with the generated ball map, mcu-pins.json.
+# The build fails if a net here is not on a U401 ball, if a connected ball has no entry, or if
+# `function` is not one of that ball's functions in NXP's IOMUX table (GPIO is always allowed).
+#
+# function  the signal the pad mux selects (IOMUX name; GPIO for plain port use)
+# group     colour group on the page (see `groups` in mcu-pinout.mdx's component)
+# dir       in · out · io · analog · od (open-drain output)
+# pull      the MCU's internal pull (none · up · down); external pulls come from the schematic
+# edge      interrupt trigger, for EIRQ functions
+# init      output level the firmware sets before enabling the output buffer
+# After changing a function, run python3 scripts/mcu_pinmap.py (it reads `function` to tell
+# which peripheral instances are taken).
+
+# 10BASE-T1S PHY (LAN8670, sheet D)
+RMII0_T1S_REF_CLK:
+  function: EMAC_MII_RMII_TX_CLK
+  group: t1s
+  dir: in
+  pull: none
+  note: 50 MHz RMII reference from the PHY oscillator output, through R504 33 Ω
+RMII0_T1S_TXD0:
+  function: EMAC_MII_RMII_TXD[0]
+  group: t1s
+  dir: out
+  pull: none
+  init: low
+RMII0_T1S_TXD1:
+  function: EMAC_MII_RMII_TXD[1]
+  group: t1s
+  dir: out
+  pull: none
+  init: low
+RMII0_T1S_TX_EN:
+  function: EMAC_MII_RMII_TX_EN
+  group: t1s
+  dir: out
+  pull: none
+  init: low
+  note: R514 holds it low through reset so the PHY does not transmit
+RMII0_T1S_RXD0:
+  function: EMAC_MII_RMII_RXD[0]
+  group: t1s
+  dir: in
+  pull: none
+  note: also PHYAD2 strap; leave the internal pull off so the strap reads as fitted
+RMII0_T1S_RXD1:
+  function: EMAC_MII_RMII_RXD[1]
+  group: t1s
+  dir: in
+  pull: none
+  note: also PHYAD3 strap
+RMII0_T1S_CRS_DV:
+  function: EMAC_MII_RMII_RX_DV
+  group: t1s
+  dir: in
+  pull: none
+  note: also PHYAD1 strap
+RMII0_T1S_RX_ER:
+  function: EMAC_MII_RMII_RX_ER
+  group: t1s
+  dir: in
+  pull: none
+  note: also PHYAD0 strap
+MDIO0_T1S_MDC:
+  function: EMAC_MII_RMII_MDC
+  group: t1s
+  dir: out
+  pull: none
+  init: low
+MDIO0_T1S_MDIO:
+  function: EMAC_MII_RMII_MDIO
+  group: t1s
+  dir: io
+  pull: none
+  note: R507 is the MDIO pull-up
+T1S_IRQ_L:
+  function: EIRQ[17]
+  group: irq
+  dir: in
+  pull: none
+  edge: falling
+  note: PHY IRQ_N (open-drain, level); re-read the PHY status after the edge
+T1S_TERM_END:
+  function: GPIO
+  group: gpio
+  dir: out
+  pull: none
+  init: low
+  note: termination relay SET pulse, ≥ 10 ms high (DEC-017); R522 holds the gates low through reset
+T1S_TERM_DROP:
+  function: GPIO
+  group: gpio
+  dir: out
+  pull: none
+  init: low
+  note: termination relay RESET pulse, ≥ 10 ms high (DEC-017); never high together with T1S_TERM_END
+
+# Output switches (3 × TPS2HCS08A-Q1, sheets E-G)
+SPI4_SWITCH_SCK:
+  function: LPSPI4_SCK
+  group: spi-switch
+  dir: out
+  pull: none
+  init: low
+SPI4_SWITCH_MOSI:
+  function: LPSPI4_SOUT
+  group: spi-switch
+  dir: out
+  pull: none
+  note: into U601 SDI; the chain runs U601 → U701 → U801
+SPI4_SWITCH_MISO:
+  function: LPSPI4_SIN
+  group: spi-switch
+  dir: in
+  pull: up
+  note: from U801 SDO, high-impedance while CS_L is high
+SPI4_SWITCH_CS_L:
+  function: LPSPI4_PCS0
+  group: spi-switch
+  dir: out
+  pull: up
+  init: high
+  note: shared by all three switches (daisy chain)
+SW_LHI:
+  function: GPIO
+  group: gpio
+  dir: out
+  pull: none
+  init: low
+  note: limp-home input on all three switches; R603/R703/R803 hold it inactive
+SW1_FLT_L:
+  function: EIRQ[0]
+  group: irq
+  dir: in
+  pull: none
+  edge: falling
+  note: U601 FLT/WAKE, open-drain, pulled up to the switch's SW_VDD
+SW2_FLT_L:
+  function: EIRQ[1]
+  group: irq
+  dir: in
+  pull: none
+  edge: falling
+  note: U701 FLT/WAKE
+SW3_FLT_L:
+  function: EIRQ[2]
+  group: irq
+  dir: in
+  pull: none
+  edge: falling
+  note: U801 FLT/WAKE
+SW1_SNS:
+  function: ADC1_P0
+  group: adc
+  dir: analog
+  pull: none
+  note: U601 current sense through R606 10 kΩ
+SW2_SNS:
+  function: ADC1_P1
+  group: adc
+  dir: analog
+  pull: none
+  note: U701 current sense through R706
+SW3_SNS:
+  function: ADC1_P4
+  group: adc
+  dir: analog
+  pull: none
+  note: U801 current sense through R806
+
+# Temperature and supply monitoring
+BATT_MON:
+  function: ADC2_P0
+  group: adc
+  dir: analog
+  pull: none
+  note: VBAT_RAW, from the LM74910H OV/UV divider tap
+NTC_RSENSE:
+  function: ADC2_P1
+  group: adc
+  dir: analog
+  pull: none
+  note: RT201 at the input shunt, 10 kΩ divider from 3V3_MAIN
+NTC_SW1:
+  function: ADC2_P2
+  group: adc
+  dir: analog
+  pull: none
+  note: RT601 at U601
+NTC_SW2:
+  function: ADC2_P3
+  group: adc
+  dir: analog
+  pull: none
+  note: RT701 at U701
+NTC_SW3:
+  function: ADC2_P4
+  group: adc
+  dir: analog
+  pull: none
+  note: RT801 at U801
+I2C0_TELEMETRY_SCL:
+  function: LPI2C0_SCL
+  group: i2c
+  dir: od
+  pull: none
+  note: INA228 (U202) and TMP175 (U203); R406 is the bus pull-up
+I2C0_TELEMETRY_SDA:
+  function: LPI2C0_SDA
+  group: i2c
+  dir: od
+  pull: none
+  note: R407 is the bus pull-up
+TMP175_ALERT_L:
+  function: EIRQ[23]
+  group: irq
+  dir: in
+  pull: none
+  edge: falling
+LM_FLT_L:
+  function: EIRQ[6]
+  group: irq
+  dir: in
+  pull: none
+  edge: falling
+  note: LM74910H fault (U201)
+
+# Log flash (IS25LP032D, U402)
+SPI2_FLASH_SCK:
+  function: LPSPI2_SCK
+  group: spi-flash
+  dir: out
+  pull: none
+  init: low
+SPI2_FLASH_MOSI:
+  function: LPSPI2_SOUT
+  group: spi-flash
+  dir: out
+  pull: none
+SPI2_FLASH_MISO:
+  function: LPSPI2_SIN
+  group: spi-flash
+  dir: in
+  pull: up
+  note: flash SO is high-impedance while CS_L is high
+SPI2_FLASH_CS_L:
+  function: LPSPI2_PCS0
+  group: spi-flash
+  dir: out
+  pull: none
+  init: high
+  note: R401 holds the flash deselected through reset
+
+# Debug and service
+SWD_CLK:
+  function: SWD_CLK
+  group: debug
+  dir: in
+  pull: none
+  note: J401 pin 4; reset default function
+SWD_DIO:
+  function: SWD_DIO
+  group: debug
+  dir: io
+  pull: none
+  note: J401 pin 2; reset default function
+SWD_SWO:
+  function: TRACEnoETM_SWO
+  group: debug
+  dir: out
+  pull: none
+  note: J401 pin 6
+UART0_DEBUG_TX:
+  function: LPUART0_TX
+  group: uart
+  dir: out
+  pull: none
+  init: high
+  note: test pad TP401
+UART0_DEBUG_RX:
+  function: LPUART0_RX
+  group: uart
+  dir: in
+  pull: up
+  note: test pad TP402; the pull-up keeps an unprobed line idle
+
+# System
+RESET_L:
+  function: RESET_b
+  group: system
+  dir: io
+  pull: none
+  note: shared with the TPS3702 supervisor (U304) and the PHY RESET_N; R308 pull-up
+FXOSC_EXTAL:
+  function: EXTAL
+  group: system
+  dir: analog
+  pull: none
+  note: 16 MHz crystal Y401 (DEC-015)
+FXOSC_XTAL:
+  function: XTAL
+  group: system
+  dir: analog
+  pull: none
+  note: through R408 0 Ω (RsEXT)
