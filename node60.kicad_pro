@@ -14,5 +14,17 @@
       "sort_order": 0
     },
     "annotate_start_num": 0
+  },
+  "erc": {
+    "erc_exclusions": [
+      [
+        "pin_to_pin|1676400|1778000|cf0f5a95-3f08-5105-bf9b-1dd1339b559c|a4ba14de-f714-596f-b22f-3c40fc99e6df|/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e|/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e|/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e",
+        "LAN8670 pin tied to VSS as the datasheet requires when unused (TXER in RMII; WAKE_IN with no local wake, DEC-007). Bidirectional pin on GND is intended."
+      ],
+      [
+        "pin_to_pin|2336800|1752600|8db82c9a-fec9-5b28-a456-9232b462af81|a4ba14de-f714-596f-b22f-3c40fc99e6df|/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e|/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e|/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e",
+        "LAN8670 pin tied to VSS as the datasheet requires when unused (TXER in RMII; WAKE_IN with no local wake, DEC-007). Bidirectional pin on GND is intended."
+      ]
+    ]
   }
 }

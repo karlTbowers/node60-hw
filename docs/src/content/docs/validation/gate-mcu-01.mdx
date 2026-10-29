@@ -1,0 +1,83 @@
+---
+title: GATE-MCU-01 result
+description: S32K344EHT1MMMST package map audit, all 257 balls, passed 2026-10-28.
+---
+
+**Passed on 2026-10-28.** The user signed off the audit of all 257 balls of U401 (S32K344EHT1MMMST, 257MAPBGA), after a machine cross-check that found no differences.
+
+## Method
+
+The schematic netlist (U401 ball, symbol pin name, net) was compared with three NXP sources:
+
+| Source | What it checked |
+|---|---|
+| S32K3xx Reference Manual IOMUX attachment `S32K344_S32K324_S32K314_IOMUX.xlsx` (Nov 2025 build) | Port or supply name on every ball; for each used signal, that the planned function exists on that ball and which MSCR/IMCR setting selects it |
+| S32K3 Hardware Design Package Rev. E2, IBIS model `s32k344_bga257_3v.ibs` | Port name on every signal ball; supply names (each supply listed once) |
+| S32K3 Hardware Design Package Rev. E2, BSDL `S32K344_bga257_996001D.bsdl` | Port on every boundary-scan ball |
+
+The library symbol was generated from the IOMUX table, so the IBIS and BSDL files are the independent checks. The NXP tables and select values stay in the private review sheet; this page lists only what the schematic already shows.
+
+## Result
+
+- **Ball map:** 257 of 257 balls match. The 220 signal and oscillator balls match all three sources. The 37 supply balls match the IOMUX supply table, and their names match the IBIS model where it lists them.
+- **Functions:** all 43 used signals have their planned function on their ball. External interrupt lines are all different (EIRQ 0, 1, 2, 6, 17, 23).
+- **RMII:** TXD0/TXD1 sit on the opposite balls from NXP's TJA1100 example (PTD7/PTC2); each ball offers both data lines, so this is valid. CRS_DV, RX_ER, MDC and MDIO use NXP's other listed balls.
+- **Unused:** 177 balls are unconnected, including JTAG_TDI (F8): debug is SWD only. Unused GPIOs stay disabled, as the Hardware Design Guidelines Rev. E2 (Table 33) require.
+
+### Used signals
+
+| Ball | Pin | Net | Planned function |
+|---|---|---|---|
+| B1 | PTA18 | `BATT_MON` | ADC2_P0 |
+| K1 | EXTAL | `FXOSC_EXTAL` | EXTAL |
+| L1 | XTAL | `FXOSC_XTAL` | XTAL |
+| M4 | PTD14 | `I2C0_TELEMETRY_SCL` | LPI2C0_SCL |
+| P5 | PTD13 | `I2C0_TELEMETRY_SDA` | LPI2C0_SDA |
+| B11 | PTE6 | `LM_FLT_L` | EIRQ[6] |
+| N3 | PTD17 | `MDIO0_T1S_MDC` | EMAC_MII_RMII_MDC |
+| P2 | PTD16 | `MDIO0_T1S_MDIO` | EMAC_MII_RMII_MDIO |
+| C1 | PTA19 | `NTC_RSENSE` | ADC2_P1 |
+| E4 | PTA20 | `NTC_SW1` | ADC2_P2 |
+| F9 | PTE21 | `NTC_SW2` | ADC2_P3 |
+| B9 | PTE22 | `NTC_SW3` | ADC2_P4 |
+| A3 | PTA5/RESET_B | `RESET_L` | RESET_b |
+| R6 | PTC17 | `RMII0_T1S_CRS_DV` | EMAC_MII_RMII_RX_DV |
+| U6 | PTD11 | `RMII0_T1S_REF_CLK` | EMAC_MII_RMII_TX_CLK |
+| T8 | PTC1 | `RMII0_T1S_RXD0` | EMAC_MII_RMII_RXD[0] |
+| U7 | PTC0 | `RMII0_T1S_RXD1` | EMAC_MII_RMII_RXD[1] |
+| P6 | PTC16 | `RMII0_T1S_RX_ER` | EMAC_MII_RMII_RX_ER |
+| U4 | PTD7 | `RMII0_T1S_TXD0` | EMAC_MII_RMII_TXD[0] |
+| T4 | PTC2 | `RMII0_T1S_TXD1` | EMAC_MII_RMII_TXD[1] |
+| R5 | PTD12 | `RMII0_T1S_TX_EN` | EMAC_MII_RMII_TX_EN |
+| E1 | PTE11 | `SPI2_FLASH_CS_L` | LPSPI2_PCS0 |
+| C2 | PTE16 | `SPI2_FLASH_MISO` | LPSPI2_SIN |
+| C6 | PTF2 | `SPI2_FLASH_MOSI` | LPSPI2_SOUT |
+| D2 | PTE15 | `SPI2_FLASH_SCK` | LPSPI2_SCK |
+| A14 | PTB8 | `SPI4_SWITCH_CS_L` | LPSPI4_PCS0 |
+| C17 | PTB11 | `SPI4_SWITCH_MISO` | LPSPI4_SIN |
+| C15 | PTB9 | `SPI4_SWITCH_MOSI` | LPSPI4_SOUT |
+| D15 | PTB10 | `SPI4_SWITCH_SCK` | LPSPI4_SCK |
+| B5 | PTE0 | `SW1_FLT_L` | EIRQ[0] |
+| A7 | PTA12/CLKOUT_STANDBY | `SW1_SNS` | ADC1_P0 |
+| A5 | PTE1 | `SW2_FLT_L` | EIRQ[1] |
+| A9 | PTA13 | `SW2_SNS` | ADC1_P1 |
+| B10 | PTE2 | `SW3_FLT_L` | EIRQ[2] |
+| A10 | PTA14 | `SW3_SNS` | ADC1_P4 |
+| F7 | PTC4/JTAG_TCK/SWD_CLK | `SWD_CLK` | JTAG_TCK/SWD_CLK |
+| F6 | PTA4/JTAG_TMS/SWD_DIO | `SWD_DIO` | JTAG_TMS/SWD_DIO |
+| G8 | PTA10/JTAG_TDO/TRACEnoETM_SWO | `SWD_SWO` | JTAG_TDO/TRACEnoETM_SWO |
+| G6 | PTE4 | `SW_LHI` | GPIO (output) |
+| B3 | PTA9 | `T1S_IRQ_L` | EIRQ[17] |
+| A11 | PTA15 | `TMP175_ALERT_L` | EIRQ[23] |
+| D17 | PTA2 | `UART0_DEBUG_RX` | LPUART0_RX |
+| E16 | PTA3 | `UART0_DEBUG_TX` | LPUART0_TX |
+
+### Supplies
+
+| Net | Balls | List |
+|---|---|---|
+| `1V1_MCU_V11` | 4 | H9, J8, J10, K9 |
+| `1V5_CORE` | 4 | H8, H10, K8, K10 |
+| `2V5_MCU_V25` | 1 | J7 |
+| `3V3_MAIN` | 9 | D14, G10, H6, H7, K11, L8, N4, R7, R10 |
+| `GND` | 19 | B2, B16, D4, D9, G7, G11, J1, J4, J6, J9, J14, L7, L11, P4, P14, T2, T7, T10, T16 |

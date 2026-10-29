@@ -12,7 +12,7 @@ This is not a functional-safety certification claim; deterministic safe states a
 - Parked state leaves only LAN8670 VDDAU alive; there is no local ignition or hardwire wake path. The controller ECU must issue the T1S wake pattern.
 - Controller-commanded shutdown is transactional: outputs off, diagnostic-log flush complete, then PHY sleep and INH release.
 - LM74910H-Q1 provides an independent 75 A circuit breaker, default 80 A fast short-circuit trip, FLT pre-trip warning, and SLEEP-mode OCP auto-retry on the 60 A input rail.
-- Hard-lock and window the S32K344 SWT; use the Clock Monitoring Unit for clock-failure reset and TPS3702-Q1 for independent 3V3_MAIN overvoltage/undervoltage supervision through RESET_b.
+- Hard-lock and window the S32K344 SWT; use the Clock Monitoring Unit for clock-failure reset and TPS3702-Q1 for independent 3V3_MAIN overvoltage/undervoltage supervision through RESET_L.
 - Separate high di/dt loops from SNS/ADC return, oscillator, RMII, and T1S coupling.
 - Start with 2 oz copper and dense thermal vias at every exposed pad; calculate every 10 A path.
 - Budget 5.34 W cold or 10.68 W hot for six full-load channels before other losses.

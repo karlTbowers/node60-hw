@@ -18,7 +18,7 @@ Use the MCU’s hardened internal window watchdog for software failure detection
     `Zephyr: nxp,s32-swt · upstream driver`
   </Card>
   <Card title="POR rail supervisor · TPS3702-Q1">
-    Add one automotive window supervisor on 3V3_MAIN. Its independent overvoltage and undervoltage detection drives RESET_b.
+    Add one automotive window supervisor on 3V3_MAIN. Its independent overvoltage and undervoltage detection drives RESET_L.
 
     `±0.9% threshold · −40…+125 °C · SOT-6`
   </Card>
@@ -34,7 +34,7 @@ An external watchdog duplicates the internal windowed SWT without improving rail
 
 ## 3.3 V independent window supervision
 
-Add **1 × TPS3702-Q1** to supervise the 3.3 V MCU/PHY rail (<Ref id="DEC-006" />). The device provides separate overvoltage and undervoltage detection with ±0.9% threshold accuracy over −40…+125 °C and is AEC-Q100 Grade 1 in SOT-6. Its reset output drives **RESET_b**. Budget about $1; confirm the exact fixed-threshold 3.3 V orderable code, pricing, and authorized stock at BOM lock.
+Add **1 × TPS3702-Q1** to supervise the 3.3 V MCU/PHY rail (<Ref id="DEC-006" />). The device provides separate overvoltage and undervoltage detection with ±0.9% threshold accuracy over −40…+125 °C and is AEC-Q100 Grade 1 in SOT-6. Its reset output drives **RESET_L**. Budget about $1; confirm the exact fixed-threshold 3.3 V orderable code, pricing, and authorized stock at BOM lock.
 
 <Aside type="caution" title="Why a supervisor, not another watchdog">
 Cold-crank droops and load-dump disturbances can move 3V3_MAIN outside the MCU/PHY operating window. A tight, MCU-independent OV/UV detector catches those conditions before software becomes unreliable; no watchdog can detect a rail fault after its own supply has collapsed. Do not add a separate 1.5 V supervisor: the S32K344 internal low-voltage detector already monitors the core domain.

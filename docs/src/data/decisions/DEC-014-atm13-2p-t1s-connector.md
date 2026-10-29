@@ -7,7 +7,7 @@ revision: A
 page: subsystems/harness
 requirements: [REQ-NET-001]
 parts: [ATM13-2P-BM04, ATM13-2P-BM01, ATM13-2P-BM02, ATM13-2P-BM03]
-gates: [GATE-THM-02, GATE-BOM-01]
+gates: [GATE-THM-02, GATE-BOM-01, GATE-HAR-01]
 rejected:
   - option: ATM13-2P-BM01 / BM02 (gold-plated contacts)
     reason: Same receptacle and footprint. The user chose the tin-plated, potted BM04 on 2026-10-25. Gold is the usual choice for low-current signal contacts, so it stays available as a drop-in.

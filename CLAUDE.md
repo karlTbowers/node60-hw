@@ -11,6 +11,32 @@ Node60 is DropOut's open-hardware automotive power distribution node: six protec
 - **Qualification:** AEC-Q100/Q101/Q200 Grade 1 (−40…+125 °C) for all active parts.
 - **Sheet plan** (Rev A) → schematic pages: 1 root/index · A Power entry = p2 (`sheets/power-entry.kicad_sch`) · B Regulators = p3 · C MCU/NVM = p4 · D T1S = p5 · E–G Outputs 1-2 / 3-4 / 5-6 = p6–p8 (one file, `sheets/output-switch.kicad_sch`, placed three times) · K Connectors = p9. Reference designators follow the page (R201 on page 2); the project's annotation is set to sheet number × 100.
 
+## Schematic project answers
+
+The schematic rules adopted on 2026-10-22 (handbook chapter 05, from ee-schematic-rules) ask four project questions. The user accepted the defaults for Node60 on 2026-10-22:
+
+- **0201 passives:** not used; 0402 minimum.
+- **Signal test points:** 1 mm exposed pads. Ground test points are probe loops.
+- **0R debug resistors:** on every regulator output (VDDAU_AON, 3V3_MAIN, 1V5_CORE), with feedback taken on the regulator side.
+- **Debug header:** 2 × 5 1.27 mm Cortex Debug (Samtec FTSH-105, in the library).
+
+Net names: Node60 keeps its Rev A rail names (`VBAT_PROT`, `VDDAU_AON`, `3V3_MAIN`, `1V5_CORE`), as rule O-1 allows. Everything else follows the new naming: active-low signals end in `_L`, buses are `<BUS><n>_<PURPOSE>_<SIGNAL>` (`I2C0_TELEMETRY_SDA`), differential pairs end in `_P` / `_N`. The architecture site uses the same net names (2026-10-28); the device pin names map to them in the table on its interfaces page.
+
+## Schematic review answers (2026-10-28)
+
+The user settled the open questions from the first schematic draft:
+
+- **LM74910H:** OV cut-off 34.0 V, UVLO 5.47 V falling, SLEEP_OV on OUT. Accepted.
+- **TPS3702AX33:** SET low, 3.10 / 3.50 V window on 3V3_MAIN. Accepted.
+- **MCU clock:** fit a 16 MHz crystal on FXOSC (DEC-015). The user chose Abracon ABM8AIG-16.000MHZ-8-1Z-T (Y401), with 10 pF C0G loads and a 0 Ω RsEXT, as on NXP's FRDM-A-S32K344.
+- **PHY reset:** RESET_N stays on RESET_L, shared with the MCU. Measure the MCU's reset hold time at GATE-NET-01.
+- **EMI filter:** regulator branch only (VBAT_PROT to VBAT_FILT). L201/C208 values follow the emissions test.
+- **Parked current:** TPS7B8133-Q1 (3.5 µA) stays; the parked budget is ≈52 µA typical.
+- **TMP175:** VSSOP (DGK) package.
+- **Page order:** Rev A page numbers stay.
+- **Connector pin 1:** confirmed on samples (GATE-HAR-01). Blocks board release, not the schematic or layout.
+- **GATE-MCU-01:** passed 2026-10-28. All 257 balls cross-checked against NXP's IOMUX table, IBIS model and BSDL file; the user signed off. Re-run it if U401's pin plan changes.
+
 ## Deviations from the handbook
 
 One-time exceptions, decided by the user on 2026-10-22 when the first complete architecture was renumbered from Rev C to **Rev A** (earlier drafts were incomplete and are not revisions):
@@ -24,7 +50,7 @@ The next architecture revision is **Rev B**.
 
 - **10 A continuous is unproven.** TPS2HCS08A-Q1 is rated 8 A per channel with both channels on at 85 °C. The 10 A rating stays blocked until the dual-channel thermal test passes.
 - LAN8670D0-E/LMXVAO and TPS2HCS08AQPWPRQ1 had zero distributor stock at the last observation (2026-10-13): procurement risk.
-- The S32K344EHT1MMMST package ball map must be verified during schematic capture.
+- Output and T1S connector pin 1 must be confirmed on AT13/ATM13 samples (GATE-HAR-01).
 
 ## History
 

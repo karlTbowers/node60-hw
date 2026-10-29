@@ -26,7 +26,7 @@ FS26 is removed. A nanopower LDO supplies only LAN8670 VDDAU while parked; LAN86
 
 ## Consequences
 
-- On bus wake, the external supplies must ramp within 1 ms. Verify EN-chain delay, regulator soft-start, MCU reset release, PHY-ready IRQ_N, and whole-board inrush together.
+- On bus wake, supply ramp plus PHY initialization must stay within 15 ms (OPEN Alliance Sleep/Wake-Up Electrical Interface Specification v1.0, §5.2). Corrected 2026-10-23: this line said the supplies must ramp within 1 ms, which is the LAN8670 datasheet's own allocation, not the spec limit. The LMQ66430 needs about 6–7 ms to regulation and the LAN8670 D0 about 3 ms to initialize, so ≈10 ms is expected; Rev A accepts this and measures it. Verify EN-chain delay, regulator soft-start, MCU reset release, PHY-ready T1S_IRQ_L, and whole-board inrush together.
 - VDDA must never exceed VDDAU by more than 0.5 V; the always-on-first topology satisfies that rule by construction.
 - INH powers the complete switched tree at once, so the LM74910H TMR breaker ride-through is sized for the startup inrush.
-- The nanopower LDO (target Iq ≈1–2 µA) is a schematic-selection item.
+- The nanopower LDO (target Iq ≈1–2 µA) was a schematic-selection item. TPS7B8133-Q1 was selected on 2026-10-22 at 3.5 µA; the resulting ≈52 µA parked budget was accepted on 2026-10-28.

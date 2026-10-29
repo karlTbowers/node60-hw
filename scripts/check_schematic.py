@@ -15,6 +15,8 @@ Uses `kicad-cli sch export netlist` (KiCad's own view of the hierarchy) and chec
     - each is <PREFIX><page><nn>: page x 100 + nn, nn from 01 to 99
       (R201 = first resistor on page 2; C1101 = first capacitor on page 11);
     - none is left unannotated ("R?").
+  Net names (rule O-2, "every net is named")
+    - no net carries a KiCad auto-generated name (Net-(...)); unconnected-(...) on no-connect pins is fine.
 
 Exits 1 with one ::error:: line per problem (readable in GitHub Actions annotations).
 """
@@ -112,6 +114,13 @@ def main():
                 f"{ref} on {where} (page {page}): expected {m.group(1)}{page}01-{m.group(1)}{page}99; "
                 "re-annotate with 'First free after sheet number x 100'"
             )
+
+    # Every net is named (O-2): an auto-generated name means a dropped or missing label
+    for net in tree.iter("net"):
+        name = net.get("name") or ""
+        if name.startswith("Net-("):
+            nodes = ", ".join(f"{n.get('ref')}.{n.get('pin')}" for n in net.iter("node"))
+            errors.append(f"net {name} ({nodes}) has no name: label it")
 
     for e in errors:
         print(f"::error::{e}")

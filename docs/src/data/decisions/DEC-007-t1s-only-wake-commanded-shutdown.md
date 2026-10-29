@@ -29,5 +29,5 @@ The node connects with four wires only: T1S twisted pair, battery-direct power, 
 ## Consequences
 
 - If the controller ECU does not emit the wake pattern, the node stays off. This is a controller-interface requirement, not a recoverable local condition.
-- PHY registers are lost while VDDA/VDDP are down; IRQ_N indicates readiness for configuration.
+- PHY registers are lost while VDDA/VDDP are down; T1S_IRQ_L indicates readiness for configuration.
 - No logging occurs while parked.

@@ -2,13 +2,3026 @@
 	(version 20250610)
 	(generator "eeschema")
 	(generator_version "10.0")
-	(uuid "97718a31-31c9-4f39-8e45-40787a7b4502")
-	(paper "A3")
+	(uuid "0cc0f449-3e32-59a3-9ceb-befd7f0ce137")
+	(paper "A2")
 	(title_block
-		(title "Node60")
+		(title "Node60 · K · Connectors (p9)")
 		(company "DropOut")
 		(comment 1 "Architecture Rev A")
 	)
-	(lib_symbols)
+	(lib_symbols
+		(symbol "Connector_Generic:Conn_01x01"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Conn_01x01"
+				(at 0 -2.54 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "connector"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Connector*:*_1x??_*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Conn_01x01_1_1"
+				(rectangle
+					(start -1.27 1.27)
+					(end 1.27 -1.27)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(rectangle
+					(start -1.27 0.127)
+					(end 0 -0.127)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DropOut_Connector:AT13-2P-BM04"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "AT13-2P-BM04"
+				(at 0 -7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "DropOut_Connector_Amphenol:Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.amphenol-sine.com/pdf/datasheet/AT13-2P-BM04.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Amphenol Sine BoardLock AT13 2-pin right-angle PCB header, panel flange with gasket, potted, tin-plated pins, 5.40 mm pitch, 13 A, 250 V, -55 to +125 °C at rated current, IP67 mated; mates AT06-2S / DT06-2S plug"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Amphenol Sine Systems"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "AT13-2P-BM04"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "DigiKey_PN" "889-3345-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "654-AT13-2P-BM04"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "-55 to +125 °C at rated current (not AEC qualified)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Notes" "Mates AT06-2S plug (DT06-2S compatible). Potted version, rated for up to 5 psi. Footprint is Amphenol's layout (5.40 mm pitch, Ø1.80 holes), not TE DT13-2P's (5.46 mm)."
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "connector header right angle BoardLock AT13 AT06-2S DT06-2S DEUTSCH sealed automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Amphenol*AT13?2P*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "AT13-2P-BM04_1_1"
+				(rectangle
+					(start -7.62 5.08)
+					(end 7.62 -5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at -12.7 2.54 0)
+					(length 5.08)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 0 0)
+					(length 5.08)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DropOut_Connector:ATM13-2P-BM04"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "J"
+				(at 0 7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "ATM13-2P-BM04"
+				(at 0 -7.62 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "DropOut_Connector_Amphenol:Amphenol_ATM13-2P-BMxx_1x02_P4.20mm_Horizontal"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.amphenol-sine.com/pdf/datasheet/ATM13-2P-BM04.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Amphenol Sine BoardLock ATM13 2-pin right-angle PCB receptacle with flange seal, 4.20 mm pitch, tin-plated size 20 pins, potting, 7.5 A, 250 V, IP67 mated, -55 to +125 °C; mates ATM06-2S"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Amphenol Sine Systems"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "ATM13-2P-BM04"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "DigiKey_PN" "889-3357-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "654-ATM13-2P-BM04"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "-55 to +125 °C (not AEC qualified)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Notes" "Mates the ATM06-2S plug (size 20 sockets). Fixed by 3x #4-20 thread-forming screws from the solder side (0.68-1.13 N-m). Pin numbering from the drawing's mounting-face view; verify on a sample."
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "connector receptacle header right angle Amphenol Sine ATM ATM13 ATM06-2S BoardLock sealed automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Amphenol*ATM13?2P*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "ATM13-2P-BM04_1_1"
+				(rectangle
+					(start -7.62 5.08)
+					(end 7.62 -5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at -12.7 2.54 0)
+					(length 5.08)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 0 0)
+					(length 5.08)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "power:GND"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#PWR"
+				(at 0 -6.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "GND"
+				(at 0 -3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "global power"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "GND_0_1"
+				(polyline
+					(pts
+						(xy 0 0)
+						(xy 0 -1.27)
+						(xy 1.27 -1.27)
+						(xy 0 -2.54)
+						(xy -1.27 -1.27)
+						(xy 0 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "GND_1_1"
+				(pin power_in line
+					(at 0 0 270)
+					(length 0)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "power:PWR_FLAG"
+			(power global)
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "#FLG"
+				(at 0 1.905 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "PWR_FLAG"
+				(at 0 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" ""
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Special symbol for telling ERC where power comes from"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "flag power"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_0"
+				(pin power_out line
+					(at 0 0 90)
+					(length 0)
+					(name ""
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "PWR_FLAG_0_1"
+				(polyline
+					(pts
+						(xy 0 0)
+						(xy 0 1.27)
+						(xy -1.016 1.905)
+						(xy 0 2.54)
+						(xy 1.016 1.905)
+						(xy 0 1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	)
+	(rectangle
+		(start 25.4 60.96)
+		(end 152.4 96.52)
+		(stroke
+			(width 0.254)
+			(type dash)
+			(color 132 132 132 1)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "c13afa88-baa1-5026-8c6d-b819087050c7")
+	)
+	(text "Battery input, 60 A (J901)"
+		(exclude_from_sim no)
+		(at 25.4 59.69 0)
+		(effects
+			(font
+				(size 1.778 1.778)
+				(thickness 0.3)
+				bold
+			)
+			(justify left bottom)
+		)
+		(uuid "18b85d37-e5eb-57da-bd3a-1533b1c33576")
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x01")
+		(at 50.8 76.2 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "49607dfa-1cb3-5485-9619-25578d04c073")
+		(property "Reference" "J"
+			(at 48.26 69.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Battery input (TBD)"
+			(at 48.26 72.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 50.8 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 50.8 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 50.8 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
+			(at 50.8 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 50.8 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" ""
+			(at 50.8 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" ""
+			(at 50.8 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Placeholder" "PLACEHOLDER: TBD part: selection pending user decision (find-part), then a library session (Metri-Pack 480/630 class or dual feed, 60 A; fuse at the source)"
+			(at 50.8 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7a3b187c-8987-506b-b0ff-b50517dca397")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e"
+					(reference "J901")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 55.88 76.2)
+			(xy 66.04 76.2)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3fbb235a-ab6b-5a6a-939c-d374c7189591")
+	)
+	(hierarchical_label "VBAT_IN"
+		(shape output)
+		(at 66.04 76.2 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "d7c1061e-59b3-5d6e-ad39-77d3663fbdd0")
+	)
+	(rectangle
+		(start 25.4 106.68)
+		(end 152.4 142.24)
+		(stroke
+			(width 0.254)
+			(type dash)
+			(color 132 132 132 1)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "e0b33d11-50e1-5b8c-bee2-3c0edd9b0936")
+	)
+	(text "Power return, 60 A (J902)"
+		(exclude_from_sim no)
+		(at 25.4 105.41 0)
+		(effects
+			(font
+				(size 1.778 1.778)
+				(thickness 0.3)
+				bold
+			)
+			(justify left bottom)
+		)
+		(uuid "3a914d0a-f2b3-55e7-886c-5975504b4d82")
+	)
+	(symbol
+		(lib_id "Connector_Generic:Conn_01x01")
+		(at 50.8 121.92 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "75821323-2509-502e-9f92-634ac89157ab")
+		(property "Reference" "J"
+			(at 48.26 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "Power return (TBD)"
+			(at 48.26 117.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" ""
+			(at 50.8 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 50.8 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Generic connector, single row, 01x01, script generated (kicad-library-utils/schlib/autogen/connector/)"
+			(at 50.8 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" ""
+			(at 50.8 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" ""
+			(at 50.8 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" ""
+			(at 50.8 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" ""
+			(at 50.8 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Placeholder" "PLACEHOLDER: TBD part: selection pending user decision (find-part), then a library session (matched high-current return, 60 A)"
+			(at 50.8 121.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d6359530-da31-5225-86f6-a0cd41c0c998")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e"
+					(reference "J902")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 55.88 121.92)
+			(xy 66.04 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fc274f1e-9d6e-522e-a58f-2dbf3670db70")
+	)
+	(wire
+		(pts
+			(xy 66.04 121.92)
+			(xy 66.04 124.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9e166cf5-d223-5b81-a281-fe2b81ca4ee2")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 66.04 124.46 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "2160e7f2-9dc6-5c9e-a302-992f0d6de111")
+		(property "Reference" "#PWR001"
+			(at 66.04 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 66.04 129.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 66.04 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 66.04 124.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a4ada3d7-c3a4-513b-91cf-64a7a8b091cd")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e"
+					(reference "#PWR09001")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(rectangle
+		(start 25.4 152.4)
+		(end 152.4 200.66)
+		(stroke
+			(width 0.254)
+			(type dash)
+			(color 132 132 132 1)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "b02ccdda-9c66-5fb3-bbfd-5b05170eaa5e")
+	)
+	(text "10BASE-T1S pair: Amphenol Sine ATM13-2P-BM04 (J903, DEC-014)"
+		(exclude_from_sim no)
+		(at 25.4 151.13 0)
+		(effects
+			(font
+				(size 1.778 1.778)
+				(thickness 0.3)
+				bold
+			)
+			(justify left bottom)
+		)
+		(uuid "fe522b1e-85b1-5713-813b-4f1b2e0a3989")
+	)
+	(symbol
+		(lib_id "DropOut_Connector:ATM13-2P-BM04")
+		(at 50.8 172.72 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "653f24f9-413a-5358-9c6f-ec1114af29d8")
+		(property "Reference" "J"
+			(at 43.18 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "ATM13-2P-BM04"
+			(at 43.18 166.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Connector_Amphenol:Amphenol_ATM13-2P-BMxx_1x02_P4.20mm_Horizontal"
+			(at 50.8 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.amphenol-sine.com/pdf/datasheet/ATM13-2P-BM04.pdf"
+			(at 50.8 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Amphenol Sine BoardLock ATM13 2-pin right-angle PCB receptacle with flange seal, 4.20 mm pitch, tin-plated size 20 pins, potting, 7.5 A, 250 V, IP67 mated, -55 to +125 °C; mates ATM06-2S"
+			(at 50.8 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Amphenol Sine Systems"
+			(at 50.8 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "ATM13-2P-BM04"
+			(at 50.8 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "889-3357-ND"
+			(at 50.8 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "654-ATM13-2P-BM04"
+			(at 50.8 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "-55 to +125 °C (not AEC qualified)"
+			(at 50.8 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "Mates the ATM06-2S plug (size 20 sockets). Fixed by 3x #4-20 thread-forming screws from the solder side (0.68-1.13 N-m). Pin numbering from the drawing's mounting-face view; verify on a sample."
+			(at 50.8 172.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5412e0af-f1ba-58af-9cc0-c1c85ee62935")
+		)
+		(pin "2"
+			(uuid "f9ca0057-ae62-5d19-ae1c-76c429b90fb6")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e"
+					(reference "J903")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 63.5 170.18)
+			(xy 73.66 170.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "39226f50-706f-5e2a-91ed-c1947f3d801b")
+	)
+	(hierarchical_label "T1S_P"
+		(shape bidirectional)
+		(at 73.66 170.18 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f80aa8e9-b61b-5d3e-afa8-5af381ac116a")
+	)
+	(wire
+		(pts
+			(xy 63.5 172.72)
+			(xy 73.66 172.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "98b0a8fe-53ea-54ce-b38f-d2764198330a")
+	)
+	(hierarchical_label "T1S_N"
+		(shape bidirectional)
+		(at 73.66 172.72 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "412fa9ff-672c-5de5-bd74-48b9cf9c9903")
+	)
+	(text "RELEASE-BLOCKING: verify which cavity is pin 1 on a sample (T1S_P / T1S_N polarity).\nLAYOUT (DEC-012): connector -> ESD D501/D502 -> CMC FL501 -> DC block -> PHY; ESD right at J903,\npair symmetric and short. 3 NPTH screw holes in the footprint (BoardLock)."
+		(exclude_from_sim no)
+		(at 30.48 185.42 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "6eda9384-989a-52d6-8664-a4620701f9a0")
+	)
+	(rectangle
+		(start 25.4 208.28)
+		(end 152.4 381)
+		(stroke
+			(width 0.254)
+			(type dash)
+			(color 132 132 132 1)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "d3c03fc4-1569-5673-a446-be5741f3faf7")
+	)
+	(text "Outputs 1-6: Amphenol Sine AT13-2P-BM04, one 2-pin header per output (J904-J909)"
+		(exclude_from_sim no)
+		(at 25.4 207.01 0)
+		(effects
+			(font
+				(size 1.778 1.778)
+				(thickness 0.3)
+				bold
+			)
+			(justify left bottom)
+		)
+		(uuid "9dd20771-bcf8-59fd-b350-c78653a3a48c")
+	)
+	(symbol
+		(lib_id "DropOut_Connector:AT13-2P-BM04")
+		(at 50.8 228.6 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "faaec0e5-5ddf-59ab-a487-921841f96987")
+		(property "Reference" "J"
+			(at 43.18 219.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "AT13-2P-BM04"
+			(at 43.18 222.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Connector_Amphenol:Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal"
+			(at 50.8 228.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.amphenol-sine.com/pdf/datasheet/AT13-2P-BM04.pdf"
+			(at 50.8 228.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Amphenol Sine BoardLock AT13 2-pin right-angle PCB header, panel flange with gasket, potted, tin-plated pins, 5.40 mm pitch, 13 A, 250 V, -55 to +125 °C at rated current, IP67 mated; mates AT06-2S / DT06-2S plug"
+			(at 50.8 228.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Amphenol Sine Systems"
+			(at 50.8 228.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AT13-2P-BM04"
+			(at 50.8 228.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "889-3345-ND"
+			(at 50.8 228.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "654-AT13-2P-BM04"
+			(at 50.8 228.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "-55 to +125 °C at rated current (not AEC qualified)"
+			(at 50.8 228.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "Mates AT06-2S plug (DT06-2S compatible). Potted version, rated for up to 5 psi. Footprint is Amphenol's layout (5.40 mm pitch, Ø1.80 holes), not TE DT13-2P's (5.46 mm)."
+			(at 50.8 228.6 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "55acfef2-dab9-5619-baa1-e6e79c8dd42d")
+		)
+		(pin "2"
+			(uuid "62b63d9a-8a89-52a9-8395-6aa81d1e033b")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e"
+					(reference "J904")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 63.5 226.06)
+			(xy 73.66 226.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "646c4a5c-3484-50e9-b389-ef6fe04f6db0")
+	)
+	(hierarchical_label "OUT1"
+		(shape input)
+		(at 73.66 226.06 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "6e58cc33-b62c-54b0-a9cd-ae8c4d2cc766")
+	)
+	(wire
+		(pts
+			(xy 63.5 228.6)
+			(xy 68.58 228.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "68433b1c-4124-5e8b-9c88-bd4bc056e5b5")
+	)
+	(wire
+		(pts
+			(xy 68.58 228.6)
+			(xy 68.58 231.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6d5568d6-9f44-517b-a546-3a4f16f871e1")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 68.58 231.14 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "dbb7d4b7-4011-575e-a114-1dfd8298e178")
+		(property "Reference" "#PWR002"
+			(at 68.58 231.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 68.58 236.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 68.58 231.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 68.58 231.14 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8396c919-79ab-5efe-ba40-ff7484cddd13")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e"
+					(reference "#PWR09002")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "DropOut_Connector:AT13-2P-BM04")
+		(at 50.8 251.46 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "a179ddb0-f6ec-5142-998a-fa11c6e7ad57")
+		(property "Reference" "J"
+			(at 43.18 242.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "AT13-2P-BM04"
+			(at 43.18 244.87 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Connector_Amphenol:Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal"
+			(at 50.8 251.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.amphenol-sine.com/pdf/datasheet/AT13-2P-BM04.pdf"
+			(at 50.8 251.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Amphenol Sine BoardLock AT13 2-pin right-angle PCB header, panel flange with gasket, potted, tin-plated pins, 5.40 mm pitch, 13 A, 250 V, -55 to +125 °C at rated current, IP67 mated; mates AT06-2S / DT06-2S plug"
+			(at 50.8 251.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Amphenol Sine Systems"
+			(at 50.8 251.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AT13-2P-BM04"
+			(at 50.8 251.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "889-3345-ND"
+			(at 50.8 251.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "654-AT13-2P-BM04"
+			(at 50.8 251.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "-55 to +125 °C at rated current (not AEC qualified)"
+			(at 50.8 251.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "Mates AT06-2S plug (DT06-2S compatible). Potted version, rated for up to 5 psi. Footprint is Amphenol's layout (5.40 mm pitch, Ø1.80 holes), not TE DT13-2P's (5.46 mm)."
+			(at 50.8 251.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d0958456-cdf4-5032-a29b-54d00a0dcd43")
+		)
+		(pin "2"
+			(uuid "9645324e-ca4a-52db-bd8a-a19f154c1377")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e"
+					(reference "J905")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 63.5 248.92)
+			(xy 73.66 248.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "68c0eeff-f301-5aec-9f51-b9f9daaee5e6")
+	)
+	(hierarchical_label "OUT2"
+		(shape input)
+		(at 73.66 248.92 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "4608b584-d556-5fd8-8bc4-e5355ecc4ba9")
+	)
+	(wire
+		(pts
+			(xy 63.5 251.46)
+			(xy 68.58 251.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e7ffbe2b-0a81-5daa-a7ec-afd98ca27d40")
+	)
+	(wire
+		(pts
+			(xy 68.58 251.46)
+			(xy 68.58 254)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1de8a0ef-3ee7-5377-a524-9fa63f55ed1d")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 68.58 254 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "47d40548-5c57-5bba-b4bd-302fc60275e3")
+		(property "Reference" "#PWR003"
+			(at 68.58 254 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 68.58 258.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 68.58 254 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 68.58 254 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "04717ac0-8030-592c-aea5-a7897dc77232")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e"
+					(reference "#PWR09003")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "DropOut_Connector:AT13-2P-BM04")
+		(at 50.8 274.32 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "69c7f5de-94ef-5680-8e07-d3e8899abeec")
+		(property "Reference" "J"
+			(at 43.18 265.43 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "AT13-2P-BM04"
+			(at 43.18 267.73 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Connector_Amphenol:Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal"
+			(at 50.8 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.amphenol-sine.com/pdf/datasheet/AT13-2P-BM04.pdf"
+			(at 50.8 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Amphenol Sine BoardLock AT13 2-pin right-angle PCB header, panel flange with gasket, potted, tin-plated pins, 5.40 mm pitch, 13 A, 250 V, -55 to +125 °C at rated current, IP67 mated; mates AT06-2S / DT06-2S plug"
+			(at 50.8 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Amphenol Sine Systems"
+			(at 50.8 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AT13-2P-BM04"
+			(at 50.8 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "889-3345-ND"
+			(at 50.8 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "654-AT13-2P-BM04"
+			(at 50.8 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "-55 to +125 °C at rated current (not AEC qualified)"
+			(at 50.8 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "Mates AT06-2S plug (DT06-2S compatible). Potted version, rated for up to 5 psi. Footprint is Amphenol's layout (5.40 mm pitch, Ø1.80 holes), not TE DT13-2P's (5.46 mm)."
+			(at 50.8 274.32 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "59246912-2759-5c26-a0f8-60c0632d8a1e")
+		)
+		(pin "2"
+			(uuid "d30546e4-a1c6-5f45-9b95-03d7691865dc")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e"
+					(reference "J906")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 63.5 271.78)
+			(xy 73.66 271.78)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d8ead411-ca59-5eba-a415-2cb30bba416d")
+	)
+	(hierarchical_label "OUT3"
+		(shape input)
+		(at 73.66 271.78 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "10ac5889-7d99-5e58-a097-043a41b11a3c")
+	)
+	(wire
+		(pts
+			(xy 63.5 274.32)
+			(xy 68.58 274.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "73a834e4-4406-51ab-9b3d-4f773f36a1ec")
+	)
+	(wire
+		(pts
+			(xy 68.58 274.32)
+			(xy 68.58 276.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f4ae7bc3-6a0a-5168-a977-9f02c4e06a64")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 68.58 276.86 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "8e6cfd72-24e3-5589-bc2f-95541d327559")
+		(property "Reference" "#PWR004"
+			(at 68.58 276.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 68.58 281.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 68.58 276.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 68.58 276.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "df99eed3-b2e3-5ebd-937f-5c14ffc0a5c5")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e"
+					(reference "#PWR09004")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "DropOut_Connector:AT13-2P-BM04")
+		(at 50.8 297.18 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "0831d111-dac1-5f8d-958f-ece0016ea350")
+		(property "Reference" "J"
+			(at 43.18 288.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "AT13-2P-BM04"
+			(at 43.18 290.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Connector_Amphenol:Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal"
+			(at 50.8 297.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.amphenol-sine.com/pdf/datasheet/AT13-2P-BM04.pdf"
+			(at 50.8 297.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Amphenol Sine BoardLock AT13 2-pin right-angle PCB header, panel flange with gasket, potted, tin-plated pins, 5.40 mm pitch, 13 A, 250 V, -55 to +125 °C at rated current, IP67 mated; mates AT06-2S / DT06-2S plug"
+			(at 50.8 297.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Amphenol Sine Systems"
+			(at 50.8 297.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AT13-2P-BM04"
+			(at 50.8 297.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "889-3345-ND"
+			(at 50.8 297.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "654-AT13-2P-BM04"
+			(at 50.8 297.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "-55 to +125 °C at rated current (not AEC qualified)"
+			(at 50.8 297.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "Mates AT06-2S plug (DT06-2S compatible). Potted version, rated for up to 5 psi. Footprint is Amphenol's layout (5.40 mm pitch, Ø1.80 holes), not TE DT13-2P's (5.46 mm)."
+			(at 50.8 297.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a1aa875e-af79-56a2-aaba-6205a664b115")
+		)
+		(pin "2"
+			(uuid "22240b84-80b1-55f3-b214-72669833ed6d")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e"
+					(reference "J907")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 63.5 294.64)
+			(xy 73.66 294.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2cbf5cd8-73ed-5199-8992-bd2e7b48755f")
+	)
+	(hierarchical_label "OUT4"
+		(shape input)
+		(at 73.66 294.64 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "f2b318fa-890e-5ba4-b218-fb443f5d3085")
+	)
+	(wire
+		(pts
+			(xy 63.5 297.18)
+			(xy 68.58 297.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6ce203ec-f144-5fa6-a0ac-91b7e95a76b4")
+	)
+	(wire
+		(pts
+			(xy 68.58 297.18)
+			(xy 68.58 299.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a7815cc3-ff9b-5f71-a41d-bdc3f09399c0")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 68.58 299.72 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "bd1ef0ed-e980-51da-a480-2f8271234913")
+		(property "Reference" "#PWR005"
+			(at 68.58 299.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 68.58 304.62 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 68.58 299.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 68.58 299.72 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "fcac3c90-5726-52b8-854c-cade96d105d4")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e"
+					(reference "#PWR09005")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "DropOut_Connector:AT13-2P-BM04")
+		(at 50.8 320.04 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "4b87b287-fcb1-55e1-bbf8-58f7c1317597")
+		(property "Reference" "J"
+			(at 43.18 311.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "AT13-2P-BM04"
+			(at 43.18 313.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Connector_Amphenol:Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal"
+			(at 50.8 320.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.amphenol-sine.com/pdf/datasheet/AT13-2P-BM04.pdf"
+			(at 50.8 320.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Amphenol Sine BoardLock AT13 2-pin right-angle PCB header, panel flange with gasket, potted, tin-plated pins, 5.40 mm pitch, 13 A, 250 V, -55 to +125 °C at rated current, IP67 mated; mates AT06-2S / DT06-2S plug"
+			(at 50.8 320.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Amphenol Sine Systems"
+			(at 50.8 320.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AT13-2P-BM04"
+			(at 50.8 320.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "889-3345-ND"
+			(at 50.8 320.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "654-AT13-2P-BM04"
+			(at 50.8 320.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "-55 to +125 °C at rated current (not AEC qualified)"
+			(at 50.8 320.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "Mates AT06-2S plug (DT06-2S compatible). Potted version, rated for up to 5 psi. Footprint is Amphenol's layout (5.40 mm pitch, Ø1.80 holes), not TE DT13-2P's (5.46 mm)."
+			(at 50.8 320.04 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "338fb58c-8db2-572e-94bf-ad4241fbee78")
+		)
+		(pin "2"
+			(uuid "a021fb8d-5dc6-51ee-801c-d5708dd36a81")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e"
+					(reference "J908")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 63.5 317.5)
+			(xy 73.66 317.5)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ea0bf648-a418-55b5-8e8c-80d2c8c55d04")
+	)
+	(hierarchical_label "OUT5"
+		(shape input)
+		(at 73.66 317.5 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "a400e3e0-edf7-5fcc-ab45-fa28be3cf8fd")
+	)
+	(wire
+		(pts
+			(xy 63.5 320.04)
+			(xy 68.58 320.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4e6ffdec-6409-50ae-ae07-9c00980506ce")
+	)
+	(wire
+		(pts
+			(xy 68.58 320.04)
+			(xy 68.58 322.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "40426553-d2fa-5ac7-b853-46eabd8d987b")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 68.58 322.58 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "791d1862-1c5e-52a3-be0f-6dd5d1aa59dc")
+		(property "Reference" "#PWR006"
+			(at 68.58 322.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 68.58 327.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 68.58 322.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 68.58 322.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d88b6c74-342d-5b1f-aff2-fb5d08fbf786")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e"
+					(reference "#PWR09006")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "DropOut_Connector:AT13-2P-BM04")
+		(at 50.8 342.9 0)
+		(mirror y)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "a460752d-dc7b-54ab-8b8f-c82763d4efaa")
+		(property "Reference" "J"
+			(at 43.18 334.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "AT13-2P-BM04"
+			(at 43.18 336.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Connector_Amphenol:Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal"
+			(at 50.8 342.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.amphenol-sine.com/pdf/datasheet/AT13-2P-BM04.pdf"
+			(at 50.8 342.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Amphenol Sine BoardLock AT13 2-pin right-angle PCB header, panel flange with gasket, potted, tin-plated pins, 5.40 mm pitch, 13 A, 250 V, -55 to +125 °C at rated current, IP67 mated; mates AT06-2S / DT06-2S plug"
+			(at 50.8 342.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Amphenol Sine Systems"
+			(at 50.8 342.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AT13-2P-BM04"
+			(at 50.8 342.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "889-3345-ND"
+			(at 50.8 342.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "654-AT13-2P-BM04"
+			(at 50.8 342.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "-55 to +125 °C at rated current (not AEC qualified)"
+			(at 50.8 342.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "Mates AT06-2S plug (DT06-2S compatible). Potted version, rated for up to 5 psi. Footprint is Amphenol's layout (5.40 mm pitch, Ø1.80 holes), not TE DT13-2P's (5.46 mm)."
+			(at 50.8 342.9 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "fafc456a-276a-5294-bb21-28adae3ef3da")
+		)
+		(pin "2"
+			(uuid "0aebaadf-744a-52ad-a12c-880f8d6b4274")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e"
+					(reference "J909")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 63.5 340.36)
+			(xy 73.66 340.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4e9cd5f3-d4c3-5f74-9856-35c18916628b")
+	)
+	(hierarchical_label "OUT6"
+		(shape input)
+		(at 73.66 340.36 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "0f6eb6a5-cd42-57a7-8cab-7d06ccfe3d80")
+	)
+	(wire
+		(pts
+			(xy 63.5 342.9)
+			(xy 68.58 342.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6221cd9a-932f-5df2-935c-beca65be7807")
+	)
+	(wire
+		(pts
+			(xy 68.58 342.9)
+			(xy 68.58 345.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a2547c14-e2d5-59cf-8f0a-ef16b51b0fd3")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 68.58 345.44 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "b499c888-3759-5283-9799-3af6284c334a")
+		(property "Reference" "#PWR007"
+			(at 68.58 345.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 68.58 350.34 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 68.58 345.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 68.58 345.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "88cf566f-e1d1-537d-8de9-4a4f64d3a433")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e"
+					(reference "#PWR09007")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(text "Pin 1 = OUTx, pin 2 = that load's ground return (DEC-013 rev. B: AT13-2P-BM04, 5.40 mm pitch).\nLAYOUT: each pin 2 return carries up to 10 A, like its OUTx: same copper and via treatment.\n  Route pin 2 returns to the power-entry ground star region, never across the logic ground.\n  Up to 60 A of load return flows from the headers to the star region and out through J902.\nRELEASE-BLOCKING: verify which cavity is pin 1 on a sample (swap = OUTx on the ground wire)."
+		(exclude_from_sim no)
+		(at 30.48 355.6 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "a41e8524-b4e0-5e71-960b-1095bc6683c2")
+	)
+	(rectangle
+		(start 186.69 72.39)
+		(end 228.6 88.9)
+		(stroke
+			(width 0.254)
+			(type dash)
+			(color 132 132 132 1)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "dbcd8e09-e194-5d1f-ab03-77a92fe94f1d")
+	)
+	(text "Power flags (ERC)"
+		(exclude_from_sim no)
+		(at 186.69 71.12 0)
+		(effects
+			(font
+				(size 1.778 1.778)
+				(thickness 0.3)
+				bold
+			)
+			(justify left bottom)
+		)
+		(uuid "24b62c3f-2f44-5ed3-9284-b42279cc60c0")
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 190.5 81.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "4be605cf-5fa0-5ef1-b707-4bb28ded8c9d")
+		(property "Reference" "#FLG008"
+			(at 190.5 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 190.5 77.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 190.5 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 190.5 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "c13a15fb-2915-576b-b6ca-e35806417670")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e"
+					(reference "#FLG09008")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 190.5 81.28)
+			(xy 195.58 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "be446318-6155-5a3c-9e20-5884c5ad07a5")
+	)
+	(hierarchical_label "VBAT_IN"
+		(shape output)
+		(at 195.58 81.28 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "42d6751c-b9ee-5ac6-8ae9-6dc6c0cd2db4")
+	)
+	(symbol
+		(lib_id "power:PWR_FLAG")
+		(at 210.82 81.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "7fcf4a39-4b15-5b5c-9f7c-6970be970258")
+		(property "Reference" "#FLG009"
+			(at 210.82 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "PWR_FLAG"
+			(at 210.82 77.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 210.82 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 210.82 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "a4ba14de-f714-596f-b22f-3c40fc99e6df")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e"
+					(reference "#FLG09009")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 210.82 81.28)
+			(xy 215.9 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "975c6b72-4edf-5150-9bbf-e84f06ba6715")
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 215.9 81.28 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "c388953d-ade4-5b9b-92a4-4cbbcf937f53")
+		(property "Reference" "#PWR010"
+			(at 215.9 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 215.9 86.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 215.9 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 215.9 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "175dceb2-bc37-518f-8ba0-3b2f99854bf8")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e"
+					(reference "#PWR09010")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(text "CONNECTORS (Node60 harness page; REQ-NET-001: exactly four node conductors: T1S pair, battery, ground)\nAll connector parts are PLACEHOLDERS (generic symbols) until the mating sets are selected and frozen together:\n  housings, terminals, seals, wire sizes and keys (harness page, connector freeze condition).\nJ901 battery input: Metri-Pack 480/630 class, or a dual feed with each feed fused; prove the full 60 A path.\nJ902 power return: matched high-current return, 60 A including all six load returns; no chassis-only return.\n  J901/J902 copper: 60 A path (see p2 note); J904-J909 pins 1 and 2: 10 A each (see p6 note).\n  Fuse: primary fuse at the battery/source end (off-board); per-feed fuses if dual-fed.\nJ903 T1S: Amphenol Sine ATM13-2P-BM04 (DEC-014), sealed two-way. ESD (D501/D502) right behind it (DEC-012).\nJ904-J909 outputs: Amphenol Sine AT13-2P-BM04 right-angle headers, one per output (DEC-013 rev. B; replaced\n  the TE DT13-2P), 10 A per output, 14 AWG minimum; validate contact derating at +125 C.\n  Pin 2 is the load's ground return: J902 now carries the whole node return (up to 60 A of load current).\nNo KL15, ignition or local wake input (DEC-007).\nUNVERIFIED (release-blocking): every connector mate, pinout and current rating.\n"
+		(exclude_from_sim no)
+		(at 190.5 116.84 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "21d611b3-b87a-549e-9cd6-72260cdd441f")
+	)
 	(embedded_fonts no)
 )

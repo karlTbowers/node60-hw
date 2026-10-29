@@ -7,7 +7,7 @@ revision: B
 page: subsystems/harness
 requirements: [REQ-OUT-001, REQ-OUT-002, REQ-NET-001]
 parts: [AT13-2P-BM04]
-gates: [GATE-THM-01, GATE-THM-02, GATE-BOM-01]
+gates: [GATE-THM-01, GATE-THM-02, GATE-BOM-01, GATE-HAR-01]
 rejected:
   - option: Molex MX150 sealed connector sets (Rev A plan, TBD-MX150-SETS)
     reason: The user chose DEUTSCH-style DT headers on 2026-10-22, a connector family they have used in an earlier design. No MX150 housing, terminal or seal had been chosen, so nothing released changes.
