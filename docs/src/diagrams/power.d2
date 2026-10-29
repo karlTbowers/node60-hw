@@ -33,10 +33,13 @@ vehicle: "Vehicle harness" {
 
 entry: "Power entry · always connected" {
   class: group
+  term: "Power terminals\n2 × REDCUBE 74660016R + SurLok Plus\nbusbar to the second pair" {class: battery; link: "/subsystems/harness/"}
   tvs: "Primary TVS\nXLD8A24CA\n24 V · 7 kW" {class: battery; link: "/subsystems/power/"}
   lm: "LM74910H-Q1 ideal diode + breaker\nQ1 (DGATE) → RSENSE 0.25 mΩ → Q2 (HGATE)\nreverse · OV · 75 A breaker · 80 A SCP" {class: battery; link: "/subsystems/power/"}
   emi: "Damped π\nEMI filter" {class: battery; link: "/subsystems/power/"}
 }
+
+downstream: "Downstream node\nlower current · own protection" {class: external; link: "/subsystems/harness/"}
 
 bus: "VBAT_PROT" {class: bus; link: "/subsystems/power/"; width: 120}
 
@@ -61,7 +64,9 @@ loads: "Switched loads · all off when parked" {
   out: "OUT1–OUT6\n6 × 10 A target\nAT13-2P · 14 AWG min" {class: load; link: "/subsystems/harness/"}
 }
 
-vehicle.bat -> entry.tvs: "VBAT_RAW · 60 A" {class: hi}
+vehicle.bat -> entry.term: "battery + ground" {class: hi}
+entry.term -> entry.tvs: "VBAT_RAW · 60 A" {class: hi}
+entry.term -> downstream: "pass-through · raw battery" {class: branch}
 entry.tvs -> entry.lm {class: hi}
 entry.lm -> entry.emi {class: hi}
 entry.emi -> bus {class: hi}

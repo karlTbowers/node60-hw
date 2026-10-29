@@ -27,7 +27,7 @@
 
 - id: REQ-NET-001
   group: basis
-  text: "Four-wire node connection only: T1S twisted pair, battery-direct power, and ground. The controller ECU is solely responsible for bus wake."
+  text: "Four-wire node connection: T1S twisted pair, battery-direct power, and ground; the power terminals may also pass battery and ground through to one downstream node (DEC-016). The controller ECU is solely responsible for bus wake."
   page: subsystems/harness
   verified_by: [GATE-NET-01]
 

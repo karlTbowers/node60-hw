@@ -384,6 +384,64 @@
   decisions: [DEC-015]
   library: DropOut_Timing:ECS-160-8-36Q-AES-TR
 
+- id: 74660016R
+  mpn: 74660016R
+  manufacturer: Würth Elektronik
+  qty: 4
+  label: 74660016R (REDCUBE SMT WP-SMRT, M6)
+  function: Power terminal, two on the battery input (J901, J910) and two on the return (J902, J911); reverse SMT, M6 internal through thread, 85 A max at 20 °C, 3.9 N·m, -55 to +150 °C; Ø9.3 mm hole; SurLok Plus receptacles screw in
+  subsystem: harness
+  status: selected
+  decision_note: "Selected (user's decision 2026-10-28), tape and reel. Operating current depends on PCB, lug and cable: prove at GATE-HAR-02"
+  supply_note: Mouser only, no stock figure reported; not at DigiKey or Newark
+  observations:
+    - { date: 2026-10-26, source: Mouser 710-74660016R, prices: [{ qty: "1", usd: 4.32 }] }
+    - { date: 2026-10-28, source: Mouser 710-74660016R, note: "listed, no stock figure; not at DigiKey or Newark" }
+  decisions: [DEC-016]
+  library: DropOut_Connector:74660016R
+
+- id: "74660016"
+  mpn: "74660016"
+  manufacturer: Würth Elektronik
+  qty: 0
+  label: 74660016 (REDCUBE SMT WP-SMRT, M6, bulk)
+  function: Bulk-packaged version of 74660016R, same part and footprint
+  subsystem: harness
+  status: alternative
+  decision_note: Bulk alternate for hand assembly
+  observations:
+    - { date: 2026-10-28, source: distributors, note: "not at DigiKey, Mouser or Newark" }
+  decisions: [DEC-016]
+  library: DropOut_Connector:74660016
+
+- id: SLPRATPSR
+  mpn: SLPRATPSR
+  manufacturer: Amphenol Industrial
+  qty: 2
+  label: SLPRATPSR (SurLok Plus 5.7 mm, red)
+  function: Battery input and pass-through receptacles on the enclosure; SurLok Plus 5.7 mm RADSOK, threaded (M6 into the REDCUBE), flange panel mount, IP67, red; -40 to +125 °C
+  subsystem: harness
+  status: selected
+  decision_note: "Selected (user's decision 2026-10-28). Enclosure part, not on the board: screws into J901/J910"
+  observations:
+    - { date: 2026-10-28, source: DigiKey 965-SLPRATPSR-ND, stock: 2070 }
+    - { date: 2026-10-28, source: Mouser 654-SLPRATPSR, stock: 1218 }
+  decisions: [DEC-016]
+
+- id: SLPRATPSB
+  mpn: SLPRATPSB
+  manufacturer: Amphenol Industrial
+  qty: 2
+  label: SLPRATPSB (SurLok Plus 5.7 mm, black)
+  function: Power return and pass-through receptacles on the enclosure; SurLok Plus 5.7 mm RADSOK, threaded (M6 into the REDCUBE), flange panel mount, IP67, black; -40 to +125 °C
+  subsystem: harness
+  status: selected
+  decision_note: "Selected (user's decision 2026-10-28). Enclosure part, not on the board: screws into J902/J911"
+  observations:
+    - { date: 2026-10-28, source: DigiKey 965-SLPRATPSB-ND, stock: 859 }
+    - { date: 2026-10-28, source: Mouser 654-SLPRATPSB, stock: 1126 }
+  decisions: [DEC-016]
+
 - id: AT13-2P-BM04
   mpn: AT13-2P-BM04
   manufacturer: Amphenol Sine Systems
