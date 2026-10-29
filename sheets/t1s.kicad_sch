@@ -10449,7 +10449,7 @@
 		)
 		(uuid "89d712d9-f98c-5e5b-ba43-75aa97f550fe")
 	)
-	(text "T1S line interface: DC block, CMC, ESD (C5xx, FL501, D501-D502)"
+	(text "T1S line interface: CMC, DC block, ESD (FL501, C511-C512, D501-D502)"
 		(exclude_from_sim no)
 		(at 269.24 133.35 0)
 		(effects
@@ -10473,28 +10473,6 @@
 		)
 		(uuid "6ca8a5a7-a4a6-50bb-ae9c-d6f34bfeecfb")
 	)
-	(wire
-		(pts
-			(xy 246.38 165.1)
-			(xy 246.38 154.94)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "dc0088af-df56-52c5-9189-bdd38bc03a99")
-	)
-	(wire
-		(pts
-			(xy 246.38 154.94)
-			(xy 254 154.94)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "a342f53e-9ac1-53eb-bebc-f48e4404c294")
-	)
 	(label "T1S_PHY_P"
 		(at 234.95 165.1 0)
 		(effects
@@ -10504,17 +10482,6 @@
 			(justify left bottom)
 		)
 		(uuid "5b61d3ef-16f7-5997-8fce-edf6e6d1584b")
-	)
-	(wire
-		(pts
-			(xy 233.68 167.64)
-			(xy 254 167.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "de1ea921-ebe1-54c8-9202-433e8ecc1a49")
 	)
 	(label "T1S_PHY_N"
 		(at 236.22 167.64 0)
@@ -10528,7 +10495,7 @@
 	)
 	(symbol
 		(lib_id "DropOut_Capacitor:GCM31C5C2A104JE02L")
-		(at 257.81 154.94 90)
+		(at 303.53 154.94 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10539,7 +10506,7 @@
 		(fields_autoplaced no)
 		(uuid "d9676faf-9730-530c-b94c-e31fe55a4434")
 		(property "Reference" "C"
-			(at 257.81 152.4 90)
+			(at 303.53 152.4 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10547,7 +10514,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 257.81 157.73 90)
+			(at 303.53 157.73 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10555,7 +10522,7 @@
 			)
 		)
 		(property "Footprint" "DropOut_Capacitor_SMD:C_1206_3216Metric"
-			(at 257.81 154.94 0)
+			(at 303.53 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10564,7 +10531,7 @@
 			)
 		)
 		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM31C5C2A104JE02-02A-EN_PDF_CERAMICCAPACITORSMD"
-			(at 257.81 154.94 0)
+			(at 303.53 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10573,7 +10540,7 @@
 			)
 		)
 		(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 100 nF ±5%, 100 V, C0G, AEC-Q200, -55 to +125 °C, 1206 (3216 metric)"
-			(at 257.81 154.94 0)
+			(at 303.53 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10582,7 +10549,7 @@
 			)
 		)
 		(property "Manufacturer" "Murata"
-			(at 257.81 154.94 0)
+			(at 303.53 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10591,7 +10558,7 @@
 			)
 		)
 		(property "MPN" "GCM31C5C2A104JE02L"
-			(at 257.81 154.94 0)
+			(at 303.53 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10600,7 +10567,7 @@
 			)
 		)
 		(property "DigiKey_PN" "490-GCM31C5C2A104JE02LCT-ND"
-			(at 257.81 154.94 0)
+			(at 303.53 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10609,7 +10576,7 @@
 			)
 		)
 		(property "Mouser_PN" "81-GCM31C5C2A104JE2L"
-			(at 257.81 154.94 0)
+			(at 303.53 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10618,7 +10585,7 @@
 			)
 		)
 		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
-			(at 257.81 154.94 0)
+			(at 303.53 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10627,7 +10594,7 @@
 			)
 		)
 		(property "Voltage" "100V"
-			(at 257.81 154.94 0)
+			(at 303.53 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10636,7 +10603,7 @@
 			)
 		)
 		(property "Tolerance" "±5%"
-			(at 257.81 154.94 0)
+			(at 303.53 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10645,7 +10612,7 @@
 			)
 		)
 		(property "Dielectric" "C0G"
-			(at 257.81 154.94 0)
+			(at 303.53 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10654,7 +10621,7 @@
 			)
 		)
 		(property "Case" "1206"
-			(at 257.81 154.94 0)
+			(at 303.53 154.94 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10679,7 +10646,7 @@
 	)
 	(symbol
 		(lib_id "DropOut_Capacitor:GCM31C5C2A104JE02L")
-		(at 257.81 167.64 90)
+		(at 303.53 167.64 90)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10690,7 +10657,7 @@
 		(fields_autoplaced no)
 		(uuid "225d2cc0-5102-548c-9dc3-e9c8a37b601f")
 		(property "Reference" "C"
-			(at 257.81 165.1 90)
+			(at 303.53 165.1 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10698,7 +10665,7 @@
 			)
 		)
 		(property "Value" "100nF"
-			(at 257.81 170.43 90)
+			(at 303.53 170.43 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10706,7 +10673,7 @@
 			)
 		)
 		(property "Footprint" "DropOut_Capacitor_SMD:C_1206_3216Metric"
-			(at 257.81 167.64 0)
+			(at 303.53 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10715,7 +10682,7 @@
 			)
 		)
 		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM31C5C2A104JE02-02A-EN_PDF_CERAMICCAPACITORSMD"
-			(at 257.81 167.64 0)
+			(at 303.53 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10724,7 +10691,7 @@
 			)
 		)
 		(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 100 nF ±5%, 100 V, C0G, AEC-Q200, -55 to +125 °C, 1206 (3216 metric)"
-			(at 257.81 167.64 0)
+			(at 303.53 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10733,7 +10700,7 @@
 			)
 		)
 		(property "Manufacturer" "Murata"
-			(at 257.81 167.64 0)
+			(at 303.53 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10742,7 +10709,7 @@
 			)
 		)
 		(property "MPN" "GCM31C5C2A104JE02L"
-			(at 257.81 167.64 0)
+			(at 303.53 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10751,7 +10718,7 @@
 			)
 		)
 		(property "DigiKey_PN" "490-GCM31C5C2A104JE02LCT-ND"
-			(at 257.81 167.64 0)
+			(at 303.53 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10760,7 +10727,7 @@
 			)
 		)
 		(property "Mouser_PN" "81-GCM31C5C2A104JE2L"
-			(at 257.81 167.64 0)
+			(at 303.53 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10769,7 +10736,7 @@
 			)
 		)
 		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
-			(at 257.81 167.64 0)
+			(at 303.53 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10778,7 +10745,7 @@
 			)
 		)
 		(property "Voltage" "100V"
-			(at 257.81 167.64 0)
+			(at 303.53 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10787,7 +10754,7 @@
 			)
 		)
 		(property "Tolerance" "±5%"
-			(at 257.81 167.64 0)
+			(at 303.53 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10796,7 +10763,7 @@
 			)
 		)
 		(property "Dielectric" "C0G"
-			(at 257.81 167.64 0)
+			(at 303.53 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10805,7 +10772,7 @@
 			)
 		)
 		(property "Case" "1206"
-			(at 257.81 167.64 0)
+			(at 303.53 167.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10830,7 +10797,7 @@
 	)
 	(symbol
 		(lib_id "DropOut_Inductor:ACT1210E-241-2P-TL00")
-		(at 289.56 160.02 0)
+		(at 279.4 160.02 0)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -10841,7 +10808,7 @@
 		(fields_autoplaced no)
 		(uuid "8c9e16bb-0d3d-597f-b543-43f2d152e492")
 		(property "Reference" "FL"
-			(at 289.56 164.46 0)
+			(at 279.4 164.46 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10849,7 +10816,7 @@
 			)
 		)
 		(property "Value" "ACT1210E-241-2P-TL00"
-			(at 289.56 166.76 0)
+			(at 279.4 166.76 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10857,7 +10824,7 @@
 			)
 		)
 		(property "Footprint" "DropOut_Inductor_SMD:L_CommonModeChoke_TDK_ACT1210E_3.2x2.5mm"
-			(at 289.56 160.02 0)
+			(at 279.4 160.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10866,7 +10833,7 @@
 			)
 		)
 		(property "Datasheet" "https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/6152/ACT1210E.pdf"
-			(at 289.56 160.02 0)
+			(at 279.4 160.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10875,7 +10842,7 @@
 			)
 		)
 		(property "Description" "TDK common mode filter for automotive Ethernet 10BASE-T1S, 240 µH (+50/-20 %) at 100 kHz, 70 mA, 80 V, 4.1 Ω max per line, AEC-Q200, 3.2x2.5 mm"
-			(at 289.56 160.02 0)
+			(at 279.4 160.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10884,7 +10851,7 @@
 			)
 		)
 		(property "Manufacturer" "TDK"
-			(at 289.56 160.02 0)
+			(at 279.4 160.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10893,7 +10860,7 @@
 			)
 		)
 		(property "MPN" "ACT1210E-241-2P-TL00"
-			(at 289.56 160.02 0)
+			(at 279.4 160.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10902,7 +10869,7 @@
 			)
 		)
 		(property "DigiKey_PN" "445-ACT1210E-241-2P-TL00CT-ND"
-			(at 289.56 160.02 0)
+			(at 279.4 160.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10911,7 +10878,7 @@
 			)
 		)
 		(property "Mouser_PN" "810-ACT1210E2412PTL0"
-			(at 289.56 160.02 0)
+			(at 279.4 160.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10920,7 +10887,7 @@
 			)
 		)
 		(property "Temperature_Grade" "AEC-Q200, -40 to +125 °C"
-			(at 289.56 160.02 0)
+			(at 279.4 160.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -10949,74 +10916,8 @@
 			)
 		)
 	)
-	(wire
-		(pts
-			(xy 261.62 154.94)
-			(xy 266.7 154.94)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "ca0a7533-6290-57c1-ab2f-edf23598fde6")
-	)
-	(wire
-		(pts
-			(xy 266.7 154.94)
-			(xy 266.7 157.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "5f64984f-44e7-50d2-80c4-b6e689a26bf7")
-	)
-	(wire
-		(pts
-			(xy 266.7 157.48)
-			(xy 284.48 157.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "af056917-8060-540d-9a7c-7bd43f232f86")
-	)
-	(wire
-		(pts
-			(xy 261.62 167.64)
-			(xy 269.24 167.64)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "14c4622f-0ec5-5235-b0d5-d6f7650d8739")
-	)
-	(wire
-		(pts
-			(xy 269.24 167.64)
-			(xy 269.24 162.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c5e197d2-11a3-525d-8f71-c7e17f827588")
-	)
-	(wire
-		(pts
-			(xy 269.24 162.56)
-			(xy 284.48 162.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "49a38a07-db2c-53eb-a5cb-009270e7a143")
-	)
 	(label "T1S_CMC_N"
-		(at 269.24 162.56 0)
+		(at 285.75 162.56 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -11024,72 +10925,6 @@
 			(justify left bottom)
 		)
 		(uuid "abcd7cd1-8198-50ed-a991-cb7754e4cc47")
-	)
-	(wire
-		(pts
-			(xy 294.64 157.48)
-			(xy 299.72 157.48)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "772fc21f-1138-524a-8598-7f4f6b0b9c5f")
-	)
-	(wire
-		(pts
-			(xy 299.72 157.48)
-			(xy 299.72 147.32)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "c3a68402-7883-59e7-84a7-9476522d2350")
-	)
-	(wire
-		(pts
-			(xy 299.72 147.32)
-			(xy 350.52 147.32)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "69135764-593d-59b4-bff3-635703be68ce")
-	)
-	(wire
-		(pts
-			(xy 294.64 162.56)
-			(xy 302.26 162.56)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d34f8ffa-e9f9-5003-9ab2-00f49d30a331")
-	)
-	(wire
-		(pts
-			(xy 302.26 162.56)
-			(xy 302.26 175.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1a033dcd-1c95-5034-a9b3-64edec30cc14")
-	)
-	(wire
-		(pts
-			(xy 302.26 175.26)
-			(xy 350.52 175.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "aee0483c-990a-55ca-a7c8-e417356b3bf2")
 	)
 	(wire
 		(pts
@@ -11508,7 +11343,7 @@
 		(uuid "0ea64086-f177-5f1e-8142-40fbccfe62ab")
 	)
 	(label "T1S_CMC_P"
-		(at 266.7 157.48 0)
+		(at 285.75 157.48 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -16069,7 +15904,7 @@
 			)
 		)
 	)
-	(text "DESIGN VALUES (LAN8670 DS60001573K; OPEN Alliance 10BASE-T1S; Node60 DEC-007, DEC-012)\nMode straps MODE[1:0] = 10b (RMII, 50 MHz REFCLKIN): RXD3/MODE1 pulled up, RXD2/MODE0 pulled down, 10k each.\nPHYAD[4:0] = 00001b: RXER/PHYAD0 up; CRSDV/PHYAD1, RXD0/PHYAD2, RXD1/PHYAD3, CRS/PHYAD4 down (10k).\n  PHYAD is a hardware strap only; the PLCA node ID is commissioned in flash (separate from PHYAD).\nTXEN 10k pull-down (Microchip: prevents transmission while the MAC is in reset). MDIO 10k pull-up to VDDP.\nIRQ_N open drain, 10k pull-up to 3V3_MAIN -> T1S_IRQ_L to the MCU (PHY ready after cold boot).\nINH: P-channel open drain to VDDAU with 10k pull-down (Microchip ref.), drives the 3V3_MAIN buck EN and the\n  LM74910H SLEEP pin directly (DEC-004). No FS26, latch or MCU gate.\nRESET_N on RESET_L (TPS3702 window supervisor + S32K344 RESET_B): every MCU reset also resets the PHY,\n  so straps are re-latched and firmware always re-initializes from a known state.\nWAKE_IN unused (no local wake, DEC-007) -> VSS per datasheet. TXD2/TXD3 unused in RMII (internal pull-downs).\nTXER/ACMA unused -> VSS. TXCLK/RXPI, COL, RXCLK/WAKE_OUT, GPIO0, XTO unused: no-connect.\nRBIAS 12.4k 1 % (Microchip reference).\nDecoupling: 10nF + 100nF at every VDDP/VDDA/VDDAU pin, 10uF bulk on VDDP and VDDA (Microchip sec. 6).\n  10nF goes closest to its pin. Ferrite beads in the reference are optional and not fitted.\nLine interface (DEC-012), layout order connector -> ESD -> CMC -> DC block -> PHY:\n  C DC block 2 x 100nF C0G 100 V (OPEN Alliance: >= 50 V). FL501 ACT1210E-241 (240 uH, 10BASE-T1S rated).\n  D ESD 2 x VETH100A1DD1 (<= 2 pF/line) right at the connector. Keep the pair symmetric through the CMC.\n  Capacitance budget: CMDI <= 25 pF: transceiver 10 + CMC 10 + ESD 1 (pair) leaves ~4 pF for connector + traces.\n  Termination: OA split network switched by latching relay K501 (DEC-017), box below right.\n50 MHz clock: Y501 ECS-3225SMVQ, enable tied high (runs with 3V3_MAIN). One output, two 33R series resistors,\n  one to PHY XTI/REFCLKIN, one to the MCU RMII REF_CLK. Length-match both traces (Microchip layout note).\nOPEN: TDK has not published a CMC class for ACT1210E-241 (DEC-012 risk). VETH100A1DD1 24 V working voltage\n  vs a 24 V short to battery on the bus: see DEC-012.\n"
+	(text "DESIGN VALUES (LAN8670 DS60001573K; OPEN Alliance 10BASE-T1S; Node60 DEC-007, DEC-012)\nMode straps MODE[1:0] = 10b (RMII, 50 MHz REFCLKIN): RXD3/MODE1 pulled up, RXD2/MODE0 pulled down, 10k each.\nPHYAD[4:0] = 00001b: RXER/PHYAD0 up; CRSDV/PHYAD1, RXD0/PHYAD2, RXD1/PHYAD3, CRS/PHYAD4 down (10k).\n  PHYAD is a hardware strap only; the PLCA node ID is commissioned in flash (separate from PHYAD).\nTXEN 10k pull-down (Microchip: prevents transmission while the MAC is in reset). MDIO 10k pull-up to VDDP.\nIRQ_N open drain, 10k pull-up to 3V3_MAIN -> T1S_IRQ_L to the MCU (PHY ready after cold boot).\nINH: P-channel open drain to VDDAU with 10k pull-down (Microchip ref.), drives the 3V3_MAIN buck EN and the\n  LM74910H SLEEP pin directly (DEC-004). No FS26, latch or MCU gate.\nRESET_N on RESET_L (TPS3702 window supervisor + S32K344 RESET_B): every MCU reset also resets the PHY,\n  so straps are re-latched and firmware always re-initializes from a known state.\nWAKE_IN unused (no local wake, DEC-007) -> VSS per datasheet. TXD2/TXD3 unused in RMII (internal pull-downs).\nTXER/ACMA unused -> VSS. TXCLK/RXPI, COL, RXCLK/WAKE_OUT, GPIO0, XTO unused: no-connect.\nRBIAS 12.4k 1 % (Microchip reference).\nDecoupling: 10nF + 100nF at every VDDP/VDDA/VDDAU pin, 10uF bulk on VDDP and VDDA (Microchip sec. 6).\n  10nF goes closest to its pin. Ferrite beads in the reference are optional and not fitted.\nLine interface (DEC-012 rev. B, Microchip AN1718), layout order connector -> ESD -> termination -> DC block -> CMC -> PHY:\n  C DC block 2 x 100nF C0G 100 V (OPEN Alliance: >= 50 V). FL501 ACT1210E-241 (240 uH, 10BASE-T1S rated).\n  D ESD 2 x VETH100A1DD1 (<= 2 pF/line) right at the connector. Keep the pair symmetric through the CMC.\n  Capacitance budget: CMDI <= 25 pF: transceiver 10 + CMC 10 + ESD 1 (pair) leaves ~4 pF for connector + traces.\n  Termination: OA split network switched by latching relay K501 (DEC-017), box below right.\n50 MHz clock: Y501 ECS-3225SMVQ, enable tied high (runs with 3V3_MAIN). One output, two 33R series resistors,\n  one to PHY XTI/REFCLKIN, one to the MCU RMII REF_CLK. Length-match both traces (Microchip layout note).\nOPEN: TDK has not published a CMC class for ACT1210E-241 (DEC-012 risk). VETH100A1DD1 24 V working voltage\n  vs a 24 V short to battery on the bus: see DEC-012.\n"
 		(exclude_from_sim no)
 		(at 381 40.64 0)
 		(effects
@@ -19425,6 +19260,193 @@
 			(type none)
 		)
 		(uuid "202a0732-dd8e-4bcc-96ff-acf8fa0bc8d6")
+	)
+	(wire
+		(pts
+			(xy 246.38 165.1)
+			(xy 246.38 157.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "58a4644a-2e7f-4afa-8839-2dbd15012a8e")
+	)
+	(wire
+		(pts
+			(xy 246.38 157.48)
+			(xy 274.32 157.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "35ad06b9-92db-4d3e-9a8a-15c39df6b4e4")
+	)
+	(wire
+		(pts
+			(xy 233.68 167.64)
+			(xy 251.46 167.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1546b3e5-1859-4323-9b6a-f067315ace2c")
+	)
+	(wire
+		(pts
+			(xy 251.46 167.64)
+			(xy 251.46 162.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5bf77984-9865-4635-a233-ead9b9acba87")
+	)
+	(wire
+		(pts
+			(xy 251.46 162.56)
+			(xy 274.32 162.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "173d8012-b685-442d-9966-d84f919c6ea3")
+	)
+	(wire
+		(pts
+			(xy 284.48 157.48)
+			(xy 297.18 157.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fa65b8fd-4e1f-4abb-aa94-fc41ba32d889")
+	)
+	(wire
+		(pts
+			(xy 297.18 157.48)
+			(xy 297.18 154.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f30d20d6-2346-453b-956c-52e1cc1edf60")
+	)
+	(wire
+		(pts
+			(xy 297.18 154.94)
+			(xy 299.72 154.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e3fb5573-2d43-42ef-aa48-1d7d5c7273a2")
+	)
+	(wire
+		(pts
+			(xy 284.48 162.56)
+			(xy 297.18 162.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "25dcb002-5278-4aac-a974-b9e74d1c6928")
+	)
+	(wire
+		(pts
+			(xy 297.18 162.56)
+			(xy 297.18 167.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fce94b43-4126-47ae-9919-00d91d490f75")
+	)
+	(wire
+		(pts
+			(xy 297.18 167.64)
+			(xy 299.72 167.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dac8af8d-893c-4a6e-81a3-6da7f833951d")
+	)
+	(wire
+		(pts
+			(xy 307.34 154.94)
+			(xy 309.88 154.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4c27c052-dc84-497e-8efb-d1e9de83819b")
+	)
+	(wire
+		(pts
+			(xy 309.88 154.94)
+			(xy 309.88 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6875119f-a684-4c59-8a9b-0d1db1d892e8")
+	)
+	(wire
+		(pts
+			(xy 309.88 147.32)
+			(xy 350.52 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3132c99c-fffb-4812-b6bb-770f4949a47c")
+	)
+	(wire
+		(pts
+			(xy 307.34 167.64)
+			(xy 312.42 167.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dbbcafd9-48d5-41a4-a61f-a44e459d94f5")
+	)
+	(wire
+		(pts
+			(xy 312.42 167.64)
+			(xy 312.42 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1a43cf8e-ca0f-4f89-a9ff-c6dcbfa6782d")
+	)
+	(wire
+		(pts
+			(xy 312.42 175.26)
+			(xy 350.52 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "36c55234-36f2-4397-8791-b2f83b4ed262")
 	)
 	(embedded_fonts no)
 )

@@ -1178,7 +1178,7 @@
 		)
 		(uuid "412fa9ff-672c-5de5-bd74-48b9cf9c9903")
 	)
-	(text "RELEASE-BLOCKING: verify pin 1 on samples (T1S_P / T1S_N\n  polarity) for J903 and J912 (GATE-HAR-01).\nJ903 + J912 in parallel: bus pass-through (DEC-017). Keep the\n  trunk between them short; ESD at the connectors.\nLAYOUT (DEC-012): connector -> ESD -> CMC -> DC block -> PHY.\n3 NPTH screw holes per footprint (BoardLock)."
+	(text "RELEASE-BLOCKING: verify pin 1 on samples (T1S_P / T1S_N\n  polarity) for J903 and J912 (GATE-HAR-01).\nJ903 + J912 in parallel: bus pass-through (DEC-017). Keep the\n  trunk between them short; ESD at the connectors.\nLAYOUT (DEC-012 rev. B): connector -> ESD -> term. -> DC block -> CMC -> PHY.\n3 NPTH screw holes per footprint (BoardLock)."
 		(exclude_from_sim no)
 		(at 81.28 176.53 0)
 		(effects
