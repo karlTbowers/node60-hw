@@ -35,7 +35,7 @@ jobs:
           if [ -f "$PROJECT.kicad_pcb" ] && grep -q '(layer "Edge.Cuts")' "$PROJECT.kicad_pcb"; then echo "board=true" >> "$GITHUB_OUTPUT";
           else echo "No board outline on Edge.Cuts yet - skipping DRC and fab outputs."; echo "board=false" >> "$GITHUB_OUTPUT"; fi
 
-      - name: Schematic conventions (sheet files, page numbers, reference designators)
+      - name: Schematic conventions (sheet files, page numbers, reference designators, net names)
         if: steps.guard.outputs.present == 'true'
         run: |
           command -v python3 >/dev/null || { apt-get update && apt-get install -y --no-install-recommends python3; }
