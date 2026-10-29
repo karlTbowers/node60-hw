@@ -121,8 +121,23 @@ const sources = defineCollection({
 	}),
 });
 
+// Firmware pin plan for U401, keyed by net (drawn with the generated mcu-pins.json).
+const mcuConfig = defineCollection({
+	loader: file('src/data/mcu-config.yaml'),
+	schema: z.object({
+		function: z.string(),
+		group: z.enum(['t1s', 'spi-switch', 'spi-flash', 'i2c', 'adc', 'irq', 'gpio', 'uart', 'debug', 'system']),
+		dir: z.enum(['in', 'out', 'io', 'analog', 'od']),
+		pull: z.enum(['none', 'up', 'down']),
+		edge: z.enum(['rising', 'falling', 'both']).optional(),
+		init: z.enum(['low', 'high']).optional(),
+		note: z.string().optional(),
+	}),
+});
+
 export const collections = {
 	docs: defineCollection({ loader: docsLoader(), schema: docsSchema() }),
+	mcuConfig,
 	requirements,
 	parts,
 	gates,

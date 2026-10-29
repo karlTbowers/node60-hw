@@ -38,6 +38,7 @@ export default defineConfig({
 				{ label: 'Decisions', slug: 'decisions' },
 				{ label: 'Component baseline', slug: 'components' },
 				{ label: 'Schematic interfaces', slug: 'interfaces' },
+				{ label: 'MCU pinout', slug: 'mcu-pinout' },
 				{ label: 'Verification gates', slug: 'verification' },
 				{ label: 'Gate results', items: [{ label: 'GATE-MCU-01 package map', slug: 'validation/gate-mcu-01' }] },
 				{ label: 'Source register', slug: 'sources' },

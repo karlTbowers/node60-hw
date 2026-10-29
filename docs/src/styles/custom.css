@@ -80,3 +80,63 @@ tr[id] { scroll-margin-top: 5rem; }
 .source-list { list-style: none; padding-left: 0; }
 .source-list li { scroll-margin-top: 5rem; }
 .source-list b { display: inline-block; min-width: 2.75rem; font-family: var(--sl-font-mono); }
+
+/* MCU pinout page (McuPinout.astro) */
+.mcu { --mcu-free: var(--sl-color-gray-6); --mcu-free-ink: var(--sl-color-gray-3); --mcu-pwr: #b8463a; --mcu-gnd: #2a2c33; margin: 1rem 0 1.5rem; }
+:root[data-theme='light'] .mcu { --mcu-free: #eceef2; --mcu-free-ink: #6b7080; --mcu-gnd: #3a3d46; }
+.mcu-stats { display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; font-size: var(--sl-text-sm); color: var(--sl-color-gray-3); margin-bottom: 0.75rem; }
+.mcu-stats b { color: var(--sl-color-white); font-family: var(--sl-font-mono); font-size: var(--sl-text-lg); margin-right: 0.25rem; }
+.mcu-tools { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-bottom: 0.75rem; }
+.mcu-tools input { flex: 1 1 18rem; min-width: 0; padding: 0.4rem 0.6rem; border: 1px solid var(--n60-border); border-radius: 0.4rem; background: var(--sl-color-black); color: var(--sl-color-white); font: inherit; font-size: var(--sl-text-sm); }
+.mcu button, .mcu-show { font: inherit; font-size: var(--sl-text-xs); padding: 0.3rem 0.6rem; border: 1px solid var(--n60-border); border-radius: 0.4rem; background: var(--n60-card); color: var(--sl-color-white); cursor: pointer; }
+.mcu button:hover, .mcu-show:hover { border-color: var(--sl-color-accent); }
+.mcu-modes { display: inline-flex; align-items: center; gap: 0.25rem; margin-left: auto; }
+.mcu-modes .muted { margin-right: 0.25rem; }
+.mcu-modes button[aria-pressed='true'] { background: var(--sl-color-accent); border-color: var(--sl-color-accent); color: var(--sl-color-black); }
+.mcu-top { display: grid; grid-template-columns: minmax(0, 1fr) 17rem; gap: 1rem; align-items: start; }
+@media (max-width: 64rem) { .mcu-top { grid-template-columns: 1fr; } }
+.mcu-bga { width: 100%; height: auto; max-width: 75rem; display: block; }
+.mcu-axis { font: 600 11px var(--sl-font-mono); fill: var(--sl-color-gray-3); text-anchor: middle; }
+.mcu-ball { cursor: pointer; outline: none; }
+.mcu-ball rect { fill: var(--mcu-free); stroke: transparent; stroke-width: 2; transition: opacity 0.15s; }
+.mcu-ball text { text-anchor: middle; pointer-events: none; fill: var(--mcu-free-ink); font-family: var(--sl-font-mono); }
+.mcu-id { font-size: 8px; opacity: 0.75; }
+.mcu-name { font-size: 10px; font-weight: 600; }
+.mcu-ball.pwr rect { fill: var(--mcu-pwr); }
+.mcu-ball.gnd rect { fill: var(--mcu-gnd); }
+.mcu-ball.pwr text, .mcu-ball.gnd text { fill: #fff; }
+.mcu-ball:hover rect, .mcu-ball:focus-visible rect { stroke: var(--sl-color-white); }
+.mcu-ball.sel rect { stroke: var(--sl-color-accent-high); stroke-width: 3; }
+.mcu-filtering .mcu-ball:not(.hl) rect, .mcu-filtering .mcu-ball:not(.hl) text { opacity: 0.18; }
+.mcu-filtering .mcu-ball.hl rect { stroke: var(--sl-color-white); }
+.mcu-ball.pick rect { stroke: var(--sl-color-accent-high); stroke-width: 3; stroke-dasharray: 4 2; }
+.mcu-detail { padding: 0.85rem 1rem; border: 1px solid var(--n60-border); border-radius: 0.5rem; background: var(--n60-card); font-size: var(--sl-text-sm); position: sticky; top: 5rem; }
+.mcu-detail h3 { margin: 0; font-size: var(--sl-text-xl); font-family: var(--sl-font-mono); color: var(--sl-color-white); }
+.mcu-detail h3 span { font-size: var(--sl-text-sm); color: var(--sl-color-gray-3); margin-left: 0.4rem; }
+.mcu-detail h4 { margin: 0.9rem 0 0.4rem; font-size: var(--sl-text-xs); letter-spacing: 0.06em; text-transform: uppercase; color: var(--sl-color-gray-3); }
+.mcu-status { display: flex; align-items: center; gap: 0.4rem; margin: 0.25rem 0 0.6rem; }
+.mcu-status i, .mcu-legend i, .mcu-swatch { display: inline-block; width: 0.75rem; height: 0.75rem; border-radius: 0.2rem; flex: none; }
+.mcu-swatch { margin-right: 0.4rem; vertical-align: -0.05rem; }
+.mcu-detail dl { display: grid; grid-template-columns: auto 1fr; gap: 0.25rem 0.75rem; margin: 0; }
+.mcu-detail dt { color: var(--sl-color-gray-3); }
+.mcu-detail dd { margin: 0; overflow-wrap: anywhere; }
+.mcu-alts { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+.mcu .mcu-alt { font-family: var(--sl-font-mono); font-size: 0.68rem; padding: 0.1rem 0.35rem; }
+.mcu .mcu-alt.on { background: var(--sl-color-accent); color: var(--sl-color-black); border-color: var(--sl-color-accent); }
+.mcu-legend { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.75rem; }
+.mcu-legend button { display: inline-flex; align-items: center; gap: 0.4rem; }
+.mcu-legend i.free { background: var(--mcu-free); border: 1px solid var(--n60-border); }
+.mcu-legend i.pwr { background: var(--mcu-pwr); }
+.mcu-legend i.gnd { background: var(--mcu-gnd); border: 1px solid var(--n60-border); }
+.mcu-scroll { overflow-x: auto; }
+.mcu-table { font-size: var(--sl-text-xs); }
+.mcu-table code { font-size: 0.95em; }
+.mcu-show { font-family: var(--sl-font-mono); white-space: nowrap; }
+.mcu-sigs span, .mcu-pl { display: inline-block; margin: 0 0.75rem 0.15rem 0; white-space: nowrap; }
+.mcu-sigs em { color: var(--n60-blocked); font-style: normal; }
+.mcu-grouprow th { background: var(--n60-card); text-align: left; }
+.mcu-wrap { overflow-wrap: anywhere; }
+.mcu-chip { display: inline-block; padding: 0.05rem 0.45rem; border-radius: 1rem; font-weight: 600; white-space: nowrap; }
+.mcu-chip.st-used { background: color-mix(in srgb, var(--sl-color-accent) 25%, transparent); }
+.mcu-chip.st-available { background: color-mix(in srgb, var(--n60-locked) 30%, transparent); }
+.mcu-chip.st-conflict { background: color-mix(in srgb, var(--n60-blocked) 30%, transparent); }
