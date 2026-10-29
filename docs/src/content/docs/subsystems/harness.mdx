@@ -7,15 +7,15 @@ import { Aside } from '@astrojs/starlight/components';
 import PartTable from '../../../components/PartTable.astro';
 import Ref from '../../../components/Ref.astro';
 
-Each output gets a sealed, independently protected path; the aggregate input is treated as a 60 A interconnect problem.
+Each output gets a sealed, independently protected path; the aggregate input is treated as a 60 A interconnect problem, plus the battery current passed through to a downstream node.
 
 | Interface | Architecture | Release condition |
 |---|---|---|
 | Six outputs | Amphenol Sine AT13-2P-BM04, one 2-pin right-angle header per output (<Ref id="DEC-013" />); 10 A each; 14 AWG minimum | Pin 1 = OUTx, pin 2 = local return; contact temperature rise at 10 A proven up to +125 °C ambient; DT06-2S, sockets, wedgelock, wire, and panel seal frozen together |
-| Battery input | Metri-Pack 480/630 class or dual feed | Prove complete 60 A path; use multiple contacts or feeds |
-| Power return | Matched high-current return: all six output returns come back through the node (<Ref id="DEC-013" />) | 60 A continuous ground conductor and contacts; no chassis-only return assumption |
+| Battery input | Two Würth REDCUBE 74660016R M6 terminals with red Amphenol SurLok Plus SLPRATPSR receptacles, one on each side of the case, joined by an internal busbar (<Ref id="DEC-016" />) | One receptacle feeds the node, the other passes battery to a downstream node; prove the full current path at <Ref id="GATE-HAR-02" /> |
+| Power return | Two REDCUBE 74660016R terminals with black SurLok Plus SLPRATPSB receptacles, busbar-joined; all six output returns come back through the node (<Ref id="DEC-013" />, <Ref id="DEC-016" />) | 60 A plus the downstream return; no chassis-only return assumption |
 | 10BASE-T1S | Amphenol SINE ATM13-2P-BM04: sealed 2-pin right-angle PCB receptacle, mates ATM06-2S (<Ref id="DEC-014" />) | Vehicle-level protection and termination strategy; verify pin 1 on a sample |
-| Complete node cable | Exactly four conductors: T1S twisted pair + battery-direct power + ground | No KL15, ignition, or local hardwire wake input; controller ECU must provide T1S wake (<Ref id="REQ-NET-001" />) |
+| Complete node cable | Four conductors: T1S twisted pair + battery-direct power + ground, plus an optional battery/ground pass-through to one downstream node | No KL15, ignition, or local hardwire wake input; controller ECU must provide T1S wake (<Ref id="REQ-NET-001" />) |
 
 ## Output connectors
 
@@ -27,9 +27,17 @@ Each output has its own **Amphenol Sine AT13-2P-BM04** header: BoardLock AT13, 2
 Amphenol's drawing labels pins 1 and 2 on the mounting face, and the footprint follows it. Confirm the moulded cavity numbers on the first sample and label them on the harness drawing, so OUTx and ground cannot be swapped at the harness.
 </Aside>
 
+## Power entry and pass-through
+
+Four **Würth REDCUBE SMT 74660016R** terminals (M6 internal thread, 85 A max at 20 °C) sit on the board: J901 and J910 on the battery input, J902 and J911 on the return. Amphenol **SurLok Plus** 5.7 mm receptacles in the case wall screw into them: red SLPRATPSR on battery, black SLPRATPSB on return, IP67 mated, 3 N·m on the M6 thread. A busbar inside the case joins each pair, so one side of the case takes the source cables and the other side feeds a lower-current downstream node. See <Ref id="DEC-016" long />.
+
+<Aside type="caution" title="The pass-through bypasses Node60's protection">
+The downstream feed leaves before the LM74910H ideal diode and breaker and before the INA228 shunt. Size the source fuse and cable for both nodes, and give the downstream node its own protection. The downstream feed is limited to **40 A** for now (upstream total 100 A), with the busbar carrying it; GATE-HAR-02 confirms the limit or raises it toward 60 A. Sealing of the power entry is not decided yet.
+</Aside>
+
 ## Fusing
 
-Place the primary fuse at the battery/source end. If the 60 A path is split, fuse each feed and prevent back-powering through an undersized path. Final values coordinate wire ampacity, contact derating, load inrush, PCB fault energy, and the smart-switch curve. Use branch fuses wherever the main fuse cannot protect an output conductor or connector fault.
+Place the primary fuse at the battery/source end, sized for Node60 plus the downstream node fed through the pass-through. If the 60 A path is split, fuse each feed and prevent back-powering through an undersized path. Final values coordinate wire ampacity, contact derating, load inrush, PCB fault energy, and the smart-switch curve. Use branch fuses wherever the main fuse cannot protect an output conductor or connector fault.
 
 <Aside type="caution" title="Connector freeze condition">
 Connector families are architectural selections, not released mating sets. Freeze exact housings, terminals, seals, wire sizes, and keys together; validate temperature rise with all intended adjacent circuits loaded.

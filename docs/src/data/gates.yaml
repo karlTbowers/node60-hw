@@ -197,3 +197,11 @@
   blocks: Board release
   status: open
   page: subsystems/harness
+
+- id: GATE-HAR-02
+  title: Power entry and pass-through
+  group: freeze
+  evidence: With SurLok Plus receptacles torqued into the REDCUBE terminals and the busbars fitted, measure temperature rise of terminals, receptacles, busbar and board copper at Node60's 60 A plus the downstream feed (40 A provisional limit, 60 A target), up to +125 °C ambient; measure how the current splits between busbar and board copper; check torque retention after vibration; confirm or raise the downstream limit
+  blocks: Pass-through rating
+  status: open
+  page: subsystems/harness
