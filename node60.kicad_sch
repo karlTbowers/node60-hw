@@ -1430,6 +1430,26 @@
 				(justify right)
 			)
 		)
+		(pin "T1S_TERM_END" output
+			(at 370.84 83.82 0)
+			(uuid "031485d6-6b2b-41d1-9711-20a0ceab2687")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "T1S_TERM_DROP" output
+			(at 370.84 86.36 0)
+			(uuid "e713472d-ddde-4184-8d09-9f7b3a835109")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
 		(instances
 			(project "node60"
 				(path "/55f51841-30a3-4965-b848-b796f60054d0"
@@ -1935,6 +1955,26 @@
 					(size 1.27 1.27)
 				)
 				(justify right)
+			)
+		)
+		(pin "T1S_TERM_END" input
+			(at 175.26 175.26 180)
+			(uuid "5001e981-7c9f-476f-a9ca-01254ed35f91")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "T1S_TERM_DROP" input
+			(at 175.26 177.8 180)
+			(uuid "919fac31-d41d-4573-988e-f1ba88eb2f4c")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
 			)
 		)
 		(instances
@@ -3337,6 +3377,90 @@
 		(path "/"
 			(page "1")
 		)
+	)
+	(wire
+		(pts
+			(xy 370.84 83.82)
+			(xy 373.38 83.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f76e6f9b-f9dc-47eb-9b9f-1853dff7f49f")
+	)
+	(label "T1S_TERM_END"
+		(at 373.38 83.82 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "160348f4-1227-44d6-bc2e-30b68bfce174")
+	)
+	(wire
+		(pts
+			(xy 370.84 86.36)
+			(xy 373.38 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6fa7b429-8f1d-4654-b430-bd8eae4ccc5d")
+	)
+	(label "T1S_TERM_DROP"
+		(at 373.38 86.36 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "4db2973a-5139-4ccc-accc-0f1bb8a70e05")
+	)
+	(wire
+		(pts
+			(xy 175.26 175.26)
+			(xy 172.72 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "68193ab8-5107-470c-8f34-b8a5c1b6e725")
+	)
+	(label "T1S_TERM_END"
+		(at 172.72 175.26 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "865ee4a5-323a-427c-a560-915483e57029")
+	)
+	(wire
+		(pts
+			(xy 175.26 177.8)
+			(xy 172.72 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "44b4e4a5-0264-4b24-ac79-eb6a76046b86")
+	)
+	(label "T1S_TERM_DROP"
+		(at 172.72 177.8 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "a9d17aa5-9e64-4c70-8c7a-1eae8ac8e986")
 	)
 	(embedded_fonts no)
 )

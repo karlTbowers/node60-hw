@@ -13,4 +13,5 @@
   (lib (name "DropOut_Sensor")(type "KiCad")(uri "${KIPRJMOD}/lib/dropout-kicad-library/symbols/DropOut_Sensor.kicad_sym")(options "")(descr "DropOut library"))
   (lib (name "DropOut_Thermistor")(type "KiCad")(uri "${KIPRJMOD}/lib/dropout-kicad-library/symbols/DropOut_Thermistor.kicad_sym")(options "")(descr "DropOut library"))
   (lib (name "DropOut_Timing")(type "KiCad")(uri "${KIPRJMOD}/lib/dropout-kicad-library/symbols/DropOut_Timing.kicad_sym")(options "")(descr "DropOut library"))
+  (lib (name "DropOut_Relay")(type "KiCad")(uri "${KIPRJMOD}/lib/dropout-kicad-library/symbols/DropOut_Relay.kicad_sym")(options "")(descr "DropOut library"))
 )

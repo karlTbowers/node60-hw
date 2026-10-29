@@ -136,7 +136,7 @@
 - id: GATE-NET-01
   title: Bus wake / inrush
   group: freeze
-  evidence: T1S-only wake, INH-to-EN timing, supply ramp + PHY initialization ≤ 15 ms (OPEN Alliance; ≈10 ms estimated), LM74910H TMR ride-through, cold boot, T1S_IRQ_L ready, PHY/PLCA re-initialization
+  evidence: T1S-only wake, INH-to-EN timing, supply ramp + PHY initialization ≤ 15 ms (OPEN Alliance; ≈10 ms estimated), LM74910H TMR ride-through, cold boot, T1S_IRQ_L ready, PHY/PLCA re-initialization; wake-up pulse detected with the node commissioned as end node and as drop node (DEC-017)
   blocks: Netlist
   status: open
   page: subsystems/network
@@ -193,7 +193,7 @@
 - id: GATE-HAR-01
   title: Connector pin numbering
   group: freeze
-  evidence: On AT13-2P-BM04 and ATM13-2P-BM04 samples, confirm the moulded cavity numbers match the footprint (pin 1 = OUTx on J904-J909, T1S_P / T1S_N polarity on J903); label the cavities on the harness drawing
+  evidence: On AT13-2P-BM04 and ATM13-2P-BM04 samples, confirm the moulded cavity numbers match the footprint (pin 1 = OUTx on J904-J909, T1S_P / T1S_N polarity on J903 and J912); label the cavities on the harness drawing
   blocks: Board release
   status: open
   page: subsystems/harness
@@ -205,3 +205,11 @@
   blocks: Pass-through rating
   status: open
   page: subsystems/harness
+
+- id: GATE-NET-02
+  title: Switched termination
+  group: freeze
+  evidence: Leg resistance in both relay states (49.9 Ω end ±1 %, 1.5 kΩ drop) at -40, +25 and +125 °C; node differential capacitance in both states against the 15 pF limit, with J903 and J912 fitted; relay set and reset from 3V3_MAIN at -40 and +125 °C with a 10 ms pulse; state held through power-off and parked sleep; firmware restores the stored state at cold boot; shock and vibration do not change the state
+  blocks: Termination release
+  status: open
+  page: subsystems/network

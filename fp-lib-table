@@ -16,4 +16,5 @@
   (lib (name "DropOut_Resistor_SMD")(type "KiCad")(uri "${KIPRJMOD}/lib/dropout-kicad-library/footprints/DropOut_Resistor_SMD.pretty")(options "")(descr "DropOut library"))
   (lib (name "DropOut_TerminalBlock_Wuerth")(type "KiCad")(uri "${KIPRJMOD}/lib/dropout-kicad-library/footprints/DropOut_TerminalBlock_Wuerth.pretty")(options "")(descr "DropOut library"))
   (lib (name "DropOut_TestPoint")(type "KiCad")(uri "${KIPRJMOD}/lib/dropout-kicad-library/footprints/DropOut_TestPoint.pretty")(options "")(descr "DropOut library"))
+  (lib (name "DropOut_Relay_SMD")(type "KiCad")(uri "${KIPRJMOD}/lib/dropout-kicad-library/footprints/DropOut_Relay_SMD.pretty")(options "")(descr "DropOut library"))
 )
