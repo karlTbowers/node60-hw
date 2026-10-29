@@ -2,13 +2,15 @@
 id: DEC-012
 title: ACT1210E-241 common mode choke and VETH100A1DD1 ESD diodes on the T1S line
 status: accepted
-date: 2026-10-22
-revision: A
+date: 2026-10-29
+revision: B
 page: subsystems/network
 requirements: [REQ-NET-001, REQ-NET-004, REQ-QUAL-001]
 parts: [ACT1210E-241-2P-TL00, ACT1210E-131-2P-TL00, DLW32MH241MX2L, VETH100A1DD1HG3-08, PESD1ETH10LS-QYL, PESD1ETH10L-QYL]
 gates: [GATE-THM-02, GATE-BOM-01]
 rejected:
+  - option: "Rev. A layout order: connector → ESD → choke → DC block → PHY"
+    reason: Microchip AN1718 rev. D (the LAN8670 data sheet's line-interface reference), OPEN Alliance's 10BASE-T1S Implementation Specification (Figure 4) and both Microchip LAN8670 evaluation boards (EVB-LAN8670-RMII rev. 4, EVB-LAN8670D-USB rev. 1) put the DC block on the connector side of the choke. Changed in rev. B (user, 2026-10-29).
   - option: Murata DLW32MH201XK2L
     reason: Murata rates it for 100BASE-T1, not 10BASE-T1S. It is in the library, but not as a Node60 option.
   - option: TDK ACT1210L-201-2P / Nexperia PESD2ETH1G-T (MR-CANHUBK344 parts)
@@ -58,7 +60,7 @@ The CMC test spec V1.1 (Annex A) classes chokes by their parasitic capacitance: 
 
 ## Consequences
 
-- **Layout order:** connector → ESD diodes → choke → 100 nF DC-block caps → LAN8670. Keep the ESD diodes right at the connector. Keep the pair symmetric through the choke so mode conversion stays low.
+- **Layout order (rev. B, 2026-10-29):** connector → ESD diodes → termination (DEC-017) → 100 nF DC-block caps → choke → LAN8670, the order of Microchip AN1718 rev. D (Figure 1-3), OPEN Alliance's implementation spec (Figure 4) and Microchip's LAN8670 evaluation boards. AN1718 §2.0: place the choke and DC-block caps as close as possible to the connector, ESD and termination in line on the pair, no ground pour around the line interface, no copper in any layer under the choke. Keep the ESD diodes right at the connector. Keep the pair symmetric through the choke so mode conversion stays low.
 - **Footprints:** all three chokes share a land pattern but have different pad numbering. Use the library footprint for the fitted part, and don't swap MPNs without swapping footprints. The ESD diode footprints differ between Vishay and Nexperia.
 - **Open risk on the choke:** TDK publishes no CMC class for ACT1210E-241. Get TDK's OPEN Alliance test report, and confirm it is Class III or better, before BOM lock (GATE-BOM-01).
 - **Open risk on the ESD diode:** the VETH100A1DD1's 24 V working voltage leaves no headroom over 24 V jump-start if a bus wire shorts to battery. If the harness short-to-battery requirement is above 24 V, switch to the 75 V Nexperia parts.
