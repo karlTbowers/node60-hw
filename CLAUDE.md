@@ -51,7 +51,7 @@ The next architecture revision is **Rev B**.
 - **10 A continuous is unproven.** TPS2HCS08A-Q1 is rated 8 A per channel with both channels on at 85 °C. The 10 A rating stays blocked until the dual-channel thermal test passes.
 - LAN8670D0-E/LMXVAO and TPS2HCS08AQPWPRQ1 had zero distributor stock at the last observation (2026-10-13): procurement risk.
 - Output and T1S connector pin 1 must be confirmed on AT13/ATM13 samples (GATE-HAR-01).
-- Power entry (DEC-016): the downstream pass-through current limit and the power-entry sealing are not decided; GATE-HAR-02 proves the current path. 74660016R is listed only at Mouser, with no stock figure (2026-10-28).
+- Power entry (DEC-016): the downstream pass-through is limited to 40 A (provisional, 60 A target) until GATE-HAR-02 proves the current path; power-entry sealing is not decided. 74660016R is listed only at Mouser, with no stock figure (2026-10-28).
 
 ## History
 

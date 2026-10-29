@@ -32,7 +32,7 @@ Amphenol's drawing labels pins 1 and 2 on the mounting face, and the footprint f
 Four **Würth REDCUBE SMT 74660016R** terminals (M6 internal thread, 85 A max at 20 °C) sit on the board: J901 and J910 on the battery input, J902 and J911 on the return. Amphenol **SurLok Plus** 5.7 mm receptacles in the case wall screw into them: red SLPRATPSR on battery, black SLPRATPSB on return, IP67 mated, 3 N·m on the M6 thread. A busbar inside the case joins each pair, so one side of the case takes the source cables and the other side feeds a lower-current downstream node. See <Ref id="DEC-016" long />.
 
 <Aside type="caution" title="The pass-through bypasses Node60's protection">
-The downstream feed leaves before the LM74910H ideal diode and breaker and before the INA228 shunt. Size the source fuse and cable for both nodes, and give the downstream node its own protection. The downstream current limit is set at GATE-HAR-02. Sealing of the power entry is not decided yet.
+The downstream feed leaves before the LM74910H ideal diode and breaker and before the INA228 shunt. Size the source fuse and cable for both nodes, and give the downstream node its own protection. The downstream feed is limited to **40 A** for now (upstream total 100 A), with the busbar carrying it; GATE-HAR-02 confirms the limit or raises it toward 60 A. Sealing of the power entry is not decided yet.
 </Aside>
 
 ## Fusing

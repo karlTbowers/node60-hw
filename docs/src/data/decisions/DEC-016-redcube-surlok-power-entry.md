@@ -35,11 +35,11 @@ On 2026-10-28 the user decided the power entry, and added a pass-through: the no
 ## Consequences
 
 - **Pass-through current is not protected by this node.** The downstream feed leaves from the raw battery side, before the LM74910H ideal diode and breaker (DEC-001) and the INA228 shunt (DEC-002). Node60's reverse-battery protection, 75 A breaker and total-current telemetry cover only its own load. The downstream node needs its own protection, and the source fuse and cable must be sized for Node60 plus the downstream node.
-- **Current limit for the downstream feed is open.** The upstream terminals carry Node60's own up to 60 A plus the downstream current.
-  - REDCUBE: 85 A max at 20 °C, before any derating at +125 °C ambient.
-  - SurLok Plus 5.7 mm: 100 to 120 A class.
-  - How much of the downstream current flows through the busbar, and how much through the REDCUBEs and board copper, depends on how the busbar is clamped. The board copper between the two terminals of each pair is in parallel with the busbar.
-  - The downstream limit and the current path are set and proven at GATE-HAR-02.
+- **Downstream current limit: 40 A, provisional** (user, 2026-10-28; the downstream node needs up to 60 A, and the user accepted a lower limit if needed).
+  - At 60 A downstream, the upstream receptacle and terminal would carry 120 A: the top of the SurLok Plus 5.7 mm "100 to 120 A" class, with no derating curve for +125 °C in the catalogue, and above one REDCUBE's 85 A (max at 20 °C). The 8.0 mm SurLok size takes an M8 nut, not the REDCUBE's M6 thread.
+  - At 40 A the upstream total is 100 A, about 83 % of the SurLok class rating.
+  - **The busbar carries the pass-through.** J910/J911 stay tied to J901/J902 on the board, but the busbar is sized so most of the pass-through current flows in it, and the board copper between each pair is short and heavy. GATE-HAR-02 measures the split.
+  - GATE-HAR-02 confirms 40 A from measured temperature rise at +125 °C ambient, or raises the limit toward 60 A.
 - **REQ-NET-001 changes:** the node still connects with four conductors (T1S pair, battery, ground), and the power terminals may additionally pass battery and ground through to one downstream node.
 - **Sealing is not decided yet** (user, 2026-10-28). The SurLok Plus receptacles are rated IP67 mated with a flange panel mount; the enclosure seal and the unmated state still need a decision.
 - **Mechanical:** each receptacle's M6 stud screws into a board-mounted terminal, so the board is tied to the case wall at four points. The board outline, the terminal positions and the enclosure tolerances are set together; hold the terminal while tightening (Würth).
