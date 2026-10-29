@@ -550,6 +550,35 @@
   decisions: [DEC-017]
   library: DropOut_Resistor:CRCW120649R9FKEAHP
 
+- id: ERJ-P08F49R9V
+  mpn: ERJ-P08F49R9V
+  manufacturer: Panasonic
+  qty: 0
+  label: "ERJ-P08F49R9V 49.9 Ω 1 % 0.66 W 1206"
+  function: "Second source for the end-node termination legs (anti-surge, AEC-Q200)"
+  subsystem: network
+  status: alternative
+  decision_note: "Second source for CRCW120649R9FKEAHP; same footprint"
+  observations:
+    - { date: 2026-10-28, source: DigiKey, stock: 0 }
+    - { date: 2026-10-28, source: Mouser, prices: [{ qty: "1", usd: 0.32 }], stock: 4757 }
+  decisions: [DEC-017]
+  library: DropOut_Resistor:ERJ-P08F49R9V
+
+- id: GCM21BR72A104KA37L
+  mpn: GCM21BR72A104KA37L
+  manufacturer: Murata
+  qty: 0
+  label: "GCM21BR72A104KA37L 100 nF 100 V X7R 0805"
+  function: "Second source for the termination centre-tap capacitor (AEC-Q200)"
+  subsystem: network
+  status: alternative
+  decision_note: "Second source for CGA4J2X7R2A104K125AA; same footprint"
+  observations:
+    - { date: 2026-10-28, source: "DigiKey 490-4789-1-ND / Mouser 81-GCM21BR72A104KA7L", note: "listed" }
+  decisions: [DEC-017]
+  library: DropOut_Capacitor:GCM21BR72A104KA37L
+
 - id: CRCW12061K50FKEA
   mpn: "CRCW12061K50FKEA"
   manufacturer: Vishay
