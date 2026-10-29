@@ -27,7 +27,7 @@
 
 - id: REQ-NET-001
   group: basis
-  text: "Four-wire node connection: T1S twisted pair, battery-direct power, and ground; the power terminals may also pass battery and ground through to one downstream node (DEC-016). The controller ECU is solely responsible for bus wake."
+  text: "Four-wire node connection: T1S twisted pair, battery-direct power, and ground; the power terminals may also pass battery and ground through to one downstream node (DEC-016), and a second T1S connector passes the bus through (DEC-017). The controller ECU is solely responsible for bus wake."
   page: subsystems/harness
   verified_by: [GATE-NET-01]
 
@@ -97,7 +97,7 @@
   group: parameter
   parameter: T1S role
   text: Multidrop follower
-  consequence: Configurable 100 Ω termination only at a physical endpoint
+  consequence: OPEN Alliance split termination switched by a latching relay, 50 Ω legs at a physical endpoint and 1.5 kΩ mid-bus (DEC-017)
   page: subsystems/network
   verified_by: [GATE-NET-01]
 

@@ -3663,246 +3663,6 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "DropOut_Resistor:AC0603FR-07100RL"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "R"
-				(at 2.54 2.858 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "100R"
-				(at 2.54 0.953 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" "DropOut_Resistor_SMD:R_0603_1608Metric"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Yageo AC thick film chip resistor, 100 Ω ±1%, 1/10 W, 75 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 0603 (1608 metric)"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Manufacturer" "Yageo"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "MPN" "AC0603FR-07100RL"
-				(at 2.54 -2.794 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-					(justify left)
-				)
-			)
-			(property "DigiKey_PN" "YAG3561CT-ND"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Mouser_PN" "603-AC0603FR-07100RL"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Tolerance" "±1%"
-				(at 2.54 -0.953 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Power" "1/10W"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Voltage" "75V"
-				(at 7.62 -0.953 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Case" "0603"
-				(at 12.7 -0.953 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "ki_keywords" "resistor thick film automotive"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "R?0603?1608Metric*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "AC0603FR-07100RL_1_1"
-				(rectangle
-					(start -1.016 -2.54)
-					(end 1.016 2.54)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(pin passive line
-					(at 0 3.81 270)
-					(length 1.27)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 1.27)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
 		(symbol "DropOut_Timing:ECS-3225SMVQ-500-DS-TR"
 			(exclude_from_sim no)
 			(in_bom yes)
@@ -4378,6 +4138,2533 @@
 						)
 					)
 					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	(symbol "DropOut_Relay:G6KU-2F-Y-T1-TRS_DC3"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "K"
+				(at 16.51 3.81 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "G6KU-2F-Y-T1-TRS_DC3"
+				(at 16.51 1.27 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Relay_SMD:Relay_DPDT_Omron_G6K-2F-Y"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.aratas.com/us-en/datasheet_pdf/K106-E1.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Omron (ARATAS) G6KU-2F-Y-T1 DPDT single-winding latching signal relay, high-temperature model, 3 VDC coil 64 Ω, 46.6 mA, set/reset by coil polarity (pin 1 + = set, pin 8 + = reset), 10 ms min. pulse, 2 A 30 VDC / 0.5 A 125 VAC contacts, -40 to +125 °C, surface mount, tape and reel (-TRS, 900 pcs/reel)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "ARATAS (formerly Omron Components)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "G6KU-2F-Y-T1-TRS DC3"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "DigiKey_PN" "39-G6KU-2F-Y-T1-TRSDC3TR-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "653-G6KU-2FYT1TRSDC3"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "-40 to +125 °C ambient (T1 high-temperature model; relays have no AEC grade)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Notes" "Single-winding latching: pin 1 + / pin 8 - sets (3-4 and 6-5 closed), pin 8 + / pin 1 - resets (3-2 and 6-7 closed). Ships reset, but apply a reset pulse before use. Rated coil voltage only, 10 ms min. pulse. Built from datasheet Cat. No. K106-E1-16 (03/2026)."
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "relay latching bistable DPDT 2 form C signal surface mount high temperature"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Relay*DPDT*Omron*G6K?2F?Y*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "G6KU-2F-Y-T1-TRS_DC3_1_1"
+				(rectangle
+					(start -15.24 5.08)
+					(end 15.24 -5.08)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(rectangle
+					(start -13.335 1.905)
+					(end -6.985 -1.905)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -12.7 -1.905) (xy -7.62 1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -10.16 5.08) (xy -10.16 1.905)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -10.16 -5.08) (xy -10.16 -1.905)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -6.985 0) (xy -6.35 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -5.715 0) (xy -5.08 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -4.445 0) (xy -3.81 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.175 0) (xy -2.54 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.54 5.08) (xy -2.54 2.54) (xy -1.905 3.175) (xy -2.54 3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.905 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.635 0) (xy 0 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -2.54) (xy -1.905 3.81)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 -2.54) (xy 0 -5.08)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.905 0) (xy 2.54 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 5.08) (xy 2.54 2.54) (xy 1.905 3.175) (xy 2.54 3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.175 0) (xy 3.81 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 4.445 0) (xy 5.08 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 5.715 0) (xy 6.35 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 6.985 0) (xy 7.62 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 7.62 5.08) (xy 7.62 2.54) (xy 8.255 3.175) (xy 7.62 3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 8.255 0) (xy 8.89 0)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 10.16 -2.54) (xy 8.255 3.81)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 10.16 -2.54) (xy 10.16 -5.08)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 12.7 5.08) (xy 12.7 2.54) (xy 12.065 3.175) (xy 12.7 3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(text "S:+"
+					(at -8.763 2.794 0)
+					(effects
+						(font
+							(size 0.762 0.762)
+						)
+					)
+				)
+				(text "R:+"
+					(at -8.763 -2.794 0)
+					(effects
+						(font
+							(size 0.762 0.762)
+						)
+					)
+				)
+				(pin passive line
+					(at -10.16 7.62 270)
+					(length 2.54)
+					(name "S+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -2.54 7.62 270)
+					(length 2.54)
+					(name "RST1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -7.62 90)
+					(length 2.54)
+					(name "COM1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 7.62 270)
+					(length 2.54)
+					(name "SET1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 7.62 270)
+					(length 2.54)
+					(name "SET2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 -7.62 90)
+					(length 2.54)
+					(name "COM2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 7.62 7.62 270)
+					(length 2.54)
+					(name "RST2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "7"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -10.16 -7.62 90)
+					(length 2.54)
+					(name "R+"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "8"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	(symbol "DropOut_PowerSwitch:DMC2710UVQ-7"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "Q"
+				(at 0 10.16 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "DMC2710UVQ-7"
+				(at 0 -10.16 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "DropOut_Package_TO_SOT_SMD:Diodes_SOT-563"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.diodes.com/assets/Datasheets/DMC2710UVQ.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Diodes DMC2710UVQ complementary N + P MOSFET pair, 20 V / -20 V, N 0.4 Ω max at VGS 4.5 V (1.1 A), P 0.7 Ω max at VGS -4.5 V (-0.8 A), ±6 V VGS, ESD-protected gates, AEC-Q101, SOT-563"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Diodes Incorporated"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "DMC2710UVQ-7"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "DigiKey_PN" "31-DMC2710UVQ-7CT-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "621-DMC2710UVQ-7"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q101, Tj -55 to +150 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Notes" "Unit A = N-channel (G1 2, D1 6, S1 1), unit B = P-channel (G2 5, D2 3, S2 4). VGS max ±6 V. Data sheet marked Advanced Information."
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "MOSFET complementary N-channel P-channel pair dual transistor half bridge"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Diodes*SOT?563*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "DMC2710UVQ-7_1_1"
+				(polyline
+					(pts
+						(xy 0.254 1.905) (xy 0.254 -1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.254 0) (xy -2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 2.286) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 0.508) (xy 0.762 -0.508)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.27) (xy 0.762 -2.286)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.778) (xy 3.302 -1.778) (xy 3.302 1.778) (xy 0.762 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.016 0) (xy 2.032 0.381) (xy 2.032 -0.381) (xy 1.016 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 1.651 0)
+					(radius 2.794)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54) (xy 2.54 5.08)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54) (xy 2.54 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.54 1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 2.54 -1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy 2.54 -5.08)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.921 0.381) (xy 3.683 0.381)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.302 0.381) (xy 2.921 -0.254) (xy 3.683 -0.254) (xy 3.302 0.381)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 2.54 -7.62 90)
+					(length 2.54)
+					(name "S1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "G1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 7.62 270)
+					(length 2.54)
+					(name "D1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "DMC2710UVQ-7_2_1"
+				(polyline
+					(pts
+						(xy 0.254 1.905) (xy 0.254 -1.905)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.254 0) (xy -2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 2.286) (xy 0.762 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 1.778) (xy 3.302 1.778) (xy 3.302 -1.778) (xy 0.762 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 0.508) (xy 0.762 -0.508)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.762 -1.27) (xy 0.762 -2.286)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 1.651 0)
+					(radius 2.794)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.286 0) (xy 1.27 0.381) (xy 1.27 -0.381) (xy 2.286 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54) (xy 2.54 5.08)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 2.54) (xy 2.54 1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.54 1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(circle
+					(center 2.54 -1.778)
+					(radius 0.254)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy 2.54 -5.08)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 -2.54) (xy 2.54 0) (xy 0.762 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.921 -0.381) (xy 3.683 -0.381)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 3.302 -0.381) (xy 2.921 0.254) (xy 3.683 0.254) (xy 3.302 -0.381)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 2.54 7.62 270)
+					(length 2.54)
+					(name "D2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -7.62 90)
+					(length 2.54)
+					(name "S2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "G2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	(symbol "DropOut_Resistor:CRCW120649R9FKEAHP"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.54 2.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "49.9R"
+				(at 2.54 0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Resistor_SMD:R_1206_3216Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.vishay.com/docs/20043/crcwhpe3.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Vishay CRCW-HP e3 pulse proof high power thick film chip resistor, 49.9 Ω ±1%, 0.75 W, 200 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 1206 (3216 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Vishay"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "CRCW120649R9FKEAHP"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "541-49.9UCT-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "71-CRCW120649R9FKEAH"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Tolerance" "±1%"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Power" "0.75W"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "200V"
+				(at 7.62 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "1206"
+				(at 13.97 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Notes" "SELECTED for the Node60 10BASE-T1S bus-end termination legs (2 per board). Highest-rated stocked AEC-Q200 1206 part found (0.75 W at 70 °C, needs Rth <= 110 K/W per Vishay note 3); OPEN Alliance minimum 0.4 W, Microchip AN1718 recommends 1 W."
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "resistor jumper thick film pulse automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R?1206?3216Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "CRCW120649R9FKEAHP_1_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	(symbol "DropOut_Resistor:CRCW12061K50FKEA"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.54 2.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "1.5k"
+				(at 2.54 0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Resistor_SMD:R_1206_3216Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Vishay CRCW e3 thick film chip resistor, 1.5 kΩ ±1%, 1/4 W, 200 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 1206 (3216 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Vishay"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "CRCW12061K50FKEA"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "541-1.50KFCT-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "71-CRCW1206-1.5K-E3"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Tolerance" "±1%"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Power" "1/4W"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "200V"
+				(at 7.62 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "1206"
+				(at 13.97 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Notes" "SELECTED for the Node60 10BASE-T1S mid-bus termination legs (2 per board)."
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "resistor jumper thick film automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R?1206?3216Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "CRCW12061K50FKEA_1_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	(symbol "DropOut_Resistor:AC0805FR-07100KL"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.54 2.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "100k"
+				(at 2.54 0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Resistor_SMD:R_0805_2012Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Yageo AC thick film chip resistor, 100 kΩ ±1%, 1/8 W, 150 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 0805 (2012 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Yageo"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "AC0805FR-07100KL"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "YAG3688CT-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "603-AC0805FR-07100KL"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Tolerance" "±1%"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Power" "1/8W"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "150V"
+				(at 7.62 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "0805"
+				(at 13.97 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Notes" "SELECTED for the Node60 10BASE-T1S termination centre tap (100 nF || 100 kΩ to GND). 1 % costs the same as 5 % (AC0805JR-07100KL $0.10 @1)."
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "resistor thick film automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R?0805?2012Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "AC0805FR-07100KL_1_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	(symbol "DropOut_Capacitor:CGA4J2X7R2A104K125AA"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "C"
+				(at 2.54 2.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "100nF"
+				(at 2.54 0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Capacitor_SMD:C_0805_2012Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/mlcc/catalog/mlcc_automotive_midvoltage_en.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "TDK CGA automotive mid voltage MLCC, 100 nF ±10%, 100 V, X7R, AEC-Q200, -55 to +125 °C, 0805 (2012 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "TDK"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "CGA4J2X7R2A104K125AA"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "445-5827-1-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "810-CGA4J2X7R2A104K"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "100V"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Tolerance" "±10%"
+				(at 13.97 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Dielectric" "X7R"
+				(at 8.89 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "0805"
+				(at 20.32 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Notes" "SELECTED for the Node60 10BASE-T1S termination centre tap (100 nF || 100 kΩ to GND). No AEC-Q200 100 nF C0G part exists in 0805 (DigiKey parametric search 2026-10-22; TDK's mid-voltage catalog has 100 nF C0G at 100 V only in 1206 and larger), so X7R."
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "capacitor ceramic MLCC automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "C?0805?2012Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "CGA4J2X7R2A104K125AA_1_1"
+				(polyline
+					(pts
+						(xy -2.032 0.762) (xy 2.032 0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 2.54)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+	(symbol "DropOut_Resistor:ERJ-2RKF1003X"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.54 2.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "100k"
+				(at 2.54 0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Panasonic ERJ-2RK/3EK precision thick film chip resistor, 100 kΩ ±1%, 0.1 W, 50 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Panasonic"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "ERJ-2RKF1003X"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "P100KLCT-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "667-ERJ-2RKF1003X"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Tolerance" "±1%"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Power" "0.1W"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "50V"
+				(at 7.62 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "0402"
+				(at 12.7 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ki_keywords" "resistor thick film precision automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R?0402?1005Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "ERJ-2RKF1003X_1_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -8162,7 +10449,7 @@
 		)
 		(uuid "89d712d9-f98c-5e5b-ba43-75aa97f550fe")
 	)
-	(text "T1S line interface: DC block, CMC, ESD, DNP termination (C5xx, FL501, D501-D502)"
+	(text "T1S line interface: DC block, CMC, ESD (C5xx, FL501, D501-D502)"
 		(exclude_from_sim no)
 		(at 269.24 133.35 0)
 		(effects
@@ -8803,181 +11090,6 @@
 			(type default)
 		)
 		(uuid "aee0483c-990a-55ca-a7c8-e417356b3bf2")
-	)
-	(wire
-		(pts
-			(xy 312.42 147.32)
-			(xy 312.42 149.86)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "1addbec6-0c2c-5600-8a82-654989d130de")
-	)
-	(symbol
-		(lib_id "DropOut_Resistor:AC0603FR-07100RL")
-		(at 312.42 153.67 0)
-		(unit 1)
-		(body_style 1)
-		(exclude_from_sim no)
-		(in_bom yes)
-		(on_board yes)
-		(in_pos_files yes)
-		(dnp yes)
-		(fields_autoplaced no)
-		(uuid "c5ad7190-5ec5-51be-b1d9-78591ff4ffcd")
-		(property "Reference" "R"
-			(at 314.96 152.4 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Value" "100R"
-			(at 314.96 154.94 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify left)
-			)
-		)
-		(property "Footprint" "DropOut_Resistor_SMD:R_0603_1608Metric"
-			(at 312.42 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
-			(at 312.42 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Description" "Yageo AC thick film chip resistor, 100 Ω ±1%, 1/10 W, 75 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 0603 (1608 metric)"
-			(at 312.42 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Manufacturer" "Yageo"
-			(at 312.42 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "MPN" "AC0603FR-07100RL"
-			(at 312.42 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "DigiKey_PN" "YAG3561CT-ND"
-			(at 312.42 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Mouser_PN" "603-AC0603FR-07100RL"
-			(at 312.42 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
-			(at 312.42 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Tolerance" "±1%"
-			(at 312.42 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Power" "1/10W"
-			(at 312.42 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Voltage" "75V"
-			(at 312.42 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(property "Case" "0603"
-			(at 312.42 153.67 0)
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(hide yes)
-			)
-		)
-		(pin "1"
-			(uuid "6d7f0847-92cb-5337-8604-fcebe1b9205d")
-		)
-		(pin "2"
-			(uuid "b62b2d9c-062e-522d-985c-5b8c3af37e67")
-		)
-		(instances
-			(project "node60"
-				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
-					(reference "R502")
-					(unit 1)
-				)
-			)
-		)
-	)
-	(wire
-		(pts
-			(xy 312.42 157.48)
-			(xy 312.42 175.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "090d0701-dec6-5a32-8d1e-a6bef057bf19")
 	)
 	(wire
 		(pts
@@ -13957,7 +16069,7 @@
 			)
 		)
 	)
-	(text "DESIGN VALUES (LAN8670 DS60001573K; OPEN Alliance 10BASE-T1S; Node60 DEC-007, DEC-012)\nMode straps MODE[1:0] = 10b (RMII, 50 MHz REFCLKIN): RXD3/MODE1 pulled up, RXD2/MODE0 pulled down, 10k each.\nPHYAD[4:0] = 00001b: RXER/PHYAD0 up; CRSDV/PHYAD1, RXD0/PHYAD2, RXD1/PHYAD3, CRS/PHYAD4 down (10k).\n  PHYAD is a hardware strap only; the PLCA node ID is commissioned in flash (separate from PHYAD).\nTXEN 10k pull-down (Microchip: prevents transmission while the MAC is in reset). MDIO 10k pull-up to VDDP.\nIRQ_N open drain, 10k pull-up to 3V3_MAIN -> T1S_IRQ_L to the MCU (PHY ready after cold boot).\nINH: P-channel open drain to VDDAU with 10k pull-down (Microchip ref.), drives the 3V3_MAIN buck EN and the\n  LM74910H SLEEP pin directly (DEC-004). No FS26, latch or MCU gate.\nRESET_N on RESET_L (TPS3702 window supervisor + S32K344 RESET_B): every MCU reset also resets the PHY,\n  so straps are re-latched and firmware always re-initializes from a known state.\nWAKE_IN unused (no local wake, DEC-007) -> VSS per datasheet. TXD2/TXD3 unused in RMII (internal pull-downs).\nTXER/ACMA unused -> VSS. TXCLK/RXPI, COL, RXCLK/WAKE_OUT, GPIO0, XTO unused: no-connect.\nRBIAS 12.4k 1 % (Microchip reference).\nDecoupling: 10nF + 100nF at every VDDP/VDDA/VDDAU pin, 10uF bulk on VDDP and VDDA (Microchip sec. 6).\n  10nF goes closest to its pin. Ferrite beads in the reference are optional and not fitted.\nLine interface (DEC-012), layout order connector -> ESD -> CMC -> DC block -> PHY:\n  C DC block 2 x 100nF C0G 100 V (OPEN Alliance: >= 50 V). FL501 ACT1210E-241 (240 uH, 10BASE-T1S rated).\n  D ESD 2 x VETH100A1DD1 (<= 2 pF/line) right at the connector. Keep the pair symmetric through the CMC.\n  Capacitance budget: CMDI <= 25 pF: transceiver 10 + CMC 10 + ESD 1 (pair) leaves ~4 pF for connector + traces.\n  Termination 100R DNP: fit only at a physical endpoint of the segment (REQ-NET-004).\n50 MHz clock: Y501 ECS-3225SMVQ, enable tied high (runs with 3V3_MAIN). One output, two 33R series resistors,\n  one to PHY XTI/REFCLKIN, one to the MCU RMII REF_CLK. Length-match both traces (Microchip layout note).\nOPEN: TDK has not published a CMC class for ACT1210E-241 (DEC-012 risk). VETH100A1DD1 24 V working voltage\n  vs a 24 V short to battery on the bus: see DEC-012.\n"
+	(text "DESIGN VALUES (LAN8670 DS60001573K; OPEN Alliance 10BASE-T1S; Node60 DEC-007, DEC-012)\nMode straps MODE[1:0] = 10b (RMII, 50 MHz REFCLKIN): RXD3/MODE1 pulled up, RXD2/MODE0 pulled down, 10k each.\nPHYAD[4:0] = 00001b: RXER/PHYAD0 up; CRSDV/PHYAD1, RXD0/PHYAD2, RXD1/PHYAD3, CRS/PHYAD4 down (10k).\n  PHYAD is a hardware strap only; the PLCA node ID is commissioned in flash (separate from PHYAD).\nTXEN 10k pull-down (Microchip: prevents transmission while the MAC is in reset). MDIO 10k pull-up to VDDP.\nIRQ_N open drain, 10k pull-up to 3V3_MAIN -> T1S_IRQ_L to the MCU (PHY ready after cold boot).\nINH: P-channel open drain to VDDAU with 10k pull-down (Microchip ref.), drives the 3V3_MAIN buck EN and the\n  LM74910H SLEEP pin directly (DEC-004). No FS26, latch or MCU gate.\nRESET_N on RESET_L (TPS3702 window supervisor + S32K344 RESET_B): every MCU reset also resets the PHY,\n  so straps are re-latched and firmware always re-initializes from a known state.\nWAKE_IN unused (no local wake, DEC-007) -> VSS per datasheet. TXD2/TXD3 unused in RMII (internal pull-downs).\nTXER/ACMA unused -> VSS. TXCLK/RXPI, COL, RXCLK/WAKE_OUT, GPIO0, XTO unused: no-connect.\nRBIAS 12.4k 1 % (Microchip reference).\nDecoupling: 10nF + 100nF at every VDDP/VDDA/VDDAU pin, 10uF bulk on VDDP and VDDA (Microchip sec. 6).\n  10nF goes closest to its pin. Ferrite beads in the reference are optional and not fitted.\nLine interface (DEC-012), layout order connector -> ESD -> CMC -> DC block -> PHY:\n  C DC block 2 x 100nF C0G 100 V (OPEN Alliance: >= 50 V). FL501 ACT1210E-241 (240 uH, 10BASE-T1S rated).\n  D ESD 2 x VETH100A1DD1 (<= 2 pF/line) right at the connector. Keep the pair symmetric through the CMC.\n  Capacitance budget: CMDI <= 25 pF: transceiver 10 + CMC 10 + ESD 1 (pair) leaves ~4 pF for connector + traces.\n  Termination: OA split network switched by latching relay K501 (DEC-017), box below right.\n50 MHz clock: Y501 ECS-3225SMVQ, enable tied high (runs with 3V3_MAIN). One output, two 33R series resistors,\n  one to PHY XTI/REFCLKIN, one to the MCU RMII REF_CLK. Length-match both traces (Microchip layout note).\nOPEN: TDK has not published a CMC class for ACT1210E-241 (DEC-012 risk). VETH100A1DD1 24 V working voltage\n  vs a 24 V short to battery on the bus: see DEC-012.\n"
 		(exclude_from_sim no)
 		(at 381 40.64 0)
 		(effects
@@ -14071,18 +16183,6 @@
 		(uuid "17d22bd1-de45-589f-a3d9-890099fde33c")
 	)
 	(junction
-		(at 312.42 147.32)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "7f3a8359-4f6a-5a6c-9727-b1e60db493a8")
-	)
-	(junction
-		(at 312.42 175.26)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "4742acef-890c-5231-8b36-cbbcdb24aaa0")
-	)
-	(junction
 		(at 332.74 147.32)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -14093,6 +16193,3238 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "4c2c8951-8c0d-564b-82b4-6e2baf7cd6bd")
+	)
+	(symbol
+		(lib_id "DropOut_Relay:G6KU-2F-Y-T1-TRS_DC3")
+		(at 441.96 187.96 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "21c2ada8-f88e-4d83-a42e-c12986ea960d")
+		(property "Reference" "K"
+			(at 458.47 184.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "G6KU-2F-Y-T1-TRS_DC3"
+			(at 458.47 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Relay_SMD:Relay_DPDT_Omron_G6K-2F-Y"
+			(at 441.96 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.aratas.com/us-en/datasheet_pdf/K106-E1.pdf"
+			(at 441.96 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Omron (ARATAS) G6KU-2F-Y-T1 DPDT single-winding latching signal relay, high-temperature model, 3 VDC coil 64 Ω, 46.6 mA, set/reset by coil polarity (pin 1 + = set, pin 8 + = reset), 10 ms min. pulse, 2 A 30 VDC / 0.5 A 125 VAC contacts, -40 to +125 °C, surface mount, tape and reel (-TRS, 900 pcs/reel)"
+			(at 441.96 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "ARATAS (formerly Omron Components)"
+			(at 441.96 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "G6KU-2F-Y-T1-TRS DC3"
+			(at 441.96 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "39-G6KU-2F-Y-T1-TRSDC3TR-ND"
+			(at 441.96 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "653-G6KU-2FYT1TRSDC3"
+			(at 441.96 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "-40 to +125 °C ambient (T1 high-temperature model; relays have no AEC grade)"
+			(at 441.96 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "Single-winding latching: pin 1 + / pin 8 - sets (3-4 and 6-5 closed), pin 8 + / pin 1 - resets (3-2 and 6-7 closed). Ships reset, but apply a reset pulse before use. Rated coil voltage only, 10 ms min. pulse. Built from datasheet Cat. No. K106-E1-16 (03/2026)."
+			(at 441.96 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "relay latching bistable DPDT 2 form C signal surface mount high temperature"
+			(at 441.96 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "Relay*DPDT*Omron*G6K?2F?Y*"
+			(at 441.96 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7894852f-2aef-4817-a5eb-7801f27d4965")
+		)
+		(pin "2"
+			(uuid "69003368-f3a9-46b8-a723-6168b00af47c")
+		)
+		(pin "3"
+			(uuid "8ad65ea4-19ad-4e2b-9852-e4b4a1eeae72")
+		)
+		(pin "4"
+			(uuid "220f0f89-5d6c-400f-a71e-ee81fd54a799")
+		)
+		(pin "5"
+			(uuid "e100547a-37cc-4f02-a79f-f1525bb747b3")
+		)
+		(pin "6"
+			(uuid "205cfec6-63c1-4e94-b71b-91a623422279")
+		)
+		(pin "7"
+			(uuid "c92e1f87-5e04-4bf0-93e9-d4ad0f13a9ef")
+		)
+		(pin "8"
+			(uuid "1c66779c-2ea1-47db-aefb-cc6d0dc310cd")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
+					(reference "K501")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "DropOut_Resistor:CRCW12061K50FKEA")
+		(at 416.56 165.1 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "af320ca7-9b22-4c0d-b98e-00d8a13495ba")
+		(property "Reference" "R"
+			(at 417.83 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1.5k"
+			(at 417.83 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Resistor_SMD:R_1206_3216Metric"
+			(at 416.56 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
+			(at 416.56 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Vishay CRCW e3 thick film chip resistor, 1.5 kΩ ±1%, 1/4 W, 200 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 1206 (3216 metric)"
+			(at 416.56 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Vishay"
+			(at 416.56 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CRCW12061K50FKEA"
+			(at 416.56 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "541-1.50KFCT-ND"
+			(at 416.56 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "71-CRCW1206-1.5K-E3"
+			(at 416.56 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+			(at 416.56 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Tolerance" "±1%"
+			(at 416.56 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Power" "1/4W"
+			(at 416.56 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "200V"
+			(at 416.56 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Case" "1206"
+			(at 416.56 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "SELECTED for the Node60 10BASE-T1S mid-bus termination legs (2 per board)."
+			(at 416.56 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "resistor jumper thick film automotive"
+			(at 416.56 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "R?1206?3216Metric*"
+			(at 416.56 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4db8af8b-91a8-44b6-ae5c-0ac749e61055")
+		)
+		(pin "2"
+			(uuid "ecfd1f7d-c7d5-4539-b61f-aa9a92723c5d")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
+					(reference "R516")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 439.42 180.34)
+			(xy 439.42 176.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1c82e0df-2bf6-4af2-a43c-4dcde3ae820e")
+	)
+	(wire
+		(pts
+			(xy 439.42 176.53)
+			(xy 416.56 176.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1c440ce2-717a-4645-8082-2f82a70e235f")
+	)
+	(wire
+		(pts
+			(xy 416.56 176.53)
+			(xy 416.56 168.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6fc96cc3-e128-46f9-a8c2-99b271def73b")
+	)
+	(wire
+		(pts
+			(xy 416.56 161.29)
+			(xy 416.56 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bfbd34d9-7096-457e-bd8c-16fcf243429f")
+	)
+	(label "T1S_P_DROP"
+		(at 417.83 176.53 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d39eb9e4-781e-43b1-8cc8-c2696db31afe")
+	)
+	(symbol
+		(lib_id "DropOut_Resistor:CRCW120649R9FKEAHP")
+		(at 424.18 165.1 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "4de809e5-2fd2-4f0d-b5fd-5c51dacc6eb7")
+		(property "Reference" "R"
+			(at 425.45 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "49.9R"
+			(at 425.45 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Resistor_SMD:R_1206_3216Metric"
+			(at 424.18 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/20043/crcwhpe3.pdf"
+			(at 424.18 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Vishay CRCW-HP e3 pulse proof high power thick film chip resistor, 49.9 Ω ±1%, 0.75 W, 200 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 1206 (3216 metric)"
+			(at 424.18 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Vishay"
+			(at 424.18 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CRCW120649R9FKEAHP"
+			(at 424.18 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "541-49.9UCT-ND"
+			(at 424.18 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "71-CRCW120649R9FKEAH"
+			(at 424.18 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+			(at 424.18 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Tolerance" "±1%"
+			(at 424.18 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Power" "0.75W"
+			(at 424.18 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "200V"
+			(at 424.18 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Case" "1206"
+			(at 424.18 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "SELECTED for the Node60 10BASE-T1S bus-end termination legs (2 per board). Highest-rated stocked AEC-Q200 1206 part found (0.75 W at 70 °C, needs Rth <= 110 K/W per Vishay note 3); OPEN Alliance minimum 0.4 W, Microchip AN1718 recommends 1 W."
+			(at 424.18 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "resistor jumper thick film pulse automotive"
+			(at 424.18 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "R?1206?3216Metric*"
+			(at 424.18 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "9b5eb0b1-43c2-47b7-add8-61435baad3b3")
+		)
+		(pin "2"
+			(uuid "03dd5e0f-6344-4f3c-86b6-10fa7d01cbac")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
+					(reference "R517")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 444.5 180.34)
+			(xy 444.5 172.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "04985cbc-47c3-432b-a9e4-91357486ce3c")
+	)
+	(wire
+		(pts
+			(xy 444.5 172.72)
+			(xy 424.18 172.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8931d1fa-7ed4-4fdd-b761-7959b96a6176")
+	)
+	(wire
+		(pts
+			(xy 424.18 172.72)
+			(xy 424.18 168.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "047df5a2-5a4d-4abd-8d47-68df315a2c84")
+	)
+	(wire
+		(pts
+			(xy 424.18 161.29)
+			(xy 424.18 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7f9a868e-5f5c-4bdb-bf38-f4aca32ad5f2")
+	)
+	(label "T1S_P_END"
+		(at 425.45 172.72 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "a8d1b5a1-ff6d-49eb-853d-06829d1fe66e")
+	)
+	(symbol
+		(lib_id "DropOut_Resistor:CRCW12061K50FKEA")
+		(at 467.36 165.1 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "a2172adb-e011-49b0-bf07-72bfbc36a41b")
+		(property "Reference" "R"
+			(at 459.74 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "1.5k"
+			(at 459.74 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Resistor_SMD:R_1206_3216Metric"
+			(at 467.36 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/20035/dcrcwe3.pdf"
+			(at 467.36 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Vishay CRCW e3 thick film chip resistor, 1.5 kΩ ±1%, 1/4 W, 200 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 1206 (3216 metric)"
+			(at 467.36 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Vishay"
+			(at 467.36 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CRCW12061K50FKEA"
+			(at 467.36 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "541-1.50KFCT-ND"
+			(at 467.36 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "71-CRCW1206-1.5K-E3"
+			(at 467.36 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+			(at 467.36 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Tolerance" "±1%"
+			(at 467.36 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Power" "1/4W"
+			(at 467.36 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "200V"
+			(at 467.36 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Case" "1206"
+			(at 467.36 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "SELECTED for the Node60 10BASE-T1S mid-bus termination legs (2 per board)."
+			(at 467.36 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "resistor jumper thick film automotive"
+			(at 467.36 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "R?1206?3216Metric*"
+			(at 467.36 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "d3249756-2e0b-4291-bcde-26094881209e")
+		)
+		(pin "2"
+			(uuid "263d85c7-8d79-4975-a182-fbaca6a48a4f")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
+					(reference "R518")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 449.58 180.34)
+			(xy 449.58 172.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "18735d2b-01a6-49c5-a005-b20b0e84eb3f")
+	)
+	(wire
+		(pts
+			(xy 449.58 172.72)
+			(xy 467.36 172.72)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "00399302-31de-4aeb-abbb-39a86c077eb9")
+	)
+	(wire
+		(pts
+			(xy 467.36 172.72)
+			(xy 467.36 168.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d11f588e-c4ba-4ce8-84ae-81df26dd98ea")
+	)
+	(wire
+		(pts
+			(xy 467.36 161.29)
+			(xy 467.36 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ee367410-191e-452e-9d50-d12946804e10")
+	)
+	(label "T1S_N_DROP"
+		(at 450.85 172.72 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "8927d79d-786e-4572-907e-862cd9a3fb59")
+	)
+	(symbol
+		(lib_id "DropOut_Resistor:CRCW120649R9FKEAHP")
+		(at 474.98 165.1 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "d6c31290-113e-4224-93eb-2c32f1adca92")
+		(property "Reference" "R"
+			(at 476.25 163.83 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "49.9R"
+			(at 476.25 166.37 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Resistor_SMD:R_1206_3216Metric"
+			(at 474.98 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/20043/crcwhpe3.pdf"
+			(at 474.98 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Vishay CRCW-HP e3 pulse proof high power thick film chip resistor, 49.9 Ω ±1%, 0.75 W, 200 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 1206 (3216 metric)"
+			(at 474.98 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Vishay"
+			(at 474.98 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CRCW120649R9FKEAHP"
+			(at 474.98 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "541-49.9UCT-ND"
+			(at 474.98 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "71-CRCW120649R9FKEAH"
+			(at 474.98 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+			(at 474.98 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Tolerance" "±1%"
+			(at 474.98 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Power" "0.75W"
+			(at 474.98 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "200V"
+			(at 474.98 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Case" "1206"
+			(at 474.98 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "SELECTED for the Node60 10BASE-T1S bus-end termination legs (2 per board). Highest-rated stocked AEC-Q200 1206 part found (0.75 W at 70 °C, needs Rth <= 110 K/W per Vishay note 3); OPEN Alliance minimum 0.4 W, Microchip AN1718 recommends 1 W."
+			(at 474.98 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "resistor jumper thick film pulse automotive"
+			(at 474.98 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "R?1206?3216Metric*"
+			(at 474.98 165.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f7d07688-aa3a-4874-9da6-5f56d2bb3f31")
+		)
+		(pin "2"
+			(uuid "bb40ce1e-b99e-499f-a2c3-5c513a98e2a7")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
+					(reference "R519")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 454.66 180.34)
+			(xy 454.66 176.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1c64c5b0-3719-4bc6-95c6-16f2b7a0e6b2")
+	)
+	(wire
+		(pts
+			(xy 454.66 176.53)
+			(xy 474.98 176.53)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "99c82e80-9b32-4ff4-97eb-7bdd2252afe6")
+	)
+	(wire
+		(pts
+			(xy 474.98 176.53)
+			(xy 474.98 168.91)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "73fcf6b8-afd3-4938-a745-82a9f306a1f9")
+	)
+	(wire
+		(pts
+			(xy 474.98 161.29)
+			(xy 474.98 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2b023c00-b93d-48de-94ab-7cefbc53d8f9")
+	)
+	(label "T1S_N_END"
+		(at 455.93 176.53 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "cb120ed3-e58a-47d4-8adf-49a0e1251e70")
+	)
+	(wire
+		(pts
+			(xy 416.56 152.4)
+			(xy 492.76 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "adee15a5-b70d-4191-9a46-bbce18255d06")
+	)
+	(junction
+		(at 424.18 152.4)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a87aaff8-31f3-442d-8c3e-de652613e1f4")
+	)
+	(junction
+		(at 467.36 152.4)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "dedc4780-f758-44e1-af39-c1e087a72975")
+	)
+	(junction
+		(at 474.98 152.4)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d3399e19-5073-4016-8b82-429b07cbdd1b")
+	)
+	(junction
+		(at 482.6 152.4)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7c128237-9df5-40ed-86fc-057b65030fa7")
+	)
+	(label "T1S_TERM_CT"
+		(at 426.72 152.4 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "ea5aaf8a-763f-422f-9755-26b867cd4a49")
+	)
+	(symbol
+		(lib_id "DropOut_Capacitor:CGA4J2X7R2A104K125AA")
+		(at 482.6 156.21 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "60c7139d-67ad-44cb-a71e-80d777b68516")
+		(property "Reference" "C"
+			(at 484.632 155.194 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100nF"
+			(at 484.632 157.226 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Capacitor_SMD:C_0805_2012Metric"
+			(at 482.6 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/mlcc/catalog/mlcc_automotive_midvoltage_en.pdf"
+			(at 482.6 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "TDK CGA automotive mid voltage MLCC, 100 nF ±10%, 100 V, X7R, AEC-Q200, -55 to +125 °C, 0805 (2012 metric)"
+			(at 482.6 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "TDK"
+			(at 482.6 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "CGA4J2X7R2A104K125AA"
+			(at 482.6 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "445-5827-1-ND"
+			(at 482.6 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "810-CGA4J2X7R2A104K"
+			(at 482.6 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
+			(at 482.6 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "100V"
+			(at 482.6 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Tolerance" "±10%"
+			(at 482.6 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Dielectric" "X7R"
+			(at 482.6 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Case" "0805"
+			(at 482.6 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "SELECTED for the Node60 10BASE-T1S termination centre tap (100 nF || 100 kΩ to GND). No AEC-Q200 100 nF C0G part exists in 0805 (DigiKey parametric search 2026-10-22; TDK's mid-voltage catalog has 100 nF C0G at 100 V only in 1206 and larger), so X7R."
+			(at 482.6 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "capacitor ceramic MLCC automotive"
+			(at 482.6 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "C?0805?2012Metric*"
+			(at 482.6 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "4ce9643a-028d-4d86-98d7-620b283aca96")
+		)
+		(pin "2"
+			(uuid "732db200-4c7b-4705-88d9-5baf28b8a691")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
+					(reference "C514")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "DropOut_Resistor:AC0805FR-07100KL")
+		(at 492.76 156.21 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "9db9c88e-d745-4d76-b41e-19c4fd014757")
+		(property "Reference" "R"
+			(at 494.792 155.194 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100k"
+			(at 494.792 157.226 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Resistor_SMD:R_0805_2012Metric"
+			(at 492.76 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+			(at 492.76 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Yageo AC thick film chip resistor, 100 kΩ ±1%, 1/8 W, 150 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 0805 (2012 metric)"
+			(at 492.76 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 492.76 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AC0805FR-07100KL"
+			(at 492.76 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "YAG3688CT-ND"
+			(at 492.76 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "603-AC0805FR-07100KL"
+			(at 492.76 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+			(at 492.76 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Tolerance" "±1%"
+			(at 492.76 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Power" "1/8W"
+			(at 492.76 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "150V"
+			(at 492.76 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Case" "0805"
+			(at 492.76 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "SELECTED for the Node60 10BASE-T1S termination centre tap (100 nF || 100 kΩ to GND). 1 % costs the same as 5 % (AC0805JR-07100KL $0.10 @1)."
+			(at 492.76 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "resistor thick film automotive"
+			(at 492.76 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "R?0805?2012Metric*"
+			(at 492.76 156.21 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "081e5ce3-5e10-4125-bbff-cf79b376cce4")
+		)
+		(pin "2"
+			(uuid "aab4408e-3615-46a2-9b9e-dca54bceef03")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
+					(reference "R520")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 482.6 160.02 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a8e260e6-7f54-4c29-8369-ca78d08ea72f")
+		(property "Reference" "#PWR"
+			(at 482.6 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 482.6 164.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 482.6 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 482.6 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "58e31fbc-100b-45c0-b27b-ecd5cb1b5064")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
+					(reference "#PWR05032")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 492.76 160.02 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "e6ebae57-765d-44ab-9c3e-bfece15ebfe8")
+		(property "Reference" "#PWR"
+			(at 492.76 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 492.76 164.92 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 492.76 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 492.76 160.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e64dd968-b6a4-4cb4-94bc-8599e4a9c450")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
+					(reference "#PWR05033")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 441.96 195.58)
+			(xy 441.96 200.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d1b86581-513a-4a8f-8441-de476f5c6b86")
+	)
+	(wire
+		(pts
+			(xy 441.96 200.66)
+			(xy 480.06 200.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c388a1d6-bbe4-4244-942b-5a8a47d8d572")
+	)
+	(label "T1S_P"
+		(at 480.06 200.66 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e2bf7858-facd-4c78-91e3-cf2eaf490559")
+	)
+	(wire
+		(pts
+			(xy 452.12 195.58)
+			(xy 480.06 195.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2190eaa5-5478-49dc-ae8e-428e9a50b3bf")
+	)
+	(label "T1S_N"
+		(at 480.06 195.58 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d1e57fba-9b19-48e2-b503-ded1f3e1e7d4")
+	)
+	(symbol
+		(lib_id "DropOut_PowerSwitch:DMC2710UVQ-7")
+		(at 403.86 170.18 0)
+		(mirror x)
+		(unit 2)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "38cdc4cb-c1c8-4927-b44c-6f50bdcf1af4")
+		(property "Reference" "Q"
+			(at 408.94 168.91 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "DMC2710UVQ-7"
+			(at 408.94 171.45 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Package_TO_SOT_SMD:Diodes_SOT-563"
+			(at 403.86 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.diodes.com/assets/Datasheets/DMC2710UVQ.pdf"
+			(at 403.86 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Diodes DMC2710UVQ complementary N + P MOSFET pair, 20 V / -20 V, N 0.4 Ω max at VGS 4.5 V (1.1 A), P 0.7 Ω max at VGS -4.5 V (-0.8 A), ±6 V VGS, ESD-protected gates, AEC-Q101, SOT-563"
+			(at 403.86 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Diodes Incorporated"
+			(at 403.86 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "DMC2710UVQ-7"
+			(at 403.86 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "31-DMC2710UVQ-7CT-ND"
+			(at 403.86 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "621-DMC2710UVQ-7"
+			(at 403.86 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q101, Tj -55 to +150 °C"
+			(at 403.86 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "Unit A = N-channel (G1 2, D1 6, S1 1), unit B = P-channel (G2 5, D2 3, S2 4). VGS max ±6 V. Data sheet marked Advanced Information."
+			(at 403.86 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "MOSFET complementary N-channel P-channel pair dual transistor half bridge"
+			(at 403.86 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "Diodes*SOT?563*"
+			(at 403.86 170.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "724ca28f-6371-42d1-8133-881c6af5663d")
+		)
+		(pin "4"
+			(uuid "cd588c9a-39d6-4430-90bc-9aa00ac72b2c")
+		)
+		(pin "5"
+			(uuid "af8b54f4-77b1-4f7c-a90b-29e3e79bbdfb")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
+					(reference "Q502")
+					(unit 2)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "DropOut_PowerSwitch:DMC2710UVQ-7")
+		(at 403.86 187.96 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "6f0200a4-a0b3-42ea-b48d-daad8d9a6286")
+		(property "Reference" "Q"
+			(at 408.94 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "DMC2710UVQ-7"
+			(at 408.94 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Package_TO_SOT_SMD:Diodes_SOT-563"
+			(at 403.86 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.diodes.com/assets/Datasheets/DMC2710UVQ.pdf"
+			(at 403.86 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Diodes DMC2710UVQ complementary N + P MOSFET pair, 20 V / -20 V, N 0.4 Ω max at VGS 4.5 V (1.1 A), P 0.7 Ω max at VGS -4.5 V (-0.8 A), ±6 V VGS, ESD-protected gates, AEC-Q101, SOT-563"
+			(at 403.86 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Diodes Incorporated"
+			(at 403.86 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "DMC2710UVQ-7"
+			(at 403.86 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "31-DMC2710UVQ-7CT-ND"
+			(at 403.86 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "621-DMC2710UVQ-7"
+			(at 403.86 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q101, Tj -55 to +150 °C"
+			(at 403.86 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "Unit A = N-channel (G1 2, D1 6, S1 1), unit B = P-channel (G2 5, D2 3, S2 4). VGS max ±6 V. Data sheet marked Advanced Information."
+			(at 403.86 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "MOSFET complementary N-channel P-channel pair dual transistor half bridge"
+			(at 403.86 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "Diodes*SOT?563*"
+			(at 403.86 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "b921f83b-232c-4335-a29c-021b9afbb3aa")
+		)
+		(pin "2"
+			(uuid "7a10b094-88ab-41ee-9cf4-c1d22812772b")
+		)
+		(pin "6"
+			(uuid "e5f71ef5-b53e-4a67-be3c-2c0a3c26c246")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
+					(reference "Q502")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 406.4 162.56 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a9d480fd-289c-4a65-a7b1-09416c87eb2a")
+		(property "Reference" "#PWR"
+			(at 406.4 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "3V3_MAIN"
+			(at 406.4 158.16 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 406.4 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 406.4 162.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "261f4da3-efa4-4dd2-91ae-626b69c84b08")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
+					(reference "#PWR05034")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 406.4 195.58 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "b2f0a405-e01c-4bd8-82a4-d73ac931dd80")
+		(property "Reference" "#PWR"
+			(at 406.4 195.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 406.4 200.48 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 406.4 195.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 406.4 195.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "752bfd03-137e-4583-b207-79fa195f9ed6")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
+					(reference "#PWR05035")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 406.4 177.8)
+			(xy 406.4 180.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9d92da51-b5d6-4936-8379-d03e78a44483")
+	)
+	(junction
+		(at 406.4 180.34)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3a4c5d3d-6336-44d0-8c47-29e96a3f281f")
+	)
+	(wire
+		(pts
+			(xy 406.4 180.34)
+			(xy 431.8 180.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "abd458f0-7fb3-40fb-82d3-10ef9f379ec7")
+	)
+	(label "T1S_TERM_COIL_S"
+		(at 411.48 180.34 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "62057425-d620-4f74-b87c-d09fdc1f9305")
+	)
+	(wire
+		(pts
+			(xy 398.78 170.18)
+			(xy 393.7 170.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "007cba8d-05da-49fe-ba56-a869613bdef7")
+	)
+	(wire
+		(pts
+			(xy 393.7 170.18)
+			(xy 393.7 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b92442f7-c01c-452b-be93-610c3b8d498d")
+	)
+	(wire
+		(pts
+			(xy 398.78 187.96)
+			(xy 393.7 187.96)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b725d706-7e08-4b7a-b3fd-af82601757b3")
+	)
+	(wire
+		(pts
+			(xy 386.08 179.07)
+			(xy 393.7 179.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6e2efeb9-a29d-4d21-a06d-7cc3bbf15546")
+	)
+	(junction
+		(at 393.7 179.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "392c854c-2f72-42f2-bbb8-57328fe9d92a")
+	)
+	(hierarchical_label "T1S_TERM_DROP"
+		(shape input)
+		(at 386.08 179.07 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "bd88d483-2c80-41b6-a8eb-e35d2b894b7a")
+	)
+	(wire
+		(pts
+			(xy 388.62 179.07)
+			(xy 388.62 182.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "37f35892-d0f4-49a5-90a8-166a75cd9293")
+	)
+	(junction
+		(at 388.62 179.07)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a9960af6-707b-4486-8f30-83214243a19a")
+	)
+	(symbol
+		(lib_id "DropOut_Resistor:ERJ-2RKF1003X")
+		(at 388.62 186.69 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "d4ca202f-7cb3-4835-8485-1f4319e5ebc4")
+		(property "Reference" "R"
+			(at 381 185.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100k"
+			(at 381 187.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
+			(at 388.62 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf"
+			(at 388.62 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Panasonic ERJ-2RK/3EK precision thick film chip resistor, 100 kΩ ±1%, 0.1 W, 50 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+			(at 388.62 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Panasonic"
+			(at 388.62 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "ERJ-2RKF1003X"
+			(at 388.62 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "P100KLCT-ND"
+			(at 388.62 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "667-ERJ-2RKF1003X"
+			(at 388.62 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+			(at 388.62 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Tolerance" "±1%"
+			(at 388.62 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Power" "0.1W"
+			(at 388.62 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "50V"
+			(at 388.62 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Case" "0402"
+			(at 388.62 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "resistor thick film precision automotive"
+			(at 388.62 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "R?0402?1005Metric*"
+			(at 388.62 186.69 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "caa4b53b-1d9d-438a-ac53-9e85119197c0")
+		)
+		(pin "2"
+			(uuid "f161b4f5-791f-4083-9cb6-be0ab6a246ef")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
+					(reference "R521")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 388.62 190.5 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "0c4ba387-799d-4b1f-baa2-78161eec6cf0")
+		(property "Reference" "#PWR"
+			(at 388.62 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 388.62 195.4 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 388.62 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 388.62 190.5 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e81ee79c-4abf-4ed5-8e3d-2c5c84d39626")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
+					(reference "#PWR05036")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "DropOut_PowerSwitch:DMC2710UVQ-7")
+		(at 403.86 218.44 0)
+		(mirror x)
+		(unit 2)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "ac188141-c3c9-4a03-ab05-8ffd5c3ffcb8")
+		(property "Reference" "Q"
+			(at 408.94 217.17 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "DMC2710UVQ-7"
+			(at 408.94 219.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Package_TO_SOT_SMD:Diodes_SOT-563"
+			(at 403.86 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.diodes.com/assets/Datasheets/DMC2710UVQ.pdf"
+			(at 403.86 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Diodes DMC2710UVQ complementary N + P MOSFET pair, 20 V / -20 V, N 0.4 Ω max at VGS 4.5 V (1.1 A), P 0.7 Ω max at VGS -4.5 V (-0.8 A), ±6 V VGS, ESD-protected gates, AEC-Q101, SOT-563"
+			(at 403.86 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Diodes Incorporated"
+			(at 403.86 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "DMC2710UVQ-7"
+			(at 403.86 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "31-DMC2710UVQ-7CT-ND"
+			(at 403.86 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "621-DMC2710UVQ-7"
+			(at 403.86 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q101, Tj -55 to +150 °C"
+			(at 403.86 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "Unit A = N-channel (G1 2, D1 6, S1 1), unit B = P-channel (G2 5, D2 3, S2 4). VGS max ±6 V. Data sheet marked Advanced Information."
+			(at 403.86 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "MOSFET complementary N-channel P-channel pair dual transistor half bridge"
+			(at 403.86 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "Diodes*SOT?563*"
+			(at 403.86 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "dcbd09c5-f3f5-450b-8ee1-f1ee80d97749")
+		)
+		(pin "4"
+			(uuid "bf8e0a78-5050-4f21-ab41-b1f71a2089ee")
+		)
+		(pin "5"
+			(uuid "34859702-1efe-4266-9684-5b5ab22c5bea")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
+					(reference "Q501")
+					(unit 2)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "DropOut_PowerSwitch:DMC2710UVQ-7")
+		(at 403.86 236.22 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "5f4521f9-2f2e-4607-9982-eeb2e97b9553")
+		(property "Reference" "Q"
+			(at 408.94 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "DMC2710UVQ-7"
+			(at 408.94 237.49 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Package_TO_SOT_SMD:Diodes_SOT-563"
+			(at 403.86 236.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.diodes.com/assets/Datasheets/DMC2710UVQ.pdf"
+			(at 403.86 236.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Diodes DMC2710UVQ complementary N + P MOSFET pair, 20 V / -20 V, N 0.4 Ω max at VGS 4.5 V (1.1 A), P 0.7 Ω max at VGS -4.5 V (-0.8 A), ±6 V VGS, ESD-protected gates, AEC-Q101, SOT-563"
+			(at 403.86 236.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Diodes Incorporated"
+			(at 403.86 236.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "DMC2710UVQ-7"
+			(at 403.86 236.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "31-DMC2710UVQ-7CT-ND"
+			(at 403.86 236.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "621-DMC2710UVQ-7"
+			(at 403.86 236.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q101, Tj -55 to +150 °C"
+			(at 403.86 236.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "Unit A = N-channel (G1 2, D1 6, S1 1), unit B = P-channel (G2 5, D2 3, S2 4). VGS max ±6 V. Data sheet marked Advanced Information."
+			(at 403.86 236.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "MOSFET complementary N-channel P-channel pair dual transistor half bridge"
+			(at 403.86 236.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "Diodes*SOT?563*"
+			(at 403.86 236.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "77036b4f-e36d-48ce-a8d8-6d85887252f6")
+		)
+		(pin "2"
+			(uuid "74dd1f04-0a57-4eb8-81c3-ee9d187ebac5")
+		)
+		(pin "6"
+			(uuid "09aff5de-94b5-413d-9a93-a2a97f9f0628")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
+					(reference "Q501")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 406.4 210.82 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "a4e4c751-4e21-4a7b-a917-f42939f8ceae")
+		(property "Reference" "#PWR"
+			(at 406.4 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "3V3_MAIN"
+			(at 406.4 206.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 406.4 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 406.4 210.82 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "fc92f3ef-6f59-4bf2-aa85-d6b665ba81c7")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
+					(reference "#PWR05037")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 406.4 243.84 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "7979d7ed-ecff-4f5e-8941-013758483846")
+		(property "Reference" "#PWR"
+			(at 406.4 243.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 406.4 248.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 406.4 243.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 406.4 243.84 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f5f78f41-b42c-4e5d-b8b8-6452c9b84db1")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
+					(reference "#PWR05038")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 406.4 226.06)
+			(xy 406.4 228.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f3ccc881-b2df-4d56-be1b-bd6621688ef0")
+	)
+	(junction
+		(at 406.4 228.6)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "245b9a5e-ce72-4808-8a46-717265d40f23")
+	)
+	(wire
+		(pts
+			(xy 406.4 228.6)
+			(xy 431.8 228.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "55941be0-3f22-4c45-af8f-0ff6762f82db")
+	)
+	(wire
+		(pts
+			(xy 431.8 228.6)
+			(xy 431.8 195.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bfbd6d22-fae3-491a-bfe0-8f274c475e7e")
+	)
+	(label "T1S_TERM_COIL_R"
+		(at 411.48 228.6 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "69597e4c-b269-4dc2-94f0-25c97e9a7326")
+	)
+	(wire
+		(pts
+			(xy 398.78 218.44)
+			(xy 393.7 218.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "498a218f-087e-4be8-94e0-38ac14d37c1e")
+	)
+	(wire
+		(pts
+			(xy 393.7 218.44)
+			(xy 393.7 236.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "eb3b86e8-cb23-4310-a964-4e13fdd4b64d")
+	)
+	(wire
+		(pts
+			(xy 398.78 236.22)
+			(xy 393.7 236.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "64a0a0e1-09f8-44cd-88d0-2b812c37af78")
+	)
+	(wire
+		(pts
+			(xy 386.08 227.33)
+			(xy 393.7 227.33)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "06b65279-0655-4159-ba57-6c8d73546cf2")
+	)
+	(junction
+		(at 393.7 227.33)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d24ffde8-8d57-435d-b1d4-390f44a4d1f9")
+	)
+	(hierarchical_label "T1S_TERM_END"
+		(shape input)
+		(at 386.08 227.33 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "0e5c61d7-aa58-47a2-9630-3b68fbb37d6c")
+	)
+	(wire
+		(pts
+			(xy 388.62 227.33)
+			(xy 388.62 231.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f4ea18a6-f01b-40ab-9d35-dc91ccd1a920")
+	)
+	(junction
+		(at 388.62 227.33)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f9b12466-0cfb-4139-9a32-e7865415cc8f")
+	)
+	(symbol
+		(lib_id "DropOut_Resistor:ERJ-2RKF1003X")
+		(at 388.62 234.95 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "50cec679-0991-4566-87c7-610771223248")
+		(property "Reference" "R"
+			(at 381 233.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "100k"
+			(at 381 236.22 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
+			(at 388.62 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://industrial.panasonic.com/cdbs/www-data/pdf/RDA0000/AOA0000C304.pdf"
+			(at 388.62 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Panasonic ERJ-2RK/3EK precision thick film chip resistor, 100 kΩ ±1%, 0.1 W, 50 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+			(at 388.62 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Panasonic"
+			(at 388.62 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "ERJ-2RKF1003X"
+			(at 388.62 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "P100KLCT-ND"
+			(at 388.62 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "667-ERJ-2RKF1003X"
+			(at 388.62 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+			(at 388.62 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Tolerance" "±1%"
+			(at 388.62 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Power" "0.1W"
+			(at 388.62 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "50V"
+			(at 388.62 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Case" "0402"
+			(at 388.62 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_keywords" "resistor thick film precision automotive"
+			(at 388.62 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "ki_fp_filters" "R?0402?1005Metric*"
+			(at 388.62 234.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "8596ad2a-29ba-4c58-a23a-c31c3e9352ba")
+		)
+		(pin "2"
+			(uuid "f108827c-8649-4324-94f8-e02d7fd00c43")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
+					(reference "R522")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 388.62 238.76 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "e617be60-e1de-4ed8-84b7-925c0bcc4b4a")
+		(property "Reference" "#PWR"
+			(at 388.62 238.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 388.62 243.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 388.62 238.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 388.62 238.76 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "08d3564a-345d-4c8e-b79f-9826277d8d57")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
+					(reference "#PWR05039")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(text "Switched bus termination and relay driver (K501, Q501-Q502, R516-R522, C514)"
+		(exclude_from_sim no)
+		(at 365.76 143.51 0)
+		(effects
+			(font
+				(size 1.778 1.778)
+				(thickness 0.3)
+				bold
+			)
+			(justify left bottom)
+		)
+		(uuid "de65f745-fc8a-484a-ac6c-ff02bdfe570c")
+	)
+	(text "DEC-017 (OPEN Alliance 10BASE-T1S impl. spec 6.4.1; Microchip AN1718 rev D). Relay holds its state with no power.\nSET (pin 1 +, pin 8 -) = END NODE: COM-SET closed, 49.9R 1 % legs (R517, R519) -> 100R across the pair.\nRESET (factory state) = DROP NODE: COM-RST closed, 1.5k legs (R516, R518) = common-mode termination.\nCentre tap: C514 100nF 100V || R520 100k to GND. Contact resistance 100 mOhm max (0.2 % of a leg).\nDrive: T1S_TERM_END high >= 10 ms -> Q501 pulls pin 8 low -> SET. T1S_TERM_DROP high -> Q502 pulls pin 1 low -> RESET.\n  Never both high. Idle: both low (R521/R522), both coil ends at 3V3_MAIN, no current. Coil 64R, 46.6 mA.\nFirmware: state stored in flash, restored with one 10 ms pulse at every cold boot (DEC-017).\nLAYOUT: K501 and legs in line on the pair next to the ESD, short symmetric stubs; no ground pour around them."
+		(exclude_from_sim no)
+		(at 441.96 210.82 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "2beb8721-4ce4-4a15-82de-ef744c5a4ddf")
+	)
+	(rectangle
+		(start 365.76 144.78)
+		(end 584.2 254)
+		(stroke
+			(width 0.254)
+			(type dash)
+			(color 132 132 132 1)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "202a0732-dd8e-4bcc-96ff-acf8fa0bc8d6")
 	)
 	(embedded_fonts no)
 )

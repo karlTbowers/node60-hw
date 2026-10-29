@@ -24,6 +24,10 @@ The library symbol was generated from the IOMUX table, so the IBIS and BSDL file
 - **RMII:** TXD0/TXD1 sit on the opposite balls from NXP's TJA1100 example (PTD7/PTC2); each ball offers both data lines, so this is valid. CRS_DV, RX_ER, MDC and MDIO use NXP's other listed balls.
 - **Unused:** 177 balls are unconnected, including JTAG_TDI (F8): debug is SWD only. Unused GPIOs stay disabled, as the Hardware Design Guidelines Rev. E2 (Table 33) require.
 
+### Addendum, 2026-10-28 (DEC-017)
+
+Two unused balls became outputs for the termination relay driver: PTD0 (F3) → `T1S_TERM_END` and PTD1 (E3) → `T1S_TERM_DROP`. Both are plain GPIOs in NXP's IOMUX table (GPIO[96], GPIO[97]) and match the IBIS and BSDL port names. The ball map is unchanged.
+
 ### Used signals
 
 | Ball | Pin | Net | Planned function |

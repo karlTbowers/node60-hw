@@ -442,6 +442,160 @@
     - { date: 2026-10-28, source: Mouser 654-SLPRATPSB, stock: 1126 }
   decisions: [DEC-016]
 
+- id: G6KU-2F-Y-T1-TRS_DC3
+  mpn: "G6KU-2F-Y-T1-TRS DC3"
+  manufacturer: Omron (ARATAS)
+  qty: 1
+  label: "K501 G6KU-2F-Y-T1-TRS DC3"
+  function: "T1S termination relay: single-winding latching DPDT, -40 to +125 °C, 3 V coil (64 Ω, 46.6 mA), 100 mΩ contacts, tape and reel"
+  subsystem: network
+  status: selected
+  decision_note: "Selected 2026-10-28 (user). SET = end node (49.9 Ω legs), RESET = drop node (1.5 kΩ). No distributor stock at selection"
+  second_source: G6KU-2F-Y-T1_DC3
+  observations:
+    - { date: 2026-10-28, source: DigiKey 39-G6KU-2F-Y-T1-TRSDC3TR-ND, prices: [{ qty: "900", usd: 3.54 }], stock: 0, note: "reel only, MOQ 900" }
+    - { date: 2026-10-28, source: Mouser 653-G6KU-2FYT1TRSDC3, note: "no stock" }
+  decisions: [DEC-017]
+  library: DropOut_Relay:G6KU-2F-Y-T1-TRS_DC3
+
+- id: G6KU-2F-Y-T1_DC3
+  mpn: "G6KU-2F-Y-T1 DC3"
+  manufacturer: Omron (ARATAS)
+  qty: 0
+  label: "G6KU-2F-Y-T1 DC3 (tube)"
+  function: "Same relay as K501 in tube packaging"
+  subsystem: network
+  status: alternative
+  decision_note: "Tube version of the selected relay"
+  observations:
+    - { date: 2026-10-28, source: DigiKey 39-G6KU-2F-Y-T1DC3-ND, prices: [{ qty: "500", usd: 3.64 }], stock: 0 }
+    - { date: 2026-10-28, source: Mouser 653-G6KU-2F-Y-T1DC3, prices: [{ qty: "1", usd: 3.35 }], note: "no stock" }
+  decisions: [DEC-017]
+  library: DropOut_Relay:G6KU-2F-Y-T1_DC3
+
+- id: G6KU-2F-Y-T1-TRS_DC5
+  mpn: "G6KU-2F-Y-T1-TRS DC5"
+  manufacturer: Omron (ARATAS)
+  qty: 0
+  label: "G6KU-2F-Y-T1-TRS DC5"
+  function: "5 V coil version (28 mA, must operate 3.75 V)"
+  subsystem: network
+  status: alternative
+  decision_note: "Not selected: Node60 has no 5 V rail; stocked"
+  observations:
+    - { date: 2026-10-28, source: DigiKey 39-G6KU-2F-Y-T1-TRSDC5CT-ND, prices: [{ qty: "1", usd: 5.33 }], stock: 875 }
+    - { date: 2026-10-28, source: Mouser 653-G6KU-2FYT1TRSDC5, prices: [{ qty: "1", usd: 5.17 }], stock: 696 }
+  decisions: [DEC-017]
+  library: DropOut_Relay:G6KU-2F-Y-T1-TRS_DC5
+
+- id: G6KU-2F-Y-T1-TRS_DC12
+  mpn: "G6KU-2F-Y-T1-TRS DC12"
+  manufacturer: Omron (ARATAS)
+  qty: 0
+  label: "G6KU-2F-Y-T1-TRS DC12"
+  function: "12 V coil version (11.6 mA, must operate 9 V, max 18 V)"
+  subsystem: network
+  status: alternative
+  decision_note: "Not selected: would need its own regulator for cold crank and jump start; stocked"
+  observations:
+    - { date: 2026-10-28, source: DigiKey 39-G6KU-2F-Y-T1-TRSDC12CT-ND, prices: [{ qty: "1", usd: 5.03 }], stock: 880 }
+    - { date: 2026-10-28, source: Mouser 653-G6KU2FYT1TRSDC12, prices: [{ qty: "1", usd: 5.02 }], stock: 720 }
+  decisions: [DEC-017]
+  library: DropOut_Relay:G6KU-2F-Y-T1-TRS_DC12
+
+- id: DMC2710UVQ-7
+  mpn: "DMC2710UVQ-7"
+  manufacturer: Diodes Incorporated
+  qty: 2
+  label: "Q501, Q502 DMC2710UVQ-7"
+  function: "Relay coil half-bridges: N+P complementary MOSFET pair, 20 V, VGS ±6 V, Vth ≤ 1 V, AEC-Q101, SOT-563"
+  subsystem: network
+  status: selected
+  decision_note: "Selected 2026-10-28. Data sheet marked Advance Information"
+  second_source: DMC2400UVQ-7
+  observations:
+    - { date: 2026-10-28, source: DigiKey 31-DMC2710UVQ-7CT-ND, prices: [{ qty: "1", usd: 0.46 }], stock: 3216 }
+    - { date: 2026-10-28, source: Mouser 621-DMC2710UVQ-7, prices: [{ qty: "1", usd: 0.53 }], stock: 2977 }
+  decisions: [DEC-017]
+  library: DropOut_PowerSwitch:DMC2710UVQ-7
+
+- id: DMC2400UVQ-7
+  mpn: "DMC2400UVQ-7"
+  manufacturer: Diodes Incorporated
+  qty: 0
+  label: "DMC2400UVQ-7"
+  function: "Complementary MOSFET pair, 20 V, AEC-Q101, SOT-563, same footprint"
+  subsystem: network
+  status: alternative
+  decision_note: "Alternate on the same footprint; no stock at selection"
+  observations:
+    - { date: 2026-10-28, source: DigiKey 31-DMC2400UVQ-7TR-ND, stock: 0, note: "reel only" }
+    - { date: 2026-10-28, source: Mouser 621-DMC2400UVQ-7, prices: [{ qty: "1", usd: 0.54 }], note: "no stock" }
+  decisions: [DEC-017]
+  library: DropOut_PowerSwitch:DMC2400UVQ-7
+
+- id: CRCW120649R9FKEAHP
+  mpn: "CRCW120649R9FKEAHP"
+  manufacturer: Vishay
+  qty: 2
+  label: "R517, R519 49.9 Ω 1 % 0.75 W 1206"
+  function: "End-node termination legs (OA: 50 Ω ±1 %, ≥ 0.4 W)"
+  subsystem: network
+  status: selected
+  decision_note: "Selected 2026-10-28: highest-rated stocked 1206 AEC-Q200 part"
+  second_source: ERJ-P08F49R9V
+  observations:
+    - { date: 2026-10-28, source: DigiKey 541-49.9UCT-ND, prices: [{ qty: "1", usd: 0.26 }], stock: 15561 }
+    - { date: 2026-10-28, source: Mouser 71-CRCW120649R9FKEAH, prices: [{ qty: "1", usd: 0.26 }], stock: 14559 }
+  decisions: [DEC-017]
+  library: DropOut_Resistor:CRCW120649R9FKEAHP
+
+- id: CRCW12061K50FKEA
+  mpn: "CRCW12061K50FKEA"
+  manufacturer: Vishay
+  qty: 2
+  label: "R516, R518 1.5 kΩ 1 % 1206"
+  function: "Drop-node common-mode termination legs"
+  subsystem: network
+  status: selected
+  decision_note: "Selected 2026-10-28"
+  observations:
+    - { date: 2026-10-28, source: DigiKey 541-1.50KFCT-ND, prices: [{ qty: "1", usd: 0.11 }], stock: 60645 }
+    - { date: 2026-10-28, source: Mouser 71-CRCW1206-1.5K-E3, prices: [{ qty: "1", usd: 0.11 }], stock: 101800 }
+  decisions: [DEC-017]
+  library: DropOut_Resistor:CRCW12061K50FKEA
+
+- id: AC0805FR-07100KL
+  mpn: "AC0805FR-07100KL"
+  manufacturer: Yageo
+  qty: 1
+  label: "R520 100 kΩ 0805"
+  function: "Termination centre-tap static bleed to GND"
+  subsystem: network
+  status: selected
+  decision_note: "Selected 2026-10-28"
+  observations:
+    - { date: 2026-10-28, source: DigiKey YAG3688CT-ND, prices: [{ qty: "1", usd: 0.10 }], stock: 137072 }
+    - { date: 2026-10-28, source: Mouser 603-AC0805FR-07100KL, prices: [{ qty: "1", usd: 0.10 }], stock: 181878 }
+  decisions: [DEC-017]
+  library: DropOut_Resistor:AC0805FR-07100KL
+
+- id: CGA4J2X7R2A104K125AA
+  mpn: "CGA4J2X7R2A104K125AA"
+  manufacturer: TDK
+  qty: 1
+  label: "C514 100 nF 100 V X7R 0805"
+  function: "Termination centre tap to GND (OA: 4.7–100 nF, ≥ 50 V)"
+  subsystem: network
+  status: selected
+  decision_note: "Selected 2026-10-28; no AEC-Q200 C0G 100 nF in 0805"
+  second_source: GCM21BR72A104KA37L
+  observations:
+    - { date: 2026-10-28, source: DigiKey 445-5827-1-ND, prices: [{ qty: "1", usd: 0.18 }], stock: 89261 }
+    - { date: 2026-10-28, source: Mouser 810-CGA4J2X7R2A104K, prices: [{ qty: "1", usd: 0.18 }], stock: 111206 }
+  decisions: [DEC-017]
+  library: DropOut_Capacitor:CGA4J2X7R2A104K125AA
+
 - id: AT13-2P-BM04
   mpn: AT13-2P-BM04
   manufacturer: Amphenol Sine Systems
@@ -460,15 +614,15 @@
 - id: ATM13-2P-BM04
   mpn: ATM13-2P-BM04
   manufacturer: Amphenol SINE Systems
-  qty: 1
-  function: 10BASE-T1S connector; BoardLock ATM13 2-pin right-angle PCB receptacle, flange seal, tin-plated size 20 pins, potted, 7.5 A, IP67 mated; mates ATM06-2S
+  qty: 2
+  function: 10BASE-T1S connectors J903 (upstream) and J912 (downstream pass-through, DEC-017); BoardLock ATM13 2-pin right-angle PCB receptacle, flange seal, tin-plated size 20 pins, potted, 7.5 A, IP67 mated; mates ATM06-2S
   subsystem: harness
   status: selected
-  decision_note: "Selected (user's decision 2026-10-25), tin-plated and potted; verify pin 1 on a sample"
+  decision_note: "Selected (user's decision 2026-10-25), tin-plated and potted; second connector added 2026-10-28 (DEC-017); verify pin 1 on a sample"
+  decisions: [DEC-014, DEC-017]
   observations:
     - { date: 2026-10-25, source: DigiKey 889-3357-ND, prices: [{ qty: "1", usd: 8.23 }, { qty: "600", usd: 5.2387 }], stock: 14 }
     - { date: 2026-10-25, source: Mouser 654-ATM13-2P-BM04, prices: [{ qty: "1", usd: 8.23 }, { qty: "1050", usd: 5.03 }], stock: 120 }
-  decisions: [DEC-014]
 
 - id: ATM13-2P-BM02
   mpn: ATM13-2P-BM02

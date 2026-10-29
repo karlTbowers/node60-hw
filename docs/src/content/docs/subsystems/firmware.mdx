@@ -16,7 +16,7 @@ Ownership is separated by service so network availability never weakens local pr
 | Power-state manager | RUN, controller-commanded shutdown, cold boot; coordinate outputs, log flush, and PHY sleep | Never command PHY sleep until every output is off and the flash flush has completed |
 | Output manager | Commands, interlocks, retries, aggregate-current budget | Hardware-off on reset; bounded retries; latch critical faults |
 | Telemetry acquisition | Select SNS, sample ADC, average, calibrate, timestamp | Attach mode validity; never mislabel muxed data |
-| T1S service | RMII/MDIO, link, PLCA, filtering, wake reason | Loss of link does not disable local protection |
+| T1S service | RMII/MDIO, link, PLCA, filtering, wake reason; bus termination state (end or drop) stored in flash, set by the controller, restored with one 10 ms relay pulse at every cold boot (<Ref id="DEC-017" />) | Loss of link does not disable local protection; the relay holds its state through sleep and reset |
 | Supervision service | Windowed SWT service, reset-cause capture, CMU and TPS3702 fault reporting | Hard-locked watchdog; no service until startup checks pass; retain last reset cause |
 | Diagnostics & NVM | FCB fault/event log; NVS energy and wake/sleep counters; calibration and identity | Ahead-erase during run; CRC/version every record; bounded pre-sleep page flush |
 
