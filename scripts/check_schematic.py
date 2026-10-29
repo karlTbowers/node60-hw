@@ -15,8 +15,10 @@ Uses `kicad-cli sch export netlist` (KiCad's own view of the hierarchy) and chec
     - each is <PREFIX><page><nn>: page x 100 + nn, nn from 01 to 99
       (R201 = first resistor on page 2; C1101 = first capacitor on page 11);
     - none is left unannotated ("R?").
-  Net names (rule O-2, "every net is named")
-    - no net carries a KiCad auto-generated name (Net-(...)); unconnected-(...) on no-connect pins is fine.
+  Net names (rule O-2: every net is named)
+    - no net keeps a KiCad auto-generated name ("Net-(R201-Pad2)");
+    - an "unconnected-(...)" net is allowed only when every pin on it carries a
+      no-connect flag or is a no-connect pin; any other is a pin left unwired.
 
 Exits 1 with one ::error:: line per problem (readable in GitHub Actions annotations).
 """
@@ -115,18 +117,24 @@ def main():
                 "re-annotate with 'First free after sheet number x 100'"
             )
 
-    # Every net is named (O-2): an auto-generated name means a dropped or missing label
+    # Net names: an auto-generated name means a wire with no label (or a dropped label)
     for net in tree.iter("net"):
         name = net.get("name") or ""
-        if name.startswith("Net-("):
-            nodes = ", ".join(f"{n.get('ref')}.{n.get('pin')}" for n in net.iter("node"))
-            errors.append(f"net {name} ({nodes}) has no name: label it")
+        pins = ", ".join(f"{n.get('ref')}.{n.get('pin')}" for n in net.iter("node"))
+        if re.search(r"(^|/)Net-\(", name):
+            errors.append(f"net {name} ({pins}): unnamed; give it a label (chapter 05, every net is named)")
+        elif re.search(r"(^|/)unconnected-\(", name):
+            if not all("no_connect" in (n.get("pintype") or "") for n in net.iter("node")):
+                errors.append(f"net {name} ({pins}): pin is not wired; wire it or place a no-connect flag")
 
     for e in errors:
         print(f"::error::{e}")
     if errors:
         sys.exit(f"{len(errors)} schematic convention problem(s).")
-    print(f"Schematic conventions OK: {len(pages_seen)} sheet(s), {sum(1 for _ in tree.iter('comp'))} part(s).")
+    print(
+        f"Schematic conventions OK: {len(pages_seen)} sheet(s), "
+        f"{sum(1 for _ in tree.iter('comp'))} part(s), {sum(1 for _ in tree.iter('net'))} net(s)."
+    )
 
 
 if __name__ == "__main__":

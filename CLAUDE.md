@@ -2,7 +2,7 @@
 
 Node60 is DropOut's open-hardware automotive power distribution node: six protected high-side outputs (10 A target each) with current and voltage telemetry, controlled over multidrop 10BASE-T1S.
 
-**Follows DropOut Hardware Handbook v0.4.0** (the `dropout-hardware` Claude Code plugin; working copy at `~/Dev/dropout-hardware-handbook`). Use the `dropout-standards` skill for process and conventions, `find-part` for part selection, and the library repo's `add-part` skill for new library parts. This file holds only what is specific to Node60; the handbook covers everything else.
+**Follows DropOut Hardware Handbook v0.10.0** (updated from v0.4.0 on 2026-10-29) (the `dropout-hardware` Claude Code plugin; working copy at `~/Dev/dropout-hardware-handbook`). Use the `dropout-standards` skill for process and conventions, `find-part` for part selection, and the library repo's `add-part` skill for new library parts. This file holds only what is specific to Node60; the handbook covers everything else.
 
 ## Board facts
 
@@ -13,12 +13,15 @@ Node60 is DropOut's open-hardware automotive power distribution node: six protec
 
 ## Schematic project answers
 
-The schematic rules adopted on 2026-10-22 (handbook chapter 05, from ee-schematic-rules) ask four project questions. The user accepted the defaults for Node60 on 2026-10-22:
+Handbook chapter 05 asks seven project questions. Questions 1–4: the user accepted the defaults on 2026-10-22. Questions 5–7: answered 2026-10-22 (5) and 2026-10-29 (6, 7).
 
 - **0201 passives:** not used; 0402 minimum.
 - **Signal test points:** 1 mm exposed pads. Ground test points are probe loops.
 - **0R debug resistors:** on every regulator output (VDDAU_AON, 3V3_MAIN, 1V5_CORE), with feedback taken on the regulator side.
 - **Debug header:** 2 × 5 1.27 mm Cortex Debug (Samtec FTSH-105, in the library).
+- **Ambient range and grade:** −40…+125 °C, AEC-Q100/Q101/Q200 Grade 1 (architecture requirement REQ-QUAL-001). Parts with no AEC qualification (connectors, relays, terminals, crystals) must still be rated to +125 °C.
+- **Environment:** sealed enclosure (IP67 target; the AT13, ATM13 and SurLok Plus connectors are IP67 mated) in a vehicle, condensation possible inside, automotive vibration and shock (GATE-THM-02). No conformal coating for now. Power-entry sealing is still open (DEC-016).
+- **Capacitor dielectrics:** X7R, X7S, X8R and C0G only; no X5R, Y5V or Z5U. C0G where the value sets a timing, filter or oscillator (handbook chapter 05). On the board today: X7R and C0G.
 
 Net names: Node60 keeps its Rev A rail names (`VBAT_PROT`, `VDDAU_AON`, `3V3_MAIN`, `1V5_CORE`), as rule O-1 allows. Everything else follows the new naming: active-low signals end in `_L`, buses are `<BUS><n>_<PURPOSE>_<SIGNAL>` (`I2C0_TELEMETRY_SDA`), differential pairs end in `_P` / `_N`. The architecture site uses the same net names (2026-10-28); the device pin names map to them in the table on its interfaces page.
 
