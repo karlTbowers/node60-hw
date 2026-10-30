@@ -1,25 +1,32 @@
 #!/usr/bin/env python3
-"""Generate Node60's dimensioned enclosure drawing (DEC-020) as SVG views.
+"""Dimensioned enclosure drawing from a geometry spec (DropOut handbook, enclosure-drawing skill).
 
-Every number comes from enclosure_geometry.py, which reads the board and
-connector positions from place_connectors.py, so the drawing follows the PCB.
-Third-angle views, millimetres. The docs build runs this:
+Board-independent: everything about a board comes from its spec, built by the board's
+own adapter (scripts/enclosure_geometry.py, a function spec() returning a dict) or given
+as a JSON file. The spec format is in the skill's references/spec.md.
 
-    python3 scripts/enclosure_drawing.py docs/src/diagrams/build
+    python3 scripts/enclosure_drawing.py scripts/enclosure_geometry.py docs/src/diagrams/build
+    python3 scripts/enclosure_drawing.py scripts/enclosure_geometry.py --check
 
-and writes enclosure-<view>.svg plus enclosure.json (key dimensions for the
-page's table). The site shows diagrams on a white panel in both themes, so the
-views use fixed dark ink.
+Writes enclosure-top.svg, enclosure-<face>.svg for each wall or bottom face that has
+cutouts, enclosure-details.svg (one panel per cutout type) and enclosure.json (the spec
+plus derived values, for the docs table). Third-angle views in millimetres; ordinate
+dimensions from each view's lower-left corner as seen from outside. --check validates the
+spec (cutouts and their seal areas inside their face, no two overlapping) and writes
+nothing; it exits 1 on a problem.
+
+Python 3 standard library only, so the docs CI can run it without installs.
 """
+import importlib.util
 import json
 import math
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).parent))
-from enclosure_geometry import geometry  # noqa: E402
-
-FONT = 12          # px
+ENGINE_VERSION = "1.0"           # bump when the spec format changes
+FONT = 12                        # px
+SCALE = 2.6                      # px per mm for the face views; details use DETAIL_SCALE
+DETAIL_SCALE = 6.0
 STYLE = """<style>
 .o{fill:none;stroke:#1c2127;stroke-width:1.4}
 .c{fill:none;stroke:#1c2127;stroke-width:1.1}
@@ -32,13 +39,168 @@ STYLE = """<style>
 .a{fill:#4b5563}
 </style>""" % (FONT, FONT)
 
+# Each face as seen from outside: which enclosure axes run right (u) and up (v), and
+# whether u runs against the axis (mirrored). Walls: v is height z; top and bottom: v is
+# depth y from the front face (front at the bottom of the view).
+FACES = {
+    "front":  ("x", "z", False, "FRONT FACE"),
+    "back":   ("x", "z", True, "BACK FACE"),
+    "right":  ("y", "z", False, "RIGHT FACE (front face on the left)"),
+    "left":   ("y", "z", True, "LEFT FACE (front face on the right)"),
+    "top":    ("x", "y", False, "TOP (seen from above, front face at the bottom)"),
+    "bottom": ("x", "y", True, "BOTTOM (seen from below, front face at the bottom)"),
+}
+
 
 def fmt(v):
     return f"{v:.2f}".rstrip("0").rstrip(".")
 
 
+# Spec handling -------------------------------------------------------------------
+def load_spec(src):
+    src = Path(src)
+    if src.suffix == ".json":
+        return json.loads(src.read_text())
+    sys.path.insert(0, str(src.parent))
+    mod_spec = importlib.util.spec_from_file_location(src.stem, src)
+    mod = importlib.util.module_from_spec(mod_spec)
+    mod_spec.loader.exec_module(mod)
+    return mod.spec()
+
+
+def face_size(s, face):
+    o = s["outside"]
+    u, v, _, _ = FACES[face]
+    return o[u], o[v]
+
+
+def to_face(s, face, x=None, y=None, z=None):
+    """Enclosure coordinates -> (u, v) in the face's outside view."""
+    u_ax, v_ax, mirror, _ = FACES[face]
+    vals = {"x": x, "y": y, "z": z}
+    w, _ = face_size(s, face)
+    u = vals[u_ax]
+    return (w - u if mirror else u), vals[v_ax]
+
+
+def placed(s, c):
+    """A cutout's centre (u, v) in its face's view; c gives x/y/z as the face needs."""
+    return to_face(s, c["face"], c.get("x"), c.get("y"), c.get("z"))
+
+
+def outline(t):
+    """Cutout outline relative to its centre (u right, v up), near edge up; plus fillet radii.
+
+    keyed: a slot `width` wide for `full` from the near edge, then `tab` wide to `total`
+    (a key when tab < width, a wider band when tab > width), placed `near` from the
+    centre (the mating axis). rect: width x height, corner. round: a circle (handled apart).
+    """
+    if t["shape"] == "rect":
+        hw, hh, r = t["width"] / 2, t["height"] / 2, t.get("corner", 0.0)
+        return [(-hw, hh), (hw, hh), (hw, -hh), (-hw, -hh)], [r] * 4
+    hw, ht, top = t["width"] / 2, t["tab"] / 2, t["near"]
+    full, total, r, small = top - t["full"], top - t["total"], t["corner"], t.get("small_corner", 0.8)
+    narrow = t["tab"] < t["width"]
+    pts = [(-hw, top), (hw, top), (hw, full), (ht, full), (ht, total), (-ht, total), (-ht, full), (-hw, full)]
+    radii = [r, r, r if narrow else small, small, small if narrow else r, small if narrow else r, small,
+             r if narrow else small]
+    return pts, radii
+
+
+def envelope(t):
+    """Half extents (u, v) of the area a cutout type claims on its face: seal or flange, else outline."""
+    if t["shape"] == "round":
+        h = max(t.get("flange", 0.0), t.get("screw_square", 0.0) + t.get("screw_d", 4.0), t["d"]) / 2
+        return h, h
+    if "seal" in t:
+        return t["seal"][0] / 2, t["seal"][1] / 2
+    pts, _ = outline(t)
+    return max(abs(p[0]) for p in pts), max(abs(p[1]) for p in pts)
+
+
+def flip(t, c):
+    """Outline points for a placed cutout: near edge up unless the placement says down."""
+    pts, radii = outline(t)
+    if c.get("near_edge", "up") == "down":
+        pts = [(u, -v) for u, v in pts][::-1]
+        radii = radii[::-1]
+    return pts, radii
+
+
+def check(s):
+    problems = []
+    types = s["cutout_types"]
+    for c in s["cutouts"]:
+        if c["type"] not in types:
+            problems.append(f'{c["ref"]}: unknown cutout type {c["type"]}')
+        if c["face"] not in FACES:
+            problems.append(f'{c["ref"]}: unknown face {c["face"]}')
+    if problems:
+        return problems
+    boxes = {}
+    for c in s["cutouts"]:
+        (u, v), (eu, ev) = placed(s, c), envelope(types[c["type"]])
+        w, h = face_size(s, c["face"])
+        box = (u - eu, v - ev, u + eu, v + ev)
+        if box[0] < 0 or box[1] < 0 or box[2] > w or box[3] > h:
+            problems.append(f'{c["ref"]}: its {c["type"]} envelope leaves the {c["face"]} face')
+        for other, ob in boxes.get(c["face"], []):
+            if box[0] < ob[2] and ob[0] < box[2] and box[1] < ob[3] and ob[1] < box[3]:
+                problems.append(f'{c["ref"]} and {other}: envelopes overlap on the {c["face"]} face')
+        boxes.setdefault(c["face"], []).append((c["ref"], box))
+    return problems
+
+
+# SVG drawing ----------------------------------------------------------------------
+def spread(ps, gap=13.0):
+    """Push sorted label positions (px) apart to at least gap, keeping their order."""
+    order = sorted(range(len(ps)), key=lambda i: ps[i])
+    out = list(ps)
+    for a, b in zip(order, order[1:]):
+        if out[b] - out[a] < gap:
+            out[b] = out[a] + gap
+    return out
+
+
+def rounded_path(pts, radii):
+    """SVG path for a closed polygon with per-vertex fillets (screen coords)."""
+    n, d = len(pts), []
+    for i in range(n):
+        p0, p1, p2 = pts[i - 1], pts[i], pts[(i + 1) % n]
+        a, b = (p0[0] - p1[0], p0[1] - p1[1]), (p2[0] - p1[0], p2[1] - p1[1])
+        la, lb, r = math.hypot(*a), math.hypot(*b), radii[i]
+        if r <= 0 or la == 0 or lb == 0:
+            d.append(f"{'M' if not d else 'L'}{p1[0]:.2f} {p1[1]:.2f}")
+            continue
+        ua, ub = (a[0] / la, a[1] / la), (b[0] / lb, b[1] / lb)
+        ang = math.acos(max(-1, min(1, ua[0] * ub[0] + ua[1] * ub[1])))
+        t = min(r / math.tan(ang / 2), la / 2, lb / 2)
+        r = t * math.tan(ang / 2)
+        st, en = (p1[0] + ua[0] * t, p1[1] + ua[1] * t), (p1[0] + ub[0] * t, p1[1] + ub[1] * t)
+        sweep = 1 if (ua[0] * ub[1] - ua[1] * ub[0]) < 0 else 0
+        d.append(f"{'M' if not d else 'L'}{st[0]:.2f} {st[1]:.2f}")
+        d.append(f"A{r:.2f} {r:.2f} 0 0 {sweep} {en[0]:.2f} {en[1]:.2f}")
+    return " ".join(d) + " Z"
+
+
+class Svg:
+    def __init__(self, w, h, title):
+        self.w, self.h, self.title, self.items = w, h, title, []
+
+    def add(self, s):
+        self.items.append(s)
+
+    def write(self, path):
+        head = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {self.w:.0f} {self.h:.0f}" '
+                f'width="{self.w:.0f}" height="{self.h:.0f}" style="max-width:{self.w:.0f}px" role="img" '
+                f'aria-label="{self.title}"><title>{self.title}</title>{STYLE}'
+                '<defs><marker id="ar" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" '
+                'orient="auto-start-reverse"><path class="a" d="M0 1.5 L10 5 L0 8.5 Z"/></marker></defs>')
+        Path(path).write_text(head + "\n".join(self.items) + "</svg>\n")
+
+
 class View:
-    """Maps model mm to SVG px: u right, v up (flip) and a fixed scale."""
+    """Model mm (u right, v up) -> SVG px at a fixed scale."""
 
     def __init__(self, svg, scale, ox, oy):
         self.svg, self.s, self.ox, self.oy = svg, scale, ox, oy
@@ -47,7 +209,7 @@ class View:
         return self.ox + self.s * u, self.oy - self.s * v
 
     def rect(self, u0, v0, u1, v1, cls="o", r=0.0):
-        (x0, y0), (x1, y1) = self.p(u0, v1), self.p(u1, v0)
+        (x0, y0), (x1, y1) = self.p(min(u0, u1), max(v0, v1)), self.p(max(u0, u1), min(v0, v1))
         self.svg.add(f'<rect class="{cls}" x="{x0:.2f}" y="{y0:.2f}" width="{x1 - x0:.2f}" '
                      f'height="{y1 - y0:.2f}" rx="{r * self.s:.2f}"/>')
 
@@ -63,282 +225,228 @@ class View:
         self.line(u - size, v, u + size, v, "e")
         self.line(u, v - size, u, v + size, "e")
 
-    def text(self, u, v, s, cls="t", anchor="middle", dx=0, dy=0, rot=0):
+    def text(self, u, v, s, cls="t", anchor="middle"):
         x, y = self.p(u, v)
-        x, y = x + dx, y + dy
-        tr = f' transform="rotate({rot} {x:.2f} {y:.2f})"' if rot else ""
-        self.svg.add(f'<text class="{cls}" x="{x:.2f}" y="{y:.2f}" text-anchor="{anchor}"{tr}>{s}</text>')
+        self.svg.add(f'<text class="{cls}" x="{x:.2f}" y="{y:.2f}" text-anchor="{anchor}">{s}</text>')
+
+    def title(self, text, y=22):
+        self.svg.add(f'<text class="ttl" x="{self.ox:.2f}" y="{y}" text-anchor="start">{text}</text>')
 
     def poly(self, pts, radii, cls="o"):
-        """Closed polygon (model coords) with a fillet radius per vertex."""
         self.svg.add(f'<path class="{cls}" d="{rounded_path([self.p(*q) for q in pts], [r * self.s for r in radii])}"/>')
 
-    # Dimensions -------------------------------------------------------------
-    def dim_h(self, u0, u1, v_feat, v_dim, text=None):
-        """Horizontal dimension between u0 and u1, dimension line at v_dim."""
+    def dim_h(self, u0, u1, v_feat, v_dim):
         for u in (u0, u1):
-            self.line(u, v_feat, u, v_dim + math.copysign(1.5 / self.s * 2, v_dim - v_feat))
+            self.line(u, v_feat, u, v_dim + math.copysign(3 / self.s, v_dim - v_feat))
         (x0, y), (x1, _) = self.p(u0, v_dim), self.p(u1, v_dim)
         self.svg.add(f'<line class="d" x1="{x0:.2f}" y1="{y:.2f}" x2="{x1:.2f}" y2="{y:.2f}" '
                      'marker-start="url(#ar)" marker-end="url(#ar)"/>')
-        self.svg.add(f'<text class="t" x="{(x0 + x1) / 2:.2f}" y="{y - 4:.2f}" text-anchor="middle">'
-                     f'{text or fmt(abs(u1 - u0))}</text>')
+        self.svg.add(f'<text class="t" x="{(x0 + x1) / 2:.2f}" y="{y - 4:.2f}" text-anchor="middle">{fmt(abs(u1 - u0))}</text>')
 
-    def dim_v(self, v0, v1, u_feat, u_dim, text=None):
+    def dim_v(self, v0, v1, u_feat, u_dim):
         for v in (v0, v1):
-            self.line(u_feat, v, u_dim + math.copysign(1.5 / self.s * 2, u_dim - u_feat), v)
+            self.line(u_feat, v, u_dim + math.copysign(3 / self.s, u_dim - u_feat), v)
         (x, y0), (_, y1) = self.p(u_dim, v0), self.p(u_dim, v1)
         self.svg.add(f'<line class="d" x1="{x:.2f}" y1="{y0:.2f}" x2="{x:.2f}" y2="{y1:.2f}" '
                      'marker-start="url(#ar)" marker-end="url(#ar)"/>')
         ym = (y0 + y1) / 2
         self.svg.add(f'<text class="t" x="{x - 4:.2f}" y="{ym:.2f}" text-anchor="middle" '
-                     f'transform="rotate(-90 {x - 4:.2f} {ym:.2f})">{text or fmt(abs(v1 - v0))}</text>')
+                     f'transform="rotate(-90 {x - 4:.2f} {ym:.2f})">{fmt(abs(v1 - v0))}</text>')
 
-    def ordinate_u(self, datum, us, v_feat, v_line):
-        """Ordinate dimensions along u from datum; vertical text at v_line, spread apart when close."""
-        us = [datum] + sorted(us, key=lambda u: abs(u - datum))
+    def ordinate_u(self, us, v_feat, v_line):
+        """Ordinates along u from 0 (the view's left edge); vertical text below v_line."""
+        us = [0.0] + sorted(set(round(u, 3) for u in us if u > 0))
         xs = [self.p(u, v_line)[0] for u in us]
-        tx = spread(xs) if xs[-1] >= xs[0] else [-x for x in spread([-x for x in xs])]
-        down = v_line < v_feat
-        for i, (u, x, t) in enumerate(zip(us, xs, tx)):
+        for i, (u, x, t) in enumerate(zip(us, xs, spread(xs))):
             self.line(u, v_feat, u, v_line)
             _, y = self.p(u, v_line)
-            y2 = y + (6 if down else -6)
-            self.svg.add(f'<line class="d" x1="{x:.2f}" y1="{y:.2f}" x2="{t:.2f}" y2="{y2:.2f}"/>')
-            yy = y2 + (3 if down else -3)
-            self.svg.add(f'<text class="t" x="{t + 4:.2f}" y="{yy:.2f}" text-anchor="{"end" if down else "start"}" '
-                         f'transform="rotate(-90 {t + 4:.2f} {yy:.2f})">{fmt(abs(u - datum)) if i else "0"}</text>')
+            self.svg.add(f'<line class="d" x1="{x:.2f}" y1="{y:.2f}" x2="{t:.2f}" y2="{y + 6:.2f}"/>')
+            self.svg.add(f'<text class="t" x="{t + 4:.2f}" y="{y + 9:.2f}" text-anchor="end" '
+                         f'transform="rotate(-90 {t + 4:.2f} {y + 9:.2f})">{fmt(u) if i else "0"}</text>')
 
-    def ordinate_v(self, datum, vs, u_feat, u_line):
-        """Ordinate dimensions along v from datum; text at u_line, spread apart when close."""
-        vs = [datum] + sorted(vs)
+    def ordinate_v(self, vs, u_feat, u_line):
+        """Ordinates along v from 0 (the view's bottom edge); text left of u_line."""
+        vs = [0.0] + sorted(set(round(v, 3) for v in vs if v > 0))
         ys = [self.p(u_line, v)[1] for v in vs]
         ty = [-y for y in spread([-y for y in ys])]
-        left = u_line < u_feat
         for i, (v, y, t) in enumerate(zip(vs, ys, ty)):
             self.line(u_feat, v, u_line, v)
             x, _ = self.p(u_line, v)
-            x2 = x + (-6 if left else 6)
-            self.svg.add(f'<line class="d" x1="{x:.2f}" y1="{y:.2f}" x2="{x2:.2f}" y2="{t:.2f}"/>')
-            self.svg.add(f'<text class="t" x="{x2 + (-3 if left else 3):.2f}" y="{t + 4:.2f}" '
-                         f'text-anchor="{"end" if left else "start"}">{fmt(v - datum) if i else "0"}</text>')
-
-    def title(self, text, y=22):
-        self.svg.add(f'<text class="ttl" x="{self.ox:.2f}" y="{y}" text-anchor="start">{text}</text>')
+            self.svg.add(f'<line class="d" x1="{x:.2f}" y1="{y:.2f}" x2="{x - 6:.2f}" y2="{t:.2f}"/>')
+            self.svg.add(f'<text class="t" x="{x - 9:.2f}" y="{t + 4:.2f}" text-anchor="end">{fmt(v) if i else "0"}</text>')
 
 
-def spread(ps, gap=12.0):
-    """Push sorted label positions (px) apart to at least gap, keeping their order."""
-    order = sorted(range(len(ps)), key=lambda i: ps[i])
-    out = list(ps)
-    for a, b in zip(order, order[1:]):
-        if out[b] - out[a] < gap:
-            out[b] = out[a] + gap
-    return out
+def draw_cutout(v, t, u0, v0, c=None, holes=True):
+    if t["shape"] == "round":
+        v.circle(u0, v0, t["d"])
+        if t.get("screw_square"):
+            h = t["screw_square"] / 2
+            for su in (-1, 1):
+                for sv in (-1, 1):
+                    v.circle(u0 + su * h, v0 + sv * h, t.get("screw_d", 4.0))
+        if t.get("flange"):
+            f = t["flange"] / 2
+            v.rect(u0 - f, v0 - f, u0 + f, v0 + f, "h")
+        return
+    pts, radii = flip(t, c or {})
+    v.poly([(u0 + a, v0 + b) for a, b in pts], radii)
+    if holes and t.get("holes"):
+        for su in (-1, 1):
+            v.circle(u0 + su * t["holes"] / 2, v0, t["hole_d"])
 
 
-def rounded_path(pts, radii):
-    """SVG path for a closed polygon with per-vertex fillets (screen coords)."""
-    n, segs = len(pts), []
-    for i in range(n):
-        p0, p1, p2 = pts[i - 1], pts[i], pts[(i + 1) % n]
-        r = radii[i]
-        a = (p0[0] - p1[0], p0[1] - p1[1])
-        b = (p2[0] - p1[0], p2[1] - p1[1])
-        la, lb = math.hypot(*a), math.hypot(*b)
-        if r <= 0 or la == 0 or lb == 0:
-            segs.append(("L", p1, None))
+def face_view(s, face, out):
+    w, h = face_size(s, face)
+    cuts = [c for c in s["cutouts"] if c["face"] == face]
+    types = s["cutout_types"]
+    m, left, top = 60, 70, 95
+    svg = Svg(w * SCALE + left + m + 30, h * SCALE + top + m + 40, f'{s["title"]}: {FACES[face][3].lower()}')
+    v = View(svg, SCALE, left, top + h * SCALE)
+    v.rect(0, 0, w, h)
+    wall = s["wall"]
+    b = s["board"]
+    walls = face not in ("top", "bottom")
+    if walls:
+        for lv in s.get("levels", []):
+            v.line(0, lv["z"], w, lv["z"], "h")
+        (bu0, _), (bu1, _) = to_face(s, face, b["x0"], b["y0"], 0), to_face(s, face, b["x1"], b["y1"], 0)
+        v.rect(bu0, b["z0"], bu1, b["z1"], "h")
+    else:
+        v.rect(wall, wall, w - wall, h - wall, "h")
+        (bu0, bv0), (bu1, bv1) = to_face(s, face, b["x0"], b["y0"]), to_face(s, face, b["x1"], b["y1"])
+        v.rect(bu0, bv0, bu1, bv1, "h")
+    for c in cuts:
+        t = types[c["type"]]
+        u0, v0 = placed(s, c)
+        draw_cutout(v, t, u0, v0, c)
+        v.centre(u0, v0, max(envelope(t)) * 0.6)
+        lbl = f'{c["ref"]} {c.get("label", "")}'.strip()
+        if walls:
+            v.text(u0, h + 3, lbl, "l")
+        else:
+            v.text(u0, v0 + envelope(t)[1] + 2.5, lbl, "l")
+    v.ordinate_u([placed(s, c)[0] for c in cuts], 0, -12)
+    vs = [placed(s, c)[1] for c in cuts] + [h]
+    if walls:
+        vs += [b["z0"], b["z1"]] + [lv["z"] for lv in s.get("levels", [])]
+    v.ordinate_v(vs, 0, -10)
+    v.dim_h(0, w, h, h + 16)
+    if not walls:
+        v.dim_v(0, h, w, w + 12)
+    v.title(f'{FACES[face][3]}' + (": cutouts drawn as installed" if walls else ""))
+    svg.write(out / f"enclosure-{face}.svg")
+
+
+def ref_ranges(refs):
+    """J904, J905, J906 -> J904–J906 (runs of consecutive numbers with the same prefix)."""
+    import re
+    parts, out = [], []
+    for r in refs:
+        m = re.fullmatch(r"([A-Za-z_]*)(\d+)", r)
+        parts.append((m.group(1), int(m.group(2)), r) if m else (r, None, r))
+    parts.sort(key=lambda p: (p[0], p[1] if p[1] is not None else -1))
+    i = 0
+    while i < len(parts):
+        j = i
+        while (j + 1 < len(parts) and parts[i][1] is not None and parts[j + 1][0] == parts[i][0]
+               and parts[j + 1][1] == parts[j][1] + 1):
+            j += 1
+        out.append(parts[i][2] if j - i < 2 else f"{parts[i][2]}–{parts[j][2]}")
+        if 0 < j - i < 2:
+            out.extend(p[2] for p in parts[i + 1:j + 1])
+        i = j + 1
+    return ", ".join(out)
+
+
+def details_view(s, out):
+    types = s["cutout_types"]
+    names = [n for n in types if any(c["type"] == n for c in s["cutouts"])]
+    cell = 330
+    cols = min(3, max(1, len(names)))
+    rows = math.ceil(len(names) / cols)
+    svg = Svg(cols * cell, rows * 315, f'{s["title"]}: panel cutout details')
+    for k, name in enumerate(names):
+        t = types[name]
+        users = [c for c in s["cutouts"] if c["type"] == name]
+        refs = ref_ranges([c["ref"] for c in users])
+        cx, cy = (k % cols) * cell + cell / 2, (k // cols) * 315
+        svg.add(f'<text class="ttl" x="{cx:.2f}" y="{cy + 22}" text-anchor="middle">{t.get("name", name)}</text>')
+        svg.add(f'<text class="l" x="{cx:.2f}" y="{cy + 38}" text-anchor="middle">{refs}</text>')
+        if t["shape"] == "round":
+            v = View(svg, DETAIL_SCALE, cx, cy + 175)
+            draw_cutout(v, t, 0, 0)
+            v.centre(0, 0, t["d"] * 0.8)
+            v.text(0, -t["d"] / 2 - 2.5, f'Ø{fmt(t["d"])}', "t")
+            if t.get("screw_square"):
+                h = t["screw_square"] / 2
+                v.dim_h(-h, h, h, h + 8)
+                v.dim_v(-h, h, h, h + 8)
+            note = []
+            if t.get("screw_square"):
+                note.append(f'4× {t.get("screw", "hole")} on {fmt(t["screw_square"])} sq')
+            if t.get("flange"):
+                note.append(f'flange {fmt(t["flange"])} sq (dashed)')
+            v.text(0, -(t.get("flange", t["d"]) / 2) - 5, "; ".join(note), "l")
             continue
-        ua, ub = (a[0] / la, a[1] / la), (b[0] / lb, b[1] / lb)
-        ang = math.acos(max(-1, min(1, ua[0] * ub[0] + ua[1] * ub[1])))
-        t = min(r / math.tan(ang / 2), la / 2, lb / 2)
-        r = t * math.tan(ang / 2)
-        s = (p1[0] + ua[0] * t, p1[1] + ua[1] * t)
-        e = (p1[0] + ub[0] * t, p1[1] + ub[1] * t)
-        sweep = 1 if (ua[0] * ub[1] - ua[1] * ub[0]) < 0 else 0
-        segs.append(("A", s, (e, r, sweep)))
-    d = []
-    for kind, p, arc in segs:
-        d.append(f"{'M' if not d else 'L'}{p[0]:.2f} {p[1]:.2f}")
-        if kind == "A":
-            e, r, sweep = arc
-            d.append(f"A{r:.2f} {r:.2f} 0 0 {sweep} {e[0]:.2f} {e[1]:.2f}")
-    return " ".join(d) + " Z"
-
-
-class Svg:
-    def __init__(self, w, h, title):
-        self.w, self.h, self.title, self.items = w, h, title, []
-
-    def add(self, s):
-        self.items.append(s)
-
-    def write(self, path):
-        head = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {self.w:.0f} {self.h:.0f}" '
-                f'width="{self.w:.0f}" height="{self.h:.0f}" style="max-width:{self.w:.0f}px" role="img" '
-                f'aria-label="{self.title}">'
-                f'<title>{self.title}</title>{STYLE}'
-                '<defs><marker id="ar" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="7" markerHeight="7" '
-                'orient="auto-start-reverse"><path class="a" d="M0 1.5 L10 5 L0 8.5 Z"/></marker></defs>')
-        Path(path).write_text(head + "\n".join(self.items) + "</svg>\n")
-
-
-# Cutout outlines in their own frame: u across, w from the edge nearest the board
-# (installed upside down, so w grows downward in the enclosure).
-def cutout_pts(c):
-    hw, ht = c["width"] / 2, c["tab"] / 2
-    pts = [(-hw, 0), (hw, 0), (hw, c["full"]), (ht, c["full"]), (ht, c["total"]), (-ht, c["total"]),
-           (-ht, c["full"]), (-hw, c["full"])]
-    narrow_tab = c["tab"] < c["width"]
-    r = c["corner"]
-    radii = [r, r, r if narrow_tab else 0.8, 0.8, 0.8 if narrow_tab else r, 0.8 if narrow_tab else r,
-             0.8, r if narrow_tab else 0.8]
-    return pts, radii
-
-
-def draw_cutout(v, c, u0, z_near, holes=True):
-    """Header cutout on a wall view: centre u0, near edge at z_near, far edge below it."""
-    pts, radii = cutout_pts(c)
-    v.poly([(u0 + u, z_near - w) for u, w in pts], radii)
-    if holes:
-        for sx in (-1, 1):
-            v.circle(u0 + sx * c["holes"] / 2, z_near - (c["axis"] - c["near"]), c["hole_d"])
-
-
-# Views -----------------------------------------------------------------------
-def view_top(g, out):
-    s, m = 2.6, 70
-    L, Dp = g["outside"]["x"], g["outside"]["y"]
-    svg = Svg(L * s + 2 * m + 40, Dp * s + 2 * m + 50, "Node60 enclosure, top view (lid)")
-    v = View(svg, s, m + 30, m + 40 + Dp * s)
-    sur = g["parts"]["SURLOK"]
-    v.rect(0, 0, L, Dp)
-    w = g["assumptions"]["wall"]
-    v.rect(w, w, L - w, Dp - w, "h")
-    b = g["board"]
-    v.rect(b["x0"], b["y0"], b["x1"], b["y1"], "h")
-    for t in g["lid"]:
-        v.circle(t["x"], t["y"], sur["cutout_d"])
-        h = sur["screw_square"] / 2
-        for sx in (-1, 1):
-            for sy in (-1, 1):
-                v.circle(t["x"] + sx * h, t["y"] + sy * h, 4.0)
-        v.rect(t["x"] - sur["flange"] / 2, t["y"] - sur["flange"] / 2, t["x"] + sur["flange"] / 2,
-               t["y"] + sur["flange"] / 2, "h")
-        v.centre(t["x"], t["y"], 17)
-        v.text(t["x"], t["y"] + sur["flange"] / 2 + 3, f'{t["ref"]} {t["net"]}', "l")
-    xs = sorted({t["x"] for t in g["lid"]})
-    ys = sorted({t["y"] for t in g["lid"]})
-    v.ordinate_u(0, xs, 0, -14)
-    v.ordinate_v(0, ys, 0, -10)
-    v.dim_h(0, L, Dp, Dp + 12)
-    v.dim_v(0, Dp, L, L + 12)
-    v.title("TOP VIEW: LID, seen from above (front face at the bottom)")
-    svg.write(out / "enclosure-top.svg")
-
-
-def view_front(g, out):
-    s, m = 2.6, 60
-    L, H = g["outside"]["x"], g["outside"]["z"]
-    at = g["parts"]["AT13"]
-    svg = Svg(L * s + 2 * m + 60, H * s + 2 * m + 70, "Node60 enclosure, front view")
-    v = View(svg, s, m + 40, m + 30 + H * s)
-    v.rect(0, 0, L, H)
-    z = g["z"]
-    v.line(0, z["floor_inner"], L, z["floor_inner"], "h")
-    v.line(0, z["lid_inner"], L, z["lid_inner"], "h")
-    b = g["board"]
-    v.rect(b["x0"], b["z_component_side"], b["x1"], b["z_back_face"], "h")
-    for o in g["outputs"]:
-        draw_cutout(v, at, o["x"], b["z_component_side"] - at["near"])
-        v.centre(o["x"], o["z"], 14)
-        v.text(o["x"], H + 3, f'{o["ref"]} {o["label"]}', "l")
-    v.ordinate_u(0, [o["x"] for o in g["outputs"]], 0, -12)
-    v.ordinate_v(0, [g["outputs"][0]["z"], b["z_component_side"], b["z_back_face"], z["lid_inner"], H], 0, -10)
-    v.dim_h(0, L, H, H + 16)
-    v.title("FRONT VIEW: OUTPUTS (cutouts upside down: key toward the floor)")
-    svg.write(out / "enclosure-front.svg")
-
-
-def view_sides(g, out):
-    s, m = 2.6, 60
-    Dp, H = g["outside"]["y"], g["outside"]["z"]
-    atm = g["parts"]["ATM13"]
-    row = H * s + 2 * m + 40                                           # one view per row
-    svg = Svg(Dp * s + 2 * m + 100, 2 * row, "Node60 enclosure, left and right views")
-    b, z = g["board"], g["z"]
-    for k, t in enumerate(sorted(g["t1s"], key=lambda t: t["face"])):   # left, then right
-        v = View(svg, s, m + 40, k * row + m + 30 + H * s)
-        left = t["face"] == "left"
-        u = (lambda y: Dp - y) if left else (lambda y: y)                  # front on the right / left
-        v.rect(0, 0, Dp, H)
-        v.line(0, z["floor_inner"], Dp, z["floor_inner"], "h")
-        v.line(0, z["lid_inner"], Dp, z["lid_inner"], "h")
-        v.rect(min(u(b["y0"]), u(b["y1"])), b["z_component_side"], max(u(b["y0"]), u(b["y1"])), b["z_back_face"], "h")
-        draw_cutout(v, atm, u(t["y"]), b["z_component_side"] - atm["near"])
-        v.centre(u(t["y"]), t["z"], 14)
-        v.text(u(t["y"]), H + 3, f'{t["ref"]} {t["label"]}', "l")
-        v.dim_h(u(t["y"]), u(0), 0, -12)
-        heights = [t["z"], b["z_component_side"], b["z_back_face"], z["lid_inner"], H]
-        v.ordinate_v(0, heights, 0, -10) if left else v.ordinate_v(0, heights, Dp, Dp + 10)
-        v.title("LEFT VIEW (front face on the right)" if left else "RIGHT VIEW (front face on the left)",
-                y=k * row + 22)
-    svg.write(out / "enclosure-sides.svg")
-
-
-def view_details(g, out):
-    s, cell = 6.0, 330
-    svg = Svg(3 * cell, 300, "Node60 enclosure, panel cutout details")
-    for k, (name, c) in enumerate((("AT13-2P-BM04 (J904–J909)", g["parts"]["AT13"]),
-                                   ("ATM13-2P-BM04 (J903, J912)", g["parts"]["ATM13"]))):
-        v = View(svg, s, k * cell + cell / 2, 90)
-        near = 0.0
-        pts, radii = cutout_pts(c)
-        v.poly([(u, near - w) for u, w in pts], radii)
-        za = near - (c["axis"] - c["near"])
-        for sx in (-1, 1):
-            v.circle(sx * c["holes"] / 2, za, c["hole_d"])
-        sw, sh = c["seal"]
-        v.rect(-sw / 2, za - sh / 2, sw / 2, za + sh / 2, "h")
-        v.centre(0, za, 20)
-        v.dim_h(-c["width"] / 2, c["width"] / 2, near, near + 4)
-        v.dim_h(-c["holes"] / 2, c["holes"] / 2, za, za - sh / 2 - 9)
-        v.dim_h(-c["tab"] / 2, c["tab"] / 2, near - c["total"], near - c["total"] - 4)
-        v.dim_v(near, near - c["full"], -sw / 2, -sw / 2 - 4)
-        v.dim_v(near, near - c["total"], sw / 2, sw / 2 + 4)
-        v.dim_v(near, za, sw / 2, sw / 2 + 10)
-        svg.add(f'<text class="ttl" x="{v.ox:.2f}" y="22" text-anchor="middle">{name}</text>')
-        svg.add(f'<text class="l" x="{v.ox:.2f}" y="38" text-anchor="middle">top edge faces the board</text>')
-        v.text(0, za - sh / 2 - 15, f'2× Ø{fmt(c["hole_d"])} on the axis; corners R{fmt(c["corner"])}', "l")
-        v.text(0, za - sh / 2 - 17.3, f'seal area {fmt(sw)} × {fmt(sh)} min. (dashed)', "l")
-    sur = g["parts"]["SURLOK"]
-    v = View(svg, s, 2 * cell + cell / 2, 200)
-    v.circle(0, 0, sur["cutout_d"])
-    h = sur["screw_square"] / 2
-    for sx in (-1, 1):
-        for sy in (-1, 1):
-            v.circle(sx * h, sy * h, 4.0)
-    v.rect(-sur["flange"] / 2, -sur["flange"] / 2, sur["flange"] / 2, sur["flange"] / 2, "h")
-    v.centre(0, 0, 17)
-    v.dim_h(-h, h, h, h + 8)
-    v.dim_v(-h, h, h, h + 8)
-    v.text(0, -sur["cutout_d"] / 2 - 2.5, f'Ø{fmt(sur["cutout_d"])}', "t")
-    svg.add(f'<text class="ttl" x="{v.ox:.2f}" y="22" text-anchor="middle">SurLok Plus 5.7 mm (lid)</text>')
-    v.text(0, -sur["flange"] / 2 - 4, f'4× M4 on {fmt(sur["screw_square"])} sq; flange {fmt(sur["flange"])} sq (dashed)', "l")
+        pts, _ = outline(t)
+        top_v = max(p[1] for p in pts)
+        v = View(svg, DETAIL_SCALE, cx, cy + 105 + top_v * DETAIL_SCALE)
+        draw_cutout(v, t, 0, 0, {"near_edge": "up"})
+        eu, ev = envelope(t)
+        if "seal" in t:
+            v.rect(-eu, -ev, eu, ev, "h")
+        v.centre(0, 0, eu * 0.6)
+        if t["shape"] == "rect":
+            v.dim_h(-t["width"] / 2, t["width"] / 2, t["height"] / 2, t["height"] / 2 + 5)
+            v.dim_v(-t["height"] / 2, t["height"] / 2, -eu, -eu - 4)
+        else:
+            near = t["near"]
+            v.dim_h(-t["width"] / 2, t["width"] / 2, near, near + 4)
+            v.dim_h(-t["tab"] / 2, t["tab"] / 2, near - t["total"], near - t["total"] - 4)
+            v.dim_v(near, near - t["full"], -eu, -eu - 4)
+            v.dim_v(near, near - t["total"], eu, eu + 4)
+            v.dim_v(near, 0, eu, eu + 10)
+        if t.get("holes"):
+            v.dim_h(-t["holes"] / 2, t["holes"] / 2, 0, -ev - 9)
+        # Details are drawn in the cutout's own frame, near edge up; the face views show it as installed.
+        svg.add(f'<text class="l" x="{cx:.2f}" y="{cy + 53}" text-anchor="middle">top edge faces the board</text>')
+        bits = []
+        if t.get("holes"):
+            bits.append(f'2× Ø{fmt(t["hole_d"])} on the axis')
+        if t.get("corner"):
+            bits.append(f'corners R{fmt(t["corner"])}')
+        v.text(0, -ev - 15, "; ".join(bits), "l")
+        if "seal" in t:
+            v.text(0, -ev - 17.3, f'seal area {fmt(t["seal"][0])} × {fmt(t["seal"][1])} min. (dashed)', "l")
     svg.write(out / "enclosure-details.svg")
 
 
-def main(out):
-    out = Path(out)
+def main(argv):
+    if len(argv) < 2 or argv[1] in ("-h", "--help"):
+        sys.exit(__doc__)
+    s = load_spec(argv[1])
+    problems = check(s)
+    for p in problems:
+        print(f"enclosure check: {p}", file=sys.stderr)
+    if "--check" in argv:
+        print(f'enclosure check: {len(s["cutouts"])} cutouts, {len(problems)} problems')
+        sys.exit(1 if problems else 0)
+    if problems:
+        sys.exit(1)
+    out = Path(argv[2] if len(argv) > 2 else "docs/src/diagrams/build")
     out.mkdir(parents=True, exist_ok=True)
-    g = geometry()
-    view_top(g, out)
-    view_front(g, out)
-    view_sides(g, out)
-    view_details(g, out)
-    (out / "enclosure.json").write_text(json.dumps(g, indent=1) + "\n")
-    print(f"enclosure drawing: {out}")
+    face_view(s, "top", out)
+    faces = [f for f in FACES if f != "top" and any(c["face"] == f for c in s["cutouts"])]
+    for f in faces:
+        face_view(s, f, out)
+    details_view(s, out)
+    o, w = s["outside"], s["wall"]
+    cutouts = [{**c, "u": placed(s, c)[0], "v": placed(s, c)[1]} for c in s["cutouts"]]
+    s = {**s, "cutouts": cutouts, "engine": ENGINE_VERSION, "views": ["top"] + faces + ["details"],
+         "inside": {k: o[k] - 2 * w for k in ("x", "y", "z")}}
+    (out / "enclosure.json").write_text(json.dumps(s, indent=1) + "\n")
+    print(f"enclosure drawing: {', '.join(s['views'])} -> {out}")
 
 
 if __name__ == "__main__":
-    main(sys.argv[1] if len(sys.argv) > 1 else "docs/src/diagrams/build")
+    main(sys.argv)

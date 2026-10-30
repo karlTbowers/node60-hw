@@ -1,16 +1,20 @@
 #!/usr/bin/env python3
-"""Node60 enclosure geometry (DEC-020): one source for the dimensioned drawing.
+"""Node60 enclosure geometry (DEC-020): the spec for the enclosure drawing.
 
-Board and connector positions come from place_connectors.py, so the drawing
-follows the PCB. Everything the enclosure adds (wall, gaps) is a named
-assumption below; change it here and rebuild the docs.
+The handbook's enclosure-drawing skill draws from this: spec() returns the geometry
+spec (format: the skill's references/spec.md) and scripts/enclosure_drawing.py, the
+skill's engine copied into this repo, turns it into the views on the docs site.
 
-Enclosure frame, seen from outside: origin at the front-left-bottom outer
-corner, x east along the front face, y north (depth from the front face),
-z up. The board hangs component side down under the lid, so every header
-cutout is upside down: the side of the cutout nearest the board is on top.
+Board and connector positions come from place_connectors.py, so the drawing follows
+the PCB. Everything the enclosure adds (wall, gaps) is a named assumption below; change
+it here and rebuild the docs.
 
-    python3 scripts/enclosure_geometry.py      # print the key dimensions
+Enclosure frame, seen from outside: origin at the front-left-bottom outer corner, x east
+along the front face, y north (depth from the front face), z up. The board hangs
+component side down under the lid, so every header cutout has its near edge (the edge
+nearest the board) on top.
+
+    python3 scripts/enclosure_geometry.py       # print the spec
 """
 import json
 import sys
@@ -26,49 +30,29 @@ WALL = 3.0            # wall, floor and lid thickness
 BACK_GAP = 2.0        # board's back edge to the back wall (no connector there)
 FLOOR_GAP = 3.0       # deepest header to the floor
 
-# SurLok Plus 5.7 mm receptacle, catalog IC-10: p. 6 (A, B, C, D), p. 13 (panel layout).
-SURLOK = {
-    "depth": 36.7 - 16.5 - 1.0,   # contact face to panel face (B - A - C): sets board-to-lid
-    "cutout_d": 14.3,
-    "screw_square": 18.0,         # 4 x M4 screws on this square
-    "flange": 27.0,
-}
+# Header heights above the board, measured from Amphenol's STEP models (the drawings give
+# the cutouts but not, for the ATM13, their height).
+AT13_HEIGHT, AT13_AXIS = 27.84, 13.8      # axis per drawing C-AT13-2P-BMXX rev. A2
+ATM13_HEIGHT, ATM13_AXIS = 28.48, 15.0    # axis = mating-shroud centre in the STEP
+SURLOK_DEPTH = 36.7 - 16.5 - 1.0          # SurLok catalog IC-10 p. 6: contact face to panel face (B - A - C)
 
-# Header panel cutouts, from Amphenol's "recommended panel cutout" views (drawings
-# C-AT13-2P-BMXX rev. A2 and ATM13-2P-BMXX rev. A2). Heights are measured from the
-# board's component side; "near" is the cutout edge nearest the board.
-AT13 = {
-    "height": 27.84,      # body, from Amphenol's STEP (DEC-013 quotes 27.4)
-    "axis": 13.8,         # mating axis and screw holes
-    "near": 4.8,
-    "width": 18.16,       # full-width part, 14.87 from the near edge, R4.32 corners
-    "full": 14.87,
-    "total": 18.03,       # with the 11.18 key tab at the far edge
-    "tab": 11.18,
-    "corner": 4.32,
-    "holes": 25.40,       # 2 x Ø3.94 on the axis
-    "hole_d": 3.94,
-    "seal": (35.20, 27.69),   # minimum flat panel area for the flange seal
-}
-ATM13 = {
-    "height": 28.48,      # body, from Amphenol's STEP
-    "axis": 15.0,         # mating-shroud centre in Amphenol's STEP (drawing gives no height)
-    "near": 15.0 - 8.58,  # holes are 8.58 from the near edge
-    "width": 14.00,       # slot, 13.00 from the near edge, R4.00 corners
-    "full": 13.00,
-    "total": 17.15,       # with the 17.60 wide band at the far edge
-    "tab": 17.60,
-    "corner": 4.00,
-    "holes": 25.79,       # 2 x Ø4.06
-    "hole_d": 4.06,
-    "seal": (36.82, 26.95),
+CUTOUT_TYPES = {
+    # Amphenol "recommended panel cutout", drawing C-AT13-2P-BMXX rev. A2. Near edge 4.8 from the board.
+    "AT13": {"shape": "keyed", "name": "AT13-2P-BM04", "width": 18.16, "full": 14.87, "total": 18.03,
+             "tab": 11.18, "corner": 4.32, "near": AT13_AXIS - 4.8, "holes": 25.40, "hole_d": 3.94,
+             "seal": [35.20, 27.69]},
+    # Drawing ATM13-2P-BMXX rev. A2; holes 8.58 from the near edge, placed on the STEP's axis.
+    "ATM13": {"shape": "keyed", "name": "ATM13-2P-BM04", "width": 14.00, "full": 13.00, "total": 17.15,
+              "tab": 17.60, "corner": 4.00, "near": 8.58, "holes": 25.79, "hole_d": 4.06,
+              "seal": [36.82, 26.95]},
+    # SurLok Plus catalog IC-10 p. 13, 5.7 mm: the catalog gives "M4 screw", not a hole size.
+    "SURLOK": {"shape": "round", "name": "SurLok Plus 5.7 mm", "d": 14.3, "screw_square": 18.0,
+               "screw": "M4", "screw_d": 4.0, "flange": 27.0},
 }
 
 # Inner faces in KiCad coordinates as seen from above the lid (before mirroring).
-_X_IN_L = LEFT - EDGE_GAP
-_X_IN_R = RIGHT + EDGE_GAP
-_Y_IN_F = FRONT + EDGE_GAP
-_Y_IN_B = Y0 - BACK_GAP
+_X_IN_L, _X_IN_R = LEFT - EDGE_GAP, RIGHT + EDGE_GAP
+_Y_IN_F, _Y_IN_B = FRONT + EDGE_GAP, Y0 - BACK_GAP
 
 
 def ex(x_lid):
@@ -81,35 +65,34 @@ def ey(y_kicad):
     return (_Y_IN_F + WALL) - y_kicad
 
 
-def geometry():
-    inside = {"x": _X_IN_R - _X_IN_L, "y": _Y_IN_F - _Y_IN_B}
-    deepest = max(AT13["height"], ATM13["height"])
+def spec():
     z_floor = WALL
-    z_cs = z_floor + FLOOR_GAP + deepest          # board component side (faces the floor)
-    z_back = z_cs + THICKNESS                     # board back face (faces the lid)
-    z_lid_out = z_back + SURLOK["depth"]
-    z_lid_in = z_lid_out - WALL
-    outside = {"x": inside["x"] + 2 * WALL, "y": inside["y"] + 2 * WALL, "z": z_lid_out}
-    inside["z"] = z_lid_in - z_floor
-
-    outputs = [{"ref": f"J{904 + i}", "label": f"OUT{i + 1}", "x": ex(CX + (i - 2.5) * OUT_PITCH),
-                "z": z_cs - AT13["axis"]} for i in range(6)]
-    t1s_depth = ey(FRONT - T1S_DEPTH * D)
-    t1s = [{"ref": "J903", "label": "T1S upstream", "face": "right", "y": t1s_depth, "z": z_cs - ATM13["axis"]},
-           {"ref": "J912", "label": "T1S downstream", "face": "left", "y": t1s_depth, "z": z_cs - ATM13["axis"]}]
+    z_cs = z_floor + FLOOR_GAP + max(AT13_HEIGHT, ATM13_HEIGHT)   # component side (faces the floor)
+    z_back = z_cs + THICKNESS                                     # back face (faces the lid)
+    z_lid_out = z_back + SURLOK_DEPTH
+    cutouts = [{"ref": f"J{904 + i}", "label": f"OUT{i + 1}", "face": "front", "type": "AT13",
+                "x": ex(CX + (i - 2.5) * OUT_PITCH), "z": z_cs - AT13_AXIS} for i in range(6)]
+    y_t1s = ey(FRONT - T1S_DEPTH * D)
+    cutouts += [{"ref": "J903", "label": "T1S upstream", "face": "right", "type": "ATM13", "y": y_t1s,
+                 "z": z_cs - ATM13_AXIS},
+                {"ref": "J912", "label": "T1S downstream", "face": "left", "type": "ATM13", "y": y_t1s,
+                 "z": z_cs - ATM13_AXIS}]
     nets = {"J910": "VBAT_IN", "J901": "VBAT_IN", "J911": "GND", "J902": "GND"}
-    lid = [{"ref": r, "net": nets[r], "x": ex(x), "y": ey(y)} for r, (x, y) in sorted(LID_TERMINALS.items())]
+    cutouts += [{"ref": r, "label": nets[r], "face": "top", "type": "SURLOK", "x": ex(x), "y": ey(y)}
+                for r, (x, y) in sorted(LID_TERMINALS.items())]
     return {
-        "assumptions": {"wall": WALL, "back_gap": BACK_GAP, "floor_gap": FLOOR_GAP, "edge_gap": EDGE_GAP},
-        "outside": outside,
-        "inside": inside,
-        "board": {"x0": ex(LEFT), "x1": ex(RIGHT), "y0": ey(FRONT), "y1": ey(Y0),
-                  "z_component_side": z_cs, "z_back_face": z_back, "thickness": THICKNESS},
-        "z": {"floor_inner": z_floor, "lid_inner": z_lid_in, "lid_outer": z_lid_out},
-        "outputs": outputs, "t1s": t1s, "lid": lid,
-        "parts": {"AT13": AT13, "ATM13": ATM13, "SURLOK": SURLOK},
+        "title": "Node60 enclosure",
+        "outside": {"x": _X_IN_R - _X_IN_L + 2 * WALL, "y": _Y_IN_F - _Y_IN_B + 2 * WALL, "z": z_lid_out},
+        "wall": WALL,
+        "board": {"x0": ex(LEFT), "x1": ex(RIGHT), "y0": ey(FRONT), "y1": ey(Y0), "z0": z_cs, "z1": z_back,
+                  "note": "component side (z0) faces the floor"},
+        "levels": [{"z": z_floor, "label": "floor, inside"}, {"z": z_lid_out - WALL, "label": "lid, inside"}],
+        "cutout_types": CUTOUT_TYPES,
+        "cutouts": cutouts,
+        "assumptions": {"back_gap": BACK_GAP, "floor_gap": FLOOR_GAP, "edge_gap": EDGE_GAP,
+                        "deepest_header": max(AT13_HEIGHT, ATM13_HEIGHT), "surlok_depth": SURLOK_DEPTH},
     }
 
 
 if __name__ == "__main__":
-    print(json.dumps(geometry(), indent=1))
+    print(json.dumps(spec(), indent=1))

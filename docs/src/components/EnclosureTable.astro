@@ -1,0 +1,46 @@
+---
+// Key dimensions and the cutout schedule from the generated enclosure.json
+// (enclosure-drawing skill). Positions are those dimensioned on the drawing: from the
+// lower-left corner of each face's view, as seen from outside.
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
+const file = join(process.cwd(), 'src/diagrams/build/enclosure.json');
+let g: any;
+try {
+	g = JSON.parse(readFileSync(file, 'utf8'));
+} catch {
+	throw new Error('enclosure.json is not generated: run `npm run drawings` (needs python3).');
+}
+const f = (v: number) => Number(v.toFixed(2));
+const dims = (d: { x: number; y: number; z: number }) => `${f(d.x)} × ${f(d.y)} × ${f(d.z)}`;
+const b = g.board;
+const vName: Record<string, string> = { top: 'from front', bottom: 'from front' };
+---
+
+<table>
+	<thead><tr><th>Dimension</th><th>mm</th></tr></thead>
+	<tbody>
+		<tr><td>Outside (x × y × z)</td><td>{dims(g.outside)}</td></tr>
+		<tr><td>Inside (x × y × z)</td><td>{dims(g.inside)}</td></tr>
+		<tr><td>Wall, floor and lid</td><td>{g.wall}</td></tr>
+		<tr><td>Board</td><td>{f(b.x1 - b.x0)} × {f(b.y1 - b.y0)} × {f(b.z1 - b.z0)}, from z {f(b.z0)} to {f(b.z1)}{b.note ? `; ${b.note}` : ''}</td></tr>
+		{(g.levels ?? []).map((l: any) => <tr><td>{l.label}, z</td><td>{f(l.z)}</td></tr>)}
+	</tbody>
+</table>
+
+<table>
+	<thead><tr><th>Ref</th><th>Use</th><th>Face</th><th>Cutout</th><th>From left</th><th>Up / from front</th></tr></thead>
+	<tbody>
+		{g.cutouts.map((c: any) => (
+			<tr>
+				<td>{c.ref}</td>
+				<td>{c.label ?? ''}</td>
+				<td>{c.face}</td>
+				<td>{g.cutout_types[c.type].name ?? c.type}</td>
+				<td>{f(c.u)}</td>
+				<td>{f(c.v)} {vName[c.face] ?? 'up'}</td>
+			</tr>
+		))}
+	</tbody>
+</table>
