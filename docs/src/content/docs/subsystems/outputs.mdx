@@ -32,14 +32,17 @@ The 13 A value is available only with one channel enabled. The all-channels-on l
 
 ## SPI control, diagnosis, and reset behavior
 
-Use a simple daisy chain: shared SCLK and CSN, each SDO feeding the next SDI, and the final SDO returning to the MCU. Enable CRC, read back every protection register, and retain one FLT/WAKE line per device. All channels remain off after reset; LHI is hardware-held inactive.
+Each switch has its own MCU SPI bus: U601 on LPSPI4, U701 on LPSPI5, U801 on LPSPI3. No SCLK, CS, SDI or SDO line is shared (<Ref id="DEC-018" />). The Rev A daisy chain let one failed switch cut off all six outputs; now a bus fault affects two. Settings: SPI mode 1 (CPOL 0, CPHA 1), 8 MHz maximum, 32-bit frames with CRC, and 45 ns minimum CS setup and hold. Read back every protection register, and keep one FLT/WAKE line per device. All channels stay off after reset; LHI is held inactive in hardware.
+
+Each switch's SPI watchdog is on (WD_EN = 1, WD_TO = 400 ms), with CHx_LH_IN set so both channels turn off in LIMP_HOME. If its bus or the firmware stops talking to a switch, that switch turns both outputs off and pulls FLT low. It returns to normal control on the next valid SPI frame (TPS2HCS08-Q1 data sheet SLVSHR0, §8.3.7, version A).
 
 | Function | Implementation | Failure behavior |
 |---|---|---|
 | Output command | SPI CHx control bits | All channels commanded off after reset |
 | Fault summary | 3 × FLT/WAKE to MCU | Interrupt identifies the affected dual device |
 | Detailed diagnosis | SPI status and ADC registers | Log channel, raw reading, mode, and timestamp |
-| SPI integrity | Daisy chain with CRC | Fault on CRC, timeout, or readback mismatch |
+| SPI integrity | One bus per switch, CRC | Fault on CRC, timeout, or readback mismatch; the fault is located to one switch |
+| Loss of SPI | Per-switch SPI watchdog, 400 ms | That switch's two outputs off (limp-home), FLT low |
 
 ## SNS path and 100 mA resolution
 

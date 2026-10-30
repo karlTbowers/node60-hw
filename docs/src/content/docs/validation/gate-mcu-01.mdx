@@ -5,6 +5,23 @@ description: S32K344EHT1MMMST package map audit, all 257 balls, passed 2026-10-2
 
 **Passed on 2026-10-28.** The user signed off the audit of all 257 balls of U401 (S32K344EHT1MMMST, 257MAPBGA), after a machine cross-check that found no differences.
 
+## Re-run for DEC-018 (2026-10-30): user sign-off pending
+
+<a href="../../decisions/dec-018/">DEC-018</a> gives each output switch its own LPSPI bus. That uses eight more balls and renames the four Rev A switch nets, so the gate is open again. The tables below are the 2026-10-28 record and still show the old net names; the current plan is on the [MCU pinout](../../mcu-pinout/) page.
+
+| Ball | Port | Net | Function | IBIS port | BSDL cell |
+|---|---|---|---|---|---|
+| A16 | PTD26 | `SPI5_SWITCH2_SCK` | LPSPI5_SCK | PTD26 | GPIO_122 |
+| A15 | PTD27 | `SPI5_SWITCH2_MOSI` | LPSPI5_SOUT | PTD27 | GPIO_123 |
+| B13 | PTD28 | `SPI5_SWITCH2_MISO` | LPSPI5_SIN | PTD28 | GPIO_124 |
+| G16 | PTD4 | `SPI5_SWITCH2_CS_L` | LPSPI5_PCS0 | PTD4 | GPIO_100 |
+| E14 | PTF13 | `SPI3_SWITCH3_SCK` | LPSPI3_SCK | PTF13 | GPIO_173 |
+| F14 | PTF15 | `SPI3_SWITCH3_MOSI` | LPSPI3_SOUT | PTF15 | GPIO_175 |
+| E15 | PTF12 | `SPI3_SWITCH3_MISO` | LPSPI3_SIN | PTF12 | GPIO_172 |
+| G15 | PTF16 | `SPI3_SWITCH3_CS_L` | LPSPI3_PCS0 | PTF16 | GPIO_176 |
+
+Machine check: every function above is in that ball's IOMUX alternate list (the docs build checks this against the library pin table). The IBIS model and the BSDL file (Hardware Design Package Rev. E2) give the same port for each ball; BSDL GPIO numbers are port × 32 + pin, with PTD = 3 and PTF = 5. The four LPSPI4 balls (A14, C15, C17, D15) keep their functions under the new names `SPI4_SWITCH1_*`. The eight balls were unconnected with no-connect flags in the 2026-10-28 audit.
+
 ## Method
 
 The schematic netlist (U401 ball, symbol pin name, net) was compared with three NXP sources:

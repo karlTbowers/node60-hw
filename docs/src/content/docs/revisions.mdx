@@ -8,6 +8,15 @@ Architecture revisions are lettered and tagged in git as `arch-rev-<letter>`. Th
 | Revision | Date | Tag | Summary |
 |---|---|---|---|
 | **Rev A**, 10 A variant | 2026-10-13 | `arch-rev-a` | First complete architecture; baseline for schematic capture. |
+| **Rev B** (in progress) | — | not yet tagged | Changes accepted on `main` since Rev A; listed below. |
+
+## Rev B (in progress)
+
+Changes accepted since Rev A. Rev B is tagged when the user closes it.
+
+- T1S line-interface order changed: the DC block now sits on the connector side of the choke ([DEC-012](../decisions/dec-012/)).
+- The output switches moved from one LPSPI4 daisy chain to one LPSPI bus per switch: LPSPI4, LPSPI5, LPSPI3 ([DEC-018](../decisions/dec-018/)). Each switch's SPI watchdog turns its outputs off if SPI stops. GATE-MCU-01 is open again for the eight added balls.
+- Zephyr recorded as the core RTOS, with its driver map and pin-plan rules ([DEC-019](../decisions/dec-019/)).
 
 ## Rev A
 

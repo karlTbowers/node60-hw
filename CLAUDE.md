@@ -8,6 +8,7 @@ Node60 is DropOut's open-hardware automotive power distribution node: six protec
 
 - KiCad project: `node60` (`node60.kicad_pro`, `.kicad_sch`, `.kicad_pcb`) at the repo root. CI expects exactly these names.
 - **Architecture:** the Starlight site in `docs/` (published at https://karltbowers.github.io/node60-hw/) holds Architecture **Rev A** (10 A variant), tagged `arch-rev-a`; facts live in `docs/src/data/` (requirements, parts, decisions, gates). Its decisions are the baseline: S32K344EHT1MMMST MCU, LAN8670D0 PHY over RMII, 3 × TPS2HCS08A-Q1, LM74910H-Q1 + 0.25 mΩ RSENSE + INA228A-Q1 input, discrete INH-gated LMQ66430 power tree (no FS26), TMP175-Q1 + 4 NTCs, TPS3702-Q1 supervisor, IS25LP032D-JNLA3 log flash. Don't change an architecture decision without the user's agreement; flag conflicts instead.
+- **Rev B in progress** (accepted on `main`, not yet tagged): DEC-012 rev. B (T1S line order), DEC-018 (one LPSPI bus per output switch: U601 = LPSPI4, U701 = LPSPI5, U801 = LPSPI3, SPI watchdog limp-home off), DEC-019 (Zephyr is the core RTOS; pin-plan rules for EIRQ lines, ADC channel groups and native PCS chip selects).
 - **Qualification:** AEC-Q100/Q101/Q200 Grade 1 (−40…+125 °C) for all active parts.
 - **Sheet plan** (Rev A) → schematic pages: 1 root/index · A Power entry = p2 (`sheets/power-entry.kicad_sch`) · B Regulators = p3 · C MCU/NVM = p4 · D T1S = p5 · E–G Outputs 1-2 / 3-4 / 5-6 = p6–p8 (one file, `sheets/output-switch.kicad_sch`, placed three times) · K Connectors = p9. Reference designators follow the page (R201 on page 2); the project's annotation is set to sheet number × 100.
 
@@ -38,7 +39,7 @@ The user settled the open questions from the first schematic draft:
 - **TMP175:** VSSOP (DGK) package.
 - **Page order:** Rev A page numbers stay.
 - **Connector pin 1:** confirmed on samples (GATE-HAR-01). Blocks board release, not the schematic or layout.
-- **GATE-MCU-01:** passed 2026-10-28. All 257 balls cross-checked against NXP's IOMUX table, IBIS model and BSDL file; the user signed off. Re-run it if U401's pin plan changes.
+- **GATE-MCU-01:** passed 2026-10-28. All 257 balls cross-checked against NXP's IOMUX table, IBIS model and BSDL file; the user signed off. Reopened 2026-10-30 for DEC-018's eight new balls (machine check done, user sign-off pending). Re-run it if U401's pin plan changes.
 
 ## Deviations from the handbook
 

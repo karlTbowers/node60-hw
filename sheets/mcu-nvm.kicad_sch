@@ -17271,7 +17271,7 @@
 		)
 		(uuid "3d071970-ff85-5a0a-afa4-16cebcb64a24")
 	)
-	(text "PTB (U401C): LPSPI4: TPS2HCS08 daisy chain"
+	(text "PTB (U401C): LPSPI4: TPS2HCS08 U601 (outputs 1-2)"
 		(exclude_from_sim no)
 		(at 454.66 77.47 0)
 		(effects
@@ -17295,7 +17295,7 @@
 		)
 		(uuid "f2899deb-9c0f-5b12-8911-0747f467876b")
 	)
-	(hierarchical_label "SPI4_SWITCH_CS_L"
+	(hierarchical_label "SPI4_SWITCH1_CS_L"
 		(shape output)
 		(at 502.92 109.22 180)
 		(effects
@@ -17317,7 +17317,7 @@
 		)
 		(uuid "b058ec90-ed7a-5cdc-8beb-1cf52c991249")
 	)
-	(hierarchical_label "SPI4_SWITCH_MOSI"
+	(hierarchical_label "SPI4_SWITCH1_MOSI"
 		(shape output)
 		(at 502.92 111.76 180)
 		(effects
@@ -17339,7 +17339,7 @@
 		)
 		(uuid "7e8723f8-b56b-58dc-85a6-8fcae2b24d1c")
 	)
-	(hierarchical_label "SPI4_SWITCH_MISO"
+	(hierarchical_label "SPI4_SWITCH1_MISO"
 		(shape input)
 		(at 502.92 116.84 180)
 		(effects
@@ -17361,7 +17361,7 @@
 		)
 		(uuid "043e5406-1e1f-5704-8381-be4f33368da7")
 	)
-	(hierarchical_label "SPI4_SWITCH_SCK"
+	(hierarchical_label "SPI4_SWITCH1_SCK"
 		(shape output)
 		(at 502.92 114.3 180)
 		(effects
@@ -17695,7 +17695,7 @@
 			)
 		)
 	)
-	(text "LPSPI4 master, mode per TPS2HCS08 datasheet, 3 x 24-bit frames per CS with CRC.\nPCS0 must idle high from reset: switches keep all channels off until configured."
+	(text "One LPSPI bus per TPS2HCS08 (DEC-018): LPSPI4 = U601, LPSPI5 = U701, LPSPI3 = U801.\nSPI mode 1 (CPOL 0, CPHA 1), 8 MHz max, 32-bit frames with CRC. Each PCS0 idles high from reset\n(switch internal pull-up): channels stay off until configured."
 		(exclude_from_sim no)
 		(at 457.2 137.16 0)
 		(effects
@@ -18216,7 +18216,7 @@
 		)
 		(uuid "b135ae60-425c-53dd-b2bc-dc15f9c5ad46")
 	)
-	(text "PTD (U401E): EMAC RMII transmit, MDIO, LPI2C0 telemetry"
+	(text "PTD (U401E): EMAC RMII transmit, MDIO, LPI2C0 telemetry, LPSPI5 U701 (outputs 3-4)"
 		(exclude_from_sim no)
 		(at 304.8 189.23 0)
 		(effects
@@ -18229,17 +18229,71 @@
 		)
 		(uuid "13acc912-4fd0-5d2f-ac37-87f3f202b05b")
 	)
-	(no_connect
-		(at 386.08 228.6)
-		(uuid "1f088327-6c34-571c-aaea-07e6b6b068de")
+	(wire
+		(pts
+			(xy 386.08 228.6)
+			(xy 388.62 228.6)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a412f99f-3646-4e2b-b8aa-8fcf0aef7e25")
 	)
-	(no_connect
-		(at 386.08 226.06)
-		(uuid "e89a43cb-16c2-5149-8aa0-9a4f97daadc1")
+	(hierarchical_label "SPI5_SWITCH2_MOSI"
+		(shape output)
+		(at 388.62 228.6 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "cc239913-163e-442b-9668-9f00c366be90")
 	)
-	(no_connect
-		(at 386.08 231.14)
-		(uuid "c7ea785b-5bb2-59a0-a6d9-40ca08b3f43e")
+	(wire
+		(pts
+			(xy 386.08 226.06)
+			(xy 388.62 226.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "809664ca-74db-4577-bb8f-10d2425bfee5")
+	)
+	(hierarchical_label "SPI5_SWITCH2_SCK"
+		(shape output)
+		(at 388.62 226.06 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "ca458b7b-e6f2-447c-8e81-92819f2234a8")
+	)
+	(wire
+		(pts
+			(xy 386.08 231.14)
+			(xy 388.62 231.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aac267b3-1da5-477d-a9b1-77f984babf18")
+	)
+	(hierarchical_label "SPI5_SWITCH2_MISO"
+		(shape input)
+		(at 388.62 231.14 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "0d18fe8f-0de6-4de6-9de3-9e150efd4c90")
 	)
 	(no_connect
 		(at 386.08 238.76)
@@ -18273,9 +18327,27 @@
 		(at 355.6 208.28)
 		(uuid "8e68ab46-333c-501c-bb72-49fd003ed21f")
 	)
-	(no_connect
-		(at 355.6 210.82)
-		(uuid "a94f1bd7-8a99-5459-82e3-97e6de4f0c7a")
+	(wire
+		(pts
+			(xy 355.6 210.82)
+			(xy 353.06 210.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "59b6ccbc-9769-4cea-87b6-2d302e754b6d")
+	)
+	(hierarchical_label "SPI5_SWITCH2_CS_L"
+		(shape output)
+		(at 353.06 210.82 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "3e73a82c-c167-4261-88e0-5586fb6e69eb")
 	)
 	(no_connect
 		(at 386.08 215.9)
@@ -19291,7 +19363,7 @@
 		)
 		(uuid "8125049e-72af-5976-87b4-b52472bc3871")
 	)
-	(text "PTF (U401G): LPSPI2 flash MOSI"
+	(text "PTF (U401G): LPSPI2 flash MOSI, LPSPI3 U801 (outputs 5-6)"
 		(exclude_from_sim no)
 		(at 604.52 189.23 0)
 		(effects
@@ -19365,17 +19437,71 @@
 		(at 655.32 220.98)
 		(uuid "c9237de7-d2d7-52f0-8e47-6c9785c6a740")
 	)
-	(no_connect
-		(at 655.32 233.68)
-		(uuid "dc185967-c2a3-5918-a942-3694421255c2")
+	(wire
+		(pts
+			(xy 655.32 233.68)
+			(xy 652.78 233.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0b9f94b5-30d4-4960-9c8f-f1157e00d25a")
 	)
-	(no_connect
-		(at 655.32 231.14)
-		(uuid "31355c4c-9e18-5665-857a-40928023ba48")
+	(hierarchical_label "SPI3_SWITCH3_SCK"
+		(shape output)
+		(at 652.78 233.68 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "d2032f64-bde4-40fc-977f-8cd706401a29")
 	)
-	(no_connect
-		(at 655.32 238.76)
-		(uuid "701a8c03-4ab6-53a2-b19a-0189e6034083")
+	(wire
+		(pts
+			(xy 655.32 231.14)
+			(xy 652.78 231.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "61dc34ea-f93e-49cf-9c3c-51c7db9f4b01")
+	)
+	(hierarchical_label "SPI3_SWITCH3_MISO"
+		(shape input)
+		(at 652.78 231.14 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "957ac7cc-0d14-430d-ac63-3541b9b50dab")
+	)
+	(wire
+		(pts
+			(xy 655.32 238.76)
+			(xy 652.78 238.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "391a7cd4-744f-492a-80bf-02c257e9f887")
+	)
+	(hierarchical_label "SPI3_SWITCH3_MOSI"
+		(shape output)
+		(at 652.78 238.76 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "1fa7da7a-e985-457a-8aaf-54ab4bd55cfd")
 	)
 	(no_connect
 		(at 655.32 236.22)
@@ -19385,9 +19511,27 @@
 		(at 685.8 203.2)
 		(uuid "a701fbba-ab92-5869-857f-c9cc3a0943a9")
 	)
-	(no_connect
-		(at 685.8 200.66)
-		(uuid "11ca3465-db42-5101-9cf1-2fb4776052a0")
+	(wire
+		(pts
+			(xy 685.8 200.66)
+			(xy 688.34 200.66)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "02e4a0a3-0aa9-4a02-acb9-9d87fdf39923")
+	)
+	(hierarchical_label "SPI3_SWITCH3_CS_L"
+		(shape output)
+		(at 688.34 200.66 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "bf71b0c1-b811-48a1-9283-f9af3fe8decd")
 	)
 	(no_connect
 		(at 655.32 228.6)
@@ -23065,7 +23209,7 @@
 		)
 		(uuid "1d8db65c-15fa-5ea2-bbea-698a397a08a2")
 	)
-	(hierarchical_label "SPI4_SWITCH_SCK"
+	(hierarchical_label "SPI4_SWITCH1_SCK"
 		(shape output)
 		(at 236.22 332.74 270)
 		(effects
@@ -23201,7 +23345,7 @@
 		)
 		(uuid "6f9f9e08-934d-5b76-bbca-1f06c27bae84")
 	)
-	(hierarchical_label "SPI4_SWITCH_MOSI"
+	(hierarchical_label "SPI4_SWITCH1_MOSI"
 		(shape output)
 		(at 261.62 332.74 270)
 		(effects
@@ -23337,7 +23481,7 @@
 		)
 		(uuid "fb056513-b156-5235-914c-dc6aa45164a1")
 	)
-	(hierarchical_label "SPI4_SWITCH_MISO"
+	(hierarchical_label "SPI4_SWITCH1_MISO"
 		(shape input)
 		(at 287.02 332.74 270)
 		(effects
@@ -23473,7 +23617,7 @@
 		)
 		(uuid "ec0612b9-f8fc-5ac3-b0c0-aa91d815bc1a")
 	)
-	(hierarchical_label "SPI4_SWITCH_CS_L"
+	(hierarchical_label "SPI4_SWITCH1_CS_L"
 		(shape output)
 		(at 312.42 332.74 270)
 		(effects
@@ -24467,7 +24611,7 @@
 			)
 		)
 	)
-	(text "DESIGN NOTES (S32K3xx data sheet; S32K3 Hardware Design Guidelines Rev E2; Node60 compute page)\nGATE-MCU-01 PASSED 2026-10-28: all 257 balls and every planned function checked against NXP IOMUX (Nov 2025), IBIS and\n  BSDL (257BGA); signed off by the user. Re-run it if the pin plan changes. The pin table above each unit is the plan.\nSupplies: VDD_HV_A = VDD_HV_B = VREFH = 3V3_MAIN, V15 = 1V5_CORE (U303), V11/V25 internal (decoupling only).\n  NTC dividers are ratiometric to 3V3_MAIN = VREFH. Check the S32K3 supply ramp-rate limits against the LMQ66430\n  soft start (HDG 2.10.1) during bring-up.\nClock: 16 MHz crystal on FXOSC (DEC-015), core and peripherals via PLL; CMU monitors FXOSC. Unused GPIOs\n  unconnected (disabled), as NXP HDG Rev E2 Table 33 requires. RESET_B pulled up to VDD_HV_A (4.7k on p3), as Table 33 requires.\nWatchdog: internal SWT, hard-locked after start-up (DEC-005). Clock monitor CMU -> reset.\nRESET_B (PTA5) on RESET_L: TPS3702 window supervisor (p3) wired-OR, PHY RESET_N, debug header pin 10.\nFlash IS25LP032D-JNLA3 on LPSPI2, mode 0 or 3, own CS with 10k pull-up so it is deselected through reset;\n  WP and HOLD pulled up (single-IO SPI). Powered from switched 3V3_MAIN; log flush before PHY sleep (DEC-007).\nDebug: Cortex 10-pin (project default). Pin 7 is the key, pin 8 unused. SWDIO 10k up, SWCLK 10k down.\nDefault states: all port pins are disabled inputs out of reset; LPSPI4 PCS0 and LPSPI2 PCS0 are held high by\n  the switch's internal pull-up and R4xx respectively; FLT and IRQ lines idle high via their pull-ups.\n"
+	(text "DESIGN NOTES (S32K3xx data sheet; S32K3 Hardware Design Guidelines Rev E2; Node60 compute page)\nGATE-MCU-01 PASSED 2026-10-28: all 257 balls and every planned function checked against NXP IOMUX (Nov 2025), IBIS and\n  BSDL (257BGA); signed off by the user. Re-run it if the pin plan changes. The pin table above each unit is the plan.\nSupplies: VDD_HV_A = VDD_HV_B = VREFH = 3V3_MAIN, V15 = 1V5_CORE (U303), V11/V25 internal (decoupling only).\n  NTC dividers are ratiometric to 3V3_MAIN = VREFH. Check the S32K3 supply ramp-rate limits against the LMQ66430\n  soft start (HDG 2.10.1) during bring-up.\nClock: 16 MHz crystal on FXOSC (DEC-015), core and peripherals via PLL; CMU monitors FXOSC. Unused GPIOs\n  unconnected (disabled), as NXP HDG Rev E2 Table 33 requires. RESET_B pulled up to VDD_HV_A (4.7k on p3), as Table 33 requires.\nWatchdog: internal SWT, hard-locked after start-up (DEC-005). Clock monitor CMU -> reset.\nRESET_B (PTA5) on RESET_L: TPS3702 window supervisor (p3) wired-OR, PHY RESET_N, debug header pin 10.\nFlash IS25LP032D-JNLA3 on LPSPI2, mode 0 or 3, own CS with 10k pull-up so it is deselected through reset;\n  WP and HOLD pulled up (single-IO SPI). Powered from switched 3V3_MAIN; log flush before PHY sleep (DEC-007).\nDebug: Cortex 10-pin (project default). Pin 7 is the key, pin 8 unused. SWDIO 10k up, SWCLK 10k down.\nDefault states: all port pins are disabled inputs out of reset; LPSPI3/4/5 PCS0 and LPSPI2 PCS0 are held high by\n  each switch's internal pull-up and R4xx respectively; FLT and IRQ lines idle high via their pull-ups.\n"
 		(exclude_from_sim no)
 		(at 236.22 368.3 0)
 		(effects

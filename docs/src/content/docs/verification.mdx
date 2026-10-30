@@ -5,6 +5,7 @@ description: Node60 bring-up sequence and every verification and freeze gate, wi
 
 import { Aside } from '@astrojs/starlight/components';
 import GateList from '../../components/GateList.astro';
+import Ref from '../../components/Ref.astro';
 
 The baseline is ready for schematic capture, not production release. These tests convert architectural assumptions into evidence.
 
@@ -19,8 +20,8 @@ The baseline is ready for schematic capture, not production release. These tests
 7. **Commanded shutdown:** inject the controller’s application-level go-to-sleep message; prove all outputs turn off, pending pages finish programming, PHY sleep is commanded only afterward, INH releases after tSLPINHDLY, and no bus-idle timeout can trigger shutdown.
 8. **Flash endurance and recovery:** worst-case ten-page pre-sleep flush, ahead-erase, FCB wrap, erase suspend/resume, CRC recovery after interrupted power, log readback over T1S, and NVS counter persistence.
 9. **Regulator board:** startup, shutdown, load transient, current limit, EN-pin sequencing, and thermal margin across temperature.
-10. **MCU-only:** package map, clocks, reset, SWD, ADC reference, both LPSPI instances, and Zephyr baseline.
-11. **One-switch fixture:** daisy-chain framing and CRC, reset-off, SNS mux, FLT/WAKE, output control, and register readback.
+10. **MCU-only:** package map, clocks, reset, SWD, ADC reference, all four LPSPI buses, and the Zephyr board port (<Ref id="DEC-019" />).
+11. **One-switch fixture:** 32-bit framing and CRC, SPI-watchdog limp-home off, reset-off, SNS mux, FLT/WAKE, output control, and register readback.
 12. **Current sweep:** all channels 0–10 A; every 100 mA point from 0–1 A; noise, settling, monotonicity, error, supply, and temperature.
 13. **I²t fixture:** correlate each protection setting against current, temperature, supply, wire, connector, inrush, and short impedance.
 14. **Dual-channel thermal:** both channels at 10 A at worst ambient in the sealed enclosure—release-blocking qualification.

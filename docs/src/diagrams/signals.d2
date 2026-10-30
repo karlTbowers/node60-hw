@@ -43,11 +43,11 @@ sensing: "Measurement inputs" {
   sup: "TPS3702-Q1\n3V3 OV/UV supervisor" {class: compute; link: "/subsystems/supervision/"}
 }
 
-mcu: "S32K344\nLPSPI ×2 · LPI2C · 12-bit ADC · GPIO\ninternal SWT watchdog · CMU" {class: compute; link: "/subsystems/compute/"}
+mcu: "S32K344 · Zephyr\nLPSPI ×4 · LPI2C · 12-bit ADC · GPIO\ninternal SWT watchdog · CMU" {class: compute; link: "/subsystems/compute/"}
 
 outputs: "Controlled devices" {
   class: group
-  sw: "3 × TPS2HCS08A-Q1\nSPI daisy chain with CRC\nLHI held inactive" {class: load; link: "/subsystems/outputs/"}
+  sw: "3 × TPS2HCS08A-Q1\none SPI bus each, CRC\nLHI held inactive" {class: load; link: "/subsystems/outputs/"}
   flash: "IS25LP032D-JNLA3\n32 Mbit diagnostic log" {class: compute; link: "/subsystems/firmware/"}
   dbg: "SWD/JTAG + UART pads\ninternal service only" {class: compute; link: "/subsystems/compute/"}
 }
@@ -67,8 +67,8 @@ sensing.tmp <-> mcu: "LPI2C · ALERT" {class: dig}
 sensing.lm -> mcu: "FLT" {class: dig}
 sensing.sup -> mcu: "RESET_L" {class: dig}
 
-mcu -> outputs.sw: "LPSPI #1 · shared CSN/SCLK" {class: dig}
+mcu -> outputs.sw: "LPSPI4 / 5 / 3 · one bus per switch" {class: dig}
 mcu <-> outputs.sw: "3 × FLT/WAKE" {class: dig}
 mcu -- outputs.sw: "3 × SNS → ADC (698 Ω + filter)" {class: ana}
-mcu -> outputs.flash: "LPSPI #2" {class: dig}
+mcu -> outputs.flash: "LPSPI2" {class: dig}
 mcu <-> outputs.dbg: "SWD · UART" {class: dig}

@@ -51,7 +51,7 @@
 
 - id: REQ-FW-001
   group: basis
-  text: Zephyr RTOS.
+  text: Zephyr RTOS (DEC-019).
   page: subsystems/firmware
   verified_by: [GATE-FW-02]
 

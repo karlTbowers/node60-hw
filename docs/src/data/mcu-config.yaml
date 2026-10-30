@@ -97,32 +97,87 @@ T1S_TERM_DROP:
   init: low
   note: termination relay RESET pulse, ≥ 10 ms high (DEC-017); never high together with T1S_TERM_END
 
-# Output switches (3 × TPS2HCS08A-Q1, sheets E-G)
-SPI4_SWITCH_SCK:
+# Output switches (3 × TPS2HCS08A-Q1, sheets E-G): one LPSPI bus per switch (DEC-018).
+# SPI mode 1 (CPOL 0, CPHA 1), 8 MHz maximum, 32-bit frames with CRC. Zephyr: one
+# `nxp,lpspi` node per bus, the switch as its child at reg = <0> (native PCS0).
+SPI4_SWITCH1_SCK:
   function: LPSPI4_SCK
   group: spi-switch
   dir: out
   pull: none
   init: low
-SPI4_SWITCH_MOSI:
+  note: U601 (outputs 1-2)
+SPI4_SWITCH1_MOSI:
   function: LPSPI4_SOUT
   group: spi-switch
   dir: out
   pull: none
-  note: into U601 SDI; the chain runs U601 → U701 → U801
-SPI4_SWITCH_MISO:
+  note: U601 SDI
+SPI4_SWITCH1_MISO:
   function: LPSPI4_SIN
   group: spi-switch
   dir: in
   pull: up
-  note: from U801 SDO, high-impedance while CS_L is high
-SPI4_SWITCH_CS_L:
+  note: U601 SDO, high-impedance while CS_L is high
+SPI4_SWITCH1_CS_L:
   function: LPSPI4_PCS0
   group: spi-switch
   dir: out
   pull: up
   init: high
-  note: shared by all three switches (daisy chain)
+  note: U601 CS; the switch's internal pull-up holds it high through reset
+SPI5_SWITCH2_SCK:
+  function: LPSPI5_SCK
+  group: spi-switch
+  dir: out
+  pull: none
+  init: low
+  note: U701 (outputs 3-4)
+SPI5_SWITCH2_MOSI:
+  function: LPSPI5_SOUT
+  group: spi-switch
+  dir: out
+  pull: none
+  note: U701 SDI
+SPI5_SWITCH2_MISO:
+  function: LPSPI5_SIN
+  group: spi-switch
+  dir: in
+  pull: up
+  note: U701 SDO, high-impedance while CS_L is high
+SPI5_SWITCH2_CS_L:
+  function: LPSPI5_PCS0
+  group: spi-switch
+  dir: out
+  pull: up
+  init: high
+  note: U701 CS; the switch's internal pull-up holds it high through reset
+SPI3_SWITCH3_SCK:
+  function: LPSPI3_SCK
+  group: spi-switch
+  dir: out
+  pull: none
+  init: low
+  note: U801 (outputs 5-6)
+SPI3_SWITCH3_MOSI:
+  function: LPSPI3_SOUT
+  group: spi-switch
+  dir: out
+  pull: none
+  note: U801 SDI
+SPI3_SWITCH3_MISO:
+  function: LPSPI3_SIN
+  group: spi-switch
+  dir: in
+  pull: up
+  note: U801 SDO, high-impedance while CS_L is high
+SPI3_SWITCH3_CS_L:
+  function: LPSPI3_PCS0
+  group: spi-switch
+  dir: out
+  pull: up
+  init: high
+  note: U801 CS; the switch's internal pull-up holds it high through reset
 SW_LHI:
   function: GPIO
   group: gpio

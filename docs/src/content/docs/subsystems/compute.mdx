@@ -13,8 +13,8 @@ The 257-ball S32K344 owns commands, telemetry, diagnostics, network policy, even
 | Interface | Allocation | Design note |
 |---|---|---|
 | RMII + MDIO | LAN8670D0-E/LMXVAO | 50 MHz reference; MDC/MDIO management; T1S_IRQ_L interrupt |
-| LPSPI #1 | Three-device TPS2HCS08A daisy chain | Shared CSN/SCLK; cascaded SDI/SDO; CRC enabled |
-| LPSPI #2 | IS25LP032D-JNLA3 diagnostic flash | Standard SPI mode 0 or 3; dedicated chip select; switched 3.3 V rail |
+| LPSPI4 / LPSPI5 / LPSPI3 | One TPS2HCS08A each: U601 / U701 / U801 | Separate buses, native PCS0 chip selects; mode 1, ≤ 8 MHz, CRC enabled (<Ref id="DEC-018" />) |
+| LPSPI2 | IS25LP032D-JNLA3 diagnostic flash | Standard SPI mode 0 or 3; dedicated chip select; switched 3.3 V rail |
 | ADC | 3 × shared SNS + VBAT_RAW + 4 × NTC | Eight ADC inputs baseline; INA228 current and TMP175 temperature need no MCU ADC channels |
 | LPI2C | INA228A-Q1 total-rail monitor + TMP175-Q1 temperature sensor | Shared bus with distinct addresses; standard or fast mode is sufficient |
 | GPIO | 3 × output FLT/WAKE (`SWn_FLT_L`), LM74910H FLT (`LM_FLT_L`), LHI, optional TMP175 ALERT | Defined reset state; PHY INH drives regulator EN directly rather than passing through the MCU |
@@ -24,6 +24,22 @@ The 257-ball S32K344 owns commands, telemetry, diagnostics, network policy, even
 <Aside type="note" title="Package-map gate">
 The S32K344EHT1MMMST ball map and every planned pin function were audited on 2026-10-28: all 257 balls match NXP's IOMUX table, IBIS model and BSDL file (<Ref id="GATE-MCU-01" />, passed).
 </Aside>
+
+## Pin plan reviewed for Zephyr (2026-10-30)
+
+The whole U401 pin plan was checked against upstream Zephyr's S32K344 devicetree and drivers (<Ref id="DEC-019" />). Apart from the switch SPI buses (<Ref id="DEC-018" />), no pin needed to move.
+
+| Area | Zephyr constraint | Node60 pin plan |
+|---|---|---|
+| Interrupt inputs | `nxp,siul2-gpio` routes pin interrupts through a fixed pin-to-EIRQ table; two pins on the same EIRQ line can't both interrupt | All six interrupt pins are in the table, on separate lines: PTE0/1/2 → EIRQ 0/1/2, PTE6 → 6, PTA9 → 17, PTA15 → 23 |
+| ADC | `nxp,s32-adc-sar` serves one channel group (precision, standard or external) per ADC instance | ADC1 (3 × SNS) and ADC2 (BATT_MON, 4 × NTC) use precision channels only; ADC0 is free |
+| SPI chip selects | `nxp,lpspi` drives a native PCS when the device's `reg` matches it; otherwise it needs `cs-gpios` | Switches and flash each on PCS0 of their own LPSPI |
+| SPI timing | Frame size and CS delays are per device in devicetree | TPS2HCS08A: mode 1, 32-bit frames, ≤ 8 MHz, `pcs-sck-delay` / `sck-pcs-delay` ≥ 45 ns |
+| T1S | `nxp,s32-gmac` + `microchip,t1s-phy` (LAN8670 rev. D0 supported, PLCA) | RMII and MDIO on the EMAC balls; the PHY reset is shared with RESET_L, so no `reset-gpios` |
+| Console and debug | `nxp,lpuart` | LPUART0 on TP401/TP402 |
+| Parked state | No S32K3 standby support in Zephyr | Not needed: the MCU is unpowered when parked |
+
+Open for <Ref id="GATE-FW-02" />: confirm that the `lm75` driver covers the TMP175's 12-bit mode, and that the SIUL2 pinctrl data in Zephyr's NXP HAL lists every function the plan uses.
 
 ## Parts
 

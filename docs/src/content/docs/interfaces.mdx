@@ -9,7 +9,7 @@ The page split and net rules expose every decision that still needs evidence.
 |---|---|---|---|
 | A · Power entry | 2 | Fuse, TVS, LM74910H-Q1, DGATE/HGATE MOSFETs, shared 0.25 mΩ RSENSE, EMI, SW-pin OV/UV monitor divider, INA228A-Q1, TMP175-Q1, RSENSE NTC | VBAT_RAW, BATT_MON, VOUT/VBAT_PROT, RSENSE± star taps, INA228_IN+/IN−, LM_FLT_L, shared I2C, TMP175 ALERT, NTC_RSENSE, reverse/OV/OCP/SCP faults |
 | B · Regulators | 3 | Nanopower VDDAU LDO, 2 × LMQ66430, direct INH gating, EN-pin chaining, TPS3702-Q1 | VDDAU_AON, INH, 3V3_MAIN, 1V5_CORE, startup timing, RESET_L supervisor path; no FS26 or wake latch |
-| C · MCU / NVM | 4 | S32K344, IS25LP032D SPI NOR, reset, SWT/CMU, debug, ADC, dual LPSPI, LPI2C | RMII, MDIO, 3 SNS, BATT_MON ADC, 4 NTC ADCs, INA228/TMP175 I2C, flash SPI/CS, output-switch SPI chain, faults |
+| C · MCU / NVM | 4 | S32K344, IS25LP032D SPI NOR, reset, SWT/CMU, debug, ADC, four LPSPI buses, LPI2C | RMII, MDIO, 3 SNS, BATT_MON ADC, 4 NTC ADCs, INA228/TMP175 I2C, flash SPI/CS, three output-switch SPI buses, faults |
 | D · T1S | 5 | LAN8670, VDDAU/VDDA/VDDP domain split, clock, straps, coupling, ESD | TRXP/N, direct INH-to-buck-EN path, T1S_IRQ_L, PHYAD; no local wake input |
 | E–G · Outputs | 6–8 | One dual-channel switch block and one package NTC per sheet | SPI, SNS, LHI, SWn_FLT_L (FLT/WAKE pin), NTC ADC net, two outputs, thermal pad |
 | K · Connectors | 9 | Outputs, high-current input, T1S pair | Pin/net table, wire gauge, fusing, no hidden joins |
@@ -32,7 +32,7 @@ Schematic page numbers: page 1 is the root (index) sheet. Reference designators 
 - Annotate every 10 A net with copper weight, geometry, via array, connector contact, and 14 AWG minimum harness.
 - Keep PHYAD hardware strapping separate from commissioned PLCA node identity.
 - Add test points on all rails, INH, T1S_IRQ_L (PHY IRQ_N), MDC/MDIO, reference clock, SPI, and all SNS nets.
-- Show reset states for CSN, LHI, FLT/WAKE, and the daisy chain.
+- Show reset states for each switch's CS_L, LHI and FLT/WAKE.
 - Mark every unverified sequence, package ball, and connector mate as release-blocking.
 
 ## Schematic net names
@@ -48,7 +48,7 @@ The schematic and this site follow the naming rules adopted on 2026-10-22 (handb
 | TMP175 ALERT | `TMP175_ALERT_L` |
 | LHI | `SW_LHI` (MCU PTE4, pulled low on each switch) |
 | SNS (×3) | `SW1_SNS`, `SW2_SNS`, `SW3_SNS` |
-| Switch SPI daisy chain | `SPI4_SWITCH_SCK`, `SPI4_SWITCH_CS_L`, `SPI4_SWITCH_MOSI`, `SPI4_SWITCH_CHAIN1`, `SPI4_SWITCH_CHAIN2`, `SPI4_SWITCH_MISO` |
+| Switch SPI, one bus per switch (DEC-018) | `SPI4_SWITCH1_*` (U601), `SPI5_SWITCH2_*` (U701), `SPI3_SWITCH3_*` (U801); each `_SCK`, `_MOSI`, `_MISO`, `_CS_L` |
 | Flash SPI | `SPI2_FLASH_SCK`, `SPI2_FLASH_MOSI`, `SPI2_FLASH_MISO`, `SPI2_FLASH_CS_L` |
 | Shared I²C | `I2C0_TELEMETRY_SCL`, `I2C0_TELEMETRY_SDA` |
 | RMII / MDIO | `RMII0_T1S_*`, `MDIO0_T1S_MDC`, `MDIO0_T1S_MDIO` |
