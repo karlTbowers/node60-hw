@@ -12,18 +12,17 @@ the Edge.Cuts outline; every other item on the board is left alone. Footprints
 get the schematic symbol path, so a later Update PCB from Schematic (F8)
 links to them and keeps their positions.
 
-The board is mounted flipped (DEC-020): the component side (F.Cu) faces the
-enclosure floor and the back face sits under the lid. KiCad's top view looks
-at the board from below, so left and right are mirrored against the enclosure
-seen from outside. Enclosure faces -> board edges in KiCad:
-  front face  (J904-J909, AT13 outputs)     -> bottom edge, J904 at the right
-  right face  (J903, T1S upstream)          -> left edge
-  left face   (J912, T1S downstream)        -> right edge
+The board mounts component side (F.Cu) up, facing the lid (DEC-021), so
+KiCad's top view is the view from above the lid. Enclosure faces -> board edges:
+  front face  (J904-J909, AT13 outputs)     -> bottom edge, J904 at the left
+  north face  (J903, J912, T1S)             -> top edge, middle; J903 on the
+              left as seen from outside the north wall (east, larger x)
   lid         (J901/J910 battery, J902/J911 return) -> REDCUBE 74660016R on
-              F.Cu; the SurLok studs come down through the board from the lid
+              B.Cu. Each pair is joined by a copper busbar on top of the board;
+              the SurLok studs come down through the busbar into the terminals.
 
-Positions below are written as seen from above the lid and mirrored by mx().
-The outline is PROVISIONAL until the enclosure is chosen.
+The busbar outlines are drawn on User.Drawings: keep components out from under
+them. The outline is PROVISIONAL until the enclosure is chosen.
 """
 import sys
 
@@ -40,12 +39,7 @@ X0, Y0 = 30.0, 30.0
 W, D = 250.0, 160.0
 FRONT = Y0 + D
 LEFT, RIGHT = X0, X0 + W
-THICKNESS = 2.6      # mm, DEC-020
-
-
-def mx(x):
-    """Enclosure view from above the lid -> KiCad X (the board is flipped)."""
-    return 2 * X0 + W - x
+THICKNESS = 2.6      # mm, DEC-020: the REDCUBE's 2.6 mm spigot ends flush with the top face
 
 # Board edge sits this far behind each connector's flange (panel) face, so the
 # flange, not the board, meets the wall.
@@ -56,16 +50,32 @@ AT13_CY_X = 2.7      # courtyard centre relative to pin 1 along the pin row
 ATM13_CY_X = 2.1
 
 OUT_PITCH = 40.0     # 36.2 mm courtyard + 3.8 mm between headers (user, 2026-10-30)
-T1S_DEPTH = 0.60     # J903 / J912 centre, fraction of depth from the front edge
+T1S_PITCH = 45.0     # J903 / J912 on the north edge: 36.8 mm seal areas, ~8 mm apart (DEC-021)
 
-# Lid terminal axes as seen from above the lid (KiCad Y, X before mirroring).
+# Lid terminal axes (KiCad X, Y), in the two low sections either side of the lid's
+# raised T (DEC-021): one battery/return pair each side. The battery row sits far
+# enough south that a battery plug pointing north clears the return receptacle; the
+# return row far enough south that its busbar clears the T1S headers.
 CX = X0 + W / 2
 LID_TERMINALS = {
-    "J910": (CX - 48, FRONT - 65),   # battery
-    "J901": (CX + 48, FRONT - 65),   # battery
-    "J911": (CX - 75, FRONT - 125),  # return
-    "J902": (CX + 75, FRONT - 125),  # return
+    "J910": (CX - 70, FRONT - 45),   # battery, west
+    "J901": (CX + 70, FRONT - 45),   # battery, east
+    "J911": (CX - 70, FRONT - 115),  # return, west
+    "J902": (CX + 70, FRONT - 115),  # return, east
 }
+
+# Busbars on top of the board (DEC-021): 1/8" x 1" C110 copper flat bar, cut to length
+# and drilled in house, one per terminal pair. Ends run half a width past each hole.
+BUSBAR_W, BUSBAR_T = 25.4, 3.175
+BUSBAR_HOLE = 6.5    # M6 clearance
+BUSBARS = {"VBAT_IN": ("J910", "J901"), "GND": ("J911", "J902")}
+
+
+def busbar_outline(net):
+    """(x0, y0, x1, y1) of a busbar in KiCad mm; both terminals sit on one row."""
+    (xa, ya), (xb, yb) = (LID_TERMINALS[r] for r in BUSBARS[net])
+    h = BUSBAR_W / 2
+    return min(xa, xb) - h, ya - h, max(xa, xb) + h, ya + h
 
 AT13 = ("DropOut_Connector_Amphenol", "Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal")
 ATM13 = ("DropOut_Connector_Amphenol", "Amphenol_ATM13-2P-BMxx_1x02_P4.20mm_Horizontal")
@@ -77,18 +87,17 @@ def placements():
     p = {}
     row_y = FRONT - (AT13_PANEL - EDGE_GAP)
     for i in range(6):
-        cx = mx(X0 + W / 2 + (i - 2.5) * OUT_PITCH)
+        cx = X0 + W / 2 + (i - 2.5) * OUT_PITCH
         p[f"J{904 + i}"] = (*AT13, cx - AT13_CY_X, row_y, 0, False)
-    cy = FRONT - T1S_DEPTH * D
-    # rotation 90: shroud (local +y) points right, local +x points up
-    p["J912"] = (*ATM13, RIGHT - (ATM13_PANEL - EDGE_GAP), cy + ATM13_CY_X, 90, False)
-    p["J903"] = (*ATM13, LEFT + (ATM13_PANEL - EDGE_GAP), cy - ATM13_CY_X, -90, False)
-    # Lid terminals (DEC-020): a grid symmetric about the board centre line,
-    # battery pair close on the front row, return pair wide on the back row,
-    # so every SurLok right-angle plug can point west, north or east without
-    # touching another (scripts/check_surlok_clearance.py).
+    # rotation 180: shroud (local +y) points north (-y), local +x points west (-x)
+    north_row = Y0 + (ATM13_PANEL - EDGE_GAP)
+    p["J903"] = (*ATM13, CX + T1S_PITCH / 2 + ATM13_CY_X, north_row, 180, False)
+    p["J912"] = (*ATM13, CX - T1S_PITCH / 2 + ATM13_CY_X, north_row, 180, False)
+    # Lid terminals: REDCUBE on B.Cu, thread opening up through the board. Each
+    # SurLok right-angle plug can point outward (west or east) or north
+    # (scripts/check_surlok_clearance.py).
     for ref, (x, y) in LID_TERMINALS.items():
-        p[ref] = (*REDCUBE, mx(x), y, 0, False)
+        p[ref] = (*REDCUBE, x, y, 0, True)
     return p
 
 
@@ -170,6 +179,7 @@ def main(netlist):
                 if fp.GetReference() in place}
     # board.GetDrawings() isn't iterable in KiCad 10's bindings
     board.RemoveAllItemsOnLayer(pcbnew.Edge_Cuts)
+    board.RemoveAllItemsOnLayer(pcbnew.Dwgs_User)     # busbar outlines, redrawn below
     board.GetDesignSettings().SetBoardThickness(pcbnew.FromMM(THICKNESS))
 
     netinfo = {}
@@ -211,6 +221,22 @@ def main(netlist):
     outline.SetLayer(pcbnew.Edge_Cuts)
     outline.SetWidth(pcbnew.FromMM(0.1))
     board.Add(outline)
+
+    mm = lambda v: pcbnew.FromMM(v)
+    for net in BUSBARS:
+        x0, y0, x1, y1 = busbar_outline(net)
+        bar = pcbnew.PCB_SHAPE(board, pcbnew.SHAPE_T_RECT)
+        bar.SetStart(pcbnew.VECTOR2I(mm(x0), mm(y0)))
+        bar.SetEnd(pcbnew.VECTOR2I(mm(x1), mm(y1)))
+        bar.SetLayer(pcbnew.Dwgs_User)
+        bar.SetWidth(mm(0.15))
+        board.Add(bar)
+        label = pcbnew.PCB_TEXT(board)
+        label.SetText(f"{net} busbar {BUSBAR_W:g} x {BUSBAR_T:g} Cu (1/8 x 1 in C110), on top: no parts under it")
+        label.SetPosition(pcbnew.VECTOR2I(mm((x0 + x1) / 2), mm(y0 - 2)))
+        label.SetLayer(pcbnew.Dwgs_User)
+        label.SetTextSize(pcbnew.VECTOR2I(mm(1.5), mm(1.5)))
+        board.Add(label)
 
     board.Save(PCB)
     for ref in sorted(place):

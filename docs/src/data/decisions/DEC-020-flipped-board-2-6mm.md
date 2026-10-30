@@ -1,7 +1,7 @@
 ---
 id: DEC-020
 title: Board mounted component side down under the lid, 2.6 mm thick, connectors on fixed enclosure faces
-status: accepted
+status: superseded
 date: 2026-10-30
 revision: B
 page: subsystems/harness

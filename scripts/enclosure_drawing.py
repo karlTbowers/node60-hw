@@ -23,7 +23,7 @@ import math
 import sys
 from pathlib import Path
 
-ENGINE_VERSION = "1.0"           # bump when the spec format changes
+ENGINE_VERSION = "1.1"           # bump when the spec format changes (1.1: raised lid regions)
 FONT = 12                        # px
 SCALE = 2.6                      # px per mm for the face views; details use DETAIL_SCALE
 DETAIL_SCALE = 6.0
@@ -81,6 +81,43 @@ def to_face(s, face, x=None, y=None, z=None):
     w, _ = face_size(s, face)
     u = vals[u_ax]
     return (w - u if mirror else u), vals[v_ax]
+
+
+# Stepped tops: spec["raised"] lists plan rectangles whose top is higher than outside.z.
+def _wall_axis(face):
+    """Plan axis a wall face runs along, and the test for a region reaching that wall."""
+    X, Y = "x", "y"
+    return {"front": (X, lambda r, s: r["y0"] <= 1e-6),
+            "back": (X, lambda r, s: r["y1"] >= s["outside"]["y"] - 1e-6),
+            "left": (Y, lambda r, s: r["x0"] <= 1e-6),
+            "right": (Y, lambda r, s: r["x1"] >= s["outside"]["x"] - 1e-6)}[face]
+
+
+def top_profile(s, face, at_wall):
+    """[(u0, u1, z)] of the top edge in a wall view: the wall itself (at_wall) or the silhouette."""
+    ax, touches = _wall_axis(face)
+    w, _ = face_size(s, face)
+    mirror = FACES[face][2]
+    spans = []
+    for r in s.get("raised", []):
+        if at_wall and not touches(r, s):
+            continue
+        a, b = r[f"{ax}0"], r[f"{ax}1"]
+        spans.append(((w - b, w - a) if mirror else (a, b), r["z"]))
+    cuts = sorted({0.0, w} | {e for (a, b), _ in spans for e in (a, b) if 0 < e < w})
+    prof = []
+    for a, b in zip(cuts, cuts[1:]):
+        m = (a + b) / 2
+        z = max([s["outside"]["z"]] + [z for (u0, u1), z in spans if u0 <= m <= u1])
+        if prof and prof[-1][2] == z:
+            prof[-1] = (prof[-1][0], b, z)
+        else:
+            prof.append((a, b, z))
+    return prof
+
+
+def height_at(prof, u0, u1):
+    return min(z for a, b, z in prof if b > u0 and a < u1)
 
 
 def placed(s, c):
@@ -141,6 +178,8 @@ def check(s):
     for c in s["cutouts"]:
         (u, v), (eu, ev) = placed(s, c), envelope(types[c["type"]])
         w, h = face_size(s, c["face"])
+        if c["face"] in ("front", "back", "left", "right"):
+            h = height_at(top_profile(s, c["face"], True), u - eu, u + eu)
         box = (u - eu, v - ev, u + eu, v + ev)
         if box[0] < 0 or box[1] < 0 or box[2] > w or box[3] > h:
             problems.append(f'{c["ref"]}: its {c["type"]} envelope leaves the {c["face"]} face')
@@ -299,13 +338,23 @@ def face_view(s, face, out):
     w, h = face_size(s, face)
     cuts = [c for c in s["cutouts"] if c["face"] == face]
     types = s["cutout_types"]
+    walls = face not in ("top", "bottom")
+    if walls:
+        sil, at_wall = top_profile(s, face, False), top_profile(s, face, True)
+        h = max(z for _, _, z in sil)
     m, left, top = 60, 70, 95
     svg = Svg(w * SCALE + left + m + 30, h * SCALE + top + m + 40, f'{s["title"]}: {FACES[face][3].lower()}')
     v = View(svg, SCALE, left, top + h * SCALE)
-    v.rect(0, 0, w, h)
     wall = s["wall"]
     b = s["board"]
-    walls = face not in ("top", "bottom")
+    if walls:
+        pts = [(0, 0)] + [p for a, bb, z in sil for p in ((a, z), (bb, z))] + [(w, 0)]
+        v.poly(pts, [0] * len(pts))
+        for a, bb, z in at_wall:              # the wall's own top edge, where a hood behind rises above it
+            if any(z2 > z and bb2 > a and a2 < bb for a2, bb2, z2 in sil):
+                v.line(a, z, bb, z, "c")
+    else:
+        v.rect(0, 0, w, h)
     if walls:
         for lv in s.get("levels", []):
             v.line(0, lv["z"], w, lv["z"], "h")
@@ -315,22 +364,38 @@ def face_view(s, face, out):
         v.rect(wall, wall, w - wall, h - wall, "h")
         (bu0, bv0), (bu1, bv1) = to_face(s, face, b["x0"], b["y0"]), to_face(s, face, b["x1"], b["y1"])
         v.rect(bu0, bv0, bu1, bv1, "h")
-    for c in cuts:
+        if face == "top":
+            for r in s.get("raised", []):
+                v.rect(r["x0"], r["y0"], r["x1"], r["y1"], "c")
+                v.text((r["x0"] + r["x1"]) / 2, (r["y0"] + r["y1"]) / 2 - 1.5,
+                       f'{r.get("label", "raised")}: top at z {fmt(r["z"])}', "l")
+    row_end = []                           # right edge (px) of the last label on each label row
+    for c in sorted(cuts, key=lambda c: placed(s, c)[0]):
         t = types[c["type"]]
         u0, v0 = placed(s, c)
         draw_cutout(v, t, u0, v0, c)
         v.centre(u0, v0, max(envelope(t)) * 0.6)
         lbl = f'{c["ref"]} {c.get("label", "")}'.strip()
         if walls:
-            v.text(u0, h + 3, lbl, "l")
+            half = len(lbl) * FONT * 0.3        # rough label half width (px)
+            x = v.p(u0, 0)[0]
+            row = next((i for i, end in enumerate(row_end) if x - half > end + 6), len(row_end))
+            row_end[row:row + 1] = [x + half]
+            v.text(u0, h + 3 + row * 14 / SCALE, lbl, "l")
         else:
             v.text(u0, v0 + envelope(t)[1] + 2.5, lbl, "l")
-    v.ordinate_u([placed(s, c)[0] for c in cuts], 0, -12)
+    us = [placed(s, c)[0] for c in cuts]
     vs = [placed(s, c)[1] for c in cuts] + [h]
     if walls:
-        vs += [b["z0"], b["z1"]] + [lv["z"] for lv in s.get("levels", [])]
+        vs += [b["z0"], b["z1"]] + [lv["z"] for lv in s.get("levels", [])] + [z for _, _, z in sil + at_wall]
+        us += [e for a, bb, _ in sil + at_wall for e in (a, bb) if 0 < e < w]
+    elif face == "top":
+        for r in s.get("raised", []):
+            us += [r["x0"], r["x1"]]
+            vs += [r["y0"], r["y1"]]
+    v.ordinate_u(us, 0, -12)
     v.ordinate_v(vs, 0, -10)
-    v.dim_h(0, w, h, h + 16)
+    v.dim_h(0, w, h, h + 16)    # overall width, above the highest point
     if not walls:
         v.dim_v(0, h, w, w + 12)
     v.title(f'{FACES[face][3]}' + (": cutouts drawn as installed" if walls else ""))
@@ -436,7 +501,9 @@ def main(argv):
     out = Path(argv[2] if len(argv) > 2 else "docs/src/diagrams/build")
     out.mkdir(parents=True, exist_ok=True)
     face_view(s, "top", out)
-    faces = [f for f in FACES if f != "top" and any(c["face"] == f for c in s["cutouts"])]
+    stepped = {f for f in ("front", "back", "left", "right")
+               if len(top_profile(s, f, False)) > 1 or len(top_profile(s, f, True)) > 1}
+    faces = [f for f in FACES if f != "top" and (any(c["face"] == f for c in s["cutouts"]) or f in stepped)]
     for f in faces:
         face_view(s, f, out)
     details_view(s, out)

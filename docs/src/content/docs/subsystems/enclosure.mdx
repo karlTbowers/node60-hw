@@ -11,14 +11,15 @@ import g from '../../../diagrams/build/enclosure.json';
 
 export const f = (v) => Number(v.toFixed(2));
 export const captions = {
-	top: 'Lid, seen from above. Ø14.3 cutout and 4 × M4 on an 18 mm square per receptacle; the dashed square is the 27 mm flange.',
-	front: 'Front face. The headers hang below the board, so each cutout is upside down: its key points at the floor.',
-	right: 'Right face (J903), seen from outside, front face on the left.',
-	left: 'Left face (J912), seen from outside, front face on the right.',
+	top: 'Lid, seen from above: the raised T (crossbar over the outputs, stem over the T1S pair) and the two low sections with the SurLok receptacles. Ø14.3 cutout and 4 × M4 on an 18 mm square per receptacle; the dashed square is the 27 mm flange.',
+	front: 'Front face: the six outputs under the T crossbar.',
+	back: 'North face, seen from behind: J903 and J912 under the T stem; the wall steps down either side.',
+	right: 'Right face, seen from outside, front face on the left: the crossbar steps down to the low lid.',
+	left: 'Left face, seen from outside, front face on the right.',
 	details: 'Panel cutouts in their own frame, with the edge nearest the board at the top. Dashed: the flat area the flange seal needs.',
 };
 
-The board mounts component side down under the lid, 2.6 mm thick, with every connector on a fixed enclosure face (<Ref id="DEC-020" />). This page gives the enclosure that follows from it: the outside size, where each panel cutout goes, and where the board sits.
+The board mounts component side up, 2.6 mm thick. A copper busbar on top of the board joins each power pair, and the SurLok receptacles sit on the busbars in two low sections of the lid, either side of a raised T that covers the output headers (crossbar) and the T1S pair on the north wall (stem) (<Ref id="DEC-021" />). This page gives the enclosure that follows from it: the outside size, where each panel cutout goes, and where the board sits.
 
 <Aside type="caution" title="Provisional and generated">
 No enclosure is chosen yet. The board outline and the wall, gap and floor clearances are working assumptions. Every view and table here is generated at docs build time by `scripts/enclosure_drawing.py` (the handbook's enclosure-drawing skill) from `scripts/enclosure_geometry.py`, which reads the positions from `scripts/place_connectors.py`. Change them there and the next build redraws everything.
@@ -32,7 +33,21 @@ Millimetres. Origin at the front-left-bottom outer corner, seen from outside: x 
 
 <EnclosureTable />
 
-The board's back face is {f(g.assumptions.surlok_depth)} mm below the outside of the lid: the SurLok receptacle's contact face lands on it.
+The low lid's outside is {f(g.assumptions.surlok_depth)} mm above the busbars: the SurLok receptacle's contact face lands on the busbar. The raised T is {f(g.assumptions.hood_z - g.assumptions.low_z)} mm higher, clearing the tallest header by {g.assumptions.hood_gap} mm.
+
+<table>
+	<thead><tr><th>Busbar</th><th>Stock (cut and drilled in house)</th><th>Length</th><th>Holes</th></tr></thead>
+	<tbody>
+		{g.busbars.map((b) => (
+			<tr>
+				<td>{b.net} ({b.refs.join(', ')})</td>
+				<td>{g.parts.busbar.stock}</td>
+				<td>{f(b.length)}</td>
+				<td>2 × Ø{b.hole_d}, {f(b.hole_pitch)} apart</td>
+			</tr>
+		))}
+	</tbody>
+</table>
 
 ## Views
 
@@ -45,5 +60,6 @@ Third-angle views. Hidden lines (dashed) show the inner wall faces, the floor an
 - **Board and connector positions:** `scripts/place_connectors.py`, the same positions as on `node60.kicad_pcb`. Each board edge sits {g.assumptions.edge_gap} mm behind the connector flange face it meets, so the flange, not the board, meets the wall.
 - **AT13 cutout:** Amphenol drawing C-AT13-2P-BMXX rev. A2, "recommended panel cutout". The mating axis and screw holes are 13.8 mm from the board.
 - **ATM13 cutout:** Amphenol drawing ATM13-2P-BMXX rev. A2. The drawing gives no height above the board. The mating axis (15.0 mm) is measured from the shroud in Amphenol's STEP model, and the cutout is placed with its holes on that axis.
-- **SurLok Plus lid cutout:** Amphenol catalog IC-10, p. 13 (5.7 mm). The board-to-lid distance follows from p. 6: the contact face lands on the board's back face, {f(g.assumptions.surlok_depth)} mm from the panel face.
-- **Assumed:** {g.wall} mm walls, floor and lid; {g.assumptions.back_gap} mm from the board to the back wall; {g.assumptions.floor_gap} mm between the deepest header ({g.assumptions.deepest_header} mm) and the floor.
+- **SurLok Plus lid cutout:** Amphenol catalog IC-10, p. 13 (5.7 mm). The low-lid height follows from p. 6: the contact face lands on the busbar, {f(g.assumptions.surlok_depth)} mm from the panel face.
+- **Busbars:** 1/8" × 1" C110 copper flat bar, the thinnest stock bar that carries the current, so the most of the SurLok stud reaches the REDCUBE thread. The stud length is not published; see DEC-021.
+- **Assumed:** {g.wall} mm walls, floor and lid; the board {g.assumptions.standoff} mm off the floor (the REDCUBE bodies hang 3 mm below it); the raised T {g.assumptions.hood_gap} mm clear of the tallest header ({g.assumptions.deepest_header} mm) and reaching {g.assumptions.hood_gap} mm past the header bodies.

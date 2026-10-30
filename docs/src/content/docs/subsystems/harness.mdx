@@ -37,25 +37,12 @@ The downstream feed leaves before the LM74910H ideal diode and breaker and befor
 
 ## Enclosure and board mounting
 
-The board mounts with its component side facing the enclosure floor and its back face under the lid, and it is **2.6 mm** thick (<Ref id="DEC-020" long />). Every connector is fixed to an enclosure face; the outline (250 × 160 mm) is provisional until the enclosure is chosen.
+The board mounts component side up, 2.6 mm thick. The REDCUBE terminals sit on its bottom side, and a 1/8" × 1" copper busbar on its top face joins each power pair. The SurLok receptacles sit on the busbars in two low sections of the lid, either side of a raised T over the output headers and the T1S pair, which moves to the middle of the north wall. Each SurLok right-angle plug can leave outward (west or east) or north; `scripts/check_surlok_clearance.py` checks every combination (<Ref id="DEC-021" />).
 
-| Enclosure face | Connectors | On the board |
-|---|---|---|
-| Front | J904–J909, OUT1–OUT6, J904 on the left seen from outside | Bottom edge in KiCad, J904 rightmost |
-| Right | J903, T1S upstream | Left edge in KiCad |
-| Left | J912, T1S downstream | Right edge in KiCad |
-| Lid | J910 and J901 (battery) ±48 mm from the centre line, 65 mm from the front edge; J911 and J902 (return) ±75 mm, 125 mm from the front edge | REDCUBE 74660016R on the component side, threads opening through the board |
+The dimensions, every panel cutout and the busbar cut list are on the [Enclosure & mechanical](../enclosure/) page; **[open the 3D enclosure mockup](../../mockups/node60-enclosure.html)** to orbit it and turn the plugs.
 
-The headers hang below the board, and each board edge sits 0.5 mm behind the flange face it meets. Each SurLok receptacle's contact face lands on the board's back face, so the lid's outer face sits about 19.2 mm above the board. KiCad's top view looks at the component side, so its left and right are mirrored against the enclosure seen from outside.
-
-Each SurLok right-angle plug can leave west, north or east. All 81 combinations of the four plugs clear each other and the receptacle flanges by at least 3 mm, and a plug pointing west or east stays inside the enclosure walls, checked with the catalog envelopes by `scripts/check_surlok_clearance.py`.
-
-**[Open the 3D enclosure mockup](../../mockups/node60-enclosure.html)**: drag to orbit, lift the lid, and turn each plug west, north or east.
-
-The dimensioned enclosure drawing, with every panel cutout, is on the [Enclosure & mechanical](../enclosure/) page.
-
-<Aside type="caution" title="Header pin tails on a 2.6 mm board">
-The AT13 tails are 3.1 ± 0.4 mm and the ATM13 tails 3.05 mm, so they protrude only about 0.1 to 0.5 mm. Confirm the solder joints with Amphenol or on the first assembled sample.
+<Aside type="caution" title="SurLok stud length">
+The busbar sits between each receptacle and its REDCUBE, so the stud's length decides how much thread it engages. Amphenol does not publish it; the library's estimate (7.7 mm) leaves about 4.5 mm in the REDCUBE's 5.6 mm thread. Get the real length before release.
 </Aside>
 
 ## Fusing
