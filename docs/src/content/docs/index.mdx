@@ -13,7 +13,7 @@ import Ref from '../../components/Ref.astro';
 Six protected high-side outputs with current and voltage telemetry, built around S32K344EHT1MMMST and LAN8670D0-E/LMXVAO. Output stage: 3 × TPS2HCS08A-Q1.
 
 <Aside type="tip" title="Architecture decision">
-Use three TPS2HCS08A-Q1 dual-channel smart high-side switches for the six-output active design (<Ref id="DEC-008" />). At the input, **LM74910H-Q1** and INA228A-Q1 Kelvin-share one 0.25 mΩ RSENSE (<Ref id="DEC-001" />, <Ref id="DEC-002" />). For Rev A, keep power sequencing **discrete**: LAN8670 INH directly enables the LMQ66430 bucks, with no FS26, wake latch, or MCU standby dependency (<Ref id="DEC-004" />). An automotive 32 Mbit SPI NOR retains the diagnostic log across complete power-down (<Ref id="DEC-011" />).
+Use three TPS2HCS08A-Q1 dual-channel smart high-side switches for the six-output active design (<Ref id="DEC-008" />), each on its own MCU SPI bus so that one switch fault affects only its two outputs (<Ref id="DEC-018" />). At the input, **LM74910H-Q1** and INA228A-Q1 Kelvin-share one 0.25 mΩ RSENSE (<Ref id="DEC-001" />, <Ref id="DEC-002" />). For Rev A, keep power sequencing **discrete**: LAN8670 INH directly enables the LMQ66430 bucks, with no FS26, wake latch, or MCU standby dependency (<Ref id="DEC-004" />). An automotive 32 Mbit SPI NOR retains the diagnostic log across complete power-down (<Ref id="DEC-011" />). Firmware runs on Zephyr RTOS (<Ref id="DEC-019" />).
 </Aside>
 
 <StatusGrid />
