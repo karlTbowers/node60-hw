@@ -339,6 +339,7 @@
    ],
    "net": "SPI5_SWITCH2_MOSI",
    "connects": [
+    "TP414 test point",
     "U701 SDI"
    ],
    "externalPull": null,
@@ -363,6 +364,7 @@
    ],
    "net": "SPI5_SWITCH2_SCK",
    "connects": [
+    "TP413 test point",
     "U701 SCLK"
    ],
    "externalPull": null,
@@ -839,6 +841,7 @@
    ],
    "net": "SPI5_SWITCH2_MISO",
    "connects": [
+    "TP415 test point",
     "TP703 test point",
     "U701 SDO"
    ],
@@ -2266,6 +2269,7 @@
    ],
    "net": "SPI3_SWITCH3_SCK",
    "connects": [
+    "TP417 test point",
     "U801 SCLK"
    ],
    "externalPull": null,
@@ -2287,6 +2291,7 @@
    ],
    "net": "SPI3_SWITCH3_MISO",
    "connects": [
+    "TP419 test point",
     "TP803 test point",
     "U801 SDO"
    ],
@@ -2583,6 +2588,7 @@
    ],
    "net": "SPI3_SWITCH3_MOSI",
    "connects": [
+    "TP418 test point",
     "U801 SDI"
    ],
    "externalPull": null,
@@ -3284,6 +3290,7 @@
    ],
    "net": "SPI3_SWITCH3_CS_L",
    "connects": [
+    "TP420 test point",
     "U801 CS_L"
    ],
    "externalPull": null,
@@ -3307,6 +3314,7 @@
    ],
    "net": "SPI5_SWITCH2_CS_L",
    "connects": [
+    "TP416 test point",
     "U701 CS_L"
    ],
    "externalPull": null,

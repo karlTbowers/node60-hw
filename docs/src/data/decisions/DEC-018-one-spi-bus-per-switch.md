@@ -44,8 +44,8 @@ Rev A drove all three TPS2HCS08A-Q1 switches from one LPSPI4 daisy chain (DEC-00
 
 ## Consequences
 
-- **Schematic:** 8 more U401 balls are used (A15, A16, B13, G16 on PTD; E14, E15, F14, G15 on PTF). The nets `SPI4_SWITCH_CHAIN1` and `SPI4_SWITCH_CHAIN2` are gone. The CS lines rely on each switch's internal pull-up to VDD through reset, as in Rev A. Only the SPI4 bus has MCU-side test points (TP403–TP406). The SPI5 and SPI3 buses have only the SDO test point on their switch's page (TP703, TP803).
-- **Pin audit:** U401's pin plan changed, so GATE-MCU-01 must be re-run for the eight new balls.
+- **Schematic:** 8 more U401 balls are used (A15, A16, B13, G16 on PTD; E14, E15, F14, G15 on PTF). The nets `SPI4_SWITCH_CHAIN1` and `SPI4_SWITCH_CHAIN2` are gone. The CS lines rely on each switch's internal pull-up to VDD through reset, as in Rev A. Every line of all three buses has an MCU-side test point: TP403–TP406 (SPI4), TP413–TP416 (SPI5) and TP417–TP420 (SPI3). Each switch's SDO also has one on its own page (TP603, TP703, TP803).
+- **Pin audit:** U401's pin plan changed, so GATE-MCU-01 was re-run for the eight new balls (IBIS and BSDL cross-check). The user signed it off on 2026-10-30.
 - **Firmware (Zephyr):** one `nxp,lpspi` node per bus, each with the switch as its child at `reg = <0>` (native PCS0, no `cs-gpios`), `spi-max-frequency` ≤ 8 MHz, and `pcs-sck-delay` / `sck-pcs-delay` ≥ 45 ns. One out-of-tree TPS2HCS08A driver with three instances. Each instance owns its FLT/WAKE interrupt, SNS ADC channel and NTC. A periodic task services every switch well inside the 400 ms watchdog window.
 - **Verification:** GATE-OUT-02 now injects faults per bus (open SDO, stuck SDO, missing CS, firmware stall → watchdog limp-home off) and checks that the other two switches are unaffected.
 - **Cost:** no added parts. Two more LPSPI instances and their balls, which were free.

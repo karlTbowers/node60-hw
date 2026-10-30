@@ -39,7 +39,7 @@ The user settled the open questions from the first schematic draft:
 - **TMP175:** VSSOP (DGK) package.
 - **Page order:** Rev A page numbers stay.
 - **Connector pin 1:** confirmed on samples (GATE-HAR-01). Blocks board release, not the schematic or layout.
-- **GATE-MCU-01:** passed 2026-10-28. All 257 balls cross-checked against NXP's IOMUX table, IBIS model and BSDL file; the user signed off. Reopened 2026-10-30 for DEC-018's eight new balls (machine check done, user sign-off pending). Re-run it if U401's pin plan changes.
+- **GATE-MCU-01:** passed 2026-10-28. All 257 balls cross-checked against NXP's IOMUX table, IBIS model and BSDL file; the user signed off. Re-run for DEC-018's eight new balls and signed off 2026-10-30. Re-run it if U401's pin plan changes.
 
 ## Deviations from the handbook
 

@@ -23174,7 +23174,7 @@
 	)
 	(rectangle
 		(start 231.14 322.58)
-		(end 482.6 342.9)
+		(end 482.6 373.38)
 		(stroke
 			(width 0.254)
 			(type dash)
@@ -23329,6 +23329,1094 @@
 			(project "node60"
 				(path "/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453"
 					(reference "TP403")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 236.22 360.68)
+			(xy 236.22 363.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "815f4ee4-e406-4d76-a3e6-5c2e44220dba")
+	)
+	(hierarchical_label "SPI5_SWITCH2_SCK"
+		(shape output)
+		(at 236.22 363.22 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "8b6242f5-6edf-44fd-862f-e7992e87b868")
+	)
+	(symbol
+		(lib_id "DropOut_Connector:TestPoint_Pad_D1.0mm")
+		(at 236.22 360.68 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "b28a6184-f674-4e5d-9002-b56d8aeca358")
+		(property "Reference" "TP"
+			(at 238.252 359.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint_Pad_D1.0mm"
+			(at 238.252 361.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
+			(at 236.22 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/TestPoint.py"
+			(at 236.22 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Test point, exposed copper pad, diameter 1.0mm, solder mask opening only; a PCB feature with nothing to buy or place (excluded from BOM and position files)"
+			(at 236.22 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "DropOut"
+			(at 236.22 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "TestPoint_Pad_D1.0mm"
+			(at 236.22 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "-"
+			(at 236.22 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "-"
+			(at 236.22 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "PCB copper only; nothing to order. Excluded from BOM and position files."
+			(at 236.22 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "13373df9-9bbc-4fe0-b5d7-1ec16a9a7ff9")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453"
+					(reference "TP413")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 261.62 360.68)
+			(xy 261.62 363.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cde84b4c-82a1-4130-850d-3d1f17f802ab")
+	)
+	(hierarchical_label "SPI5_SWITCH2_MOSI"
+		(shape output)
+		(at 261.62 363.22 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "c5a2460f-7086-49be-990e-73e2ebdc68df")
+	)
+	(symbol
+		(lib_id "DropOut_Connector:TestPoint_Pad_D1.0mm")
+		(at 261.62 360.68 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "256efe1d-a0f9-4435-8076-50b354c20bab")
+		(property "Reference" "TP"
+			(at 263.652 359.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint_Pad_D1.0mm"
+			(at 263.652 361.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
+			(at 261.62 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/TestPoint.py"
+			(at 261.62 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Test point, exposed copper pad, diameter 1.0mm, solder mask opening only; a PCB feature with nothing to buy or place (excluded from BOM and position files)"
+			(at 261.62 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "DropOut"
+			(at 261.62 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "TestPoint_Pad_D1.0mm"
+			(at 261.62 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "-"
+			(at 261.62 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "-"
+			(at 261.62 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "PCB copper only; nothing to order. Excluded from BOM and position files."
+			(at 261.62 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "f62e7e10-6645-4a72-8f74-c10750d68ed9")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453"
+					(reference "TP414")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 287.02 360.68)
+			(xy 287.02 363.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ba539ed8-1d44-4530-8061-9a234f0b9a90")
+	)
+	(hierarchical_label "SPI5_SWITCH2_MISO"
+		(shape input)
+		(at 287.02 363.22 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "7e619f6b-9ba6-4266-afb1-07dae95775a5")
+	)
+	(symbol
+		(lib_id "DropOut_Connector:TestPoint_Pad_D1.0mm")
+		(at 287.02 360.68 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "a7f1e88f-9a97-4328-8bc9-51408ad9be44")
+		(property "Reference" "TP"
+			(at 289.052 359.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint_Pad_D1.0mm"
+			(at 289.052 361.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
+			(at 287.02 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/TestPoint.py"
+			(at 287.02 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Test point, exposed copper pad, diameter 1.0mm, solder mask opening only; a PCB feature with nothing to buy or place (excluded from BOM and position files)"
+			(at 287.02 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "DropOut"
+			(at 287.02 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "TestPoint_Pad_D1.0mm"
+			(at 287.02 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "-"
+			(at 287.02 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "-"
+			(at 287.02 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "PCB copper only; nothing to order. Excluded from BOM and position files."
+			(at 287.02 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "5aa42592-9bfb-44af-8482-2df8816f0c52")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453"
+					(reference "TP415")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 312.42 360.68)
+			(xy 312.42 363.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b08c52a2-e864-401d-ab52-e9619b2ce0fd")
+	)
+	(hierarchical_label "SPI5_SWITCH2_CS_L"
+		(shape output)
+		(at 312.42 363.22 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "8a6d990e-c362-4a0d-b763-ef24b0f7d912")
+	)
+	(symbol
+		(lib_id "DropOut_Connector:TestPoint_Pad_D1.0mm")
+		(at 312.42 360.68 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "c43bf6cf-80ca-4915-a049-ba87b6bf53ba")
+		(property "Reference" "TP"
+			(at 314.452 359.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint_Pad_D1.0mm"
+			(at 314.452 361.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
+			(at 312.42 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/TestPoint.py"
+			(at 312.42 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Test point, exposed copper pad, diameter 1.0mm, solder mask opening only; a PCB feature with nothing to buy or place (excluded from BOM and position files)"
+			(at 312.42 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "DropOut"
+			(at 312.42 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "TestPoint_Pad_D1.0mm"
+			(at 312.42 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "-"
+			(at 312.42 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "-"
+			(at 312.42 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "PCB copper only; nothing to order. Excluded from BOM and position files."
+			(at 312.42 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "99f2b224-afb9-435d-834e-64f0b610b114")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453"
+					(reference "TP416")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 337.82 360.68)
+			(xy 337.82 363.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3fc258fa-65a3-4bce-b738-130ee83ca2eb")
+	)
+	(hierarchical_label "SPI3_SWITCH3_SCK"
+		(shape output)
+		(at 337.82 363.22 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "6331ab99-9ef1-4a0b-b616-9425c2a5f967")
+	)
+	(symbol
+		(lib_id "DropOut_Connector:TestPoint_Pad_D1.0mm")
+		(at 337.82 360.68 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "6c96a6be-1543-4a0b-98a0-6d6e0fa28cfc")
+		(property "Reference" "TP"
+			(at 339.852 359.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint_Pad_D1.0mm"
+			(at 339.852 361.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
+			(at 337.82 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/TestPoint.py"
+			(at 337.82 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Test point, exposed copper pad, diameter 1.0mm, solder mask opening only; a PCB feature with nothing to buy or place (excluded from BOM and position files)"
+			(at 337.82 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "DropOut"
+			(at 337.82 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "TestPoint_Pad_D1.0mm"
+			(at 337.82 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "-"
+			(at 337.82 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "-"
+			(at 337.82 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "PCB copper only; nothing to order. Excluded from BOM and position files."
+			(at 337.82 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "062c69c5-ffec-4d04-bbbc-008eef173c21")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453"
+					(reference "TP417")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 363.22 360.68)
+			(xy 363.22 363.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f9e05c9d-0b83-4dcf-9516-53045c48c8a7")
+	)
+	(hierarchical_label "SPI3_SWITCH3_MOSI"
+		(shape output)
+		(at 363.22 363.22 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "3b69623a-9f98-4ab9-ab06-7c54a937542b")
+	)
+	(symbol
+		(lib_id "DropOut_Connector:TestPoint_Pad_D1.0mm")
+		(at 363.22 360.68 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "b02bfe3b-f62b-474b-9a8a-dbe667130bf7")
+		(property "Reference" "TP"
+			(at 365.252 359.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint_Pad_D1.0mm"
+			(at 365.252 361.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
+			(at 363.22 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/TestPoint.py"
+			(at 363.22 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Test point, exposed copper pad, diameter 1.0mm, solder mask opening only; a PCB feature with nothing to buy or place (excluded from BOM and position files)"
+			(at 363.22 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "DropOut"
+			(at 363.22 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "TestPoint_Pad_D1.0mm"
+			(at 363.22 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "-"
+			(at 363.22 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "-"
+			(at 363.22 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "PCB copper only; nothing to order. Excluded from BOM and position files."
+			(at 363.22 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "0328ec03-c68d-4516-bc9f-4ce6aa191a46")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453"
+					(reference "TP418")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 388.62 360.68)
+			(xy 388.62 363.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d29a9972-14c2-4e2a-a9de-8dda03eb9462")
+	)
+	(hierarchical_label "SPI3_SWITCH3_MISO"
+		(shape input)
+		(at 388.62 363.22 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "cb0dfbff-8e9d-4666-b9b8-16188bd35a9e")
+	)
+	(symbol
+		(lib_id "DropOut_Connector:TestPoint_Pad_D1.0mm")
+		(at 388.62 360.68 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "f41112bb-d7c5-4829-ae33-ae0a7145f71e")
+		(property "Reference" "TP"
+			(at 390.652 359.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint_Pad_D1.0mm"
+			(at 390.652 361.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
+			(at 388.62 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/TestPoint.py"
+			(at 388.62 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Test point, exposed copper pad, diameter 1.0mm, solder mask opening only; a PCB feature with nothing to buy or place (excluded from BOM and position files)"
+			(at 388.62 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "DropOut"
+			(at 388.62 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "TestPoint_Pad_D1.0mm"
+			(at 388.62 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "-"
+			(at 388.62 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "-"
+			(at 388.62 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "PCB copper only; nothing to order. Excluded from BOM and position files."
+			(at 388.62 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "05e68942-6b75-4ff5-81b1-ae5afdcd97b5")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453"
+					(reference "TP419")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 414.02 360.68)
+			(xy 414.02 363.22)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d4f472bb-8b33-4ce4-963c-6a1924446613")
+	)
+	(hierarchical_label "SPI3_SWITCH3_CS_L"
+		(shape output)
+		(at 414.02 363.22 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "f6aa0fe1-32ca-4ab1-ab4f-d8ab15c1eb97")
+	)
+	(symbol
+		(lib_id "DropOut_Connector:TestPoint_Pad_D1.0mm")
+		(at 414.02 360.68 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "00ba8d1c-a0b9-41fe-bb28-364c25342bf1")
+		(property "Reference" "TP"
+			(at 416.052 359.41 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint_Pad_D1.0mm"
+			(at 416.052 361.95 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
+			(at 414.02 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/TestPoint.py"
+			(at 414.02 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Test point, exposed copper pad, diameter 1.0mm, solder mask opening only; a PCB feature with nothing to buy or place (excluded from BOM and position files)"
+			(at 414.02 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "DropOut"
+			(at 414.02 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "TestPoint_Pad_D1.0mm"
+			(at 414.02 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "-"
+			(at 414.02 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "-"
+			(at 414.02 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Notes" "PCB copper only; nothing to order. Excluded from BOM and position files."
+			(at 414.02 360.68 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "34fed781-ddd7-4a46-bafb-1baca68d7a79")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453"
+					(reference "TP420")
 					(unit 1)
 				)
 			)
@@ -24611,9 +25699,9 @@
 			)
 		)
 	)
-	(text "DESIGN NOTES (S32K3xx data sheet; S32K3 Hardware Design Guidelines Rev E2; Node60 compute page)\nGATE-MCU-01 PASSED 2026-10-28: all 257 balls and every planned function checked against NXP IOMUX (Nov 2025), IBIS and\n  BSDL (257BGA); signed off by the user. Re-run it if the pin plan changes. The pin table above each unit is the plan.\nSupplies: VDD_HV_A = VDD_HV_B = VREFH = 3V3_MAIN, V15 = 1V5_CORE (U303), V11/V25 internal (decoupling only).\n  NTC dividers are ratiometric to 3V3_MAIN = VREFH. Check the S32K3 supply ramp-rate limits against the LMQ66430\n  soft start (HDG 2.10.1) during bring-up.\nClock: 16 MHz crystal on FXOSC (DEC-015), core and peripherals via PLL; CMU monitors FXOSC. Unused GPIOs\n  unconnected (disabled), as NXP HDG Rev E2 Table 33 requires. RESET_B pulled up to VDD_HV_A (4.7k on p3), as Table 33 requires.\nWatchdog: internal SWT, hard-locked after start-up (DEC-005). Clock monitor CMU -> reset.\nRESET_B (PTA5) on RESET_L: TPS3702 window supervisor (p3) wired-OR, PHY RESET_N, debug header pin 10.\nFlash IS25LP032D-JNLA3 on LPSPI2, mode 0 or 3, own CS with 10k pull-up so it is deselected through reset;\n  WP and HOLD pulled up (single-IO SPI). Powered from switched 3V3_MAIN; log flush before PHY sleep (DEC-007).\nDebug: Cortex 10-pin (project default). Pin 7 is the key, pin 8 unused. SWDIO 10k up, SWCLK 10k down.\nDefault states: all port pins are disabled inputs out of reset; LPSPI3/4/5 PCS0 and LPSPI2 PCS0 are held high by\n  each switch's internal pull-up and R4xx respectively; FLT and IRQ lines idle high via their pull-ups.\n"
+	(text "DESIGN NOTES (S32K3xx data sheet; S32K3 Hardware Design Guidelines Rev E2; Node60 compute page)\nGATE-MCU-01 PASSED 2026-10-28: all 257 balls and every planned function checked against NXP IOMUX (Nov 2025), IBIS and\n  BSDL (257BGA); signed off by the user. Re-run for DEC-018 (8 balls) passed 2026-10-30. Re-run it if the pin plan changes. The pin table above each unit is the plan.\nSupplies: VDD_HV_A = VDD_HV_B = VREFH = 3V3_MAIN, V15 = 1V5_CORE (U303), V11/V25 internal (decoupling only).\n  NTC dividers are ratiometric to 3V3_MAIN = VREFH. Check the S32K3 supply ramp-rate limits against the LMQ66430\n  soft start (HDG 2.10.1) during bring-up.\nClock: 16 MHz crystal on FXOSC (DEC-015), core and peripherals via PLL; CMU monitors FXOSC. Unused GPIOs\n  unconnected (disabled), as NXP HDG Rev E2 Table 33 requires. RESET_B pulled up to VDD_HV_A (4.7k on p3), as Table 33 requires.\nWatchdog: internal SWT, hard-locked after start-up (DEC-005). Clock monitor CMU -> reset.\nRESET_B (PTA5) on RESET_L: TPS3702 window supervisor (p3) wired-OR, PHY RESET_N, debug header pin 10.\nFlash IS25LP032D-JNLA3 on LPSPI2, mode 0 or 3, own CS with 10k pull-up so it is deselected through reset;\n  WP and HOLD pulled up (single-IO SPI). Powered from switched 3V3_MAIN; log flush before PHY sleep (DEC-007).\nDebug: Cortex 10-pin (project default). Pin 7 is the key, pin 8 unused. SWDIO 10k up, SWCLK 10k down.\nDefault states: all port pins are disabled inputs out of reset; LPSPI3/4/5 PCS0 and LPSPI2 PCS0 are held high by\n  each switch's internal pull-up and R4xx respectively; FLT and IRQ lines idle high via their pull-ups.\n"
 		(exclude_from_sim no)
-		(at 236.22 368.3 0)
+		(at 236.22 398.78 0)
 		(effects
 			(font
 				(size 1.27 1.27)
