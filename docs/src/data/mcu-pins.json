@@ -312,12 +312,10 @@
     "ADC0_X[0]",
     "WKPU[25]"
    ],
-   "net": "SPI4_SWITCH_CS_L",
+   "net": "SPI4_SWITCH1_CS_L",
    "connects": [
     "TP406 test point",
-    "U601 CS_L",
-    "U701 CS_L",
-    "U801 CS_L"
+    "U601 CS_L"
    ],
    "externalPull": null,
    "function": "LPSPI4_PCS0"
@@ -339,10 +337,13 @@
     "ADC1_S21",
     "WKPU[51]"
    ],
-   "net": null,
-   "connects": [],
+   "net": "SPI5_SWITCH2_MOSI",
+   "connects": [
+    "TP414 test point",
+    "U701 SDI"
+   ],
    "externalPull": null,
-   "function": null
+   "function": "LPSPI5_SOUT"
   },
   {
    "ball": "A16",
@@ -361,10 +362,13 @@
     "LCU0_OUT0",
     "ADC2_S16"
    ],
-   "net": null,
-   "connects": [],
+   "net": "SPI5_SWITCH2_SCK",
+   "connects": [
+    "TP413 test point",
+    "U701 SCLK"
+   ],
    "externalPull": null,
-   "function": null
+   "function": "LPSPI5_SCK"
   },
   {
    "ball": "A17",
@@ -835,10 +839,14 @@
     "EIRQ[31]",
     "ADC1_S22"
    ],
-   "net": null,
-   "connects": [],
+   "net": "SPI5_SWITCH2_MISO",
+   "connects": [
+    "TP415 test point",
+    "TP703 test point",
+    "U701 SDO"
+   ],
    "externalPull": null,
-   "function": null
+   "function": "LPSPI5_SIN"
   },
   {
    "ball": "B14",
@@ -1369,7 +1377,7 @@
     "ADC0_X[1]",
     "WKPU[17]"
    ],
-   "net": "SPI4_SWITCH_MOSI",
+   "net": "SPI4_SWITCH1_MOSI",
    "connects": [
     "TP404 test point",
     "U601 SDI"
@@ -1410,11 +1418,11 @@
     "ADC0_X[3]",
     "WKPU[16]"
    ],
-   "net": "SPI4_SWITCH_MISO",
+   "net": "SPI4_SWITCH1_MISO",
    "connects": [
     "TP405 test point",
-    "TP803 test point",
-    "U801 SDO"
+    "TP603 test point",
+    "U601 SDO"
    ],
    "externalPull": null,
    "function": "LPSPI4_SIN"
@@ -2088,12 +2096,10 @@
     "CMP2_IN1",
     "ADC0_X[2]"
    ],
-   "net": "SPI4_SWITCH_SCK",
+   "net": "SPI4_SWITCH1_SCK",
    "connects": [
     "TP403 test point",
-    "U601 SCLK",
-    "U701 SCLK",
-    "U801 SCLK"
+    "U601 SCLK"
    ],
    "externalPull": null,
    "function": "LPSPI4_SCK"
@@ -2261,10 +2267,13 @@
     "LPUART10_RX",
     "EIRQ[21]"
    ],
-   "net": null,
-   "connects": [],
+   "net": "SPI3_SWITCH3_SCK",
+   "connects": [
+    "TP417 test point",
+    "U801 SCLK"
+   ],
    "externalPull": null,
-   "function": null
+   "function": "LPSPI3_SCK"
   },
   {
    "ball": "E15",
@@ -2280,10 +2289,14 @@
     "LPSPI3_SIN",
     "EIRQ[20]"
    ],
-   "net": null,
-   "connects": [],
+   "net": "SPI3_SWITCH3_MISO",
+   "connects": [
+    "TP419 test point",
+    "TP803 test point",
+    "U801 SDO"
+   ],
    "externalPull": null,
-   "function": null
+   "function": "LPSPI3_SIN"
   },
   {
    "ball": "E16",
@@ -2573,10 +2586,13 @@
     "FCCU_ERR_IN1",
     "EIRQ[23]"
    ],
-   "net": null,
-   "connects": [],
+   "net": "SPI3_SWITCH3_MOSI",
+   "connects": [
+    "TP418 test point",
+    "U801 SDI"
+   ],
    "externalPull": null,
-   "function": null
+   "function": "LPSPI3_SOUT"
   },
   {
    "ball": "F15",
@@ -3272,10 +3288,13 @@
     "ADC1_MA[0]",
     "LPSPI3_PCS0"
    ],
-   "net": null,
-   "connects": [],
+   "net": "SPI3_SWITCH3_CS_L",
+   "connects": [
+    "TP420 test point",
+    "U801 CS_L"
+   ],
    "externalPull": null,
-   "function": null
+   "function": "LPSPI3_PCS0"
   },
   {
    "ball": "G16",
@@ -3293,10 +3312,13 @@
     "ADC0_S19",
     "WKPU[22]"
    ],
-   "net": null,
-   "connects": [],
+   "net": "SPI5_SWITCH2_CS_L",
+   "connects": [
+    "TP416 test point",
+    "U701 CS_L"
+   ],
    "externalPull": null,
-   "function": null
+   "function": "LPSPI5_PCS0"
   },
   {
    "ball": "G17",
@@ -9420,8 +9442,8 @@
     "RTS"
    ],
    "example": {
-    "TX": "E15",
-    "RX": "E14"
+    "TX": "R11",
+    "RX": "P11"
    },
    "blockedBy": {},
    "signals": {
@@ -9430,7 +9452,6 @@
       "LPUART10_RX"
      ],
      "free": [
-      "E14",
       "P11"
      ]
     },
@@ -9439,7 +9460,6 @@
       "LPUART10_TX"
      ],
      "free": [
-      "E15",
       "R11"
      ]
     }
@@ -9498,7 +9518,7 @@
     "RTS"
    ],
    "example": {
-    "TX": "G15",
+    "TX": "R15",
     "RX": "F2"
    },
    "blockedBy": {},
@@ -9518,7 +9538,6 @@
       "LPUART12_TX"
      ],
      "free": [
-      "G15",
       "R15"
      ]
     }
@@ -9579,8 +9598,8 @@
     "RTS"
    ],
    "example": {
-    "TX": "A16",
-    "RX": "A15"
+    "TX": "J3",
+    "RX": "K2"
    },
    "blockedBy": {},
    "signals": {
@@ -9589,7 +9608,6 @@
       "LPUART14_RX"
      ],
      "free": [
-      "A15",
       "K2",
       "U1"
      ]
@@ -9599,7 +9617,6 @@
       "LPUART14_TX"
      ],
      "free": [
-      "A16",
       "J3",
       "T1"
      ]
@@ -9620,7 +9637,7 @@
     "RTS"
    ],
    "example": {
-    "TX": "B13",
+    "TX": "G4",
     "RX": "C14"
    },
    "blockedBy": {},
@@ -9640,7 +9657,6 @@
       "LPUART15_TX"
      ],
      "free": [
-      "B13",
       "G4",
       "P8"
      ]
@@ -9760,7 +9776,6 @@
       "C12",
       "D1",
       "F17",
-      "G16",
       "K14",
       "K15",
       "K16",
@@ -9880,8 +9895,13 @@
   {
    "kind": "LPSPI",
    "name": "LPSPI3",
-   "status": "available",
-   "used": {},
+   "status": "used",
+   "used": {
+    "LPSPI3_SCK": "E14",
+    "LPSPI3_SIN": "E15",
+    "LPSPI3_SOUT": "F14",
+    "LPSPI3_PCS0": "G15"
+   },
    "required": [
     "SCK",
     "SIN",
@@ -9890,10 +9910,10 @@
    ],
    "optional": [],
    "example": {
-    "SCK": "E14",
+    "SCK": "M17",
     "SIN": "E2",
-    "SOUT": "F14",
-    "PCS": "G15"
+    "SOUT": "L17",
+    "PCS": "H14"
    },
    "blockedBy": {},
    "signals": {
@@ -9905,7 +9925,6 @@
       "LPSPI3_PCS3"
      ],
      "free": [
-      "G15",
       "H14",
       "H16",
       "H17",
@@ -9924,7 +9943,6 @@
       "LPSPI3_SCK"
      ],
      "free": [
-      "E14",
       "M17"
      ]
     },
@@ -9934,7 +9952,6 @@
      ],
      "free": [
       "E2",
-      "E15",
       "K15"
      ]
     },
@@ -9943,7 +9960,6 @@
       "LPSPI3_SOUT"
      ],
      "free": [
-      "F14",
       "L17",
       "R8"
      ]
@@ -10028,8 +10044,13 @@
   {
    "kind": "LPSPI",
    "name": "LPSPI5",
-   "status": "available",
-   "used": {},
+   "status": "used",
+   "used": {
+    "LPSPI5_SOUT": "A15",
+    "LPSPI5_SCK": "A16",
+    "LPSPI5_SIN": "B13",
+    "LPSPI5_PCS0": "G16"
+   },
    "required": [
     "SCK",
     "SIN",
@@ -10037,12 +10058,7 @@
     "PCS"
    ],
    "optional": [],
-   "example": {
-    "SCK": "A16",
-    "SIN": "B13",
-    "SOUT": "A15",
-    "PCS": "C14"
-   },
+   "example": {},
    "blockedBy": {},
    "signals": {
     "PCS": {
@@ -10055,7 +10071,6 @@
      "free": [
       "C14",
       "D13",
-      "G16",
       "R4"
      ]
     },
@@ -10063,24 +10078,19 @@
      "signals": [
       "LPSPI5_SCK"
      ],
-     "free": [
-      "A16"
-     ]
+     "free": []
     },
     "SIN": {
      "signals": [
       "LPSPI5_SIN"
      ],
-     "free": [
-      "B13"
-     ]
+     "free": []
     },
     "SOUT": {
      "signals": [
       "LPSPI5_SOUT"
      ],
      "free": [
-      "A15",
       "F16",
       "R3"
      ]
@@ -10282,7 +10292,6 @@
      ],
      "free": [
       "C3",
-      "F14",
       "M7",
       "N14"
      ]
@@ -10690,7 +10699,6 @@
     "ADC0_S16",
     "ADC0_S17",
     "ADC0_S18",
-    "ADC0_S19",
     "ADC0_S20",
     "ADC0_S21",
     "ADC0_S22",
@@ -10704,11 +10712,8 @@
     "B17",
     "C12",
     "E2",
-    "E14",
-    "E15",
     "F16",
     "F17",
-    "G16",
     "H11",
     "H15",
     "H16",
@@ -10753,7 +10758,6 @@
     "ADC1_S18",
     "ADC1_S19",
     "ADC1_S20",
-    "ADC1_S21",
     "ADC1_S22",
     "ADC1_S23",
     "ADC1_X[1]",
@@ -10762,10 +10766,8 @@
    ],
    "freeBalls": [
     "A12",
-    "A15",
     "B7",
     "B12",
-    "B13",
     "C12",
     "C14",
     "D11",
@@ -10774,7 +10776,6 @@
     "F1",
     "F8",
     "G14",
-    "G15",
     "H14",
     "H16",
     "H17",
@@ -10821,7 +10822,6 @@
     "ADC2_S13",
     "ADC2_S14",
     "ADC2_S15",
-    "ADC2_S16",
     "ADC2_S17",
     "ADC2_S18",
     "ADC2_S19",
@@ -10832,7 +10832,6 @@
    ],
    "freeBalls": [
     "A8",
-    "A16",
     "B8",
     "C13",
     "D1",
@@ -10954,7 +10953,6 @@
     "A2",
     "A8",
     "A13",
-    "A16",
     "B7",
     "B8",
     "B12",
@@ -10976,8 +10974,6 @@
     "G4",
     "G9",
     "G14",
-    "G15",
-    "G16",
     "G17",
     "H1",
     "H2",
@@ -11084,11 +11080,8 @@
     "A2",
     "A6",
     "A8",
-    "A15",
-    "A16",
     "B6",
     "B8",
-    "B13",
     "B15",
     "B17",
     "C7",
@@ -11105,13 +11098,9 @@
     "D11",
     "D12",
     "D13",
-    "E14",
-    "E15",
     "E17",
-    "F14",
     "F15",
     "G14",
-    "G15",
     "G17",
     "H1",
     "H11",
@@ -11197,16 +11186,13 @@
     "FXIO_D27",
     "FXIO_D28",
     "FXIO_D29",
-    "FXIO_D30",
-    "FXIO_D31"
+    "FXIO_D30"
    ],
    "freeBalls": [
     "A2",
     "A8",
     "A12",
     "A13",
-    "A15",
-    "A16",
     "B7",
     "B12",
     "B14",
@@ -11364,12 +11350,10 @@
     "A6",
     "A12",
     "A13",
-    "A15",
     "A17",
     "B6",
     "B7",
     "B12",
-    "B13",
     "B14",
     "B15",
     "B17",
@@ -11383,21 +11367,17 @@
     "D10",
     "D16",
     "E2",
-    "E14",
-    "E15",
     "E17",
     "F1",
     "F2",
     "F4",
     "F8",
-    "F14",
     "F15",
     "F16",
     "F17",
     "G2",
     "G3",
     "G4",
-    "G16",
     "G17",
     "H1",
     "H2",
@@ -11486,7 +11466,6 @@
     "WKPU[14]",
     "WKPU[15]",
     "WKPU[18]",
-    "WKPU[22]",
     "WKPU[23]",
     "WKPU[30]",
     "WKPU[31]",
@@ -11509,7 +11488,6 @@
     "WKPU[48]",
     "WKPU[49]",
     "WKPU[50]",
-    "WKPU[51]",
     "WKPU[52]",
     "WKPU[53]",
     "WKPU[54]",
@@ -11520,7 +11498,6 @@
    "freeBalls": [
     "A2",
     "A12",
-    "A15",
     "B8",
     "B12",
     "B14",
@@ -11533,7 +11510,6 @@
     "F2",
     "F16",
     "F17",
-    "G16",
     "H1",
     "H16",
     "H17",
@@ -11579,7 +11555,6 @@
    ],
    "freeBalls": [
     "B7",
-    "F14",
     "F15",
     "L4",
     "N1",
@@ -11640,10 +11615,7 @@
    ],
    "freeBalls": [
     "A13",
-    "A15",
-    "A16",
     "B12",
-    "B13",
     "B14",
     "C12",
     "C13",
@@ -11653,7 +11625,6 @@
     "E17",
     "F16",
     "F17",
-    "G16",
     "G17",
     "H15",
     "H16",

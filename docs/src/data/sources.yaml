@@ -107,3 +107,11 @@
 - id: Z2
   title: NXP downstream S32K3 tree
   url: https://github.com/nxp-zephyr/nxp-zephyr/tree/nxp-v4.4-branch/soc/nxp/s32/s32k3
+- id: Z3
+  title: Upstream Zephyr S32K344 devicetree (LPSPI, SIUL2 GPIO/EIRQ map, ADC SAR, GMAC nodes)
+  url: https://github.com/zephyrproject-rtos/zephyr/blob/main/dts/arm/nxp/s32/nxp_s32k344_m7.dtsi
+  verified: 2026-10-30
+- id: Z4
+  title: Upstream Zephyr bindings used by Node60 (nxp,lpspi; nxp,s32-adc-sar; microchip,t1s-phy; ti,ina228; ntc-thermistor; jedec,spi-nor)
+  url: https://github.com/zephyrproject-rtos/zephyr/tree/main/dts/bindings
+  verified: 2026-10-30

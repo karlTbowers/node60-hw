@@ -128,7 +128,7 @@
 - id: GATE-OUT-02
   title: SPI robustness
   group: freeze
-  evidence: CRC, reset, timeout, stuck bus, readback, and chain fault injection
+  evidence: Per bus (LPSPI4/5/3, DEC-018) — CRC, reset, timeout, stuck or open SDO, missing CS, readback, and SPI-watchdog limp-home (firmware stall turns that switch's outputs off); the other two switches stay controllable throughout
   blocks: Control
   status: open
   page: subsystems/outputs
@@ -160,7 +160,7 @@
 - id: GATE-MCU-01
   title: Package map
   group: freeze
-  evidence: S32K344EHT1MMMST package-specific pin audit of all 257 balls (signal, power and unused) against NXP's ball map and IOMUX table, including EXTAL/XTAL for the 16 MHz crystal (DEC-015) and the unused-pin handling
+  evidence: S32K344EHT1MMMST package-specific pin audit of all 257 balls (signal, power and unused) against NXP's ball map and IOMUX table, including EXTAL/XTAL for the 16 MHz crystal (DEC-015) and the unused-pin handling. Passed 2026-10-28; re-run for DEC-018's eight added balls (A15, A16, B13, G16, E14, E15, F14, G15) and passed 2026-10-30
   blocks: Schematic
   status: passed
   page: subsystems/compute
@@ -169,7 +169,7 @@
 - id: GATE-FW-02
   title: Zephyr target
   group: freeze
-  evidence: Build, link, PLCA, dual SPI, controller-commanded shutdown, cold-boot re-initialization, and wake logs
+  evidence: Node60 Zephyr board port (DEC-019) — build, link, pinctrl and clock tree, PLCA, four LPSPI buses (three switches and the flash), TPS2HCS08A and TMP175 drivers, controller-commanded shutdown, cold-boot re-initialization, and wake logs
   blocks: Software
   status: open
   page: subsystems/firmware

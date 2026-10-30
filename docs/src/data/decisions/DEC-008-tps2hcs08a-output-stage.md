@@ -20,7 +20,7 @@ Six independently commanded battery-side outputs each target 10 A continuous, wi
 
 ## Decision
 
-Use three **TPS2HCS08A-Q1** dual-channel smart high-side switches (TPS2HCS08AQPWPRQ1, HTSSOP-16 PowerPAD) for the six-output active design: SPI control in a daisy chain with CRC, shared analog SNS telemetry, diagnostics, and programmable I²t wire protection.
+Use three **TPS2HCS08A-Q1** dual-channel smart high-side switches (TPS2HCS08AQPWPRQ1, HTSSOP-16 PowerPAD) for the six-output active design: SPI control with CRC (one LPSPI bus per device since rev. B, DEC-018; Rev A used a daisy chain), shared analog SNS telemetry, diagnostics, and programmable I²t wire protection.
 
 ## The 8 A both-on limit
 
