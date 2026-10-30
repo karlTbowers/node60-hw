@@ -1,0 +1,58 @@
+---
+title: Enclosure & mechanical
+description: Node60 enclosure dimensions, panel cutouts and board position, generated from the PCB placement.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import Drawing from '../../../components/Drawing.astro';
+import Ref from '../../../components/Ref.astro';
+import g from '../../../diagrams/build/enclosure.json';
+
+export const f = (v) => Number(v.toFixed(2));
+
+The board mounts component side down under the lid, 2.6 mm thick, with every connector on a fixed enclosure face (<Ref id="DEC-020" />). This page gives the enclosure that follows from it: the outside size, where each panel cutout goes, and where the board sits.
+
+<Aside type="caution" title="Provisional">
+No enclosure is chosen yet. The board outline and the wall, gap and floor clearances below are working assumptions. The drawing is generated: change the positions in `scripts/place_connectors.py` or the assumptions in `scripts/enclosure_geometry.py`, and the next docs build redraws every view and the table.
+</Aside>
+
+**[Open the 3D enclosure mockup](../../mockups/node60-enclosure.html)** to see the same arrangement with the SurLok plugs.
+
+## Key dimensions
+
+Millimetres. Origin at the front-left-bottom outer corner, seen from outside: x along the front face (east), y back from the front face (north), z up.
+
+| Dimension | Value |
+|---|---|
+| Outside (x × y × z) | {f(g.outside.x)} × {f(g.outside.y)} × {f(g.outside.z)} |
+| Inside (x × y × z) | {f(g.inside.x)} × {f(g.inside.y)} × {f(g.inside.z)} |
+| Wall, floor and lid | {g.assumptions.wall} |
+| Board | {f(g.board.x1 - g.board.x0)} × {f(g.board.y1 - g.board.y0)} × {g.board.thickness}, component side facing the floor |
+| Board component side above the bottom | {f(g.board.z_component_side)} |
+| Board back face above the bottom | {f(g.board.z_back_face)} |
+| Board back face to lid outside | {f(g.z.lid_outer - g.board.z_back_face)} (SurLok contact face to panel face) |
+| Output cutouts J904–J909, centre x | {g.outputs.map((o) => f(o.x)).join(', ')} |
+| Output mating axis, z | {f(g.outputs[0].z)} |
+| T1S cutouts J903 (right), J912 (left), centre y | {f(g.t1s[0].y)} |
+| T1S mating axis, z | {f(g.t1s[0].z)} |
+| Lid cutouts, centre (x, y) | {g.lid.map((t) => `${t.ref} (${f(t.x)}, ${f(t.y)})`).join('; ')} |
+
+## Views
+
+Third-angle views. Hidden lines (dashed) show the inner wall faces and the board. Cutout and hole centres are dimensioned from the left outer face and the bottom outer face; lid cutouts from the left and front outer faces.
+
+<Drawing name="enclosure-top" source="scripts/enclosure_drawing.py" caption="Lid, seen from above. Ø14.3 cutout and 4 × M4 on an 18 mm square per receptacle; the dashed square is the 27 mm flange." />
+
+<Drawing name="enclosure-front" source="scripts/enclosure_drawing.py" caption="Front face. The headers hang below the board, so each cutout is upside down: its key points at the floor." />
+
+<Drawing name="enclosure-sides" source="scripts/enclosure_drawing.py" caption="Left face (J912) and right face (J903), each seen from outside." />
+
+<Drawing name="enclosure-details" source="scripts/enclosure_drawing.py" caption="Panel cutouts, drawn as installed: the top edge faces the board. The dashed rectangle is the flat area the flange seal needs." />
+
+## Sources and assumptions
+
+- **Board and connector positions:** `scripts/place_connectors.py`, the same positions as on `node60.kicad_pcb`. Each board edge sits {g.assumptions.edge_gap} mm behind the connector flange face it meets, so the flange, not the board, meets the wall.
+- **AT13 cutout:** Amphenol drawing C-AT13-2P-BMXX rev. A2, "recommended panel cutout". The mating axis and screw holes are 13.8 mm from the board.
+- **ATM13 cutout:** Amphenol drawing ATM13-2P-BMXX rev. A2. The drawing gives no height above the board. The mating axis (15.0 mm) is measured from the shroud in Amphenol's STEP model, and the cutout is placed with its holes on that axis.
+- **SurLok Plus lid cutout:** Amphenol catalog IC-10, p. 13 (5.7 mm). The board-to-lid distance follows from p. 6: the contact face lands on the board's back face, 19.2 mm from the panel face.
+- **Assumed:** {g.assumptions.wall} mm walls, floor and lid; {g.assumptions.back_gap} mm from the board to the back wall; {g.assumptions.floor_gap} mm between the deepest header (ATM13, {g.parts.ATM13.height} mm) and the floor.

@@ -1,0 +1,28 @@
+---
+// Inline a generated mechanical drawing (src/diagrams/build/<name>.svg), written by a
+// Python generator in ../scripts during `npm run drawings`. Shown at its natural size;
+// the figure scrolls sideways on narrow screens.
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
+interface Props {
+	name: string;
+	source: string;
+	caption?: string;
+}
+const { name, source, caption } = Astro.props;
+// Resolved from the project root: this component runs from a bundled chunk at build time.
+const file = join(process.cwd(), 'src/diagrams/build', `${name}.svg`);
+let svg: string;
+try {
+	svg = readFileSync(file, 'utf8');
+} catch {
+	throw new Error(`Drawing "${name}" is not generated: run \`npm run drawings\` (needs python3).`);
+}
+---
+
+<figure class="diagram drawing not-content">
+	<div class="diagram-scroll" set:html={svg} />
+	{caption && <figcaption>{caption}</figcaption>}
+	<a class="diagram-source" href={`https://github.com/karlTbowers/node60-hw/blob/main/${source}`}>Source: {source}</a>
+</figure>

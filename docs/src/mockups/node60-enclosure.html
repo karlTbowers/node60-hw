@@ -108,14 +108,14 @@ p { margin: 0; font-size: 13px; line-height: 1.45; }
     <div>
       <h2>Enclosure (assumed)</h2>
       <dl>
-        <dt>Inside</dt><dd>251 × 162.5 × 50.2 mm</dd>
+        <dt>Inside</dt><dd>251 × 162.5 × 50.3 mm</dd>
         <dt>Board → lid</dt><dd>16.2 mm (SurLok: 19.2 to the panel face, 3 mm lid)</dd>
-        <dt>Board → floor</dt><dd>31.4 mm (AT13 hangs 27.4)</dd>
+        <dt>Board → floor</dt><dd>31.5 mm (ATM13 hangs 28.5)</dd>
         <dt>Walls</dt><dd>3 mm</dd>
       </dl>
     </div>
     <div class="note"><b>Header pin tails on 2.6 mm.</b> AT13 tails are 3.1 ± 0.4 mm and ATM13 tails 3.05 mm, leaving about 0.1–0.5 mm of protrusion. Confirm the joints with Amphenol or on a first sample.</div>
-    <p style="color:var(--muted)">Plug and receptacle envelopes from the SurLok Plus catalog (IC-10, Gen 1.0, 5.7 mm): plug 18 wide, 55.1 long, 22.6 tall; receptacle 27 mm flange, 16.5 mm front. Shapes inside the envelopes and the ATM13 height are estimates. Checked with 3 mm clearance between plugs and flanges; a plug pointing west or east must end inside the board outline.</p>
+    <p style="color:var(--muted)">Plug and receptacle envelopes from the SurLok Plus catalog (IC-10, Gen 1.0, 5.7 mm): plug 18 wide, 55.1 long, 22.6 tall; receptacle 27 mm flange, 16.5 mm front. Header heights from Amphenol's STEP models; shapes inside the envelopes are estimates. Dimensions: the Enclosure &amp; mechanical page. Checked with 3 mm clearance between plugs and flanges; a plug pointing west or east must end inside the board outline.</p>
   </aside>
 </div>
 
@@ -131,7 +131,7 @@ p { margin: 0; font-size: 13px; line-height: 1.45; }
   // Vertical stack (Y): component side at 0 facing down, back face at BT.
   const SURLOK_DEPTH = 19.2;                       // contact face to panel face (catalog B - A - C)
   const LID_OUT = BT + SURLOK_DEPTH, LID_IN = LID_OUT - WALL;
-  const FLOOR = -27.4 - 4;
+  const FLOOR = -28.48 - 3;                       // deepest header (ATM13) + 3 mm
   const GASKET = 1.0, FLANGE_T = 2.5, FRONT_A = 16.5;
   const FLANGE_TOP = LID_OUT + GASKET + FLANGE_T, MATING = LID_OUT + GASKET + FRONT_A;
   const PLUG = { w: 18, l: 55.1, h: 22.6 };
@@ -182,8 +182,8 @@ p { margin: 0; font-size: 13px; line-height: 1.45; }
     g.add(box(sw, sh, reach - panel, m, 0, axis, (panel + reach) / 2));
     return g;
   }
-  const AT13 = { w: 35.2, back: 6.1, panel: 15.5, reach: 30.1, h: 27.4, axis: 13.8, sw: 24, sh: 20, m: M.at13 };
-  const ATM13 = { w: 33, back: 10, panel: 16.5, reach: 29.9, h: 22, axis: 11, sw: 17, sh: 15, m: M.atm }; // height estimated
+  const AT13 = { w: 35.2, back: 6.1, panel: 15.5, reach: 30.1, h: 27.84, axis: 13.8, sw: 24, sh: 20, m: M.at13 };
+  const ATM13 = { w: 36.8, back: 10.25, panel: 16.5, reach: 29.4, h: 28.48, axis: 15.0, sw: 16.6, sh: 16.2, m: M.atm }; // Amphenol STEP
 
   const holes = { front: [], right: [], left: [] };
   for (let i = 0; i < 6; i++) {

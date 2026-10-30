@@ -47,3 +47,4 @@ The 74660016R is a reverse-mount terminal: its body sits on one face and its M6 
 - **Assembly:** all SMT parts, the REDCUBEs included, stay on one side. The headers are through-hole.
 - **Power-entry placement:** DEC-016 put one battery/return pair on each side of the case. The user's sketch puts all four receptacles in the lid, and this decision follows the sketch.
 - **3D mockup:** the [enclosure mockup](../../mockups/node60-enclosure.html) shows this arrangement. It is built from the connector positions on the PCB.
+- **Dimensioned drawing:** the [Enclosure & mechanical](../../subsystems/enclosure/) page has the outside size, every panel cutout and the board position, generated from the same positions by `scripts/enclosure_drawing.py`.

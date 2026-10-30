@@ -31,6 +31,7 @@ export default defineConfig({
 						{ label: 'Output stage', slug: 'subsystems/outputs' },
 						{ label: 'Temperature sensing', slug: 'subsystems/temperature' },
 						{ label: 'Connector & harness', slug: 'subsystems/harness' },
+						{ label: 'Enclosure & mechanical', slug: 'subsystems/enclosure' },
 						{ label: 'Firmware & data contract', slug: 'subsystems/firmware' },
 						{ label: 'Safety, EMC & thermal', slug: 'subsystems/safety' },
 					],
