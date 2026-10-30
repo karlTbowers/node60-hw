@@ -6,8 +6,9 @@
   "description": "Node60 architecture and design documentation (Astro Starlight)",
   "scripts": {
     "diagrams": "node scripts/render-diagrams.mjs",
-    "dev": "npm run diagrams && astro dev",
-    "build": "npm run diagrams && astro build",
+    "mockups": "node scripts/wrap-mockups.mjs",
+    "dev": "npm run diagrams && npm run mockups && astro dev",
+    "build": "npm run diagrams && npm run mockups && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
