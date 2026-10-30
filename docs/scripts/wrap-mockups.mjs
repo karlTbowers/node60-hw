@@ -1,9 +1,9 @@
 // Wrap each HTML fragment in src/mockups/ into a full page in public/mockups/ (gitignored).
 // The fragments are also published as Claude artifacts, which add their own document skeleton,
 // so the source keeps no <!doctype>, <html>, <head> or <body> of its own.
-// A fragment may contain the marker /*ENCLOSURE_JSON*/null: it is replaced by the enclosure
-// geometry that `npm run drawings` wrote (src/diagrams/build/enclosure.json), so the mockup
-// and the dimensioned drawing always show the same design. Run with `--fill <fragment> <out>`
+// A fragment may contain the marker /*ENCLOSURE_VERSIONS_JSON*/null: it is replaced by every
+// enclosure version's geometry that `npm run drawings` wrote (src/diagrams/build/
+// enclosure-versions.json), so the mockup and the dimensioned drawings always show the same designs. Run with `--fill <fragment> <out>`
 // to write a filled fragment without the page skeleton (for publishing the artifact).
 import { mkdirSync, readdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { join, dirname } from 'node:path';
@@ -27,11 +27,11 @@ img { max-width: 100%; }
 </style>
 `;
 
-const geometry = join(root, 'src/diagrams/build/enclosure.json');
+const geometry = join(root, 'src/diagrams/build/enclosure-versions.json');
 const fill = (body) => {
-	if (!body.includes('/*ENCLOSURE_JSON*/null')) return body;
+	if (!body.includes('/*ENCLOSURE_VERSIONS_JSON*/null')) return body;
 	const json = readFileSync(geometry, 'utf8').trim();
-	return body.replace('/*ENCLOSURE_JSON*/null', () => json);
+	return body.replace('/*ENCLOSURE_VERSIONS_JSON*/null', () => json);
 };
 
 if (process.argv[2] === '--fill') {

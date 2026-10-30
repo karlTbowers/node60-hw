@@ -1,0 +1,70 @@
+---
+// One enclosure design version: summary, key numbers, busbar cut list, dimension tables and
+// every generated view. Everything comes from src/diagrams/build/enclosure-versions.json,
+// written by scripts/enclosure_versions.py at docs build time.
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import Drawing from './Drawing.astro';
+import EnclosureTable from './EnclosureTable.astro';
+import Ref from './Ref.astro';
+
+interface Props {
+	version: string;
+}
+const { version } = Astro.props;
+const index = JSON.parse(readFileSync(join(process.cwd(), 'src/diagrams/build/enclosure-versions.json'), 'utf8'));
+const g = index.versions[version];
+if (!g) throw new Error(`Unknown enclosure version "${version}"`);
+const f = (v: number) => Number(v.toFixed(2));
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const mockup = `${base}/mockups/node60-enclosure.html#${version}`;
+const top = Math.max(g.outside.z, ...g.raised.map((r: any) => r.z));
+const t = g.terminal;
+const captions: Record<string, string> = {
+	top: 'Top, seen from above: lid cutouts, raised sections and the board outline (dashed).',
+	front: 'Front face: the six outputs.',
+	back: 'North face, seen from behind.',
+	right: 'Right face, seen from outside, front face on the left.',
+	left: 'Left face, seen from outside, front face on the right.',
+	bottom: 'Bottom, seen from below.',
+	details: 'Panel cutouts in their own frame, with the edge nearest the board at the top. Dashed: the flat area the seal or flange needs.',
+};
+---
+
+<p>
+	{g.version.summary}{' '}
+	{g.version.decision && <>Recorded in <Ref id={g.version.decision} />.</>}
+	{g.version.current && <strong> This is the version on the PCB now.</strong>}
+</p>
+<p><a href={mockup}><strong>Open this version in the 3D mockup</strong></a> to orbit it, lift the lid and turn the plugs.</p>
+
+<table>
+	<thead><tr><th>Item</th><th>Value</th></tr></thead>
+	<tbody>
+		<tr><td>Outside</td><td>{f(g.outside.x)} × {f(g.outside.y)} × {f(top)} mm{g.raised.length > 0 && ` (low lid ${f(g.outside.z)}, raised ${f(top)}: a ${f(top - g.outside.z)} mm step)`}</td></tr>
+		<tr><td>Board</td><td>{g.board.component_side === 'top' ? 'component side up' : 'component side down'}, {f(g.board.z1 - g.board.z0)} mm</td></tr>
+		<tr><td>Power terminals</td><td>{t.name}</td></tr>
+		<tr><td>SurLok stud into the terminal</td><td>{f(t.stud_engagement)} of {t.thread} mm of thread, with the library's estimated {g.parts.SURLOK.stud} mm stud</td></tr>
+		<tr><td>Busbars</td><td>{g.busbars.length ? `${g.parts.busbar.stock}, on ${t.kind === 'pressfit' ? 'the press-fit blocks' : 'the board'}` : 'none'}</td></tr>
+		<tr><td>SurLok plugs</td><td>{g.cutouts.find((c: any) => c.type === 'SURLOK').plug_dirs.length === 3 ? 'west, north or east' : 'outward (west or east) or north'}: {g.plug_check.combinations} combinations, {g.plug_check.failures} failing; tightest {g.plug_check.tightest} mm ({g.plug_check.where})</td></tr>
+	</tbody>
+</table>
+
+{g.busbars.length > 0 && (
+	<table>
+		<thead><tr><th>Busbar</th><th>Length</th><th>Holes</th></tr></thead>
+		<tbody>
+			{g.busbars.map((b: any) => (
+				<tr><td>{b.net} ({b.refs.join(', ')})</td><td>{f(b.length)} mm</td><td>2 × Ø{b.hole_d}, {f(b.hole_pitch)} mm apart</td></tr>
+			))}
+		</tbody>
+	</table>
+)}
+
+<h2 id="dimensions">Dimensions</h2>
+<p>Millimetres. Origin at the front-left-bottom outer corner, seen from outside: x along the front face (east), y back from the front face (north), z up. Cutout positions are those dimensioned on the views: from each view's lower-left corner as seen from outside.</p>
+<EnclosureTable dir={version} />
+
+<h2 id="views">Views</h2>
+<p>Third-angle views. Hidden lines (dashed) show the inner wall faces, the floor and lid levels, and the board.</p>
+{g.views.map((v: string) => <Drawing name={`${version}/enclosure-${v}`} source="scripts/enclosure_geometry.py" caption={captions[v]} />)}

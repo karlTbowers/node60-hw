@@ -1,28 +1,26 @@
 #!/usr/bin/env python3
-"""Place Node60's enclosure-fixed connectors (J901-J912) and the board outline.
+"""Node60's enclosure-fixed connectors (J901-J912), board outline and busbars, per design version.
+
+Five mechanical versions are kept as candidates (docs: Enclosure options). Each is a set
+of parameters in VERSIONS; enclosure_geometry.py, check_surlok_clearance.py, the
+dimensioned drawings and the 3D mockup are all generated from them. The PCB holds one:
+CURRENT, unless another is named on the command line.
 
 Run with KiCad's own Python (it provides the pcbnew module):
 
     kicad-cli sch export netlist --format kicadsexpr -o /tmp/node60.net node60.kicad_sch
     /Applications/KiCad/KiCad.app/Contents/Frameworks/Python.framework/Versions/Current/bin/python3 \
-        scripts/place_connectors.py /tmp/node60.net
+        scripts/place_connectors.py /tmp/node60.net [v2]
 
-Close the PCB editor first. The script replaces any J901-J912 footprints and
-the Edge.Cuts outline; every other item on the board is left alone. Footprints
-get the schematic symbol path, so a later Update PCB from Schematic (F8)
-links to them and keeps their positions.
+Close the PCB editor first. The script moves J901-J912, redraws the Edge.Cuts outline and
+the busbar outlines (User.Drawings); every other item on the board is left alone.
+Footprints get the schematic symbol path, so a later Update PCB from Schematic (F8) links
+to them and keeps their positions. A version whose terminal footprint differs from the
+schematic's (the press-fit versions) can't be placed until the schematic changes.
 
-The board mounts component side (F.Cu) up, facing the lid (DEC-021), so
-KiCad's top view is the view from above the lid. Enclosure faces -> board edges:
-  front face  (J904-J909, AT13 outputs)     -> bottom edge, J904 at the left
-  north face  (J903, J912, T1S)             -> top edge, middle; J903 on the
-              left as seen from outside the north wall (east, larger x)
-  lid         (J901/J910 battery, J902/J911 return) -> REDCUBE 74660016R on
-              B.Cu. Each pair is joined by a copper busbar on top of the board;
-              the SurLok studs come down through the busbar into the terminals.
-
-The busbar outlines are drawn on User.Drawings: keep components out from under
-them. The outline is PROVISIONAL until the enclosure is chosen.
+Positions are written in plan as seen from above the lid (x east, KiCad Y toward the
+front face). A board mounted component side down (version 1) is mirrored in KiCad, whose
+top view then looks at the board from below.
 """
 import sys
 
@@ -39,7 +37,8 @@ X0, Y0 = 30.0, 30.0
 W, D = 250.0, 160.0
 FRONT = Y0 + D
 LEFT, RIGHT = X0, X0 + W
-THICKNESS = 2.6      # mm, DEC-020: the REDCUBE's 2.6 mm spigot ends flush with the top face
+CX = X0 + W / 2
+THICKNESS = 2.6      # mm (DEC-020): the SMT REDCUBE's 2.6 mm spigot ends flush with the far face
 
 # Board edge sits this far behind each connector's flange (panel) face, so the
 # flange, not the board, meets the wall.
@@ -48,56 +47,101 @@ AT13_PANEL = 15.5    # pin row to flange face, footprint local +y
 ATM13_PANEL = 16.5
 AT13_CY_X = 2.7      # courtyard centre relative to pin 1 along the pin row
 ATM13_CY_X = 2.1
+AT13_BACK = 6.6      # header body behind its pin row (courtyard)
+ATM13_BACK = 10.85
+ATM13_ALONG = (16.81, 21.01)   # ATM13 courtyard along its pin row, either side of pin 1
+HEADER_CLEAR = 3.0
 
 OUT_PITCH = 40.0     # 36.2 mm courtyard + 3.8 mm between headers (user, 2026-10-30)
-T1S_PITCH = 45.0     # J903 / J912 on the north edge: 36.8 mm seal areas, ~8 mm apart (DEC-021)
+OUT_ROW = FRONT - (AT13_PANEL - EDGE_GAP)          # AT13 pin row
+T1S_PITCH = 45.0     # J903 / J912 side by side on the north edge (DEC-021)
+# T1S on the side walls: version 1 at 60 % of the depth from the front (DEC-020);
+# version 3 as near the outputs as the AT13 bodies allow (user, 2026-10-30).
+T1S_SIDE_MID = FRONT - 0.60 * D
+T1S_SIDE_FRONT = OUT_ROW - AT13_BACK - HEADER_CLEAR - max(ATM13_ALONG)
 
-# Lid terminal axes (KiCad X, Y), in the two low sections either side of the lid's
-# raised T (DEC-021): one battery/return pair each side. The battery row sits far
-# enough south that a battery plug pointing north clears the return receptacle; the
-# return row far enough south that its busbar clears the T1S headers.
-CX = X0 + W / 2
-LID_TERMINALS = {
-    "J910": (CX - 70, FRONT - 45),   # battery, west
-    "J901": (CX + 70, FRONT - 45),   # battery, east
-    "J911": (CX - 70, FRONT - 115),  # return, west
-    "J902": (CX + 70, FRONT - 115),  # return, east
-}
-
-# Busbars on top of the board (DEC-021): 1/8" x 1" C110 copper flat bar, cut to length
-# and drilled in house, one per terminal pair. Ends run half a width past each hole.
+# Busbars (DEC-021): 1/8" x 1" C110 copper flat bar, cut to length and drilled in house,
+# one per terminal pair. Ends run half a width past each hole.
 BUSBAR_W, BUSBAR_T = 25.4, 3.175
 BUSBAR_HOLE = 6.5    # M6 clearance
 BUSBARS = {"VBAT_IN": ("J910", "J901"), "GND": ("J911", "J902")}
 
+AT13 = ("DropOut_Connector_Amphenol", "Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal")
+ATM13 = ("DropOut_Connector_Amphenol", "Amphenol_ATM13-2P-BMxx_1x02_P4.20mm_Horizontal")
+REDCUBE = {"smt": ("DropOut_TerminalBlock_Wuerth", "Wuerth_REDCUBE-SMT_WP-SMRT_74660016"),
+           "pressfit": ("DropOut_TerminalBlock_Wuerth", "Wuerth_REDCUBE-PRESS-FIT_WP-PFIFUA_786202106_PressFit")}
 
-def busbar_outline(net):
-    """(x0, y0, x1, y1) of a busbar in KiCad mm; both terminals sit on one row."""
-    (xa, ya), (xb, yb) = (LID_TERMINALS[r] for r in BUSBARS[net])
+# Lid terminal layouts (plan, x east, KiCad Y).
+_T_LAYOUT = {    # DEC-021: one battery/return pair in each low section beside the raised T
+    "J910": (CX - 70, FRONT - 45), "J901": (CX + 70, FRONT - 45),
+    "J911": (CX - 70, FRONT - 115), "J902": (CX + 70, FRONT - 115)}
+_STAGGER = {     # version 3: behind the raised front band; battery close, return wide, so a
+    "J910": (CX - 40, FRONT - 87), "J901": (CX + 40, FRONT - 87),     # battery plug pointing
+    "J911": (CX - 75, FRONT - 120), "J902": (CX + 75, FRONT - 120)}   # north passes beside the return
+
+# board: "up" (component side faces the lid) or "down"; t1s: "north" or "sides" (y of the
+# pair centre); lid: "flat", "T" (crossbar over the outputs, stem over a north T1S pair) or
+# "front" (one raised band across the front); plugs: "WNE" (any of west, north, east) or
+# "ON" (outward or north).
+VERSIONS = {
+    "v1": dict(title="Version 1: board flipped", decision="DEC-020", board="down", terminal="smt", busbars=False,
+               t1s="sides", t1s_y=T1S_SIDE_MID, lid="flat", plugs="WNE", back_gap=2.0,
+               terminals={"J910": (CX - 48, FRONT - 65), "J901": (CX + 48, FRONT - 65),
+                          "J911": (CX - 75, FRONT - 125), "J902": (CX + 75, FRONT - 125)},
+               summary="Board component side down under a flat lid; the SurLok studs reach SMT REDCUBEs through "
+                       "the board. T1S on the side walls. No busbars."),
+    "v2": dict(title="Version 2: busbars, raised T", decision="DEC-021", board="up", terminal="smt", busbars=True,
+               t1s="north", lid="T", plugs="ON", back_gap=EDGE_GAP, terminals=_T_LAYOUT,
+               summary="Board component side up; SMT REDCUBEs underneath, busbars on top; a raised T over the "
+                       "outputs and the T1S pair on the north wall."),
+    "v3": dict(title="Version 3: busbars, raised front", decision=None, board="up", terminal="smt", busbars=True,
+               t1s="sides", t1s_y=T1S_SIDE_FRONT, lid="front", plugs="ON", back_gap=2.0, terminals=_STAGGER,
+               summary="As version 2, but the T1S pair moves to the side walls next to the outputs, so one raised "
+                       "band across the front covers every header; the power receptacles sit behind it, staggered."),
+    "v4": dict(title="Version 4: press-fit, raised T", decision=None, board="up", terminal="pressfit", busbars=True,
+               t1s="north", lid="T", plugs="ON", back_gap=EDGE_GAP, terminals=_T_LAYOUT,
+               summary="Version 2's layout with REDCUBE press-fit 786202106 terminals on top of the board and the "
+                       "busbars on the terminal blocks."),
+    "v5": dict(title="Version 5: press-fit, raised front", decision=None, board="up", terminal="pressfit", busbars=True,
+               t1s="sides", t1s_y=T1S_SIDE_FRONT, lid="front", plugs="ON", back_gap=2.0, terminals=_STAGGER,
+               summary="Version 3's layout with REDCUBE press-fit 786202106 terminals and the busbars on the "
+                       "terminal blocks."),
+}
+CURRENT = "v2"       # the version on node60.kicad_pcb (DEC-021)
+
+
+def busbar_outline(v, net):
+    """(x0, y0, x1, y1) of a busbar in plan (x east, KiCad Y); both terminals sit on one row."""
+    (xa, ya), (xb, yb) = (v["terminals"][r] for r in BUSBARS[net])
     h = BUSBAR_W / 2
     return min(xa, xb) - h, ya - h, max(xa, xb) + h, ya + h
 
-AT13 = ("DropOut_Connector_Amphenol", "Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal")
-ATM13 = ("DropOut_Connector_Amphenol", "Amphenol_ATM13-2P-BMxx_1x02_P4.20mm_Horizontal")
-REDCUBE = ("DropOut_TerminalBlock_Wuerth", "Wuerth_REDCUBE-SMT_WP-SMRT_74660016")
 
-
-def placements():
-    """ref -> (lib, footprint, x, y, rotation_deg, bottom_side)"""
+def placements(version=CURRENT):
+    """ref -> (lib, footprint, x, y, rotation_deg, bottom_side), in KiCad coordinates."""
+    v = VERSIONS[version]
+    down = v["board"] == "down"
+    kx = (lambda x: 2 * X0 + W - x) if down else (lambda x: x)
     p = {}
-    row_y = FRONT - (AT13_PANEL - EDGE_GAP)
     for i in range(6):
-        cx = X0 + W / 2 + (i - 2.5) * OUT_PITCH
-        p[f"J{904 + i}"] = (*AT13, cx - AT13_CY_X, row_y, 0, False)
-    # rotation 180: shroud (local +y) points north (-y), local +x points west (-x)
-    north_row = Y0 + (ATM13_PANEL - EDGE_GAP)
-    p["J903"] = (*ATM13, CX + T1S_PITCH / 2 + ATM13_CY_X, north_row, 180, False)
-    p["J912"] = (*ATM13, CX - T1S_PITCH / 2 + ATM13_CY_X, north_row, 180, False)
-    # Lid terminals: REDCUBE on B.Cu, thread opening up through the board. Each
-    # SurLok right-angle plug can point outward (west or east) or north
-    # (scripts/check_surlok_clearance.py).
-    for ref, (x, y) in LID_TERMINALS.items():
-        p[ref] = (*REDCUBE, x, y, 0, True)
+        cx = kx(CX + (i - 2.5) * OUT_PITCH)
+        p[f"J{904 + i}"] = (*AT13, cx - AT13_CY_X, OUT_ROW, 0, False)
+    if v["t1s"] == "north":
+        # rotation 180: shroud (local +y) points north (-y), local +x points west (-x)
+        north_row = Y0 + (ATM13_PANEL - EDGE_GAP)
+        p["J903"] = (*ATM13, kx(CX + T1S_PITCH / 2) + ATM13_CY_X, north_row, 180, False)
+        p["J912"] = (*ATM13, kx(CX - T1S_PITCH / 2) + ATM13_CY_X, north_row, 180, False)
+    else:
+        # J903 on the east wall, J912 on the west wall, as seen from outside. Rotation 90:
+        # shroud (local +y) points to KiCad +x, local +x points to -y; -90 the other way.
+        cy, edge = v["t1s_y"], ATM13_PANEL - EDGE_GAP
+        right, left = (RIGHT - edge, cy + ATM13_CY_X, 90, False), (LEFT + edge, cy - ATM13_CY_X, -90, False)
+        p["J903"], p["J912"] = (*ATM13, *(left if down else right)), (*ATM13, *(right if down else left))
+    # SMT REDCUBE: its thread opens through the board, away from its body, so the body sits
+    # on the side facing away from the lid. Press-fit: block on the side facing the lid.
+    on_bottom = v["terminal"] == "smt" and not down
+    for ref, (x, y) in v["terminals"].items():
+        p[ref] = (*REDCUBE[v["terminal"]], kx(x), y, 0, on_bottom)
     return p
 
 
@@ -158,8 +202,9 @@ def read_netlist(path, refs):
     return comps, nets
 
 
-def main(netlist):
-    place = placements()
+def main(netlist, version=CURRENT):
+    v = VERSIONS[version]
+    place = placements(version)
     comps, pin_nets = read_netlist(netlist, set(place))
     missing = set(place) - set(comps)
     if missing:
@@ -223,8 +268,10 @@ def main(netlist):
     board.Add(outline)
 
     mm = lambda v: pcbnew.FromMM(v)
-    for net in BUSBARS:
-        x0, y0, x1, y1 = busbar_outline(net)
+    for net in (BUSBARS if v["busbars"] else ()):
+        x0, y0, x1, y1 = busbar_outline(v, net)
+        if v["board"] == "down":
+            x0, x1 = 2 * X0 + W - x1, 2 * X0 + W - x0
         bar = pcbnew.PCB_SHAPE(board, pcbnew.SHAPE_T_RECT)
         bar.SetStart(pcbnew.VECTOR2I(mm(x0), mm(y0)))
         bar.SetEnd(pcbnew.VECTOR2I(mm(x1), mm(y1)))
@@ -249,4 +296,4 @@ def main(netlist):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1])
+    main(sys.argv[1], sys.argv[2] if len(sys.argv) > 2 else CURRENT)

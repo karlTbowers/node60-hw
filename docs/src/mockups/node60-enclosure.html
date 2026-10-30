@@ -66,6 +66,9 @@ p { margin: 0; font-size: 13px; line-height: 1.45; }
 <div class="app">
   <div class="view" id="view">
     <div class="tools">
+      <label class="pick" for="version">Version
+        <select id="version"></select>
+      </label>
       <button id="b-lid" aria-pressed="true">Lid</button>
       <button id="b-walls" aria-pressed="true">Walls</button>
       <button id="b-plugs" aria-pressed="true">Plugs</button>
@@ -80,16 +83,13 @@ p { margin: 0; font-size: 13px; line-height: 1.45; }
   </div>
   <aside class="rail">
     <div>
-      <h1>Node60 enclosure</h1>
-      <p class="sub">DEC-021 build: board component side up, a raised T on the lid, SurLok receptacles on busbars in the two low sections. Every position comes from the same geometry as the PCB and the dimensioned drawing. Drag to orbit, scroll to zoom.</p>
+      <h1 id="title">Node60 enclosure</h1>
+      <p class="sub" id="summary"></p>
     </div>
     <div>
       <h2>SurLok plug directions</h2>
       <div class="plugs" id="plugs"></div>
-      <div class="presets">
-        <button id="p-out">All outward</button>
-        <button id="p-north">All north</button>
-      </div>
+      <div class="presets" id="presets"></div>
       <div class="status" id="status" role="status"></div>
       <p style="margin-top:8px;color:var(--muted)" id="sweep"></p>
     </div>
@@ -97,33 +97,28 @@ p { margin: 0; font-size: 13px; line-height: 1.45; }
       <h2>Enclosure (provisional)</h2>
       <dl id="dims"></dl>
     </div>
-    <div>
+    <div id="bars-box">
       <h2>Busbars</h2>
       <dl id="bars"></dl>
     </div>
-    <div class="note"><b>SurLok stud length is not confirmed.</b> The busbar sits between each receptacle and its REDCUBE terminal. With the library's estimated 7.7 mm stud, about 4.5 mm reaches the terminal's 5.6 mm thread. Get the real stud length from Amphenol before release.</div>
-    <div class="note"><b>Header pin tails on 2.6 mm.</b> AT13 tails are 3.1 ± 0.4 mm and ATM13 tails 3.05 mm, leaving about 0.1–0.5 mm of protrusion. Confirm the joints with Amphenol or on a first sample.</div>
-    <p style="color:var(--muted)">Plug and receptacle envelopes from the SurLok Plus catalog (IC-10, Gen 1.0, 5.7 mm); header heights from Amphenol's STEP models; shapes inside the envelopes are estimates. Dimensions: the Enclosure &amp; mechanical page.</p>
+    <div class="note"><b>SurLok stud length is not confirmed.</b> Amphenol publishes none; the engagement figures use the library's 7.7 mm estimate. Get the real length before choosing a version.</div>
+    <p style="color:var(--muted)">Five candidate versions, all generated from the same connector placement as the PCB and the dimensioned drawings (Enclosure options pages). Plug and receptacle envelopes from the SurLok Plus catalog (IC-10, Gen 1.0, 5.7 mm); header heights from Amphenol's STEP models; shapes inside the envelopes are estimates.</p>
   </aside>
 </div>
+
+<style>
+.pick { display: inline-flex; align-items: center; gap: 6px; font: 500 13px var(--f-ui); color: var(--fg); background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 3px 8px; }
+.pick select { font: 500 13px var(--f-ui); color: var(--fg); background: var(--panel); border: 0; }
+</style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 <script>
-// The enclosure geometry (scripts/enclosure_geometry.py -> enclosure.json), filled in by the
-// docs build (docs/scripts/wrap-mockups.mjs) or before publishing the artifact.
-const G = /*ENCLOSURE_JSON*/null;
+// Every enclosure version's geometry (scripts/enclosure_versions.py -> enclosure-versions.json),
+// filled in by the docs build (docs/scripts/wrap-mockups.mjs) or before publishing the artifact.
+const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
 (() => {
-  if (!G) { document.getElementById('view').textContent = 'Geometry missing: build with npm run build in docs/.'; return; }
-  // Scene frame: X east, Y up, Z toward the front face. Enclosure frame: x east, y north from the front, z up.
-  const OX = G.outside.x, OY = G.outside.y, W = G.wall, B = G.board;
-  const P = (x, y) => [x - OX / 2, OY / 2 - y];
-  const LOW = G.outside.z, HOOD = Math.max(LOW, ...G.raised.map(r => r.z));
-  const SURLOK = G.parts.SURLOK, BUS_TOP = LOW - SURLOK.depth;
-  const GASKET = 1.0, FLANGE_T = 2.5, FRONT_A = 16.5, FLANGE = 27, CLEAR = 3;
-  const FLANGE_TOP = LOW + GASKET + FLANGE_T, MATING = LOW + GASKET + FRONT_A;
-  const [PLUG_W, PLUG_L, PLUG_H] = SURLOK.plug;
-
+  if (!INDEX) { document.getElementById('view').textContent = 'Geometry missing: build with npm run build in docs/.'; return; }
   const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
   const view = document.getElementById('view');
   const renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -146,157 +141,172 @@ const G = /*ENCLOSURE_JSON*/null;
   };
   const box = (w, h, d, m, x, y, z) => { const b = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), m); b.position.set(x, y, z); return b; };
   const cyl = (r, h, m, x, y, z) => { const c = new THREE.Mesh(new THREE.CylinderGeometry(r, r, h, 40), m); c.position.set(x, y, z); return c; };
-  // Box between two enclosure-frame corners.
-  const span = (x0, x1, y0, y1, z0, z1, m) => {
-    const [a, b] = P((x0 + x1) / 2, (y0 + y1) / 2);
-    return box(Math.abs(x1 - x0), z1 - z0, Math.abs(y1 - y0), m, a, (z0 + z1) / 2, b);
-  };
-
-  const labelBox = document.getElementById('labels');
-  const labels = [];
-  const tag = (text, pos, group = null) => {
-    const el = document.createElement('div'); el.className = 'tag'; el.textContent = text;
-    labelBox.appendChild(el); labels.push({ el, pos: new THREE.Vector3(...pos), group });
-  };
-
-  // Board and busbars
-  scene.add(span(B.x0, B.x1, B.y0, B.y1, B.z0, B.z1, M.board));
-  for (const b of G.busbars) scene.add(span(b.x0, b.x1, b.y0, b.y1, b.z0, b.z1, M.copper));
-
-  // Right-angle header, built facing +Z with its body above y = 0; flange face at local z = panel.
-  // AT13: shroud to 30.1 from the pin row, mating axis 13.8 (DEC-013); ATM13 from Amphenol's STEP.
-  const HEADERS = {
+  const GASKET = 1.0, FLANGE_T = 2.5, FRONT_A = 16.5, FLANGE = 27, CLEAR = 3;
+  const HEADERS = {     // body sizes; heights, axes and flange faces come from the geometry
     AT13: { w: 35.2, back: 6.1, reach: 30.1, sw: 24, sh: 20, m: M.at13 },
     ATM13: { w: 36.8, back: 10.25, reach: 29.4, sw: 16.6, sh: 16.2, m: M.atm },
   };
-  function header(type) {
-    const g = new THREE.Group();
-    const { w, back, reach, sw, sh, m } = HEADERS[type], { height: h, axis, panel } = G.parts[type];
-    g.add(box(w, h, panel + back - 2, m, 0, h / 2, (panel - back - 2) / 2));
-    g.add(box(w + 2, h, 2, m, 0, h / 2, panel - 1));
-    g.add(box(sw + 4, sh + 4, 0.8, M.seal, 0, axis, panel + 0.4));
-    g.add(box(sw, sh, reach - panel, m, 0, axis, (panel + reach) / 2));
-    return g;
-  }
-  const wallCuts = { front: [], back: [] };
-  for (const c of G.cutouts.filter(c => c.face === 'front' || c.face === 'back')) {
-    const front = c.face === 'front', panel = G.parts[c.type].panel;
-    const g = header(c.type);
-    const [x, z] = P(c.x, front ? W + panel : OY - W - panel);
-    g.position.set(x, B.z1, z);
-    if (!front) g.rotation.y = Math.PI;
-    scene.add(g);
-    const H = HEADERS[c.type];
-    wallCuts[c.face].push({ u: front ? c.x : OX - c.x, z: c.z, w: H.sw + 2, h: H.sh + 2 });
-    tag(`${c.ref} ${c.label}`, [x, B.z1 + G.parts[c.type].height + 4, z]);
-  }
+  const labelBox = document.getElementById('labels');
+  let labels = [], root = null, lid = null, plugs = null, walls = null, TERMS = [], G = null;
+  let lift = 0, liftTarget = 0, show = { lid: true, walls: true, plugs: true };
+  const DIRS = { W: [-1, 0], N: [0, 1], E: [1, 0] };
 
-  // Lid terminals: REDCUBE under the board, SurLok receptacle on the busbar, plug on top.
-  const lid = new THREE.Group(); scene.add(lid);
-  const plugs = new THREE.Group(); lid.add(plugs);
-  const TERMS = G.cutouts.filter(c => c.type === 'SURLOK').map(c => ({ ...c, dir: c.x < OX / 2 ? 'W' : 'E' }));
-  for (const t of TERMS) {
-    const [x, z] = P(t.x, t.y), bat = t.label === 'VBAT_IN';
-    scene.add(cyl(6, 3, M.brass, x, B.z0 - 1.5, z));                       // REDCUBE flange Ø12 × 3, under the board
-    scene.add(cyl(4.5, B.z1 - B.z0, M.brass, x, (B.z0 + B.z1) / 2, z));   // spigot, flush with the top face
-    scene.add(cyl(3, 7.7, M.stud, x, BUS_TOP - 7.7 / 2, z));              // M6 stud (length estimated)
-    lid.add(cyl(7, LOW - BUS_TOP, bat ? M.red : M.black, x, (LOW + BUS_TOP) / 2, z));
-    lid.add(box(FLANGE, GASKET, FLANGE, M.gasket, x, LOW + GASKET / 2, z));
-    lid.add(box(FLANGE, FLANGE_T, FLANGE, bat ? M.red : M.black, x, LOW + GASKET + FLANGE_T / 2, z));
-    lid.add(cyl(8.5, MATING - FLANGE_TOP, bat ? M.red : M.black, x, (MATING + FLANGE_TOP) / 2, z));
-    const g = new THREE.Group(); g.position.set(x, FLANGE_TOP + 0.5, z);
-    const pm = bat ? M.redPlug : M.blackPlug, reach = PLUG_L - PLUG_W / 2;
-    g.add(cyl(PLUG_W / 2, PLUG_H, pm, 0, PLUG_H / 2, 0));
-    g.add(box(26, PLUG_W, PLUG_W, pm, 13, PLUG_H - PLUG_W / 2, 0));
-    const shell = new THREE.Mesh(new THREE.CylinderGeometry(7.5, 7.5, reach - 26, 32), pm);
-    shell.rotation.z = Math.PI / 2; shell.position.set(26 + (reach - 26) / 2, PLUG_H - PLUG_W / 2, 0); g.add(shell);
-    const cable = new THREE.Mesh(new THREE.CylinderGeometry(5, 5, 30, 24), mat(0x30343a));
-    cable.rotation.z = Math.PI / 2; cable.position.set(reach + 15, PLUG_H - PLUG_W / 2, 0); g.add(cable);
-    plugs.add(g); t.plug = g;
-    tag(`${t.ref} ${t.label}`, [x, FLANGE_TOP + PLUG_H + 8, z], 'lid');
-  }
+  function build(id) {
+    G = INDEX.versions[id];
+    if (root) scene.remove(root);
+    labelBox.textContent = ''; labels = [];
+    root = new THREE.Group(); scene.add(root);
+    const OX = G.outside.x, OY = G.outside.y, W = G.wall, B = G.board, up = B.component_side === 'top';
+    const P = (x, y) => [x - OX / 2, OY / 2 - y];
+    const LOW = G.outside.z, SUR = G.parts.SURLOK, CONTACT = SUR.contact_z;
+    const FLANGE_TOP = LOW + GASKET + FLANGE_T, MATING = LOW + GASKET + FRONT_A;
+    const [PLUG_W, PLUG_L, PLUG_H] = SUR.plug;
+    const span = (x0, x1, y0, y1, z0, z1, m) => {
+      const [a, b] = P((x0 + x1) / 2, (y0 + y1) / 2);
+      return box(Math.abs(x1 - x0), z1 - z0, Math.abs(y1 - y0), m, a, (z0 + z1) / 2, b);
+    };
+    const tag = (text, pos, group = null) => {
+      const el = document.createElement('div'); el.className = 'tag'; el.textContent = text;
+      labelBox.appendChild(el); labels.push({ el, pos: new THREE.Vector3(...pos), group });
+    };
 
-  // Enclosure: stepped outer walls, a low lid with receptacle holes, and the raised T.
-  const xs = [...new Set([0, OX, ...G.raised.flatMap(r => [r.x0, r.x1])])].sort((a, b) => a - b);
-  const ys = [...new Set([0, OY, ...G.raised.flatMap(r => [r.y0, r.y1])])].sort((a, b) => a - b);
-  const raisedAt = (x, y) => G.raised.some(r => x > r.x0 && x < r.x1 && y > r.y0 && y < r.y1);
-  function wallTop(face, u) {           // wall height at the face plane, u along the wall from its own left
-    const along = { front: [u, 0.01], back: [OX - u, OY - 0.01], left: [0.01, OY - u], right: [OX - 0.01, u] }[face];
-    return raisedAt(...along) ? HOOD : LOW;
-  }
-  function wallShape(face, len, cuts) {
-    const s = new THREE.Shape(), us = face === 'front' || face === 'back' ? xs : ys;
-    const brk = [...new Set([0, len, ...us.map(v => (face === 'back' || face === 'left') ? (face === 'back' ? OX : OY) - v : v)])]
-      .filter(v => v >= 0 && v <= len).sort((a, b) => a - b);
-    s.moveTo(0, 0); s.lineTo(len, 0);
-    for (let i = brk.length - 1; i > 0; i--) {
-      const z = wallTop(face, (brk[i] + brk[i - 1]) / 2);
-      s.lineTo(brk[i], z); s.lineTo(brk[i - 1], z);
+    // Board and busbars
+    root.add(span(B.x0, B.x1, B.y0, B.y1, B.z0, B.z1, M.board));
+    for (const b of G.busbars) root.add(span(b.x0, b.x1, b.y0, b.y1, b.z0, b.z1, M.copper));
+
+    // Headers: built facing +Z with the body above y = 0, flange face at local z = panel; on a
+    // board mounted component side down they hang from it (mirrored in y).
+    const cs = up ? B.z1 : B.z0;
+    function header(type) {
+      const g = new THREE.Group(), body = new THREE.Group();
+      const { w, back, reach, sw, sh, m } = HEADERS[type], { height: h, axis, panel } = G.parts[type];
+      body.add(box(w, h, panel + back - 2, m, 0, h / 2, (panel - back - 2) / 2));
+      body.add(box(w + 2, h, 2, m, 0, h / 2, panel - 1));
+      body.add(box(sw + 4, sh + 4, 0.8, M.seal, 0, axis, panel + 0.4));
+      body.add(box(sw, sh, reach - panel, m, 0, axis, (panel + reach) / 2));
+      if (!up) body.scale.y = -1;
+      g.add(body);
+      return g;
     }
-    s.closePath();
-    for (const h of cuts) {
-      const p = new THREE.Path();
-      p.moveTo(h.u - h.w / 2, h.z - h.h / 2); p.lineTo(h.u + h.w / 2, h.z - h.h / 2);
-      p.lineTo(h.u + h.w / 2, h.z + h.h / 2); p.lineTo(h.u - h.w / 2, h.z + h.h / 2); p.closePath();
-      s.holes.push(p);
+    const cuts = { front: [], back: [], left: [], right: [] };
+    for (const c of G.cutouts.filter(c => c.face !== 'top')) {
+      const panel = G.parts[c.type].panel, H = HEADERS[c.type], g = header(c.type);
+      let x, z;
+      if (c.face === 'front') { [x, z] = P(c.x, W + panel); }
+      if (c.face === 'back') { [x, z] = P(c.x, OY - W - panel); g.rotation.y = Math.PI; }
+      if (c.face === 'right') { [x, z] = P(OX - W - panel, c.y); g.rotation.y = Math.PI / 2; }
+      if (c.face === 'left') { [x, z] = P(W + panel, c.y); g.rotation.y = -Math.PI / 2; }
+      g.position.set(x, cs, z);
+      root.add(g);
+      const u = { front: c.x, back: OX - c.x, right: c.y, left: OY - c.y }[c.face];
+      cuts[c.face].push({ u, z: c.z, w: H.sw + 2, h: H.sh + 2 });
+      tag(`${c.ref} ${c.label}`, [x, cs + (up ? 1 : -1) * (G.parts[c.type].height + 4), z]);
     }
-    return new THREE.Mesh(new THREE.ExtrudeGeometry(s, { depth: W, bevelEnabled: false }), M.wall);
-  }
-  const walls = new THREE.Group(); scene.add(walls);
-  {
-    const f = wallShape('front', OX, wallCuts.front); f.position.set(-OX / 2, 0, OY / 2 - W); walls.add(f);
-    const b = wallShape('back', OX, wallCuts.back); b.rotation.y = Math.PI; b.position.set(OX / 2, 0, -OY / 2 + W); walls.add(b);
-    const l = wallShape('left', OY, []); l.rotation.y = -Math.PI / 2; l.position.set(-OX / 2 + W, 0, -OY / 2); walls.add(l);
-    const r = wallShape('right', OY, []); r.rotation.y = Math.PI / 2; r.position.set(OX / 2 - W, 0, OY / 2); walls.add(r);
-    walls.add(span(0, OX, 0, OY, 0, W, M.wall));                          // floor
-  }
-  // Lid: one plate per low cell (with receptacle holes), the raised tops, and risers at the steps.
-  for (let i = 0; i + 1 < xs.length; i++) for (let j = 0; j + 1 < ys.length; j++) {
-    const [x0, x1, y0, y1] = [xs[i], xs[i + 1], ys[j], ys[j + 1]];
-    if (raisedAt((x0 + x1) / 2, (y0 + y1) / 2)) continue;
-    const sh = new THREE.Shape();
-    sh.moveTo(x0, y0); sh.lineTo(x1, y0); sh.lineTo(x1, y1); sh.lineTo(x0, y1); sh.closePath();
-    for (const t of TERMS) if (t.x > x0 && t.x < x1 && t.y > y0 && t.y < y1) {
-      const p = new THREE.Path(); p.absarc(t.x, t.y, 7.15, 0, Math.PI * 2, true); sh.holes.push(p);
-    }
-    const m = new THREE.Mesh(new THREE.ExtrudeGeometry(sh, { depth: W, bevelEnabled: false }), M.lid);
-    m.rotation.x = -Math.PI / 2; m.position.set(-OX / 2, LOW - W, OY / 2); lid.add(m);
-  }
-  for (const r of G.raised) {
-    lid.add(span(r.x0, r.x1, r.y0, r.y1, r.z - W, r.z, M.lid));
-    const edges = [[r.x0, r.y0, r.x1, r.y0, 0, -1], [r.x0, r.y1, r.x1, r.y1, 0, 1],
-                   [r.x0, r.y0, r.x0, r.y1, -1, 0], [r.x1, r.y0, r.x1, r.y1, 1, 0]];
-    for (const [ax, ay, bx, by, nx, ny] of edges) {
-      // Split the edge at the grid lines; a riser goes where the far side is low lid.
-      const cuts = nx ? ys.filter(v => v > ay && v < by) : xs.filter(v => v > ax && v < bx);
-      const stops = [nx ? ay : ax, ...cuts, nx ? by : bx];
-      for (let k = 0; k + 1 < stops.length; k++) {
-        const [s0, s1] = [stops[k], stops[k + 1]], m = (s0 + s1) / 2;
-        const xm = nx ? ax + nx : m, ym = nx ? m : ay + ny;
-        if (xm <= 0 || xm >= OX || ym <= 0 || ym >= OY || raisedAt(xm, ym)) continue;
-        lid.add(nx ? span(ax - (nx < 0 ? 0 : W), ax + (nx < 0 ? W : 0), s0, s1, LOW - W, r.z, M.lid)
-                   : span(s0, s1, ay - (ny < 0 ? 0 : W), ay + (ny < 0 ? W : 0), LOW - W, r.z, M.lid));
+
+    // Power: terminal, SurLok receptacle on the busbar (or the board), plug.
+    lid = new THREE.Group(); root.add(lid);
+    plugs = new THREE.Group(); lid.add(plugs);
+    const T = G.terminal;
+    TERMS = G.cutouts.filter(c => c.type === 'SURLOK').map(c => ({ ...c, dir: 'N' }));   // the rail sets each to outward
+    for (const t of TERMS) {
+      const [x, z] = P(t.x, t.y), bat = t.label === 'VBAT_IN';
+      if (T.kind === 'pressfit') root.add(box(10, T.z1 - T.z0, 10, M.brass, x, (T.z0 + T.z1) / 2, z));
+      else {
+        root.add(cyl(6, T.z1 - T.z0, M.brass, x, (T.z0 + T.z1) / 2, z));        // Ø12 flange on the far face
+        root.add(cyl(4.5, B.z1 - B.z0, M.brass, x, (B.z0 + B.z1) / 2, z));     // spigot through the board
       }
+      root.add(cyl(3, SUR.stud, M.stud, x, CONTACT - SUR.stud / 2, z));        // M6 stud (length estimated)
+      lid.add(cyl(7, LOW - CONTACT, bat ? M.red : M.black, x, (LOW + CONTACT) / 2, z));
+      lid.add(box(FLANGE, GASKET, FLANGE, M.gasket, x, LOW + GASKET / 2, z));
+      lid.add(box(FLANGE, FLANGE_T, FLANGE, bat ? M.red : M.black, x, LOW + GASKET + FLANGE_T / 2, z));
+      lid.add(cyl(8.5, MATING - FLANGE_TOP, bat ? M.red : M.black, x, (MATING + FLANGE_TOP) / 2, z));
+      const g = new THREE.Group(); g.position.set(x, FLANGE_TOP + 0.5, z);
+      const pm = bat ? M.redPlug : M.blackPlug, reach = PLUG_L - PLUG_W / 2;
+      g.add(cyl(PLUG_W / 2, PLUG_H, pm, 0, PLUG_H / 2, 0));
+      g.add(box(26, PLUG_W, PLUG_W, pm, 13, PLUG_H - PLUG_W / 2, 0));
+      const shell = new THREE.Mesh(new THREE.CylinderGeometry(7.5, 7.5, reach - 26, 32), pm);
+      shell.rotation.z = Math.PI / 2; shell.position.set(26 + (reach - 26) / 2, PLUG_H - PLUG_W / 2, 0); g.add(shell);
+      const cable = new THREE.Mesh(new THREE.CylinderGeometry(5, 5, 30, 24), mat(0x30343a));
+      cable.rotation.z = Math.PI / 2; cable.position.set(reach + 15, PLUG_H - PLUG_W / 2, 0); g.add(cable);
+      plugs.add(g); t.plug = g;
+      tag(`${t.ref} ${t.label}`, [x, FLANGE_TOP + PLUG_H + 8, z], 'lid');
     }
-    tag(r.label, [P((r.x0 + r.x1) / 2, (r.y0 + r.y1) / 2)[0], r.z + 3, P((r.x0 + r.x1) / 2, (r.y0 + r.y1) / 2)[1]], 'lid');
+
+    // Enclosure: stepped outer walls, a low lid with receptacle holes, and the raised sections.
+    const HOOD = Math.max(LOW, ...G.raised.map(r => r.z));
+    const xs = [...new Set([0, OX, ...G.raised.flatMap(r => [r.x0, r.x1])])].sort((a, b) => a - b);
+    const ys = [...new Set([0, OY, ...G.raised.flatMap(r => [r.y0, r.y1])])].sort((a, b) => a - b);
+    const raisedAt = (x, y) => G.raised.some(r => x > r.x0 && x < r.x1 && y > r.y0 && y < r.y1);
+    const wallTop = (face, u) => raisedAt(...{ front: [u, 0.01], back: [OX - u, OY - 0.01], left: [0.01, OY - u],
+                                               right: [OX - 0.01, u] }[face]) ? HOOD : LOW;
+    function wallShape(face, len, holes) {
+      const s = new THREE.Shape(), along = face === 'front' || face === 'back' ? xs : ys;
+      const flip = face === 'back' ? OX : face === 'left' ? OY : null;
+      const brk = [...new Set([0, len, ...along.map(v => flip ? flip - v : v)])].filter(v => v >= 0 && v <= len).sort((a, b) => a - b);
+      s.moveTo(0, 0); s.lineTo(len, 0);
+      for (let i = brk.length - 1; i > 0; i--) { const z = wallTop(face, (brk[i] + brk[i - 1]) / 2); s.lineTo(brk[i], z); s.lineTo(brk[i - 1], z); }
+      s.closePath();
+      for (const h of holes) {
+        const p = new THREE.Path();
+        p.moveTo(h.u - h.w / 2, h.z - h.h / 2); p.lineTo(h.u + h.w / 2, h.z - h.h / 2);
+        p.lineTo(h.u + h.w / 2, h.z + h.h / 2); p.lineTo(h.u - h.w / 2, h.z + h.h / 2); p.closePath();
+        s.holes.push(p);
+      }
+      return new THREE.Mesh(new THREE.ExtrudeGeometry(s, { depth: W, bevelEnabled: false }), M.wall);
+    }
+    walls = new THREE.Group(); root.add(walls);
+    const f = wallShape('front', OX, cuts.front); f.position.set(-OX / 2, 0, OY / 2 - W); walls.add(f);
+    const b = wallShape('back', OX, cuts.back); b.rotation.y = Math.PI; b.position.set(OX / 2, 0, -OY / 2 + W); walls.add(b);
+    const l = wallShape('left', OY, cuts.left); l.rotation.y = -Math.PI / 2; l.position.set(-OX / 2 + W, 0, -OY / 2); walls.add(l);
+    const r = wallShape('right', OY, cuts.right); r.rotation.y = Math.PI / 2; r.position.set(OX / 2 - W, 0, OY / 2); walls.add(r);
+    walls.add(span(0, OX, 0, OY, 0, W, M.wall));
+    for (let i = 0; i + 1 < xs.length; i++) for (let j = 0; j + 1 < ys.length; j++) {
+      const [x0, x1, y0, y1] = [xs[i], xs[i + 1], ys[j], ys[j + 1]];
+      if (raisedAt((x0 + x1) / 2, (y0 + y1) / 2)) continue;
+      const sh = new THREE.Shape();
+      sh.moveTo(x0, y0); sh.lineTo(x1, y0); sh.lineTo(x1, y1); sh.lineTo(x0, y1); sh.closePath();
+      for (const t of TERMS) if (t.x > x0 && t.x < x1 && t.y > y0 && t.y < y1) {
+        const p = new THREE.Path(); p.absarc(t.x, t.y, 7.15, 0, Math.PI * 2, true); sh.holes.push(p);
+      }
+      const m = new THREE.Mesh(new THREE.ExtrudeGeometry(sh, { depth: W, bevelEnabled: false }), M.lid);
+      m.rotation.x = -Math.PI / 2; m.position.set(-OX / 2, LOW - W, OY / 2); lid.add(m);
+    }
+    for (const rr of G.raised) {
+      lid.add(span(rr.x0, rr.x1, rr.y0, rr.y1, rr.z - W, rr.z, M.lid));
+      const edges = [[rr.x0, rr.y0, rr.x1, rr.y0, 0, -1], [rr.x0, rr.y1, rr.x1, rr.y1, 0, 1],
+                     [rr.x0, rr.y0, rr.x0, rr.y1, -1, 0], [rr.x1, rr.y0, rr.x1, rr.y1, 1, 0]];
+      for (const [ax, ay, bx, by, nx, ny] of edges) {
+        // Split the edge at the grid lines; a riser goes where the far side is low lid.
+        const stops = [nx ? ay : ax, ...(nx ? ys.filter(v => v > ay && v < by) : xs.filter(v => v > ax && v < bx)), nx ? by : bx];
+        for (let k = 0; k + 1 < stops.length; k++) {
+          const [s0, s1] = [stops[k], stops[k + 1]], mm = (s0 + s1) / 2;
+          const xm = nx ? ax + nx : mm, ym = nx ? mm : ay + ny;
+          if (xm <= 0 || xm >= OX || ym <= 0 || ym >= OY || raisedAt(xm, ym)) continue;
+          lid.add(nx ? span(ax - (nx < 0 ? 0 : W), ax + (nx < 0 ? W : 0), s0, s1, LOW - W, rr.z, M.lid)
+                     : span(s0, s1, ay - (ny < 0 ? 0 : W), ay + (ny < 0 ? W : 0), LOW - W, rr.z, M.lid));
+        }
+      }
+      const [lx, lz] = P((rr.x0 + rr.x1) / 2, (rr.y0 + rr.y1) / 2);
+      tag(rr.label, [lx, rr.z + 3, lz], 'lid');
+    }
+    lid.visible = show.lid; walls.visible = show.walls; plugs.visible = show.plugs;
+    rail(id, { OX, OY, W, B, LOW, HOOD });
   }
 
   // Plug clearance in the lid plane (same rules as scripts/check_surlok_clearance.py).
-  const DIRS = { W: [-1, 0], N: [0, 1], E: [1, 0] };
-  const plugBox = (t, d) => {
-    const [dx, dy] = DIRS[d], back = PLUG_W / 2, ahead = PLUG_L - PLUG_W / 2, h = PLUG_W / 2;
+  function plugBox(t, d) {
+    const [PW, PL] = G.parts.SURLOK.plug, [dx, dy] = DIRS[d], back = PW / 2, ahead = PL - PW / 2, h = PW / 2;
     if (dx) { const [a, b] = [t.x - dx * back, t.x + dx * ahead].sort((p, q) => p - q); return [a, t.y - h, b, t.y + h]; }
     const [a, b] = [t.y - dy * back, t.y + dy * ahead].sort((p, q) => p - q); return [t.x - h, a, t.x + h, b];
-  };
+  }
   const flangeBox = t => [t.x - FLANGE / 2, t.y - FLANGE / 2, t.x + FLANGE / 2, t.y + FLANGE / 2];
   const gap = (a, b) => Math.max(Math.max(a[0] - b[2], b[0] - a[2]), Math.max(a[1] - b[3], b[1] - a[3]));
-  const outward = t => t.x < OX / 2 ? 'W' : 'E';
   function check(dirs) {
     let worst = { g: Infinity, what: '' }; const bad = new Set();
     const note = (g, need, what, ...who) => { if (g < worst.g) worst = { g, what }; if (g < need) who.forEach(i => bad.add(i)); };
     TERMS.forEach((a, i) => {
       const pa = plugBox(a, dirs[i]);
-      if (dirs[i] !== 'N') note(Math.min(pa[0] - B.x0, B.x1 - pa[2]), 0, `${a.ref} ${dirs[i]} to the board edge`, i);
+      if (dirs[i] !== 'N') note(Math.min(pa[0] - G.board.x0, G.board.x1 - pa[2]), 0, `${a.ref} ${dirs[i]} to the board edge`, i);
       for (const r of G.raised) note(gap(pa, [r.x0, r.y0, r.x1, r.y1]), CLEAR, `${a.ref} ${dirs[i]} vs ${r.label}`, i);
       TERMS.forEach((b, j) => {
         if (i === j) return;
@@ -305,14 +315,6 @@ const G = /*ENCLOSURE_JSON*/null;
       });
     });
     return { worst, bad };
-  }
-  {
-    let n = 0, ok = 0, min = Infinity;
-    for (let k = 0; k < 2 ** TERMS.length; k++) {
-      const r = check(TERMS.map((t, i) => (k >> i) & 1 ? 'N' : outward(t)));
-      n++; if (!r.bad.size) ok++; min = Math.min(min, r.worst.g);
-    }
-    document.getElementById('sweep').textContent = `${ok} of ${n} outward/north combinations clear; the tightest leaves ${min.toFixed(1)} mm.`;
   }
   const rot = { E: 0, N: Math.PI / 2, W: Math.PI };
   function applyDirs() {
@@ -326,45 +328,68 @@ const G = /*ENCLOSURE_JSON*/null;
     st.className = 'status ' + (r.bad.size ? 'bad' : 'ok');
     st.textContent = r.bad.size ? `Collision: ${r.worst.what}` : `Clear. Tightest ${r.worst.g.toFixed(1)} mm (${r.worst.what})`;
   }
-  const rail = document.getElementById('plugs');
-  for (const t of TERMS) {
-    const name = document.createElement('span'); name.textContent = `${t.ref} ${t.label}`;
-    const seg = document.createElement('div'); seg.className = 'seg'; seg.setAttribute('role', 'group');
-    seg.setAttribute('aria-label', `${t.ref} cable direction`);
-    t.buttons = [outward(t), 'N'].map(d => {
-      const b = document.createElement('button'); b.textContent = { W: 'West', N: 'North', E: 'East' }[d]; b.dataset.d = d;
-      b.addEventListener('click', () => { t.dir = d; applyDirs(); }); seg.appendChild(b); return b;
-    });
-    rail.append(name, seg);
-  }
-  document.getElementById('p-out').addEventListener('click', () => { TERMS.forEach(t => t.dir = outward(t)); applyDirs(); });
-  document.getElementById('p-north').addEventListener('click', () => { TERMS.forEach(t => t.dir = 'N'); applyDirs(); });
-  applyDirs();
 
   const f2 = v => (+v.toFixed(2)).toString();
-  const dl = (id, rows) => document.getElementById(id).innerHTML = rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('');
-  dl('dims', [
-    ['Outside', `${f2(OX)} × ${f2(OY)} mm; low lid ${f2(LOW)}, raised T ${f2(HOOD)} high`],
-    ['Board', `${f2(B.x1 - B.x0)} × ${f2(B.y1 - B.y0)} × ${f2(B.z1 - B.z0)} mm, component side up, ${f2(B.z0 - W)} mm off the floor`],
-    ['Step', `${f2(HOOD - LOW)} mm, T over the outputs and the T1S pair`],
-    ['Walls', `${f2(W)} mm`],
-  ]);
-  const bb = G.parts.busbar;
-  dl('bars', [['Stock', `${bb.stock}, ${f2(bb.width)} × ${f2(bb.thickness)} mm`],
-    ...G.busbars.map(b => [b.net, `${f2(b.length)} mm long, ${f2(b.hole_pitch)} mm between Ø${f2(b.hole_d)} holes (${b.refs.join(', ')})`])]);
+  function rail(id, { OX, OY, W, B, LOW, HOOD }) {
+    document.getElementById('title').textContent = G.version.title;
+    document.getElementById('summary').textContent = G.version.summary +
+      (G.version.decision ? ` (${G.version.decision})` : '') + (G.version.current ? ' On the PCB now.' : '');
+    const box_ = document.getElementById('plugs'); box_.textContent = '';
+    const outward = t => t.x < OX / 2 ? 'W' : 'E';
+    for (const t of TERMS) {
+      const name = document.createElement('span'); name.textContent = `${t.ref} ${t.label}`;
+      const seg = document.createElement('div'); seg.className = 'seg'; seg.setAttribute('role', 'group');
+      seg.setAttribute('aria-label', `${t.ref} cable direction`);
+      t.dir = outward(t);
+      t.buttons = t.plug_dirs.map(d => {
+        const b = document.createElement('button'); b.textContent = { W: 'West', N: 'North', E: 'East' }[d]; b.dataset.d = d;
+        b.addEventListener('click', () => { t.dir = d; applyDirs(); }); seg.appendChild(b); return b;
+      });
+      box_.append(name, seg);
+    }
+    const presets = document.getElementById('presets'); presets.textContent = '';
+    const preset = (label, fn) => { const b = document.createElement('button'); b.textContent = label;
+      b.addEventListener('click', () => { TERMS.forEach(fn); applyDirs(); }); presets.appendChild(b); };
+    preset('All outward', t => t.dir = outward(t));
+    preset('All north', t => t.dir = 'N');
+    if (TERMS[0].plug_dirs.length === 3) preset('All inward', t => t.dir = outward(t) === 'W' ? 'E' : 'W');
+    applyDirs();
+    const pc = G.plug_check;
+    document.getElementById('sweep').textContent = `${pc.combinations - pc.failures} of ${pc.combinations} allowed combinations clear; the tightest leaves ${pc.tightest} mm.`;
+    const dl = (el, rows) => document.getElementById(el).innerHTML = rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('');
+    dl('dims', [
+      ['Outside', `${f2(OX)} × ${f2(OY)} × ${f2(HOOD)} mm` + (HOOD > LOW ? `; low lid ${f2(LOW)} (step ${f2(HOOD - LOW)})` : ', flat lid')],
+      ['Board', `component side ${B.component_side === 'top' ? 'up' : 'down'}, ${f2(B.z1 - B.z0)} mm`],
+      ['Terminals', `${G.terminal.name}; stud into thread ${f2(G.terminal.stud_engagement)} of ${G.terminal.thread} mm`],
+      ['Walls', `${f2(W)} mm`],
+    ]);
+    const bb = G.parts.busbar;
+    document.getElementById('bars-box').hidden = !G.busbars.length;
+    dl('bars', [['Stock', `${bb.stock}, ${f2(bb.width)} × ${f2(bb.thickness)} mm, on ${G.terminal.kind === 'pressfit' ? 'the press-fit blocks' : 'the board'}`],
+      ...G.busbars.map(b => [b.net, `${f2(b.length)} mm long, ${f2(b.hole_pitch)} mm between Ø${f2(b.hole_d)} holes (${b.refs.join(', ')})`])]);
+  }
+
+  const sel = document.getElementById('version');
+  for (const [id, g] of Object.entries(INDEX.versions)) {
+    const o = document.createElement('option'); o.value = id; o.textContent = g.version.title + (g.version.current ? ' (PCB)' : '');
+    sel.appendChild(o);
+  }
+  const start = location.hash.slice(1) in INDEX.versions ? location.hash.slice(1) : INDEX.current;
+  sel.value = start;
+  sel.addEventListener('change', () => build(sel.value));
+  build(start);
 
   const toggle = (id, fn) => { const b = document.getElementById(id); b.addEventListener('click', () => {
     const on = b.getAttribute('aria-pressed') !== 'true'; b.setAttribute('aria-pressed', on); fn(on); }); };
-  let lift = 0, liftTarget = 0;
-  toggle('b-lid', on => lid.visible = on);
-  toggle('b-walls', on => walls.visible = on);
-  toggle('b-plugs', on => plugs.visible = on);
+  toggle('b-lid', on => { show.lid = on; lid.visible = on; });
+  toggle('b-walls', on => { show.walls = on; walls.visible = on; });
+  toggle('b-plugs', on => { show.plugs = on; plugs.visible = on; });
   toggle('b-explode', on => liftTarget = on ? 60 : 0);
   toggle('b-labels', on => labelBox.hidden = !on);
   const views = { iso: [300, 300, 380], top: [0, 520, 0.1], front: [0, 30, 480], side: [480, 40, 0] };
   for (const k in views) document.getElementById('v-' + k).addEventListener('click', () => {
-    camera.position.set(...views[k]); controls.target.set(0, 20, 0); controls.update(); });
-  camera.position.set(...views.iso); controls.target.set(0, 20, 0);
+    camera.position.set(...views[k]); controls.target.set(0, 25, 0); controls.update(); });
+  camera.position.set(...views.iso); controls.target.set(0, 25, 0);
 
   function resize() {
     const w = view.clientWidth, h = view.clientHeight;
@@ -376,7 +401,7 @@ const G = /*ENCLOSURE_JSON*/null;
   (function frame() {
     renderer.setClearColor(new THREE.Color(css('--scene') || '#e4e7eb'));
     lift += reduce ? (liftTarget - lift) : (liftTarget - lift) * 0.12;
-    lid.position.y = lift;
+    if (lid) lid.position.y = lift;
     controls.update();
     renderer.render(scene, camera);
     const w = view.clientWidth, h = view.clientHeight;

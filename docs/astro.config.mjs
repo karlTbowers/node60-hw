@@ -31,7 +31,17 @@ export default defineConfig({
 						{ label: 'Output stage', slug: 'subsystems/outputs' },
 						{ label: 'Temperature sensing', slug: 'subsystems/temperature' },
 						{ label: 'Connector & harness', slug: 'subsystems/harness' },
-						{ label: 'Enclosure & mechanical', slug: 'subsystems/enclosure' },
+						{
+							label: 'Enclosure options',
+							items: [
+								{ label: 'Overview', slug: 'subsystems/enclosure' },
+								{ label: 'Version 1: board flipped', slug: 'subsystems/enclosure/v1' },
+								{ label: 'Version 2: busbars, raised T', slug: 'subsystems/enclosure/v2' },
+								{ label: 'Version 3: busbars, raised front', slug: 'subsystems/enclosure/v3' },
+								{ label: 'Version 4: press-fit, raised T', slug: 'subsystems/enclosure/v4' },
+								{ label: 'Version 5: press-fit, raised front', slug: 'subsystems/enclosure/v5' },
+							],
+						},
 						{ label: 'Firmware & data contract', slug: 'subsystems/firmware' },
 						{ label: 'Safety, EMC & thermal', slug: 'subsystems/safety' },
 					],

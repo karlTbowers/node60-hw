@@ -7,7 +7,7 @@
   "scripts": {
     "diagrams": "node scripts/render-diagrams.mjs",
     "mockups": "node scripts/wrap-mockups.mjs",
-    "drawings": "python3 ../scripts/enclosure_drawing.py ../scripts/enclosure_geometry.py src/diagrams/build",
+    "drawings": "python3 ../scripts/enclosure_versions.py src/diagrams/build",
     "dev": "npm run diagrams && npm run drawings && npm run mockups && astro dev",
     "build": "npm run diagrams && npm run drawings && npm run mockups && astro build",
     "preview": "astro preview",

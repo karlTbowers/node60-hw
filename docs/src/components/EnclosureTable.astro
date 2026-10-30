@@ -5,7 +5,12 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 
-const file = join(process.cwd(), 'src/diagrams/build/enclosure.json');
+interface Props {
+	/** Subfolder of src/diagrams/build holding enclosure.json, when a board draws several versions. */
+	dir?: string;
+}
+const { dir = '' } = Astro.props;
+const file = join(process.cwd(), 'src/diagrams/build', dir, 'enclosure.json');
 let g: any;
 try {
 	g = JSON.parse(readFileSync(file, 'utf8'));

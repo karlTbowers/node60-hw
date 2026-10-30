@@ -1,0 +1,65 @@
+---
+title: Enclosure options
+description: Five candidate mechanical designs for the Node60 enclosure, each with a generated dimensioned drawing, a 3D mockup and a SurLok plug check.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import Ref from '../../../../components/Ref.astro';
+import idx from '../../../../diagrams/build/enclosure-versions.json';
+
+export const f = (v) => Number(v.toFixed(2));
+export const top = (g) => Math.max(g.outside.z, ...g.raised.map((r) => r.z));
+export const lid = (g) => g.raised.length === 0 ? 'flat' : g.raised.some((r) => r.label === 'T stem') ? 'raised T' : 'raised front band';
+export const t1s = (g) => g.cutouts.some((c) => c.ref === 'J903' && c.face === 'back') ? 'north wall' : 'side walls';
+export const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+The enclosure isn't chosen yet, so five mechanical designs are kept as candidates (user, 2026-10-30). Each has its own page with a dimensioned drawing, a dimension table and a 3D mockup. All of them are generated from the same connector placement script, so every version stays consistent with the parts and with the checks below. The PCB holds one version at a time: **version 2** (<Ref id="DEC-021" />) until a version is chosen.
+
+**[Open the 3D mockup](../../mockups/node60-enclosure.html)** and switch between the versions.
+
+<table>
+	<thead>
+		<tr><th>Version</th><th>Board</th><th>Power terminals</th><th>Busbars</th><th>Lid</th><th>T1S</th><th>Outside (mm)</th><th>Stud into terminal</th><th>SurLok plugs</th></tr>
+	</thead>
+	<tbody>
+		{Object.entries(idx.versions).map(([id, g]) => (
+			<tr>
+				<td><a href={`./${id}/`}>{g.version.title.split(':')[0]}</a>{g.version.current && ' (on the PCB)'}</td>
+				<td>{g.board.component_side === 'top' ? 'up' : 'down'}</td>
+				<td>{g.terminal.kind === 'smt' ? 'SMT 74660016R' : 'press-fit 786202106'}</td>
+				<td>{g.busbars.length ? (g.terminal.kind === 'pressfit' ? 'on the blocks' : 'on the board') : 'none'}</td>
+				<td>{lid(g)}{g.raised.length > 0 && `, ${f(top(g) - g.outside.z)} mm step`}</td>
+				<td>{t1s(g)}</td>
+				<td>{f(g.outside.x)} × {f(g.outside.y)} × {f(top(g))}</td>
+				<td>{f(g.terminal.stud_engagement)} of {g.terminal.thread} mm</td>
+				<td>{g.cutouts.find((c) => c.type === 'SURLOK').plug_dirs.length === 3 ? 'W, N, E' : 'out, N'}; {g.plug_check.failures ? `${g.plug_check.failures} failing` : `all ${g.plug_check.combinations} clear`}, tightest {g.plug_check.tightest} mm</td>
+			</tr>
+		))}
+	</tbody>
+</table>
+
+## How the versions differ
+
+- **Version 1** (<Ref id="DEC-020" />, superseded): the board hangs component side down under a flat lid. The SurLok studs reach the SMT REDCUBEs through the board, so the joint is metal to metal and the whole stud thread engages. With the headers hanging below, it is the tallest version.
+- **Version 2** (<Ref id="DEC-021" />): the board sits component side up, with busbars on top of it and the SMT REDCUBEs underneath. A raised T covers the outputs and the T1S pair on the north wall, and the receptacles sit in the low sections either side of it.
+- **Version 3**: the T1S pair moves to the side walls next to the outputs, so a single raised band across the front covers every header. The power receptacles sit behind the band, staggered: battery pair close, return pair wide, so a battery plug pointing north passes beside the return receptacle.
+- **Versions 4 and 5**: versions 2 and 3 with REDCUBE **press-fit** 786202106 terminals. The block stands 10.5 mm on the board and the busbar sits on top of it, so:
+  - **No laminate in the joint:** the busbar bears on the block, not on the board, and the stud goes into a 6 mm blind thread.
+  - **Parts can go under the busbars**, if they are lower than about 10 mm.
+  - **The lid is nearly flat:** the low sections end up only 1.6 mm below the raised ones. A thicker busbar (3/16") would make it flat, at the cost of about 1.6 mm of stud engagement.
+  - **Stock:** the 786202106 had no distributor stock when it went into the library (2026-10-26). Each block also needs a 4 mm component keep-out and 3 mm from the board edge.
+
+<Aside type="caution" title="SurLok stud length">
+Amphenol doesn't publish the M6 stud's length; every engagement figure here uses the library model's estimate of 7.7 mm. In versions 2–5 the 3.175 mm busbar uses up part of the stud before it reaches the terminal's thread. Get the real length before choosing.
+</Aside>
+
+## Sources and assumptions (all versions)
+
+- **Positions:** `scripts/place_connectors.py` (`VERSIONS`) holds every version's layout. Each board edge sits 0.5 mm behind the connector flange face it meets, so the flange, not the board, meets the wall.
+- **Geometry:** `scripts/enclosure_geometry.py` builds each version's enclosure: the board height, the terminal and busbar stack, and the raised sections, derived from the header bodies plus a 3 mm clearance. `scripts/enclosure_versions.py` draws them all with the handbook's enclosure-drawing engine.
+- **Plug check:** `scripts/check_surlok_clearance.py` tries every allowed plug direction against the other plugs, the flanges and the raised sections. A plug pointing west or east must stay inside the walls.
+- **AT13 cutout:** Amphenol drawing C-AT13-2P-BMXX rev. A2, "recommended panel cutout"; the mating axis is 13.8 mm from the board.
+- **ATM13 cutout:** Amphenol drawing ATM13-2P-BMXX rev. A2. The 15.0 mm axis is measured from Amphenol's STEP model; the drawing gives no height.
+- **SurLok Plus:** catalog IC-10, p. 13 (panel layout) and p. 6: the contact face is 19.2 mm from the panel face.
+- **Terminals:** Würth 74660016R (SMT, 2.6 mm spigot, 5.6 mm through thread) and 786202106 (press-fit, 10.5 mm block, 6.0 mm blind thread).
+- **Assumed:** 3 mm walls, floor and lid. With the board up: 8 mm from the floor to the board. With it down: 3 mm under the deepest header. 3 mm between a header and a raised section. Busbars are 1/8" × 1" C110 copper flat bar, cut and drilled in house.
