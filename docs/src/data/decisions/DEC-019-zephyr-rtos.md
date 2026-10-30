@@ -29,7 +29,7 @@ Rev A listed Zephyr as a basis requirement (REQ-FW-001) and relied on it in seve
 | Log flash | LPSPI2 + IS25LP032D | `nxp,lpspi` + `jedec,spi-nor` | Upstream (FCB, NVS) |
 | Telemetry I²C | LPI2C0 | `nxp,lpi2c` | Upstream |
 | Total-rail monitor | INA228A-Q1 | `ti,ina228` | Upstream |
-| Board temperature | TMP175-Q1 | `lm75` (register-compatible) | Upstream driver; the 12-bit resolution setting is to be confirmed at GATE-FW-02 |
+| Board temperature | TMP175-Q1 | `ti,tmp175` (Node60 binding) | **Out-of-tree driver to write** (user, 2026-10-30): 12-bit mode, ALERT on `TMP175_ALERT_L` as a sensor trigger. The upstream `lm75` driver is not used |
 | NTC inputs, SNS, BATT_MON | ADC1, ADC2 (SAR) | `nxp,s32-adc-sar`, `ntc-thermistor` | Upstream. One `group-channel` per ADC instance: ADC1 and ADC2 use only precision (P) channels |
 | Ethernet MAC + MDIO | EMAC, RMII | `nxp,s32-gmac`, `snps,dwmac-mdio` | Upstream |
 | T1S PHY | LAN8670 rev. D0 | `microchip,t1s-phy` | Upstream; supports LAN8670/1/2 rev. C1, C2 and D0, with PLCA |
@@ -43,6 +43,6 @@ Rev A listed Zephyr as a basis requirement (REQ-FW-001) and relied on it in seve
   - Every interrupt input goes on a ball that the `nxp,siul2-gpio` EIRQ map lists, on its own EIRQ line.
   - Each ADC instance carries one channel group only.
   - SPI chip selects go on LPSPI PCS signals, so the driver can use native CS.
-- **Driver work:** the TPS2HCS08A driver is the only device driver Node60 needs that Zephyr doesn't have. The TPS3702, LM74910H and termination relay need GPIO handling only.
+- **Driver work:** Node60 writes two device drivers: the TPS2HCS08A (three instances) and the TMP175. The user chose a TMP175 driver of its own on 2026-10-30 rather than relying on the register-compatible `lm75` driver. The TPS3702, LM74910H and termination relay need GPIO handling only.
 - **Board port:** a Node60 board definition (devicetree, pinctrl, clock tree from the 16 MHz FXOSC) based on `mr_canhubk3`. GATE-FW-02 covers it.
 - **No parked-state dependency:** the S32K3 Zephyr port has no standby implementation, and Node60 doesn't need one (DEC-004, DEC-007).

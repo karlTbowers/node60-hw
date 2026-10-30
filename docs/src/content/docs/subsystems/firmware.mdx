@@ -9,7 +9,7 @@ import GateList from '../../../components/GateList.astro';
 import DecisionList from '../../../components/DecisionList.astro';
 import Ref from '../../../components/Ref.astro';
 
-All firmware runs on **Zephyr RTOS**, the core RTOS for Node60 (<Ref id="DEC-019" />). Each service below is a Zephyr thread or work item. Each device is its own devicetree node, using an upstream driver wherever one exists. The one exception is the TPS2HCS08A, which needs a Node60 driver with three instances.
+All firmware runs on **Zephyr RTOS**, the core RTOS for Node60 (<Ref id="DEC-019" />). Each service below is a Zephyr thread or work item. Each device is its own devicetree node, using an upstream driver wherever one exists. Two devices need Node60 drivers: the TPS2HCS08A (three instances) and the TMP175.
 
 Ownership is separated by service so network availability never weakens local protection.
 
@@ -28,7 +28,7 @@ Ownership is separated by service so network availability never weakens local pr
 |---|---|---|
 | U601 / U701 / U801 switches | `&lpspi4` / `&lpspi5` / `&lpspi3` (`nxp,lpspi`), child at `reg = <0>` | Node60 TPS2HCS08A driver. Mode 1, ≤ 8 MHz, `pcs-sck-delay` and `sck-pcs-delay` ≥ 45 ns. FLT/WAKE, SNS and NTC channels set per instance |
 | IS25LP032D log flash | `&lpspi2` + `jedec,spi-nor` | FCB event log, NVS counters |
-| INA228A-Q1, TMP175-Q1 | `&lpi2c0` + `ti,ina228`, `lm75` | TMP175 is register-compatible with the LM75 driver; confirm the 12-bit setting at GATE-FW-02 |
+| INA228A-Q1, TMP175-Q1 | `&lpi2c0` + `ti,ina228`, `ti,tmp175` | Upstream INA228 driver. Node60 TMP175 driver: 12-bit conversions, ALERT (`TMP175_ALERT_L`, EIRQ 23) as a sensor trigger |
 | SNS, NTC, BATT_MON | `&adc1`, `&adc2` (`nxp,s32-adc-sar`, `group-channel = "precision"`), `ntc-thermistor` | One channel group per ADC instance |
 | LAN8670 PHY | `&emac0` (`nxp,s32-gmac`) + `microchip,t1s-phy` | RMII, PLCA settings from flash |
 | Fault and IRQ lines | `nxp,siul2-gpio` interrupts through `nxp,siul2-eirq` | EIRQ 0, 1, 2 (switches), 6 (LM74910H), 17 (PHY), 23 (TMP175) |

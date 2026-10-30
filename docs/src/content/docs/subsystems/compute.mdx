@@ -39,7 +39,7 @@ The whole U401 pin plan was checked against upstream Zephyr's S32K344 devicetree
 | Console and debug | `nxp,lpuart` | LPUART0 on TP401/TP402 |
 | Parked state | No S32K3 standby support in Zephyr | Not needed: the MCU is unpowered when parked |
 
-Open for <Ref id="GATE-FW-02" />: confirm that the `lm75` driver covers the TMP175's 12-bit mode, and that the SIUL2 pinctrl data in Zephyr's NXP HAL lists every function the plan uses.
+Open for <Ref id="GATE-FW-02" />: confirm that the SIUL2 pinctrl data in Zephyr's NXP HAL lists every function the plan uses.
 
 ## Parts
 

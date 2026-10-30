@@ -169,7 +169,7 @@
 - id: GATE-FW-02
   title: Zephyr target
   group: freeze
-  evidence: Node60 Zephyr board port (DEC-019) — build, link, pinctrl and clock tree, PLCA, four LPSPI buses (three switches and the flash), TPS2HCS08A driver, controller-commanded shutdown, cold-boot re-initialization, and wake logs
+  evidence: Node60 Zephyr board port (DEC-019) — build, link, pinctrl and clock tree, PLCA, four LPSPI buses (three switches and the flash), TPS2HCS08A and TMP175 drivers, controller-commanded shutdown, cold-boot re-initialization, and wake logs
   blocks: Software
   status: open
   page: subsystems/firmware
