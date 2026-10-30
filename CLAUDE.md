@@ -52,6 +52,10 @@ One-time exceptions, decided by the user on 2026-10-22 when the first complete a
 
 The next architecture revision is **Rev B**.
 
+Temporary, decided by the user on 2026-10-30 (PR #21):
+
+- **Unrouted connections are DRC warnings, not errors**, while layout is in progress: `node60.kicad_pro` sets `rule_severities.unconnected_items` to `warning`, so CI's DRC (errors fail, chapter 06) passes on an unrouted board while every other DRC and parity error still fails. Set it back to `error` (delete the override) before routing is signed off and before any `rev-*` tag. If KiCad is open on the project, saving the board settings may rewrite this; check the diff.
+
 ## Current release blockers
 
 - **10 A continuous is unproven.** TPS2HCS08A-Q1 is rated 8 A per channel with both channels on at 85 °C. The 10 A rating stays blocked until the dual-channel thermal test passes.
