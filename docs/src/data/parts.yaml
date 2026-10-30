@@ -274,7 +274,7 @@
   subsystem: firmware
   status: plan-of-record
   decision_note: "Plan of record. Switched 3.3 V; PPAP available; constrained-supply flag—recheck at BOM lock"
-  second_source: W25Q32JVSSSQ
+  second_source: W25Q32JVSNSM
   observations:
     - date: 2026-10-13
       source: DigiKey
@@ -286,14 +286,14 @@
     - { date: 2026-10-13, source: aggregator, note: 50-week factory lead }
   decisions: [DEC-011]
 
-- id: W25Q32JVSSSQ
-  mpn: W25Q32JVSSSQ
+- id: W25Q32JVSNSM
+  mpn: W25Q32JVSNSM
   manufacturer: Winbond
   qty: 0
-  function: Automotive Grade 1 32 Mbit SPI NOR second source
+  function: Automotive Grade 1 32 Mbit SPI NOR second source; SOIC-8 150 mil (same footprint as IS25LP032D-JNLA3)
   subsystem: firmware
   status: alternative
-  decision_note: Candidate only; hardware/software interchangeability review required
+  decision_note: "Candidate only (rev. B, 2026-10-30). Grade 1, SOIC-8 150 mil code from the W25Q32JV-M datasheet rev. E §11.1; confirm the orderable code with a distributor (Winbond's product brief writes Grade 1 codes with a Q suffix). Hardware/software interchangeability review required"
   supply_note: Verify at BOM lock
   decisions: [DEC-011]
 
