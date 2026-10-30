@@ -12,9 +12,10 @@
   function: Grade 1 MCU, 257 MAPBGA
   subsystem: compute
   status: locked
-  decision_note: Locked; ball map and pin functions verified 2026-10-28 (GATE-MCU-01)
+  decision_note: Locked; ball map and pin functions verified 2026-10-28, re-run for the DEC-018 SPI balls 2026-10-30 (GATE-MCU-01)
   observations:
     - { date: 2026-10-13, source: DigiKey, prices: [{ qty: "1", usd: 23.17 }], stock: 760 }
+  decisions: [DEC-018, DEC-019]
 
 - id: LAN8670D0-E/LMXVAO
   mpn: LAN8670D0-E/LMXVAO
@@ -235,7 +236,7 @@
   status: plan-of-record
   decision_note: "Plan of record. Shares INA228 I²C bus; optional ALERT to MCU"
   supply_note: ≈$0.60–1.00 @1k estimate; verify at BOM lock
-  decisions: [DEC-010]
+  decisions: [DEC-010, DEC-019]
 
 - id: TBD-NTC-10K
   mpn: NCU18XH103F6SRB
@@ -328,7 +329,7 @@
   decision_note: Selected; 20-week standard lead observed
   observations:
     - { date: 2026-10-13, source: distributors, prices: [{ qty: 1k, usd: 1.952 }], stock: 0, note: $5.86 total for three }
-  decisions: [DEC-008, DEC-009]
+  decisions: [DEC-008, DEC-009, DEC-018]
 
 - id: ECS-3225SMVQ-500-DS-TR
   mpn: ECS-3225SMVQ-500-DS-TR
