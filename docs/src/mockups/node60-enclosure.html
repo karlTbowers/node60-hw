@@ -381,7 +381,8 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
     const dl = (el, rows) => document.getElementById(el).innerHTML = rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('');
     dl('dims', [
       ['Outside', `${f2(OX)} × ${f2(OY)} × ${f2(HOOD)} mm` + (HOOD > LOW ? `; low lid ${f2(LOW)} (step ${f2(HOOD - LOW)})` : ', flat lid')],
-      ['Board', `component side ${B.component_side === 'top' ? 'up' : 'down'}, ${f2(B.z1 - B.z0)} mm`],
+      ['PCB', `${f2(B.x1 - B.x0)} × ${f2(B.y1 - B.y0)} × ${f2(B.z1 - B.z0)} mm${(B.notches || []).length ? ', notched' : ''}, component side ${B.component_side === 'top' ? 'up' : 'down'}`],
+      ...(G.boards || []).map(b => [b.label, `${f2(b.x1 - b.x0)} × ${f2(b.y1 - b.y0)} × ${f2(b.z1 - b.z0)} mm, ${f2(B.z0 - b.z1)} mm below`]),
       ['Terminals', `${G.terminal.name}; stud into thread ${f2(G.terminal.stud_engagement)} of ${G.terminal.thread} mm`],
       ['Walls', `${f2(W)} mm`],
     ]);

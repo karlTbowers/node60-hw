@@ -20,7 +20,7 @@ The enclosure isn't chosen yet, so eight mechanical designs are kept as candidat
 
 <table>
 	<thead>
-		<tr><th>Version</th><th>Board</th><th>Outputs</th><th>Power terminals</th><th>Busbars</th><th>Lid</th><th>T1S</th><th>Outside (mm)</th><th>Stud into terminal</th><th>SurLok plugs</th></tr>
+		<tr><th>Version</th><th>Board</th><th>Outputs</th><th>Power terminals</th><th>Busbars</th><th>Lid</th><th>T1S</th><th>PCB (mm)</th><th>Outside (mm)</th><th>Stud into terminal</th><th>SurLok plugs</th></tr>
 	</thead>
 	<tbody>
 		{Object.entries(idx.versions).map(([id, g]) => (
@@ -32,6 +32,7 @@ The enclosure isn't chosen yet, so eight mechanical designs are kept as candidat
 				<td>{g.busbars.length ? (g.terminal.kind === 'pressfit' ? 'on the blocks' : 'on the board') : 'none'}</td>
 				<td>{lid(g)}{g.raised.length > 0 && `, ${f(top(g) - g.outside.z)} mm step`}</td>
 				<td>{t1s(g)}</td>
+				<td>{f(g.board.x1 - g.board.x0)} × {f(g.board.y1 - g.board.y0)} × {f(g.board.z1 - g.board.z0)}{g.board.notches.length > 0 && ', notched'}{g.boards.map((b) => `; ${b.label} ${f(b.x1 - b.x0)} × ${f(b.y1 - b.y0)} × ${f(b.z1 - b.z0)}`).join('')}</td>
 				<td>{f(g.outside.x)} × {f(g.outside.y)} × {f(top(g))}</td>
 				<td>{f(g.terminal.stud_engagement)} of {g.terminal.thread} mm</td>
 				<td>{g.cutouts.find((c) => c.type === 'SURLOK').plug_dirs.length === 3 ? 'W, N, E' : 'out, N'}; {g.plug_check.failures ? `${g.plug_check.failures} failing` : `all ${g.plug_check.combinations} clear`}, tightest {g.plug_check.tightest} mm</td>

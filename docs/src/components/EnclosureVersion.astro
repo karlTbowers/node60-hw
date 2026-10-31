@@ -43,7 +43,7 @@ const captions: Record<string, string> = {
 	<thead><tr><th>Item</th><th>Value</th></tr></thead>
 	<tbody>
 		<tr><td>Outside</td><td>{f(g.outside.x)} × {f(g.outside.y)} × {f(top)} mm{g.raised.length > 0 && ` (low lid ${f(g.outside.z)}, raised ${f(top)}: a ${f(top - g.outside.z)} mm step)`}</td></tr>
-		<tr><td>Board</td><td>{g.board.component_side === 'top' ? 'component side up' : 'component side down'}, {f(g.board.z1 - g.board.z0)} mm{g.board.notches.length > 0 && `, with a ${f(g.board.notches[0].x1 - g.board.notches[0].x0)} × ${f(g.board.notches[0].y1 - g.board.notches[0].y0)} mm ${g.board.notches[0].label}`}</td></tr>
+		<tr><td>PCB</td><td>{f(g.board.x1 - g.board.x0)} × {f(g.board.y1 - g.board.y0)} × {f(g.board.z1 - g.board.z0)} mm (provisional), {g.board.component_side === 'top' ? 'component side up' : 'component side down'}; front-left corner {f(g.board.x0)} mm from the left outside face and {f(g.board.y0)} mm from the front outside face{g.board.notches.length > 0 && `, with a ${f(g.board.notches[0].x1 - g.board.notches[0].x0)} × ${f(g.board.notches[0].y1 - g.board.notches[0].y0)} mm ${g.board.notches[0].label}`}</td></tr>
 		{g.boards.map((b: any) => (
 			<tr><td>{b.label}</td><td>{f(b.x1 - b.x0)} × {f(b.y1 - b.y0)} × {f(b.z1 - b.z0)} mm (provisional), {f(g.board.z0 - b.z1)} mm under the main board, {f(b.z0 - g.wall)} mm above the floor</td></tr>
 		))}
