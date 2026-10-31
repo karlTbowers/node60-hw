@@ -74,6 +74,9 @@ p { margin: 0; font-size: 13px; line-height: 1.45; }
       <button id="b-plugs" aria-pressed="true">Plugs</button>
       <button id="b-explode" aria-pressed="false">Lift lid</button>
       <button id="b-labels" aria-pressed="true">Labels</button>
+      <label class="pick" id="asm-pick" for="assembly">Assembly
+        <input type="range" id="assembly" min="0" max="100" value="100">
+      </label>
       <button id="v-iso">Iso</button>
       <button id="v-top">Top</button>
       <button id="v-front">Front</button>
@@ -97,6 +100,10 @@ p { margin: 0; font-size: 13px; line-height: 1.45; }
       <h2>Enclosure (provisional)</h2>
       <dl id="dims"></dl>
     </div>
+    <div>
+      <h2>Fitting the boards</h2>
+      <ol class="steps" id="asm"></ol>
+    </div>
     <div id="bars-box">
       <h2>Busbars</h2>
       <dl id="bars"></dl>
@@ -109,6 +116,11 @@ p { margin: 0; font-size: 13px; line-height: 1.45; }
 <style>
 .pick { display: inline-flex; align-items: center; gap: 6px; font: 500 13px var(--f-ui); color: var(--fg); background: var(--panel); border: 1px solid var(--line); border-radius: 4px; padding: 3px 8px; }
 .pick select { font: 500 13px var(--f-ui); color: var(--fg); background: var(--panel); border: 0; }
+.pick input[type=range] { width: 120px; }
+.pick:has(input:disabled) { opacity: 0.5; }
+.steps { margin: 0; padding-left: 18px; }
+.steps li { margin: 2px 0; }
+.steps.bad li { color: var(--warn); list-style: none; margin-left: -18px; }
 </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -137,6 +149,7 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
     board: mat(0x1f4d36), mcuBoard: mat(0x24506e), at13: mat(0xeceef0), seal: mat(0xd42a2a), atm: mat(0xd9dce0),
     brass: mat(0xc9a24a, { metalness: 0.6, roughness: 0.35 }), copper: mat(0xc8763f, { metalness: 0.7, roughness: 0.3 }),
     red: mat(0xc0262d), black: mat(0x2a2d31), redPlug: mat(0xd8434a), blackPlug: mat(0x3a3e44), gasket: mat(0xd5d8da),
+    mezz: mat(0x2b2f36), mezzTop: mat(0x5a606a),
     wall: glass(), lid: glass(), stud: mat(0x9aa1a8, { metalness: 0.7, roughness: 0.3 }), clash: mat(0xf97316),
   };
   const box = (w, h, d, m, x, y, z) => { const b = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), m); b.position.set(x, y, z); return b; };
@@ -148,6 +161,7 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
   };
   const labelBox = document.getElementById('labels');
   let labels = [], root = null, lid = null, plugs = null, walls = null, TERMS = [], G = null;
+  let mainG = null, mcuG = null, panelG = null, asm = 1, asmLid = 0;   // boards, removable panels, assembly slider (0-1)
   let lift = 0, liftTarget = 0, show = { lid: true, walls: true, plugs: true };
   const DIRS = { W: [-1, 0], N: [0, 1], E: [1, 0] };
 
@@ -156,6 +170,7 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
     if (root) scene.remove(root);
     labelBox.textContent = ''; labels = [];
     root = new THREE.Group(); scene.add(root);
+    mainG = new THREE.Group(); mcuG = new THREE.Group(); root.add(mainG, mcuG);
     const OX = G.outside.x, OY = G.outside.y, W = G.wall, B = G.board, up = B.component_side === 'top';
     const P = (x, y) => [x - OX / 2, OY / 2 - y];
     const LOW = G.outside.z, SUR = G.parts.SURLOK, CONTACT = SUR.contact_z;
@@ -177,13 +192,21 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
     for (let i = 0; i + 1 < bxs.length; i++) for (let j = 0; j + 1 < bys.length; j++) {
       const xm = (bxs[i] + bxs[i + 1]) / 2, ym = (bys[j] + bys[j + 1]) / 2;
       if (notches.some(n => xm > n.x0 && xm < n.x1 && ym > n.y0 && ym < n.y1)) continue;
-      root.add(span(bxs[i], bxs[i + 1], bys[j], bys[j + 1], B.z0, B.z1, M.board));
+      mainG.add(span(bxs[i], bxs[i + 1], bys[j], bys[j + 1], B.z0, B.z1, M.board));
     }
     for (const b of G.boards || []) {
-      root.add(span(b.x0, b.x1, b.y0, b.y1, b.z0, b.z1, M.mcuBoard));
-      tag(b.label, [P((b.x0 + b.x1) / 2, b.y0 + 6)[0], b.z1 + 1, P(0, b.y0 + 6)[1]]);
+      mcuG.add(span(b.x0, b.x1, b.y0, b.y1, b.z0, b.z1, M.mcuBoard));
+      tag(b.label, [P((b.x0 + b.x1) / 2, b.y0 + 6)[0], b.z1 + 1, P(0, b.y0 + 6)[1]], 'mcu');
     }
-    for (const b of G.busbars) root.add(span(b.x0, b.x1, b.y0, b.y1, b.z0, b.z1, M.copper));
+    for (const b of G.busbars) mainG.add(span(b.x0, b.x1, b.y0, b.y1, b.z0, b.z1, M.copper));
+    const mz = G.mezzanine;               // receptacle half on the MCU board, plug half under the main board
+    if (mz) {
+      const split = mz.z0 + (mz.z1 - mz.z0) * 0.55;
+      mcuG.add(span(mz.x0, mz.x1, mz.y0, mz.y1, mz.z0, split, M.mezz));
+      mainG.add(span(mz.x0 + 1, mz.x1 - 1, mz.y0 + 1, mz.y1 - 1, split, mz.z1, M.mezzTop));
+      for (const p of mz.pins) { const [px, pz] = P(p.x, p.y); mcuG.add(cyl(mz.pin_d / 2, mz.z1 - mz.z0 + 2, M.stud, px, (mz.z0 + mz.z1 + 2) / 2, pz)); }
+      tag('mezzanine (placeholder)', [P((mz.x0 + mz.x1) / 2, 0)[0], mz.z1 - 2, P(0, (mz.y0 + mz.y1) / 2)[1]], 'mcu');
+    }
 
     // Headers: built facing +Z with the body above y = 0, flange face at local z = panel; on a
     // board mounted component side down they hang from it (mirrored in y).
@@ -201,7 +224,9 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
     }
     const cuts = { front: [], back: [], left: [], right: [] };
     for (const c of G.cutouts.filter(c => c.face !== 'top')) {
-      const panel = G.parts[c.type].panel, H = HEADERS[c.type], g = header(c.type);
+      const bt = c.type.split('_')[0], panel = G.parts[bt].panel, H = HEADERS[bt], g = header(bt);
+      const onMcu = c.board && c.board !== 'main', group = onMcu ? mcuG : mainG;
+      const extra = c.type.endsWith('_DROP') ? G.insert.drop : 0;   // cutout taller, away from the board
       let x, z;
       if (c.face === 'front') { [x, z] = P(c.x, W + panel); }
       if (c.face === 'back') { [x, z] = P(c.x, OY - W - panel); g.rotation.y = Math.PI; }
@@ -209,10 +234,10 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
       if (c.face === 'left') { [x, z] = P(W + panel, c.y); g.rotation.y = -Math.PI / 2; }
       const base = c.base ?? cs;          // component side of the board the header stands on
       g.position.set(x, base, z);
-      root.add(g);
+      group.add(g);
       const u = { front: c.x, back: OX - c.x, right: c.y, left: OY - c.y }[c.face];
-      cuts[c.face].push({ u, z: c.z, w: H.sw + 2, h: H.sh + 2 });
-      tag(`${c.ref} ${c.label}`, [x, base + (up ? 1 : -1) * (G.parts[c.type].height + 4), z]);
+      cuts[c.face].push({ u, z: c.z + (up ? 1 : -1) * extra / 2, w: H.sw + 2, h: H.sh + 2 + extra });
+      tag(`${c.ref} ${c.label}`, [x, base + (up ? 1 : -1) * (G.parts[bt].height + 4), z], onMcu ? 'mcu' : 'main');
     }
 
     // Power: terminal, SurLok receptacle on the busbar (or the board), plug.
@@ -222,12 +247,12 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
     TERMS = G.cutouts.filter(c => c.type === 'SURLOK').map(c => ({ ...c, dir: 'N' }));   // the rail sets each to outward
     for (const t of TERMS) {
       const [x, z] = P(t.x, t.y), bat = t.label === 'VBAT_IN';
-      if (T.kind === 'pressfit') root.add(box(10, T.z1 - T.z0, 10, M.brass, x, (T.z0 + T.z1) / 2, z));
+      if (T.kind === 'pressfit') mainG.add(box(10, T.z1 - T.z0, 10, M.brass, x, (T.z0 + T.z1) / 2, z));
       else {
-        root.add(cyl(6, T.z1 - T.z0, M.brass, x, (T.z0 + T.z1) / 2, z));        // Ø12 flange on the far face
-        root.add(cyl(4.5, B.z1 - B.z0, M.brass, x, (B.z0 + B.z1) / 2, z));     // spigot through the board
+        mainG.add(cyl(6, T.z1 - T.z0, M.brass, x, (T.z0 + T.z1) / 2, z));       // Ø12 flange on the far face
+        mainG.add(cyl(4.5, B.z1 - B.z0, M.brass, x, (B.z0 + B.z1) / 2, z));    // spigot through the board
       }
-      root.add(cyl(3, SUR.stud, M.stud, x, CONTACT - SUR.stud / 2, z));        // M6 stud (length estimated)
+      lid.add(cyl(3, SUR.stud, M.stud, x, CONTACT - SUR.stud / 2, z));         // M6 stud (length estimated), on the receptacle
       lid.add(cyl(7, LOW - CONTACT, bat ? M.red : M.black, x, (LOW + CONTACT) / 2, z));
       lid.add(box(FLANGE, GASKET, FLANGE, M.gasket, x, LOW + GASKET / 2, z));
       lid.add(box(FLANGE, FLANGE_T, FLANGE, bat ? M.red : M.black, x, LOW + GASKET + FLANGE_T / 2, z));
@@ -272,6 +297,9 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
     const l = wallShape('left', OY, cuts.left); l.rotation.y = -Math.PI / 2; l.position.set(-OX / 2 + W, 0, -OY / 2); walls.add(l);
     const r = wallShape('right', OY, cuts.right); r.rotation.y = Math.PI / 2; r.position.set(OX / 2 - W, 0, OY / 2); walls.add(r);
     walls.add(span(0, OX, 0, OY, 0, W, M.wall));
+    panelG = new THREE.Group(); walls.add(panelG);         // walls made as separate panels, fitted after the board
+    const wallMesh = { front: f, back: b, left: l, right: r };
+    for (const face of G.removable || []) { walls.remove(wallMesh[face]); panelG.add(wallMesh[face]); }
     for (let i = 0; i + 1 < xs.length; i++) for (let j = 0; j + 1 < ys.length; j++) {
       const [x0, x1, y0, y1] = [xs[i], xs[i + 1], ys[j], ys[j + 1]];
       if (raisedAt((x0 + x1) / 2, (y0 + y1) / 2)) continue;
@@ -303,6 +331,39 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
     }
     lid.visible = show.lid; walls.visible = show.walls; plugs.visible = show.plugs;
     rail(id, { OX, OY, W, B, LOW, HOOD });
+    const two = G.insert && G.insert.mode !== 'one board' && G.assembly.fits;
+    const slider = document.getElementById('assembly');
+    slider.disabled = !two; slider.value = 100; asm = 1;
+    document.getElementById('asm-pick').title = two ? 'Fit the boards one at a time' : G.assembly.problems.join(' ');
+    applyAsm();
+  }
+
+  // Fitting the boards one at a time (scripts/check_assembly.py): the MCU board is lowered south
+  // of its place and slid north into its wall; the main board is lowered north of its place, high
+  // by the mezzanine's stroke, slid south into the front wall and dropped; then the lid goes on.
+  function applyAsm() {
+    panelG.position.set(0, 0, 0);
+    if (G.insert.mode === 'panel' && G.assembly.fits) {
+      // One board, a removable panel: the board is lowered away from its one-piece wall, slid
+      // into it, then the panel slides onto the other headers' shrouds, then the lid.
+      const seg = (a, b) => Math.min(1, Math.max(0, (asm - a) / (b - a)));
+      const a = seg(0, 0.3), b = seg(0.3, 0.55), c = seg(0.55, 0.8);
+      const t = G.parts.AT13.shroud + G.insert.clear, out = 60 * (1 - c);
+      const n = { back: [0, -1], front: [0, 1], left: [-1, 0], right: [1, 0] }[G.removable[0]];
+      mcuG.position.set(0, 0, 0);
+      mainG.position.set(0, 130 * (1 - a), -t * (1 - b));           // scene z = -north
+      panelG.position.set(n[0] * out, 0, n[1] * out);
+      asmLid = 140 * (1 - seg(0.8, 1));
+      return;
+    }
+    const two = G.insert && G.insert.mode === 'boards' && G.assembly.fits, s = two ? asm : 1;
+    const seg = (a, b) => Math.min(1, Math.max(0, (s - a) / (b - a)));
+    const H = 90, tm = two ? G.parts.ATM13.shroud + G.insert.clear : 0;
+    const tmain = two ? G.insert.main_travel : 0, drop = two ? G.insert.drop : 0;
+    const a = seg(0, 0.25), b = seg(0.25, 0.4), c = seg(0.4, 0.65), d = seg(0.65, 0.85), e = seg(0.85, 0.95);
+    mcuG.position.set(0, H * (1 - a), tm * (1 - b));                 // scene z = -north
+    mainG.position.set(0, (H + 40) * (1 - c) + drop * (1 - e), -tmain * (1 - d));
+    asmLid = two ? 140 * (1 - seg(0.95, 1)) : 0;
   }
 
   // Plug clearance in the lid plane (same rules as scripts/check_surlok_clearance.py).
@@ -386,6 +447,10 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
       ['Terminals', `${G.terminal.name}; stud into thread ${f2(G.terminal.stud_engagement)} of ${G.terminal.thread} mm`],
       ['Walls', `${f2(W)} mm`],
     ]);
+    const asmList = document.getElementById('asm'), A = G.assembly;
+    asmList.className = 'steps' + (A.fits ? '' : ' bad');
+    asmList.innerHTML = (A.fits ? A.steps : A.problems).map(t => `<li>${t}</li>`).join('') +
+      (A.fits && G.insert.mode !== 'one board' ? '<li>Lid on, receptacles through the lid</li>' : '');
     const bb = G.parts.busbar;
     document.getElementById('bars-box').hidden = !G.busbars.length;
     dl('bars', [['Stock', `${bb.stock}, ${f2(bb.width)} × ${f2(bb.thickness)} mm, on ${G.terminal.kind === 'pressfit' ? 'the press-fit blocks' : 'the board'}`],
@@ -400,6 +465,7 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
   const start = location.hash.slice(1) in INDEX.versions ? location.hash.slice(1) : INDEX.current;
   sel.value = start;
   sel.addEventListener('change', () => build(sel.value));
+  addEventListener('hashchange', () => { const h = location.hash.slice(1); if (h in INDEX.versions) { sel.value = h; build(h); } });
   build(start);
 
   const toggle = (id, fn) => { const b = document.getElementById(id); b.addEventListener('click', () => {
@@ -409,6 +475,7 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
   toggle('b-plugs', on => { show.plugs = on; plugs.visible = on; });
   toggle('b-explode', on => liftTarget = on ? 60 : 0);
   toggle('b-labels', on => labelBox.hidden = !on);
+  document.getElementById('assembly').addEventListener('input', e => { asm = e.target.value / 100; applyAsm(); });
   const views = { iso: [300, 300, 380], top: [0, 520, 0.1], front: [0, 30, 480], side: [480, 40, 0] };
   for (const k in views) document.getElementById('v-' + k).addEventListener('click', () => {
     camera.position.set(...views[k]); controls.target.set(0, 25, 0); controls.update(); });
@@ -424,12 +491,13 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
   (function frame() {
     renderer.setClearColor(new THREE.Color(css('--scene') || '#e4e7eb'));
     lift += reduce ? (liftTarget - lift) : (liftTarget - lift) * 0.12;
-    if (lid) lid.position.y = lift;
+    if (lid) lid.position.y = lift + asmLid;
     controls.update();
     renderer.render(scene, camera);
     const w = view.clientWidth, h = view.clientHeight;
     for (const l of labels) {
-      v.copy(l.pos); if (l.group === 'lid') v.y += lift;
+      v.copy(l.pos); if (l.group === 'lid') v.y += lift + asmLid;
+      if (l.group === 'main') v.add(mainG.position); if (l.group === 'mcu') v.add(mcuG.position);
       v.project(camera);
       l.el.style.left = ((v.x + 1) / 2 * w) + 'px'; l.el.style.top = ((1 - v.y) / 2 * h) + 'px';
       l.el.hidden = v.z > 1 || (l.group === 'lid' && !lid.visible);

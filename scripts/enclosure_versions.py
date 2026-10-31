@@ -4,7 +4,7 @@
 For each version in place_connectors.VERSIONS: write its spec as JSON, run the drawing
 engine on it into <out>/<version>/, and finally write <out>/enclosure-versions.json, the
 index the options page and the 3D mockup read (every version's full enclosure.json, plus its
-SurLok plug check from check_surlok_clearance.py).
+SurLok plug check from check_surlok_clearance.py and its board fitting from check_assembly.py).
 
     python3 scripts/enclosure_versions.py docs/src/diagrams/build
     python3 scripts/enclosure_versions.py --check
@@ -15,6 +15,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 import enclosure_drawing  # noqa: E402
+from check_assembly import check_version as check_fit  # noqa: E402
 from check_surlok_clearance import check_version  # noqa: E402
 from enclosure_geometry import spec  # noqa: E402
 from place_connectors import CURRENT, VERSIONS  # noqa: E402
@@ -38,7 +39,8 @@ def main(argv):
         (d / "spec.json").write_text(json.dumps(spec(vid), indent=1))
         enclosure_drawing.main(["enclosure_drawing.py", str(d / "spec.json"), str(d)])
         index["versions"][vid] = {**json.loads((d / "enclosure.json").read_text()),
-                                  "plug_check": check_version(vid, quiet=True)}
+                                  "plug_check": check_version(vid, quiet=True),
+                                  "assembly": check_fit(vid, quiet=True)}
     (out / "enclosure-versions.json").write_text(json.dumps(index, indent=1) + "\n")
 
 

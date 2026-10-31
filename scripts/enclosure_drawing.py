@@ -23,7 +23,7 @@ import math
 import sys
 from pathlib import Path
 
-ENGINE_VERSION = "1.2"           # bump when the spec format changes (1.1: raised lid regions; 1.2: board notches, more boards)
+ENGINE_VERSION = "1.3"           # bump when the spec format changes (1.1: raised lid regions; 1.2: board notches, more boards; 1.3: panels)
 FONT = 12                        # px
 SCALE = 2.6                      # px per mm for the face views; details use DETAIL_SCALE
 DETAIL_SCALE = 6.0
@@ -437,7 +437,8 @@ def face_view(s, face, out):
     v.dim_h(0, w, h, h + 16)    # overall width, above the highest point
     if not walls:
         v.dim_v(0, h, w, w + 12)
-    v.title(f'{FACES[face][3]}' + (": cutouts drawn as installed" if walls else ""))
+    panel = s.get("panels", {}).get(face)
+    v.title(f'{FACES[face][3]}' + (f" ({panel})" if panel else "") + (": cutouts drawn as installed" if walls else ""))
     svg.write(out / f"enclosure-{face}.svg")
 
 

@@ -21,8 +21,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from place_connectors import (  # noqa: E402
     AT13_BACK, AT13_PANEL, ATM13_ALONG, ATM13_BACK, ATM13_PANEL, BUSBAR_HOLE, BUSBAR_T, BUSBAR_W, BUSBARS, CURRENT,
-    CX, EDGE_GAP, LEFT, MCU_BOARD, MCU_THICKNESS, NOTCH, RIGHT, THICKNESS, VERSIONS, Y0,
-    busbar_outline, front, out_row, outputs,
+    AT13_SHROUD, ATM13_SHROUD, CX, EDGE_GAP, INSERT_CLEAR, LEFT, MAIN_TRAVEL, MCU_BOARD, MCU_THICKNESS, MEZZ_DROP,
+    MEZZ_PINS, MEZZANINE, RIGHT, THICKNESS, VERSIONS, Y0, busbar_outline, front, main_north, notch, out_row, outputs,
 )
 from place_connectors import T1S_PITCH as T1S_PITCH_ALL  # noqa: E402  (default; a version may set its own)
 
@@ -54,6 +54,14 @@ TERMINALS = {
     "pressfit": {"name": "Würth REDCUBE 786202106 (press-fit)", "height": 10.5, "thread": 6.0, "pins": 3.0},
 }
 
+def _taller(t, by, why):
+    """A keyed cutout extended by `by` on its far side (away from the board), with the seal land
+    left there."""
+    t = {**t, "full": t["full"] + by, "total": t["total"] + by, "name": f'{t["name"]}, {by:g} mm taller ({why})'}
+    t["seal_land"] = round(t["seal"][1] / 2 - (t["total"] - t["near"]), 2)   # seal centred on the axis
+    return t
+
+
 CUTOUT_TYPES = {
     # Amphenol "recommended panel cutout", drawing C-AT13-2P-BMXX rev. A2. Near edge 4.8 from the board.
     "AT13": {"shape": "keyed", "name": "AT13-2P-BM04", "width": 18.16, "full": 14.87, "total": 18.03,
@@ -67,6 +75,9 @@ CUTOUT_TYPES = {
     "SURLOK": {"shape": "round", "name": "SurLok Plus 5.7 mm", "d": 14.3, "screw_square": 18.0,
                "screw": "M4", "screw_d": 4.0, "flange": 27.0},
 }
+# Version 8: the main board slides in MEZZ_DROP high and drops onto the mezzanine, so the output
+# cutouts reach MEZZ_DROP further from the board; the panel seal covers less above them.
+CUTOUT_TYPES["AT13_DROP"] = _taller(CUTOUT_TYPES["AT13"], MEZZ_DROP, "mezzanine drop")
 
 
 def spec(version=CURRENT):
@@ -142,16 +153,19 @@ def spec(version=CURRENT):
 
     near = "down" if up else "up"
     faces = {"S": "front", "W": "left", "E": "right"}     # plan positions are seen from above
-    cutouts = [{"ref": r, "label": f"OUT{int(r[1:]) - 903}", "face": faces[wall], "type": "AT13",
+    drop = v.get("insert") == "boards"                    # main board drops onto a mezzanine
+    cutouts = [{"ref": r, "label": f"OUT{int(r[1:]) - 903}", "face": faces[wall], "type": "AT13_DROP" if drop else "AT13",
+                "board": "main",
                 **({"x": ex(at)} if wall == "S" else {"y": ey(at)}), "z": cs + side_sign * AT13_AXIS,
                 "near_edge": near}
                for r, (wall, at) in outs.items()]
     if v["t1s"] == "north":
         cutouts += [{"ref": r, "label": lbl, "face": "back", "type": "ATM13", "x": ex(CX + sx * T1S_PITCH / 2),
-                     "z": t1s_cs + side_sign * ATM13_AXIS, "near_edge": near, "base": t1s_cs}
+                     "z": t1s_cs + side_sign * ATM13_AXIS, "near_edge": near, "base": t1s_cs,
+                     "board": "MCU board" if mcu else "main"}
                     for r, lbl, sx in (("J903", "T1S upstream", 1), ("J912", "T1S downstream", -1))]
     else:
-        cutouts += [{"ref": r, "label": lbl, "face": face, "type": "ATM13", "y": ey(v["t1s_y"]),
+        cutouts += [{"ref": r, "label": lbl, "face": face, "type": "ATM13", "y": ey(v["t1s_y"]), "board": "main",
                      "z": cs + side_sign * ATM13_AXIS, "near_edge": near}
                     for r, lbl, face in (("J903", "T1S upstream", "right"), ("J912", "T1S downstream", "left"))]
     nets = {"J910": "VBAT_IN", "J901": "VBAT_IN", "J911": "GND", "J902": "GND"}
@@ -180,11 +194,20 @@ def spec(version=CURRENT):
                     "outputs": sorted({w for w, _ in outs.values()})},
         "outside": outside,
         "wall": WALL,
-        "board": {"x0": ex(LEFT), "x1": ex(RIGHT), "y0": ey(FRONT), "y1": ey(Y0), "z0": z0, "z1": z1,
+        "board": {"x0": ex(LEFT), "x1": ex(RIGHT), "y0": ey(FRONT), "y1": ey(main_north(v)), "z0": z0, "z1": z1,
                   "component_side": "top" if up else "bottom",
                   "note": "component side (z1) faces the lid" if up else "component side (z0) faces the floor",
-                  "notches": [{"x0": ex(NOTCH[0]), "x1": ex(NOTCH[2]), "y0": ey(NOTCH[3]), "y1": ey(NOTCH[1]),
-                               "label": "notch for the T1S pair"}] if mcu else []},
+                  "notches": [{"x0": ex(nt[0]), "x1": ex(nt[2]), "y0": ey(nt[3]), "y1": ey(nt[1]),
+                               "label": "notch for the T1S pair"} for nt in ([notch(v)] if mcu else [])]},
+        "insert": {"mode": v.get("insert", "panel" if v.get("removable") else "one board"), "clear": INSERT_CLEAR,
+                   "main_travel": MAIN_TRAVEL, "drop": MEZZ_DROP if drop else 0.0},
+        "removable": list(v.get("removable", ())),
+        "panels": {f: f'removable {({"back": "north", "front": "south", "left": "west", "right": "east"})[f]} panel'
+                   for f in v.get("removable", ())},
+        "mezzanine": {"x0": ex(MEZZANINE[0]), "x1": ex(MEZZANINE[2]), "y0": ey(MEZZANINE[3]), "y1": ey(MEZZANINE[1]),
+                      "z0": m0 + MCU_THICKNESS, "z1": z0, "drop": MEZZ_DROP,
+                      "pins": [{"x": ex(px), "y": ey(py)} for px, py in MEZZ_PINS[0]], "pin_d": MEZZ_PINS[1]}
+        if drop else None,
         "boards": [{"label": "MCU board", "x0": ex(MCU_BOARD[0]), "x1": ex(MCU_BOARD[2]), "y0": ey(MCU_BOARD[3]),
                     "y1": ey(MCU_BOARD[1]), "z0": m0, "z1": m0 + MCU_THICKNESS}] if mcu else [],
         "levels": levels,
@@ -194,8 +217,10 @@ def spec(version=CURRENT):
         "busbars": busbars,
         "terminal": {**term, "kind": v["terminal"], "z0": term_z[0], "z1": term_z[1], "thread_top": term_top,
                      "stud_engagement": min(engage, term["thread"])},
-        "parts": {"AT13": {"height": AT13_HEIGHT, "axis": AT13_AXIS, "panel": AT13_PANEL, "back": AT13_BACK},
-                  "ATM13": {"height": ATM13_HEIGHT, "axis": ATM13_AXIS, "panel": ATM13_PANEL, "back": ATM13_BACK},
+        "parts": {"AT13": {"height": AT13_HEIGHT, "axis": AT13_AXIS, "panel": AT13_PANEL, "back": AT13_BACK,
+                           "shroud": AT13_SHROUD, "along_half": 36.2 / 2},
+                  "ATM13": {"height": ATM13_HEIGHT, "axis": ATM13_AXIS, "panel": ATM13_PANEL, "back": ATM13_BACK,
+                            "shroud": ATM13_SHROUD, "along_half": sum(ATM13_ALONG) / 2},
                   "SURLOK": {"depth": SURLOK_DEPTH, "stud": STUD, "contact_z": contact, "plug": [18.0, 55.1, 22.6]},
                   "busbar": {"width": BUSBAR_W, "thickness": BUSBAR_T, "stock": '1/8" x 1" C110 copper flat bar'}},
         "assumptions": {"standoff": None if mcu or not up else STANDOFF, "floor_gap": None if up else FLOOR_GAP,

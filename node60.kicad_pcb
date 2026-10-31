@@ -3405,7 +3405,7 @@
 		(locked yes)
 		(layer "F.Cu")
 		(uuid "c782ec0b-9dde-4e69-96b5-b5110cb349fe")
-		(at 177.6 46 180)
+		(at 177.1 46 180)
 		(descr "Amphenol Sine BoardLock ATM13-2P-BMxx 2-pin right-angle PCB receptacle with flange (mates ATM06-2S), 4.20 mm pitch, 3x #4-20 screw bosses; PCB layout and body per drawing ATM13-2P-BMXX rev. A2, https://www.amphenol-sine.com/pdf/datasheet/ATM13-2P-BM04.pdf")
 		(tags "connector Amphenol Sine ATM ATM13 ATM13-2P ATM06-2S BoardLock horizontal right angle sealed automotive")
 		(property "Reference" "J903"
@@ -4189,7 +4189,7 @@
 		(locked yes)
 		(layer "F.Cu")
 		(uuid "cf75e247-072a-4bdc-89de-9e646da3c527")
-		(at 136.6 46 180)
+		(at 137.1 46 180)
 		(descr "Amphenol Sine BoardLock ATM13-2P-BMxx 2-pin right-angle PCB receptacle with flange (mates ATM06-2S), 4.20 mm pitch, 3x #4-20 screw bosses; PCB layout and body per drawing ATM13-2P-BMXX rev. A2, https://www.amphenol-sine.com/pdf/datasheet/ATM13-2P-BM04.pdf")
 		(tags "connector Amphenol Sine ATM ATM13 ATM13-2P ATM06-2S BoardLock horizontal right angle sealed automotive")
 		(property "Reference" "J912"
@@ -5637,7 +5637,7 @@
 		(locked yes)
 		(layer "B.Cu")
 		(uuid "0eefd1b5-5d9b-4d64-ad2c-22eddddf5544")
-		(at 97.5 145)
+		(at 97.5 140)
 		(descr "Würth REDCUBE SMT WP-SMRT, reverse with internal thread, M6, Ø12 flange, Ø9.3 non-plated hole for the Ø9.0 spigot, 85 A (data sheet 74660016 rev. 001.001 p. 1), https://www.we-online.com/components/products/datasheet/74660016.pdf")
 		(tags "REDCUBE SMT power terminal M6 internal thread reverse WP-SMRT 74660016 74660016R")
 		(property "Reference" "J910"
@@ -5927,7 +5927,7 @@
 		(locked yes)
 		(layer "B.Cu")
 		(uuid "4c201e55-9072-4b55-a48a-88e4ca824dae")
-		(at 212.5 145)
+		(at 212.5 140)
 		(descr "Würth REDCUBE SMT WP-SMRT, reverse with internal thread, M6, Ø12 flange, Ø9.3 non-plated hole for the Ø9.0 spigot, 85 A (data sheet 74660016 rev. 001.001 p. 1), https://www.we-online.com/components/products/datasheet/74660016.pdf")
 		(tags "REDCUBE SMT power terminal M6 internal thread reverse WP-SMRT 74660016 74660016R")
 		(property "Reference" "J901"
@@ -6802,18 +6802,18 @@
 		)
 		(fill no)
 		(layer "Dwgs.User")
-		(uuid "76be148d-08ca-4aac-80dc-c1dbf0fc1453")
+		(uuid "d8f87c9e-53de-4993-8fed-6a33bdab8fde")
 	)
 	(gr_rect
-		(start 84.8 132.3)
-		(end 225.2 157.7)
+		(start 84.8 127.3)
+		(end 225.2 152.7)
 		(stroke
 			(width 0.15)
 			(type default)
 		)
 		(fill no)
 		(layer "Dwgs.User")
-		(uuid "dd8173d4-6418-4e64-9e3a-dc49d5fc6800")
+		(uuid "f264d143-9bbe-491b-9247-6345d15e30cc")
 	)
 	(gr_rect
 		(start 30 30)
@@ -6824,12 +6824,12 @@
 		)
 		(fill no)
 		(layer "Edge.Cuts")
-		(uuid "c08ead96-981a-4198-b03e-de527eeb1c08")
+		(uuid "d5baf81a-c072-4356-b40a-8a74f9872363")
 	)
 	(gr_text "GND busbar 25.4 x 3.175 Cu (1/8 x 1 in C110), on top: no parts under it"
 		(at 155 60.3 0)
 		(layer "Dwgs.User")
-		(uuid "016a2c9e-7935-4be0-ab18-4e76dc12c9ba")
+		(uuid "bb425e78-0c3f-41d6-bca2-d6244b3fec61")
 		(effects
 			(font
 				(size 1.5 1.5)
@@ -6837,9 +6837,9 @@
 		)
 	)
 	(gr_text "VBAT_IN busbar 25.4 x 3.175 Cu (1/8 x 1 in C110), on top: no parts under it"
-		(at 155 130.3 0)
+		(at 155 125.3 0)
 		(layer "Dwgs.User")
-		(uuid "505c34ed-3f53-4537-99ea-b8d2bfcabfc5")
+		(uuid "fdc45085-2f18-4aba-83aa-47e186cb5f7f")
 		(effects
 			(font
 				(size 1.5 1.5)

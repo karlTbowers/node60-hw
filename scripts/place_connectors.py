@@ -55,10 +55,10 @@ HEADER_CLEAR = 3.0
 OUT_PITCH = 40.0     # 36.2 mm courtyard + 3.8 mm between headers (user, 2026-10-30)
 OUT_ROW = FRONT - (AT13_PANEL - EDGE_GAP)          # AT13 pin row
 T1S_PITCH = 45.0     # J903 / J912 side by side on the north edge (DEC-021 as accepted)
-# Versions 2 and 4 (user, 2026-10-31): 41 mm, so the T stem is narrow enough for the
-# receptacles beside it to stagger (_T_LAYOUT). 41.98 mm is the most that works. Version 7
-# takes it too (user, 2026-10-31).
-T1S_PITCH_T = 41.0
+# Versions 2, 4 and 7 (user, 2026-10-31): 40 mm. In versions 2 and 4 it also keeps the T stem
+# narrow enough for the receptacles beside it to stagger (_T_LAYOUT); 41.98 mm is the most
+# that works there.
+T1S_PITCH_T = 40.0
 # T1S on the side walls: version 1 at 60 % of the depth from the front (DEC-020);
 # version 3 as near the outputs as the AT13 bodies allow (user, 2026-10-30).
 T1S_SIDE_MID = FRONT - 0.60 * D
@@ -81,9 +81,33 @@ V6_FRONT = Y0 + V6_DEPTH
 MCU_BOARD = (CX - 60.0, Y0, CX + 60.0, Y0 + 80.0)
 MCU_THICKNESS = 1.6
 NOTCH_CLEAR = 1.0    # notch edge to the ATM13 courtyards
-NOTCH = (CX - T1S_PITCH / 2 - sum(ATM13_ALONG) / 2 - NOTCH_CLEAR, Y0,
-         CX + T1S_PITCH / 2 + sum(ATM13_ALONG) / 2 + NOTCH_CLEAR,
-         Y0 + ATM13_PANEL - EDGE_GAP + ATM13_BACK + NOTCH_CLEAR)
+# Fitting the boards one at a time (2026-10-31): a header's shroud passes through its wall
+# cutout, so a board goes in by sliding toward its headers' wall, by the shroud's length past
+# the flange face plus INSERT_CLEAR. Shroud lengths from Amphenol's STEP models.
+AT13_SHROUD = 30.1 - AT13_PANEL      # 14.6 mm past the flange face
+ATM13_SHROUD = 29.4 - ATM13_PANEL    # 12.9 mm
+INSERT_CLEAR = 0.5
+# Version 8: the MCU board goes in first and slides north; then the main board is lowered
+# MAIN_TRAVEL north of its place and slides south, so it stops that far short of the north
+# wall, and its notch is that much deeper so it clears the T1S headers while it is lowered.
+# A mezzanine joins the boards: the main board slides in MEZZ_DROP high and drops onto it,
+# so the output cutouts are MEZZ_DROP taller. Mezzanine size, place and stroke PROVISIONAL.
+MAIN_TRAVEL = AT13_SHROUD + INSERT_CLEAR
+MEZZ_DROP = 2.5
+MEZZANINE = (CX - 20.0, Y0 + 66.0, CX + 20.0, Y0 + 74.0)   # plan outline, on the MCU board
+MEZZ_PINS = ((CX - 26.0, Y0 + 70.0), (CX + 26.0, Y0 + 70.0)), 3.0   # guide pins and their diameter
+
+
+def notch(v):
+    """(x0, y0, x1, y1) of the main board's notch for a T1S pair on the MCU board."""
+    half = v.get("t1s_pitch", T1S_PITCH) / 2 + sum(ATM13_ALONG) / 2 + NOTCH_CLEAR
+    return (CX - half, main_north(v), CX + half,
+            Y0 + ATM13_PANEL - EDGE_GAP + ATM13_BACK + NOTCH_CLEAR + (main_north(v) - Y0))
+
+
+def main_north(v):
+    """KiCad Y of the main board's north edge: Y0, or MAIN_TRAVEL short of it (version 8)."""
+    return Y0 + (MAIN_TRAVEL if v.get("insert") == "boards" else 0.0)
 
 # Busbars (DEC-021): 1/8" x 1" C110 copper flat bar, cut to length and drilled in house,
 # one per terminal pair. Ends run half a width past each hole.
@@ -98,9 +122,11 @@ REDCUBE = {"smt": ("DropOut_TerminalBlock_Wuerth", "Wuerth_REDCUBE-SMT_WP-SMRT_7
 
 # Lid terminal layouts (plan, x east, KiCad Y).
 _T_LAYOUT = {    # DEC-021: one battery/return pair in each low section beside the raised T. Battery
-    "J910": (CX - 57.5, FRONT - 45), "J901": (CX + 57.5, FRONT - 45),   # close to the stem and in front,
+    "J910": (CX - 57.5, FRONT - 50), "J901": (CX + 57.5, FRONT - 50),   # close to the stem and in front,
     "J911": (CX - 78.7, FRONT - 115), "J902": (CX + 78.7, FRONT - 115)} # return wide, so a battery plug's
-# cable pointing north passes beside the return receptacle (user, 2026-10-31).
+# cable pointing north passes beside the return receptacle (user, 2026-10-31). Battery row 50 mm
+# from the front (user, 2026-10-31); 52.4 mm is the most before a battery plug pointing north
+# comes within 3 mm of the return flange.
 _STAGGER = {     # version 3: behind the raised front band; battery close, return wide, so a
     "J910": (CX - 40, FRONT - 87), "J901": (CX + 40, FRONT - 87),     # battery plug pointing
     "J911": (CX - 75, FRONT - 120), "J902": (CX + 75, FRONT - 120)}   # north passes beside the return
@@ -117,6 +143,7 @@ _WALL_OUTS_V6 = {**_WALL_OUTS, "J905": ("W", V6_FRONT - 20.0), "J908": ("E", V6_
 BAT_X, RET_X = 52.0, 78.0
 _MIDDLE = {"J910": (CX - BAT_X, FRONT - 58), "J901": (CX + BAT_X, FRONT - 58),
            "J911": (CX - RET_X, FRONT - 105), "J902": (CX + RET_X, FRONT - 105)}
+_MIDDLE_V8 = {**_MIDDLE, "J911": (CX - RET_X, FRONT - 103), "J902": (CX + RET_X, FRONT - 103)}  # GND bar clear of the notch
 _MIDDLE_V6 = {"J910": (CX - BAT_X, Y0 + 82), "J901": (CX + BAT_X, Y0 + 82),
               "J911": (CX - RET_X, Y0 + 53), "J902": (CX + RET_X, Y0 + 53)}
 
@@ -127,7 +154,10 @@ _MIDDLE_V6 = {"J910": (CX - BAT_X, Y0 + 82), "J901": (CX + BAT_X, Y0 + 82),
 # section in each back corner and one over a north T1S pair); outputs: wall ("S", "W", "E") and position along it (plan x
 # on the south wall, KiCad Y on the side walls), default all six on the south wall;
 # plugs: "WNE" (any of west, north, east) or "ON" (outward or north); depth: board depth
-# (default D), the north edge stays at Y0; t1s_pitch: J903 to J912 (default T1S_PITCH); t1s_board: "main"
+# (default D), the north edge stays at Y0; insert: "boards" when each board goes in on its own
+# (version 8: shorter main board, mezzanine); removable: walls that are separate panels, fitted
+# after the board (versions 2 and 7: the north wall, so the board slides south into the
+# one-piece front wall first; user, 2026-10-31); t1s_pitch: J903 to J912 (default T1S_PITCH); t1s_board: "main"
 # (default) or "mcu" (on the board under the main board, through a notch in it).
 VERSIONS = {
     "v1": dict(title="Version 1: board flipped", decision="DEC-020", board="down", terminal="smt", busbars=False,
@@ -138,8 +168,9 @@ VERSIONS = {
                        "the board. T1S on the side walls. No busbars."),
     "v2": dict(title="Version 2: busbars, raised T", decision="DEC-021", board="up", terminal="smt", busbars=True,
                t1s="north", t1s_pitch=T1S_PITCH_T, lid="T", plugs="ON", back_gap=EDGE_GAP, terminals=_T_LAYOUT,
+               removable=("back",),
                summary="Board component side up; SMT REDCUBEs underneath, busbars on top; a raised T over the "
-                       "outputs and the T1S pair on the north wall, 41 mm apart. The receptacles are staggered "
+                       "outputs and the T1S pair on the north wall, 40 mm apart. The receptacles are staggered "
                        "so a battery plug's cable pointing north passes beside the return receptacle."),
     "v3": dict(title="Version 3: busbars, raised front", decision=None, board="up", terminal="smt", busbars=True,
                t1s="sides", t1s_y=T1S_SIDE_FRONT, lid="front", plugs="ON", back_gap=2.0, terminals=_STAGGER,
@@ -162,16 +193,18 @@ VERSIONS = {
                        "between them, staggered. The board is 139 mm deep, 21 mm less than version 2."),
     "v7": dict(title="Version 7: busbars, front band and T1S hood", decision=None, board="up", terminal="smt",
                busbars=True, t1s="north", t1s_pitch=T1S_PITCH_T, lid="front", plugs="ON", back_gap=EDGE_GAP,
-               terminals=_MIDDLE,
+               terminals=_MIDDLE, removable=("back",),
                summary="Version 2 without the T's stem: a raised band across the front over the outputs and a "
                        "separate raised hood over the T1S pair on the north wall; the rest of the lid is low. "
                        "The power receptacles are placed as in version 6, staggered."),
     "v8": dict(title="Version 8: MCU board below, T1S lowered", decision=None, board="up", terminal="smt",
-               busbars=True, t1s="north", t1s_board="mcu", lid="front", plugs="ON", back_gap=EDGE_GAP,
-               terminals=_MIDDLE,
+               busbars=True, t1s="north", t1s_board="mcu", insert="boards", lid="front", plugs="ON",
+               back_gap=EDGE_GAP, terminals=_MIDDLE_V8,
                summary="Version 7 with a second board for the microcontroller under the main board. The T1S pair "
                        "moves onto it and stands up through a notch in the main board, low enough to fit under "
-                       "the low lid, so the T1S hood goes; only the front band over the outputs stays raised."),
+                       "the low lid, so the T1S hood goes; only the front band over the outputs stays raised. "
+                       "Each board goes in on its own: the MCU board slides north into its wall, then the main "
+                       "board, 15 mm shorter so it can, slides south and drops onto a mezzanine."),
 }
 CURRENT = "v2"       # the version on node60.kicad_pcb (DEC-021)
 
