@@ -23,7 +23,7 @@ import math
 import sys
 from pathlib import Path
 
-ENGINE_VERSION = "1.3"           # bump when the spec format changes (1.1: raised lid regions; 1.2: board notches, more boards; 1.3: panels)
+ENGINE_VERSION = "1.5"           # bump when the spec format changes (1.1: raised lid regions; 1.2: board notches, more boards; 1.3: panels; 1.4: bosses; 1.5: seats)
 FONT = 12                        # px
 SCALE = 2.6                      # px per mm for the face views; details use DETAIL_SCALE
 DETAIL_SCALE = 6.0
@@ -393,6 +393,11 @@ def face_view(s, face, out):
             if face == "top":
                 v.text((bu0 + bu1) / 2, min(bv0, bv1) + 2, bd.get("label", "board"), "l")
         if face == "top":
+            for bo in s.get("bosses", []):             # under the lid: hidden
+                v.circle(bo["x"], bo["y"], bo["d"], "h")
+            for se in s.get("seats", []):              # pockets in a flat lid, seen from above
+                h2 = se["w"] / 2
+                v.rect(se["x"] - h2, se["y"] - h2, se["x"] + h2, se["y"] + h2, "c")
             for r in s.get("raised", []):
                 v.rect(r["x0"], r["y0"], r["x1"], r["y1"], "c")
                 lbl = f'{r.get("label", "raised")}: top at z {fmt(r["z"])}'
@@ -420,8 +425,9 @@ def face_view(s, face, out):
             row = next((i for i, end in enumerate(row_end) if x - half > end + 6), len(row_end))
             row_end[row:row + 1] = [x + half]
             v.text(u0, h + 3 + row * 14 / SCALE, lbl, "l")
-        else:
-            v.text(u0, v0 + envelope(t)[1] + 2.5, lbl, "l")
+        else:                              # above the cutout, or above its seat pocket if it has one
+            seat = next((se["w"] / 2 for se in s.get("seats", []) if se.get("for") == c["ref"]), 0)
+            v.text(u0, v0 + max(envelope(t)[1], seat) + 2.5, lbl, "l")
     us = [placed(s, c)[0] for c in cuts]
     vs = [placed(s, c)[1] for c in cuts] + [h]
     if walls:
@@ -429,7 +435,9 @@ def face_view(s, face, out):
         vs += [lv["z"] for lv in s.get("levels", [])] + [z for _, _, z in sil + at_wall]
         us += [e for a, bb, _ in sil + at_wall for e in (a, bb) if 0 < e < w]
     elif face == "top":
-        for r in s.get("raised", []) + b.get("notches", []) + s.get("boards", []):
+        for r in s.get("raised", []) + b.get("notches", []) + s.get("boards", []) + [
+                {"x0": se["x"] - se["w"] / 2, "x1": se["x"] + se["w"] / 2, "y0": se["y"] - se["w"] / 2,
+                 "y1": se["y"] + se["w"] / 2} for se in s.get("seats", [])]:
             us += [r["x0"], r["x1"]]
             vs += [r["y0"], r["y1"]]
     v.ordinate_u(us, 0, -12)

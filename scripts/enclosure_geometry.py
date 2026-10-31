@@ -27,7 +27,14 @@ from place_connectors import (  # noqa: E402
 from place_connectors import T1S_PITCH as T1S_PITCH_ALL  # noqa: E402  (default; a version may set its own)
 
 # Enclosure assumptions: PROVISIONAL until an enclosure is chosen.
-WALL = 3.0            # wall, floor and lid thickness
+WALL = 3.0            # wall and floor thickness
+LID = 4.0             # lid thickness (user, 2026-10-31: machined from solid, 3 mm judged too thin)
+# Screw bosses under the lid at each SurLok receptacle's 4 x M4 (18 mm square, catalog IC-10 p. 13):
+# M4 wants about 6 mm of thread in aluminium, the lid gives 4. Ø8 reaches 8.7 mm from the
+# receptacle's centre, clear of its Ø14.3 hole; the receptacle's tail passes through the hole.
+BOSS_D, BOSS_H = 8.0, 4.0  # boss diameter, and height below the lid (8 mm of material in all)
+SEAT_CLEAR = 2.0      # flat lid (version 4): each receptacle's seat pocket is this much bigger than its flange
+                      # all round; the lid stays LID thick under the seat, so it is thickened underneath there
 STANDOFF = 8.0        # board up: floor (inside) to the board's bottom face (SMT REDCUBE bodies or press-fit pins hang below)
 FLOOR_GAP = 3.0       # board down: deepest header to the floor
 HOOD_GAP = 3.0        # tallest header to the inside of a raised section; raised edges this far past the headers
@@ -95,7 +102,7 @@ def spec(version=CURRENT):
 
     if up:
         m0 = WALL + MCU_STANDOFF                        # MCU board bottom (version 8)
-        z0 = m0 + MCU_THICKNESS + BOARD_GAP if mcu else WALL + STANDOFF   # board bottom
+        z0 = m0 + MCU_THICKNESS + BOARD_GAP if mcu else WALL + v.get("standoff", STANDOFF)   # board bottom
         z1 = z0 + THICKNESS                             # component side, facing the lid
         cs, side_sign = z1, 1                           # headers stand up from the component side
         term_top = z1 + (term["height"] if v["terminal"] == "pressfit" else 0.0)
@@ -111,11 +118,11 @@ def spec(version=CURRENT):
     outside = {"x": x_in_r - x_in_l + 2 * WALL, "y": y_in_f - y_in_b + 2 * WALL, "z": low}
 
     # Raised lid sections over the headers, where they don't fit under the low lid.
-    hood = cs + deepest + HOOD_GAP + WALL
+    hood = cs + deepest + HOOD_GAP + LID
     raised = []
     outs = outputs(v)
     t1s_cs = m0 + MCU_THICKNESS if mcu else cs          # component side the T1S pair stands on
-    t1s_hood = t1s_cs + ATM13_HEIGHT + HOOD_GAP + WALL
+    t1s_hood = t1s_cs + ATM13_HEIGHT + HOOD_GAP + LID
     if up and hood > low and v["lid"] == "corners":
         # A front band over the south-wall outputs and the side-wall outputs in the front
         # corners; a raised section over each back-corner output and over the T1S pair.
@@ -135,7 +142,7 @@ def spec(version=CURRENT):
         raised.append({"x0": ex(CX) - half, "x1": ex(CX) + half,
                        "y0": ey(Y0 + ATM13_PANEL - EDGE_GAP + ATM13_BACK) - HOOD_GAP, "y1": outside["y"],
                        "z": hood, "label": "T1S hood"})
-    elif up and hood > low:
+    elif up and hood > low and v["lid"] != "seats":
         cross_y1 = ey(OUT_ROW - AT13_BACK) + HOOD_GAP
         if v["t1s"] == "sides":                         # the band also covers the side-wall T1S bodies
             cross_y1 = max(cross_y1, ey(v["t1s_y"] - max(ATM13_ALONG)) + HOOD_GAP)
@@ -151,6 +158,9 @@ def spec(version=CURRENT):
                                "y0": ey(Y0 + ATM13_PANEL - EDGE_GAP + ATM13_BACK) - HOOD_GAP,
                                "y1": outside["y"], "z": t1s_hood, "label": "T1S hood"})
 
+    seats = []
+    if v["lid"] == "seats":                             # flat at the headers' height; receptacles in pockets
+        outside["z"] = max(low, hood)
     near = "down" if up else "up"
     faces = {"S": "front", "W": "left", "E": "right"}     # plan positions are seen from above
     drop = v.get("insert") == "boards"                    # main board drops onto a mezzanine
@@ -186,7 +196,14 @@ def spec(version=CURRENT):
     levels = [{"z": WALL, "label": "floor, inside"}]
     if v["busbars"]:
         levels.append({"z": contact, "label": "busbar top"})
-    levels.append({"z": low - WALL, "label": "lid, inside" if not raised else "low lid, inside"})
+    if v["lid"] == "seats":
+        flange = CUTOUT_TYPES["SURLOK"]["flange"] + 2 * SEAT_CLEAR
+        seats = [{"x": c["x"], "y": c["y"], "w": flange, "z": low, "depth": outside["z"] - low, "for": c["ref"]}
+                 for c in cutouts if c["type"] == "SURLOK"]
+        levels.append({"z": outside["z"] - LID, "label": "lid, inside"})
+        levels.append({"z": low, "label": "receptacle seats"})
+    else:
+        levels.append({"z": low - LID, "label": "lid, inside" if not raised else "low lid, inside"})
     return {
         "title": f"Node60 enclosure, {v['title'].split(':')[0].lower()}",
         "version": {"id": version, "title": v["title"], "summary": v["summary"], "decision": v["decision"],
@@ -194,6 +211,12 @@ def spec(version=CURRENT):
                     "outputs": sorted({w for w, _ in outs.values()})},
         "outside": outside,
         "wall": WALL,
+        "lid_thickness": LID,
+        "seats": seats,
+        "bosses": [{"x": c["x"] + sx * CUTOUT_TYPES["SURLOK"]["screw_square"] / 2,
+                    "y": c["y"] + sy * CUTOUT_TYPES["SURLOK"]["screw_square"] / 2, "d": BOSS_D,
+                    "z0": low - LID - BOSS_H, "z1": low - LID, "for": c["ref"]}
+                   for c in cutouts if c["type"] == "SURLOK" for sx in (-1, 1) for sy in (-1, 1)],
         "board": {"x0": ex(LEFT), "x1": ex(RIGHT), "y0": ey(FRONT), "y1": ey(main_north(v)), "z0": z0, "z1": z1,
                   "component_side": "top" if up else "bottom",
                   "note": "component side (z1) faces the lid" if up else "component side (z0) faces the floor",
@@ -221,9 +244,10 @@ def spec(version=CURRENT):
                            "shroud": AT13_SHROUD, "along_half": 36.2 / 2},
                   "ATM13": {"height": ATM13_HEIGHT, "axis": ATM13_AXIS, "panel": ATM13_PANEL, "back": ATM13_BACK,
                             "shroud": ATM13_SHROUD, "along_half": sum(ATM13_ALONG) / 2},
-                  "SURLOK": {"depth": SURLOK_DEPTH, "stud": STUD, "contact_z": contact, "plug": [18.0, 55.1, 22.6]},
+                  "SURLOK": {"depth": SURLOK_DEPTH, "stud": STUD, "contact_z": contact, "panel_z": low,
+                             "plug": [18.0, 55.1, 22.6]},
                   "busbar": {"width": BUSBAR_W, "thickness": BUSBAR_T, "stock": '1/8" x 1" C110 copper flat bar'}},
-        "assumptions": {"standoff": None if mcu or not up else STANDOFF, "floor_gap": None if up else FLOOR_GAP,
+        "assumptions": {"standoff": None if mcu or not up else v.get("standoff", STANDOFF), "floor_gap": None if up else FLOOR_GAP,
                         "mcu_standoff": MCU_STANDOFF if mcu else None, "board_gap": BOARD_GAP if mcu else None,
                         "hood_gap": HOOD_GAP, "edge_gap": EDGE_GAP, "back_gap": v["back_gap"],
                         "deepest_header": deepest, "surlok_depth": SURLOK_DEPTH,

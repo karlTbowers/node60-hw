@@ -42,7 +42,7 @@ const captions: Record<string, string> = {
 <table>
 	<thead><tr><th>Item</th><th>Value</th></tr></thead>
 	<tbody>
-		<tr><td>Outside</td><td>{f(g.outside.x)} × {f(g.outside.y)} × {f(top)} mm{g.raised.length > 0 && ` (low lid ${f(g.outside.z)}, raised ${f(top)}: a ${f(top - g.outside.z)} mm step)`}</td></tr>
+		<tr><td>Outside</td><td>{f(g.outside.x)} × {f(g.outside.y)} × {f(top)} mm{g.seats?.length > 0 && `, flat lid; each receptacle in a ${f(g.seats[0].w)} mm square seat ${f(g.seats[0].depth)} mm deep`}{g.raised.length > 0 && ` (low lid ${f(g.outside.z)}, raised ${f(top)}: a ${f(top - g.outside.z)} mm step)`}</td></tr>
 		<tr><td>PCB</td><td>{f(g.board.x1 - g.board.x0)} × {f(g.board.y1 - g.board.y0)} × {f(g.board.z1 - g.board.z0)} mm (provisional), {g.board.component_side === 'top' ? 'component side up' : 'component side down'}; front-left corner {f(g.board.x0)} mm from the left outside face and {f(g.board.y0)} mm from the front outside face{g.board.notches.length > 0 && `, with a ${f(g.board.notches[0].x1 - g.board.notches[0].x0)} × ${f(g.board.notches[0].y1 - g.board.notches[0].y0)} mm ${g.board.notches[0].label}`}</td></tr>
 		{g.boards.map((b: any) => (
 			<tr><td>{b.label}</td><td>{f(b.x1 - b.x0)} × {f(b.y1 - b.y0)} × {f(b.z1 - b.z0)} mm (provisional), {f(g.board.z0 - b.z1)} mm under the main board, {f(b.z0 - g.wall)} mm above the floor</td></tr>
@@ -51,6 +51,7 @@ const captions: Record<string, string> = {
 			<tr><td>Mezzanine</td><td>placeholder, {f(g.mezzanine.x1 - g.mezzanine.x0)} × {f(g.mezzanine.y1 - g.mezzanine.y0)} mm, {f(g.mezzanine.z1 - g.mezzanine.z0)} mm stack; the main board drops {g.mezzanine.drop} mm onto it, on two Ø{g.mezzanine.pin_d} guide pins; output cutouts {g.mezzanine.drop} mm taller, leaving {g.cutout_types.AT13_DROP.seal_land} mm of panel seal above them</td></tr>
 		)}
 		<tr><td>Fitting the boards</td><td>{g.assembly.fits ? g.assembly.steps.join('. ') + '.' : g.assembly.problems.join('. ') + '.'}</td></tr>
+		<tr><td>Lid</td><td>{g.lid_thickness ?? g.wall} mm{g.bosses?.length > 0 && `, with ${g.bosses.length} Ø${g.bosses[0].d} × ${f(g.bosses[0].z1 - g.bosses[0].z0)} mm M4 screw bosses underneath (four per receptacle)`}; walls and floor {g.wall} mm</td></tr>
 		<tr><td>Power terminals</td><td>{t.name}</td></tr>
 		<tr><td>SurLok stud into the terminal</td><td>{f(t.stud_engagement)} of {t.thread} mm of thread, with the library's estimated {g.parts.SURLOK.stud} mm stud</td></tr>
 		<tr><td>Busbars</td><td>{g.busbars.length ? `${g.parts.busbar.stock}, on ${t.kind === 'pressfit' ? 'the press-fit blocks' : 'the board'}` : 'none'}</td></tr>

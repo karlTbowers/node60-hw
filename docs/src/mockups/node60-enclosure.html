@@ -149,7 +149,7 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
     board: mat(0x1f4d36), mcuBoard: mat(0x24506e), at13: mat(0xeceef0), seal: mat(0xd42a2a), atm: mat(0xd9dce0),
     brass: mat(0xc9a24a, { metalness: 0.6, roughness: 0.35 }), copper: mat(0xc8763f, { metalness: 0.7, roughness: 0.3 }),
     red: mat(0xc0262d), black: mat(0x2a2d31), redPlug: mat(0xd8434a), blackPlug: mat(0x3a3e44), gasket: mat(0xd5d8da),
-    mezz: mat(0x2b2f36), mezzTop: mat(0x5a606a),
+    mezz: mat(0x2b2f36), mezzTop: mat(0x5a606a), boss: mat(0x8d949c, { metalness: 0.4 }),
     wall: glass(), lid: glass(), stud: mat(0x9aa1a8, { metalness: 0.7, roughness: 0.3 }), clash: mat(0xf97316),
   };
   const box = (w, h, d, m, x, y, z) => { const b = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), m); b.position.set(x, y, z); return b; };
@@ -173,7 +173,8 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
     mainG = new THREE.Group(); mcuG = new THREE.Group(); root.add(mainG, mcuG);
     const OX = G.outside.x, OY = G.outside.y, W = G.wall, B = G.board, up = B.component_side === 'top';
     const P = (x, y) => [x - OX / 2, OY / 2 - y];
-    const LOW = G.outside.z, SUR = G.parts.SURLOK, CONTACT = SUR.contact_z;
+    const SUR = G.parts.SURLOK, CONTACT = SUR.contact_z;
+    const TOP = G.outside.z, LOW = SUR.panel_z ?? TOP;   // lid's (low) outer face; receptacle panel face (a seat in a flat lid)
     const FLANGE_TOP = LOW + GASKET + FLANGE_T, MATING = LOW + GASKET + FRONT_A;
     const [PLUG_W, PLUG_L, PLUG_H] = SUR.plug;
     const span = (x0, x1, y0, y1, z0, z1, m) => {
@@ -270,12 +271,13 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
     }
 
     // Enclosure: stepped outer walls, a low lid with receptacle holes, and the raised sections.
-    const HOOD = Math.max(LOW, ...G.raised.map(r => r.z));
+    const HOOD = Math.max(TOP, ...G.raised.map(r => r.z)), LT = G.lid_thickness ?? W;   // lid thickness
+    const SEATS = G.seats || [];
     const xs = [...new Set([0, OX, ...G.raised.flatMap(r => [r.x0, r.x1])])].sort((a, b) => a - b);
     const ys = [...new Set([0, OY, ...G.raised.flatMap(r => [r.y0, r.y1])])].sort((a, b) => a - b);
     const raisedAt = (x, y) => G.raised.some(r => x > r.x0 && x < r.x1 && y > r.y0 && y < r.y1);
     const wallTop = (face, u) => raisedAt(...{ front: [u, 0.01], back: [OX - u, OY - 0.01], left: [0.01, OY - u],
-                                               right: [OX - 0.01, u] }[face]) ? HOOD : LOW;
+                                               right: [OX - 0.01, u] }[face]) ? HOOD : TOP;
     function wallShape(face, len, holes) {
       const s = new THREE.Shape(), along = face === 'front' || face === 'back' ? xs : ys;
       const flip = face === 'back' ? OX : face === 'left' ? OY : null;
@@ -306,13 +308,29 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
       const sh = new THREE.Shape();
       sh.moveTo(x0, y0); sh.lineTo(x1, y0); sh.lineTo(x1, y1); sh.lineTo(x0, y1); sh.closePath();
       for (const t of TERMS) if (t.x > x0 && t.x < x1 && t.y > y0 && t.y < y1) {
-        const p = new THREE.Path(); p.absarc(t.x, t.y, 7.15, 0, Math.PI * 2, true); sh.holes.push(p);
+        const se = SEATS.find(q => q.for === t.ref), p = new THREE.Path();
+        if (se) {                         // a square pocket down to the seat
+          const h = se.w / 2; p.moveTo(t.x - h, t.y - h); p.lineTo(t.x - h, t.y + h); p.lineTo(t.x + h, t.y + h); p.lineTo(t.x + h, t.y - h); p.closePath();
+        } else p.absarc(t.x, t.y, 7.15, 0, Math.PI * 2, true);
+        sh.holes.push(p);
       }
-      const m = new THREE.Mesh(new THREE.ExtrudeGeometry(sh, { depth: W, bevelEnabled: false }), M.lid);
-      m.rotation.x = -Math.PI / 2; m.position.set(-OX / 2, LOW - W, OY / 2); lid.add(m);
+      const m = new THREE.Mesh(new THREE.ExtrudeGeometry(sh, { depth: LT, bevelEnabled: false }), M.lid);
+      m.rotation.x = -Math.PI / 2; m.position.set(-OX / 2, TOP - LT, OY / 2); lid.add(m);
+    }
+    for (const se of SEATS) {             // seat floor (LT thick, receptacle hole) and the pocket's walls
+      const h = se.w / 2, sh = new THREE.Shape(), hole = new THREE.Path();
+      sh.moveTo(se.x - h, se.y - h); sh.lineTo(se.x + h, se.y - h); sh.lineTo(se.x + h, se.y + h); sh.lineTo(se.x - h, se.y + h); sh.closePath();
+      hole.absarc(se.x, se.y, 7.15, 0, Math.PI * 2, true); sh.holes.push(hole);
+      const m = new THREE.Mesh(new THREE.ExtrudeGeometry(sh, { depth: LT, bevelEnabled: false }), M.lid);
+      m.rotation.x = -Math.PI / 2; m.position.set(-OX / 2, se.z - LT, OY / 2); lid.add(m);
+      const t2 = 2;                        // pocket wall, standing on the seat's thickened underside
+      lid.add(span(se.x - h - t2, se.x + h + t2, se.y - h - t2, se.y - h, se.z - LT, TOP, M.lid));
+      lid.add(span(se.x - h - t2, se.x + h + t2, se.y + h, se.y + h + t2, se.z - LT, TOP, M.lid));
+      lid.add(span(se.x - h - t2, se.x - h, se.y - h, se.y + h, se.z - LT, TOP, M.lid));
+      lid.add(span(se.x + h, se.x + h + t2, se.y - h, se.y + h, se.z - LT, TOP, M.lid));
     }
     for (const rr of G.raised) {
-      lid.add(span(rr.x0, rr.x1, rr.y0, rr.y1, rr.z - W, rr.z, M.lid));
+      lid.add(span(rr.x0, rr.x1, rr.y0, rr.y1, rr.z - LT, rr.z, M.lid));
       const edges = [[rr.x0, rr.y0, rr.x1, rr.y0, 0, -1], [rr.x0, rr.y1, rr.x1, rr.y1, 0, 1],
                      [rr.x0, rr.y0, rr.x0, rr.y1, -1, 0], [rr.x1, rr.y0, rr.x1, rr.y1, 1, 0]];
       for (const [ax, ay, bx, by, nx, ny] of edges) {
@@ -322,15 +340,18 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
           const [s0, s1] = [stops[k], stops[k + 1]], mm = (s0 + s1) / 2;
           const xm = nx ? ax + nx : mm, ym = nx ? mm : ay + ny;
           if (xm <= 0 || xm >= OX || ym <= 0 || ym >= OY || raisedAt(xm, ym)) continue;
-          lid.add(nx ? span(ax - (nx < 0 ? 0 : W), ax + (nx < 0 ? W : 0), s0, s1, LOW - W, rr.z, M.lid)
-                     : span(s0, s1, ay - (ny < 0 ? 0 : W), ay + (ny < 0 ? W : 0), LOW - W, rr.z, M.lid));
+          lid.add(nx ? span(ax - (nx < 0 ? 0 : W), ax + (nx < 0 ? W : 0), s0, s1, TOP - LT, rr.z, M.lid)
+                     : span(s0, s1, ay - (ny < 0 ? 0 : W), ay + (ny < 0 ? W : 0), TOP - LT, rr.z, M.lid));
         }
       }
       const [lx, lz] = P((rr.x0 + rr.x1) / 2, (rr.y0 + rr.y1) / 2);
       tag(rr.label, [lx, rr.z + 3, lz], 'lid');
     }
+    for (const bo of G.bosses || []) {   // M4 screw bosses under the lid at each receptacle
+      const [bx, bz] = P(bo.x, bo.y); lid.add(cyl(bo.d / 2, bo.z1 - bo.z0, M.boss, bx, (bo.z0 + bo.z1) / 2, bz));
+    }
     lid.visible = show.lid; walls.visible = show.walls; plugs.visible = show.plugs;
-    rail(id, { OX, OY, W, B, LOW, HOOD });
+    rail(id, { OX, OY, W, B, LOW: TOP, HOOD });
     const two = G.insert && G.insert.mode !== 'one board' && G.assembly.fits;
     const slider = document.getElementById('assembly');
     slider.disabled = !two; slider.value = 100; asm = 1;
@@ -441,11 +462,12 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
     document.getElementById('sweep').textContent = `${pc.combinations - pc.failures} of ${pc.combinations} allowed combinations clear; the tightest leaves ${pc.tightest} mm.`;
     const dl = (el, rows) => document.getElementById(el).innerHTML = rows.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join('');
     dl('dims', [
-      ['Outside', `${f2(OX)} × ${f2(OY)} × ${f2(HOOD)} mm` + (HOOD > LOW ? `; low lid ${f2(LOW)} (step ${f2(HOOD - LOW)})` : ', flat lid')],
+      ['Outside', `${f2(OX)} × ${f2(OY)} × ${f2(HOOD)} mm` + (HOOD > LOW ? `; low lid ${f2(LOW)} (step ${f2(HOOD - LOW)})` : ', flat lid') +
+        ((G.seats || []).length ? `; receptacles in ${f2(G.seats[0].w)} mm square seats ${f2(G.seats[0].depth)} mm deep` : '')],
       ['PCB', `${f2(B.x1 - B.x0)} × ${f2(B.y1 - B.y0)} × ${f2(B.z1 - B.z0)} mm${(B.notches || []).length ? ', notched' : ''}, component side ${B.component_side === 'top' ? 'up' : 'down'}`],
       ...(G.boards || []).map(b => [b.label, `${f2(b.x1 - b.x0)} × ${f2(b.y1 - b.y0)} × ${f2(b.z1 - b.z0)} mm, ${f2(B.z0 - b.z1)} mm below`]),
       ['Terminals', `${G.terminal.name}; stud into thread ${f2(G.terminal.stud_engagement)} of ${G.terminal.thread} mm`],
-      ['Walls', `${f2(W)} mm`],
+      ['Walls', `${f2(W)} mm; lid ${f2(G.lid_thickness ?? W)} mm` + ((G.bosses || []).length ? `, with Ø${f2(G.bosses[0].d)} × ${f2(G.bosses[0].z1 - G.bosses[0].z0)} mm M4 bosses under each receptacle` : '')],
     ]);
     const asmList = document.getElementById('asm'), A = G.assembly;
     asmList.className = 'steps' + (A.fits ? '' : ' bad');
