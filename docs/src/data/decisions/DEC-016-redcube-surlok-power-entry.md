@@ -34,6 +34,8 @@ On 2026-10-28 the user decided the power entry, and added a pass-through: the no
 
 ## Consequences
 
+- **Terminal part replaced (DEC-022, 2026-10-31):** the four terminals are now Würth REDCUBE PRESS-FIT 786202106 (180 A, M6 blind thread), with the busbars on the blocks. The receptacles, the pass-through and its 40 A provisional limit stand.
+
 - **Pass-through current is not protected by this node.** The downstream feed leaves from the raw battery side, before the LM74910H ideal diode and breaker (DEC-001) and the INA228 shunt (DEC-002). Node60's reverse-battery protection, 75 A breaker and total-current telemetry cover only its own load. The downstream node needs its own protection, and the source fuse and cable must be sized for Node60 plus the downstream node.
 - **Downstream current limit: 40 A, provisional** (user, 2026-10-28; the downstream node needs up to 60 A, and the user accepted a lower limit if needed).
   - At 60 A downstream, the upstream receptacle and terminal would carry 120 A: the top of the SurLok Plus 5.7 mm "100 to 120 A" class, with no derating curve for +125 °C in the catalogue, and above one REDCUBE's 85 A (max at 20 °C). The 8.0 mm SurLok size takes an M8 nut, not the REDCUBE's M6 thread.

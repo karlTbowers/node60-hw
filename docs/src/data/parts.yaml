@@ -385,20 +385,35 @@
   decisions: [DEC-015]
   library: DropOut_Timing:ECS-160-8-36Q-AES-TR
 
+- id: "786202106"
+  mpn: "786202106"
+  manufacturer: Würth Elektronik
+  qty: 4
+  label: 786202106 (REDCUBE PRESS-FIT WP-PFIFUA, M6)
+  function: Power terminal, two on the battery input (J901, J910) and two on the return (J902, J911); press-fit, 10 x 10 x 10.5 mm block, M6 blind thread 6.0 mm deep, 16 press-fit pins, 180 A max at 20 °C, 3.9 N·m, PCB 1.6-2.7 mm, -55 to +150 °C; the busbars rest on the blocks and the SurLok Plus receptacles screw in through them
+  subsystem: harness
+  status: selected
+  decision_note: "Selected (user's decision 2026-10-31, DEC-022), replacing 74660016R. Automotive approval. 4 mm component keep-out, 3 mm from the board edge. Prove the joint at GATE-HAR-02"
+  supply_note: Bulk only; not found at DigiKey, Mouser or Newark
+  observations:
+    - { date: 2026-10-26, source: DigiKey / Mouser / Newark, note: "not found (exact MPN and keyword searches)" }
+  decisions: [DEC-022]
+  library: DropOut_Connector:786202106
+
 - id: 74660016R
   mpn: 74660016R
   manufacturer: Würth Elektronik
-  qty: 4
+  qty: 0
   label: 74660016R (REDCUBE SMT WP-SMRT, M6)
-  function: Power terminal, two on the battery input (J901, J910) and two on the return (J902, J911); reverse SMT, M6 internal through thread, 85 A max at 20 °C, 3.9 N·m, -55 to +150 °C; Ø9.3 mm hole; SurLok Plus receptacles screw in
+  function: Power terminal used until 2026-10-31 (DEC-016, DEC-021); reverse SMT, M6 internal through thread, 85 A max at 20 °C, 3.9 N·m, -55 to +150 °C; Ø9.3 mm hole
   subsystem: harness
-  status: selected
-  decision_note: "Selected (user's decision 2026-10-28), tape and reel. Operating current depends on PCB, lug and cable: prove at GATE-HAR-02"
+  status: alternative
+  decision_note: "Selected 2026-10-28 (user), replaced by the press-fit 786202106 on 2026-10-31 (DEC-022) for the flat lid. Kept as the SMT alternative"
   supply_note: Mouser only, no stock figure reported; not at DigiKey or Newark
   observations:
     - { date: 2026-10-26, source: Mouser 710-74660016R, prices: [{ qty: "1", usd: 4.32 }] }
     - { date: 2026-10-28, source: Mouser 710-74660016R, note: "listed, no stock figure; not at DigiKey or Newark" }
-  decisions: [DEC-016]
+  decisions: [DEC-016, DEC-022]
   library: DropOut_Connector:74660016R
 
 - id: "74660016"

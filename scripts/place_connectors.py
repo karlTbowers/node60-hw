@@ -186,7 +186,7 @@ VERSIONS = {
                t1s="sides", t1s_y=T1S_SIDE_FRONT, lid="front", plugs="ON", back_gap=2.0, terminals=_STAGGER,
                summary="As version 2, but the T1S pair moves to the side walls next to the outputs, so one raised "
                        "band across the front covers every header; the power receptacles sit behind it, staggered."),
-    "v4": dict(title="Version 4: press-fit, flat lid", decision=None, board="up", terminal="pressfit", busbars=True,
+    "v4": dict(title="Version 4: press-fit, flat lid", decision="DEC-022", board="up", terminal="pressfit", busbars=True,
                t1s="north", t1s_pitch=T1S_PITCH_T, lid="seats", plugs="ON", back_gap=EDGE_GAP, terminals=_T_LAYOUT,
                removable=("back",), standoff=MIN_STANDOFF,
                summary="Version 2's layout with REDCUBE press-fit 786202106 terminals on top of the board and the "
@@ -219,7 +219,7 @@ VERSIONS = {
                        "Each board goes in on its own: the MCU board slides north into its wall, then the main "
                        "board, 15 mm shorter so it can, slides south and drops onto a mezzanine."),
 }
-CURRENT = "v2"       # the version on node60.kicad_pcb (DEC-021)
+CURRENT = "v4"       # the version on node60.kicad_pcb (DEC-022)
 
 
 def front(v):
@@ -414,7 +414,9 @@ def main(netlist, version=CURRENT):
         bar.SetWidth(mm(0.15))
         board.Add(bar)
         label = pcbnew.PCB_TEXT(board)
-        label.SetText(f"{net} busbar {BUSBAR_W:g} x {BUSBAR_T:g} Cu (1/8 x 1 in C110), on top: no parts under it")
+        where = ("on the press-fit blocks, 10.5 mm up: parts under it below 9 mm, 4 mm from the blocks"
+                 if v["terminal"] == "pressfit" else "on the board: no parts under it")
+        label.SetText(f"{net} busbar {BUSBAR_W:g} x {BUSBAR_T:g} Cu (1/8 x 1 in C110), {where}")
         label.SetPosition(pcbnew.VECTOR2I(mm((x0 + x1) / 2), mm(y0 - 2)))
         label.SetLayer(pcbnew.Dwgs_User)
         label.SetTextSize(pcbnew.VECTOR2I(mm(1.5), mm(1.5)))
