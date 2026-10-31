@@ -56,7 +56,8 @@ OUT_PITCH = 40.0     # 36.2 mm courtyard + 3.8 mm between headers (user, 2026-10
 OUT_ROW = FRONT - (AT13_PANEL - EDGE_GAP)          # AT13 pin row
 T1S_PITCH = 45.0     # J903 / J912 side by side on the north edge (DEC-021 as accepted)
 # Versions 2 and 4 (user, 2026-10-31): 41 mm, so the T stem is narrow enough for the
-# receptacles beside it to stagger (_T_LAYOUT). 41.98 mm is the most that works.
+# receptacles beside it to stagger (_T_LAYOUT). 41.98 mm is the most that works. Version 7
+# takes it too (user, 2026-10-31).
 T1S_PITCH_T = 41.0
 # T1S on the side walls: version 1 at 60 % of the depth from the front (DEC-020);
 # version 3 as near the outputs as the AT13 bodies allow (user, 2026-10-30).
@@ -160,7 +161,8 @@ VERSIONS = {
                        "raised sections in the back corners and over the T1S pair; the power receptacles sit "
                        "between them, staggered. The board is 139 mm deep, 21 mm less than version 2."),
     "v7": dict(title="Version 7: busbars, front band and T1S hood", decision=None, board="up", terminal="smt",
-               busbars=True, t1s="north", lid="front", plugs="ON", back_gap=EDGE_GAP, terminals=_MIDDLE,
+               busbars=True, t1s="north", t1s_pitch=T1S_PITCH_T, lid="front", plugs="ON", back_gap=EDGE_GAP,
+               terminals=_MIDDLE,
                summary="Version 2 without the T's stem: a raised band across the front over the outputs and a "
                        "separate raised hood over the T1S pair on the north wall; the rest of the lid is low. "
                        "The power receptacles are placed as in version 6, staggered."),
