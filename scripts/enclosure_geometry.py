@@ -21,7 +21,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from place_connectors import (  # noqa: E402
     AT13_BACK, AT13_PANEL, ATM13_ALONG, ATM13_BACK, ATM13_PANEL, BUSBAR_HOLE, BUSBAR_T, BUSBAR_W, BUSBARS, CURRENT,
-    CX, EDGE_GAP, FRONT, LEFT, OUT_PITCH, OUT_ROW, RIGHT, T1S_PITCH, THICKNESS, VERSIONS, Y0, busbar_outline,
+    CX, EDGE_GAP, FRONT, LEFT, OUT_ROW, RIGHT, T1S_PITCH, THICKNESS, VERSIONS, Y0, busbar_outline, outputs,
 )
 
 # Enclosure assumptions: PROVISIONAL until an enclosure is chosen.
@@ -35,6 +35,7 @@ HOOD_GAP = 3.0        # tallest header to the inside of a raised section; raised
 AT13_HEIGHT, AT13_AXIS = 27.84, 13.8      # axis per drawing C-AT13-2P-BMXX rev. A2
 ATM13_HEIGHT, ATM13_AXIS = 28.48, 15.0    # axis = mating-shroud centre in the STEP
 ATM13_HALF = 18.41    # flange half width
+AT13_HALF = 35.20 / 2  # panel seal half width
 SURLOK_DEPTH = 36.7 - 16.5 - 1.0          # SurLok catalog IC-10 p. 6: contact face to panel face (B - A - C)
 STUD = 7.7            # SurLok M6 stud length: ESTIMATE in the library model; Amphenol publishes none
 
@@ -92,7 +93,27 @@ def spec(version=CURRENT):
     # Raised lid sections over the headers, where they don't fit under the low lid.
     hood = cs + deepest + HOOD_GAP + WALL
     raised = []
-    if up and hood > low:
+    outs = outputs(v)
+    if up and hood > low and v["lid"] == "corners":
+        # A front band over the south-wall outputs and the side-wall outputs in the front
+        # corners; a raised section over each back-corner output and over the T1S pair.
+        # HOOD_GAP past the header bodies and the panel seals.
+        side = [at for wall, at in outs.values() if wall != "S"]
+        back = [at for at in side if at < (Y0 + FRONT) / 2]
+        band = max([ey(OUT_ROW - AT13_BACK) + HOOD_GAP]
+                   + [ey(at - AT13_HALF - HOOD_GAP) for at in side if at not in back])
+        raised.append({"x0": 0, "x1": outside["x"], "y0": 0, "y1": band, "z": hood, "label": "raised front"})
+        corner_y0 = ey(max(back) + AT13_HALF + HOOD_GAP)
+        inner = ex(LEFT + AT13_PANEL - EDGE_GAP + AT13_BACK + HOOD_GAP)     # inner edge of a corner section
+        raised.append({"x0": 0, "x1": inner, "y0": corner_y0, "y1": outside["y"], "z": hood,
+                       "label": "west back corner"})
+        raised.append({"x0": outside["x"] - inner, "x1": outside["x"], "y0": corner_y0, "y1": outside["y"],
+                       "z": hood, "label": "east back corner"})
+        half = T1S_PITCH / 2 + ATM13_HALF + HOOD_GAP
+        raised.append({"x0": ex(CX) - half, "x1": ex(CX) + half,
+                       "y0": ey(Y0 + ATM13_PANEL - EDGE_GAP + ATM13_BACK) - HOOD_GAP, "y1": outside["y"],
+                       "z": hood, "label": "T1S hood"})
+    elif up and hood > low:
         cross_y1 = ey(OUT_ROW - AT13_BACK) + HOOD_GAP
         if v["t1s"] == "sides":                         # the band also covers the side-wall T1S bodies
             cross_y1 = max(cross_y1, ey(v["t1s_y"] - max(ATM13_ALONG)) + HOOD_GAP)
@@ -104,9 +125,11 @@ def spec(version=CURRENT):
                            "z": hood, "label": "T stem"})
 
     near = "down" if up else "up"
-    cutouts = [{"ref": f"J{904 + i}", "label": f"OUT{i + 1}", "face": "front", "type": "AT13",
-                "x": ex(CX + (i - 2.5) * OUT_PITCH), "z": cs + side_sign * AT13_AXIS, "near_edge": near}
-               for i in range(6)]
+    faces = {"S": "front", "W": "left", "E": "right"}     # plan positions are seen from above
+    cutouts = [{"ref": r, "label": f"OUT{int(r[1:]) - 903}", "face": faces[wall], "type": "AT13",
+                **({"x": ex(at)} if wall == "S" else {"y": ey(at)}), "z": cs + side_sign * AT13_AXIS,
+                "near_edge": near}
+               for r, (wall, at) in outs.items()]
     if v["t1s"] == "north":
         cutouts += [{"ref": r, "label": lbl, "face": "back", "type": "ATM13", "x": ex(CX + sx * T1S_PITCH / 2),
                      "z": cs + side_sign * ATM13_AXIS, "near_edge": near}
@@ -137,7 +160,8 @@ def spec(version=CURRENT):
     return {
         "title": f"Node60 enclosure, {v['title'].split(':')[0].lower()}",
         "version": {"id": version, "title": v["title"], "summary": v["summary"], "decision": v["decision"],
-                    "current": version == CURRENT},
+                    "current": version == CURRENT, "lid": v["lid"],
+                    "outputs": sorted({w for w, _ in outs.values()})},
         "outside": outside,
         "wall": WALL,
         "board": {"x0": ex(LEFT), "x1": ex(RIGHT), "y0": ey(FRONT), "y1": ey(Y0), "z0": z0, "z1": z1,

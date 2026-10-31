@@ -20,9 +20,10 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const mockup = `${base}/mockups/node60-enclosure.html#${version}`;
 const top = Math.max(g.outside.z, ...g.raised.map((r: any) => r.z));
 const t = g.terminal;
+const outs = (face: string) => g.cutouts.filter((c: any) => c.face === face && c.type === 'AT13').length;
 const captions: Record<string, string> = {
 	top: 'Top, seen from above: lid cutouts, raised sections and the board outline (dashed).',
-	front: 'Front face: the six outputs.',
+	front: `Front face: ${outs('front') === 6 ? 'the six' : outs('front')} outputs.`,
 	back: 'North face, seen from behind.',
 	right: 'Right face, seen from outside, front face on the left.',
 	left: 'Left face, seen from outside, front face on the right.',

@@ -1,6 +1,6 @@
 ---
 title: Enclosure options
-description: Five candidate mechanical designs for the Node60 enclosure, each with a generated dimensioned drawing, a 3D mockup and a SurLok plug check.
+description: Six candidate mechanical designs for the Node60 enclosure, each with a generated dimensioned drawing, a 3D mockup and a SurLok plug check.
 ---
 
 import { Aside } from '@astrojs/starlight/components';
@@ -9,23 +9,25 @@ import idx from '../../../../diagrams/build/enclosure-versions.json';
 
 export const f = (v) => Number(v.toFixed(2));
 export const top = (g) => Math.max(g.outside.z, ...g.raised.map((r) => r.z));
-export const lid = (g) => g.raised.length === 0 ? 'flat' : g.raised.some((r) => r.label === 'T stem') ? 'raised T' : 'raised front band';
+export const lid = (g) => ({ flat: 'flat', T: 'raised T', front: 'raised front band', corners: 'raised front band, back corners and T1S hood' })[g.version.lid];
+export const outs = (g) => g.version.outputs.length === 1 ? 'south wall' : 'two each on west, south, east';
 export const t1s = (g) => g.cutouts.some((c) => c.ref === 'J903' && c.face === 'back') ? 'north wall' : 'side walls';
 export const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
-The enclosure isn't chosen yet, so five mechanical designs are kept as candidates (user, 2026-10-30). Each has its own page with a dimensioned drawing, a dimension table and a 3D mockup. All of them are generated from the same connector placement script, so every version stays consistent with the parts and with the checks below. The PCB holds one version at a time: **version 2** (<Ref id="DEC-021" />) until a version is chosen.
+The enclosure isn't chosen yet, so six mechanical designs are kept as candidates (user, 2026-10-30). Each has its own page with a dimensioned drawing, a dimension table and a 3D mockup. All of them are generated from the same connector placement script, so every version stays consistent with the parts and with the checks below. The PCB holds one version at a time: **version 2** (<Ref id="DEC-021" />) until a version is chosen.
 
 **[Open the 3D mockup](../../mockups/node60-enclosure.html)** and switch between the versions.
 
 <table>
 	<thead>
-		<tr><th>Version</th><th>Board</th><th>Power terminals</th><th>Busbars</th><th>Lid</th><th>T1S</th><th>Outside (mm)</th><th>Stud into terminal</th><th>SurLok plugs</th></tr>
+		<tr><th>Version</th><th>Board</th><th>Outputs</th><th>Power terminals</th><th>Busbars</th><th>Lid</th><th>T1S</th><th>Outside (mm)</th><th>Stud into terminal</th><th>SurLok plugs</th></tr>
 	</thead>
 	<tbody>
 		{Object.entries(idx.versions).map(([id, g]) => (
 			<tr>
 				<td><a href={`./${id}/`}>{g.version.title.split(':')[0]}</a>{g.version.current && ' (on the PCB)'}</td>
 				<td>{g.board.component_side === 'top' ? 'up' : 'down'}</td>
+				<td>{outs(g)}</td>
 				<td>{g.terminal.kind === 'smt' ? 'SMT 74660016R' : 'press-fit 786202106'}</td>
 				<td>{g.busbars.length ? (g.terminal.kind === 'pressfit' ? 'on the blocks' : 'on the board') : 'none'}</td>
 				<td>{lid(g)}{g.raised.length > 0 && `, ${f(top(g) - g.outside.z)} mm step`}</td>
@@ -48,16 +50,17 @@ The enclosure isn't chosen yet, so five mechanical designs are kept as candidate
   - **Parts can go under the busbars**, if they are lower than about 10 mm.
   - **The lid is nearly flat:** the low sections end up only 1.6 mm below the raised ones. A thicker busbar (3/16") would make it flat, at the cost of about 1.6 mm of stud engagement.
   - **Stock:** the 786202106 had no distributor stock when it went into the library (2026-10-26). Each block also needs a 4 mm component keep-out and 3 mm from the board edge.
+- **Version 6**: version 2 with the outputs spread over three walls, two on each: OUT1-2 on the west wall, OUT3-4 on the south wall and OUT5-6 on the east wall, numbered going round the board. The T1S pair stays in the middle of the north wall. Each side wall has one output in its back corner and one in its front corner, so a power plug pointing outward passes between them. A raised band across the front covers the south and front-corner headers; the back-corner headers and the T1S pair each get their own raised section. The receptacles are staggered as in version 3, battery pair close and in front, return pair wide, so a battery plug pointing north passes beside the return receptacle.
 
 <Aside type="caution" title="SurLok stud length">
-Amphenol doesn't publish the M6 stud's length; every engagement figure here uses the library model's estimate of 7.7 mm. In versions 2–5 the 3.175 mm busbar uses up part of the stud before it reaches the terminal's thread. Get the real length before choosing.
+Amphenol doesn't publish the M6 stud's length; every engagement figure here uses the library model's estimate of 7.7 mm. In versions 2–6 the 3.175 mm busbar uses up part of the stud before it reaches the terminal's thread. Get the real length before choosing.
 </Aside>
 
 ## Sources and assumptions (all versions)
 
 - **Positions:** `scripts/place_connectors.py` (`VERSIONS`) holds every version's layout. Each board edge sits 0.5 mm behind the connector flange face it meets, so the flange, not the board, meets the wall.
 - **Geometry:** `scripts/enclosure_geometry.py` builds each version's enclosure: the board height, the terminal and busbar stack, and the raised sections, derived from the header bodies plus a 3 mm clearance. `scripts/enclosure_versions.py` draws them all with the handbook's enclosure-drawing engine.
-- **Plug check:** `scripts/check_surlok_clearance.py` tries every allowed plug direction against the other plugs, the flanges and the raised sections. A plug pointing west or east must stay inside the walls.
+- **Plug check:** `scripts/check_surlok_clearance.py` tries every allowed plug direction against the other plugs, the flanges and the raised sections, and keeps each flange 2 mm from a raised section. A plug pointing west or east must stay inside the walls.
 - **AT13 cutout:** Amphenol drawing C-AT13-2P-BMXX rev. A2, "recommended panel cutout"; the mating axis is 13.8 mm from the board.
 - **ATM13 cutout:** Amphenol drawing ATM13-2P-BMXX rev. A2. The 15.0 mm axis is measured from Amphenol's STEP model; the drawing gives no height.
 - **SurLok Plus:** catalog IC-10, p. 13 (panel layout) and p. 6: the contact face is 19.2 mm from the panel face.

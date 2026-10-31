@@ -46,4 +46,4 @@ DEC-020 mounted the board component side down so the SurLok receptacles in the l
 - **Board area:** the two bars cover about 2 × 165 × 25 mm across the middle of the board, so no components can go under them.
 - **Header pin tails on 2.6 mm** remain marginal (DEC-020).
 - **Drawing and mockup:** the [Enclosure options](../../subsystems/enclosure/) pages and the [3D mockup](../../mockups/node60-enclosure.html) are generated from the same geometry as the PCB placement.
-- **Kept as version 2 of five candidates** (user, 2026-10-30): versions 3–5 move the T1S pair to the side walls next to the outputs under one raised front band, and/or use REDCUBE press-fit 786202106 terminals with the busbars on the blocks. The PCB stays on this version until one is chosen.
+- **Kept as version 2 of six candidates** (user, 2026-10-30): versions 3–5 move the T1S pair to the side walls next to the outputs under one raised front band, and/or use REDCUBE press-fit 786202106 terminals with the busbars on the blocks. Version 6 spreads the outputs over the west, south and east walls, two on each. The PCB stays on this version until one is chosen.

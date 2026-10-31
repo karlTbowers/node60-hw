@@ -6,7 +6,8 @@ west, north and east on a flat lid; outward or north where a raised section woul
 an inward plug. The SLPRATPS receptacles have no keyway and the plug rotates 360°. The
 script tries every combination of every version and checks,
 in the lid plane, every plug against every other plug, every other receptacle's flange
-and the raised lid sections, with CLEARANCE between them. A plug pointing west or east must also end
+and the raised lid sections, with CLEARANCE between them; each flange must also stay
+FLANGE_CLEAR from the raised sections. A plug pointing west or east must also end
 inside the board outline, so it stays within the enclosure walls (user, 2026-10-30); a
 plug pointing north may overhang the back.
 
@@ -31,6 +32,7 @@ from place_connectors import VERSIONS  # noqa: E402
 PLUG_W, PLUG_L = 18.0, 55.1
 FLANGE = 27.0
 CLEARANCE = 3.0
+FLANGE_CLEAR = 2.0    # receptacle flange to the riser of a raised section: room for the gasket and a tool
 DIRS = {"W": (-1, 0), "N": (0, 1), "E": (1, 0)}
 
 
@@ -68,7 +70,8 @@ def check_version(vid, quiet=False):
         n += 1
         dirs = dict(zip(refs, combo))
         plugs = {r: plug_box(*lid[r], dirs[r]) for r in refs}
-        checks = []
+        checks = [(gap(flange_box(*lid[a]), box), FLANGE_CLEAR, f"{a} flange vs {label}")
+                  for a in refs for label, box in hoods]
         for a in refs:
             if dirs[a] in "WE":
                 checks.append((min(plugs[a][0] - bx0, bx1 - plugs[a][2]), 0.0, f"{a} {dirs[a]} to the board edge"))

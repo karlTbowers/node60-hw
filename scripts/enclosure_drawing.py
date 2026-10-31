@@ -268,6 +268,12 @@ class View:
         x, y = self.p(u, v)
         self.svg.add(f'<text class="{cls}" x="{x:.2f}" y="{y:.2f}" text-anchor="{anchor}">{s}</text>')
 
+    def vtext(self, u, v, s, cls="t"):
+        """Text reading bottom to top, centred on (u, v)."""
+        x, y = self.p(u, v)
+        self.svg.add(f'<text class="{cls}" x="{x:.2f}" y="{y:.2f}" text-anchor="middle" '
+                     f'transform="rotate(-90 {x:.2f} {y:.2f})">{s}</text>')
+
     def title(self, text, y=22):
         self.svg.add(f'<text class="ttl" x="{self.ox:.2f}" y="{y}" text-anchor="start">{text}</text>')
 
@@ -342,7 +348,7 @@ def face_view(s, face, out):
     if walls:
         sil, at_wall = top_profile(s, face, False), top_profile(s, face, True)
         h = max(z for _, _, z in sil)
-    m, left, top = 60, 70, 95
+    m, left, top = 60, 84, 95             # left: room for a six-character ordinate
     svg = Svg(w * SCALE + left + m + 30, h * SCALE + top + m + 40, f'{s["title"]}: {FACES[face][3].lower()}')
     v = View(svg, SCALE, left, top + h * SCALE)
     wall = s["wall"]
@@ -367,8 +373,18 @@ def face_view(s, face, out):
         if face == "top":
             for r in s.get("raised", []):
                 v.rect(r["x0"], r["y0"], r["x1"], r["y1"], "c")
-                v.text((r["x0"] + r["x1"]) / 2, (r["y0"] + r["y1"]) / 2 - 1.5,
-                       f'{r.get("label", "raised")}: top at z {fmt(r["z"])}', "l")
+                lbl = f'{r.get("label", "raised")}: top at z {fmt(r["z"])}'
+                um, vm = (r["x0"] + r["x1"]) / 2, (r["y0"] + r["y1"]) / 2
+                if len(lbl) * FONT * 0.55 < (r["x1"] - r["x0"]) * SCALE - 8:
+                    v.text(um, vm - 1.5, lbl, "l")
+                else:                      # too narrow: two lines, or up the section if it's taller than wide
+                    name, top_z = lbl.split(": ")
+                    if r["y1"] - r["y0"] > r["x1"] - r["x0"]:
+                        v.vtext(um - 1.5, vm, name, "l")
+                        v.vtext(um + 3.5, vm, top_z, "l")
+                    else:
+                        v.text(um, vm + 1.5, name, "l")
+                        v.text(um, vm - 3.5, top_z, "l")
     row_end = []                           # right edge (px) of the last label on each label row
     for c in sorted(cuts, key=lambda c: placed(s, c)[0]):
         t = types[c["type"]]

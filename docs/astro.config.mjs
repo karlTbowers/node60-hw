@@ -40,6 +40,7 @@ export default defineConfig({
 								{ label: 'Version 3: busbars, raised front', slug: 'subsystems/enclosure/v3' },
 								{ label: 'Version 4: press-fit, raised T', slug: 'subsystems/enclosure/v4' },
 								{ label: 'Version 5: press-fit, raised front', slug: 'subsystems/enclosure/v5' },
+								{ label: 'Version 6: outputs on three walls', slug: 'subsystems/enclosure/v6' },
 							],
 						},
 						{ label: 'Firmware & data contract', slug: 'subsystems/firmware' },

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Node60's enclosure-fixed connectors (J901-J912), board outline and busbars, per design version.
 
-Five mechanical versions are kept as candidates (docs: Enclosure options). Each is a set
+Six mechanical versions are kept as candidates (docs: Enclosure options). Each is a set
 of parameters in VERSIONS; enclosure_geometry.py, check_surlok_clearance.py, the
 dimensioned drawings and the 3D mockup are all generated from them. The PCB holds one:
 CURRENT, unless another is named on the command line.
@@ -59,6 +59,11 @@ T1S_PITCH = 45.0     # J903 / J912 side by side on the north edge (DEC-021)
 # version 3 as near the outputs as the AT13 bodies allow (user, 2026-10-30).
 T1S_SIDE_MID = FRONT - 0.60 * D
 T1S_SIDE_FRONT = OUT_ROW - AT13_BACK - HEADER_CLEAR - max(ATM13_ALONG)
+# Version 6 (user, 2026-10-30): two outputs on each of the west, south and east walls. Each
+# side wall has one in its back corner and one in its front corner, 20 mm from the board
+# edge so the courtyard and panel seal clear the corner; the power receptacles sit between
+# them, so an outward plug passes between the two headers' raised sections.
+OUT_SIDE_BACK, OUT_SIDE_FRONT = Y0 + 20.0, FRONT - 20.0
 
 # Busbars (DEC-021): 1/8" x 1" C110 copper flat bar, cut to length and drilled in house,
 # one per terminal pair. Ends run half a width past each hole.
@@ -79,10 +84,21 @@ _STAGGER = {     # version 3: behind the raised front band; battery close, retur
     "J910": (CX - 40, FRONT - 87), "J901": (CX + 40, FRONT - 87),     # battery plug pointing
     "J911": (CX - 75, FRONT - 120), "J902": (CX + 75, FRONT - 120)}   # north passes beside the return
 
+_FRONT_OUTS = {f"J{904 + i}": ("S", CX + (i - 2.5) * OUT_PITCH) for i in range(6)}
+_WALL_OUTS = {   # version 6: OUT1-2 west (north first), OUT3-4 south, OUT5-6 east (front first),
+    "J904": ("W", OUT_SIDE_BACK), "J905": ("W", OUT_SIDE_FRONT),                      # going round
+    "J906": ("S", CX - OUT_PITCH / 2), "J907": ("S", CX + OUT_PITCH / 2),           # the board
+    "J908": ("E", OUT_SIDE_FRONT), "J909": ("E", OUT_SIDE_BACK)}
+_MIDDLE = {      # version 6: between the side-wall outputs; battery close and in front, return wide,
+    "J910": (CX - 48, FRONT - 58), "J901": (CX + 48, FRONT - 58),     # so a battery plug pointing
+    "J911": (CX - 75, FRONT - 105), "J902": (CX + 75, FRONT - 105)}   # north passes beside the return
+
 # board: "up" (component side faces the lid) or "down"; t1s: "north" or "sides" (y of the
 # pair centre); lid: "flat", "T" (crossbar over the outputs, stem over a north T1S pair) or
-# "front" (one raised band across the front); plugs: "WNE" (any of west, north, east) or
-# "ON" (outward or north).
+# "front" (one raised band across the front) or "corners" (a front band, a raised
+# section in each back corner and one over a north T1S pair); outputs: wall ("S", "W", "E") and position along it (plan x
+# on the south wall, KiCad Y on the side walls), default all six on the south wall;
+# plugs: "WNE" (any of west, north, east) or "ON" (outward or north).
 VERSIONS = {
     "v1": dict(title="Version 1: board flipped", decision="DEC-020", board="down", terminal="smt", busbars=False,
                t1s="sides", t1s_y=T1S_SIDE_MID, lid="flat", plugs="WNE", back_gap=2.0,
@@ -106,8 +122,19 @@ VERSIONS = {
                t1s="sides", t1s_y=T1S_SIDE_FRONT, lid="front", plugs="ON", back_gap=2.0, terminals=_STAGGER,
                summary="Version 3's layout with REDCUBE press-fit 786202106 terminals and the busbars on the "
                        "terminal blocks."),
+    "v6": dict(title="Version 6: outputs on three walls", decision=None, board="up", terminal="smt", busbars=True,
+               t1s="north", lid="corners", plugs="ON", back_gap=EDGE_GAP, outputs=_WALL_OUTS, terminals=_MIDDLE,
+               summary="Version 2 with two outputs on each of the west, south and east walls, one in each corner "
+                       "of the side walls, and the T1S pair on the north wall. A raised band across the front and "
+                       "raised sections in the back corners and over the T1S pair; the power receptacles sit "
+                       "between them, staggered."),
 }
 CURRENT = "v2"       # the version on node60.kicad_pcb (DEC-021)
+
+
+def outputs(v):
+    """ref -> (wall, position along it) for the six output headers."""
+    return v.get("outputs", _FRONT_OUTS)
 
 
 def busbar_outline(v, net):
@@ -123,9 +150,14 @@ def placements(version=CURRENT):
     down = v["board"] == "down"
     kx = (lambda x: 2 * X0 + W - x) if down else (lambda x: x)
     p = {}
-    for i in range(6):
-        cx = kx(CX + (i - 2.5) * OUT_PITCH)
-        p[f"J{904 + i}"] = (*AT13, cx - AT13_CY_X, OUT_ROW, 0, False)
+    edge = AT13_PANEL - EDGE_GAP
+    for ref, (wall, at) in outputs(v).items():
+        if wall == "S":
+            p[ref] = (*AT13, kx(at) - AT13_CY_X, OUT_ROW, 0, False)
+        else:   # as the side-wall T1S below: rotation 90 faces KiCad +x, -90 faces -x
+            east = (wall == "E") != down
+            p[ref] = (*AT13, *((RIGHT - edge, at + AT13_CY_X, 90) if east else (LEFT + edge, at - AT13_CY_X, -90)),
+                      False)
     if v["t1s"] == "north":
         # rotation 180: shroud (local +y) points north (-y), local +x points west (-x)
         north_row = Y0 + (ATM13_PANEL - EDGE_GAP)

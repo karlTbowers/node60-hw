@@ -102,7 +102,7 @@ p { margin: 0; font-size: 13px; line-height: 1.45; }
       <dl id="bars"></dl>
     </div>
     <div class="note"><b>SurLok stud length is not confirmed.</b> Amphenol publishes none; the engagement figures use the library's 7.7 mm estimate. Get the real length before choosing a version.</div>
-    <p style="color:var(--muted)">Five candidate versions, all generated from the same connector placement as the PCB and the dimensioned drawings (Enclosure options pages). Plug and receptacle envelopes from the SurLok Plus catalog (IC-10, Gen 1.0, 5.7 mm); header heights from Amphenol's STEP models; shapes inside the envelopes are estimates.</p>
+    <p style="color:var(--muted)">Six candidate versions, all generated from the same connector placement as the PCB and the dimensioned drawings (Enclosure options pages). Plug and receptacle envelopes from the SurLok Plus catalog (IC-10, Gen 1.0, 5.7 mm); header heights from Amphenol's STEP models; shapes inside the envelopes are estimates.</p>
   </aside>
 </div>
 
@@ -141,7 +141,7 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
   };
   const box = (w, h, d, m, x, y, z) => { const b = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), m); b.position.set(x, y, z); return b; };
   const cyl = (r, h, m, x, y, z) => { const c = new THREE.Mesh(new THREE.CylinderGeometry(r, r, h, 40), m); c.position.set(x, y, z); return c; };
-  const GASKET = 1.0, FLANGE_T = 2.5, FRONT_A = 16.5, FLANGE = 27, CLEAR = 3;
+  const GASKET = 1.0, FLANGE_T = 2.5, FRONT_A = 16.5, FLANGE = 27, CLEAR = 3, FLANGE_CLEAR = 2;
   const HEADERS = {     // body sizes; heights, axes and flange faces come from the geometry
     AT13: { w: 35.2, back: 6.1, reach: 30.1, sw: 24, sh: 20, m: M.at13 },
     ATM13: { w: 36.8, back: 10.25, reach: 29.4, sw: 16.6, sh: 16.2, m: M.atm },
@@ -305,6 +305,7 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
     let worst = { g: Infinity, what: '' }; const bad = new Set();
     const note = (g, need, what, ...who) => { if (g < worst.g) worst = { g, what }; if (g < need) who.forEach(i => bad.add(i)); };
     TERMS.forEach((a, i) => {
+      for (const r of G.raised) note(gap(flangeBox(a), [r.x0, r.y0, r.x1, r.y1]), FLANGE_CLEAR, `${a.ref} flange vs ${r.label}`, i);
       const pa = plugBox(a, dirs[i]);
       if (dirs[i] !== 'N') note(Math.min(pa[0] - G.board.x0, G.board.x1 - pa[2]), 0, `${a.ref} ${dirs[i]} to the board edge`, i);
       for (const r of G.raised) note(gap(pa, [r.x0, r.y0, r.x1, r.y1]), CLEAR, `${a.ref} ${dirs[i]} vs ${r.label}`, i);
