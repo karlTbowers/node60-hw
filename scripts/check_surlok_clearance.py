@@ -8,8 +8,9 @@ script tries every combination of every version and checks,
 in the lid plane, every plug against every other plug, every other receptacle's flange
 and the raised lid sections, with CLEARANCE between them; each flange must also stay
 FLANGE_CLEAR from the raised sections and from each other, and the cable leaving each plug, run straight on,
-must pass CABLE_CLEAR beside every raised section in plan (a cable passing over a raised
-section would rest on its edge). A plug pointing west or east must also end
+must pass CABLE_CLEAR beside every raised section, every other receptacle and every other
+plug in plan (a cable passing over a raised section would rest on its edge; the receptacles
+and plugs stand higher than the cable). A plug pointing west or east must also end
 inside the board outline, so it stays within the enclosure walls (user, 2026-10-30); a
 plug pointing north may overhang the back.
 
@@ -100,6 +101,9 @@ def check_version(vid, quiet=False):
                 if a == b:
                     continue
                 checks.append((gap(plugs[a], flange_box(*lid[b])), CLEARANCE, f"{a} {dirs[a]} vs {b} flange"))
+                cable = cable_box(*lid[a], dirs[a])     # a cable can't pass over another receptacle or plug
+                checks.append((gap(cable, flange_box(*lid[b])), CABLE_CLEAR, f"{a} {dirs[a]} cable vs {b} receptacle"))
+                checks.append((gap(cable, plugs[b]), CABLE_CLEAR, f"{a} {dirs[a]} cable vs {b} plug {dirs[b]}"))
                 if a < b:
                     checks.append((gap(plugs[a], plugs[b]), CLEARANCE, f"{a} {dirs[a]} vs {b} plug {dirs[b]}"))
         for g, need, what in checks:

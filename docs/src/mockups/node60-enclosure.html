@@ -331,6 +331,8 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
       TERMS.forEach((b, j) => {
         if (i === j) return;
         note(gap(pa, flangeBox(b)), CLEAR, `${a.ref} ${dirs[i]} vs ${b.ref} flange`, i);
+        note(gap(cableBox(a, dirs[i]), flangeBox(b)), CABLE_CLEAR, `${a.ref} ${dirs[i]} cable vs ${b.ref} receptacle`, i);
+        note(gap(cableBox(a, dirs[i]), plugBox(b, dirs[j])), CABLE_CLEAR, `${a.ref} ${dirs[i]} cable vs ${b.ref} plug`, i, j);
         if (i < j) note(gap(pa, plugBox(b, dirs[j])), CLEAR, `${a.ref} ${dirs[i]} vs ${b.ref} plug`, i, j);
       });
     });

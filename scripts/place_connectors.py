@@ -54,7 +54,10 @@ HEADER_CLEAR = 3.0
 
 OUT_PITCH = 40.0     # 36.2 mm courtyard + 3.8 mm between headers (user, 2026-10-30)
 OUT_ROW = FRONT - (AT13_PANEL - EDGE_GAP)          # AT13 pin row
-T1S_PITCH = 45.0     # J903 / J912 side by side on the north edge (DEC-021)
+T1S_PITCH = 45.0     # J903 / J912 side by side on the north edge (DEC-021 as accepted)
+# Versions 2 and 4 (user, 2026-10-31): 41 mm, so the T stem is narrow enough for the
+# receptacles beside it to stagger (_T_LAYOUT). 41.98 mm is the most that works.
+T1S_PITCH_T = 41.0
 # T1S on the side walls: version 1 at 60 % of the depth from the front (DEC-020);
 # version 3 as near the outputs as the AT13 bodies allow (user, 2026-10-30).
 T1S_SIDE_MID = FRONT - 0.60 * D
@@ -93,9 +96,10 @@ REDCUBE = {"smt": ("DropOut_TerminalBlock_Wuerth", "Wuerth_REDCUBE-SMT_WP-SMRT_7
            "pressfit": ("DropOut_TerminalBlock_Wuerth", "Wuerth_REDCUBE-PRESS-FIT_WP-PFIFUA_786202106_PressFit")}
 
 # Lid terminal layouts (plan, x east, KiCad Y).
-_T_LAYOUT = {    # DEC-021: one battery/return pair in each low section beside the raised T
-    "J910": (CX - 70, FRONT - 45), "J901": (CX + 70, FRONT - 45),
-    "J911": (CX - 70, FRONT - 115), "J902": (CX + 70, FRONT - 115)}
+_T_LAYOUT = {    # DEC-021: one battery/return pair in each low section beside the raised T. Battery
+    "J910": (CX - 57.5, FRONT - 45), "J901": (CX + 57.5, FRONT - 45),   # close to the stem and in front,
+    "J911": (CX - 78.7, FRONT - 115), "J902": (CX + 78.7, FRONT - 115)} # return wide, so a battery plug's
+# cable pointing north passes beside the return receptacle (user, 2026-10-31).
 _STAGGER = {     # version 3: behind the raised front band; battery close, return wide, so a
     "J910": (CX - 40, FRONT - 87), "J901": (CX + 40, FRONT - 87),     # battery plug pointing
     "J911": (CX - 75, FRONT - 120), "J902": (CX + 75, FRONT - 120)}   # north passes beside the return
@@ -122,7 +126,7 @@ _MIDDLE_V6 = {"J910": (CX - BAT_X, Y0 + 82), "J901": (CX + BAT_X, Y0 + 82),
 # section in each back corner and one over a north T1S pair); outputs: wall ("S", "W", "E") and position along it (plan x
 # on the south wall, KiCad Y on the side walls), default all six on the south wall;
 # plugs: "WNE" (any of west, north, east) or "ON" (outward or north); depth: board depth
-# (default D), the north edge stays at Y0; t1s_board: "main"
+# (default D), the north edge stays at Y0; t1s_pitch: J903 to J912 (default T1S_PITCH); t1s_board: "main"
 # (default) or "mcu" (on the board under the main board, through a notch in it).
 VERSIONS = {
     "v1": dict(title="Version 1: board flipped", decision="DEC-020", board="down", terminal="smt", busbars=False,
@@ -132,15 +136,16 @@ VERSIONS = {
                summary="Board component side down under a flat lid; the SurLok studs reach SMT REDCUBEs through "
                        "the board. T1S on the side walls. No busbars."),
     "v2": dict(title="Version 2: busbars, raised T", decision="DEC-021", board="up", terminal="smt", busbars=True,
-               t1s="north", lid="T", plugs="ON", back_gap=EDGE_GAP, terminals=_T_LAYOUT,
+               t1s="north", t1s_pitch=T1S_PITCH_T, lid="T", plugs="ON", back_gap=EDGE_GAP, terminals=_T_LAYOUT,
                summary="Board component side up; SMT REDCUBEs underneath, busbars on top; a raised T over the "
-                       "outputs and the T1S pair on the north wall."),
+                       "outputs and the T1S pair on the north wall, 41 mm apart. The receptacles are staggered "
+                       "so a battery plug's cable pointing north passes beside the return receptacle."),
     "v3": dict(title="Version 3: busbars, raised front", decision=None, board="up", terminal="smt", busbars=True,
                t1s="sides", t1s_y=T1S_SIDE_FRONT, lid="front", plugs="ON", back_gap=2.0, terminals=_STAGGER,
                summary="As version 2, but the T1S pair moves to the side walls next to the outputs, so one raised "
                        "band across the front covers every header; the power receptacles sit behind it, staggered."),
     "v4": dict(title="Version 4: press-fit, raised T", decision=None, board="up", terminal="pressfit", busbars=True,
-               t1s="north", lid="T", plugs="ON", back_gap=EDGE_GAP, terminals=_T_LAYOUT,
+               t1s="north", t1s_pitch=T1S_PITCH_T, lid="T", plugs="ON", back_gap=EDGE_GAP, terminals=_T_LAYOUT,
                summary="Version 2's layout with REDCUBE press-fit 786202106 terminals on top of the board and the "
                        "busbars on the terminal blocks."),
     "v5": dict(title="Version 5: press-fit, raised front", decision=None, board="up", terminal="pressfit", busbars=True,
@@ -208,8 +213,9 @@ def placements(version=CURRENT):
     if v["t1s"] == "north":
         # rotation 180: shroud (local +y) points north (-y), local +x points west (-x)
         north_row = Y0 + (ATM13_PANEL - EDGE_GAP)
-        p["J903"] = (*ATM13, kx(CX + T1S_PITCH / 2) + ATM13_CY_X, north_row, 180, False)
-        p["J912"] = (*ATM13, kx(CX - T1S_PITCH / 2) + ATM13_CY_X, north_row, 180, False)
+        pitch = v.get("t1s_pitch", T1S_PITCH)
+        p["J903"] = (*ATM13, kx(CX + pitch / 2) + ATM13_CY_X, north_row, 180, False)
+        p["J912"] = (*ATM13, kx(CX - pitch / 2) + ATM13_CY_X, north_row, 180, False)
     else:
         # J903 on the east wall, J912 on the west wall, as seen from outside. Rotation 90:
         # shroud (local +y) points to KiCad +x, local +x points to -y; -90 the other way.
