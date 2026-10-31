@@ -21,8 +21,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from place_connectors import (  # noqa: E402
     AT13_BACK, AT13_PANEL, ATM13_ALONG, ATM13_BACK, ATM13_PANEL, BUSBAR_HOLE, BUSBAR_T, BUSBAR_W, BUSBARS, CURRENT,
-    CX, EDGE_GAP, FRONT, LEFT, MCU_BOARD, MCU_THICKNESS, NOTCH, OUT_ROW, RIGHT, T1S_PITCH, THICKNESS, VERSIONS, Y0,
-    busbar_outline, outputs,
+    CX, EDGE_GAP, LEFT, MCU_BOARD, MCU_THICKNESS, NOTCH, RIGHT, T1S_PITCH, THICKNESS, VERSIONS, Y0,
+    busbar_outline, front, out_row, outputs,
 )
 
 # Enclosure assumptions: PROVISIONAL until an enclosure is chosen.
@@ -75,6 +75,7 @@ def spec(version=CURRENT):
     mcu = v.get("t1s_board", "main") == "mcu"           # T1S on the MCU board under the main board
     deepest = AT13_HEIGHT if mcu else max(AT13_HEIGHT, ATM13_HEIGHT)   # tallest header on the main board
     x_in_l, x_in_r = LEFT - EDGE_GAP, RIGHT + EDGE_GAP
+    FRONT, OUT_ROW = front(v), out_row(v)               # this version's front edge and south pin row
     y_in_f, y_in_b = FRONT + EDGE_GAP, Y0 - v["back_gap"]
     ex = lambda x: x - (x_in_l - WALL)                 # plan X (seen from above) -> enclosure x
     ey = lambda y: (y_in_f + WALL) - y                  # KiCad Y -> depth from the front outer face

@@ -7,7 +7,9 @@ an inward plug. The SLPRATPS receptacles have no keyway and the plug rotates 360
 script tries every combination of every version and checks,
 in the lid plane, every plug against every other plug, every other receptacle's flange
 and the raised lid sections, with CLEARANCE between them; each flange must also stay
-FLANGE_CLEAR from the raised sections. A plug pointing west or east must also end
+FLANGE_CLEAR from the raised sections and from each other, and the cable leaving each plug, run straight on,
+must pass CABLE_CLEAR beside every raised section in plan (a cable passing over a raised
+section would rest on its edge). A plug pointing west or east must also end
 inside the board outline, so it stays within the enclosure walls (user, 2026-10-30); a
 plug pointing north may overhang the back.
 
@@ -33,6 +35,9 @@ PLUG_W, PLUG_L = 18.0, 55.1
 FLANGE = 27.0
 CLEARANCE = 3.0
 FLANGE_CLEAR = 2.0    # receptacle flange to the riser of a raised section: room for the gasket and a tool
+CABLE_D = 11.0        # 25 mm² cable outside diameter: ASSUMED (typical 25 mm² flexible cable); confirm with the cable
+CABLE_RUN = 150.0     # cable checked this far past the plug, straight on, which is well past any wall
+CABLE_CLEAR = 2.0     # cable to a raised section, in plan; it may sag or be routed, so less than a rigid body
 DIRS = {"W": (-1, 0), "N": (0, 1), "E": (1, 0)}
 
 
@@ -44,6 +49,17 @@ def plug_box(x, y, d):
         return x0, y - half, x1, y + half
     y0, y1 = sorted((y - dy * back, y + dy * ahead))
     return x - half, y0, x + half, y1
+
+
+def cable_box(x, y, d):
+    """The cable leaving a plug, from the plug's end straight on for CABLE_RUN."""
+    dx, dy = DIRS[d]
+    start, h = PLUG_L - PLUG_W / 2, CABLE_D / 2
+    if dx:
+        x0, x1 = sorted((x + dx * start, x + dx * (start + CABLE_RUN)))
+        return x0, y - h, x1, y + h
+    y0, y1 = sorted((y + dy * start, y + dy * (start + CABLE_RUN)))
+    return x - h, y0, x + h, y1
 
 
 def flange_box(x, y):
@@ -72,11 +88,14 @@ def check_version(vid, quiet=False):
         plugs = {r: plug_box(*lid[r], dirs[r]) for r in refs}
         checks = [(gap(flange_box(*lid[a]), box), FLANGE_CLEAR, f"{a} flange vs {label}")
                   for a in refs for label, box in hoods]
+        checks += [(gap(flange_box(*lid[a]), flange_box(*lid[b])), FLANGE_CLEAR, f"{a} flange vs {b} flange")
+                   for a in refs for b in refs if a < b]
         for a in refs:
             if dirs[a] in "WE":
                 checks.append((min(plugs[a][0] - bx0, bx1 - plugs[a][2]), 0.0, f"{a} {dirs[a]} to the board edge"))
             for label, box in hoods:
                 checks.append((gap(plugs[a], box), CLEARANCE, f"{a} {dirs[a]} vs {label}"))
+                checks.append((gap(cable_box(*lid[a], dirs[a]), box), CABLE_CLEAR, f"{a} {dirs[a]} cable vs {label}"))
             for b in refs:
                 if a == b:
                     continue

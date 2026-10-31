@@ -64,6 +64,12 @@ T1S_SIDE_FRONT = OUT_ROW - AT13_BACK - HEADER_CLEAR - max(ATM13_ALONG)
 # edge so the courtyard and panel seal clear the corner; the power receptacles sit between
 # them, so an outward plug passes between the two headers' raised sections.
 OUT_SIDE_BACK, OUT_SIDE_FRONT = Y0 + 20.0, FRONT - 20.0
+# Version 6's board is shallower (user, 2026-10-31): 139 mm is about the least that keeps every
+# plug check, set by the chain back-corner hood > return row > battery row (2 mm between the
+# flanges; a battery plug pointing north stops short of the T1S hood) > front band. Its rows
+# are measured from the north edge.
+V6_DEPTH = 139.0
+V6_FRONT = Y0 + V6_DEPTH
 
 # Version 8 (user, 2026-10-31): a second board, for the microcontroller, under the main
 # board; the T1S pair J903/J912 sits on it, in the same plan positions, and stands up
@@ -99,9 +105,15 @@ _WALL_OUTS = {   # version 6: OUT1-2 west (north first), OUT3-4 south, OUT5-6 ea
     "J904": ("W", OUT_SIDE_BACK), "J905": ("W", OUT_SIDE_FRONT),                      # going round
     "J906": ("S", CX - OUT_PITCH / 2), "J907": ("S", CX + OUT_PITCH / 2),           # the board
     "J908": ("E", OUT_SIDE_FRONT), "J909": ("E", OUT_SIDE_BACK)}
-_MIDDLE = {      # versions 6 and 7: between the side-wall outputs (v6); battery close and in front, return wide,
-    "J910": (CX - 48, FRONT - 58), "J901": (CX + 48, FRONT - 58),     # so a battery plug pointing
-    "J911": (CX - 75, FRONT - 105), "J902": (CX + 75, FRONT - 105)}   # north passes beside the return
+_WALL_OUTS_V6 = {**_WALL_OUTS, "J905": ("W", V6_FRONT - 20.0), "J908": ("E", V6_FRONT - 20.0)}
+# Versions 6 to 8: battery close and in front, return wide, so a battery plug pointing north passes
+# beside the return. Battery 52 mm from the centre line so its cable, pointing north, passes the
+# T1S hood (user, 2026-10-31); return 26 mm further out.
+BAT_X, RET_X = 52.0, 78.0
+_MIDDLE = {"J910": (CX - BAT_X, FRONT - 58), "J901": (CX + BAT_X, FRONT - 58),
+           "J911": (CX - RET_X, FRONT - 105), "J902": (CX + RET_X, FRONT - 105)}
+_MIDDLE_V6 = {"J910": (CX - BAT_X, Y0 + 82), "J901": (CX + BAT_X, Y0 + 82),
+              "J911": (CX - RET_X, Y0 + 53), "J902": (CX + RET_X, Y0 + 53)}
 
 # board: "up" (component side faces the lid) or "down"; t1s: "north" or "sides" (y of the
 # pair centre); lid: "flat", "T" (crossbar over the outputs, stem over a north T1S pair) or
@@ -109,7 +121,8 @@ _MIDDLE = {      # versions 6 and 7: between the side-wall outputs (v6); battery
 # it) or "corners" (a front band, a raised
 # section in each back corner and one over a north T1S pair); outputs: wall ("S", "W", "E") and position along it (plan x
 # on the south wall, KiCad Y on the side walls), default all six on the south wall;
-# plugs: "WNE" (any of west, north, east) or "ON" (outward or north); t1s_board: "main"
+# plugs: "WNE" (any of west, north, east) or "ON" (outward or north); depth: board depth
+# (default D), the north edge stays at Y0; t1s_board: "main"
 # (default) or "mcu" (on the board under the main board, through a notch in it).
 VERSIONS = {
     "v1": dict(title="Version 1: board flipped", decision="DEC-020", board="down", terminal="smt", busbars=False,
@@ -135,11 +148,12 @@ VERSIONS = {
                summary="Version 3's layout with REDCUBE press-fit 786202106 terminals and the busbars on the "
                        "terminal blocks."),
     "v6": dict(title="Version 6: outputs on three walls", decision=None, board="up", terminal="smt", busbars=True,
-               t1s="north", lid="corners", plugs="ON", back_gap=EDGE_GAP, outputs=_WALL_OUTS, terminals=_MIDDLE,
+               t1s="north", lid="corners", plugs="ON", back_gap=EDGE_GAP, depth=V6_DEPTH, outputs=_WALL_OUTS_V6,
+               terminals=_MIDDLE_V6,
                summary="Version 2 with two outputs on each of the west, south and east walls, one in each corner "
                        "of the side walls, and the T1S pair on the north wall. A raised band across the front and "
                        "raised sections in the back corners and over the T1S pair; the power receptacles sit "
-                       "between them, staggered."),
+                       "between them, staggered. The board is 139 mm deep, 21 mm less than version 2."),
     "v7": dict(title="Version 7: busbars, front band and T1S hood", decision=None, board="up", terminal="smt",
                busbars=True, t1s="north", lid="front", plugs="ON", back_gap=EDGE_GAP, terminals=_MIDDLE,
                summary="Version 2 without the T's stem: a raised band across the front over the outputs and a "
@@ -153,6 +167,16 @@ VERSIONS = {
                        "the low lid, so the T1S hood goes; only the front band over the outputs stays raised."),
 }
 CURRENT = "v2"       # the version on node60.kicad_pcb (DEC-021)
+
+
+def front(v):
+    """KiCad Y of the board's front edge (the north edge is Y0 in every version)."""
+    return Y0 + v.get("depth", D)
+
+
+def out_row(v):
+    """KiCad Y of the south-wall AT13 pin row."""
+    return front(v) - (AT13_PANEL - EDGE_GAP)
 
 
 def outputs(v):
@@ -176,7 +200,7 @@ def placements(version=CURRENT):
     edge = AT13_PANEL - EDGE_GAP
     for ref, (wall, at) in outputs(v).items():
         if wall == "S":
-            p[ref] = (*AT13, kx(at) - AT13_CY_X, OUT_ROW, 0, False)
+            p[ref] = (*AT13, kx(at) - AT13_CY_X, out_row(v), 0, False)
         else:   # as the side-wall T1S below: rotation 90 faces KiCad +x, -90 faces -x
             east = (wall == "E") != down
             p[ref] = (*AT13, *((RIGHT - edge, at + AT13_CY_X, 90) if east else (LEFT + edge, at - AT13_CY_X, -90)),
@@ -319,7 +343,7 @@ def main(netlist, version=CURRENT):
 
     outline = pcbnew.PCB_SHAPE(board, pcbnew.SHAPE_T_RECT)
     outline.SetStart(pcbnew.VECTOR2I(pcbnew.FromMM(X0), pcbnew.FromMM(Y0)))
-    outline.SetEnd(pcbnew.VECTOR2I(pcbnew.FromMM(RIGHT), pcbnew.FromMM(FRONT)))
+    outline.SetEnd(pcbnew.VECTOR2I(pcbnew.FromMM(RIGHT), pcbnew.FromMM(front(v))))
     outline.SetLayer(pcbnew.Edge_Cuts)
     outline.SetWidth(pcbnew.FromMM(0.1))
     board.Add(outline)
