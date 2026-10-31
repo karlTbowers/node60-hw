@@ -102,7 +102,7 @@ p { margin: 0; font-size: 13px; line-height: 1.45; }
       <dl id="bars"></dl>
     </div>
     <div class="note"><b>SurLok stud length is not confirmed.</b> Amphenol publishes none; the engagement figures use the library's 7.7 mm estimate. Get the real length before choosing a version.</div>
-    <p style="color:var(--muted)">Six candidate versions, all generated from the same connector placement as the PCB and the dimensioned drawings (Enclosure options pages). Plug and receptacle envelopes from the SurLok Plus catalog (IC-10, Gen 1.0, 5.7 mm); header heights from Amphenol's STEP models; shapes inside the envelopes are estimates.</p>
+    <p style="color:var(--muted)">Eight candidate versions, all generated from the same connector placement as the PCB and the dimensioned drawings (Enclosure options pages). Plug and receptacle envelopes from the SurLok Plus catalog (IC-10, Gen 1.0, 5.7 mm); header heights from Amphenol's STEP models; shapes inside the envelopes are estimates.</p>
   </aside>
 </div>
 
@@ -134,7 +134,7 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
   const mat = (color, o = {}) => new THREE.MeshStandardMaterial({ color, roughness: 0.6, metalness: 0.05, ...o });
   const glass = () => mat(0x59616b, { transparent: true, opacity: 0.3, side: THREE.DoubleSide, depthWrite: false });
   const M = {
-    board: mat(0x1f4d36), at13: mat(0xeceef0), seal: mat(0xd42a2a), atm: mat(0xd9dce0),
+    board: mat(0x1f4d36), mcuBoard: mat(0x24506e), at13: mat(0xeceef0), seal: mat(0xd42a2a), atm: mat(0xd9dce0),
     brass: mat(0xc9a24a, { metalness: 0.6, roughness: 0.35 }), copper: mat(0xc8763f, { metalness: 0.7, roughness: 0.3 }),
     red: mat(0xc0262d), black: mat(0x2a2d31), redPlug: mat(0xd8434a), blackPlug: mat(0x3a3e44), gasket: mat(0xd5d8da),
     wall: glass(), lid: glass(), stud: mat(0x9aa1a8, { metalness: 0.7, roughness: 0.3 }), clash: mat(0xf97316),
@@ -170,8 +170,19 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
       labelBox.appendChild(el); labels.push({ el, pos: new THREE.Vector3(...pos), group });
     };
 
-    // Board and busbars
-    root.add(span(B.x0, B.x1, B.y0, B.y1, B.z0, B.z1, M.board));
+    // Boards and busbars. A notched board is built from the grid cells outside its notches.
+    const notches = B.notches || [];
+    const bxs = [...new Set([B.x0, B.x1, ...notches.flatMap(n => [n.x0, n.x1])])].sort((a, b) => a - b);
+    const bys = [...new Set([B.y0, B.y1, ...notches.flatMap(n => [n.y0, n.y1])])].sort((a, b) => a - b);
+    for (let i = 0; i + 1 < bxs.length; i++) for (let j = 0; j + 1 < bys.length; j++) {
+      const xm = (bxs[i] + bxs[i + 1]) / 2, ym = (bys[j] + bys[j + 1]) / 2;
+      if (notches.some(n => xm > n.x0 && xm < n.x1 && ym > n.y0 && ym < n.y1)) continue;
+      root.add(span(bxs[i], bxs[i + 1], bys[j], bys[j + 1], B.z0, B.z1, M.board));
+    }
+    for (const b of G.boards || []) {
+      root.add(span(b.x0, b.x1, b.y0, b.y1, b.z0, b.z1, M.mcuBoard));
+      tag(b.label, [P((b.x0 + b.x1) / 2, b.y0 + 6)[0], b.z1 + 1, P(0, b.y0 + 6)[1]]);
+    }
     for (const b of G.busbars) root.add(span(b.x0, b.x1, b.y0, b.y1, b.z0, b.z1, M.copper));
 
     // Headers: built facing +Z with the body above y = 0, flange face at local z = panel; on a
@@ -196,11 +207,12 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
       if (c.face === 'back') { [x, z] = P(c.x, OY - W - panel); g.rotation.y = Math.PI; }
       if (c.face === 'right') { [x, z] = P(OX - W - panel, c.y); g.rotation.y = Math.PI / 2; }
       if (c.face === 'left') { [x, z] = P(W + panel, c.y); g.rotation.y = -Math.PI / 2; }
-      g.position.set(x, cs, z);
+      const base = c.base ?? cs;          // component side of the board the header stands on
+      g.position.set(x, base, z);
       root.add(g);
       const u = { front: c.x, back: OX - c.x, right: c.y, left: OY - c.y }[c.face];
       cuts[c.face].push({ u, z: c.z, w: H.sw + 2, h: H.sh + 2 });
-      tag(`${c.ref} ${c.label}`, [x, cs + (up ? 1 : -1) * (G.parts[c.type].height + 4), z]);
+      tag(`${c.ref} ${c.label}`, [x, base + (up ? 1 : -1) * (G.parts[c.type].height + 4), z]);
     }
 
     // Power: terminal, SurLok receptacle on the busbar (or the board), plug.

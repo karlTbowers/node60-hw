@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Node60's enclosure-fixed connectors (J901-J912), board outline and busbars, per design version.
 
-Six mechanical versions are kept as candidates (docs: Enclosure options). Each is a set
+Eight mechanical versions are kept as candidates (docs: Enclosure options). Each is a set
 of parameters in VERSIONS; enclosure_geometry.py, check_surlok_clearance.py, the
 dimensioned drawings and the 3D mockup are all generated from them. The PCB holds one:
 CURRENT, unless another is named on the command line.
@@ -65,6 +65,16 @@ T1S_SIDE_FRONT = OUT_ROW - AT13_BACK - HEADER_CLEAR - max(ATM13_ALONG)
 # them, so an outward plug passes between the two headers' raised sections.
 OUT_SIDE_BACK, OUT_SIDE_FRONT = Y0 + 20.0, FRONT - 20.0
 
+# Version 8 (user, 2026-10-31): a second board, for the microcontroller, under the main
+# board; the T1S pair J903/J912 sits on it, in the same plan positions, and stands up
+# through a notch in the main board's north edge. Outline PROVISIONAL (plan, KiCad Y).
+MCU_BOARD = (CX - 60.0, Y0, CX + 60.0, Y0 + 80.0)
+MCU_THICKNESS = 1.6
+NOTCH_CLEAR = 1.0    # notch edge to the ATM13 courtyards
+NOTCH = (CX - T1S_PITCH / 2 - sum(ATM13_ALONG) / 2 - NOTCH_CLEAR, Y0,
+         CX + T1S_PITCH / 2 + sum(ATM13_ALONG) / 2 + NOTCH_CLEAR,
+         Y0 + ATM13_PANEL - EDGE_GAP + ATM13_BACK + NOTCH_CLEAR)
+
 # Busbars (DEC-021): 1/8" x 1" C110 copper flat bar, cut to length and drilled in house,
 # one per terminal pair. Ends run half a width past each hole.
 BUSBAR_W, BUSBAR_T = 25.4, 3.175
@@ -89,16 +99,18 @@ _WALL_OUTS = {   # version 6: OUT1-2 west (north first), OUT3-4 south, OUT5-6 ea
     "J904": ("W", OUT_SIDE_BACK), "J905": ("W", OUT_SIDE_FRONT),                      # going round
     "J906": ("S", CX - OUT_PITCH / 2), "J907": ("S", CX + OUT_PITCH / 2),           # the board
     "J908": ("E", OUT_SIDE_FRONT), "J909": ("E", OUT_SIDE_BACK)}
-_MIDDLE = {      # version 6: between the side-wall outputs; battery close and in front, return wide,
+_MIDDLE = {      # versions 6 and 7: between the side-wall outputs (v6); battery close and in front, return wide,
     "J910": (CX - 48, FRONT - 58), "J901": (CX + 48, FRONT - 58),     # so a battery plug pointing
     "J911": (CX - 75, FRONT - 105), "J902": (CX + 75, FRONT - 105)}   # north passes beside the return
 
 # board: "up" (component side faces the lid) or "down"; t1s: "north" or "sides" (y of the
 # pair centre); lid: "flat", "T" (crossbar over the outputs, stem over a north T1S pair) or
-# "front" (one raised band across the front) or "corners" (a front band, a raised
+# "front" (one raised band across the front; with a north T1S pair, a separate hood over
+# it) or "corners" (a front band, a raised
 # section in each back corner and one over a north T1S pair); outputs: wall ("S", "W", "E") and position along it (plan x
 # on the south wall, KiCad Y on the side walls), default all six on the south wall;
-# plugs: "WNE" (any of west, north, east) or "ON" (outward or north).
+# plugs: "WNE" (any of west, north, east) or "ON" (outward or north); t1s_board: "main"
+# (default) or "mcu" (on the board under the main board, through a notch in it).
 VERSIONS = {
     "v1": dict(title="Version 1: board flipped", decision="DEC-020", board="down", terminal="smt", busbars=False,
                t1s="sides", t1s_y=T1S_SIDE_MID, lid="flat", plugs="WNE", back_gap=2.0,
@@ -128,6 +140,17 @@ VERSIONS = {
                        "of the side walls, and the T1S pair on the north wall. A raised band across the front and "
                        "raised sections in the back corners and over the T1S pair; the power receptacles sit "
                        "between them, staggered."),
+    "v7": dict(title="Version 7: busbars, front band and T1S hood", decision=None, board="up", terminal="smt",
+               busbars=True, t1s="north", lid="front", plugs="ON", back_gap=EDGE_GAP, terminals=_MIDDLE,
+               summary="Version 2 without the T's stem: a raised band across the front over the outputs and a "
+                       "separate raised hood over the T1S pair on the north wall; the rest of the lid is low. "
+                       "The power receptacles are placed as in version 6, staggered."),
+    "v8": dict(title="Version 8: MCU board below, T1S lowered", decision=None, board="up", terminal="smt",
+               busbars=True, t1s="north", t1s_board="mcu", lid="front", plugs="ON", back_gap=EDGE_GAP,
+               terminals=_MIDDLE,
+               summary="Version 7 with a second board for the microcontroller under the main board. The T1S pair "
+                       "moves onto it and stands up through a notch in the main board, low enough to fit under "
+                       "the low lid, so the T1S hood goes; only the front band over the outputs stays raised."),
 }
 CURRENT = "v2"       # the version on node60.kicad_pcb (DEC-021)
 
@@ -236,6 +259,8 @@ def read_netlist(path, refs):
 
 def main(netlist, version=CURRENT):
     v = VERSIONS[version]
+    if v.get("t1s_board", "main") != "main":
+        sys.exit(f"{version}: J903/J912 sit on the MCU board, which isn't a separate PCB yet; not placeable")
     place = placements(version)
     comps, pin_nets = read_netlist(netlist, set(place))
     missing = set(place) - set(comps)

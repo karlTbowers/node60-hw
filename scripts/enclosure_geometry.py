@@ -21,7 +21,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from place_connectors import (  # noqa: E402
     AT13_BACK, AT13_PANEL, ATM13_ALONG, ATM13_BACK, ATM13_PANEL, BUSBAR_HOLE, BUSBAR_T, BUSBAR_W, BUSBARS, CURRENT,
-    CX, EDGE_GAP, FRONT, LEFT, OUT_ROW, RIGHT, T1S_PITCH, THICKNESS, VERSIONS, Y0, busbar_outline, outputs,
+    CX, EDGE_GAP, FRONT, LEFT, MCU_BOARD, MCU_THICKNESS, NOTCH, OUT_ROW, RIGHT, T1S_PITCH, THICKNESS, VERSIONS, Y0,
+    busbar_outline, outputs,
 )
 
 # Enclosure assumptions: PROVISIONAL until an enclosure is chosen.
@@ -29,6 +30,9 @@ WALL = 3.0            # wall, floor and lid thickness
 STANDOFF = 8.0        # board up: floor (inside) to the board's bottom face (SMT REDCUBE bodies or press-fit pins hang below)
 FLOOR_GAP = 3.0       # board down: deepest header to the floor
 HOOD_GAP = 3.0        # tallest header to the inside of a raised section; raised edges this far past the headers
+MCU_STANDOFF = 5.0    # version 8: floor (inside) to the MCU board's bottom face
+BOARD_GAP = 10.0      # version 8: MCU board top to main board bottom. It also sets whether the T1S pair on the
+                      # MCU board fits under the low lid: it needs 9.5 mm or more for HOOD_GAP above the ATM13s
 
 # Header heights above the board, measured from Amphenol's STEP models (the drawings give
 # the cutouts but not, for the ATM13, their height).
@@ -68,14 +72,16 @@ def spec(version=CURRENT):
     v = VERSIONS[version]
     up = v["board"] == "up"
     term = TERMINALS[v["terminal"]]
-    deepest = max(AT13_HEIGHT, ATM13_HEIGHT)
+    mcu = v.get("t1s_board", "main") == "mcu"           # T1S on the MCU board under the main board
+    deepest = AT13_HEIGHT if mcu else max(AT13_HEIGHT, ATM13_HEIGHT)   # tallest header on the main board
     x_in_l, x_in_r = LEFT - EDGE_GAP, RIGHT + EDGE_GAP
     y_in_f, y_in_b = FRONT + EDGE_GAP, Y0 - v["back_gap"]
     ex = lambda x: x - (x_in_l - WALL)                 # plan X (seen from above) -> enclosure x
     ey = lambda y: (y_in_f + WALL) - y                  # KiCad Y -> depth from the front outer face
 
     if up:
-        z0 = WALL + STANDOFF                            # board bottom
+        m0 = WALL + MCU_STANDOFF                        # MCU board bottom (version 8)
+        z0 = m0 + MCU_THICKNESS + BOARD_GAP if mcu else WALL + STANDOFF   # board bottom
         z1 = z0 + THICKNESS                             # component side, facing the lid
         cs, side_sign = z1, 1                           # headers stand up from the component side
         term_top = z1 + (term["height"] if v["terminal"] == "pressfit" else 0.0)
@@ -94,6 +100,8 @@ def spec(version=CURRENT):
     hood = cs + deepest + HOOD_GAP + WALL
     raised = []
     outs = outputs(v)
+    t1s_cs = m0 + MCU_THICKNESS if mcu else cs          # component side the T1S pair stands on
+    t1s_hood = t1s_cs + ATM13_HEIGHT + HOOD_GAP + WALL
     if up and hood > low and v["lid"] == "corners":
         # A front band over the south-wall outputs and the side-wall outputs in the front
         # corners; a raised section over each back-corner output and over the T1S pair.
@@ -118,11 +126,16 @@ def spec(version=CURRENT):
         if v["t1s"] == "sides":                         # the band also covers the side-wall T1S bodies
             cross_y1 = max(cross_y1, ey(v["t1s_y"] - max(ATM13_ALONG)) + HOOD_GAP)
         raised.append({"x0": 0, "x1": outside["x"], "y0": 0, "y1": cross_y1, "z": hood,
-                       "label": "raised front" if v["lid"] == "front" else "T crossbar"})
+                       "label": "T crossbar" if v["lid"] == "T" else "raised front"})
         if v["t1s"] == "north":
             stem_half = T1S_PITCH / 2 + ATM13_HALF + HOOD_GAP
-            raised.append({"x0": ex(CX) - stem_half, "x1": ex(CX) + stem_half, "y0": cross_y1, "y1": outside["y"],
-                           "z": hood, "label": "T stem"})
+            if v["lid"] == "T":                         # the stem joins the crossbar
+                raised.append({"x0": ex(CX) - stem_half, "x1": ex(CX) + stem_half, "y0": cross_y1,
+                               "y1": outside["y"], "z": hood, "label": "T stem"})
+            elif t1s_hood > low:                        # a separate hood over the T1S pair only
+                raised.append({"x0": ex(CX) - stem_half, "x1": ex(CX) + stem_half,
+                               "y0": ey(Y0 + ATM13_PANEL - EDGE_GAP + ATM13_BACK) - HOOD_GAP,
+                               "y1": outside["y"], "z": t1s_hood, "label": "T1S hood"})
 
     near = "down" if up else "up"
     faces = {"S": "front", "W": "left", "E": "right"}     # plan positions are seen from above
@@ -132,7 +145,7 @@ def spec(version=CURRENT):
                for r, (wall, at) in outs.items()]
     if v["t1s"] == "north":
         cutouts += [{"ref": r, "label": lbl, "face": "back", "type": "ATM13", "x": ex(CX + sx * T1S_PITCH / 2),
-                     "z": cs + side_sign * ATM13_AXIS, "near_edge": near}
+                     "z": t1s_cs + side_sign * ATM13_AXIS, "near_edge": near, "base": t1s_cs}
                     for r, lbl, sx in (("J903", "T1S upstream", 1), ("J912", "T1S downstream", -1))]
     else:
         cutouts += [{"ref": r, "label": lbl, "face": face, "type": "ATM13", "y": ey(v["t1s_y"]),
@@ -166,7 +179,11 @@ def spec(version=CURRENT):
         "wall": WALL,
         "board": {"x0": ex(LEFT), "x1": ex(RIGHT), "y0": ey(FRONT), "y1": ey(Y0), "z0": z0, "z1": z1,
                   "component_side": "top" if up else "bottom",
-                  "note": "component side (z1) faces the lid" if up else "component side (z0) faces the floor"},
+                  "note": "component side (z1) faces the lid" if up else "component side (z0) faces the floor",
+                  "notches": [{"x0": ex(NOTCH[0]), "x1": ex(NOTCH[2]), "y0": ey(NOTCH[3]), "y1": ey(NOTCH[1]),
+                               "label": "notch for the T1S pair"}] if mcu else []},
+        "boards": [{"label": "MCU board", "x0": ex(MCU_BOARD[0]), "x1": ex(MCU_BOARD[2]), "y0": ey(MCU_BOARD[3]),
+                    "y1": ey(MCU_BOARD[1]), "z0": m0, "z1": m0 + MCU_THICKNESS}] if mcu else [],
         "levels": levels,
         "raised": raised,
         "cutout_types": CUTOUT_TYPES,
@@ -178,7 +195,8 @@ def spec(version=CURRENT):
                   "ATM13": {"height": ATM13_HEIGHT, "axis": ATM13_AXIS, "panel": ATM13_PANEL, "back": ATM13_BACK},
                   "SURLOK": {"depth": SURLOK_DEPTH, "stud": STUD, "contact_z": contact, "plug": [18.0, 55.1, 22.6]},
                   "busbar": {"width": BUSBAR_W, "thickness": BUSBAR_T, "stock": '1/8" x 1" C110 copper flat bar'}},
-        "assumptions": {"standoff": STANDOFF if up else None, "floor_gap": None if up else FLOOR_GAP,
+        "assumptions": {"standoff": None if mcu or not up else STANDOFF, "floor_gap": None if up else FLOOR_GAP,
+                        "mcu_standoff": MCU_STANDOFF if mcu else None, "board_gap": BOARD_GAP if mcu else None,
                         "hood_gap": HOOD_GAP, "edge_gap": EDGE_GAP, "back_gap": v["back_gap"],
                         "deepest_header": deepest, "surlok_depth": SURLOK_DEPTH,
                         "hood_z": hood if raised else None, "low_z": low},

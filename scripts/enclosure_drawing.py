@@ -23,7 +23,7 @@ import math
 import sys
 from pathlib import Path
 
-ENGINE_VERSION = "1.1"           # bump when the spec format changes (1.1: raised lid regions)
+ENGINE_VERSION = "1.2"           # bump when the spec format changes (1.1: raised lid regions; 1.2: board notches, more boards)
 FONT = 12                        # px
 SCALE = 2.6                      # px per mm for the face views; details use DETAIL_SCALE
 DETAIL_SCALE = 6.0
@@ -162,6 +162,22 @@ def flip(t, c):
         pts = [(u, -v) for u, v in pts][::-1]
         radii = radii[::-1]
     return pts, radii
+
+
+def board_outline(b):
+    """The board's plan outline, (x, y) corners in order, with its notches cut from the front
+    (y0) or back (y1) edge."""
+    back = sorted((n for n in b.get("notches", []) if n["y1"] >= b["y1"]), key=lambda n: -n["x0"])
+    front = sorted((n for n in b.get("notches", []) if n["y0"] <= b["y0"]), key=lambda n: n["x0"])
+    if len(back) + len(front) != len(b.get("notches", [])):
+        raise ValueError("a board notch must open on the front or back edge")
+    pts = [(b["x0"], b["y0"])]
+    for n in front:
+        pts += [(n["x0"], b["y0"]), (n["x0"], n["y1"]), (n["x1"], n["y1"]), (n["x1"], b["y0"])]
+    pts += [(b["x1"], b["y0"]), (b["x1"], b["y1"])]
+    for n in back:
+        pts += [(n["x1"], b["y1"]), (n["x1"], n["y0"]), (n["x0"], n["y0"]), (n["x0"], b["y1"])]
+    return pts + [(b["x0"], b["y1"])]
 
 
 def check(s):
@@ -364,12 +380,18 @@ def face_view(s, face, out):
     if walls:
         for lv in s.get("levels", []):
             v.line(0, lv["z"], w, lv["z"], "h")
-        (bu0, _), (bu1, _) = to_face(s, face, b["x0"], b["y0"], 0), to_face(s, face, b["x1"], b["y1"], 0)
-        v.rect(bu0, b["z0"], bu1, b["z1"], "h")
+        for bd in [b] + s.get("boards", []):
+            (bu0, _), (bu1, _) = to_face(s, face, bd["x0"], bd["y0"], 0), to_face(s, face, bd["x1"], bd["y1"], 0)
+            v.rect(bu0, bd["z0"], bu1, bd["z1"], "h")
     else:
         v.rect(wall, wall, w - wall, h - wall, "h")
-        (bu0, bv0), (bu1, bv1) = to_face(s, face, b["x0"], b["y0"]), to_face(s, face, b["x1"], b["y1"])
-        v.rect(bu0, bv0, bu1, bv1, "h")
+        pts = [to_face(s, face, x, y) for x, y in board_outline(b)]
+        v.poly(pts, [0] * len(pts), "h")
+        for bd in s.get("boards", []):
+            (bu0, bv0), (bu1, bv1) = to_face(s, face, bd["x0"], bd["y0"]), to_face(s, face, bd["x1"], bd["y1"])
+            v.rect(bu0, bv0, bu1, bv1, "h")
+            if face == "top":
+                v.text((bu0 + bu1) / 2, min(bv0, bv1) + 2, bd.get("label", "board"), "l")
         if face == "top":
             for r in s.get("raised", []):
                 v.rect(r["x0"], r["y0"], r["x1"], r["y1"], "c")
@@ -403,10 +425,11 @@ def face_view(s, face, out):
     us = [placed(s, c)[0] for c in cuts]
     vs = [placed(s, c)[1] for c in cuts] + [h]
     if walls:
-        vs += [b["z0"], b["z1"]] + [lv["z"] for lv in s.get("levels", [])] + [z for _, _, z in sil + at_wall]
+        vs += [z for bd in [b] + s.get("boards", []) for z in (bd["z0"], bd["z1"])]
+        vs += [lv["z"] for lv in s.get("levels", [])] + [z for _, _, z in sil + at_wall]
         us += [e for a, bb, _ in sil + at_wall for e in (a, bb) if 0 < e < w]
     elif face == "top":
-        for r in s.get("raised", []):
+        for r in s.get("raised", []) + b.get("notches", []) + s.get("boards", []):
             us += [r["x0"], r["x1"]]
             vs += [r["y0"], r["y1"]]
     v.ordinate_u(us, 0, -12)

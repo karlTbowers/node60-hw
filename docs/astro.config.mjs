@@ -41,6 +41,8 @@ export default defineConfig({
 								{ label: 'Version 4: press-fit, raised T', slug: 'subsystems/enclosure/v4' },
 								{ label: 'Version 5: press-fit, raised front', slug: 'subsystems/enclosure/v5' },
 								{ label: 'Version 6: outputs on three walls', slug: 'subsystems/enclosure/v6' },
+								{ label: 'Version 7: busbars, front band and T1S hood', slug: 'subsystems/enclosure/v7' },
+								{ label: 'Version 8: MCU board below, T1S lowered', slug: 'subsystems/enclosure/v8' },
 							],
 						},
 						{ label: 'Firmware & data contract', slug: 'subsystems/firmware' },
