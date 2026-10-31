@@ -118,11 +118,11 @@ def spec(version=CURRENT):
     outside = {"x": x_in_r - x_in_l + 2 * WALL, "y": y_in_f - y_in_b + 2 * WALL, "z": low}
 
     # Raised lid sections over the headers, where they don't fit under the low lid.
-    hood = cs + deepest + HOOD_GAP + LID
+    hood = cs + deepest + v.get("hood_gap", HOOD_GAP) + LID   # clearance above the headers
     raised = []
     outs = outputs(v)
     t1s_cs = m0 + MCU_THICKNESS if mcu else cs          # component side the T1S pair stands on
-    t1s_hood = t1s_cs + ATM13_HEIGHT + HOOD_GAP + LID
+    t1s_hood = t1s_cs + ATM13_HEIGHT + v.get("hood_gap", HOOD_GAP) + LID
     if up and hood > low and v["lid"] == "corners":
         # A front band over the south-wall outputs and the side-wall outputs in the front
         # corners; a raised section over each back-corner output and over the T1S pair.
@@ -249,7 +249,7 @@ def spec(version=CURRENT):
                   "busbar": {"width": BUSBAR_W, "thickness": BUSBAR_T, "stock": '1/8" x 1" C110 copper flat bar'}},
         "assumptions": {"standoff": None if mcu or not up else v.get("standoff", STANDOFF), "floor_gap": None if up else FLOOR_GAP,
                         "mcu_standoff": MCU_STANDOFF if mcu else None, "board_gap": BOARD_GAP if mcu else None,
-                        "hood_gap": HOOD_GAP, "edge_gap": EDGE_GAP, "back_gap": v["back_gap"],
+                        "hood_gap": v.get("hood_gap", HOOD_GAP), "edge_gap": EDGE_GAP, "back_gap": v["back_gap"],
                         "deepest_header": deepest, "surlok_depth": SURLOK_DEPTH,
                         "hood_z": hood if raised else None, "low_z": low},
     }

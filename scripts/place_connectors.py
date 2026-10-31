@@ -90,6 +90,10 @@ INSERT_CLEAR = 0.5
 # Floor to the board's underside where only 3 mm hangs below it (SMT REDCUBE bodies, press-fit
 # pins), plus 2 mm: versions 2, 4 and 7 (user, 2026-10-31). The others keep the default.
 MIN_STANDOFF = 3.0 + 2.0
+# Versions 2 and 7: 1 mm from the tallest header to the inside of a raised section (user,
+# 2026-10-31), so the step over the low lid is 2 mm smaller. In plan the raised sections still
+# reach enclosure_geometry.HOOD_GAP past the headers.
+MIN_HOOD_GAP = 1.0
 # Version 8: the MCU board goes in first and slides north; then the main board is lowered
 # MAIN_TRAVEL north of its place and slides south, so it stops that far short of the north
 # wall, and its notch is that much deeper so it clears the T1S headers while it is lowered.
@@ -159,7 +163,8 @@ _MIDDLE_V6 = {"J910": (CX - BAT_X, Y0 + 82), "J901": (CX + BAT_X, Y0 + 82),
 # on the south wall, KiCad Y on the side walls), default all six on the south wall;
 # plugs: "WNE" (any of west, north, east) or "ON" (outward or north); depth: board depth
 # (default D), the north edge stays at Y0; standoff: floor to the board's underside (default
-# enclosure_geometry.STANDOFF); insert: "boards" when each board goes in on its own
+# enclosure_geometry.STANDOFF); hood_gap: tallest header to the inside of a raised section
+# (default enclosure_geometry.HOOD_GAP); insert: "boards" when each board goes in on its own
 # (version 8: shorter main board, mezzanine); removable: walls that are separate panels, fitted
 # after the board (versions 2 and 7: the north wall, so the board slides south into the
 # one-piece front wall first; user, 2026-10-31); t1s_pitch: J903 to J912 (default T1S_PITCH); t1s_board: "main"
@@ -173,7 +178,7 @@ VERSIONS = {
                        "the board. T1S on the side walls. No busbars."),
     "v2": dict(title="Version 2: busbars, raised T", decision="DEC-021", board="up", terminal="smt", busbars=True,
                t1s="north", t1s_pitch=T1S_PITCH_T, lid="T", plugs="ON", back_gap=EDGE_GAP, terminals=_T_LAYOUT,
-               removable=("back",), standoff=MIN_STANDOFF,
+               removable=("back",), standoff=MIN_STANDOFF, hood_gap=MIN_HOOD_GAP,
                summary="Board component side up; SMT REDCUBEs underneath, busbars on top; a raised T over the "
                        "outputs and the T1S pair on the north wall, 40 mm apart. The receptacles are staggered "
                        "so a battery plug's cable pointing north passes beside the return receptacle."),
@@ -201,7 +206,7 @@ VERSIONS = {
                        "between them, staggered. The board is 139 mm deep, 21 mm less than version 2."),
     "v7": dict(title="Version 7: busbars, front band and T1S hood", decision=None, board="up", terminal="smt",
                busbars=True, t1s="north", t1s_pitch=T1S_PITCH_T, lid="front", plugs="ON", back_gap=EDGE_GAP,
-               terminals=_MIDDLE, removable=("back",), standoff=MIN_STANDOFF,
+               terminals=_MIDDLE, removable=("back",), standoff=MIN_STANDOFF, hood_gap=MIN_HOOD_GAP,
                summary="Version 2 without the T's stem: a raised band across the front over the outputs and a "
                        "separate raised hood over the T1S pair on the north wall; the rest of the lid is low. "
                        "The power receptacles are placed as in version 6, staggered."),
