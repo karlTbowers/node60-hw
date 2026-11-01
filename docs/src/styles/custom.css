@@ -74,6 +74,7 @@ tr[id] { scroll-margin-top: 5rem; }
 /* D2 views are ~5 columns wide: show them at a readable scale and scroll sideways */
 .diagram.d2 .diagram-scroll > svg { width: var(--d2-width, 1400px); }
 .diagram.mermaid .diagram-scroll > svg { width: 100%; max-width: 46rem; margin: 0 auto; }
+.diagram.drawing .diagram-scroll > svg { width: 100%; margin: 0 auto; }
 .diagram figcaption { margin-top: 0.5rem; font-size: var(--sl-text-sm); color: var(--sl-color-gray-2); }
 .diagram-source { font-size: var(--sl-text-xs); }
 
