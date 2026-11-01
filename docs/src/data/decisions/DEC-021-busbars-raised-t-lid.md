@@ -1,7 +1,7 @@
 ---
 id: DEC-021
 title: Board component side up, busbars under the SurLok receptacles, lid with a raised T, T1S on the north wall
-status: accepted
+status: superseded
 date: 2026-10-30
 revision: B
 page: subsystems/enclosure
@@ -17,6 +17,8 @@ rejected:
   - option: Plugs pointing inward (toward the board's centre line)
     reason: The raised T's stem sits between the two low sections, so an inward plug would run into it. Plugs point outward or north.
 ---
+
+Superseded by DEC-022 (2026-11-01): enclosure version 7, the same board, terminals and busbars under a lid with a raised front band and a separate T1S hood.
 
 ## Context
 

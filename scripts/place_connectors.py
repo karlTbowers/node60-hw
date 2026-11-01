@@ -204,7 +204,7 @@ VERSIONS = {
                        "of the side walls, and the T1S pair on the north wall. A raised band across the front and "
                        "raised sections in the back corners and over the T1S pair; the power receptacles sit "
                        "between them, staggered. The board is 139 mm deep, 21 mm less than version 2."),
-    "v7": dict(title="Version 7: busbars, front band and T1S hood", decision=None, board="up", terminal="smt",
+    "v7": dict(title="Version 7: busbars, front band and T1S hood", decision="DEC-022", board="up", terminal="smt",
                busbars=True, t1s="north", t1s_pitch=T1S_PITCH_T, lid="front", plugs="ON", back_gap=EDGE_GAP,
                terminals=_MIDDLE, removable=("back",), standoff=MIN_STANDOFF, hood_gap=MIN_HOOD_GAP,
                summary="Version 2 without the T's stem: a raised band across the front over the outputs and a "
@@ -219,7 +219,7 @@ VERSIONS = {
                        "Each board goes in on its own: the MCU board slides north into its wall, then the main "
                        "board, 15 mm shorter so it can, slides south and drops onto a mezzanine."),
 }
-CURRENT = "v2"       # the version on node60.kicad_pcb (DEC-021)
+CURRENT = "v7"       # the version on node60.kicad_pcb (DEC-022)
 
 
 def front(v):

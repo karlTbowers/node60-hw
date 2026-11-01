@@ -5637,7 +5637,7 @@
 		(locked yes)
 		(layer "B.Cu")
 		(uuid "0eefd1b5-5d9b-4d64-ad2c-22eddddf5544")
-		(at 97.5 140)
+		(at 103 132)
 		(descr "Würth REDCUBE SMT WP-SMRT, reverse with internal thread, M6, Ø12 flange, Ø9.3 non-plated hole for the Ø9.0 spigot, 85 A (data sheet 74660016 rev. 001.001 p. 1), https://www.we-online.com/components/products/datasheet/74660016.pdf")
 		(tags "REDCUBE SMT power terminal M6 internal thread reverse WP-SMRT 74660016 74660016R")
 		(property "Reference" "J910"
@@ -5927,7 +5927,7 @@
 		(locked yes)
 		(layer "B.Cu")
 		(uuid "4c201e55-9072-4b55-a48a-88e4ca824dae")
-		(at 212.5 140)
+		(at 207 132)
 		(descr "Würth REDCUBE SMT WP-SMRT, reverse with internal thread, M6, Ø12 flange, Ø9.3 non-plated hole for the Ø9.0 spigot, 85 A (data sheet 74660016 rev. 001.001 p. 1), https://www.we-online.com/components/products/datasheet/74660016.pdf")
 		(tags "REDCUBE SMT power terminal M6 internal thread reverse WP-SMRT 74660016 74660016R")
 		(property "Reference" "J901"
@@ -6217,7 +6217,7 @@
 		(locked yes)
 		(layer "B.Cu")
 		(uuid "9a576a80-ff05-4114-9f9f-c9403c140aa3")
-		(at 76.3 75)
+		(at 77 85)
 		(descr "Würth REDCUBE SMT WP-SMRT, reverse with internal thread, M6, Ø12 flange, Ø9.3 non-plated hole for the Ø9.0 spigot, 85 A (data sheet 74660016 rev. 001.001 p. 1), https://www.we-online.com/components/products/datasheet/74660016.pdf")
 		(tags "REDCUBE SMT power terminal M6 internal thread reverse WP-SMRT 74660016 74660016R")
 		(property "Reference" "J911"
@@ -6507,7 +6507,7 @@
 		(locked yes)
 		(layer "B.Cu")
 		(uuid "c3e6200a-2820-4085-980c-445c308a8aa0")
-		(at 233.7 75)
+		(at 233 85)
 		(descr "Würth REDCUBE SMT WP-SMRT, reverse with internal thread, M6, Ø12 flange, Ø9.3 non-plated hole for the Ø9.0 spigot, 85 A (data sheet 74660016 rev. 001.001 p. 1), https://www.we-online.com/components/products/datasheet/74660016.pdf")
 		(tags "REDCUBE SMT power terminal M6 internal thread reverse WP-SMRT 74660016 74660016R")
 		(property "Reference" "J902"
@@ -6794,26 +6794,26 @@
 		)
 	)
 	(gr_rect
-		(start 63.599999 62.3)
-		(end 246.399999 87.7)
+		(start 64.3 72.3)
+		(end 245.7 97.7)
 		(stroke
 			(width 0.15)
 			(type default)
 		)
 		(fill no)
 		(layer "Dwgs.User")
-		(uuid "d8f87c9e-53de-4993-8fed-6a33bdab8fde")
+		(uuid "0b1003ae-4591-4083-8ba8-0e3a0f839a15")
 	)
 	(gr_rect
-		(start 84.8 127.3)
-		(end 225.2 152.7)
+		(start 90.3 119.3)
+		(end 219.7 144.7)
 		(stroke
 			(width 0.15)
 			(type default)
 		)
 		(fill no)
 		(layer "Dwgs.User")
-		(uuid "f264d143-9bbe-491b-9247-6345d15e30cc")
+		(uuid "b1003236-cb4a-433b-a014-64df1fe1892a")
 	)
 	(gr_rect
 		(start 30 30)
@@ -6824,12 +6824,12 @@
 		)
 		(fill no)
 		(layer "Edge.Cuts")
-		(uuid "d5baf81a-c072-4356-b40a-8a74f9872363")
+		(uuid "67fb1cae-4c50-4fe9-8615-f7257d553ed0")
 	)
 	(gr_text "GND busbar 25.4 x 3.175 Cu (1/8 x 1 in C110), on top: no parts under it"
-		(at 155 60.3 0)
+		(at 155 70.3 0)
 		(layer "Dwgs.User")
-		(uuid "bb425e78-0c3f-41d6-bca2-d6244b3fec61")
+		(uuid "64952643-d3c5-43a9-a339-21b95ba97d86")
 		(effects
 			(font
 				(size 1.5 1.5)
@@ -6837,9 +6837,9 @@
 		)
 	)
 	(gr_text "VBAT_IN busbar 25.4 x 3.175 Cu (1/8 x 1 in C110), on top: no parts under it"
-		(at 155 125.3 0)
+		(at 155 117.3 0)
 		(layer "Dwgs.User")
-		(uuid "fdc45085-2f18-4aba-83aa-47e186cb5f7f")
+		(uuid "af650013-570a-477a-88bf-182f0eb99f50")
 		(effects
 			(font
 				(size 1.5 1.5)
