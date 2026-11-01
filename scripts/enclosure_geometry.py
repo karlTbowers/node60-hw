@@ -55,7 +55,7 @@ STUD = 7.7            # SurLok M6 stud length: ESTIMATE in the library model; Am
 TERMINALS = {
     # Würth 74660016R: reverse SMT, Ø12 x 3.0 flange on the far face, Ø9.0 spigot 2.6 long flush
     # with the near face; M6 through thread 5.6 long (flange + spigot).
-    "smt": {"name": "Würth REDCUBE 74660016R (SMT, reverse)", "height": 3.0, "thread": 5.6, "pins": 0.0},
+    "smt": {"name": "Würth REDCUBE 74660016R (SMT, reverse)", "height": 3.0, "thread": 5.6, "pins": 0.0, "spigot": 2.6},
     # Würth 786202106: 10 x 10 x 10.5 block, M6 blind thread 6.0 deep from its top, 16 press-fit
     # pins 3.0 below the board; 4 mm component keep-out, 3 mm from the board edge.
     "pressfit": {"name": "Würth REDCUBE 786202106 (press-fit)", "height": 10.5, "thread": 6.0, "pins": 3.0},
@@ -104,13 +104,14 @@ def spec(version=CURRENT):
     if up:
         m0 = WALL + MCU_STANDOFF                        # MCU board bottom (version 8)
         z0 = m0 + MCU_THICKNESS + BOARD_GAP if mcu else WALL + v.get("standoff", STANDOFF)   # board bottom
-        z1 = z0 + THICKNESS                             # component side, facing the lid
+        z1 = z0 + v.get("thickness", THICKNESS)                             # component side, facing the lid
         cs, side_sign = z1, 1                           # headers stand up from the component side
-        term_top = z1 + (term["height"] if v["terminal"] == "pressfit" else 0.0)
+        # press-fit: the block's top; SMT: the spigot's end, flush on 2.6 mm, proud of a thinner board
+        term_top = z1 + term["height"] if v["terminal"] == "pressfit" else max(z1, z0 + term["spigot"])
         term_z = [z1, term_top] if v["terminal"] == "pressfit" else [z0 - term["height"], z0]
     else:
         z0 = WALL + FLOOR_GAP + deepest                 # component side, facing the floor
-        z1 = z0 + THICKNESS                             # back face, facing the lid
+        z1 = z0 + v.get("thickness", THICKNESS)                             # back face, facing the lid
         cs, side_sign = z0, -1                          # headers hang from the component side
         term_top = z1                                   # SMT spigot flush with the back face
         term_z = [z0 - term["height"], z0]

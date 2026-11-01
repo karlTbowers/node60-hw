@@ -3,7 +3,7 @@
 	(generator "pcbnew")
 	(generator_version "10.0")
 	(general
-		(thickness 2.6)
+		(thickness 2)
 		(legacy_teardrops no)
 	)
 	(paper "A4")
@@ -51071,7 +51071,7 @@
 		)
 		(fill no)
 		(layer "Dwgs.User")
-		(uuid "0b1003ae-4591-4083-8ba8-0e3a0f839a15")
+		(uuid "643ca3be-a19c-4a61-8183-22ccf517ada5")
 	)
 	(gr_rect
 		(start 90.3 119.3)
@@ -51082,7 +51082,7 @@
 		)
 		(fill no)
 		(layer "Dwgs.User")
-		(uuid "b1003236-cb4a-433b-a014-64df1fe1892a")
+		(uuid "579c146d-ebf6-43c3-9bfa-44f1c2ed8309")
 	)
 	(gr_rect
 		(start 30 30)
@@ -51093,12 +51093,12 @@
 		)
 		(fill no)
 		(layer "Edge.Cuts")
-		(uuid "67fb1cae-4c50-4fe9-8615-f7257d553ed0")
+		(uuid "8e766a9b-6e3a-4f48-9953-1a1aede1c3c8")
 	)
 	(gr_text "GND busbar 25.4 x 3.175 Cu (1/8 x 1 in C110), on top: no parts under it"
 		(at 155 70.3 0)
 		(layer "Dwgs.User")
-		(uuid "64952643-d3c5-43a9-a339-21b95ba97d86")
+		(uuid "e611f9c3-9f74-4df1-b494-9cc02f340b5b")
 		(effects
 			(font
 				(size 1.5 1.5)
@@ -51108,7 +51108,7 @@
 	(gr_text "VBAT_IN busbar 25.4 x 3.175 Cu (1/8 x 1 in C110), on top: no parts under it"
 		(at 155 117.3 0)
 		(layer "Dwgs.User")
-		(uuid "af650013-570a-477a-88bf-182f0eb99f50")
+		(uuid "664b1565-eba0-4102-9151-fc9fe5599eed")
 		(effects
 			(font
 				(size 1.5 1.5)
