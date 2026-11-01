@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Node60's enclosure-fixed connectors (J901-J912), board outline and busbars, per design version.
 
-Nine mechanical versions are kept as candidates (docs: Enclosure options). Each is a set
+Ten mechanical versions are kept as candidates (docs: Enclosure options). Each is a set
 of parameters in VERSIONS; enclosure_geometry.py, check_surlok_clearance.py, the
 dimensioned drawings and the 3D mockup are all generated from them. The PCB holds one:
 CURRENT, unless another is named on the command line.
@@ -38,6 +38,9 @@ W, D = 250.0, 160.0
 FRONT = Y0 + D
 CX = X0 + W / 2
 THICKNESS = 2.6      # mm (DEC-020): the SMT REDCUBE's 2.6 mm spigot ends flush with the far face
+# Version 10 (user, 2026-11-01): version 7 on a standard 2.0 mm board. The spigot then stands 0.6 mm
+# proud of the top face and the busbar rests on it alone; whether Wurth allows that is unconfirmed.
+V10_THICKNESS = 2.0
 
 # Board edge sits this far behind each connector's flange (panel) face, so the
 # flange, not the board, meets the wall.
@@ -192,7 +195,8 @@ _MIDDLE_V6 = {"J910": (CX - BAT_X, Y0 + 82), "J901": (CX + BAT_X, Y0 + 82),
 # section in each back corner and one over a north T1S pair); outputs: wall ("S", "W", "E") and position along it (plan x
 # on the south wall, KiCad Y on the side walls), default all six on the south wall;
 # out_pitch: south-wall output pitch (default OUT_PITCH); width: board width, centred on CX (default W);
-# side_gap: board edge to the inside of the east and west walls (default EDGE_GAP);
+# side_gap: board edge to the inside of the east and west walls (default EDGE_GAP); thickness: board
+# thickness (default THICKNESS);
 # overhang: True when a plug pointing west or east may reach past the side walls (default: it must
 # end inside the board edge); plugs: "WNE" (any of west, north, east) or "ON" (outward or north); depth: board depth
 # (default D), the north edge stays at Y0; standoff: floor to the board's underside (default
@@ -262,6 +266,14 @@ VERSIONS = {
                        "front band allow. Plugs pointing outward may reach past the side walls, so the outputs "
                        "set the width. The board is 230 x 110 mm."),
 }
+VERSIONS["v10"] = {**VERSIONS["v7"], "title": "Version 10: version 7 on a 2.0 mm board", "decision": None,
+                   "thickness": V10_THICKNESS,
+                   "summary": "Version 7 on a standard 2.0 mm board instead of 2.6 mm. The SMT REDCUBE's 2.6 mm spigot "
+                              "stands 0.6 mm proud of the top face, so the busbar rests on the spigots alone: the joint "
+                              "clamps no laminate, and the receptacles stay at version 7's height. The headers stand "
+                              "0.6 mm lower, so the front band and T1S hood drop 0.6 mm, and their pin tails come "
+                              "through 0.7 to 1.5 mm instead of 0.1 to 0.5 mm. Whether Würth allows the spigot to "
+                              "stand proud is not confirmed."}
 CURRENT = "v7"       # the version on node60.kicad_pcb (DEC-022)
 
 
@@ -415,7 +427,7 @@ def main(netlist, version=CURRENT):
     # board.GetDrawings() isn't iterable in KiCad 10's bindings
     board.RemoveAllItemsOnLayer(pcbnew.Edge_Cuts)
     board.RemoveAllItemsOnLayer(pcbnew.Dwgs_User)     # busbar outlines, redrawn below
-    board.GetDesignSettings().SetBoardThickness(pcbnew.FromMM(THICKNESS))
+    board.GetDesignSettings().SetBoardThickness(pcbnew.FromMM(v.get("thickness", THICKNESS)))
 
     netinfo = {}
     for name in sorted(set(pin_nets.values())):

@@ -44,6 +44,7 @@ export default defineConfig({
 								{ label: 'Version 7: busbars, front band and T1S hood', slug: 'subsystems/enclosure/v7' },
 								{ label: 'Version 8: MCU board below, T1S lowered', slug: 'subsystems/enclosure/v8' },
 								{ label: 'Version 9: version 7, compact', slug: 'subsystems/enclosure/v9' },
+								{ label: 'Version 10: version 7 on a 2.0 mm board', slug: 'subsystems/enclosure/v10' },
 							],
 						},
 						{ label: 'Firmware & data contract', slug: 'subsystems/firmware' },
