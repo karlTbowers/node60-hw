@@ -21,8 +21,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from place_connectors import (  # noqa: E402
     AT13_BACK, AT13_PANEL, ATM13_ALONG, ATM13_BACK, ATM13_PANEL, BUSBAR_HOLE, BUSBAR_T, BUSBAR_W, BUSBARS, CURRENT,
-    AT13_SHROUD, ATM13_SHROUD, CX, EDGE_GAP, INSERT_CLEAR, LEFT, MAIN_TRAVEL, MCU_BOARD, MCU_THICKNESS, MEZZ_DROP,
-    MEZZ_PINS, MEZZANINE, RIGHT, THICKNESS, VERSIONS, Y0, busbar_outline, front, main_north, notch, out_row, outputs,
+    AT13_SHROUD, ATM13_SHROUD, CX, EDGE_GAP, INSERT_CLEAR, MAIN_TRAVEL, MCU_BOARD, MCU_THICKNESS, MEZZ_DROP,
+    MEZZ_PINS, MEZZANINE, THICKNESS, VERSIONS, Y0, busbar_outline, front, left, main_north, notch, out_row, outputs, right,
 )
 from place_connectors import T1S_PITCH as T1S_PITCH_ALL  # noqa: E402  (default; a version may set its own)
 
@@ -55,7 +55,7 @@ STUD = 7.7            # SurLok M6 stud length: ESTIMATE in the library model; Am
 TERMINALS = {
     # Würth 74660016R: reverse SMT, Ø12 x 3.0 flange on the far face, Ø9.0 spigot 2.6 long flush
     # with the near face; M6 through thread 5.6 long (flange + spigot).
-    "smt": {"name": "Würth REDCUBE 74660016R (SMT, reverse)", "height": 3.0, "thread": 5.6, "pins": 0.0},
+    "smt": {"name": "Würth REDCUBE 74660016R (SMT, reverse)", "height": 3.0, "thread": 5.6, "pins": 0.0, "spigot": 2.6},
     # Würth 786202106: 10 x 10 x 10.5 block, M6 blind thread 6.0 deep from its top, 16 press-fit
     # pins 3.0 below the board; 4 mm component keep-out, 3 mm from the board edge.
     "pressfit": {"name": "Würth REDCUBE 786202106 (press-fit)", "height": 10.5, "thread": 6.0, "pins": 3.0},
@@ -93,7 +93,8 @@ def spec(version=CURRENT):
     term = TERMINALS[v["terminal"]]
     mcu = v.get("t1s_board", "main") == "mcu"           # T1S on the MCU board under the main board
     deepest = AT13_HEIGHT if mcu else max(AT13_HEIGHT, ATM13_HEIGHT)   # tallest header on the main board
-    x_in_l, x_in_r = LEFT - EDGE_GAP, RIGHT + EDGE_GAP
+    side = v.get("side_gap", EDGE_GAP)                   # board edge to the east and west walls
+    x_in_l, x_in_r = left(v) - side, right(v) + side
     FRONT, OUT_ROW = front(v), out_row(v)               # this version's front edge and south pin row
     T1S_PITCH = v.get("t1s_pitch", T1S_PITCH_ALL)       # J903 to J912
     y_in_f, y_in_b = FRONT + EDGE_GAP, Y0 - v["back_gap"]
@@ -103,13 +104,14 @@ def spec(version=CURRENT):
     if up:
         m0 = WALL + MCU_STANDOFF                        # MCU board bottom (version 8)
         z0 = m0 + MCU_THICKNESS + BOARD_GAP if mcu else WALL + v.get("standoff", STANDOFF)   # board bottom
-        z1 = z0 + THICKNESS                             # component side, facing the lid
+        z1 = z0 + v.get("thickness", THICKNESS)                             # component side, facing the lid
         cs, side_sign = z1, 1                           # headers stand up from the component side
-        term_top = z1 + (term["height"] if v["terminal"] == "pressfit" else 0.0)
+        # press-fit: the block's top; SMT: the spigot's end, flush on 2.6 mm, proud of a thinner board
+        term_top = z1 + term["height"] if v["terminal"] == "pressfit" else max(z1, z0 + term["spigot"])
         term_z = [z1, term_top] if v["terminal"] == "pressfit" else [z0 - term["height"], z0]
     else:
         z0 = WALL + FLOOR_GAP + deepest                 # component side, facing the floor
-        z1 = z0 + THICKNESS                             # back face, facing the lid
+        z1 = z0 + v.get("thickness", THICKNESS)                             # back face, facing the lid
         cs, side_sign = z0, -1                          # headers hang from the component side
         term_top = z1                                   # SMT spigot flush with the back face
         term_z = [z0 - term["height"], z0]
@@ -133,7 +135,7 @@ def spec(version=CURRENT):
                    + [ey(at - AT13_HALF - HOOD_GAP) for at in side if at not in back])
         raised.append({"x0": 0, "x1": outside["x"], "y0": 0, "y1": band, "z": hood, "label": "raised front"})
         corner_y0 = ey(max(back) + AT13_HALF + HOOD_GAP)
-        inner = ex(LEFT + AT13_PANEL - EDGE_GAP + AT13_BACK + HOOD_GAP)     # inner edge of a corner section
+        inner = ex(left(v) + AT13_PANEL - EDGE_GAP + AT13_BACK + HOOD_GAP)     # inner edge of a corner section
         raised.append({"x0": 0, "x1": inner, "y0": corner_y0, "y1": outside["y"], "z": hood,
                        "label": "west back corner"})
         raised.append({"x0": outside["x"] - inner, "x1": outside["x"], "y0": corner_y0, "y1": outside["y"],
@@ -207,7 +209,7 @@ def spec(version=CURRENT):
     return {
         "title": f"Node60 enclosure, {v['title'].split(':')[0].lower()}",
         "version": {"id": version, "title": v["title"], "summary": v["summary"], "decision": v["decision"],
-                    "current": version == CURRENT, "lid": v["lid"],
+                    "current": version == CURRENT, "lid": v["lid"], "overhang": v.get("overhang", False),
                     "outputs": sorted({w for w, _ in outs.values()})},
         "outside": outside,
         "wall": WALL,
@@ -217,7 +219,7 @@ def spec(version=CURRENT):
                     "y": c["y"] + sy * CUTOUT_TYPES["SURLOK"]["screw_square"] / 2, "d": BOSS_D,
                     "z0": low - LID - BOSS_H, "z1": low - LID, "for": c["ref"]}
                    for c in cutouts if c["type"] == "SURLOK" for sx in (-1, 1) for sy in (-1, 1)],
-        "board": {"x0": ex(LEFT), "x1": ex(RIGHT), "y0": ey(FRONT), "y1": ey(main_north(v)), "z0": z0, "z1": z1,
+        "board": {"x0": ex(left(v)), "x1": ex(right(v)), "y0": ey(FRONT), "y1": ey(main_north(v)), "z0": z0, "z1": z1,
                   "component_side": "top" if up else "bottom",
                   "note": "component side (z1) faces the lid" if up else "component side (z0) faces the floor",
                   "notches": [{"x0": ex(nt[0]), "x1": ex(nt[2]), "y0": ey(nt[3]), "y1": ey(nt[1]),

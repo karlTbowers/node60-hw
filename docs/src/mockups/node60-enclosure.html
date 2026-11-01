@@ -109,7 +109,7 @@ p { margin: 0; font-size: 13px; line-height: 1.45; }
       <dl id="bars"></dl>
     </div>
     <div class="note"><b>SurLok stud length is not confirmed.</b> Amphenol publishes none; the engagement figures use the library's 7.7 mm estimate. Get the real length before choosing a version.</div>
-    <p style="color:var(--muted)">Eight candidate versions, all generated from the same connector placement as the PCB and the dimensioned drawings (Enclosure options pages). Plug and receptacle envelopes from the SurLok Plus catalog (IC-10, Gen 1.0, 5.7 mm); header heights from Amphenol's STEP models; shapes inside the envelopes are estimates.</p>
+    <p style="color:var(--muted)">Ten candidate versions, all generated from the same connector placement as the PCB and the dimensioned drawings (Enclosure options pages). Plug and receptacle envelopes from the SurLok Plus catalog (IC-10, Gen 1.0, 5.7 mm); header heights from Amphenol's STEP models; shapes inside the envelopes are estimates.</p>
   </aside>
 </div>
 
@@ -251,7 +251,7 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
       if (T.kind === 'pressfit') mainG.add(box(10, T.z1 - T.z0, 10, M.brass, x, (T.z0 + T.z1) / 2, z));
       else {
         mainG.add(cyl(6, T.z1 - T.z0, M.brass, x, (T.z0 + T.z1) / 2, z));       // Ø12 flange on the far face
-        mainG.add(cyl(4.5, B.z1 - B.z0, M.brass, x, (B.z0 + B.z1) / 2, z));    // spigot through the board
+        mainG.add(cyl(4.5, T.thread_top - B.z0, M.brass, x, (B.z0 + T.thread_top) / 2, z));   // spigot through the board, proud of a thin one
       }
       lid.add(cyl(3, SUR.stud, M.stud, x, CONTACT - SUR.stud / 2, z));         // M6 stud (length estimated), on the receptacle
       lid.add(cyl(7, LOW - CONTACT, bat ? M.red : M.black, x, (LOW + CONTACT) / 2, z));
@@ -407,7 +407,7 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
       for (const r of G.raised) note(gap(flangeBox(a), [r.x0, r.y0, r.x1, r.y1]), FLANGE_CLEAR, `${a.ref} flange vs ${r.label}`, i);
       TERMS.forEach((b, j) => { if (i < j) note(gap(flangeBox(a), flangeBox(b)), FLANGE_CLEAR, `${a.ref} flange vs ${b.ref} flange`, i, j); });
       const pa = plugBox(a, dirs[i]);
-      if (dirs[i] !== 'N') note(Math.min(pa[0] - G.board.x0, G.board.x1 - pa[2]), 0, `${a.ref} ${dirs[i]} to the board edge`, i);
+      if (dirs[i] !== 'N' && !G.version.overhang) note(Math.min(pa[0] - G.board.x0, G.board.x1 - pa[2]), 0, `${a.ref} ${dirs[i]} to the board edge`, i);
       for (const r of G.raised) note(gap(pa, [r.x0, r.y0, r.x1, r.y1]), CLEAR, `${a.ref} ${dirs[i]} vs ${r.label}`, i);
       for (const r of G.raised) note(gap(cableBox(a, dirs[i]), [r.x0, r.y0, r.x1, r.y1]), CABLE_CLEAR, `${a.ref} ${dirs[i]} cable vs ${r.label}`, i);
       TERMS.forEach((b, j) => {
@@ -475,7 +475,7 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
       (A.fits && G.insert.mode !== 'one board' ? '<li>Lid on, receptacles through the lid</li>' : '');
     const bb = G.parts.busbar;
     document.getElementById('bars-box').hidden = !G.busbars.length;
-    dl('bars', [['Stock', `${bb.stock}, ${f2(bb.width)} × ${f2(bb.thickness)} mm, on ${G.terminal.kind === 'pressfit' ? 'the press-fit blocks' : 'the board'}`],
+    dl('bars', [['Stock', `${bb.stock}, ${f2(bb.width)} × ${f2(bb.thickness)} mm, on ${G.terminal.kind === 'pressfit' ? 'the press-fit blocks' : G.terminal.thread_top > B.z1 + 0.01 ? `the REDCUBE spigots, ${f2(G.terminal.thread_top - B.z1)} mm above the board` : 'the board'}`],
       ...G.busbars.map(b => [b.net, `${f2(b.length)} mm long, ${f2(b.hole_pitch)} mm between Ø${f2(b.hole_d)} holes (${b.refs.join(', ')})`])]);
   }
 

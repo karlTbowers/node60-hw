@@ -11,8 +11,9 @@ FLANGE_CLEAR from the raised sections and from each other, and the cable leaving
 must pass CABLE_CLEAR beside every raised section, every other receptacle and every other
 plug in plan (a cable passing over a raised section would rest on its edge; the receptacles
 and plugs stand higher than the cable). A plug pointing west or east must also end
-inside the board outline, so it stays within the enclosure walls (user, 2026-10-30); a
-plug pointing north may overhang the back.
+inside the board outline, so it stays within the enclosure walls (user, 2026-10-30), unless the
+version lets it overhang the side walls (version 9, user, 2026-11-01); a plug pointing north
+may overhang the back.
 
 Envelopes (Amphenol SurLok Plus catalog IC-10, Gen 1.0, 5.7 mm):
   right-angle plug  p. 7: D = 18 wide, B = 55.1 long; the head is round on the
@@ -92,7 +93,7 @@ def check_version(vid, quiet=False):
         checks += [(gap(flange_box(*lid[a]), flange_box(*lid[b])), FLANGE_CLEAR, f"{a} flange vs {b} flange")
                    for a in refs for b in refs if a < b]
         for a in refs:
-            if dirs[a] in "WE":
+            if dirs[a] in "WE" and not s["version"]["overhang"]:
                 checks.append((min(plugs[a][0] - bx0, bx1 - plugs[a][2]), 0.0, f"{a} {dirs[a]} to the board edge"))
             for label, box in hoods:
                 checks.append((gap(plugs[a], box), CLEARANCE, f"{a} {dirs[a]} vs {label}"))
