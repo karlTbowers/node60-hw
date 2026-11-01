@@ -9,6 +9,10 @@
 	(paper "A4")
 	(layers
 		(0 "F.Cu" signal)
+		(4 "In1.Cu" power "In1.Cu.GND")
+		(6 "In2.Cu" mixed "In2.Cu.PWR")
+		(8 "In3.Cu" mixed "In3.Cu.PWR")
+		(10 "In4.Cu" power "In4.Cu.GND")
 		(2 "B.Cu" signal)
 		(9 "F.Adhes" user "F.Adhesive")
 		(11 "B.Adhes" user "B.Adhesive")
@@ -28,6 +32,89 @@
 		(33 "B.Fab" user)
 	)
 	(setup
+		(stackup
+			(layer "F.SilkS"
+				(type "Top Silk Screen")
+			)
+			(layer "F.Paste"
+				(type "Top Solder Paste")
+			)
+			(layer "F.Mask"
+				(type "Top Solder Mask")
+				(thickness 0.01)
+			)
+			(layer "F.Cu"
+				(type "copper")
+				(thickness 0.035)
+			)
+			(layer "dielectric 1"
+				(type "prepreg")
+				(thickness 0.1375)
+				(material "1080 x2")
+				(epsilon_r 3.91)
+				(loss_tangent 0.02)
+			)
+			(layer "In1.Cu"
+				(type "copper")
+				(thickness 0.061)
+			)
+			(layer "dielectric 2"
+				(type "core")
+				(thickness 0.55)
+				(material "Core")
+				(epsilon_r 4.41)
+				(loss_tangent 0.02)
+			)
+			(layer "In2.Cu"
+				(type "copper")
+				(thickness 0.061)
+			)
+			(layer "dielectric 3"
+				(type "prepreg")
+				(thickness 0.311)
+				(material "2116 x3")
+				(epsilon_r 4.16)
+				(loss_tangent 0.02)
+			)
+			(layer "In3.Cu"
+				(type "copper")
+				(thickness 0.061)
+			)
+			(layer "dielectric 4"
+				(type "core")
+				(thickness 0.55)
+				(material "Core")
+				(epsilon_r 4.41)
+				(loss_tangent 0.02)
+			)
+			(layer "In4.Cu"
+				(type "copper")
+				(thickness 0.061)
+			)
+			(layer "dielectric 5"
+				(type "prepreg")
+				(thickness 0.1375)
+				(material "1080 x2")
+				(epsilon_r 3.91)
+				(loss_tangent 0.02)
+			)
+			(layer "B.Cu"
+				(type "copper")
+				(thickness 0.035)
+			)
+			(layer "B.Mask"
+				(type "Bottom Solder Mask")
+				(thickness 0.01)
+			)
+			(layer "B.Paste"
+				(type "Bottom Solder Paste")
+			)
+			(layer "B.SilkS"
+				(type "Bottom Silk Screen")
+			)
+			(copper_finish "ENIG")
+			(dielectric_constraints no)
+		)
 		(pad_to_mask_clearance 0.05)
 		(allow_soldermask_bridges_in_footprints no)
 		(tenting

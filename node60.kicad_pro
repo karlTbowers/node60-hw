@@ -7,6 +7,18 @@
     "design_settings": {
       "rule_severities": {
         "unconnected_items": "warning"
+      },
+      "rules": {
+        "min_clearance": 0.1,
+        "min_track_width": 0.1,
+        "min_via_diameter": 0.35,
+        "min_through_hole_diameter": 0.2,
+        "min_via_annular_width": 0.075,
+        "min_copper_edge_clearance": 0.3,
+        "min_hole_clearance": 0.2,
+        "min_hole_to_hole": 0.25,
+        "min_microvia_diameter": 0.2,
+        "min_microvia_drill": 0.1
       }
     }
   },
@@ -29,6 +41,67 @@
         "pin_to_pin|2641600|1752600|8db82c9a-fec9-5b28-a456-9232b462af81|a4ba14de-f714-596f-b22f-3c40fc99e6df|/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e|/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e|/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e",
         "LAN8670 pin tied to VSS as the datasheet requires when unused (TXER in RMII; WAKE_IN with no local wake, DEC-007). Bidirectional pin on GND is intended."
       ]
+    ]
+  },
+  "net_settings": {
+    "classes": [
+      {
+        "name": "Default",
+        "clearance": 0.15,
+        "track_width": 0.2,
+        "via_diameter": 0.45,
+        "via_drill": 0.25,
+        "diff_pair_width": 0.2,
+        "diff_pair_gap": 0.15,
+        "diff_pair_via_gap": 0.25,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "bus_width": 12,
+        "line_style": 0,
+        "wire_width": 6,
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 2147483647
+      },
+      {
+        "name": "T1S_100R",
+        "clearance": 0.15,
+        "track_width": 0.165,
+        "via_diameter": 0.45,
+        "via_drill": 0.25,
+        "diff_pair_width": 0.165,
+        "diff_pair_gap": 0.15,
+        "diff_pair_via_gap": 0.25,
+        "microvia_diameter": 0.3,
+        "microvia_drill": 0.1,
+        "bus_width": 12,
+        "line_style": 0,
+        "wire_width": 6,
+        "pcb_color": "rgba(0, 0, 0, 0.000)",
+        "schematic_color": "rgba(0, 0, 0, 0.000)",
+        "priority": 0
+      }
+    ],
+    "meta": {
+      "version": 4
+    },
+    "netclass_patterns": [
+      {
+        "netclass": "T1S_100R",
+        "pattern": "/T1S_P"
+      },
+      {
+        "netclass": "T1S_100R",
+        "pattern": "/T1S_N"
+      },
+      {
+        "netclass": "T1S_100R",
+        "pattern": "/T1S/T1S_*_P"
+      },
+      {
+        "netclass": "T1S_100R",
+        "pattern": "/T1S/T1S_*_N"
+      }
     ]
   }
 }
