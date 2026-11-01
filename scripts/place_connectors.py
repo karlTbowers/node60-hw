@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Node60's enclosure-fixed connectors (J901-J912), board outline and busbars, per design version.
 
-Eight mechanical versions are kept as candidates (docs: Enclosure options). Each is a set
+Nine mechanical versions are kept as candidates (docs: Enclosure options). Each is a set
 of parameters in VERSIONS; enclosure_geometry.py, check_surlok_clearance.py, the
 dimensioned drawings and the 3D mockup are all generated from them. The PCB holds one:
 CURRENT, unless another is named on the command line.
@@ -36,7 +36,6 @@ LIB = "lib/dropout-kicad-library/footprints"
 X0, Y0 = 30.0, 30.0
 W, D = 250.0, 160.0
 FRONT = Y0 + D
-LEFT, RIGHT = X0, X0 + W
 CX = X0 + W / 2
 THICKNESS = 2.6      # mm (DEC-020): the SMT REDCUBE's 2.6 mm spigot ends flush with the far face
 
@@ -74,6 +73,29 @@ OUT_SIDE_BACK, OUT_SIDE_FRONT = Y0 + 20.0, FRONT - 20.0
 # are measured from the north edge.
 V6_DEPTH = 139.0
 V6_FRONT = Y0 + V6_DEPTH
+
+# Version 9 (user, 2026-11-01): version 7 with every connector as close to the next as the
+# checks and the parts allow, for the smallest board. The board stays centred on CX.
+#   Headers: 1 mm between courtyards (AT13 36.3 mm, ATM13 37.9 mm along the row).
+#   Battery: its plug pointing north passes 3 mm beside the T1S hood (hood half width
+#     V9_T1S_PITCH / 2 + 18.41 flange + 3, plus 3 + 9 plug half width = 52.9 mm). The rows are
+#     too close to the north wall for the plug to end short of the hood; moving them 9.4 mm south
+#     instead would cost more board area than the 8.5 mm of width this costs.
+#   Return: its flange 3 mm beside a battery plug pointing north (9 + 3 + 13.5 = 25.5 mm out).
+#   Width: a return plug pointing outward ends inside the board edge (78.5 + 46.1 = 124.6 mm).
+#   Return row: the GND busbar 1 mm south of the T1S courtyards (Y0 + 26.85 + 1 + 12.7).
+#   Battery row: the flanges 2 mm apart (27 + 2 = 29 mm south of the return row).
+#   Depth: the battery flange 2 mm north of the front band (13.5 + 2 + 3 + 6.6 + 15 = 40.1 mm
+#     from the front edge).
+# The plug check confirms each of these (the return row excepted: it doesn't check the busbars); the
+# outer outputs' panel seals then end 14.4 mm from the side walls.
+V9_OUT_PITCH = 37.3
+V9_T1S_PITCH = 39.0
+V9_BAT_X, V9_RET_X = 53.0, 78.5
+V9_WIDTH = 249.5
+V9_RET_Y = Y0 + 40.6
+V9_BAT_Y = V9_RET_Y + 29.0
+V9_DEPTH = 110.0
 
 # Version 8 (user, 2026-10-31): a second board, for the microcontroller, under the main
 # board; the T1S pair J903/J912 sits on it, in the same plan positions, and stands up
@@ -138,7 +160,6 @@ _STAGGER = {     # version 3: behind the raised front band; battery close, retur
     "J910": (CX - 40, FRONT - 87), "J901": (CX + 40, FRONT - 87),     # battery plug pointing
     "J911": (CX - 75, FRONT - 120), "J902": (CX + 75, FRONT - 120)}   # north passes beside the return
 
-_FRONT_OUTS = {f"J{904 + i}": ("S", CX + (i - 2.5) * OUT_PITCH) for i in range(6)}
 _WALL_OUTS = {   # version 6: OUT1-2 west (north first), OUT3-4 south, OUT5-6 east (front first),
     "J904": ("W", OUT_SIDE_BACK), "J905": ("W", OUT_SIDE_FRONT),                      # going round
     "J906": ("S", CX - OUT_PITCH / 2), "J907": ("S", CX + OUT_PITCH / 2),           # the board
@@ -151,6 +172,8 @@ BAT_X, RET_X = 52.0, 78.0
 _MIDDLE = {"J910": (CX - BAT_X, FRONT - 58), "J901": (CX + BAT_X, FRONT - 58),
            "J911": (CX - RET_X, FRONT - 105), "J902": (CX + RET_X, FRONT - 105)}
 _MIDDLE_V8 = {**_MIDDLE, "J911": (CX - RET_X, FRONT - 103), "J902": (CX + RET_X, FRONT - 103)}  # GND bar clear of the notch
+_COMPACT = {"J910": (CX - V9_BAT_X, V9_BAT_Y), "J901": (CX + V9_BAT_X, V9_BAT_Y),
+            "J911": (CX - V9_RET_X, V9_RET_Y), "J902": (CX + V9_RET_X, V9_RET_Y)}
 _MIDDLE_V6 = {"J910": (CX - BAT_X, Y0 + 82), "J901": (CX + BAT_X, Y0 + 82),
               "J911": (CX - RET_X, Y0 + 53), "J902": (CX + RET_X, Y0 + 53)}
 
@@ -161,6 +184,7 @@ _MIDDLE_V6 = {"J910": (CX - BAT_X, Y0 + 82), "J901": (CX + BAT_X, Y0 + 82),
 # height it needs; version 4) or "corners" (a front band, a raised
 # section in each back corner and one over a north T1S pair); outputs: wall ("S", "W", "E") and position along it (plan x
 # on the south wall, KiCad Y on the side walls), default all six on the south wall;
+# out_pitch: south-wall output pitch (default OUT_PITCH); width: board width, centred on CX (default W);
 # plugs: "WNE" (any of west, north, east) or "ON" (outward or north); depth: board depth
 # (default D), the north edge stays at Y0; standoff: floor to the board's underside (default
 # enclosure_geometry.STANDOFF); hood_gap: tallest header to the inside of a raised section
@@ -218,8 +242,26 @@ VERSIONS = {
                        "the low lid, so the T1S hood goes; only the front band over the outputs stays raised. "
                        "Each board goes in on its own: the MCU board slides north into its wall, then the main "
                        "board, 15 mm shorter so it can, slides south and drops onto a mezzanine."),
+    "v9": dict(title="Version 9: version 7, compact", decision=None, board="up", terminal="smt", busbars=True,
+               t1s="north", t1s_pitch=V9_T1S_PITCH, lid="front", plugs="ON", back_gap=EDGE_GAP,
+               terminals=_COMPACT, removable=("back",), standoff=MIN_STANDOFF, hood_gap=MIN_HOOD_GAP,
+               out_pitch=V9_OUT_PITCH, width=V9_WIDTH, depth=V9_DEPTH,
+               summary="Version 7 with every connector as close to the next as the checks allow, for the "
+                       "smallest board: outputs at a 37.3 mm pitch and the T1S pair 39 mm apart (1 mm between "
+                       "courtyards), the receptacles pulled in until a battery plug pointing north just clears the "
+                       "T1S hood, and the rows stacked as tight as the flanges, the GND busbar and the "
+                       "front band allow. The board is 249.5 x 110 mm."),
 }
 CURRENT = "v7"       # the version on node60.kicad_pcb (DEC-022)
+
+
+def left(v):
+    """KiCad X of the board's west edge (the board is centred on CX in every version)."""
+    return CX - v.get("width", W) / 2
+
+
+def right(v):
+    return CX + v.get("width", W) / 2
 
 
 def front(v):
@@ -234,7 +276,10 @@ def out_row(v):
 
 def outputs(v):
     """ref -> (wall, position along it) for the six output headers."""
-    return v.get("outputs", _FRONT_OUTS)
+    if "outputs" in v:
+        return v["outputs"]
+    pitch = v.get("out_pitch", OUT_PITCH)
+    return {f"J{904 + i}": ("S", CX + (i - 2.5) * pitch) for i in range(6)}
 
 
 def busbar_outline(v, net):
@@ -256,7 +301,7 @@ def placements(version=CURRENT):
             p[ref] = (*AT13, kx(at) - AT13_CY_X, out_row(v), 0, False)
         else:   # as the side-wall T1S below: rotation 90 faces KiCad +x, -90 faces -x
             east = (wall == "E") != down
-            p[ref] = (*AT13, *((RIGHT - edge, at + AT13_CY_X, 90) if east else (LEFT + edge, at - AT13_CY_X, -90)),
+            p[ref] = (*AT13, *((right(v) - edge, at + AT13_CY_X, 90) if east else (left(v) + edge, at - AT13_CY_X, -90)),
                       False)
     if v["t1s"] == "north":
         # rotation 180: shroud (local +y) points north (-y), local +x points west (-x)
@@ -268,8 +313,8 @@ def placements(version=CURRENT):
         # J903 on the east wall, J912 on the west wall, as seen from outside. Rotation 90:
         # shroud (local +y) points to KiCad +x, local +x points to -y; -90 the other way.
         cy, edge = v["t1s_y"], ATM13_PANEL - EDGE_GAP
-        right, left = (RIGHT - edge, cy + ATM13_CY_X, 90, False), (LEFT + edge, cy - ATM13_CY_X, -90, False)
-        p["J903"], p["J912"] = (*ATM13, *(left if down else right)), (*ATM13, *(right if down else left))
+        east, west = (right(v) - edge, cy + ATM13_CY_X, 90, False), (left(v) + edge, cy - ATM13_CY_X, -90, False)
+        p["J903"], p["J912"] = (*ATM13, *(west if down else east)), (*ATM13, *(east if down else west))
     # SMT REDCUBE: its thread opens through the board, away from its body, so the body sits
     # on the side facing away from the lid. Press-fit: block on the side facing the lid.
     on_bottom = v["terminal"] == "smt" and not down
@@ -396,8 +441,8 @@ def main(netlist, version=CURRENT):
         fp.SetLocked(True)
 
     outline = pcbnew.PCB_SHAPE(board, pcbnew.SHAPE_T_RECT)
-    outline.SetStart(pcbnew.VECTOR2I(pcbnew.FromMM(X0), pcbnew.FromMM(Y0)))
-    outline.SetEnd(pcbnew.VECTOR2I(pcbnew.FromMM(RIGHT), pcbnew.FromMM(front(v))))
+    outline.SetStart(pcbnew.VECTOR2I(pcbnew.FromMM(left(v)), pcbnew.FromMM(Y0)))
+    outline.SetEnd(pcbnew.VECTOR2I(pcbnew.FromMM(right(v)), pcbnew.FromMM(front(v))))
     outline.SetLayer(pcbnew.Edge_Cuts)
     outline.SetWidth(pcbnew.FromMM(0.1))
     board.Add(outline)

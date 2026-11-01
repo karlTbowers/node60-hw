@@ -21,8 +21,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 from place_connectors import (  # noqa: E402
     AT13_BACK, AT13_PANEL, ATM13_ALONG, ATM13_BACK, ATM13_PANEL, BUSBAR_HOLE, BUSBAR_T, BUSBAR_W, BUSBARS, CURRENT,
-    AT13_SHROUD, ATM13_SHROUD, CX, EDGE_GAP, INSERT_CLEAR, LEFT, MAIN_TRAVEL, MCU_BOARD, MCU_THICKNESS, MEZZ_DROP,
-    MEZZ_PINS, MEZZANINE, RIGHT, THICKNESS, VERSIONS, Y0, busbar_outline, front, main_north, notch, out_row, outputs,
+    AT13_SHROUD, ATM13_SHROUD, CX, EDGE_GAP, INSERT_CLEAR, MAIN_TRAVEL, MCU_BOARD, MCU_THICKNESS, MEZZ_DROP,
+    MEZZ_PINS, MEZZANINE, THICKNESS, VERSIONS, Y0, busbar_outline, front, left, main_north, notch, out_row, outputs, right,
 )
 from place_connectors import T1S_PITCH as T1S_PITCH_ALL  # noqa: E402  (default; a version may set its own)
 
@@ -93,7 +93,7 @@ def spec(version=CURRENT):
     term = TERMINALS[v["terminal"]]
     mcu = v.get("t1s_board", "main") == "mcu"           # T1S on the MCU board under the main board
     deepest = AT13_HEIGHT if mcu else max(AT13_HEIGHT, ATM13_HEIGHT)   # tallest header on the main board
-    x_in_l, x_in_r = LEFT - EDGE_GAP, RIGHT + EDGE_GAP
+    x_in_l, x_in_r = left(v) - EDGE_GAP, right(v) + EDGE_GAP
     FRONT, OUT_ROW = front(v), out_row(v)               # this version's front edge and south pin row
     T1S_PITCH = v.get("t1s_pitch", T1S_PITCH_ALL)       # J903 to J912
     y_in_f, y_in_b = FRONT + EDGE_GAP, Y0 - v["back_gap"]
@@ -133,7 +133,7 @@ def spec(version=CURRENT):
                    + [ey(at - AT13_HALF - HOOD_GAP) for at in side if at not in back])
         raised.append({"x0": 0, "x1": outside["x"], "y0": 0, "y1": band, "z": hood, "label": "raised front"})
         corner_y0 = ey(max(back) + AT13_HALF + HOOD_GAP)
-        inner = ex(LEFT + AT13_PANEL - EDGE_GAP + AT13_BACK + HOOD_GAP)     # inner edge of a corner section
+        inner = ex(left(v) + AT13_PANEL - EDGE_GAP + AT13_BACK + HOOD_GAP)     # inner edge of a corner section
         raised.append({"x0": 0, "x1": inner, "y0": corner_y0, "y1": outside["y"], "z": hood,
                        "label": "west back corner"})
         raised.append({"x0": outside["x"] - inner, "x1": outside["x"], "y0": corner_y0, "y1": outside["y"],
@@ -217,7 +217,7 @@ def spec(version=CURRENT):
                     "y": c["y"] + sy * CUTOUT_TYPES["SURLOK"]["screw_square"] / 2, "d": BOSS_D,
                     "z0": low - LID - BOSS_H, "z1": low - LID, "for": c["ref"]}
                    for c in cutouts if c["type"] == "SURLOK" for sx in (-1, 1) for sy in (-1, 1)],
-        "board": {"x0": ex(LEFT), "x1": ex(RIGHT), "y0": ey(FRONT), "y1": ey(main_north(v)), "z0": z0, "z1": z1,
+        "board": {"x0": ex(left(v)), "x1": ex(right(v)), "y0": ey(FRONT), "y1": ey(main_north(v)), "z0": z0, "z1": z1,
                   "component_side": "top" if up else "bottom",
                   "note": "component side (z1) faces the lid" if up else "component side (z0) faces the floor",
                   "notches": [{"x0": ex(nt[0]), "x1": ex(nt[2]), "y0": ey(nt[3]), "y1": ey(nt[1]),
