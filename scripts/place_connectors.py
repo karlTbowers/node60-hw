@@ -82,17 +82,24 @@ V6_FRONT = Y0 + V6_DEPTH
 #     too close to the north wall for the plug to end short of the hood; moving them 9.4 mm south
 #     instead would cost more board area than the 8.5 mm of width this costs.
 #   Return: its flange 3 mm beside a battery plug pointing north (9 + 3 + 13.5 = 25.5 mm out).
-#   Width: a return plug pointing outward ends inside the board edge (78.5 + 46.1 = 124.6 mm).
+#   Width: outward plugs may overhang the side walls (user, 2026-11-01), so the outputs set it.
+#     The outer outputs' panel seals must clear the inside corner of the machined base, taken as
+#     POCKET_R, so the side walls' inside faces are 2.5 x 37.3 pitch + 17.6 seal half width + 5 =
+#     115.85 mm from the centre line. The board is a round 230 mm, so it stops 0.85 mm short of
+#     them (user, 2026-11-01): the side walls don't locate the board, only the front wall does. Until
+#     then a return plug pointing outward had to end inside the board edge, which made it
+#     78.5 + 46.1 = 124.6 mm (board 249.5 mm).
 #   Return row: the GND busbar 1 mm south of the T1S courtyards (Y0 + 26.85 + 1 + 12.7).
 #   Battery row: the flanges 2 mm apart (27 + 2 = 29 mm south of the return row).
 #   Depth: the battery flange 2 mm north of the front band (13.5 + 2 + 3 + 6.6 + 15 = 40.1 mm
 #     from the front edge).
-# The plug check confirms each of these (the return row excepted: it doesn't check the busbars); the
-# outer outputs' panel seals then end 14.4 mm from the side walls.
+# The plug check confirms the receptacles (not the return row: it doesn't check the busbars).
+POCKET_R = 5.0       # inside vertical corners of the machined base: ASSUMED, a 10 mm cutter for a ~30 mm deep pocket
 V9_OUT_PITCH = 37.3
 V9_T1S_PITCH = 39.0
 V9_BAT_X, V9_RET_X = 53.0, 78.5
-V9_WIDTH = 249.5
+V9_WIDTH = 230.0
+V9_SIDE_GAP = 2.5 * V9_OUT_PITCH + 17.6 + POCKET_R - V9_WIDTH / 2   # 0.85 mm
 V9_RET_Y = Y0 + 40.6
 V9_BAT_Y = V9_RET_Y + 29.0
 V9_DEPTH = 110.0
@@ -185,7 +192,9 @@ _MIDDLE_V6 = {"J910": (CX - BAT_X, Y0 + 82), "J901": (CX + BAT_X, Y0 + 82),
 # section in each back corner and one over a north T1S pair); outputs: wall ("S", "W", "E") and position along it (plan x
 # on the south wall, KiCad Y on the side walls), default all six on the south wall;
 # out_pitch: south-wall output pitch (default OUT_PITCH); width: board width, centred on CX (default W);
-# plugs: "WNE" (any of west, north, east) or "ON" (outward or north); depth: board depth
+# side_gap: board edge to the inside of the east and west walls (default EDGE_GAP);
+# overhang: True when a plug pointing west or east may reach past the side walls (default: it must
+# end inside the board edge); plugs: "WNE" (any of west, north, east) or "ON" (outward or north); depth: board depth
 # (default D), the north edge stays at Y0; standoff: floor to the board's underside (default
 # enclosure_geometry.STANDOFF); hood_gap: tallest header to the inside of a raised section
 # (default enclosure_geometry.HOOD_GAP); insert: "boards" when each board goes in on its own
@@ -245,12 +254,13 @@ VERSIONS = {
     "v9": dict(title="Version 9: version 7, compact", decision=None, board="up", terminal="smt", busbars=True,
                t1s="north", t1s_pitch=V9_T1S_PITCH, lid="front", plugs="ON", back_gap=EDGE_GAP,
                terminals=_COMPACT, removable=("back",), standoff=MIN_STANDOFF, hood_gap=MIN_HOOD_GAP,
-               out_pitch=V9_OUT_PITCH, width=V9_WIDTH, depth=V9_DEPTH,
+               out_pitch=V9_OUT_PITCH, width=V9_WIDTH, side_gap=V9_SIDE_GAP, depth=V9_DEPTH, overhang=True,
                summary="Version 7 with every connector as close to the next as the checks allow, for the "
                        "smallest board: outputs at a 37.3 mm pitch and the T1S pair 39 mm apart (1 mm between "
                        "courtyards), the receptacles pulled in until a battery plug pointing north just clears the "
                        "T1S hood, and the rows stacked as tight as the flanges, the GND busbar and the "
-                       "front band allow. The board is 249.5 x 110 mm."),
+                       "front band allow. Plugs pointing outward may reach past the side walls, so the outputs "
+                       "set the width. The board is 230 x 110 mm."),
 }
 CURRENT = "v7"       # the version on node60.kicad_pcb (DEC-022)
 

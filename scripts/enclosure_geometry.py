@@ -93,7 +93,8 @@ def spec(version=CURRENT):
     term = TERMINALS[v["terminal"]]
     mcu = v.get("t1s_board", "main") == "mcu"           # T1S on the MCU board under the main board
     deepest = AT13_HEIGHT if mcu else max(AT13_HEIGHT, ATM13_HEIGHT)   # tallest header on the main board
-    x_in_l, x_in_r = left(v) - EDGE_GAP, right(v) + EDGE_GAP
+    side = v.get("side_gap", EDGE_GAP)                   # board edge to the east and west walls
+    x_in_l, x_in_r = left(v) - side, right(v) + side
     FRONT, OUT_ROW = front(v), out_row(v)               # this version's front edge and south pin row
     T1S_PITCH = v.get("t1s_pitch", T1S_PITCH_ALL)       # J903 to J912
     y_in_f, y_in_b = FRONT + EDGE_GAP, Y0 - v["back_gap"]
@@ -207,7 +208,7 @@ def spec(version=CURRENT):
     return {
         "title": f"Node60 enclosure, {v['title'].split(':')[0].lower()}",
         "version": {"id": version, "title": v["title"], "summary": v["summary"], "decision": v["decision"],
-                    "current": version == CURRENT, "lid": v["lid"],
+                    "current": version == CURRENT, "lid": v["lid"], "overhang": v.get("overhang", False),
                     "outputs": sorted({w for w, _ in outs.values()})},
         "outside": outside,
         "wall": WALL,

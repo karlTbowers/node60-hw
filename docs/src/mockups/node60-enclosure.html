@@ -407,7 +407,7 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
       for (const r of G.raised) note(gap(flangeBox(a), [r.x0, r.y0, r.x1, r.y1]), FLANGE_CLEAR, `${a.ref} flange vs ${r.label}`, i);
       TERMS.forEach((b, j) => { if (i < j) note(gap(flangeBox(a), flangeBox(b)), FLANGE_CLEAR, `${a.ref} flange vs ${b.ref} flange`, i, j); });
       const pa = plugBox(a, dirs[i]);
-      if (dirs[i] !== 'N') note(Math.min(pa[0] - G.board.x0, G.board.x1 - pa[2]), 0, `${a.ref} ${dirs[i]} to the board edge`, i);
+      if (dirs[i] !== 'N' && !G.version.overhang) note(Math.min(pa[0] - G.board.x0, G.board.x1 - pa[2]), 0, `${a.ref} ${dirs[i]} to the board edge`, i);
       for (const r of G.raised) note(gap(pa, [r.x0, r.y0, r.x1, r.y1]), CLEAR, `${a.ref} ${dirs[i]} vs ${r.label}`, i);
       for (const r of G.raised) note(gap(cableBox(a, dirs[i]), [r.x0, r.y0, r.x1, r.y1]), CABLE_CLEAR, `${a.ref} ${dirs[i]} cable vs ${r.label}`, i);
       TERMS.forEach((b, j) => {
