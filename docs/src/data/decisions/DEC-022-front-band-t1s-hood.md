@@ -1,7 +1,7 @@
 ---
 id: DEC-022
 title: Lid with a raised front band and a separate T1S hood, staggered receptacles and a removable north panel (enclosure version 7)
-status: accepted
+status: superseded
 date: 2026-11-01
 revision: B
 page: subsystems/enclosure
