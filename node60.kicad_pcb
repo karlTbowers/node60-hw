@@ -724,6 +724,112 @@
 			)
 		)
 	)
+	(footprint "Busbar_19.05x3.175mm"
+		(locked yes)
+		(layer "F.Cu")
+		(uuid "21e057fd-dc60-4ea3-b0b7-7c2c3984c64f")
+		(at 155 70.6)
+		(property "Reference" "BB902"
+			(at 0 -2 0)
+			(layer "F.Fab")
+			(uuid "63ad9f6a-5cb4-4efa-b5ef-774252f1a00d")
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "1/8\" x 3/4\" C110 copper flat bar, 176.1 mm"
+			(at 0 2 0)
+			(layer "F.Fab")
+			(uuid "f6b8f529-f898-4dcf-aa8a-4d0a6befb00d")
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0cb9e79f-2438-4c20-bed2-16b1c880c278")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "3f901944-0c0c-41eb-bb6e-75d2e1d654bc")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(attr board_only exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_rect
+			(start -88.025001 -9.525001)
+			(end 88.025 9.525)
+			(stroke
+				(width 0.05)
+				(type default)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "dc8beacc-d136-4a70-aef3-536c1770f99e")
+		)
+		(fp_circle
+			(center -78.5 0)
+			(end -73.75 0)
+			(stroke
+				(width 0.05)
+				(type default)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "c5c8322c-b6db-490d-9075-b3c102873613")
+		)
+		(fp_circle
+			(center 78.5 0)
+			(end 83.25 0)
+			(stroke
+				(width 0.05)
+				(type default)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "397f7593-c3ad-493d-8b27-927e89be61ee")
+		)
+		(fp_rect
+			(start -88.025001 -9.525001)
+			(end 88.025 9.525)
+			(stroke
+				(width 0.1)
+				(type default)
+			)
+			(fill no)
+			(layer "F.Fab")
+			(uuid "3745e4ee-e4f8-4b64-8190-e2226eaecf8f")
+		)
+		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Busbar.3dshapes/Busbar_Cu_19.05x3.175mm_L176.05mm_2xD6.5mm_P157mm.step"
+			(offset
+				(xyz 0 0 0.6)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
 	(footprint "DropOut_Connector_Amphenol:Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal"
 		(locked yes)
 		(layer "F.Cu")
@@ -1536,101 +1642,6 @@
 				(xyz 0 0 0)
 			)
 		)
-	)
-	(footprint "Busbar_19.05x3.175mm"
-		(locked yes)
-		(layer "F.Cu")
-		(uuid "34a63624-6e54-4c49-bd3f-046ebfe9daae")
-		(at 155 70.6)
-		(property "Reference" "BB902"
-			(at 0 -2 0)
-			(layer "F.Fab")
-			(uuid "3b7c2ef5-4612-4470-b3dd-3fba6fcf0466")
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Value" "1/8\" x 3/4\" C110 copper flat bar, 176.1 mm"
-			(at 0 2 0)
-			(layer "F.Fab")
-			(uuid "c0d11a58-1935-4e2f-857a-4181b7c3ea9e")
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "9ce30eb3-ed0c-4faa-9721-118c8deabcac")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "c0c19670-22d3-4989-96bb-f546768de838")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(attr board_only exclude_from_pos_files exclude_from_bom)
-		(duplicate_pad_numbers_are_jumpers no)
-		(fp_rect
-			(start -88.025001 -9.525001)
-			(end 88.025 9.525)
-			(stroke
-				(width 0.05)
-				(type default)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "489ad671-e30c-48f2-9cd3-adc1681abbbb")
-		)
-		(fp_circle
-			(center -78.5 0)
-			(end -73.75 0)
-			(stroke
-				(width 0.05)
-				(type default)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "c041fcc4-f325-4d0d-b008-5ebee0726b46")
-		)
-		(fp_circle
-			(center 78.5 0)
-			(end 83.25 0)
-			(stroke
-				(width 0.05)
-				(type default)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "0c1846e4-9744-433c-951d-43dc33e2b77f")
-		)
-		(fp_rect
-			(start -88.025001 -9.525001)
-			(end 88.025 9.525)
-			(stroke
-				(width 0.1)
-				(type default)
-			)
-			(fill no)
-			(layer "F.Fab")
-			(uuid "d73960e1-5ba8-4df2-938a-0dca97b4e09b")
-		)
-		(embedded_fonts no)
 	)
 	(footprint "DropOut_Capacitor_SMD:C_0402_1005Metric"
 		(layer "F.Cu")
@@ -2811,101 +2822,6 @@
 				(xyz 0 0 0)
 			)
 		)
-	)
-	(footprint "Busbar_19.05x3.175mm"
-		(locked yes)
-		(layer "F.Cu")
-		(uuid "49e869dc-b885-460a-b654-0950d4c9e552")
-		(at 155 99.6)
-		(property "Reference" "BB901"
-			(at 0 -2 0)
-			(layer "F.Fab")
-			(uuid "4af5d49b-83fd-4554-9bdb-9485524478c7")
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Value" "1/8\" x 3/4\" C110 copper flat bar, 125.1 mm"
-			(at 0 2 0)
-			(layer "F.Fab")
-			(uuid "6f3245e3-1adf-4cca-8914-2d12275dcfff")
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "3cf9f6fd-85da-4287-b090-12a44e382896")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "6a039f09-56cd-4203-a225-3cac1471d415")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(attr board_only exclude_from_pos_files exclude_from_bom)
-		(duplicate_pad_numbers_are_jumpers no)
-		(fp_rect
-			(start -62.525 -9.525001)
-			(end 62.525 9.525)
-			(stroke
-				(width 0.05)
-				(type default)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "d73fb938-96ba-469a-8459-ac773112019e")
-		)
-		(fp_circle
-			(center -53 0)
-			(end -48.25 0)
-			(stroke
-				(width 0.05)
-				(type default)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "b4dd5d13-445e-4546-b6dd-72af54ef5462")
-		)
-		(fp_circle
-			(center 53 0)
-			(end 57.75 0)
-			(stroke
-				(width 0.05)
-				(type default)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "9eb77ce7-b8c4-4163-9804-e7e7bd73dcec")
-		)
-		(fp_rect
-			(start -62.525 -9.525001)
-			(end 62.525 9.525)
-			(stroke
-				(width 0.1)
-				(type default)
-			)
-			(fill no)
-			(layer "F.Fab")
-			(uuid "659babe2-ab85-4df1-b177-e1eae99be5f5")
-		)
-		(embedded_fonts no)
 	)
 	(footprint "DropOut_Capacitor_SMD:C_0402_1005Metric"
 		(layer "F.Cu")
@@ -5375,6 +5291,112 @@
 		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "Busbar_19.05x3.175mm"
+		(locked yes)
+		(layer "F.Cu")
+		(uuid "79575fae-0503-4b58-b094-5cab83e73f98")
+		(at 155 99.6)
+		(property "Reference" "BB901"
+			(at 0 -2 0)
+			(layer "F.Fab")
+			(uuid "84695f30-8c1a-44a9-b802-9dc5657b37ba")
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "1/8\" x 3/4\" C110 copper flat bar, 125.1 mm"
+			(at 0 2 0)
+			(layer "F.Fab")
+			(uuid "6a5339f1-15ca-485f-8593-1d65423083a3")
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "985befe7-a0eb-4613-8a5f-70f764d30403")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "04a51ee9-b813-4301-83e9-ec52c257e3c0")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(attr board_only exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_rect
+			(start -62.525 -9.525001)
+			(end 62.525 9.525)
+			(stroke
+				(width 0.05)
+				(type default)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "2b1a0c8b-1d0a-4c9e-82df-55af9475367a")
+		)
+		(fp_circle
+			(center -53 0)
+			(end -48.25 0)
+			(stroke
+				(width 0.05)
+				(type default)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "5d84f11a-f84a-4957-8e64-b626f69c7b51")
+		)
+		(fp_circle
+			(center 53 0)
+			(end 57.75 0)
+			(stroke
+				(width 0.05)
+				(type default)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "2d08303a-0661-42ea-8e00-0804429f4d0a")
+		)
+		(fp_rect
+			(start -62.525 -9.525001)
+			(end 62.525 9.525)
+			(stroke
+				(width 0.1)
+				(type default)
+			)
+			(fill no)
+			(layer "F.Fab")
+			(uuid "eea9a9da-099e-4b81-b266-1d709698415d")
+		)
+		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Busbar.3dshapes/Busbar_Cu_19.05x3.175mm_L125.05mm_2xD6.5mm_P106mm.step"
+			(offset
+				(xyz 0 0 0.6)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -52541,7 +52563,7 @@
 		)
 		(fill no)
 		(layer "Dwgs.User")
-		(uuid "bd644322-0986-419e-8d73-61ead2458fdc")
+		(uuid "b57f5388-3615-4612-9647-873cbd8f1bc1")
 	)
 	(gr_rect
 		(start 92.475 90.074999)
@@ -52552,7 +52574,7 @@
 		)
 		(fill no)
 		(layer "Dwgs.User")
-		(uuid "c8f07953-6c91-4407-ae81-87d64725212d")
+		(uuid "97db3165-7e24-418b-b8d2-4624b17407cf")
 	)
 	(gr_rect
 		(start 40 30)
@@ -52563,12 +52585,12 @@
 		)
 		(fill no)
 		(layer "Edge.Cuts")
-		(uuid "b578cda5-d507-4505-86cc-59cc0073aa25")
+		(uuid "98095134-1e85-4958-8f30-d28ad8157be6")
 	)
 	(gr_text "GND busbar 19.05 x 3.175 Cu (1/8\" x 3/4\" C110 copper flat bar), on top: no parts under it"
 		(at 155 59.074999 0)
 		(layer "Dwgs.User")
-		(uuid "156d50b9-5b98-41c0-9375-20ad47dc23e3")
+		(uuid "68bcff48-fa22-4ee1-aeac-c5e0dbd825c5")
 		(effects
 			(font
 				(size 1.5 1.5)
@@ -52578,7 +52600,7 @@
 	(gr_text "VBAT_IN busbar 19.05 x 3.175 Cu (1/8\" x 3/4\" C110 copper flat bar), on top: no parts under it"
 		(at 155 88.074999 0)
 		(layer "Dwgs.User")
-		(uuid "8cca96e4-3f67-46d8-9391-3c6d3f9c3ff4")
+		(uuid "01f323b9-7e24-42af-b025-103dfe181cdf")
 		(effects
 			(font
 				(size 1.5 1.5)
