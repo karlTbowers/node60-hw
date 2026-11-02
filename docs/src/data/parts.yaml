@@ -443,6 +443,19 @@
     - { date: 2026-10-28, source: Mouser 654-SLPRATPSB, stock: 1126 }
   decisions: [DEC-016]
 
+- id: Busbar_Cu_19.05x3.175mm_L125.05mm_2xD6.5mm_P106mm
+  mpn: Busbar_Cu_19.05x3.175mm_L125.05mm_2xD6.5mm_P106mm
+  manufacturer: DropOut
+  qty: 1
+  label: BB901 VBAT_IN busbar (1/8" × 3/4" C110, 125.05 mm)
+  function: "Battery busbar BB901: joins J910 (VBAT_IN, source) and J901 (VBAT_IN_DOWNSTREAM, downstream feed) on the REDCUBE spigots; 19.05 × 3.175 mm C110 copper, 125.05 mm long, 2 × Ø6.5 mm M6 clearance holes at 106 mm; a two-pin net tie on the schematic (p9), the only join between the two terminals"
+  subsystem: harness
+  status: selected
+  decision_note: "Made in house (user's decision 2026-11-02, placement decision D02): cut from bar stock, drilled, deburred, fitted by hand at assembly; on the BOM, out of the placement files. Bar size from DEC-025. The return bar BB902 is not a BOM line (DEC-016 rev. B)"
+  supply_note: "Stock: 1/8\" × 3/4\" C110 copper flat bar (ASTM B187), e.g. Metals Depot CPF1834 or Zoro CF.125X.75-72 (seen 2026-11-02); no distributor PN for the cut bar"
+  decisions: [DEC-016, DEC-025]
+  library: DropOut_Busbar:Busbar_Cu_19.05x3.175mm_L125.05mm_2xD6.5mm_P106mm
+
 - id: G6KU-2F-Y-T1-TRS_DC3
   mpn: "G6KU-2F-Y-T1-TRS DC3"
   manufacturer: Omron (ARATAS)
