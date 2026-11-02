@@ -315,7 +315,8 @@ VERSIONS["v13"] = {**VERSIONS["v11"], "title": "Version 13: version 11 with RADL
 # Version 14 (user, 2026-11-01): version 11 with 3/16" x 3/4" C110 busbars instead of 1/8" x 1", to free top-side
 # area along the bars. The receptacles rise 1.59 mm with the thicker bar; the SurLok stud's 9.95 mm then ends inside
 # the REDCUBE (9.95 - 4.76 = 5.19 of its 5.6 mm thread), so nothing hangs below it and the board drops back to the
-# 5 mm floor standoff. Würth's minimum thread engagement isn't known yet.
+# 5 mm floor standoff. 5.19 mm is a full-height M6 nut's worth of thread (ISO 4032: 4.9 to 5.2 mm), the nut the
+# threaded SurLok is normally fitted with. Würth's minimum thread engagement isn't known yet.
 V14_BUSBAR = (19.05, 4.7625, '3/16" x 3/4" C110 copper flat bar')
 VERSIONS["v14"] = {**VERSIONS["v11"], "title": "Version 14: version 11 with 3/16 x 3/4 in busbars", "decision": None,
                    "busbar": V14_BUSBAR,
