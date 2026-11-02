@@ -48,8 +48,38 @@ AT13_HEIGHT, AT13_AXIS = 27.84, 13.8      # axis per drawing C-AT13-2P-BMXX rev.
 ATM13_HEIGHT, ATM13_AXIS = 28.48, 15.0    # axis = mating-shroud centre in the STEP
 ATM13_HALF = 18.41    # flange half width
 AT13_HALF = 35.20 / 2  # panel seal half width
-SURLOK_DEPTH = 36.7 - 16.5 - 1.0          # SurLok catalog IC-10 p. 6: contact face to panel face (B - A - C)
-STUD = 7.7            # SurLok M6 stud length: ESTIMATE in the library model; Amphenol publishes none
+# Lid receptacles for the power terminals; a version picks one with "receptacle" (default "surlok").
+# depth: the receptacle's rear contact face (on the busbar or terminal) to its panel face; stud: its M6 stud
+# below the contact face; flange/seal/flange_t: square flange and the seal under it; front: its mating face
+# above the panel face; panel_max: thickest panel it takes (None: no limit given); plug: the right-angle cable
+# plug in plan, from the receptacle's axis (back, ahead in the cable direction, width) and its height above
+# the mating face.
+RECEPTACLES = {
+    # Amphenol SurLok Plus 5.7 mm, customer drawing C10-730187 rev. F (screw type) and Amphenol's customer
+    # STEP, from the SLPRATPSB product page (2026-11-02; before that, catalog IC-10 and an estimated stud);
+    # catalog IC-10 pp. 7, 13; plug SLPPA25BSx. The contact face is the back of the stud's hex shoulder.
+    "surlok": {"name": "Amphenol SurLok Plus 5.7 mm (SLPRATPSR / SLPRATPSB)", "cutout": "SURLOK",
+               "depth": 8.5 + 0.75,             # drawing: 9.50 flange back to rear face, less the 1.0 gasket,
+                                                 # plus the STEP's 0.75 hex shoulder (IC-10's B - A - C, 19.2,
+                                                 # is the panel face to the stud tip)
+               "stud": 10.7 - 0.75,              # drawing: 10.70 REF from the rear face, less the shoulder
+               "flange": 27.0, "seal": 1.0, "flange_t": 3.0, "front": 1.0 + 16.5, "body_d": 14.0,
+               "panel_max": None, "stud_note": "its 9.95 mm stud (drawing)",
+               "plug": {"name": "SLPPA25BSx", "width": 18.0, "back": 9.0, "ahead": 55.1 - 9.0, "height": 22.6}},
+    # Amphenol RADLOK 5.7 mm feed-through RL9057-101-F1x (customer drawing "RADLOK Feed Thru Pin To Thread"
+    # rev. K and Amphenol Tuchel's STEP, as measured in the DropOut library's model generator) and the
+    # right-angle plug RL00571-25x (drawing "Tubular Lug Version" rev. L and its STEP).
+    "radlok": {"name": "Amphenol RADLOK 5.7 mm (RL9057-101-F1RE / -F1)", "cutout": "RADLOK",
+               "depth": 24.2 - 10.0,             # drawing I (panel face to stud tip) - H (stud); the STEP gives 13.35
+               "stud": 10.0,                     # drawing H: M6 x 1.0-6g, 10 long
+               "flange": 25.0, "seal": 1.0, "flange_t": 3.5, "front": 27.6 - 13.35, "body_d": 14.0,
+               "panel_max": 3.0, "stud_note": "its 10 mm stud (drawing)",
+               # STEP: socket axis 10.45 behind the front end; drawing F 47.7 overall, A 18.5 wide, C 23.85
+               # high from the boss face, the boss (D 9.4) inside the receptacle's tube.
+               "plug": {"name": "RL00571-25RE / -25BK", "width": 18.5, "back": 10.45, "ahead": 47.7 - 10.45,
+                        "height": 23.85 - 9.4}},
+}
+STUD_FLOOR_CLEAR = 2.0   # a stud passing through its terminal ends at least this far above the floor
 
 # Power terminals: what the stud screws into, and where its thread starts.
 TERMINALS = {
@@ -81,6 +111,10 @@ CUTOUT_TYPES = {
     # SurLok Plus catalog IC-10 p. 13, 5.7 mm: the catalog gives "M4 screw", not a hole size.
     "SURLOK": {"shape": "round", "name": "SurLok Plus 5.7 mm", "d": 14.3, "screw_square": 18.0,
                "screw": "M4", "screw_d": 4.0, "flange": 27.0},
+    # RADLOK feed-through drawing rev. K: Ø14.7 hole with two 2.8 key notches 18.2 across (along x), 4 x M4 on
+    # 17 square, 25 square flange, 3 mm panel at most.
+    "RADLOK": {"shape": "round", "name": "RADLOK 5.7 mm", "d": 14.7, "notches": [2.8, 18.2], "screw_square": 17.0,
+               "screw": "M4", "screw_d": 4.0, "flange": 25.0},
 }
 # Version 8: the main board slides in MEZZ_DROP high and drops onto the mezzanine, so the output
 # cutouts reach MEZZ_DROP further from the board; the panel seal covers less above them.
@@ -91,6 +125,7 @@ def spec(version=CURRENT):
     v = VERSIONS[version]
     up = v["board"] == "up"
     term = TERMINALS[v["terminal"]]
+    rec = RECEPTACLES[v.get("receptacle", "surlok")]
     mcu = v.get("t1s_board", "main") == "mcu"           # T1S on the MCU board under the main board
     deepest = AT13_HEIGHT if mcu else max(AT13_HEIGHT, ATM13_HEIGHT)   # tallest header on the main board
     side = v.get("side_gap", EDGE_GAP)                   # board edge to the east and west walls
@@ -103,7 +138,11 @@ def spec(version=CURRENT):
 
     if up:
         m0 = WALL + MCU_STANDOFF                        # MCU board bottom (version 8)
-        z0 = m0 + MCU_THICKNESS + BOARD_GAP if mcu else WALL + v.get("standoff", STANDOFF)   # board bottom
+        standoff = v.get("standoff", STANDOFF)
+        if v["terminal"] == "smt":                      # a stud longer than the thread above it hangs below the board
+            above = max(v.get("thickness", THICKNESS), term["spigot"]) + (BUSBAR_T if v["busbars"] else 0.0)
+            standoff = max(standoff, rec["stud"] - above + STUD_FLOOR_CLEAR)
+        z0 = m0 + MCU_THICKNESS + BOARD_GAP if mcu else WALL + standoff   # board bottom
         z1 = z0 + v.get("thickness", THICKNESS)                             # component side, facing the lid
         cs, side_sign = z1, 1                           # headers stand up from the component side
         # press-fit: the block's top; SMT: the spigot's end, flush on 2.6 mm, proud of a thinner board
@@ -115,8 +154,11 @@ def spec(version=CURRENT):
         cs, side_sign = z0, -1                          # headers hang from the component side
         term_top = z1                                   # SMT spigot flush with the back face
         term_z = [z0 - term["height"], z0]
-    contact = term_top + (BUSBAR_T if v["busbars"] else 0.0)   # SurLok contact face
-    low = contact + SURLOK_DEPTH                                # lid outside where the receptacles sit
+    contact = term_top + (BUSBAR_T if v["busbars"] else 0.0)   # receptacle's rear contact face
+    panel = contact + rec["depth"]                              # receptacle's panel face
+    # A lid thicker than the receptacle takes is thinned to panel_max in a seat machined into its top face.
+    seat_depth = max(0.0, LID - rec["panel_max"]) if rec["panel_max"] and v["lid"] != "seats" else 0.0
+    low = panel + seat_depth                                    # lid outside where the receptacles sit
     outside = {"x": x_in_r - x_in_l + 2 * WALL, "y": y_in_f - y_in_b + 2 * WALL, "z": low}
 
     # Raised lid sections over the headers, where they don't fit under the low lid.
@@ -184,7 +226,7 @@ def spec(version=CURRENT):
     mid = outside["x"] / 2
     for r, (x, y) in sorted(v["terminals"].items()):
         dirs = ["W", "N", "E"] if v["plugs"] == "WNE" else ["W" if ex(x) < mid else "E", "N"]
-        cutouts.append({"ref": r, "label": nets[r], "face": "top", "type": "SURLOK", "x": ex(x), "y": ey(y),
+        cutouts.append({"ref": r, "label": nets[r], "face": "top", "type": rec["cutout"], "x": ex(x), "y": ey(y),
                         "plug_dirs": dirs})
 
     busbars = []
@@ -194,18 +236,23 @@ def spec(version=CURRENT):
         busbars.append({"net": net, "refs": list(refs), "x0": ex(x0), "x1": ex(x1), "y0": ey(y1), "y1": ey(y0),
                         "z0": term_top, "z1": contact, "length": x1 - x0, "hole_pitch": abs(holes[1] - holes[0]),
                         "hole_d": BUSBAR_HOLE})
-    engage = STUD - (contact - term_top)
+    engage = rec["stud"] - (contact - term_top)
     levels = [{"z": WALL, "label": "floor, inside"}]
     if v["busbars"]:
         levels.append({"z": contact, "label": "busbar top"})
     if v["lid"] == "seats":
-        flange = CUTOUT_TYPES["SURLOK"]["flange"] + 2 * SEAT_CLEAR
-        seats = [{"x": c["x"], "y": c["y"], "w": flange, "z": low, "depth": outside["z"] - low, "for": c["ref"]}
-                 for c in cutouts if c["type"] == "SURLOK"]
+        flange = rec["flange"] + 2 * SEAT_CLEAR
+        seats = [{"x": c["x"], "y": c["y"], "w": flange, "z": low, "depth": outside["z"] - low, "floor": LID,
+                  "for": c["ref"]} for c in cutouts if "plug_dirs" in c]
         levels.append({"z": outside["z"] - LID, "label": "lid, inside"})
         levels.append({"z": low, "label": "receptacle seats"})
     else:
         levels.append({"z": low - LID, "label": "lid, inside" if not raised else "low lid, inside"})
+        if seat_depth:                                  # thinned to the receptacle's panel_max
+            seats = [{"x": c["x"], "y": c["y"], "w": rec["flange"] + 2 * SEAT_CLEAR, "z": panel,
+                      "depth": seat_depth, "floor": rec["panel_max"], "for": c["ref"]}
+                     for c in cutouts if "plug_dirs" in c]
+            levels.append({"z": panel, "label": "receptacle seats"})
     return {
         "title": f"Node60 enclosure, {v['title'].split(':')[0].lower()}",
         "version": {"id": version, "title": v["title"], "summary": v["summary"], "decision": v["decision"],
@@ -215,10 +262,10 @@ def spec(version=CURRENT):
         "wall": WALL,
         "lid_thickness": LID,
         "seats": seats,
-        "bosses": [{"x": c["x"] + sx * CUTOUT_TYPES["SURLOK"]["screw_square"] / 2,
-                    "y": c["y"] + sy * CUTOUT_TYPES["SURLOK"]["screw_square"] / 2, "d": BOSS_D,
+        "bosses": [{"x": c["x"] + sx * CUTOUT_TYPES[c["type"]]["screw_square"] / 2,
+                    "y": c["y"] + sy * CUTOUT_TYPES[c["type"]]["screw_square"] / 2, "d": BOSS_D,
                     "z0": low - LID - BOSS_H, "z1": low - LID, "for": c["ref"]}
-                   for c in cutouts if c["type"] == "SURLOK" for sx in (-1, 1) for sy in (-1, 1)],
+                   for c in cutouts if "plug_dirs" in c for sx in (-1, 1) for sy in (-1, 1)],
         "board": {"x0": ex(left(v)), "x1": ex(right(v)), "y0": ey(FRONT), "y1": ey(main_north(v)), "z0": z0, "z1": z1,
                   "component_side": "top" if up else "bottom",
                   "note": "component side (z1) faces the lid" if up else "component side (z0) faces the floor",
@@ -241,18 +288,18 @@ def spec(version=CURRENT):
         "cutouts": cutouts,
         "busbars": busbars,
         "terminal": {**term, "kind": v["terminal"], "z0": term_z[0], "z1": term_z[1], "thread_top": term_top,
-                     "stud_engagement": min(engage, term["thread"])},
+                     "stud_engagement": min(engage, term["thread"]),
+                     "stud_tip": contact - rec["stud"], "stud_floor_clear": contact - rec["stud"] - WALL},
         "parts": {"AT13": {"height": AT13_HEIGHT, "axis": AT13_AXIS, "panel": AT13_PANEL, "back": AT13_BACK,
                            "shroud": AT13_SHROUD, "along_half": 36.2 / 2},
                   "ATM13": {"height": ATM13_HEIGHT, "axis": ATM13_AXIS, "panel": ATM13_PANEL, "back": ATM13_BACK,
                             "shroud": ATM13_SHROUD, "along_half": sum(ATM13_ALONG) / 2},
-                  "SURLOK": {"depth": SURLOK_DEPTH, "stud": STUD, "contact_z": contact, "panel_z": low,
-                             "plug": [18.0, 55.1, 22.6]},
+                  "receptacle": {**rec, "kind": v.get("receptacle", "surlok"), "contact_z": contact, "panel_z": panel},
                   "busbar": {"width": BUSBAR_W, "thickness": BUSBAR_T, "stock": '1/8" x 1" C110 copper flat bar'}},
-        "assumptions": {"standoff": None if mcu or not up else v.get("standoff", STANDOFF), "floor_gap": None if up else FLOOR_GAP,
+        "assumptions": {"standoff": None if mcu or not up else z0 - WALL, "floor_gap": None if up else FLOOR_GAP,
                         "mcu_standoff": MCU_STANDOFF if mcu else None, "board_gap": BOARD_GAP if mcu else None,
                         "hood_gap": v.get("hood_gap", HOOD_GAP), "edge_gap": EDGE_GAP, "back_gap": v["back_gap"],
-                        "deepest_header": deepest, "surlok_depth": SURLOK_DEPTH,
+                        "deepest_header": deepest, "receptacle_depth": rec["depth"],
                         "hood_z": hood if raised else None, "low_z": low},
     }
 

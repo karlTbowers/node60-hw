@@ -35,6 +35,7 @@ export default defineConfig({
 							label: 'Enclosure options',
 							items: [
 								{ label: 'Overview', slug: 'subsystems/enclosure' },
+								{ label: 'Power receptacles: RADLOK vs SurLok', slug: 'subsystems/enclosure/receptacles' },
 								{ label: 'Version 1: board flipped', slug: 'subsystems/enclosure/v1' },
 								{ label: 'Version 2: busbars, raised T', slug: 'subsystems/enclosure/v2' },
 								{ label: 'Version 3: busbars, raised front', slug: 'subsystems/enclosure/v3' },
@@ -46,6 +47,8 @@ export default defineConfig({
 								{ label: 'Version 9: version 7, compact', slug: 'subsystems/enclosure/v9' },
 								{ label: 'Version 10: version 7 on a 2.0 mm board', slug: 'subsystems/enclosure/v10' },
 								{ label: 'Version 11: version 9 on a 2.0 mm board', slug: 'subsystems/enclosure/v11' },
+								{ label: 'Version 12: version 11 on a 1.6 mm board', slug: 'subsystems/enclosure/v12' },
+								{ label: 'Version 13: version 11 with RADLOK receptacles', slug: 'subsystems/enclosure/v13' },
 							],
 						},
 						{ label: 'Firmware & data contract', slug: 'subsystems/firmware' },
