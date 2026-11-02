@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="760" viewBox="0 0 680 760" role="img">
+<title>RADLOK vs SurLok Plus threaded receptacles, section lengths</title>
+<desc>Side profiles of the RADLOK RL9057-101-F1 and SurLok Plus SLPRATPSB at the same scale (9 px per mm), aligned on the seating face that lands on the REDCUBE, with the length of each section in millimetres.</desc>
+<defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#5f5e5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
+<rect width="680" height="760" fill="#ffffff"/>
+<text x="40" y="30" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="500" fill="#1f1e1d" text-anchor="start">RADLOK RL9057-101-F1</text>
+<text x="300" y="44" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">Panel face</text>
+<text x="420" y="30" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">Seat (REDCUBE)</text>
+<line x1="420" y1="36" x2="420" y2="640" stroke="#5f5e5a" stroke-width="0.6" stroke-dasharray="4 3"/>
+<line x1="299.85" y1="48" x2="299.85" y2="282" stroke="#5f5e5a" stroke-width="0.6" stroke-dasharray="4 3"/>
+<polygon points="63.6,148.8 68.1,140.7 171.6,139.35 171.6,190.65 68.1,189.3 63.6,181.2" fill="#FAC775" stroke="#854F0B" stroke-width="0.6"/>
+<polygon points="221.1,97.5 259.35,62.4 259.35,267.6 221.1,232.5" fill="#B4B2A9" stroke="#5F5E5A" stroke-width="0.6"/>
+<rect x="171.6" y="97.5" width="87.75" height="135" fill="#B4B2A9" stroke="#5F5E5A" stroke-width="0.6"/>
+<rect x="259.35" y="52.5" width="31.5" height="225" fill="#B4B2A9" stroke="#5F5E5A" stroke-width="0.6"/>
+<rect x="290.85" y="52.5" width="9" height="225" fill="#888780" stroke="#5F5E5A" stroke-width="0.6"/>
+<rect x="299.85" y="86.7" width="22.5" height="156.6" fill="#B4B2A9" stroke="#5F5E5A" stroke-width="0.6"/>
+<rect x="299.85" y="102" width="105.75" height="126" fill="#B4B2A9" stroke="#5F5E5A" stroke-width="0.6"/>
+<polygon points="405.6,102 420,122.7 420,207.3 405.6,228" fill="#B4B2A9" stroke="#5F5E5A" stroke-width="0.6"/>
+<rect x="420" y="138" width="90" height="54" fill="#FAC775" stroke="#854F0B" stroke-width="0.6"/>
+<path d="M429 138V192M438 138V192M447 138V192M456 138V192M465 138V192M474 138V192M483 138V192M492 138V192M501 138V192" stroke="#854F0B" stroke-width="0.6" fill="none"/>
+<path d="M63.6 196V300M171.6 236V300M259.35 281V300M510 196V300M63.6 322V334M510 322V334" stroke="#5f5e5a" stroke-width="0.6" fill="none"/>
+<line x1="64" y1="292" x2="171" y2="292" stroke="#5f5e5a" stroke-width="0.6" marker-start="url(#a)" marker-end="url(#a)"/>
+<line x1="172" y1="292" x2="259" y2="292" stroke="#5f5e5a" stroke-width="0.6" marker-start="url(#a)" marker-end="url(#a)"/>
+<line x1="260" y1="292" x2="299.5" y2="292" stroke="#5f5e5a" stroke-width="0.6" marker-start="url(#a)" marker-end="url(#a)"/>
+<line x1="300.2" y1="292" x2="419.6" y2="292" stroke="#5f5e5a" stroke-width="0.6" marker-start="url(#a)" marker-end="url(#a)"/>
+<line x1="420.4" y1="292" x2="509.6" y2="292" stroke="#5f5e5a" stroke-width="0.6" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="117.6" y="310" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">Pin 12.0</text>
+<text x="215.5" y="310" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">Front 9.75</text>
+<text x="279.6" y="310" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">4.5</text>
+<text x="359.9" y="310" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">Rear 13.35</text>
+<text x="465" y="310" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">Stud 10.0</text>
+<line x1="64" y1="328" x2="509.6" y2="328" stroke="#5f5e5a" stroke-width="0.6" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="286.8" y="346" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">Overall 49.6</text>
+<text x="40" y="374" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="500" fill="#1f1e1d" text-anchor="start">SurLok Plus SLPRATPSB</text>
+<text x="337" y="382" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">Panel face</text>
+<line x1="336.75" y1="386" x2="336.75" y2="636" stroke="#5f5e5a" stroke-width="0.6" stroke-dasharray="4 3"/>
+<rect x="170.25" y="488.6" width="9" height="46.8" fill="#D3D1C7" stroke="#5F5E5A" stroke-width="0.6"/>
+<polygon points="179.25,450.8 188.25,440 190.5,440 204,449 285,449 298.5,435.5 300.75,435.5 300.75,588.5 298.5,588.5 285,575 204,575 190.5,584 188.25,584 179.25,573.2" fill="#B4B2A9" stroke="#5F5E5A" stroke-width="0.6"/>
+<rect x="300.75" y="390.5" width="27" height="243" fill="#B4B2A9" stroke="#5F5E5A" stroke-width="0.6"/>
+<rect x="327.75" y="390.5" width="9" height="243" fill="#888780" stroke="#5F5E5A" stroke-width="0.6"/>
+<rect x="336.75" y="449" width="76.5" height="126" fill="#B4B2A9" stroke="#5F5E5A" stroke-width="0.6"/>
+<rect x="413.25" y="469.7" width="6.75" height="84.6" fill="#FAC775" stroke="#854F0B" stroke-width="0.6"/>
+<rect x="420" y="485" width="89.55" height="54" fill="#FAC775" stroke="#854F0B" stroke-width="0.6"/>
+<path d="M429 485V539M438 485V539M447 485V539M456 485V539M465 485V539M474 485V539M483 485V539M492 485V539M501 485V539" stroke="#854F0B" stroke-width="0.6" fill="none"/>
+<path d="M170.25 539V658M179.25 577V658M300.75 637V658M509.55 543V658M170.25 680V692M509.55 680V692" stroke="#5f5e5a" stroke-width="0.6" fill="none"/>
+<line x1="179.6" y1="650" x2="300.4" y2="650" stroke="#5f5e5a" stroke-width="0.6" marker-start="url(#a)" marker-end="url(#a)"/>
+<line x1="301.1" y1="650" x2="336.4" y2="650" stroke="#5f5e5a" stroke-width="0.6" marker-start="url(#a)" marker-end="url(#a)"/>
+<line x1="337.1" y1="650" x2="419.6" y2="650" stroke="#5f5e5a" stroke-width="0.6" marker-start="url(#a)" marker-end="url(#a)"/>
+<line x1="420.4" y1="650" x2="509.2" y2="650" stroke="#5f5e5a" stroke-width="0.6" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="166" y="668" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="end">Cap 1.0</text>
+<text x="240" y="668" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">Front 13.5</text>
+<text x="318.75" y="668" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">4.0</text>
+<text x="378.4" y="668" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">Rear 9.25</text>
+<text x="464.8" y="668" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">Stud 9.95</text>
+<line x1="170.6" y1="686" x2="509.2" y2="686" stroke="#5f5e5a" stroke-width="0.6" marker-start="url(#a)" marker-end="url(#a)"/>
+<text x="340" y="704" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">Overall 37.7</text>
+<rect x="40" y="724" width="14" height="10" fill="#B4B2A9" stroke="#5F5E5A" stroke-width="0.6"/>
+<text x="60" y="733" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="start">Plastic</text>
+<rect x="120" y="724" width="14" height="10" fill="#888780" stroke="#5F5E5A" stroke-width="0.6"/>
+<text x="140" y="733" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="start">Seal or gasket</text>
+<rect x="240" y="724" width="14" height="10" fill="#FAC775" stroke="#854F0B" stroke-width="0.6"/>
+<text x="260" y="733" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="start">Metal (pin, stud, shoulder)</text>
+<text x="640" y="733" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="end">mm; 9 px = 1 mm</text>
+</svg>

@@ -55,12 +55,16 @@ AT13_HALF = 35.20 / 2  # panel seal half width
 # plug in plan, from the receptacle's axis (back, ahead in the cable direction, width) and its height above
 # the mating face.
 RECEPTACLES = {
-    # Amphenol SurLok Plus catalog IC-10, Gen 1.0, 5.7 mm (pp. 6, 7, 13); plug SLPPA25BSx.
+    # Amphenol SurLok Plus 5.7 mm, customer drawing C10-730187 rev. F (screw type) and Amphenol's customer
+    # STEP, from the SLPRATPSB product page (2026-11-02; before that, catalog IC-10 and an estimated stud);
+    # catalog IC-10 pp. 7, 13; plug SLPPA25BSx. The contact face is the back of the stud's hex shoulder.
     "surlok": {"name": "Amphenol SurLok Plus 5.7 mm (SLPRATPSR / SLPRATPSB)", "cutout": "SURLOK",
-               "depth": 36.7 - 16.5 - 1.0,      # IC-10 p. 6: contact face to panel face (B - A - C)
-               "stud": 7.7,                      # ESTIMATE in the library model; Amphenol publishes none
-               "flange": 27.0, "seal": 1.0, "flange_t": 2.5, "front": 1.0 + 16.5, "body_d": 14.0,
-               "panel_max": None, "stud_note": "the library's estimated 7.7 mm stud",
+               "depth": 8.5 + 0.75,             # drawing: 9.50 flange back to rear face, less the 1.0 gasket,
+                                                 # plus the STEP's 0.75 hex shoulder (IC-10's B - A - C, 19.2,
+                                                 # is the panel face to the stud tip)
+               "stud": 10.7 - 0.75,              # drawing: 10.70 REF from the rear face, less the shoulder
+               "flange": 27.0, "seal": 1.0, "flange_t": 3.0, "front": 1.0 + 16.5, "body_d": 14.0,
+               "panel_max": None, "stud_note": "its 9.95 mm stud (drawing)",
                "plug": {"name": "SLPPA25BSx", "width": 18.0, "back": 9.0, "ahead": 55.1 - 9.0, "height": 22.6}},
     # Amphenol RADLOK 5.7 mm feed-through RL9057-101-F1x (customer drawing "RADLOK Feed Thru Pin To Thread"
     # rev. K and Amphenol Tuchel's STEP, as measured in the DropOut library's model generator) and the

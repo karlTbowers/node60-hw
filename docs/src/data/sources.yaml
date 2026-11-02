@@ -101,6 +101,22 @@
   title: Amphenol SINE ATM13-2P-BMXX drawing rev. A2 and distributor observations (T1S connector, DEC-014)
   url: https://www.amphenol-sine.com/pdf/datasheet/ATM13-2P-BM04.pdf
   verified: 2026-10-25
+- id: S30
+  title: Amphenol SurLok Plus Series catalogue IC-10 (panel layout p. 13, receptacle dimensions p. 6)
+  url: https://amphenol-industrial.com/wp-content/uploads/amphenol/surlok-plus-series-ic-10.pdf
+  verified: 2026-11-02
+- id: S31
+  title: Amphenol SurLok Plus SLPRATPSB product page (customer drawing C10-730187 rev. F, a controlled document, and customer STEP; both archived privately and measured, not republished)
+  url: https://www.amphenol-industrial.de/en/products/xev-connectors/surlok/male-receptacle-1-pole-slpratpsb
+  verified: 2026-11-02
+- id: S32
+  title: Amphenol RADLOK RL9057-101-F1 product page (customer drawing "RADLOK Feed Thru Pin To Thread" rev. K and customer STEP)
+  url: https://www.amphenol-industrial.de/en/products/xev-connectors/radlok/male-receptacle-1-pole-rl9057101f1bk
+  verified: 2026-11-02
+- id: S33
+  title: Amphenol PowerLok / RADLOK / HC32 catalogue (RADLOK on PDF pp. 26-33)
+  url: https://www.amphenol-industrial.de/media/pages/downloads/ev/a8dde4ca91-1707818191/powerlok-radlok-hc32-katalog-en.pdf
+  verified: 2026-11-02
 - id: Z1
   title: Upstream Zephyr S32 SoC tree
   url: https://github.com/zephyrproject-rtos/zephyr/tree/main/soc/nxp/s32
