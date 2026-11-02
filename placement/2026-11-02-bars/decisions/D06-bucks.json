@@ -1,0 +1,38 @@
+{
+  "id": "D06",
+  "name": "Buck block",
+  "question": "Approve the two LMQ66430 buck cells (U302 3V3_MAIN, U303 1V5_CORE) as composed, with U303's feedback divider where it is?",
+  "board": "node60", "stage": "3 Blocks", "date": "2026-11-02",
+  "why_now": "Both bucks are placed from one cell, a KRT template seated from TI's Figure 8-34, so they are reviewed together: U303 is composed, U302 is the copy without a divider. The datasheet gives no numbers, only rules (input caps as close as possible to VIN and GND, a short and small switch node, the feedback divider close to FB and away from SW), so the measurements below are reported, not graded.\n\nOne thing differs from the figure. The figure puts the feedback divider on the FB side of the chip; here R304/R305 sit on the other side, 1.5 and 2.6 mm from the switch node (courtyard to pad). I tried to move them to the FB side and found no legal spot: the VCC cap C313, the 0R link R303 and test point TP303 fill it. Moving them means re-composing the cell's north side. An earlier report of 0.0 mm was a measuring bug in the skill (fixed).",
+  "facts": [
+    {"label": "Layout rules", "value": "input capacitors as close as possible to VIN and GND; VCC bypass close to VCC; feedback divider close to VOUT/FB, the FB trace kept away from the SW node; SW copper short and small; an inner ground plane; 2 oz outer copper recommended", "source": "TI LMQ66430-Q1 SNVSBV1F rev. F, 8.5.1, Figure 8-34"},
+    {"label": "HF input cap to pins (both bucks)", "value": "VIN pad 0.66 mm from pin 3, GND pad 1.66 mm from PGND pin 15; loop plan area 1.62 mm²", "source": "hot_loop.py on the candidate"},
+    {"label": "Inductor SW pad to SW pin 7 (both)", "value": "3.16 mm", "source": "hot_loop.py"},
+    {"label": "U303 feedback divider", "value": "R304 2.37 mm from FB pin 11, 1.5 mm from the switch node; R305 2.81 mm from FB, 2.55 mm from the switch node", "source": "hot_loop.py (courtyard-based, fixed 2026-11-02)"},
+    {"label": "Switch nodes to T1S", "value": "nearest 11.8 mm (U302 SW to J912's T1S_N), keep-away 10 mm", "source": "measured"},
+    {"label": "Fast route of the candidate", "value": "KRT blocking 0; board rules 0", "source": "judge_cand_a s7"}
+  ],
+  "options": [
+    {
+      "key": "A", "name": "As composed",
+      "summary": "Keep both cells as the template seats them. U303's divider stays north-west of the chip, 1.5 mm from the switch node at its nearest. When routing, run the FB trace from R304/R305 to pin 11 on B.Cu round the north of the chip, not past the SW pin, and keep the SW copper under the inductor as small as Figure 8-34 does.",
+      "images": [
+        {"path": "img/lmq_fig8-34_crop.png", "caption": "TI Figure 8-34: input caps left, inductor bottom right on SW, feedback divider (RFBB, RFBT, CFF) top right on VOUT/FB"},
+        {"path": "img/u303_B.png", "caption": "U303 (1V5_CORE), bottom side seen from above: L302 east on SW, R304/R305 north-west, with the FB ratsnest"},
+        {"path": "img/u302_B.png", "caption": "U302 (3V3_MAIN), the same cell without a divider (its FB pin is its output)"}
+      ],
+      "measures": [
+        {"label": "HF cap VIN pad to VIN pin", "value": "0.66 mm", "limit": "as close as possible", "status": "info"},
+        {"label": "HF cap GND pad to PGND pin", "value": "1.66 mm", "limit": "as close as possible", "status": "info"},
+        {"label": "Inductor SW pad to SW pin", "value": "3.16 mm", "limit": "short", "status": "info"},
+        {"label": "R304 from the switch node", "value": "1.5 mm", "limit": "away from SW", "status": "warn"},
+        {"label": "Parts inside the input loop", "value": "0", "limit": "0", "status": "pass"}
+      ],
+      "gains": ["Nothing moves; the hot loop matches the figure; the board fast-routes clean"],
+      "costs": ["U303's feedback divider is on the SW side, 1.5 mm from the switch node, not on the FB side as the figure has it: the FB trace must be routed away from SW, and the 1V5_CORE ripple should be checked on the first boards"]
+    }
+  ],
+  "recommendation": {"option": "A", "why": "The cell's hot loop, the part of a buck layout that matters most, matches the figure. The divider is a mild deviation that careful FB routing covers, and fixing it means re-composing the cell's north side and placing the board again. If you want it on the FB side anyway, answer B and I'll compose that version, measure it and bring it back on this page."},
+  "answer": "Reply with A, or B to have the divider moved to the FB side (re-composed and measured first).",
+  "sources": ["TI LMQ66430-Q1 datasheet SNVSBV1F rev. F, 8.5.1 and Figure 8-34", "switchers.json, hot_loop_candidate.json", "KRT template rows for U302/U303 in intent.json"]
+}
