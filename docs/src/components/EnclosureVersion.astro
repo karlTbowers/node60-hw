@@ -53,9 +53,10 @@ const captions: Record<string, string> = {
 		<tr><td>Fitting the boards</td><td>{g.assembly.fits ? g.assembly.steps.join('. ') + '.' : g.assembly.problems.join('. ') + '.'}</td></tr>
 		<tr><td>Lid</td><td>{g.lid_thickness ?? g.wall} mm{g.bosses?.length > 0 && `, with ${g.bosses.length} Ø${g.bosses[0].d} × ${f(g.bosses[0].z1 - g.bosses[0].z0)} mm M4 screw bosses underneath (four per receptacle)`}; walls and floor {g.wall} mm</td></tr>
 		<tr><td>Power terminals</td><td>{t.name}</td></tr>
-		<tr><td>SurLok stud into the terminal</td><td>{f(t.stud_engagement)} of {t.thread} mm of thread, with the library's estimated {g.parts.SURLOK.stud} mm stud</td></tr>
+		<tr><td>Receptacles</td><td>{g.parts.receptacle.name}, plugs {g.parts.receptacle.plug.name}</td></tr>
+		<tr><td>Stud into the terminal</td><td>{f(t.stud_engagement)} of {t.thread} mm of thread, with {g.parts.receptacle.stud_note}{t.stud_tip < t.z0 && `; it passes through the terminal and ends ${f(t.stud_floor_clear)} mm above the floor`}</td></tr>
 		<tr><td>Busbars</td><td>{g.busbars.length ? `${g.parts.busbar.stock}, on ${t.kind === 'pressfit' ? 'the press-fit blocks' : 'the board'}` : 'none'}</td></tr>
-		<tr><td>SurLok plugs</td><td>{g.cutouts.find((c: any) => c.type === 'SURLOK').plug_dirs.length === 3 ? 'west, north or east' : 'outward (west or east) or north'}: {g.plug_check.combinations} combinations, {g.plug_check.failures} failing; tightest {g.plug_check.tightest} mm ({g.plug_check.where})</td></tr>
+		<tr><td>Plugs</td><td>{g.cutouts.find((c: any) => c.plug_dirs).plug_dirs.length === 3 ? 'west, north or east' : 'outward (west or east) or north'}: {g.plug_check.combinations} combinations, {g.plug_check.failures} failing; tightest {g.plug_check.tightest} mm ({g.plug_check.where})</td></tr>
 	</tbody>
 </table>
 

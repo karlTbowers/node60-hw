@@ -23,7 +23,7 @@ import math
 import sys
 from pathlib import Path
 
-ENGINE_VERSION = "1.5"           # bump when the spec format changes (1.1: raised lid regions; 1.2: board notches, more boards; 1.3: panels; 1.4: bosses; 1.5: seats)
+ENGINE_VERSION = "1.6"           # bump when the spec format changes (1.1: raised lid regions; 1.2: board notches, more boards; 1.3: panels; 1.4: bosses; 1.5: seats; 1.6: key notches on round cutouts)
 FONT = 12                        # px
 SCALE = 2.6                      # px per mm for the face views; details use DETAIL_SCALE
 DETAIL_SCALE = 6.0
@@ -337,9 +337,23 @@ class View:
             self.svg.add(f'<text class="t" x="{x - 9:.2f}" y="{t + 4:.2f}" text-anchor="end">{fmt(v) if i else "0"}</text>')
 
 
+def round_outline(t):
+    """A round cutout with two key notches along u (notches: [width, across]), as polygon points."""
+    r, (w, across) = t["d"] / 2, t["notches"]
+    a0 = math.asin(w / 2 / r)
+    arc = lambda a1, a2: [(r * math.cos(a1 + (a2 - a1) * i / 24), r * math.sin(a1 + (a2 - a1) * i / 24))
+                          for i in range(25)]
+    return ([(across / 2, -w / 2), (across / 2, w / 2)] + arc(a0, math.pi - a0)
+            + [(-across / 2, w / 2), (-across / 2, -w / 2)] + arc(math.pi + a0, 2 * math.pi - a0))
+
+
 def draw_cutout(v, t, u0, v0, c=None, holes=True):
     if t["shape"] == "round":
-        v.circle(u0, v0, t["d"])
+        if t.get("notches"):
+            pts = round_outline(t)
+            v.poly([(u0 + a, v0 + b) for a, b in pts], [0.0] * len(pts), "c")
+        else:
+            v.circle(u0, v0, t["d"])
         if t.get("screw_square"):
             h = t["screw_square"] / 2
             for su in (-1, 1):
@@ -500,6 +514,9 @@ def details_view(s, out):
             if t.get("flange"):
                 note.append(f'flange {fmt(t["flange"])} sq (dashed)')
             v.text(0, -(t.get("flange", t["d"]) / 2) - 5, "; ".join(note), "l")
+            if t.get("notches"):          # a second line: the first is as wide as the column allows
+                v.text(0, -(t.get("flange", t["d"]) / 2) - 5 - 14 / DETAIL_SCALE,
+                       f'two {fmt(t["notches"][0])} key notches, {fmt(t["notches"][1])} across', "l")
             continue
         pts, _ = outline(t)
         top_v = max(p[1] for p in pts)

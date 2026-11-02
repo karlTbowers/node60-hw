@@ -90,7 +90,7 @@ p { margin: 0; font-size: 13px; line-height: 1.45; }
       <p class="sub" id="summary"></p>
     </div>
     <div>
-      <h2>SurLok plug directions</h2>
+      <h2>Plug directions</h2>
       <div class="plugs" id="plugs"></div>
       <div class="presets" id="presets"></div>
       <div class="status" id="status" role="status"></div>
@@ -108,8 +108,8 @@ p { margin: 0; font-size: 13px; line-height: 1.45; }
       <h2>Busbars</h2>
       <dl id="bars"></dl>
     </div>
-    <div class="note"><b>SurLok stud length is not confirmed.</b> Amphenol publishes none; the engagement figures use the library's 7.7 mm estimate. Get the real length before choosing a version.</div>
-    <p style="color:var(--muted)">Twelve candidate versions, all generated from the same connector placement as the PCB and the dimensioned drawings (Enclosure options pages). Plug and receptacle envelopes from the SurLok Plus catalog (IC-10, Gen 1.0, 5.7 mm); header heights from Amphenol's STEP models; shapes inside the envelopes are estimates.</p>
+    <div class="note"><b>SurLok stud length is not confirmed.</b> Amphenol publishes none; the SurLok versions' engagement figures use the library's 7.7 mm estimate. Get the real length before choosing a version. (Version 13's RADLOK stud is 10 mm on Amphenol's drawing.)</div>
+    <p style="color:var(--muted)">Thirteen candidate versions, all generated from the same connector placement as the PCB and the dimensioned drawings (Enclosure options pages). Plug and receptacle envelopes from the SurLok Plus catalog (IC-10, Gen 1.0, 5.7 mm) and, for version 13, Amphenol's RADLOK drawings and STEPs; header heights from Amphenol's STEP models; shapes inside the envelopes are estimates.</p>
   </aside>
 </div>
 
@@ -154,7 +154,7 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
   };
   const box = (w, h, d, m, x, y, z) => { const b = new THREE.Mesh(new THREE.BoxGeometry(w, h, d), m); b.position.set(x, y, z); return b; };
   const cyl = (r, h, m, x, y, z) => { const c = new THREE.Mesh(new THREE.CylinderGeometry(r, r, h, 40), m); c.position.set(x, y, z); return c; };
-  const GASKET = 1.0, FLANGE_T = 2.5, FRONT_A = 16.5, FLANGE = 27, CLEAR = 3, FLANGE_CLEAR = 2, CABLE_D = 11, CABLE_RUN = 150, CABLE_CLEAR = 2;
+  const CLEAR = 3, FLANGE_CLEAR = 2, CABLE_D = 11, CABLE_RUN = 150, CABLE_CLEAR = 2;
   const HEADERS = {     // body sizes; heights, axes and flange faces come from the geometry
     AT13: { w: 35.2, back: 6.1, reach: 30.1, sw: 24, sh: 20, m: M.at13 },
     ATM13: { w: 36.8, back: 10.25, reach: 29.4, sw: 16.6, sh: 16.2, m: M.atm },
@@ -173,10 +173,9 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
     mainG = new THREE.Group(); mcuG = new THREE.Group(); root.add(mainG, mcuG);
     const OX = G.outside.x, OY = G.outside.y, W = G.wall, B = G.board, up = B.component_side === 'top';
     const P = (x, y) => [x - OX / 2, OY / 2 - y];
-    const SUR = G.parts.SURLOK, CONTACT = SUR.contact_z;
-    const TOP = G.outside.z, LOW = SUR.panel_z ?? TOP;   // lid's (low) outer face; receptacle panel face (a seat in a flat lid)
-    const FLANGE_TOP = LOW + GASKET + FLANGE_T, MATING = LOW + GASKET + FRONT_A;
-    const [PLUG_W, PLUG_L, PLUG_H] = SUR.plug;
+    const REC = G.parts.receptacle, CONTACT = REC.contact_z, PL = REC.plug;
+    const TOP = G.outside.z, LOW = REC.panel_z ?? TOP;   // lid's (low) outer face; receptacle panel face (in a seat if the lid is thicker)
+    const FLANGE_TOP = LOW + REC.seal + REC.flange_t, MATING = LOW + REC.front;
     const span = (x0, x1, y0, y1, z0, z1, m) => {
       const [a, b] = P((x0 + x1) / 2, (y0 + y1) / 2);
       return box(Math.abs(x1 - x0), z1 - z0, Math.abs(y1 - y0), m, a, (z0 + z1) / 2, b);
@@ -241,11 +240,11 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
       tag(`${c.ref} ${c.label}`, [x, base + (up ? 1 : -1) * (G.parts[bt].height + 4), z], onMcu ? 'mcu' : 'main');
     }
 
-    // Power: terminal, SurLok receptacle on the busbar (or the board), plug.
+    // Power: terminal, receptacle (SurLok Plus or RADLOK) on the busbar (or the board), plug.
     lid = new THREE.Group(); root.add(lid);
     plugs = new THREE.Group(); lid.add(plugs);
     const T = G.terminal;
-    TERMS = G.cutouts.filter(c => c.type === 'SURLOK').map(c => ({ ...c, dir: 'N' }));   // the rail sets each to outward
+    TERMS = G.cutouts.filter(c => c.plug_dirs).map(c => ({ ...c, dir: 'N' }));   // the rail sets each to outward
     for (const t of TERMS) {
       const [x, z] = P(t.x, t.y), bat = t.label === 'VBAT_IN';
       if (T.kind === 'pressfit') mainG.add(box(10, T.z1 - T.z0, 10, M.brass, x, (T.z0 + T.z1) / 2, z));
@@ -253,21 +252,38 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
         mainG.add(cyl(6, T.z1 - T.z0, M.brass, x, (T.z0 + T.z1) / 2, z));       // Ø12 flange on the far face
         mainG.add(cyl(4.5, T.thread_top - B.z0, M.brass, x, (B.z0 + T.thread_top) / 2, z));   // spigot through the board, proud of a thin one
       }
-      lid.add(cyl(3, SUR.stud, M.stud, x, CONTACT - SUR.stud / 2, z));         // M6 stud (length estimated), on the receptacle
-      lid.add(cyl(7, LOW - CONTACT, bat ? M.red : M.black, x, (LOW + CONTACT) / 2, z));
-      lid.add(box(FLANGE, GASKET, FLANGE, M.gasket, x, LOW + GASKET / 2, z));
-      lid.add(box(FLANGE, FLANGE_T, FLANGE, bat ? M.red : M.black, x, LOW + GASKET + FLANGE_T / 2, z));
-      lid.add(cyl(8.5, MATING - FLANGE_TOP, bat ? M.red : M.black, x, (MATING + FLANGE_TOP) / 2, z));
-      const g = new THREE.Group(); g.position.set(x, FLANGE_TOP + 0.5, z);
-      const pm = bat ? M.redPlug : M.blackPlug, reach = PLUG_L - PLUG_W / 2;
-      g.add(cyl(PLUG_W / 2, PLUG_H, pm, 0, PLUG_H / 2, 0));
-      g.add(box(26, PLUG_W, PLUG_W, pm, 13, PLUG_H - PLUG_W / 2, 0));
-      const shell = new THREE.Mesh(new THREE.CylinderGeometry(7.5, 7.5, reach - 26, 32), pm);
-      shell.rotation.z = Math.PI / 2; shell.position.set(26 + (reach - 26) / 2, PLUG_H - PLUG_W / 2, 0); g.add(shell);
+      lid.add(cyl(3, REC.stud, M.stud, x, CONTACT - REC.stud / 2, z));         // M6 stud, on the receptacle
+      lid.add(cyl(REC.body_d / 2, LOW - CONTACT, bat ? M.red : M.black, x, (LOW + CONTACT) / 2, z));
+      lid.add(box(REC.flange, REC.seal, REC.flange, M.gasket, x, LOW + REC.seal / 2, z));
+      lid.add(box(REC.flange, REC.flange_t, REC.flange, bat ? M.red : M.black, x, LOW + REC.seal + REC.flange_t / 2, z));
+      const radlok = REC.kind === 'radlok';
+      lid.add(cyl(radlok ? 7.5 : 8.5, MATING - FLANGE_TOP, bat ? M.red : M.black, x, (MATING + FLANGE_TOP) / 2, z));
+      const g = new THREE.Group(), pm = bat ? M.redPlug : M.blackPlug;
       const cable = new THREE.Mesh(new THREE.CylinderGeometry(CABLE_D / 2, CABLE_D / 2, 30, 24), mat(0x30343a));
-      cable.rotation.z = Math.PI / 2; cable.position.set(reach + 15, PLUG_H - PLUG_W / 2, 0); g.add(cable);
+      cable.rotation.z = Math.PI / 2;
+      let plugTop;
+      if (radlok) {                        // RL00571: housing on the tube's end, collar, tubular barrel (drawing rev. L, STEP)
+        g.position.set(x, MATING, z);
+        const front = -PL.back, col = front + 33.0, axis = 15.25 - 9.4;
+        g.add(box(col - 1.25 - front, 21.9 - 9.4, PL.width, pm, (front + col - 1.25) / 2, (21.9 - 9.4) / 2, 0));
+        g.add(box(1.25, PL.height, 17.3, pm, col - 0.625, PL.height / 2, 0));
+        const barrel = new THREE.Mesh(new THREE.CylinderGeometry(4.75, 4.75, PL.ahead - col, 32), M.brass);
+        barrel.rotation.z = Math.PI / 2; barrel.position.set((col + PL.ahead) / 2, axis, 0); g.add(barrel);
+        cable.position.set(PL.ahead + 15, axis, 0);
+        plugTop = MATING + PL.height;
+      } else {                             // SurLok Plus SLPPA25BSx: round head on the axis, arm, shell
+        g.position.set(x, FLANGE_TOP + 0.5, z);
+        const PW = PL.width, PH = PL.height, reach = PL.ahead;
+        g.add(cyl(PW / 2, PH, pm, 0, PH / 2, 0));
+        g.add(box(26, PW, PW, pm, 13, PH - PW / 2, 0));
+        const shell = new THREE.Mesh(new THREE.CylinderGeometry(7.5, 7.5, reach - 26, 32), pm);
+        shell.rotation.z = Math.PI / 2; shell.position.set(26 + (reach - 26) / 2, PH - PW / 2, 0); g.add(shell);
+        cable.position.set(reach + 15, PH - PW / 2, 0);
+        plugTop = FLANGE_TOP + 0.5 + PH;
+      }
+      g.add(cable);                        // after the three plug bodies, which turn red on a clash
       plugs.add(g); t.plug = g;
-      tag(`${t.ref} ${t.label}`, [x, FLANGE_TOP + PLUG_H + 8, z], 'lid');
+      tag(`${t.ref} ${t.label}`, [x, plugTop + 8, z], 'lid');
     }
 
     // Enclosure: stepped outer walls, a low lid with receptacle holes, and the raised sections.
@@ -311,23 +327,24 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
         const se = SEATS.find(q => q.for === t.ref), p = new THREE.Path();
         if (se) {                         // a square pocket down to the seat
           const h = se.w / 2; p.moveTo(t.x - h, t.y - h); p.lineTo(t.x - h, t.y + h); p.lineTo(t.x + h, t.y + h); p.lineTo(t.x + h, t.y - h); p.closePath();
-        } else p.absarc(t.x, t.y, 7.15, 0, Math.PI * 2, true);
+        } else p.absarc(t.x, t.y, G.cutout_types[t.type].d / 2, 0, Math.PI * 2, true);
         sh.holes.push(p);
       }
       const m = new THREE.Mesh(new THREE.ExtrudeGeometry(sh, { depth: LT, bevelEnabled: false }), M.lid);
       m.rotation.x = -Math.PI / 2; m.position.set(-OX / 2, TOP - LT, OY / 2); lid.add(m);
     }
-    for (const se of SEATS) {             // seat floor (LT thick, receptacle hole) and the pocket's walls
-      const h = se.w / 2, sh = new THREE.Shape(), hole = new THREE.Path();
+    for (const se of SEATS) {             // seat floor (se.floor thick, receptacle hole) and the pocket's walls
+      const h = se.w / 2, sh = new THREE.Shape(), hole = new THREE.Path(), fl = se.floor ?? LT;
+      const t = TERMS.find(q => q.ref === se.for);
       sh.moveTo(se.x - h, se.y - h); sh.lineTo(se.x + h, se.y - h); sh.lineTo(se.x + h, se.y + h); sh.lineTo(se.x - h, se.y + h); sh.closePath();
-      hole.absarc(se.x, se.y, 7.15, 0, Math.PI * 2, true); sh.holes.push(hole);
-      const m = new THREE.Mesh(new THREE.ExtrudeGeometry(sh, { depth: LT, bevelEnabled: false }), M.lid);
-      m.rotation.x = -Math.PI / 2; m.position.set(-OX / 2, se.z - LT, OY / 2); lid.add(m);
-      const t2 = 2;                        // pocket wall, standing on the seat's thickened underside
-      lid.add(span(se.x - h - t2, se.x + h + t2, se.y - h - t2, se.y - h, se.z - LT, TOP, M.lid));
-      lid.add(span(se.x - h - t2, se.x + h + t2, se.y + h, se.y + h + t2, se.z - LT, TOP, M.lid));
-      lid.add(span(se.x - h - t2, se.x - h, se.y - h, se.y + h, se.z - LT, TOP, M.lid));
-      lid.add(span(se.x + h, se.x + h + t2, se.y - h, se.y + h, se.z - LT, TOP, M.lid));
+      hole.absarc(se.x, se.y, G.cutout_types[t.type].d / 2, 0, Math.PI * 2, true); sh.holes.push(hole);
+      const m = new THREE.Mesh(new THREE.ExtrudeGeometry(sh, { depth: fl, bevelEnabled: false }), M.lid);
+      m.rotation.x = -Math.PI / 2; m.position.set(-OX / 2, se.z - fl, OY / 2); lid.add(m);
+      const t2 = 2;                        // pocket wall, standing on the seat's underside
+      lid.add(span(se.x - h - t2, se.x + h + t2, se.y - h - t2, se.y - h, se.z - fl, TOP, M.lid));
+      lid.add(span(se.x - h - t2, se.x + h + t2, se.y + h, se.y + h + t2, se.z - fl, TOP, M.lid));
+      lid.add(span(se.x - h - t2, se.x - h, se.y - h, se.y + h, se.z - fl, TOP, M.lid));
+      lid.add(span(se.x + h, se.x + h + t2, se.y - h, se.y + h, se.z - fl, TOP, M.lid));
     }
     for (const rr of G.raised) {
       lid.add(span(rr.x0, rr.x1, rr.y0, rr.y1, rr.z - LT, rr.z, M.lid));
@@ -389,16 +406,16 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
 
   // Plug clearance in the lid plane (same rules as scripts/check_surlok_clearance.py).
   function plugBox(t, d) {
-    const [PW, PL] = G.parts.SURLOK.plug, [dx, dy] = DIRS[d], back = PW / 2, ahead = PL - PW / 2, h = PW / 2;
+    const p = G.parts.receptacle.plug, [dx, dy] = DIRS[d], back = p.back, ahead = p.ahead, h = p.width / 2;
     if (dx) { const [a, b] = [t.x - dx * back, t.x + dx * ahead].sort((p, q) => p - q); return [a, t.y - h, b, t.y + h]; }
     const [a, b] = [t.y - dy * back, t.y + dy * ahead].sort((p, q) => p - q); return [t.x - h, a, t.x + h, b];
   }
   function cableBox(t, d) {
-    const [PW, PL] = G.parts.SURLOK.plug, [dx, dy] = DIRS[d], s = PL - PW / 2, h = CABLE_D / 2;
+    const [dx, dy] = DIRS[d], s = G.parts.receptacle.plug.ahead, h = CABLE_D / 2;
     if (dx) { const [a, b] = [t.x + dx * s, t.x + dx * (s + CABLE_RUN)].sort((p, q) => p - q); return [a, t.y - h, b, t.y + h]; }
     const [a, b] = [t.y + dy * s, t.y + dy * (s + CABLE_RUN)].sort((p, q) => p - q); return [t.x - h, a, t.x + h, b];
   }
-  const flangeBox = t => [t.x - FLANGE / 2, t.y - FLANGE / 2, t.x + FLANGE / 2, t.y + FLANGE / 2];
+  const flangeBox = t => { const F = G.parts.receptacle.flange; return [t.x - F / 2, t.y - F / 2, t.x + F / 2, t.y + F / 2]; };
   const gap = (a, b) => Math.max(Math.max(a[0] - b[2], b[0] - a[2]), Math.max(a[1] - b[3], b[1] - a[3]));
   function check(dirs) {
     let worst = { g: Infinity, what: '' }; const bad = new Set();
@@ -466,7 +483,9 @@ const INDEX = /*ENCLOSURE_VERSIONS_JSON*/null;
         ((G.seats || []).length ? `; receptacles in ${f2(G.seats[0].w)} mm square seats ${f2(G.seats[0].depth)} mm deep` : '')],
       ['PCB', `${f2(B.x1 - B.x0)} × ${f2(B.y1 - B.y0)} × ${f2(B.z1 - B.z0)} mm${(B.notches || []).length ? ', notched' : ''}, component side ${B.component_side === 'top' ? 'up' : 'down'}`],
       ...(G.boards || []).map(b => [b.label, `${f2(b.x1 - b.x0)} × ${f2(b.y1 - b.y0)} × ${f2(b.z1 - b.z0)} mm, ${f2(B.z0 - b.z1)} mm below`]),
-      ['Terminals', `${G.terminal.name}; stud into thread ${f2(G.terminal.stud_engagement)} of ${G.terminal.thread} mm`],
+      ['Receptacles', `${G.parts.receptacle.name}, plugs ${G.parts.receptacle.plug.name}`],
+      ['Terminals', `${G.terminal.name}; stud into thread ${f2(G.terminal.stud_engagement)} of ${G.terminal.thread} mm` +
+        (G.terminal.stud_tip < G.terminal.z0 ? `; the stud passes through it, ${f2(G.terminal.stud_floor_clear)} mm above the floor` : '')],
       ['Walls', `${f2(W)} mm; lid ${f2(G.lid_thickness ?? W)} mm` + ((G.bosses || []).length ? `, with Ø${f2(G.bosses[0].d)} × ${f2(G.bosses[0].z1 - G.bosses[0].z0)} mm M4 bosses under each receptacle` : '')],
     ]);
     const asmList = document.getElementById('asm'), A = G.assembly;

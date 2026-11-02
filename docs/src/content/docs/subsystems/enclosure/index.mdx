@@ -1,6 +1,6 @@
 ---
 title: Enclosure options
-description: Twelve candidate mechanical designs for the Node60 enclosure, each with a generated dimensioned drawing, a 3D mockup and a SurLok plug check.
+description: Thirteen candidate mechanical designs for the Node60 enclosure, each with a generated dimensioned drawing, a 3D mockup and a power plug check.
 ---
 
 import { Aside } from '@astrojs/starlight/components';
@@ -20,7 +20,7 @@ export const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 <table>
 	<thead>
-		<tr><th>Version</th><th>Board</th><th>Outputs</th><th>Power terminals</th><th>Busbars</th><th>Lid</th><th>T1S</th><th>PCB (mm)</th><th>Outside (mm)</th><th>Stud into terminal</th><th>SurLok plugs</th><th>Fitting the board</th></tr>
+		<tr><th>Version</th><th>Board</th><th>Outputs</th><th>Power terminals</th><th>Busbars</th><th>Lid</th><th>T1S</th><th>PCB (mm)</th><th>Outside (mm)</th><th>Stud into terminal</th><th>Power plugs</th><th>Fitting the board</th></tr>
 	</thead>
 	<tbody>
 		{Object.entries(idx.versions).map(([id, g]) => (
@@ -28,14 +28,14 @@ export const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 				<td><a href={`./${id}/`}>{g.version.title.split(':')[0]}</a>{g.version.current && ' (on the PCB)'}</td>
 				<td>{g.board.component_side === 'top' ? 'up' : 'down'}{g.boards.length > 0 && ', MCU board below'}</td>
 				<td>{outs(g)}</td>
-				<td>{g.terminal.kind === 'smt' ? 'SMT 74660016R' : 'press-fit 786202106'}</td>
+				<td>{g.terminal.kind === 'smt' ? 'SMT 74660016R' : 'press-fit 786202106'}{g.parts.receptacle.kind === 'radlok' ? ', RADLOK receptacles' : ''}</td>
 				<td>{g.busbars.length ? (g.terminal.kind === 'pressfit' ? 'on the blocks' : g.terminal.thread_top > g.board.z1 + 0.01 ? 'on the spigots' : 'on the board') : 'none'}</td>
 				<td>{lid(g)}{g.raised.length > 0 && `, ${f(top(g) - g.outside.z)} mm step`}</td>
 				<td>{t1s(g)}</td>
 				<td>{f(g.board.x1 - g.board.x0)} × {f(g.board.y1 - g.board.y0)} × {f(g.board.z1 - g.board.z0)}{g.board.notches.length > 0 && ', notched'}{g.boards.map((b) => `; ${b.label} ${f(b.x1 - b.x0)} × ${f(b.y1 - b.y0)} × ${f(b.z1 - b.z0)}`).join('')}</td>
 				<td>{f(g.outside.x)} × {f(g.outside.y)} × {f(top(g))}</td>
 				<td>{f(g.terminal.stud_engagement)} of {g.terminal.thread} mm</td>
-				<td>{g.cutouts.find((c) => c.type === 'SURLOK').plug_dirs.length === 3 ? 'W, N, E' : 'out, N'}; {g.plug_check.failures ? `${g.plug_check.failures} failing` : `all ${g.plug_check.combinations} clear`}, tightest {g.plug_check.tightest} mm</td>
+				<td>{g.cutouts.find((c) => c.plug_dirs).plug_dirs.length === 3 ? 'W, N, E' : 'out, N'}; {g.plug_check.failures ? `${g.plug_check.failures} failing` : `all ${g.plug_check.combinations} clear`}, tightest {g.plug_check.tightest} mm</td>
 				<td>{!g.assembly.fits ? 'needs a split case' : g.removable.length ? 'removable north panel' : 'one board at a time'}</td>
 			</tr>
 		))}
@@ -75,9 +75,15 @@ export const base = import.meta.env.BASE_URL.replace(/\/$/, '');
   - **Open:** Würth's pages give no board thickness for the 74660016R. Confirm with Würth that the spigot may stand 0.6 mm proud of a 2.0 mm board.
 - **Version 11**: version 9 (version 7, compact) on version 10's 2.0 mm board (2026-11-01), a candidate only. The plan is version 9's: a **230 × 110 mm** board, outputs at a 37.3 mm pitch, the T1S pair 39 mm apart, and plugs pointing west or east allowed to overhang the side walls. The heights are version 10's: the busbar rests on the REDCUBE spigots 0.6 mm above the board, and the front band and T1S hood are 0.6 mm lower (43.5 mm overall). Outside, 237.7 × 117 × 43.5 mm. Version 9's limits and version 10's open point (Würth's OK for the proud spigot) both apply.
 - **Version 12**: version 11 on a 1.6 mm board instead of 2.0 mm (2026-11-01), a candidate only. The plan is version 9's (**230 × 110 mm**). The REDCUBE's 2.6 mm spigot stands 1.0 mm proud and the busbar rests on it, so the receptacles, the low lid and the stud engagement stay as in versions 9 to 11. The front band and T1S hood are 1.0 mm lower than version 9's: a 10.1 mm step and 43.1 mm overall; parts under the low lid get 19.4 mm. The header pin tails come through 1.1 to 1.9 mm. Open, beyond version 10's (Würth's OK for a spigot standing 1.0 mm proud): the board is about half as stiff as a 2.0 mm one (stiffness goes with the cube of the thickness), under the headers' and busbars' weight in vibration.
+- **Version 13**: version 11 with Amphenol **RADLOK** 5.7 mm receptacles instead of SurLok Plus (2026-11-01), a candidate only: feed-throughs RL9057-101-F1RE (battery, red) and RL9057-101-F1 (return, black), with right-angle plugs RL00571-25RE and -25BK for 25 mm² cable, all 120 A, 1000 V, −40 to +125 °C, IP67. All four were in stock at Mouser on 2026-11-01 (647 to 812); DigiKey had none of the RL00571-25BK. The plan is version 11's, except the battery receptacles sit 53.5 mm from the centre line instead of 53.
+  - **Lower on the busbar:** the receptacle's panel face is 14.2 mm above its contact face (drawing: 24.2 to the stud tip less the 10 mm stud; Amphenol's STEP gives 13.35), against SurLok's 19.2. Confirm on a sample: the stud seats the receptacle on the busbar and the flange screws seat it on the lid, so the lid has to be at this height within the seal's give.
+  - **A 3 mm panel at most:** the keys in the Ø14.7 hole are that long. The 4 mm lid has a 29 mm square seat 1 mm deep machined into its top at each receptacle, so the receptacle mounts on 3 mm. The M4 screws still get the Ø8 × 4 mm bosses (7 mm of thread). The keys stop the housing turning in the lid, so the stud has to be tightened (4.0 N·m on the drawing) some other way; the pin has a hex at the bottom of the receptacle's tube, which suggests it turns inside the housing. Confirm how Amphenol means it to be fitted.
+  - **A longer stud:** 10 mm (drawing), against SurLok's estimated 7.7. It takes the REDCUBE's whole 5.6 mm thread and comes out 1.2 mm below it, so the board sits 6.2 mm off the floor instead of 5, keeping the stud tip 2 mm above the floor.
+  - **Heights:** the low lid is lower (30.2 mm outside, with 15.0 mm under it above the board, against version 11's 19.0; the tallest part on the board is the 5.6 mm debug header), but the band and hood are 1.2 mm higher because the board is: 44.7 mm overall, a 14.5 mm step.
+  - **Plugs:** the RADLOK plug is shorter (37.25 mm ahead of the axis against 46.1) and 0.5 mm wider (18.5). The wider plug moved the battery receptacles 0.5 mm out to keep a north plug 3 mm from the T1S hood. All 16 directions clear; the tightest is 3.2 mm (a battery plug pointing north to the return flange).
 
 <Aside type="caution" title="SurLok stud length">
-Amphenol doesn't publish the M6 stud's length; every engagement figure here uses the library model's estimate of 7.7 mm. In versions 2–12 the 3.175 mm busbar uses up part of the stud before it reaches the terminal's thread. Get the real length before choosing.
+Amphenol doesn't publish the SurLok M6 stud's length; every SurLok engagement figure here uses the library model's estimate of 7.7 mm. In versions 2–12 the 3.175 mm busbar uses up part of the stud before it reaches the terminal's thread. Get the real length before choosing.
 </Aside>
 
 ## Sources and assumptions (all versions)
@@ -88,5 +94,6 @@ Amphenol doesn't publish the M6 stud's length; every engagement figure here uses
 - **AT13 cutout:** Amphenol drawing C-AT13-2P-BMXX rev. A2, "recommended panel cutout"; the mating axis is 13.8 mm from the board.
 - **ATM13 cutout:** Amphenol drawing ATM13-2P-BMXX rev. A2. The 15.0 mm axis is measured from Amphenol's STEP model; the drawing gives no height.
 - **SurLok Plus:** catalog IC-10, p. 13 (panel layout) and p. 6: the contact face is 19.2 mm from the panel face.
+- **RADLOK (version 13):** Amphenol's customer drawings "RADLOK Feed Thru Pin To Thread" rev. K and "Tubular Lug Version" rev. L, and the STEPs measured for the DropOut library's models (`enclosure_geometry.RECEPTACLES`).
 - **Terminals:** Würth 74660016R (SMT, 2.6 mm spigot, 5.6 mm through thread; flush on a 2.6 mm board, 0.6 mm proud of version 10's 2.0 mm one) and 786202106 (press-fit, 10.5 mm block, 6.0 mm blind thread).
-- **Assumed:** 3 mm walls and floor, machined from solid aluminium. A 4 mm lid (2026-10-31), with an Ø8 × 4 mm boss under each SurLok receptacle's four M4 holes, so the threads get 8 mm of material; the bosses stay 1.6 mm clear of the Ø14.3 receptacle hole. The low lid's outer face is set by the receptacles, so the thicker lid costs 1 mm of headroom inside (18.4 mm above the board) and raises the raised sections' tops by 1 mm. Amphenol gives no panel-thickness limit for the receptacle (catalog IC-10, assembly instructions AI-9): its tail passes through the Ø14.3 hole and it seals under its flange. With the board up: 8 mm from the floor to the board; 5 mm in versions 2, 4, 7 and 9 to 12 (2026-10-31), where only 3 mm hangs under the board (the SMT REDCUBE bodies or the press-fit pins), leaving 2 mm. With it down: 3 mm under the deepest header. 3 mm between a header and a raised section; 1 mm above the headers in versions 2, 7 and 9 to 12 (2026-10-31), which makes their step over the low lid 11.1 mm (44.1 mm tall). Busbars are 1/8" × 1" C110 copper flat bar, cut and drilled in house.
+- **Assumed:** 3 mm walls and floor, machined from solid aluminium. A 4 mm lid (2026-10-31), with an Ø8 × 4 mm boss under each SurLok receptacle's four M4 holes, so the threads get 8 mm of material; the bosses stay 1.6 mm clear of the Ø14.3 receptacle hole. The low lid's outer face is set by the receptacles, so the thicker lid costs 1 mm of headroom inside (18.4 mm above the board) and raises the raised sections' tops by 1 mm. Amphenol gives no panel-thickness limit for the receptacle (catalog IC-10, assembly instructions AI-9): its tail passes through the Ø14.3 hole and it seals under its flange. With the board up: 8 mm from the floor to the board; 5 mm in versions 2, 4, 7 and 9 to 12 (2026-10-31), 6.2 mm in version 13 (its stud), where only 3 mm hangs under the board (the SMT REDCUBE bodies or the press-fit pins), leaving 2 mm. With it down: 3 mm under the deepest header. 3 mm between a header and a raised section; 1 mm above the headers in versions 2, 7 and 9 to 13 (2026-10-31), which makes their step over the low lid 11.1 mm (44.1 mm tall). Busbars are 1/8" × 1" C110 copper flat bar, cut and drilled in house.
