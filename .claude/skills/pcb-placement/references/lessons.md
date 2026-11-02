@@ -104,3 +104,26 @@ The run reported it as touching the switch node before the number was checked.
 
 **What the skill does.** Footprints are measured by their courtyard (their pads when they have none);
 a surprising number is checked against the courtyard or pad geometry before it reaches a page.
+
+## A one-net difference between two placements is noise until reachability says otherwise
+
+**What happened (2026-11-02).** Three judging routes of nearly the same placement each left one
+different net open at U501 (T1S_REFCLK, T1S_IRQ_L, T1S_MODE0). A swap of R503 with a strap resistor
+was made to fix REFCLK and judged on one route; REFCLK stayed open and MODE0 opened instead. KRT's
+`check_reachability` then read PASSABLE (0.3 mm margin) on every one of those pins: the router
+lost them, not the placement.
+
+**What the skill does.** Before a block change is made for an open net, run `check_reachability` on
+the stranded pad (CAGED is geometry, PASSABLE is the router), and route a changed placement at least
+twice before calling it better. KRT's tools need numpy, scipy and shapely; KiCad's bundled Python
+has none of them, so run them from a Python that does (KRT's checks report a missing library as
+"cannot parse ... No module named 'numpy'" and NOT BUILDABLE, which is not a verdict).
+
+## The router's fab floor is not the board's floor
+
+**What happened (2026-11-02).** With `--fab-tier standard --escalation off`, the pair router still
+necked T1S_PHY_P to 0.0889 mm at U501's pins: KRT's standard 4-layer floor is 0.0889 mm, below
+Node60's 0.1 mm minimum, and KiCad's DRC counted 2 track-width errors on every route.
+
+**What the skill does.** The judging chain passes `--fab-overrides` with the board's own floors
+(track, clearance, via) to every step.
