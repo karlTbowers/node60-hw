@@ -1,7 +1,7 @@
 {
  "board_name": "node60",
  "version": 1,
- "status": "draft",
+ "status": "approved 2026-11-02 (D01, option B)",
  "project": "../../node60.kicad_pro",
  "rules": "../../node60.kicad_dru",
  "schematic": "../../node60.kicad_sch",

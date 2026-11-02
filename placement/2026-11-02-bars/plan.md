@@ -1,6 +1,6 @@
 # Node60 placement plan, v1 (2026-11-02)
 
-Status: draft, waiting on decision D01 (the busbar via reading picks between plan A and plan B).
+Status: approved 2026-11-02 (decision D01: option B, tented vias allowed under the bars).
 
 Run: `placement/2026-11-02-bars/`. Starting board: `main` at 63ff75e (PR #38's placement, busbar
 3D models from PR #37). Measurements below were taken on that board with this skill's scripts
@@ -42,8 +42,8 @@ Placed by `scripts/place_connectors.py` and locked.
 | Area | Side | What may stand there | Height limit | Source |
 |---|---|---|---|---|
 | Under each busbar | F | nothing (BB901/BB902 courtyards) | 0.6 mm (bar on the spigots) | DEC-023 |
-| Under each busbar | B | **plan A**: only the bar's terminals and parts whose under-bar pads leave on B.Cu with no via (2–3-pad passives, test points); Q201, Q202, Q203, Q204, R201, U202, U203, U301, U701, Q501, Q502 move out; **plan B**: any part, its vias tented | — | `node60.kicad_dru`, D01 |
-| Under each busbar | copper | F.Cu: only the bar's own net (tracks, pours); vias: **A** none of another net, **B** tented vias of any net | — | `node60.kicad_dru`, D01 |
+| Under each busbar | B | any part; its vias under a bar tented | — | `node60.kicad_dru`, D01 (B) |
+| Under each busbar | copper | F.Cu: only the bar's own net in tracks and pours; tented vias of any net | — | `node60.kicad_dru`, D01 (B) |
 | Lid bosses, Ø8 mm at each SurLok M4 hole (16) | F | parts under 5.0 mm | 5.03 mm | `enclosure_geometry.py` v15 |
 | Low lid | F | everything | 9.0 mm | CLAUDE.md |
 | Floor | B | everything | 6.17 mm (K501 5.2 mm at 0.97 mm, accepted) | CLAUDE.md, user 2026-11-01 |
