@@ -4,7 +4,8 @@
 |---|---|---|---|---|---|
 | D01 | 2026-11-02 | The placement plan: strict busbar via rule (A) or tented vias allowed under the bars (B) | https://claude.ai/artifact/6BbrzSQ6KqUGT5fSrQau5U | B, tented vias (user, 2026-11-02) | `node60.kicad_dru` drops `via` from both busbar rules; DEC-025 notes it; plan v1 approved; parts may stay under the bars |
 | D02 | 2026-11-02 | How the board shows the VBAT_IN busbar joining J901 to J910 | https://claude.ai/artifact/QQyG6R4BYMt8VuPG6xff9c | waiting | |
-| D03 | 2026-11-02 | Board fiducials, 3 per side, via a new library footprint | https://claude.ai/artifact/WKcHKSLmrtASeteVD7FHuo | waiting | |
+| D03 | 2026-11-02 | Board fiducials, 3 per side, via a new library footprint | https://claude.ai/artifact/WKcHKSLmrtASeteVD7FHuo | A, board fiducials, 3 per side (user, 2026-11-02) | a DropOut fiducial footprint through the library's add-part; six placed by `place_connectors.py` at the measured spots; spots reserved as keep-outs meanwhile |
+| D04 | 2026-11-02 | Power-entry block: INA228 beside its shunt | https://claude.ai/artifact/TmF2g6F2qwuSfKVdGnomnn | waiting | |
 
 ## Skill gaps found in this run
 
