@@ -140,3 +140,14 @@ limits were applied to the whole side, so 28 mm headers under the raised band "f
 intent to `check_assembly` (waivers), resolves `${KIPRJMOD}` to the project, and honours a height row's
 `circles` and `except`. A row whose tool printed a traceback or a missing-library line is NOT RUN,
 never PASS (follow-up: the gate doesn't detect that yet).
+
+## KRT waives test points' courtyard overlaps, even under a BGA
+
+**What happened (2026-11-02).** Moving test point TP407 away from the MCU crystal, the search accepted a
+pose inside U401's courtyard on the same side, under the BGA's body: KRT's `check_assembly` waives a
+test point's courtyard overlaps as a marker class, so it read buildable, and only the renderer's
+"courtyard overlap 2.90 mm2" header showed it.
+
+**What the skill does.** A move of a test point (or any part KRT treats as a marker) also checks its
+courtyard against every package courtyard on its side, and the render's overlap total is read
+before and after every block change.
