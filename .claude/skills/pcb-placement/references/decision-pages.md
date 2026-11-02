@@ -41,6 +41,12 @@ An option is only on the page if it was measured. Placeholder numbers never go o
 
 ## Pictures
 
+- **Each option shows its own board, and what it moves.** Never reuse one picture for two options
+  (user, 2026-11-02). Render with KRT `render_placement.py BOARD --before OTHER`: it draws the moved
+  parts' old outlines dashed with an arrow to the new pose. For a block, make OTHER a copy of BOARD with
+  only the block's parts (anchor included: `block_poses.py` keeps it apart from `parts`) put back
+  where they were, so the arrows show the block and nothing else; a part that changed side has no
+  outline on the other side's view, so say where it came from in the caption.
 - Placement regions: KRT `render_placement.py BOARD --view X0,Y0,X1,Y1 [--side B]
   [--ratsnest-nets NET ...] -o img/<opt>.png` (it writes `<stem>_F.png` and `_B.png` without
   `--side`). Bottom-side views are drawn as seen through the board from above, so both sides
