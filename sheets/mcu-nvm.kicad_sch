@@ -53,7 +53,7 @@
 					)
 				)
 			)
-			(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/UPY-AC_NP0X7RX7S_6_3V-TO-2KV"
+			(property "Datasheet" "https://www.yageogroup.com/content/datasheet/asset/file/UPY-AC_HICAP_X7RX7S"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -15897,7 +15897,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/UPY-AC_NP0X7RX7S_6_3V-TO-2KV"
+		(property "Datasheet" "https://www.yageogroup.com/content/datasheet/asset/file/UPY-AC_HICAP_X7RX7S"
 			(at 302.26 120.65 0)
 			(effects
 				(font
