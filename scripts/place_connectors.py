@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Node60's enclosure-fixed connectors (J901-J912), board outline and busbars, per design version.
 
-Eleven mechanical versions are kept as candidates (docs: Enclosure options). Each is a set
+Thirteen mechanical versions are kept as candidates (docs: Enclosure options). Each is a set
 of parameters in VERSIONS; enclosure_geometry.py, check_surlok_clearance.py, the
 dimensioned drawings and the 3D mockup are all generated from them. The PCB holds one:
 CURRENT, unless another is named on the command line.
@@ -282,6 +282,30 @@ VERSIONS["v11"] = {**VERSIONS["v9"], "title": "Version 11: version 9 on a 2.0 mm
                               "walls) on the 2.0 mm board of version 10. The plan is version 9's; as in version 10 the "
                               "busbar rests on the REDCUBE spigots, 0.6 mm proud, and the front band and T1S hood are "
                               "0.6 mm lower."}
+# Version 12 (user, 2026-11-01): version 11 on a 1.6 mm board. The spigot stands 1.0 mm proud.
+V12_THICKNESS = 1.6
+VERSIONS["v12"] = {**VERSIONS["v11"], "title": "Version 12: version 11 on a 1.6 mm board", "decision": None,
+                   "thickness": V12_THICKNESS,
+                   "summary": "Version 11 on a 1.6 mm board instead of 2.0 mm: version 9's compact plan (230 x 110 mm, "
+                              "outward plugs overhanging the side walls). The REDCUBE's 2.6 mm spigot stands 1.0 mm "
+                              "proud, and the busbar rests on it, so the receptacles stay where they are. The front band "
+                              "and T1S hood are 1.0 mm lower than version 9's, and the header pin tails come through "
+                              "1.1 to 1.9 mm."}
+# Version 13 (user, 2026-11-01): version 11 with Amphenol RADLOK 5.7 mm receptacles (RL9057-101-F1x) and
+# right-angle plugs (RL00571-25x) instead of SurLok Plus. The plug is 18.5 wide, 0.5 more than SurLok's, so a
+# battery plug pointing north needs the battery receptacles 0.25 further out to stay 3 mm from the T1S hood
+# (40.91 + 3 + 9.25 = 53.16): 53.5 mm.
+V13_BAT_X = 53.5
+VERSIONS["v13"] = {**VERSIONS["v11"], "title": "Version 13: version 11 with RADLOK receptacles", "decision": None,
+                   "receptacle": "radlok",
+                   "terminals": {**_COMPACT, "J910": (CX - V13_BAT_X, V9_BAT_Y), "J901": (CX + V13_BAT_X, V9_BAT_Y)},
+                   "summary": "Version 11 (the compact plan on a 2.0 mm board) with Amphenol RADLOK 5.7 mm "
+                              "feed-through receptacles (RL9057-101-F1x) and right-angle plugs (RL00571-25x) instead "
+                              "of SurLok Plus. The receptacle sits 5 mm lower on the busbar, takes a 3 mm panel at "
+                              "most (so the 4 mm lid has a 1 mm seat at each) and has a 10 mm stud that passes "
+                              "through the REDCUBE, so the board sits higher to keep the stud tip 2 mm off the "
+                              "floor. Its plug is shorter, 37 mm from the axis instead of 46."}
+
 CURRENT = "v10"      # the version on node60.kicad_pcb (DEC-023)
 
 
