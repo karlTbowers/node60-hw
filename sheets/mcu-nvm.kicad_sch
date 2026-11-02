@@ -64,7 +64,7 @@
 					)
 				)
 			)
-			(property "Description" "Yageo AC automotive MLCC, 2.2 µF ±10%, 10 V, X7R, AEC-Q200, -55 to +125 °C, 0603 (1608 metric)"
+			(property "Description" "Yageo AC HiCap automotive MLCC, 2.2 µF ±10%, 10 V, X7R, AEC-Q200, -55 to +125 °C, 0603 (1608 metric)"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -15906,7 +15906,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Yageo AC automotive MLCC, 2.2 µF ±10%, 10 V, X7R, AEC-Q200, -55 to +125 °C, 0603 (1608 metric)"
+		(property "Description" "Yageo AC HiCap automotive MLCC, 2.2 µF ±10%, 10 V, X7R, AEC-Q200, -55 to +125 °C, 0603 (1608 metric)"
 			(at 302.26 120.65 0)
 			(effects
 				(font
