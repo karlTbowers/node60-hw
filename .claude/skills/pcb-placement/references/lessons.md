@@ -127,3 +127,16 @@ Node60's 0.1 mm minimum, and KiCad's DRC counted 2 track-width errors on every r
 
 **What the skill does.** The judging chain passes `--fab-overrides` with the board's own floors
 (track, clearance, via) to every step.
+
+## A check that can't run must not pass
+
+**What happened (2026-11-02).** Under KiCad's Python (no numpy), KRT's `check_floorplan` couldn't parse
+the board and the gate still printed "0 error(s)", a PASS; run under a Python with numpy it found 3.
+`part_heights.py` on a board in the run folder found no 3D model for 220 parts, because `${KIPRJMOD}`
+pointed at the run folder, and the gate read that as "no height", not as a broken path. Height
+limits were applied to the whole side, so 28 mm headers under the raised band "failed" the low lid.
+
+**What the skill does.** The gate runs KRT under `KRT_PY` (or the plan's `krt_python`), passes the
+intent to `check_assembly` (waivers), resolves `${KIPRJMOD}` to the project, and honours a height row's
+`circles` and `except`. A row whose tool printed a traceback or a missing-library line is NOT RUN,
+never PASS (follow-up: the gate doesn't detect that yet).

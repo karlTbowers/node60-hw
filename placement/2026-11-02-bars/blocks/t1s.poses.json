@@ -118,8 +118,8 @@
    "why": "LAN8670 PHY north of both busbars, between the T1S zone and the MCU: line stub from the trunk short, RMII to U401 within 25 mm (plan v1)."
   },
   "Y501": {
-   "dx": 20.286,
-   "dy": 6.8184,
+   "dx": 22.686,
+   "dy": 3.1684,
    "rot": 0.0,
    "side": "B",
    "role": "core",
@@ -127,13 +127,13 @@
    "why": "50 MHz oscillator south-east of U501, its output to R503 within 5 mm; 35 mm from the nearest switch node (plan: quiet zone)."
   },
   "R503": {
-   "dx": 20.1194,
-   "dy": 1.454,
-   "rot": 270.0,
+   "dx": 21.936,
+   "dy": 0.4184,
+   "rot": 180.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "REFCLK series resistor, swapped with strap R506 to the U501 corner by pin 27 (3.0 mm): from its old spot east of the chip the clock was walled off by the PHY pair and U501's fan-out, and stayed open in the fast route of main."
+   "why": "REFCLK series resistor beside Y501, 4.6 mm from U501's pin 27 (as placed). A swap into U501's corner was tried and routed worse; reachability on pin 27 reads PASSABLE (0.3 mm margin), so the pose stays."
   },
   "R504": {
    "dx": 23.436,
@@ -151,16 +151,7 @@
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "RBIAS 12.4 k\u03a9 directly under U501's RBIAS pin 26, as the annealer left it; unchanged (datasheet layout note not yet checked)."
-  },
-  "R506": {
-   "dx": 21.936,
-   "dy": 0.4184,
-   "rot": 180.0,
-   "side": "B",
-   "role": "flex",
-   "flex_mm": 2,
-   "why": "MODE1 strap, a slow pull-up; swapped out of the corner for R503, 2.7 mm from pin 24. May move 2 mm."
+   "why": "RBIAS 12.4 k\u03a9 directly under U501's RBIAS pin 26, as placed."
   },
   "Q501": {
    "dx": 8.2491,

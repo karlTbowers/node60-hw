@@ -7,7 +7,7 @@
  "schematic": "../../node60.kicad_sch",
  "krt": "~/Dev/KiCadRoutingTools",
  "intent": "intent.json",
- "baseline": "fixed.kicad_pcb",
+ "baseline": "../../node60.kicad_pcb",
  "signal_layers": [
   "F.Cu",
   "In2.Cu",
@@ -35,7 +35,17 @@
    "side": "F",
    "limit_mm": 9.0,
    "area": "under the low lid",
-   "source": "CLAUDE.md: 9.0 mm under the low lid above the board"
+   "source": "CLAUDE.md: 9.0 mm under the low lid above the board; the output and T1S headers stand under the raised front band and T1S hood (1 mm above the tallest header), not the low lid",
+   "except": [
+    "J903",
+    "J904",
+    "J905",
+    "J906",
+    "J907",
+    "J908",
+    "J909",
+    "J912"
+   ]
   },
   {
    "side": "F",
@@ -401,6 +411,36 @@
    "ref": "TP805",
    "height_mm": 0.05,
    "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "FID901",
+   "height_mm": 0.05,
+   "source": "fiducial: 1 mm copper dot, no part (DropOut library, D03)"
+  },
+  {
+   "ref": "FID902",
+   "height_mm": 0.05,
+   "source": "fiducial: 1 mm copper dot, no part (DropOut library, D03)"
+  },
+  {
+   "ref": "FID903",
+   "height_mm": 0.05,
+   "source": "fiducial: 1 mm copper dot, no part (DropOut library, D03)"
+  },
+  {
+   "ref": "FID904",
+   "height_mm": 0.05,
+   "source": "fiducial: 1 mm copper dot, no part (DropOut library, D03)"
+  },
+  {
+   "ref": "FID905",
+   "height_mm": 0.05,
+   "source": "fiducial: 1 mm copper dot, no part (DropOut library, D03)"
+  },
+  {
+   "ref": "FID906",
+   "height_mm": 0.05,
+   "source": "fiducial: 1 mm copper dot, no part (DropOut library, D03)"
   }
  ],
  "fiducials": {
@@ -414,9 +454,24 @@
  },
  "net_classes": [
   {
-   "nets": "/T1S_*",
+   "nets": "/T1S_P",
    "class": "T1S_100R",
-   "source": "DEC-012"
+   "source": "DEC-012; node60.kicad_pro netclass_patterns"
+  },
+  {
+   "nets": "/T1S_N",
+   "class": "T1S_100R",
+   "source": "DEC-012; node60.kicad_pro netclass_patterns"
+  },
+  {
+   "nets": "/T1S/T1S_*_P",
+   "class": "T1S_100R",
+   "source": "DEC-012; node60.kicad_pro netclass_patterns"
+  },
+  {
+   "nets": "/T1S/T1S_*_N",
+   "class": "T1S_100R",
+   "source": "DEC-012; node60.kicad_pro netclass_patterns"
   }
  ],
  "high_current": [
@@ -486,7 +541,8 @@
  ],
  "switchers": "switchers.json",
  "blocks": [
-  "blocks/power.poses.json"
+  "blocks/power.poses.json",
+  "blocks/t1s.poses.json"
  ],
  "accepted": [],
  "assumed": [

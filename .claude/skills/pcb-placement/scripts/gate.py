@@ -29,7 +29,10 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from escape_budget import blocking_areas  # noqa: E402
 
-KPY = sys.executable
+KPY = sys.executable   # KiCad's Python (pcbnew)
+# KRT's tools need numpy, scipy and shapely, which KiCad's bundled Python lacks: run them from the
+# Python named by KRT_PY (or the plan's "krt_python") when one is given.
+KRT_PY = os.environ.get("KRT_PY")
 
 
 def mm(v):
@@ -164,6 +167,8 @@ def main():
     plan = json.load(open(a.plan))
     P = lambda p: p if p is None or os.path.isabs(os.path.expanduser(p)) else os.path.join(base, p)  # noqa: E731
     project, rules = P(plan.get("project")), P(plan.get("rules"))
+    if project:   # a run-folder board's ${KIPRJMOD} model paths resolve against the project, not the run folder
+        os.environ.setdefault("KIPRJMOD", os.path.dirname(os.path.abspath(project)))
     rules_text = open(rules).read() if rules and os.path.exists(rules) else ""
     board = pcbnew.LoadBoard(a.board)
     rows = []
@@ -172,14 +177,16 @@ def main():
 
     # KRT legality
     if os.path.isdir(krt) and baseline:
-        rc, out = run([KPY, "-X", "utf8", "py_tools/check_assembly.py", os.path.abspath(a.board), "--baseline", baseline], cwd=krt)
+        krt_py = KRT_PY or plan.get("krt_python") or KPY
+        rc, out = run([krt_py, "-X", "utf8", "py_tools/check_assembly.py", os.path.abspath(a.board), "--baseline", baseline]
+                      + (["--intent", intent] if intent else []), cwd=krt)
         ok = "VERDICT: buildable" in out
         rows.append(("Buildable", "KRT check_assembly --baseline (parts on the board, courtyards, bodies, pads)",
                      "PASS" if ok else "FAIL", last_lines(out, 2)))
     else:
         rows.append(("Buildable", "KRT check_assembly --baseline", "NOT RUN", "plan needs `krt` and `baseline`"))
     if os.path.isdir(krt) and intent:
-        rc, out = run([KPY, "-X", "utf8", "py_tools/check_floorplan.py", os.path.abspath(a.board), "--intent", intent], cwd=krt)
+        rc, out = run([KRT_PY or plan.get("krt_python") or KPY, "-X", "utf8", "py_tools/check_floorplan.py", os.path.abspath(a.board), "--intent", intent], cwd=krt)
         n = out.count("[ERROR]")
         rows.append(("Floorplan intent", "KRT check_floorplan --intent (edges, groups, templates, keep-outs, decaps)",
                      "PASS" if n == 0 else "FAIL", f"{n} error(s)" + (f", {out.count('[WARN')} warning(s)" if "[WARN" in out else "")))
@@ -228,12 +235,29 @@ def main():
     for h in plan.get("heights", []):
         import tempfile
         with tempfile.NamedTemporaryFile(suffix=".json") as tj:
-            rc, out = run(["python3", os.path.join(HERE, "part_heights.py"), a.board, "--side", h["side"],
+            rc, out = run([KPY, os.path.join(HERE, "part_heights.py"), a.board, "--side", h["side"],
                            "--json", tj.name])
             hs = json.load(open(tj.name)) if os.path.getsize(tj.name) else []
         given = {d["ref"]: d for d in plan.get("declared_heights", [])}
         over, unknown = [], []
+        def in_area(ref):
+            """A limit row applies to the whole side unless it names `except` refs (parts under another
+            limit, e.g. headers under a raised lid section) or `circles` (only parts within them)."""
+            if ref in h.get("except", []):
+                return False
+            if not h.get("circles"):
+                return True
+            fp = board.FindFootprintByReference(ref)
+            if fp is None:
+                return False
+            cy = fp.GetCourtyard(pcbnew.B_CrtYd if fp.IsFlipped() else pcbnew.F_CrtYd)
+            bb = cy.BBox() if cy.OutlineCount() else fp.GetBoundingBox(False)
+            x0, y0, x1, y1 = (pcbnew.ToMM(v) for v in (bb.GetLeft(), bb.GetTop(), bb.GetRight(), bb.GetBottom()))
+            return any(math.hypot(max(x0 - c["x"], 0, c["x"] - x1), max(y0 - c["y"], 0, c["y"] - y1)) < c["d"] / 2
+                       for c in h["circles"])
         for r in hs:
+            if not in_area(r["ref"]):
+                continue
             hgt = r["height_mm"] if r["height_mm"] is not None else given.get(r["ref"], {}).get("height_mm")
             if hgt is None:
                 unknown.append(r["ref"])
