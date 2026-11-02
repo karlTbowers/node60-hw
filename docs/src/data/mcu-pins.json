@@ -422,6 +422,8 @@
    "alternates": [],
    "net": "GND",
    "connects": [
+    "BB902 1",
+    "BB902 2",
     "C201 100nF to VBAT_IN",
     "C202 10nF to HGATE_G",
     "C203 100nF to VBAT_PROT",
@@ -900,6 +902,8 @@
    "alternates": [],
    "net": "GND",
    "connects": [
+    "BB902 1",
+    "BB902 2",
     "C201 100nF to VBAT_IN",
     "C202 10nF to HGATE_G",
     "C203 100nF to VBAT_PROT",
@@ -1504,6 +1508,8 @@
    "alternates": [],
    "net": "GND",
    "connects": [
+    "BB902 1",
+    "BB902 2",
     "C201 100nF to VBAT_IN",
     "C202 10nF to HGATE_G",
     "C203 100nF to VBAT_PROT",
@@ -1758,6 +1764,8 @@
    "alternates": [],
    "net": "GND",
    "connects": [
+    "BB902 1",
+    "BB902 2",
     "C201 100nF to VBAT_IN",
     "C202 10nF to HGATE_G",
     "C203 100nF to VBAT_PROT",
@@ -2772,6 +2780,8 @@
    "alternates": [],
    "net": "GND",
    "connects": [
+    "BB902 1",
+    "BB902 2",
     "C201 100nF to VBAT_IN",
     "C202 10nF to HGATE_G",
     "C203 100nF to VBAT_PROT",
@@ -3066,6 +3076,8 @@
    "alternates": [],
    "net": "GND",
    "connects": [
+    "BB902 1",
+    "BB902 2",
     "C201 100nF to VBAT_IN",
     "C202 10nF to HGATE_G",
     "C203 100nF to VBAT_PROT",
@@ -3752,6 +3764,8 @@
    "alternates": [],
    "net": "GND",
    "connects": [
+    "BB902 1",
+    "BB902 2",
     "C201 100nF to VBAT_IN",
     "C202 10nF to HGATE_G",
     "C203 100nF to VBAT_PROT",
@@ -3970,6 +3984,8 @@
    "alternates": [],
    "net": "GND",
    "connects": [
+    "BB902 1",
+    "BB902 2",
     "C201 100nF to VBAT_IN",
     "C202 10nF to HGATE_G",
     "C203 100nF to VBAT_PROT",
@@ -4154,6 +4170,8 @@
    "alternates": [],
    "net": "GND",
    "connects": [
+    "BB902 1",
+    "BB902 2",
     "C201 100nF to VBAT_IN",
     "C202 10nF to HGATE_G",
     "C203 100nF to VBAT_PROT",
@@ -4373,6 +4391,8 @@
    "alternates": [],
    "net": "GND",
    "connects": [
+    "BB902 1",
+    "BB902 2",
     "C201 100nF to VBAT_IN",
     "C202 10nF to HGATE_G",
     "C203 100nF to VBAT_PROT",
@@ -4614,6 +4634,8 @@
    "alternates": [],
    "net": "GND",
    "connects": [
+    "BB902 1",
+    "BB902 2",
     "C201 100nF to VBAT_IN",
     "C202 10nF to HGATE_G",
     "C203 100nF to VBAT_PROT",
@@ -5309,6 +5331,8 @@
    "alternates": [],
    "net": "GND",
    "connects": [
+    "BB902 1",
+    "BB902 2",
     "C201 100nF to VBAT_IN",
     "C202 10nF to HGATE_G",
     "C203 100nF to VBAT_PROT",
@@ -5605,6 +5629,8 @@
    "alternates": [],
    "net": "GND",
    "connects": [
+    "BB902 1",
+    "BB902 2",
     "C201 100nF to VBAT_IN",
     "C202 10nF to HGATE_G",
     "C203 100nF to VBAT_PROT",
@@ -6478,6 +6504,8 @@
    "alternates": [],
    "net": "GND",
    "connects": [
+    "BB902 1",
+    "BB902 2",
     "C201 100nF to VBAT_IN",
     "C202 10nF to HGATE_G",
     "C203 100nF to VBAT_PROT",
@@ -6856,6 +6884,8 @@
    "alternates": [],
    "net": "GND",
    "connects": [
+    "BB902 1",
+    "BB902 2",
     "C201 100nF to VBAT_IN",
     "C202 10nF to HGATE_G",
     "C203 100nF to VBAT_PROT",
@@ -7609,6 +7639,8 @@
    "alternates": [],
    "net": "GND",
    "connects": [
+    "BB902 1",
+    "BB902 2",
     "C201 100nF to VBAT_IN",
     "C202 10nF to HGATE_G",
     "C203 100nF to VBAT_PROT",
@@ -7886,6 +7918,8 @@
    "alternates": [],
    "net": "GND",
    "connects": [
+    "BB902 1",
+    "BB902 2",
     "C201 100nF to VBAT_IN",
     "C202 10nF to HGATE_G",
     "C203 100nF to VBAT_PROT",
@@ -8121,6 +8155,8 @@
    "alternates": [],
    "net": "GND",
    "connects": [
+    "BB902 1",
+    "BB902 2",
     "C201 100nF to VBAT_IN",
     "C202 10nF to HGATE_G",
     "C203 100nF to VBAT_PROT",
@@ -8412,6 +8448,8 @@
    "alternates": [],
    "net": "GND",
    "connects": [
+    "BB902 1",
+    "BB902 2",
     "C201 100nF to VBAT_IN",
     "C202 10nF to HGATE_G",
     "C203 100nF to VBAT_PROT",

@@ -6,7 +6,7 @@ date: 2026-10-28
 revision: B
 page: subsystems/harness
 requirements: [REQ-NET-001, REQ-PWR-002]
-parts: [74660016R, "74660016", SLPRATPSR, SLPRATPSB, Busbar_Cu_19.05x3.175mm_L125.05mm_2xD6.5mm_P106mm]
+parts: [74660016R, "74660016", SLPRATPSR, SLPRATPSB, Busbar_Cu_19.05x3.175mm_L125.05mm_2xD6.5mm_P106mm, Busbar_Cu_19.05x3.175mm_L176.05mm_2xD6.5mm_P157mm]
 gates: [GATE-PWR-01, GATE-THM-02, GATE-HAR-02, GATE-BOM-01]
 rejected:
   - option: "Rev. A: J910 tied to J901 on the board, in parallel with the busbar, all four battery-side pads on one net VBAT_IN"
@@ -33,7 +33,7 @@ On 2026-10-28 the user decided the power entry, and added a pass-through: the no
 - **Both sides of the case:** one battery/return pair of receptacles on each side of the enclosure. A busbar inside the case joins the two battery terminals, and another joins the two return terminals.
   - One pair feeds this node from the source: the receptacles on J910 and J911.
   - The other pair feeds a downstream power distribution node with lower current: the receptacles on J901 and J902.
-- **The battery busbar is a board part (rev. B, user, 2026-11-02, placement decision D02):** BB901, `DropOut_Busbar:Busbar_Cu_19.05x3.175mm_L125.05mm_2xD6.5mm_P106mm`, is on the schematic (p9) as a two-pin net tie between J910's VBAT_IN and J901's VBAT_IN_DOWNSTREAM, with tie pads in the two terminals' pad 1 rings on the board. It is on the BOM: cut from 1/8" × 3/4" C110 flat bar (DEC-025) and drilled in house, fitted by hand at assembly. The return busbar (BB902) stays off the schematic and the BOM: the GND plane already joins J911 and J902, and the placement script draws the bar as a board-only footprint.
+- **Both busbars are board parts (rev. B, user, 2026-11-02, placement decision D02):** BB901, `DropOut_Busbar:Busbar_Cu_19.05x3.175mm_L125.05mm_2xD6.5mm_P106mm`, is on the schematic (p9) as a two-pin net tie between J910's VBAT_IN and J901's VBAT_IN_DOWNSTREAM, with tie pads in the two terminals' pad 1 rings on the board. It is on the BOM: cut from 1/8" × 3/4" C110 flat bar (DEC-025) and drilled in house, fitted by hand at assembly. The return busbar BB902, `DropOut_Busbar:Busbar_Cu_19.05x3.175mm_L176.05mm_2xD6.5mm_P157mm`, is a schematic and BOM part the same way, for consistency (user, 2026-11-02), with both pins on GND: the GND plane joins J911 and J902 as well.
 
 ## Consequences
 
@@ -48,4 +48,4 @@ On 2026-10-28 the user decided the power entry, and added a pass-through: the no
 - **Mechanical:** each receptacle's M6 stud screws into a board-mounted terminal, so the board is tied to the case wall at four points. The board outline, the terminal positions and the enclosure tolerances are set together; hold the terminal while tightening (Würth).
 - **Qualification:** neither terminal family lists AEC-Q200 (Node60's grade rule applies to active parts; REQ-QUAL-001). Temperature rise and vibration are covered by GATE-HAR-02 and GATE-THM-02.
 - **Supply:** 74660016R is listed only at Mouser (710-74660016R, no stock figure on 2026-10-28). SLPRATPSR and SLPRATPSB are stocked at DigiKey, Mouser and Newark. GATE-BOM-01.
-- **Not board parts:** the SurLok receptacles, their mating plugs, the return busbar and the cables are enclosure and harness parts. The four REDCUBE terminals and, since rev. B, the battery busbar BB901 are on the schematic.
+- **Not board parts:** the SurLok receptacles, their mating plugs and the cables are enclosure and harness parts. The four REDCUBE terminals and, since rev. B, both busbars (BB901, BB902) are on the schematic.
