@@ -46,6 +46,7 @@ export default defineConfig({
 								{ label: 'Version 9: version 7, compact', slug: 'subsystems/enclosure/v9' },
 								{ label: 'Version 10: version 7 on a 2.0 mm board', slug: 'subsystems/enclosure/v10' },
 								{ label: 'Version 11: version 9 on a 2.0 mm board', slug: 'subsystems/enclosure/v11' },
+								{ label: 'Version 12: version 11 on a 1.6 mm board', slug: 'subsystems/enclosure/v12' },
 							],
 						},
 						{ label: 'Firmware & data contract', slug: 'subsystems/firmware' },
