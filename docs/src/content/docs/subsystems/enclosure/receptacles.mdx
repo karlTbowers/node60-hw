@@ -6,7 +6,7 @@ description: Section-by-section comparison of the two M6-threaded 5.7 mm power r
 import { Aside } from '@astrojs/starlight/components';
 import Ref from '../../../../components/Ref.astro';
 
-Both power entries screw into a Würth REDCUBE 74660016R on the board (<Ref id="DEC-016" />): Amphenol SurLok Plus SLPRATPSB/R in versions 1 to 12, Amphenol RADLOK RL9057-101-F1 / -F1RE in [version 13](../v13/). Both are 5.7 mm RADSOK receptacles with an M6 × 1.0 stud. This page compares their lengths section by section, from Amphenol's own drawings and STEP models (<Ref id="S31" />, <Ref id="S32" />), not the catalogue photos the SurLok figures here were first estimated from.
+Both power entries screw into a Würth REDCUBE 74660016R on the board (<Ref id="DEC-016" />): Amphenol SurLok Plus SLPRATPSB/R in versions 1 to 12, Amphenol RADLOK RL9057-101-F1 / -F1RE in [version 13](../v13/). Both are 5.7 mm RADSOK receptacles with an M6 × 1.0 stud. This page compares their lengths section by section, from Amphenol's own drawings and STEP models (<Ref id="S31" />, <Ref id="S32" />).
 
 The drawing is to scale (9 px per mm), with both parts aligned on their **seating face**: the face that lands on the busbar or the REDCUBE spigot. The stud points right, into the board; the plug side is on the left.
 
@@ -43,12 +43,12 @@ Amphenol's own STEP models, each on a REDCUBE 74660016R at the same height, so t
 
 ![Angled view from the plug side: SurLok Plus (left) and RADLOK (right)](../../../../assets/receptacles/radlok-vs-surlok-iso.png)
 
-<Aside type="caution" title="What this changes for the enclosure versions (not applied yet)">
-The enclosure geometry (`scripts/enclosure_geometry.py`, `RECEPTACLES`) still uses the SurLok figures from before Amphenol's drawing was found. Correcting them changes the SurLok versions' heights, so it needs a decision; nothing here changes the geometry.
+<Aside type="note" title="Applied to the enclosure versions (2026-11-02)">
+The enclosure geometry (`scripts/enclosure_geometry.py`, `RECEPTACLES`) used the SurLok figures from before Amphenol's drawing was found: a 7.7 mm stud (the library model's old estimate) and the catalogue's B − A − C (19.2) as seat to panel face. On the drawing and the STEP, 19.2 is the panel face to the stud **tip**: the seat is 9.25 below the panel face and the stud is 9.95 long. Both are corrected, with the 3.0 mm flange. The library's model is rebuilt to match (DropOut library PR #41). What moved is listed on the [Enclosure options](../) page.
 
-- **SurLok stud:** the geometry uses the library model's old estimate of 7.7 mm. Amphenol's drawing gives 10.70 from the rear face, 9.95 beyond the seat. The DropOut library's model is rebuilt to match (library PR #41).
-- **SurLok depth:** the geometry takes the catalogue's B − A − C (19.2) as seat to panel face. On the drawing and the STEP, 19.2 is the panel face to the stud **tip**; the seat is 9.25 below the panel face. Every SurLok version therefore has its receptacles, and with them the low lid, modelled about 10 mm higher above the busbar than they would sit.
-- **RADLOK sealing:** version 13 lists the RADLOK parts as IP67. Amphenol Tuchel lists them as IP40 mated. Check with Amphenol before choosing RADLOK for a sealed node.
+Still open:
+
+- **RADLOK sealing:** version 13 lists the RADLOK parts as IP67, but Amphenol Tuchel lists them as IP40 mated. Check with Amphenol before choosing RADLOK for a sealed node.
 - **RADLOK depth:** the drawing gives 14.2 from seat to panel face and the STEP 13.35. Version 13 uses the drawing; confirm on a sample.
 </Aside>
 

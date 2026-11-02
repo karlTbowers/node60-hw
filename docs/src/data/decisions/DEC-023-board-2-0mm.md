@@ -41,3 +41,13 @@ Enclosure version 10 is version 7 on a 2.0 mm board. The user chose it on 2026-1
 - **Stackup and fab house** are still open; 2.0 mm keeps both JLCPCB and PCBWay available.
 - **SurLok stud length** still decides the engagement (DEC-022).
 - **Drawings and mockup:** version 10 on the [Enclosure options](../../subsystems/enclosure/) pages and in the [3D mockup](../../mockups/node60-enclosure.html). The other versions stay there as the record of the options.
+
+## Correction (2026-11-02): SurLok receptacle geometry
+
+The heights above came from the SurLok figures in use on 2026-11-01: the DropOut library's estimated 7.7 mm stud, and the catalogue's B − A − C (19.2 mm) taken as the receptacle's seat-to-panel depth. Amphenol's SLPRATPSB customer drawing C10-730187 rev. F and its STEP, found on 2026-11-02, show the stud is 9.95 mm beyond the seat and the panel face is 9.25 mm above it; 19.2 mm is the panel face to the stud tip. With the corrected figures, version 10 (this decision's design) changes as follows; the plan, the plug, cable and assembly checks, and the decision itself don't:
+
+- **Stud engagement:** the stud takes the REDCUBE's whole 5.6 mm thread (was about 4.5 mm), which settles the open stud-length point above. It comes out 1.2 mm below the REDCUBE, so the board sits 6.17 mm off the floor instead of 5.
+- **Low lid:** 8.8 mm lower, 24.2 mm high outside. Parts under it get 9.0 mm above the board instead of 19.0; the tallest parts there haven't been checked against this yet. The lid's M4 bosses end 1.25 mm above the busbar.
+- **Raised sections:** they stand 1.17 mm higher with the board, 44.66 mm overall, 20.5 mm above the low lid.
+
+See [Power receptacles: RADLOK vs SurLok Plus](../../subsystems/enclosure/receptacles/).
