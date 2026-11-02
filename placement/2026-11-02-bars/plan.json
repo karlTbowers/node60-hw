@@ -542,7 +542,9 @@
  "switchers": "switchers.json",
  "blocks": [
   "blocks/power.poses.json",
-  "blocks/t1s.poses.json"
+  "blocks/t1s.poses.json",
+  "blocks/buck_1v5.poses.json",
+  "blocks/buck_3v3.poses.json"
  ],
  "accepted": [],
  "assumed": [

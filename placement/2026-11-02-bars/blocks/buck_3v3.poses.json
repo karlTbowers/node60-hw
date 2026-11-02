@@ -1,0 +1,85 @@
+{
+ "block": "buck_3v3",
+ "anchor": "U302",
+ "approved": "2026-11-02 (D06)",
+ "anchor_pose": {
+  "x": 121.1769,
+  "y": 49.7014,
+  "rot": 270.0,
+  "side": "B"
+ },
+ "parts": {
+  "C303": {
+   "dx": -2.64,
+   "dy": 0.125,
+   "rot": 270.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "HF input cap across VIN 3 / PGND, as C310 (TI LMQ66430-Q1 SNVSBV1F rev. F Figure 8-34)."
+  },
+  "L301": {
+   "dx": 1.76,
+   "dy": 4.21,
+   "rot": 0.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "Inductor on SW pin 7, as L302 (TI LMQ66430-Q1 SNVSBV1F rev. F Figure 8-34)."
+  },
+  "C306": {
+   "dx": 2.64,
+   "dy": -0.125,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "VCC bypass at VCC pin 10 (TI LMQ66430-Q1 SNVSBV1F rev. F Figure 8-34)."
+  },
+  "C304": {
+   "dx": -5.18,
+   "dy": -0.005,
+   "rot": 270.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "4.7 \u00b5F input cap beyond the HF cap (TI LMQ66430-Q1 SNVSBV1F rev. F Figure 8-34)."
+  },
+  "C305": {
+   "dx": -3.05,
+   "dy": 4.155,
+   "rot": 0.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "4.7 \u00b5F input cap beyond the HF cap (TI LMQ66430-Q1 SNVSBV1F rev. F Figure 8-34)."
+  },
+  "C307": {
+   "dx": 0.3612,
+   "dy": 8.3125,
+   "rot": 180.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "22 \u00b5F output cap, as C314."
+  },
+  "C308": {
+   "dx": 5.8612,
+   "dy": 3.2325,
+   "rot": 270.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "22 \u00b5F output cap, as C314."
+  },
+  "C309": {
+   "dx": 3.7712,
+   "dy": 7.1125,
+   "rot": 180.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "100 nF HF output cap in the output row (TI LMQ66430-Q1 SNVSBV1F rev. F Figure 8-34)."
+  }
+ }
+}
