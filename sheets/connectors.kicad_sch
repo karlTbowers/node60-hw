@@ -1176,6 +1176,198 @@
 			)
 			(embedded_fonts no)
 		)
+	(symbol "DropOut_Busbar:Busbar_Cu_19.05x3.175mm_L176.05mm_2xD6.5mm_P157mm"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files no)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "BB"
+				(at 0 5.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Busbar_Cu_19.05x3.175mm_L176.05mm_2xD6.5mm_P157mm"
+				(at 0 -5.35 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" "DropOut_Busbar:Busbar_Cu_19.05x3.175mm_L176.05mm_2xD6.5mm_P157mm"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://github.com/karlTbowers/dropout-kicad-library/blob/main/drawings/DropOut_Busbar/Busbar_Cu_19.05x3.175mm_L176.05mm_2xD6.5mm_P157mm.svg"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Busbar, C110 copper flat bar 19.05 × 3.175 mm (3/4\" × 1/8\"), length 176.05 mm, 2 × Ø6.5 mm M6 clearance holes at 157 mm pitch, on two Würth REDCUBE 74660016R terminals; cut and drilled in house; net tie joining the two terminals' nets"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "DropOut"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "Busbar_Cu_19.05x3.175mm_L176.05mm_2xD6.5mm_P157mm"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "DigiKey_PN" "-"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "-"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Notes" "Made in house from 1/8\" x 3/4\" C110 copper flat bar (ASTM B187): cut to 176.05 mm, drill 2 × Ø6.5 at 157 mm, deburr; fitted by hand on the REDCUBE spigots at assembly (not in position files). Pin 1 = the -x terminal, pin 2 = the +x terminal; the footprint's B.Cu net-tie pads sit in each 74660016R's pad 1 ring, 5.7 mm +x of its spigot, so the terminals must be placed with their pad anchors toward +x. The 3D model's bottom face is at z = 0: a board whose spigots stand proud (Node60, 2.0 mm board: 0.6 mm) raises the placed model by that much."
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "busbar net tie copper flat bar C110 M6 REDCUBE high current"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "Busbar?Cu?19.05x3.175mm?L176.05mm?2xD6.5mm?P157mm*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "Busbar_Cu_19.05x3.175mm_L176.05mm_2xD6.5mm_P157mm_1_1"
+				(polyline
+					(pts
+						(xy -2.54 0) (xy 2.54 0)
+					)
+					(stroke
+						(width 1.016)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 	)
 	(rectangle
 		(start 25.4 60.96)
@@ -1239,17 +1431,6 @@
 			(justify left bottom)
 		)
 		(uuid "3a914d0a-f2b3-55e7-886c-5975504b4d82")
-	)
-	(wire
-		(pts
-			(xy 55.88 121.92)
-			(xy 66.04 121.92)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "fc274f1e-9d6e-522e-a58f-2dbf3670db70")
 	)
 	(wire
 		(pts
@@ -3769,17 +3950,7 @@
 		(uuid "037ffab0-e0d0-48c2-930c-027d9782b8c4")
 	)
 
-	(text "SurLok Plus SLPRATPSB (black) screws into each terminal. Busbar inside the case joins J902 and J911.\nCarries all six load returns (up to 60 A) plus the downstream node's return (DEC-013, DEC-016).\nLAYOUT: same copper and via treatment as VBAT_IN; returns join at the power-entry star region."
-		(exclude_from_sim no)
-		(at 76.2 127 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left top)
-		)
-		(uuid "f98a07fe-f0d2-44d9-86dd-70590b837e53")
-	)
+
 	(symbol
 		(lib_id "DropOut_Connector:ATM13-2P-BM04")
 		(at 50.8 187.96 0)
@@ -4863,6 +5034,196 @@
 			(justify left top)
 		)
 		(uuid "531afd02-d303-4d54-9241-7a1c987a3418")
+	)
+	(wire
+		(pts
+			(xy 55.88 121.92) (xy 60.96 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e124db77-ca6c-4df5-b801-d0d97f56328a")
+	)
+	(wire
+		(pts
+			(xy 60.96 121.92) (xy 66.04 121.92)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "970d8afb-b5b3-4091-9014-09d3259f170c")
+	)
+	(wire
+		(pts
+			(xy 60.96 121.92) (xy 60.96 123.19)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7a2d6ea9-62b3-4dfa-8b1d-38169e0d98e9")
+	)
+	(wire
+		(pts
+			(xy 55.88 134.62) (xy 60.96 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1a3e2712-281c-43b4-bfc6-0a64debc6f0a")
+	)
+	(wire
+		(pts
+			(xy 60.96 133.35) (xy 60.96 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "363510ae-f2e5-4140-ae39-3a9079a99163")
+	)
+	(junction
+		(at 60.96 121.92)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "659a2f24-d7fe-4127-95d5-8ff55cdd63cb")
+	)
+	(junction
+		(at 55.88 134.62)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "edfb9870-c4ab-4c57-8472-f4a6c19e9aab")
+	)
+	(symbol
+		(lib_id "DropOut_Busbar:Busbar_Cu_19.05x3.175mm_L176.05mm_2xD6.5mm_P157mm")
+		(at 60.96 128.27 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files no)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "200c05df-057d-4893-a8b0-14fdaa0defaa")
+		(property "Reference" "BB902"
+			(at 69.85 127.0 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "Busbar_Cu_19.05x3.175mm_L176.05mm_2xD6.5mm_P157mm"
+			(at 69.85 129.54 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "DropOut_Busbar:Busbar_Cu_19.05x3.175mm_L176.05mm_2xD6.5mm_P157mm"
+			(at 60.96 128.27 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://github.com/karlTbowers/dropout-kicad-library/blob/main/drawings/DropOut_Busbar/Busbar_Cu_19.05x3.175mm_L176.05mm_2xD6.5mm_P157mm.svg"
+			(at 60.96 128.27 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Busbar, C110 copper flat bar 19.05 × 3.175 mm (3/4\" × 1/8\"), length 176.05 mm, 2 × Ø6.5 mm M6 clearance holes at 157 mm pitch, on two Würth REDCUBE 74660016R terminals; cut and drilled in house; net tie joining the two terminals' nets"
+			(at 60.96 128.27 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "DropOut"
+			(at 60.96 128.27 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "Busbar_Cu_19.05x3.175mm_L176.05mm_2xD6.5mm_P157mm"
+			(at 60.96 128.27 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DigiKey_PN" "-"
+			(at 60.96 128.27 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mouser_PN" "-"
+			(at 60.96 128.27 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Notes" "Made in house from 1/8\" x 3/4\" C110 copper flat bar (ASTM B187): cut to 176.05 mm, drill 2 × Ø6.5 at 157 mm, deburr; fitted by hand on the REDCUBE spigots at assembly (not in position files). Pin 1 = the -x terminal, pin 2 = the +x terminal; the footprint's B.Cu net-tie pads sit in each 74660016R's pad 1 ring, 5.7 mm +x of its spigot, so the terminals must be placed with their pad anchors toward +x. The 3D model's bottom face is at z = 0: a board whose spigots stand proud (Node60, 2.0 mm board: 0.6 mm) raises the placed model by that much."
+			(at 60.96 128.27 0)
+			(hide yes)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "41631d13-6999-4636-bed8-f7d9f454c04f")
+		)
+		(pin "2"
+			(uuid "c91b5fb0-716e-4e35-b862-8298455cadac")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e"
+					(reference "BB902")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(text "SurLok Plus SLPRATPSB (black) screws into each terminal. BB902: busbar on the spigots joins J911 and J902.\nBoth bar pins on GND: the GND plane joins J911 and J902 as well (DEC-016 rev. B).\nCarries all six load returns (up to 60 A) plus the downstream node's return (DEC-013, DEC-016).\nLAYOUT: same copper and via treatment as VBAT_IN; returns join at the power-entry star region."
+		(exclude_from_sim no)
+		(at 27.94 107.95 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "f8387ae6-72f0-4a1b-8b3f-2f6ea0903ff8")
 	)
 	(embedded_fonts no)
 )
