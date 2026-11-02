@@ -1,0 +1,16 @@
+(version 1)
+
+# Busbars (DEC-023): the bars rest on the REDCUBE spigots 0.6 mm above the top face, so only
+# a bar's own net may have copper on F.Cu under it. scripts/place_connectors.py draws the
+# areas (rule areas BUSBAR_<net>, the bar's outline); the net names here match its BUSBARS.
+# Parts are kept out by the busbar footprints' courtyards (BB901, BB902), not here.
+
+(rule "F.Cu under the VBAT_IN busbar: VBAT_IN only"
+	(layer "F.Cu")
+	(condition "A.intersectsArea('BUSBAR_VBAT_IN') && A.NetName != '/VBAT_IN'")
+	(constraint disallow track via zone))
+
+(rule "F.Cu under the GND busbar: GND only"
+	(layer "F.Cu")
+	(condition "A.intersectsArea('BUSBAR_GND') && A.NetName != 'GND'")
+	(constraint disallow track via zone))
