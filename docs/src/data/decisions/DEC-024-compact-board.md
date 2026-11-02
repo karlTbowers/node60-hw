@@ -1,7 +1,7 @@
 ---
 id: DEC-024
 title: Compact 230 × 110 mm board (enclosure version 11)
-status: accepted
+status: superseded
 date: 2026-11-01
 revision: B
 page: subsystems/enclosure

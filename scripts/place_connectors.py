@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Node60's enclosure-fixed connectors (J901-J912), board outline and busbars, per design version.
 
-Thirteen mechanical versions are kept as candidates (docs: Enclosure options). Each is a set
+Fifteen mechanical versions are kept as candidates (docs: Enclosure options). Each is a set
 of parameters in VERSIONS; enclosure_geometry.py, check_surlok_clearance.py, the
 dimensioned drawings and the 3D mockup are all generated from them. The PCB holds one:
 CURRENT, unless another is named on the command line.
@@ -335,7 +335,18 @@ VERSIONS["v14"] = {**VERSIONS["v11"], "title": "Version 14: version 11 with 3/16
                               "thread, so nothing hangs below the terminal and the board sits 5 mm off the floor. "
                               "Würth's minimum thread engagement is not confirmed."}
 
-CURRENT = "v11"      # the version on node60.kicad_pcb (DEC-024)
+# Version 15 (DEC-025, user, 2026-11-01): version 11 with 1/8" x 3/4" C110 busbars: version 14's narrower bar, so the same
+# top-side area comes free, at version 11's thickness, so the SurLok stud engages the REDCUBE's whole 5.6 mm thread
+# and the heights are version 11's.
+V15_BUSBAR = (19.05, 3.175, '1/8" x 3/4" C110 copper flat bar')
+VERSIONS["v15"] = {**VERSIONS["v11"], "title": "Version 15: version 11 with 1/8 x 3/4 in busbars", "decision": "DEC-025",
+                   "busbar": V15_BUSBAR,
+                   "summary": "Version 11 (the compact plan on a 2.0 mm board) with 1/8\" x 3/4\" C110 busbars "
+                              "instead of 1/8\" x 1\": version 14's 6.35 mm narrower bar, freeing the same top-side "
+                              "area along both bars, at version 11's thickness, so the SurLok stud engages the "
+                              "REDCUBE's whole thread and every height is version 11's. 25 % less copper in the bars."}
+
+CURRENT = "v15"      # the version on node60.kicad_pcb (DEC-025)
 
 
 def left(v):
