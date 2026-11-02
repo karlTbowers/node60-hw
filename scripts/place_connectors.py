@@ -23,6 +23,7 @@ Positions are written in plan as seen from above the lid (x east, KiCad Y toward
 front face). A board mounted component side down (version 1) is mirrored in KiCad, whose
 top view then looks at the board from below.
 """
+import os
 import sys
 
 try:
@@ -163,6 +164,11 @@ BUSBARS = {"VBAT_IN": ("J910", "J901"), "GND": ("J911", "J902")}
 # margin covers the bar's play on the stud (M6 clearance hole, about +/-0.25 mm). A rule area
 # BUSBAR_<net> on F.Cu, the same size, lets node60.kicad_dru keep other nets' copper out.
 BUSBAR_REFS = {"VBAT_IN": "BB901", "GND": "BB902"}
+# Each bar footprint carries the library's model of that bar (model-only parts DropOut_Busbar,
+# named from width, thickness, length and hole pitch) when the library has one, raised onto
+# the spigots. Versions whose bar the library doesn't model get no 3D model.
+BUSBAR_MODELS = "lib/dropout-kicad-library/3dmodels/DropOut_Busbar.3dshapes"
+BUSBAR_Z = 0.6       # spigots above the top face (DEC-023)
 
 
 def busbar(v):
@@ -374,6 +380,15 @@ def outputs(v):
         return v["outputs"]
     pitch = v.get("out_pitch", OUT_PITCH)
     return {f"J{904 + i}": ("S", CX + (i - 2.5) * pitch) for i in range(6)}
+
+
+def busbar_model(v, net):
+    """Library path of the 3D model for a version's busbar (it may not exist)."""
+    (xa, _), (xb, _) = (v["terminals"][r] for r in BUSBARS[net])
+    bw, bt, _ = busbar(v)
+    pitch = round(abs(xb - xa), 3)
+    return (f"{BUSBAR_MODELS}/Busbar_Cu_{bw:g}x{bt:g}mm_L{round(pitch + bw, 3):g}mm"
+            f"_2xD{BUSBAR_HOLE:g}mm_P{pitch:g}mm.step")
 
 
 def busbar_outline(v, net):
@@ -608,6 +623,12 @@ def main(netlist, version=CURRENT):
                     hole.SetLayer(pcbnew.F_CrtYd)
                     hole.SetWidth(mm(0.05))
                     fp.Add(hole)
+        step = busbar_model(v, net)
+        if v["board"] == "up" and os.path.exists(step):
+            model = pcbnew.FP_3DMODEL()
+            model.m_Filename = "${KIPRJMOD}/" + step
+            model.m_Offset = pcbnew.VECTOR3D(0, 0, BUSBAR_Z)
+            fp.Models().push_back(model)
         fp.SetLocked(True)
 
     if areas:
