@@ -149,10 +149,17 @@ def main_north(v):
     return Y0 + (MAIN_TRAVEL if v.get("insert") == "boards" else 0.0)
 
 # Busbars (DEC-021): 1/8" x 1" C110 copper flat bar, cut to length and drilled in house,
-# one per terminal pair. Ends run half a width past each hole.
+# one per terminal pair. Ends run half a width past each hole. A version may set its own bar
+# with "busbar": (width, thickness, stock).
 BUSBAR_W, BUSBAR_T = 25.4, 3.175
+BUSBAR_STOCK = '1/8" x 1" C110 copper flat bar'
 BUSBAR_HOLE = 6.5    # M6 clearance
 BUSBARS = {"VBAT_IN": ("J910", "J901"), "GND": ("J911", "J902")}
+
+
+def busbar(v):
+    """(width, thickness, stock) of a version's busbars."""
+    return v.get("busbar", (BUSBAR_W, BUSBAR_T, BUSBAR_STOCK))
 
 AT13 = ("DropOut_Connector_Amphenol", "Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal")
 ATM13 = ("DropOut_Connector_Amphenol", "Amphenol_ATM13-2P-BMxx_1x02_P4.20mm_Horizontal")
@@ -305,6 +312,19 @@ VERSIONS["v13"] = {**VERSIONS["v11"], "title": "Version 13: version 11 with RADL
                               "most (so the 4 mm lid has a 1 mm seat at each) and has a 10 mm stud that passes "
                               "through the REDCUBE, so the board sits higher to keep the stud tip 2 mm off the "
                               "floor. Its plug is shorter, 37 mm from the axis instead of 46."}
+# Version 14 (user, 2026-11-01): version 11 with 3/16" x 3/4" C110 busbars instead of 1/8" x 1", to free top-side
+# area along the bars. The receptacles rise 1.59 mm with the thicker bar; the SurLok stud's 9.95 mm then ends inside
+# the REDCUBE (9.95 - 4.76 = 5.19 of its 5.6 mm thread), so nothing hangs below it and the board drops back to the
+# 5 mm floor standoff. Würth's minimum thread engagement isn't known yet.
+V14_BUSBAR = (19.05, 4.7625, '3/16" x 3/4" C110 copper flat bar')
+VERSIONS["v14"] = {**VERSIONS["v11"], "title": "Version 14: version 11 with 3/16 x 3/4 in busbars", "decision": None,
+                   "busbar": V14_BUSBAR,
+                   "summary": "Version 11 (the compact plan on a 2.0 mm board) with 3/16\" x 3/4\" C110 busbars "
+                              "instead of 1/8\" x 1\": 6.35 mm narrower, freeing top-side area along both bars, and "
+                              "1.59 mm thicker, with 13 % more copper. The receptacles and the low lid rise with the "
+                              "bar. The SurLok stud then ends inside the REDCUBE, engaging 5.2 of its 5.6 mm of "
+                              "thread, so nothing hangs below the terminal and the board sits 5 mm off the floor. "
+                              "Würth's minimum thread engagement is not confirmed."}
 
 CURRENT = "v11"      # the version on node60.kicad_pcb (DEC-024)
 
@@ -339,7 +359,7 @@ def outputs(v):
 def busbar_outline(v, net):
     """(x0, y0, x1, y1) of a busbar in plan (x east, KiCad Y); both terminals sit on one row."""
     (xa, ya), (xb, yb) = (v["terminals"][r] for r in BUSBARS[net])
-    h = BUSBAR_W / 2
+    h = busbar(v)[0] / 2
     return min(xa, xb) - h, ya - h, max(xa, xb) + h, ya + h
 
 
@@ -513,7 +533,8 @@ def main(netlist, version=CURRENT):
         bar.SetWidth(mm(0.15))
         board.Add(bar)
         label = pcbnew.PCB_TEXT(board)
-        label.SetText(f"{net} busbar {BUSBAR_W:g} x {BUSBAR_T:g} Cu (1/8 x 1 in C110), on top: no parts under it")
+        bw, bt, stock = busbar(v)
+        label.SetText(f"{net} busbar {bw:g} x {bt:g} Cu ({stock}), on top: no parts under it")
         label.SetPosition(pcbnew.VECTOR2I(mm((x0 + x1) / 2), mm(y0 - 2)))
         label.SetLayer(pcbnew.Dwgs_User)
         label.SetTextSize(pcbnew.VECTOR2I(mm(1.5), mm(1.5)))

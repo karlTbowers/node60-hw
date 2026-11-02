@@ -49,6 +49,7 @@ export default defineConfig({
 								{ label: 'Version 11: version 9 on a 2.0 mm board', slug: 'subsystems/enclosure/v11' },
 								{ label: 'Version 12: version 11 on a 1.6 mm board', slug: 'subsystems/enclosure/v12' },
 								{ label: 'Version 13: version 11 with RADLOK receptacles', slug: 'subsystems/enclosure/v13' },
+								{ label: 'Version 14: version 11 with 3/16 × 3/4 in busbars', slug: 'subsystems/enclosure/v14' },
 							],
 						},
 						{ label: 'Firmware & data contract', slug: 'subsystems/firmware' },
