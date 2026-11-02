@@ -1,0 +1,49 @@
+{
+  "block": "crystal",
+  "anchor": "Y401",
+  "approved": null,
+  "anchor_pose": {
+    "x": 190.529,
+    "y": 52.44,
+    "rot": 180.0,
+    "side": "B"
+  },
+  "parts": {
+    "C424": {
+      "dx": -0.871,
+      "dy": -2.36,
+      "rot": 0.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": ""
+    },
+    "C425": {
+      "dx": 1.929,
+      "dy": 2.24,
+      "rot": 0.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": ""
+    },
+    "R408": {
+      "dx": -1.3234,
+      "dy": 2.3813,
+      "rot": 0.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": ""
+    },
+    "TP407": {
+      "dx": -21.471,
+      "dy": -4.56,
+      "rot": 180.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": ""
+    }
+  }
+}

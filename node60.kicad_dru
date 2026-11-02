@@ -18,3 +18,9 @@
 	(layer "F.Cu")
 	(condition "A.intersectsArea('BUSBAR_GND') && A.NetName != 'GND'")
 	(constraint disallow track zone))
+
+# MCU crystal (NXP S32K3 Hardware Design Guidelines Rev E2, §3.2): the traces between XTAL/EXTAL, the
+# crystal and its load capacitors are as short as possible and use no via (placement decision D07).
+(rule "No vias on the MCU crystal nets"
+	(condition "A.NetName == '/MCU and NVM/FXOSC_EXTAL' || A.NetName == '/MCU and NVM/FXOSC_XTAL' || A.NetName == '/MCU and NVM/FXOSC_XTAL_X'")
+	(constraint disallow via))

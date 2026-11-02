@@ -1,0 +1,28 @@
+{
+  "board": "/Users/karl/Dev/node60-hw-place/placement/2026-11-02-bars/judge_crystal/s6.kicad_pcb",
+  "kicad": "10.0.7",
+  "refilled": true,
+  "blocking": 1,
+  "unconnected_items": 1,
+  "open_nets": [
+    "/T1S_IRQ_L"
+  ],
+  "custom_rule_hits": {},
+  "custom_rules_loaded": [
+    "F.Cu under the VBAT_IN busbar: VBAT_IN only",
+    "F.Cu under the GND busbar: GND only"
+  ],
+  "other_errors": {},
+  "warnings": {
+    "courtyards_overlap": 1,
+    "silk_edge_clearance": 16,
+    "lib_footprint_issues": 199,
+    "silk_overlap": 199,
+    "silk_over_copper": 199
+  },
+  "capped_types": [
+    "lib_footprint_issues",
+    "silk_overlap",
+    "silk_over_copper"
+  ]
+}

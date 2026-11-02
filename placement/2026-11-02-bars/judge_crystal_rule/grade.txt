@@ -1,0 +1,6 @@
+KiCad DRC with the board's own rules (3 custom rule(s) loaded)
+  unconnected items : 1  nets: /T1S_IRQ_L
+  rule 'No vias on the MCU crystal nets': 2   e.g. Via [/MCU and NVM/FXOSC_EXTAL] on F.Cu - B.Cu
+  not blocking (silk, dangling, library, mask): 614
+  NOTE: lib_footprint_issues, silk_overlap, silk_over_copper reached KiCad's 199-entry report cap; the count is a floor
+BLOCKING=3

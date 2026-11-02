@@ -1,0 +1,206 @@
+{
+  "block": "out_8x",
+  "anchor": "U801",
+  "approved": null,
+  "copied_from": {
+    "table": "placement/2026-11-02-bars/blocks/out_34.poses.json",
+    "approved": null
+  },
+  "anchor_pose": {
+    "x": 219.9771,
+    "y": 112.0971,
+    "rot": 90.0,
+    "side": "B"
+  },
+  "parts": {
+    "C801": {
+      "dx": -0.4462,
+      "dy": -0.7184,
+      "rot": 90.0,
+      "side": "F",
+      "role": "core",
+      "flex_mm": 0,
+      "why": ""
+    },
+    "C802": {
+      "dx": 0.5838,
+      "dy": 6.8511,
+      "rot": 270.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": ""
+    },
+    "C803": {
+      "dx": -4.306,
+      "dy": 0.3438,
+      "rot": 180.0,
+      "side": "F",
+      "role": "core",
+      "flex_mm": 0,
+      "why": ""
+    },
+    "C804": {
+      "dx": -5.0782,
+      "dy": 3.983,
+      "rot": 0.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": ""
+    },
+    "C805": {
+      "dx": -5.551,
+      "dy": -0.975,
+      "rot": 180.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": ""
+    },
+    "C806": {
+      "dx": 2.9,
+      "dy": 4.401,
+      "rot": 270.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": ""
+    },
+    "C807": {
+      "dx": 1.1937,
+      "dy": -7.3416,
+      "rot": 90.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": ""
+    },
+    "R801": {
+      "dx": 4.265,
+      "dy": -3.351,
+      "rot": 0.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": ""
+    },
+    "R802": {
+      "dx": -1.3923,
+      "dy": 3.5263,
+      "rot": 0.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": ""
+    },
+    "R803": {
+      "dx": -2.9,
+      "dy": 3.801,
+      "rot": 90.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": ""
+    },
+    "R804": {
+      "dx": 6.6836,
+      "dy": -0.2664,
+      "rot": 270.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": ""
+    },
+    "R805": {
+      "dx": -4.5782,
+      "dy": 1.583,
+      "rot": 270.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": ""
+    },
+    "R806": {
+      "dx": -5.9045,
+      "dy": 6.188,
+      "rot": 0.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": ""
+    },
+    "R807": {
+      "dx": 0.3513,
+      "dy": -4.1385,
+      "rot": 0.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": ""
+    },
+    "RT801": {
+      "dx": -2.0418,
+      "dy": -4.2113,
+      "rot": 270.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": ""
+    },
+    "TP801": {
+      "dx": -3.8535,
+      "dy": 6.188,
+      "rot": 270.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": ""
+    },
+    "TP802": {
+      "dx": 6.7413,
+      "dy": -2.3336,
+      "rot": 270.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": ""
+    },
+    "TP803": {
+      "dx": 5.051,
+      "dy": 0.975,
+      "rot": 270.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": ""
+    },
+    "TP804": {
+      "dx": -8.2048,
+      "dy": -1.0045,
+      "rot": 270.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": ""
+    },
+    "TP805": {
+      "dx": 2.9,
+      "dy": 7.052,
+      "rot": 270.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": ""
+    },
+    "TP806": {
+      "dx": -8.1731,
+      "dy": -3.3589,
+      "rot": 180.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": ""
+    }
+  }
+}
