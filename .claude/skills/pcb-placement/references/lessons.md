@@ -94,3 +94,13 @@ track, so the via checks still treated the bars as via-free and couldn't measure
 
 **What the skill does.** `blocking_areas(..., blocks=("via",))` for via questions; tracks only where
 a check is about tracks.
+
+## Measure parts by courtyard or pads, never by a footprint's bounding box
+
+**What happened (2026-11-02).** `hot_loop.py` measured a feedback resistor's distance from the switch
+node with `FOOTPRINT.GetBoundingBox()`, which includes the reference and value text: an 0402 read
+4.1 x 4 mm, and R304 read 0.0 mm from U303's SW pin, which it is 1.5 mm from (courtyard to pad).
+The run reported it as touching the switch node before the number was checked.
+
+**What the skill does.** Footprints are measured by their courtyard (their pads when they have none);
+a surprising number is checked against the courtyard or pad geometry before it reaches a page.
