@@ -274,9 +274,9 @@ VERSIONS["v10"] = {**VERSIONS["v7"], "title": "Version 10: version 7 on a 2.0 mm
                               "0.6 mm lower, so the front band and T1S hood drop 0.6 mm, and their pin tails come "
                               "through 0.7 to 1.5 mm instead of 0.1 to 0.5 mm. Whether Würth allows the spigot to "
                               "stand proud is not confirmed."}
-# Version 11 (user, 2026-11-01): version 9 (compact) on the 2.0 mm board of version 10. The plan is
+# Version 11 (DEC-024, user, 2026-11-01): version 9 (compact) on the 2.0 mm board of version 10. The plan is
 # version 9's; only the heights change, as in version 10.
-VERSIONS["v11"] = {**VERSIONS["v9"], "title": "Version 11: version 9 on a 2.0 mm board", "decision": None,
+VERSIONS["v11"] = {**VERSIONS["v9"], "title": "Version 11: version 9 on a 2.0 mm board", "decision": "DEC-024",
                    "thickness": V10_THICKNESS,
                    "summary": "Version 9 (version 7, compact: a 230 x 110 mm board, outward plugs overhanging the side "
                               "walls) on the 2.0 mm board of version 10. The plan is version 9's; as in version 10 the "
@@ -306,7 +306,7 @@ VERSIONS["v13"] = {**VERSIONS["v11"], "title": "Version 13: version 11 with RADL
                               "through the REDCUBE, so the board sits higher to keep the stud tip 2 mm off the "
                               "floor. Its plug is shorter, 37 mm from the axis instead of 46."}
 
-CURRENT = "v10"      # the version on node60.kicad_pcb (DEC-023)
+CURRENT = "v11"      # the version on node60.kicad_pcb (DEC-024)
 
 
 def left(v):
