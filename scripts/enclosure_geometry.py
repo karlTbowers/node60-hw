@@ -20,9 +20,9 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 from place_connectors import (  # noqa: E402
-    AT13_BACK, AT13_PANEL, ATM13_ALONG, ATM13_BACK, ATM13_PANEL, BUSBAR_HOLE, BUSBAR_T, BUSBAR_W, BUSBARS, CURRENT,
+    AT13_BACK, AT13_PANEL, ATM13_ALONG, ATM13_BACK, ATM13_PANEL, BUSBAR_HOLE, BUSBARS, CURRENT,
     AT13_SHROUD, ATM13_SHROUD, CX, EDGE_GAP, INSERT_CLEAR, MAIN_TRAVEL, MCU_BOARD, MCU_THICKNESS, MEZZ_DROP,
-    MEZZ_PINS, MEZZANINE, THICKNESS, VERSIONS, Y0, busbar_outline, front, left, main_north, notch, out_row, outputs, right,
+    MEZZ_PINS, MEZZANINE, THICKNESS, VERSIONS, Y0, busbar, busbar_outline, front, left, main_north, notch, out_row, outputs, right,
 )
 from place_connectors import T1S_PITCH as T1S_PITCH_ALL  # noqa: E402  (default; a version may set its own)
 
@@ -127,6 +127,7 @@ def spec(version=CURRENT):
     term = TERMINALS[v["terminal"]]
     rec = RECEPTACLES[v.get("receptacle", "surlok")]
     mcu = v.get("t1s_board", "main") == "mcu"           # T1S on the MCU board under the main board
+    bar_w, bar_t, bar_stock = busbar(v)
     deepest = AT13_HEIGHT if mcu else max(AT13_HEIGHT, ATM13_HEIGHT)   # tallest header on the main board
     side = v.get("side_gap", EDGE_GAP)                   # board edge to the east and west walls
     x_in_l, x_in_r = left(v) - side, right(v) + side
@@ -140,7 +141,7 @@ def spec(version=CURRENT):
         m0 = WALL + MCU_STANDOFF                        # MCU board bottom (version 8)
         standoff = v.get("standoff", STANDOFF)
         if v["terminal"] == "smt":                      # a stud longer than the thread above it hangs below the board
-            above = max(v.get("thickness", THICKNESS), term["spigot"]) + (BUSBAR_T if v["busbars"] else 0.0)
+            above = max(v.get("thickness", THICKNESS), term["spigot"]) + (bar_t if v["busbars"] else 0.0)
             standoff = max(standoff, rec["stud"] - above + STUD_FLOOR_CLEAR)
         z0 = m0 + MCU_THICKNESS + BOARD_GAP if mcu else WALL + standoff   # board bottom
         z1 = z0 + v.get("thickness", THICKNESS)                             # component side, facing the lid
@@ -154,7 +155,7 @@ def spec(version=CURRENT):
         cs, side_sign = z0, -1                          # headers hang from the component side
         term_top = z1                                   # SMT spigot flush with the back face
         term_z = [z0 - term["height"], z0]
-    contact = term_top + (BUSBAR_T if v["busbars"] else 0.0)   # receptacle's rear contact face
+    contact = term_top + (bar_t if v["busbars"] else 0.0)      # receptacle's rear contact face
     panel = contact + rec["depth"]                              # receptacle's panel face
     # A lid thicker than the receptacle takes is thinned to panel_max in a seat machined into its top face.
     seat_depth = max(0.0, LID - rec["panel_max"]) if rec["panel_max"] and v["lid"] != "seats" else 0.0
@@ -295,7 +296,7 @@ def spec(version=CURRENT):
                   "ATM13": {"height": ATM13_HEIGHT, "axis": ATM13_AXIS, "panel": ATM13_PANEL, "back": ATM13_BACK,
                             "shroud": ATM13_SHROUD, "along_half": sum(ATM13_ALONG) / 2},
                   "receptacle": {**rec, "kind": v.get("receptacle", "surlok"), "contact_z": contact, "panel_z": panel},
-                  "busbar": {"width": BUSBAR_W, "thickness": BUSBAR_T, "stock": '1/8" x 1" C110 copper flat bar'}},
+                  "busbar": {"width": bar_w, "thickness": bar_t, "stock": bar_stock}},
         "assumptions": {"standoff": None if mcu or not up else z0 - WALL, "floor_gap": None if up else FLOOR_GAP,
                         "mcu_standoff": MCU_STANDOFF if mcu else None, "board_gap": BOARD_GAP if mcu else None,
                         "hood_gap": v.get("hood_gap", HOOD_GAP), "edge_gap": EDGE_GAP, "back_gap": v["back_gap"],
