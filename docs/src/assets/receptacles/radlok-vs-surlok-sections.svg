@@ -4,30 +4,30 @@
 <defs><marker id="a" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M2 1L8 5L2 9" fill="none" stroke="#5f5e5a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></marker></defs>
 <rect width="680" height="760" fill="#ffffff"/>
 <text x="40" y="30" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="14" font-weight="500" fill="#1f1e1d" text-anchor="start">RADLOK RL9057-101-F1</text>
-<text x="300" y="44" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">Panel face</text>
+<text x="292" y="44" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">Panel face</text>
 <text x="420" y="30" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">Seat (REDCUBE)</text>
 <line x1="420" y1="36" x2="420" y2="640" stroke="#5f5e5a" stroke-width="0.6" stroke-dasharray="4 3"/>
-<line x1="299.85" y1="48" x2="299.85" y2="282" stroke="#5f5e5a" stroke-width="0.6" stroke-dasharray="4 3"/>
-<polygon points="63.6,148.8 68.1,140.7 171.6,139.35 171.6,190.65 68.1,189.3 63.6,181.2" fill="#FAC775" stroke="#854F0B" stroke-width="0.6"/>
-<polygon points="221.1,97.5 259.35,62.4 259.35,267.6 221.1,232.5" fill="#B4B2A9" stroke="#5F5E5A" stroke-width="0.6"/>
-<rect x="171.6" y="97.5" width="87.75" height="135" fill="#B4B2A9" stroke="#5F5E5A" stroke-width="0.6"/>
-<rect x="259.35" y="52.5" width="31.5" height="225" fill="#B4B2A9" stroke="#5F5E5A" stroke-width="0.6"/>
-<rect x="290.85" y="52.5" width="9" height="225" fill="#888780" stroke="#5F5E5A" stroke-width="0.6"/>
-<rect x="299.85" y="86.7" width="22.5" height="156.6" fill="#B4B2A9" stroke="#5F5E5A" stroke-width="0.6"/>
-<rect x="299.85" y="102" width="105.75" height="126" fill="#B4B2A9" stroke="#5F5E5A" stroke-width="0.6"/>
+<line x1="292.2" y1="48" x2="292.2" y2="282" stroke="#5f5e5a" stroke-width="0.6" stroke-dasharray="4 3"/>
+<polygon points="63.6,148.8 68.1,140.7 163.95,139.35 163.95,190.65 68.1,189.3 63.6,181.2" fill="#FAC775" stroke="#854F0B" stroke-width="0.6"/>
+<polygon points="213.45,97.5 251.7,62.4 251.7,267.6 213.45,232.5" fill="#B4B2A9" stroke="#5F5E5A" stroke-width="0.6"/>
+<rect x="163.95" y="97.5" width="87.75" height="135" fill="#B4B2A9" stroke="#5F5E5A" stroke-width="0.6"/>
+<rect x="251.7" y="52.5" width="31.5" height="225" fill="#B4B2A9" stroke="#5F5E5A" stroke-width="0.6"/>
+<rect x="283.2" y="52.5" width="9" height="225" fill="#888780" stroke="#5F5E5A" stroke-width="0.6"/>
+<rect x="292.2" y="86.7" width="22.5" height="156.6" fill="#B4B2A9" stroke="#5F5E5A" stroke-width="0.6"/>
+<rect x="292.2" y="102" width="113.4" height="126" fill="#B4B2A9" stroke="#5F5E5A" stroke-width="0.6"/>
 <polygon points="405.6,102 420,122.7 420,207.3 405.6,228" fill="#B4B2A9" stroke="#5F5E5A" stroke-width="0.6"/>
 <rect x="420" y="138" width="90" height="54" fill="#FAC775" stroke="#854F0B" stroke-width="0.6"/>
 <path d="M429 138V192M438 138V192M447 138V192M456 138V192M465 138V192M474 138V192M483 138V192M492 138V192M501 138V192" stroke="#854F0B" stroke-width="0.6" fill="none"/>
-<path d="M63.6 196V300M171.6 236V300M259.35 281V300M510 196V300M63.6 322V334M510 322V334" stroke="#5f5e5a" stroke-width="0.6" fill="none"/>
-<line x1="64" y1="292" x2="171" y2="292" stroke="#5f5e5a" stroke-width="0.6" marker-start="url(#a)" marker-end="url(#a)"/>
-<line x1="172" y1="292" x2="259" y2="292" stroke="#5f5e5a" stroke-width="0.6" marker-start="url(#a)" marker-end="url(#a)"/>
-<line x1="260" y1="292" x2="299.5" y2="292" stroke="#5f5e5a" stroke-width="0.6" marker-start="url(#a)" marker-end="url(#a)"/>
-<line x1="300.2" y1="292" x2="419.6" y2="292" stroke="#5f5e5a" stroke-width="0.6" marker-start="url(#a)" marker-end="url(#a)"/>
+<path d="M63.6 196V300M163.95 236V300M251.7 281V300M510 196V300M63.6 322V334M510 322V334" stroke="#5f5e5a" stroke-width="0.6" fill="none"/>
+<line x1="64" y1="292" x2="163.6" y2="292" stroke="#5f5e5a" stroke-width="0.6" marker-start="url(#a)" marker-end="url(#a)"/>
+<line x1="164.3" y1="292" x2="251.4" y2="292" stroke="#5f5e5a" stroke-width="0.6" marker-start="url(#a)" marker-end="url(#a)"/>
+<line x1="252.1" y1="292" x2="291.8" y2="292" stroke="#5f5e5a" stroke-width="0.6" marker-start="url(#a)" marker-end="url(#a)"/>
+<line x1="292.6" y1="292" x2="419.6" y2="292" stroke="#5f5e5a" stroke-width="0.6" marker-start="url(#a)" marker-end="url(#a)"/>
 <line x1="420.4" y1="292" x2="509.6" y2="292" stroke="#5f5e5a" stroke-width="0.6" marker-start="url(#a)" marker-end="url(#a)"/>
-<text x="117.6" y="310" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">Pin 12.0</text>
-<text x="215.5" y="310" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">Front 9.75</text>
-<text x="279.6" y="310" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">4.5</text>
-<text x="359.9" y="310" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">Rear 13.35</text>
+<text x="113.8" y="310" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">Pin 11.15</text>
+<text x="207.8" y="310" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">Front 9.75</text>
+<text x="271.95" y="310" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">4.5</text>
+<text x="356.1" y="310" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">Rear 14.2</text>
 <text x="465" y="310" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">Stud 10.0</text>
 <line x1="64" y1="328" x2="509.6" y2="328" stroke="#5f5e5a" stroke-width="0.6" marker-start="url(#a)" marker-end="url(#a)"/>
 <text x="286.8" y="346" font-family="system-ui, -apple-system, Segoe UI, sans-serif" font-size="12" fill="#5f5e5a" text-anchor="middle">Overall 49.6</text>

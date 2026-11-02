@@ -70,9 +70,10 @@ RECEPTACLES = {
     # rev. K and Amphenol Tuchel's STEP, as measured in the DropOut library's model generator) and the
     # right-angle plug RL00571-25x (drawing "Tubular Lug Version" rev. L and its STEP).
     "radlok": {"name": "Amphenol RADLOK 5.7 mm (RL9057-101-F1RE / -F1)", "cutout": "RADLOK",
-               "depth": 24.2 - 10.0,             # drawing I (panel face to stud tip) - H (stud); the STEP gives 13.35
+               "depth": 24.2 - 10.0,             # drawing I (panel face to stud tip) - H (stud); the STEP gives 13.35,
+                                                 # the drawing wins (user, 2026-11-02; library model to match)
                "stud": 10.0,                     # drawing H: M6 x 1.0-6g, 10 long
-               "flange": 25.0, "seal": 1.0, "flange_t": 3.5, "front": 27.6 - 13.35, "body_d": 14.0,
+               "flange": 25.0, "seal": 1.0, "flange_t": 3.5, "front": 28.45 - 14.2, "body_d": 14.0,
                "panel_max": 3.0, "stud_note": "its 10 mm stud (drawing)",
                # STEP: socket axis 10.45 behind the front end; drawing F 47.7 overall, A 18.5 wide, C 23.85
                # high from the boss face, the boss (D 9.4) inside the receptacle's tube.
