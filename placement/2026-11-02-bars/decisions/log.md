@@ -6,6 +6,7 @@
 | D02 | 2026-11-02 | How the board shows the VBAT_IN busbar joining J901 to J910 | https://claude.ai/artifact/QQyG6R4BYMt8VuPG6xff9c | A, a busbar part in the schematic (user, 2026-11-02) | library net-tie part, fiducial footprint and schematic change in their own session; judging route keeps J901 on a stand-in net until it lands |
 | D03 | 2026-11-02 | Board fiducials, 3 per side, via a new library footprint | https://claude.ai/artifact/WKcHKSLmrtASeteVD7FHuo | A, board fiducials, 3 per side (user, 2026-11-02) | a DropOut fiducial footprint through the library's add-part; six placed by `place_connectors.py` at the measured spots; spots reserved as keep-outs meanwhile |
 | D04 | 2026-11-02 | Power-entry block: INA228 beside its shunt | https://claude.ai/artifact/TmF2g6F2qwuSfKVdGnomnn | A, as composed (user, 2026-11-02) | power block v1 approved: U202 beside R201, C214 on B.Cu at U202 pin 6; held through placement |
+| D05 | 2026-11-02 | T1S block as it stands | https://claude.ai/artifact/3qNtDXwTVFXDRsiMQj4BjQ | waiting | |
 
 ## Skill gaps found in this run
 

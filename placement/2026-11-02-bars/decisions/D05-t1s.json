@@ -1,0 +1,45 @@
+{
+  "id": "D05",
+  "name": "T1S block",
+  "question": "Approve the T1S block as it stands: line interface under the trunk, PHY and 50 MHz clock unchanged?",
+  "board": "node60", "stage": "3 Blocks", "date": "2026-11-02",
+  "why_now": "The T1S line interface was composed by hand on 2026-11-01 (T1S first) and has been on main since. This page asks you to approve it as the run's T1S block, so it is held when the rest of the board moves.\n\nTwo changes were tried and dropped. Each judging route left one different net open at the PHY (REFCLK, IRQ_L or MODE0), so I moved the REFCLK resistor R503 into the chip's corner. That routed worse (REFCLK and MODE0 open). KRT's reachability check then read **PASSABLE** on every one of those pins, with 0.3 mm to spare: the router lost them, not the placement. With the run's corrected chain and one targeted rip-up pass, the candidate board (main + the power block) now fast-routes with nothing open.",
+  "facts": [
+    {"label": "Layout rules", "value": "J903 and J912 side by side with the shortest trunk; ESD and termination in line on the pair at the connectors; stub to the PHY well under 10 cm; no ground pour round the line interface; no copper under the choke", "source": "Microchip AN1718 rev. D §2.0, via DEC-017"},
+    {"label": "Termination relay K501", "value": "B.Cu under the trunk's midpoint; its common pins 6.8 / 9.2 mm from the midpoint (was 40–47 mm on a stub before 2026-11-01)", "source": "measured on the candidate"},
+    {"label": "Choke to PHY line pins", "value": "4.4 mm", "source": "measured"},
+    {"label": "Nearest switch node to a T1S line pad", "value": "11.8 mm (U302 SW to J912 T1S_N); keep-away 10 mm", "source": "measured"},
+    {"label": "PHY to MCU (RMII)", "value": "26.8 mm centre to centre", "source": "measured"},
+    {"label": "Reachability at the PHY", "value": "pins 22, 23, 27 PASSABLE, margin about 0.3 mm (0.70 mm gap, 0.40 mm needed)", "source": "KRT check_reachability on three judging routes"},
+    {"label": "Fast route of the candidate", "value": "KRT blocking 0; KiCad DRC with node60.kicad_pro/.kicad_dru BLOCKING 0; every T1S net routed", "source": "judge_cand_a s7"}
+  ],
+  "options": [
+    {
+      "key": "A", "name": "As it stands",
+      "summary": "Keep the line interface, the PHY, its straps, the oscillator Y501 and its resistors R503/R504 where they are on main. The pose table (`blocks/t1s.poses.json`) gives each part's reason.",
+      "images": [{"path": "img/t1s_B.png", "caption": "Bottom side, seen from above: K501 and its legs under the trunk between J912 (left) and J903, the choke and DC block, U501 with Y501, U401 to the right"}],
+      "measures": [
+        {"label": "Fast route blocking (KRT / board rules)", "value": "0 / 0", "limit": "0", "status": "pass"},
+        {"label": "Nearest switch node to a T1S line pad", "value": "11.8 mm", "limit": "10 mm", "status": "pass"},
+        {"label": "Choke to PHY line pin", "value": "4.4 mm", "limit": "12 mm (intent)", "status": "pass"},
+        {"label": "Open nets at the PHY on the standard chain", "value": "1 (T1S_IRQ_L, PASSABLE; closed by one rip-up pass)", "limit": "0", "status": "warn"}
+      ],
+      "gains": ["Nothing moves; the arrangement already meets AN1718's layout list and routes"],
+      "costs": ["The router needs one extra rip-up pass at the PHY's east pins; routing should expect that corner to be tight"]
+    },
+    {
+      "key": "B", "name": "REFCLK resistor in the chip's corner (tried)",
+      "summary": "Swap R503 with the MODE1 strap R506, so the clock leaves pin 27 from the corner.",
+      "images": [{"path": "img/t1s_B.png", "caption": "Same area; only R503 and R506 trade places"}],
+      "measures": [
+        {"label": "Fast route blocking (KRT / board rules)", "value": "4 (REFCLK and MODE0 open, older chain)", "limit": "0", "status": "fail"},
+        {"label": "Open nets at the PHY on the standard chain", "value": "2", "limit": "0", "status": "fail"}
+      ],
+      "gains": ["Shorter REFCLK resistor-to-pin distance (3.0 mm against 4.6 mm)"],
+      "costs": ["Routed worse; the problem it aimed at was the router's, not the placement's"]
+    }
+  ],
+  "recommendation": {"option": "A", "why": "The block already does what AN1718 asks, it routes, and the one tight spot reads PASSABLE. B was measured and is worse."},
+  "answer": "Reply with A or B, or a change.",
+  "sources": ["Microchip AN1718 rev. D §2.0; DEC-012 rev. B; DEC-017", "blocks/t1s.poses.json", "KRT check_reachability; judge_cand_a, judge_t1s, judge_power"]
+}
