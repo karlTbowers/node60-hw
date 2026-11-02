@@ -5753,7 +5753,7 @@
 	(footprint "DropOut_Diode_SMD:D_DO-218AC"
 		(layer "F.Cu")
 		(uuid "8b169c52-16ed-400d-b222-75175e19be8b")
-		(at 226.323000 110.291300 90)
+		(at 227.823000 110.291300 90)
 		(descr "DO-218AC (Vishay XLD8A24CA datasheet doc 87200 p. 4, mounting pad layout per IPC-7351), https://www.vishay.com/doc?87200")
 		(tags "diode TVS DO-218AC DO-218")
 		(property "Reference" "D201"
