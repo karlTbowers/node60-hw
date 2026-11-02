@@ -1,0 +1,74 @@
+{
+  "id": "D01",
+  "name": "Node60 placement plan",
+  "question": "Which version of the placement plan should the run follow: busbars strict (A) or tented vias allowed under the bars (B)?",
+  "board": "node60",
+  "stage": "1 Plan",
+  "date": "2026-11-02",
+  "why_now": "This is the first run with the new pcb-placement skill. Nothing is placed until the plan is approved.\n\nOne item decides the rest. Under each busbar, `node60.kicad_dru` lets **only the bar's own net** have copper on F.Cu, and the rule as written in PR #33 also counts **vias**. A through via has copper on F.Cu, so no other net may have a via anywhere under a bar. DEC-023 says only \"keep other nets' copper and solder mask from under the busbars, since the bars no longer rest on the board\". Nobody decided whether a tented via counts. Today the FET bank and the 0.25 mΩ shunt sit partly under the GND bar, and under the strict reading they have nowhere near enough via room for 60 A.\n\nAnswering this decides which parts must leave the bar areas (stage 4) and whether the power-entry block can be composed where it is (stage 3). Everything else in the plan is the same in A and B, and you can amend any of it in your answer.",
+  "facts": [
+    {"label": "Busbar copper rule", "value": "F.Cu under each bar: only the bar's net; tracks, vias and pours of other nets disallowed", "source": "node60.kicad_dru (PR #33)"},
+    {"label": "DEC-023 wording", "value": "keep other nets' copper and solder mask from under the busbars, since the bars no longer rest on the board", "source": "DEC-023"},
+    {"label": "Gap under the bar", "value": "0.6 mm (bar resting on the REDCUBE spigots)", "source": "DEC-023, DEC-025"},
+    {"label": "Bar sag, rough", "value": "0.007 mm under its own weight, about 0.35 mm at 50 g, simply supported over 157 mm (ends are clamped, so less)", "source": "estimate: 1/8 x 3/4 in C110, E 117 GPa, I 50.8 mm^4"},
+    {"label": "Parts partly under a bar now", "value": "GND bar: Q202, Q203, Q204, R201, U203, Q501, Q502 + 25 small parts; VBAT_IN bar: Q201, U202, U301, U701 + 25 small parts", "source": "measured on main 63ff75e"},
+    {"label": "Main's last fast route, graded by the board's own rules", "value": "756 blocking: 3 unconnected (VBAT_IN, 3V3_MAIN) and about 700 items of copper below the board's sizes (autoplan routed at 0.1/0.09 mm, Default class is 0.2/0.15)", "source": "grade_route.py on V16 route1t"},
+    {"label": "U401 escape", "value": "4 signal layers needed, 4 in the plan; a 0.45 mm via fits between four balls; Default 0.2/0.15 does not fit between balls (0.46 mm gap), so the ball field needs a scoped 0.1/0.1 rule", "source": "escape_budget.py"},
+    {"label": "Layer capacity", "value": "busiest 10 mm window 7 % full", "source": "layer_capacity.py"},
+    {"label": "INA228 Kelvin pair", "value": "U202 is 71 mm from its shunt R201 today; plan budget 10 mm", "source": "measured on main"},
+    {"label": "Busbar net tie", "value": "J901 reaches J910 only through the bar: KiCad reports it unconnected whatever the placement. Plan: BB901/BB902 get a pad on each spigot, tied", "source": "grade_route.py"},
+    {"label": "Fiducials", "value": "none on the board; plan: 3 per side, asymmetric", "source": "gate.py"},
+    {"label": "Assembly", "value": "plan: top reflowed first, bottom second, so the heavy bottom parts reflow once; D201 and J401 then hang in the second reflow (assembler to confirm or glue)", "source": "plan.md"},
+    {"label": "Plan document", "value": "placement/2026-11-02-bars/plan.md and plan.json on branch placement/2026-11-02-bars", "source": "this run"}
+  ],
+  "options": [
+    {
+      "key": "A",
+      "name": "Strict: no other-net via under a bar",
+      "summary": "The rule stays as written. Under each bar only parts whose pads can leave on B.Cu without a via may stand: the bar's terminals, 2–3-pad passives and test points. The FET bank, the shunt, the INA228, U203, U301, U701, Q501 and Q502 move out from under the bars in stage 4. The power entry is composed in stage 3 somewhere it can get its via fields.",
+      "images": [
+        {"path": "img/plan.svg", "caption": "The plan: fixed parts, busbar rule areas, lid bosses, reserved zones and critical-net lanes"},
+        {"path": "img/underbars_B.png", "caption": "Bottom side under the bars today, seen from above: Q202, R201, U203 and parts of Q203/Q204 under the GND bar (top), Q201 and U202 under the VBAT_IN bar"}
+      ],
+      "measures": [
+        {"label": "Via sites at Q202's VBAT_D tab (needs 30)", "value": "0", "limit": "30", "status": "fail"},
+        {"label": "Via sites at R201 pad 1, VBAT_D (needs 60)", "value": "32", "limit": "60", "status": "fail"},
+        {"label": "Via sites at R201 pad 2, VBAT_Q2D (needs 60)", "value": "32", "limit": "60", "status": "fail"},
+        {"label": "Via sites at U701's VBAT_PROT pad (needs 20)", "value": "28", "limit": "20", "status": "pass"},
+        {"label": "Multi-pin parts that must leave the bar areas", "value": "11", "limit": "-", "status": "warn"},
+        {"label": "Architecture decision changed", "value": "none", "limit": "-", "status": "pass"}
+      ],
+      "gains": ["Nothing of another net sits under a bar, so a bar that sags or a mask that wears can't short anything", "No change to an accepted decision"],
+      "costs": ["The 60 A FET bank and shunt move away from J910, and the free bottom area shrinks by the two bar shadows (about 5,700 mm², 23 % of the board)", "The power-entry block is re-composed from scratch; the next fast route will show whether everything still fits"]
+    },
+    {
+      "key": "B",
+      "name": "Tented vias allowed under the bars",
+      "summary": "Under each bar, F.Cu still carries only the bar's net: no other-net track or pour, no exposed copper. But a tented via of any net may sit there, under solder mask, 0.6 mm below the bar. The `.kicad_dru` rule drops `via` from its disallow list, and DEC-023 gets a note saying so (your decision, this page). Parts may stay under the bars, and the FET bank keeps its place by J910.",
+      "images": [
+        {"path": "img/plan.svg", "caption": "The same plan; the busbar areas forbid other-net tracks and pours on F.Cu, not tented vias"},
+        {"path": "img/underbars_B.png", "caption": "Bottom side under the bars today: these parts may stay, with their vias tented"}
+      ],
+      "measures": [
+        {"label": "Via sites at Q202's VBAT_D tab (needs 30)", "value": "199", "limit": "30", "status": "pass"},
+        {"label": "Via sites at R201 pad 1, VBAT_D (needs 60)", "value": "98", "limit": "60", "status": "pass"},
+        {"label": "Via sites at R201 pad 2, VBAT_Q2D (needs 60)", "value": "114", "limit": "60", "status": "pass"},
+        {"label": "Via sites at U701's VBAT_PROT pad (needs 20)", "value": "63", "limit": "20", "status": "pass"},
+        {"label": "Multi-pin parts that must leave the bar areas", "value": "0", "limit": "-", "status": "pass"},
+        {"label": "Architecture decision changed", "value": "DEC-023 note: tented vias allowed", "limit": "-", "status": "warn"}
+      ],
+      "gains": ["The FET bank and shunt keep their short path from J910, with room for their via fields", "Parts under the bars can escape like anywhere else; fewer constraints on the annealer"],
+      "costs": ["VBAT_D and VBAT_Q2D vias would sit under the GND bar with about 30 V across 0.6 mm of air and the via's mask: a short if the bar ever reaches the board (rough sag at 50 g: 0.35 mm)", "Needs solder mask over every via under a bar (tented or filled and capped; JLCPCB's 6-layer price already includes filled and capped vias)"]
+    }
+  ],
+  "recommendation": {
+    "option": "B",
+    "why": "B keeps the power entry where its physics wants it, next to J910, and has room for every high-current via field. A fails three of them where the parts stand now and pushes 60 A further across the board. The risk B adds is a via under a bar that sits 0.6 mm above it on clamped spigots, and the rough sag estimate leaves margin even at 50 g. It is a mechanical judgement on an estimate, though, and it changes the meaning of an accepted decision, so it is yours to make. If you'd rather keep A, the run re-composes the power entry clear of the bars in stage 3."
+  },
+  "answer": "Reply in the session with A or B, plus any change to the rest of the plan (fiducials, assembly order, net tie, the BGA rule, the block list). A comment on this page reaches Claude too.",
+  "sources": [
+    "node60.kicad_dru; DEC-023; DEC-025; CLAUDE.md board facts",
+    "pcb-placement skill scripts on main 63ff75e: escape_budget.py, layer_capacity.py, part_heights.py, grade_route.py, gate.py via-site row (with its rule-area parser corrected for a track-only rule)",
+    "KiCadRoutingTools autoplan fast route V16/route1t, graded against node60.kicad_pro and node60.kicad_dru"
+  ]
+}

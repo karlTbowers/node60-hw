@@ -1,0 +1,493 @@
+{
+ "board_name": "node60",
+ "version": 1,
+ "status": "draft",
+ "project": "../../node60.kicad_pro",
+ "rules": "../../node60.kicad_dru",
+ "schematic": "../../node60.kicad_sch",
+ "krt": "~/Dev/KiCadRoutingTools",
+ "intent": "intent.json",
+ "baseline": "fixed.kicad_pcb",
+ "signal_layers": [
+  "F.Cu",
+  "In2.Cu",
+  "In3.Cu",
+  "B.Cu"
+ ],
+ "plane_nets": [
+  "GND",
+  "VBAT_PROT"
+ ],
+ "track_mm": 0.1,
+ "space_mm": 0.1,
+ "via_mm": 0.45,
+ "bgas": [
+  "U401"
+ ],
+ "heights": [
+  {
+   "side": "B",
+   "limit_mm": 6.17,
+   "area": "whole board",
+   "source": "CLAUDE.md: board 6.17 mm off the floor (K501 5.2 mm accepted at 0.97 mm, user 2026-11-01)"
+  },
+  {
+   "side": "F",
+   "limit_mm": 9.0,
+   "area": "under the low lid",
+   "source": "CLAUDE.md: 9.0 mm under the low lid above the board"
+  },
+  {
+   "side": "F",
+   "limit_mm": 5.03,
+   "area": "lid bosses, \u00d88 mm at each SurLok M4 hole",
+   "circles": [
+    {
+     "x": 199.0,
+     "y": 108.6,
+     "d": 8.0
+    },
+    {
+     "x": 199.0,
+     "y": 90.6,
+     "d": 8.0
+    },
+    {
+     "x": 217.0,
+     "y": 108.6,
+     "d": 8.0
+    },
+    {
+     "x": 217.0,
+     "y": 90.6,
+     "d": 8.0
+    },
+    {
+     "x": 224.5,
+     "y": 79.6,
+     "d": 8.0
+    },
+    {
+     "x": 224.5,
+     "y": 61.6,
+     "d": 8.0
+    },
+    {
+     "x": 242.5,
+     "y": 79.6,
+     "d": 8.0
+    },
+    {
+     "x": 242.5,
+     "y": 61.6,
+     "d": 8.0
+    },
+    {
+     "x": 93.0,
+     "y": 108.6,
+     "d": 8.0
+    },
+    {
+     "x": 93.0,
+     "y": 90.6,
+     "d": 8.0
+    },
+    {
+     "x": 111.0,
+     "y": 108.6,
+     "d": 8.0
+    },
+    {
+     "x": 111.0,
+     "y": 90.6,
+     "d": 8.0
+    },
+    {
+     "x": 67.5,
+     "y": 79.6,
+     "d": 8.0
+    },
+    {
+     "x": 67.5,
+     "y": 61.6,
+     "d": 8.0
+    },
+    {
+     "x": 85.5,
+     "y": 79.6,
+     "d": 8.0
+    },
+    {
+     "x": 85.5,
+     "y": 61.6,
+     "d": 8.0
+    }
+   ],
+   "source": "scripts/enclosure_geometry.py v15: boss ends 16.2 mm, board top 11.17 mm"
+  }
+ ],
+ "declared_heights": [
+  {
+   "ref": "TP201",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP202",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP203",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP204",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP205",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP206",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP207",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP208",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP301",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP302",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP303",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP304",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP305",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP306",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP307",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP401",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP402",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP403",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP404",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP405",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP406",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP407",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP408",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP409",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP410",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP411",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP413",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP414",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP415",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP416",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP417",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP418",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP419",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP420",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP501",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP502",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP503",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP504",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP505",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP506",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP601",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP602",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP603",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP604",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP605",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP701",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP702",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP703",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP704",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP705",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP801",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP802",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP803",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP804",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  },
+  {
+   "ref": "TP805",
+   "height_mm": 0.05,
+   "source": "1 mm exposed test pad, no part (schematic project answers)"
+  }
+ ],
+ "fiducials": {
+  "sides": [
+   "F",
+   "B"
+  ],
+  "count": [
+   3
+  ]
+ },
+ "net_classes": [
+  {
+   "nets": "/T1S_*",
+   "class": "T1S_100R",
+   "source": "DEC-012"
+  }
+ ],
+ "high_current": [
+  {
+   "pad": "Q201.9",
+   "amps": 30,
+   "via_amps": 1.0,
+   "radius_mm": 3,
+   "source": "FET bank, half of the 60 A node load (6 x 10 A)"
+  },
+  {
+   "pad": "Q202.9",
+   "amps": 30,
+   "via_amps": 1.0,
+   "radius_mm": 3,
+   "source": "FET bank, half of 60 A"
+  },
+  {
+   "pad": "R201.1",
+   "amps": 60,
+   "via_amps": 1.0,
+   "radius_mm": 3,
+   "source": "shunt, 60 A node load"
+  },
+  {
+   "pad": "R201.2",
+   "amps": 60,
+   "via_amps": 1.0,
+   "radius_mm": 3,
+   "source": "shunt, 60 A node load"
+  },
+  {
+   "pad": "Q203.9",
+   "amps": 30,
+   "via_amps": 1.0,
+   "radius_mm": 3,
+   "source": "FET bank, half of 60 A"
+  },
+  {
+   "pad": "Q204.9",
+   "amps": 30,
+   "via_amps": 1.0,
+   "radius_mm": 3,
+   "source": "FET bank, half of 60 A"
+  },
+  {
+   "pad": "U601.17",
+   "amps": 20,
+   "via_amps": 1.0,
+   "radius_mm": 3,
+   "source": "TPS2HCS08 supply, 2 x 10 A"
+  },
+  {
+   "pad": "U701.17",
+   "amps": 20,
+   "via_amps": 1.0,
+   "radius_mm": 3,
+   "source": "TPS2HCS08 supply, 2 x 10 A"
+  },
+  {
+   "pad": "U801.17",
+   "amps": 20,
+   "via_amps": 1.0,
+   "radius_mm": 3,
+   "source": "TPS2HCS08 supply, 2 x 10 A"
+  }
+ ],
+ "switchers": "switchers.json",
+ "blocks": [],
+ "accepted": [],
+ "assumed": [
+  "1 A per 0.45/0.25 mm via (to be checked against the stackup's plating and the 10 A thermal test)"
+ ]
+}
