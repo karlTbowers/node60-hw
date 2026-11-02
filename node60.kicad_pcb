@@ -1795,6 +1795,105 @@
 			)
 		)
 	)
+	(footprint "DropOut_Fiducial:Fiducial_1mm_Mask2mm"
+		(locked yes)
+		(layer "F.Cu")
+		(uuid "4172ee40-d5cf-47c3-bf12-cf8a57a07a6f")
+		(at 44 115)
+		(descr "Fiducial, circular marking, 1mm bare copper, 2mm soldermask opening (Level A); PCB copper only, nothing to buy or place, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/Fiducial.py")
+		(tags "fiducial")
+		(property "Reference" "FID903"
+			(at 0 -1.95 0)
+			(layer "F.SilkS")
+			(uuid "61f02026-4b55-4cfc-ab84-284f51e900c9")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "Fiducial_1mm_Mask2mm"
+			(at 0 1.95 0)
+			(layer "F.Fab")
+			(uuid "adbf130a-d80b-4902-9ff8-72295ba18950")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "66207375-643c-43a5-835e-b7437635f631")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "f05d2cf8-073b-4341-9ff6-884ef8487776")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(path "/e572f86f-2725-4aae-a9c5-04dc01b6640e/cfbaa9b4-064e-4037-b889-2b6b8c08353f")
+		(sheetname "Connectors")
+		(sheetfile "sheets/connectors.kicad_sch")
+		(attr exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_circle
+			(center 0 0)
+			(end 1.25 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "b616a25d-313d-4352-a65d-c02a0637d4d2")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 1 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.Fab")
+			(uuid "7a7b30b9-7f77-45b5-b6a2-1c3e747585cb")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "08e3a51b-7b60-4110-a9f4-7225c4998610")
+			(effects
+				(font
+					(size 0.5 0.5)
+					(thickness 0.08)
+				)
+			)
+		)
+		(pad "" smd circle
+			(at 0 0)
+			(size 1 1)
+			(layers "F.Cu" "F.Mask")
+			(solder_mask_margin 0.5)
+			(clearance 0.6)
+			(uuid "e2ff2cf8-0da3-4067-8848-decc1fa41219")
+		)
+		(embedded_fonts no)
+	)
 	(footprint "DropOut_Connector_Amphenol:Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal"
 		(locked yes)
 		(layer "F.Cu")
@@ -2845,6 +2944,105 @@
 				(xyz 0 0 0)
 			)
 		)
+	)
+	(footprint "DropOut_Fiducial:Fiducial_1mm_Mask2mm"
+		(locked yes)
+		(layer "F.Cu")
+		(uuid "5671deb7-b190-4606-b083-eaf419ee2ac4")
+		(at 266 34)
+		(descr "Fiducial, circular marking, 1mm bare copper, 2mm soldermask opening (Level A); PCB copper only, nothing to buy or place, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/Fiducial.py")
+		(tags "fiducial")
+		(property "Reference" "FID902"
+			(at 0 -1.95 0)
+			(layer "F.SilkS")
+			(uuid "b5dd0993-f924-434f-b9f0-a3b186a4e679")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "Fiducial_1mm_Mask2mm"
+			(at 0 1.95 0)
+			(layer "F.Fab")
+			(uuid "57b4fdfb-bbb3-4496-873e-a393e07d1f9d")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "ccdd7352-cc2b-4d47-b5a1-b4c7af688770")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "5775a447-444a-4a2c-9d9b-61704fb4b500")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(path "/e572f86f-2725-4aae-a9c5-04dc01b6640e/8a3ba177-1bd9-4fc6-9892-aef6de0712f6")
+		(sheetname "Connectors")
+		(sheetfile "sheets/connectors.kicad_sch")
+		(attr exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_circle
+			(center 0 0)
+			(end 1.25 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "68df84b6-1af8-4e1c-be5f-3ec0baca1b05")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 1 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.Fab")
+			(uuid "bfa8d1a0-d1d2-48a5-9fac-22109560a626")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "58a9fc3d-04d3-4798-adee-f71bd5d8b029")
+			(effects
+				(font
+					(size 0.5 0.5)
+					(thickness 0.08)
+				)
+			)
+		)
+		(pad "" smd circle
+			(at 0 0)
+			(size 1 1)
+			(layers "F.Cu" "F.Mask")
+			(solder_mask_margin 0.5)
+			(clearance 0.6)
+			(uuid "d0c0130b-9a36-4a38-97e3-6682174ea870")
+		)
+		(embedded_fonts no)
 	)
 	(footprint "DropOut_Connector_Samtec:Samtec_FTSH-105-01-x-DV_2x05_P1.27mm_Vertical_SMD"
 		(layer "F.Cu")
@@ -4776,6 +4974,167 @@
 		)
 		(embedded_fonts no)
 		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "DropOut_Busbar:Busbar_Cu_19.05x3.175mm_L125.05mm_2xD6.5mm_P106mm"
+		(locked yes)
+		(layer "F.Cu")
+		(uuid "6e797c75-c5df-4159-937c-dbc040b72648")
+		(at 155 99.6)
+		(descr "Busbar, 1/8 x 3/4 in C110 copper flat bar (3.175 x 19.05 mm), 125.05 mm long, 2 x Ø6.5 M6 clearance holes at 106 mm on Würth REDCUBE 74660016R terminals; net tie: one B.Cu pad in each terminal's pad 1 ring, 5.7 mm +x of its spigot; courtyard = bar outline, https://github.com/karlTbowers/dropout-kicad-library/blob/main/drawings/DropOut_Busbar/Busbar_Cu_19.05x3.175mm_L125.05mm_2xD6.5mm_P106mm.svg")
+		(tags "busbar net tie copper flat bar C110 REDCUBE M6")
+		(property "Reference" "BB901"
+			(at 0 -11.025 0)
+			(layer "F.SilkS")
+			(uuid "59b1ed3a-4f77-408e-8f0f-6e547a4eda3f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "Busbar_Cu_19.05x3.175mm_L125.05mm_2xD6.5mm_P106mm"
+			(at 0 11.025 0)
+			(layer "F.Fab")
+			(uuid "2a27fcbb-859c-4ade-92d6-9c145ed3d505")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "0574390b-2b88-4f35-96cb-9818111992de")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7230ad42-a360-4c5c-adbc-6b3d5501a3a9")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(path "/e572f86f-2725-4aae-a9c5-04dc01b6640e/992f3af5-3852-4ae9-9010-c66798e0a278")
+		(sheetname "Connectors")
+		(sheetfile "sheets/connectors.kicad_sch")
+		(attr exclude_from_pos_files)
+		(net_tie_pad_groups "1, 2")
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_rect
+			(start -62.53 -9.53)
+			(end 62.53 9.53)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "b4835761-cc5d-4853-9fb9-af2384083063")
+		)
+		(fp_circle
+			(center -53 0)
+			(end -48.25 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "774fa8e9-07a7-4b32-bbbe-294d12861844")
+		)
+		(fp_circle
+			(center 53 0)
+			(end 57.75 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "bcbf7dac-7ca2-422e-a262-c52e76ea2ac3")
+		)
+		(fp_rect
+			(start -62.525 -9.525)
+			(end 62.525 9.525)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.Fab")
+			(uuid "7bafbb6d-26a4-4c6c-8d05-99de4900fa25")
+		)
+		(fp_circle
+			(center -53 0)
+			(end -49.75 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.Fab")
+			(uuid "388d8d44-9d80-48fa-9d78-5c9f1ea4845b")
+		)
+		(fp_circle
+			(center 53 0)
+			(end 56.25 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.Fab")
+			(uuid "9904f109-a00d-4bcd-a42c-0dc338efecef")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "b5235d6c-4539-4463-abf8-de4500eb054c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(pad "1" smd circle
+			(at -47.3 0)
+			(size 1.6 1.6)
+			(layers "B.Cu")
+			(net "/VBAT_IN")
+			(uuid "4d165482-9647-4378-b6b9-53571ef906a2")
+		)
+		(pad "2" smd circle
+			(at 58.7 0)
+			(size 1.6 1.6)
+			(layers "B.Cu")
+			(net "/Connectors/VBAT_IN_DOWNSTREAM")
+			(uuid "5dc855f0-21ab-4cbb-be1d-c5bc4ad5e863")
+		)
+		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Busbar.3dshapes/Busbar_Cu_19.05x3.175mm_L125.05mm_2xD6.5mm_P106mm.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -7730,6 +8089,105 @@
 			)
 		)
 	)
+	(footprint "DropOut_Fiducial:Fiducial_1mm_Mask2mm"
+		(locked yes)
+		(layer "F.Cu")
+		(uuid "a0cf46ca-ba5b-4894-8d58-42e0c2801d93")
+		(at 44 34)
+		(descr "Fiducial, circular marking, 1mm bare copper, 2mm soldermask opening (Level A); PCB copper only, nothing to buy or place, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/Fiducial.py")
+		(tags "fiducial")
+		(property "Reference" "FID901"
+			(at 0 -1.95 0)
+			(layer "F.SilkS")
+			(uuid "f2208261-b962-4e55-bcf1-af8fbcea4da0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Value" "Fiducial_1mm_Mask2mm"
+			(at 0 1.95 0)
+			(layer "F.Fab")
+			(uuid "006f1280-4e00-4460-9e3d-2bf49218293a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7b82c9b5-69f7-407f-be6e-90b42db24c12")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "4b00844d-4ed8-469e-8395-f2507bce8c69")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(path "/e572f86f-2725-4aae-a9c5-04dc01b6640e/bd4cf878-8351-42e5-bd9e-933d909d3bb9")
+		(sheetname "Connectors")
+		(sheetfile "sheets/connectors.kicad_sch")
+		(attr exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_circle
+			(center 0 0)
+			(end 1.25 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "052a40fb-d5ac-4577-aee2-1b3e4debf8af")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 1 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill no)
+			(layer "F.Fab")
+			(uuid "5478bb22-c3bd-474e-ae68-d301d2dff144")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 0)
+			(layer "F.Fab")
+			(uuid "a0edda47-c68c-4caf-af9d-c557d51dac24")
+			(effects
+				(font
+					(size 0.5 0.5)
+					(thickness 0.08)
+				)
+			)
+		)
+		(pad "" smd circle
+			(at 0 0)
+			(size 1 1)
+			(layers "F.Cu" "F.Mask")
+			(solder_mask_margin 0.5)
+			(clearance 0.6)
+			(uuid "3be1aa62-96a9-4f9b-9612-ae014da42723")
+		)
+		(embedded_fonts no)
+	)
 	(footprint "DropOut_Capacitor_SMD:C_0402_1005Metric"
 		(layer "F.Cu")
 		(uuid "a26b5e31-ae44-4e53-a8d3-e6f4092d0d0a")
@@ -7850,112 +8308,6 @@
 		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
 			(offset
 				(xyz 0 0 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
-	)
-	(footprint "Busbar_19.05x3.175mm"
-		(locked yes)
-		(layer "F.Cu")
-		(uuid "a50a95a7-7dc2-4a12-9ba8-4cc3d4364c36")
-		(at 155 99.6)
-		(property "Reference" "BB901"
-			(at 0 -2 0)
-			(layer "F.Fab")
-			(uuid "58f04b8e-211a-4d7a-aace-318b6b8a90d9")
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Value" "1/8\" x 3/4\" C110 copper flat bar, 125.1 mm"
-			(at 0 2 0)
-			(layer "F.Fab")
-			(uuid "6287359a-7baa-48d2-8434-fa2cc0c489b1")
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "8961ed73-067f-42be-b001-f1ee345a0e6e")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "2e2ff5ad-7eec-4f75-baa0-3464b54eae25")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(attr board_only exclude_from_pos_files exclude_from_bom)
-		(duplicate_pad_numbers_are_jumpers no)
-		(fp_rect
-			(start -62.525 -9.525001)
-			(end 62.525 9.525)
-			(stroke
-				(width 0.05)
-				(type default)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "18cfe67e-7868-47d4-8e15-6a9354b2472b")
-		)
-		(fp_circle
-			(center -53 0)
-			(end -48.25 0)
-			(stroke
-				(width 0.05)
-				(type default)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "dbaaa20b-a8ff-437e-8529-3109969c17a5")
-		)
-		(fp_circle
-			(center 53 0)
-			(end 57.75 0)
-			(stroke
-				(width 0.05)
-				(type default)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "0b562aac-9cf6-469f-ab4d-6d02d706fd6f")
-		)
-		(fp_rect
-			(start -62.525 -9.525001)
-			(end 62.525 9.525)
-			(stroke
-				(width 0.1)
-				(type default)
-			)
-			(fill no)
-			(layer "F.Fab")
-			(uuid "72c67225-a1a9-46da-949d-fc54b87799b6")
-		)
-		(embedded_fonts no)
-		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Busbar.3dshapes/Busbar_Cu_19.05x3.175mm_L125.05mm_2xD6.5mm_P106mm.step"
-			(offset
-				(xyz 0 0 0.6)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -8492,6 +8844,112 @@
 		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
 			(offset
 				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "Busbar_19.05x3.175mm"
+		(locked yes)
+		(layer "F.Cu")
+		(uuid "c0e9cfad-d595-4902-863b-c5bfa10a7063")
+		(at 155 70.6)
+		(property "Reference" "BB902"
+			(at 0 -2 0)
+			(layer "F.Fab")
+			(uuid "b09bfea2-7b19-42af-bf44-f2b966024db1")
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Value" "1/8\" x 3/4\" C110 copper flat bar, 176.1 mm"
+			(at 0 2 0)
+			(layer "F.Fab")
+			(uuid "526aeeaa-7f1b-409d-9edf-0cdd18515b1f")
+			(effects
+				(font
+					(size 1 1)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "7df5089e-5bf7-4ddb-ba7d-240cd7ca61ed")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 0)
+			(layer "F.Fab")
+			(hide yes)
+			(uuid "8178bbc3-6e8b-46bf-bd8d-ee87df01057d")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(attr board_only exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_rect
+			(start -88.025001 -9.525001)
+			(end 88.025 9.525)
+			(stroke
+				(width 0.05)
+				(type default)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "e27093f2-e10e-4375-99ef-4379d35ed58c")
+		)
+		(fp_circle
+			(center -78.5 0)
+			(end -73.75 0)
+			(stroke
+				(width 0.05)
+				(type default)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "42b07c28-8219-48a3-88ec-f5867e7eae54")
+		)
+		(fp_circle
+			(center 78.5 0)
+			(end 83.25 0)
+			(stroke
+				(width 0.05)
+				(type default)
+			)
+			(fill no)
+			(layer "F.CrtYd")
+			(uuid "9f5970b6-be33-4ad1-89b7-b390dab7a9cf")
+		)
+		(fp_rect
+			(start -88.025001 -9.525001)
+			(end 88.025 9.525)
+			(stroke
+				(width 0.1)
+				(type default)
+			)
+			(fill no)
+			(layer "F.Fab")
+			(uuid "615ae2fa-42d4-4c9a-9f3f-2f054a87e15c")
+		)
+		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Busbar.3dshapes/Busbar_Cu_19.05x3.175mm_L176.05mm_2xD6.5mm_P157mm.step"
+			(offset
+				(xyz 0 0 0.6)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -9425,112 +9883,6 @@
 		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Connector_Amphenol.3dshapes/Amphenol_ATM13-2P-BMxx_1x02_P4.20mm_Horizontal.step"
 			(offset
 				(xyz 0 0 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
-	)
-	(footprint "Busbar_19.05x3.175mm"
-		(locked yes)
-		(layer "F.Cu")
-		(uuid "cb77617c-89ec-4e53-9dc5-bef18060bff2")
-		(at 155 70.6)
-		(property "Reference" "BB902"
-			(at 0 -2 0)
-			(layer "F.Fab")
-			(uuid "717bfe65-d63e-41fe-9988-88bc36b64c7b")
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Value" "1/8\" x 3/4\" C110 copper flat bar, 176.1 mm"
-			(at 0 2 0)
-			(layer "F.Fab")
-			(uuid "1ac48759-4f04-4050-ac05-6dcc3075c878")
-			(effects
-				(font
-					(size 1 1)
-				)
-			)
-		)
-		(property "Datasheet" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "cc325238-1923-4575-b0a1-9b3c84a24e8d")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" ""
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "0d44762b-7126-448f-931a-0aadd366cd93")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(attr board_only exclude_from_pos_files exclude_from_bom)
-		(duplicate_pad_numbers_are_jumpers no)
-		(fp_rect
-			(start -88.025001 -9.525001)
-			(end 88.025 9.525)
-			(stroke
-				(width 0.05)
-				(type default)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "606b4bb5-e076-4590-8322-3787e1c71ffd")
-		)
-		(fp_circle
-			(center -78.5 0)
-			(end -73.75 0)
-			(stroke
-				(width 0.05)
-				(type default)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "004694f0-cdd0-4cb7-a91d-0a8e097285f2")
-		)
-		(fp_circle
-			(center 78.5 0)
-			(end 83.25 0)
-			(stroke
-				(width 0.05)
-				(type default)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "3cb763db-1da4-479c-a575-7c1c1369e0f8")
-		)
-		(fp_rect
-			(start -88.025001 -9.525001)
-			(end 88.025 9.525)
-			(stroke
-				(width 0.1)
-				(type default)
-			)
-			(fill no)
-			(layer "F.Fab")
-			(uuid "0524f85b-52ac-4f4a-823e-a9214e8a6400")
-		)
-		(embedded_fonts no)
-		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Busbar.3dshapes/Busbar_Cu_19.05x3.175mm_L176.05mm_2xD6.5mm_P157mm.step"
-			(offset
-				(xyz 0 0 0.6)
 			)
 			(scale
 				(xyz 1 1 1)
@@ -25700,6 +26052,110 @@
 			)
 		)
 	)
+	(footprint "DropOut_Fiducial:Fiducial_1mm_Mask2mm"
+		(locked yes)
+		(layer "B.Cu")
+		(uuid "4b060641-2e0d-432c-8ab0-6a69fcf318f0")
+		(at 266 34)
+		(descr "Fiducial, circular marking, 1mm bare copper, 2mm soldermask opening (Level A); PCB copper only, nothing to buy or place, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/Fiducial.py")
+		(tags "fiducial")
+		(property "Reference" "FID905"
+			(at 0 1.95 180)
+			(layer "B.SilkS")
+			(uuid "6094d9b6-ec57-4582-9ece-1a39b5f0d56c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Value" "Fiducial_1mm_Mask2mm"
+			(at 0 -1.95 180)
+			(layer "B.Fab")
+			(uuid "642f1c1d-7a44-45e2-8096-54a3c51c2ae0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 180)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "3234fe32-4b64-40e3-8531-530ffb138b90")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 180)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "d40f9549-ad91-4d2b-ac36-452543d67d6f")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify mirror)
+			)
+		)
+		(path "/e572f86f-2725-4aae-a9c5-04dc01b6640e/0a7b9ce2-12a0-4c1e-8ebf-21f4bfd47c67")
+		(sheetname "Connectors")
+		(sheetfile "sheets/connectors.kicad_sch")
+		(attr exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_circle
+			(center 0 0)
+			(end 1.25 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "B.CrtYd")
+			(uuid "e1718d2d-3e05-4557-883e-1be1166a39be")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 1 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill no)
+			(layer "B.Fab")
+			(uuid "920c7faa-48e1-4048-9d26-97b176f8182c")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 180)
+			(layer "B.Fab")
+			(uuid "c489a00e-5966-4bef-bbd1-5d90b3b08950")
+			(effects
+				(font
+					(size 0.5 0.5)
+					(thickness 0.08)
+				)
+				(justify mirror)
+			)
+		)
+		(pad "" smd circle
+			(at 0 0)
+			(size 1 1)
+			(layers "B.Cu" "B.Mask")
+			(solder_mask_margin 0.5)
+			(clearance 0.6)
+			(uuid "13738d33-f1ff-4880-bff9-8a70d54c866c")
+		)
+		(embedded_fonts no)
+	)
 	(footprint "DropOut_TerminalBlock_Wuerth:Wuerth_REDCUBE-SMT_WP-SMRT_74660016"
 		(locked yes)
 		(layer "B.Cu")
@@ -25962,7 +26418,7 @@
 			(at 5.7 0)
 			(size 1.6 1.6)
 			(layers "B.Cu" "B.Mask")
-			(net "/VBAT_IN")
+			(net "/Connectors/VBAT_IN_DOWNSTREAM")
 			(options
 				(clearance outline)
 				(anchor circle)
@@ -31385,6 +31841,214 @@
 				(xyz 0 0 0)
 			)
 		)
+	)
+	(footprint "DropOut_Fiducial:Fiducial_1mm_Mask2mm"
+		(locked yes)
+		(layer "B.Cu")
+		(uuid "6e88681a-af3a-4a27-acab-0657da1fda79")
+		(at 44 34)
+		(descr "Fiducial, circular marking, 1mm bare copper, 2mm soldermask opening (Level A); PCB copper only, nothing to buy or place, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/Fiducial.py")
+		(tags "fiducial")
+		(property "Reference" "FID904"
+			(at 0 1.95 180)
+			(layer "B.SilkS")
+			(uuid "ad877a2c-5d9a-4b77-9e68-00a8194d03c4")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Value" "Fiducial_1mm_Mask2mm"
+			(at 0 -1.95 180)
+			(layer "B.Fab")
+			(uuid "980041e6-3a8d-4b9c-a14f-f6437bb33e57")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 180)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "aed171c6-7b07-4d23-aa8e-1aa6b3ee1326")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 180)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "9a65bd2e-4717-48d7-a412-e3f29a71bdf6")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify mirror)
+			)
+		)
+		(path "/e572f86f-2725-4aae-a9c5-04dc01b6640e/4d17998a-a3eb-4477-acab-9c8474946fb0")
+		(sheetname "Connectors")
+		(sheetfile "sheets/connectors.kicad_sch")
+		(attr exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_circle
+			(center 0 0)
+			(end 1.25 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "B.CrtYd")
+			(uuid "44670b30-68c7-4692-b72a-c0d3c055b9c5")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 1 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill no)
+			(layer "B.Fab")
+			(uuid "c8d0753c-e2f4-427d-8943-d17c65393cbe")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 180)
+			(layer "B.Fab")
+			(uuid "6ff1d12a-d1dc-4a33-a335-09270bbda149")
+			(effects
+				(font
+					(size 0.5 0.5)
+					(thickness 0.08)
+				)
+				(justify mirror)
+			)
+		)
+		(pad "" smd circle
+			(at 0 0)
+			(size 1 1)
+			(layers "B.Cu" "B.Mask")
+			(solder_mask_margin 0.5)
+			(clearance 0.6)
+			(uuid "8b9d500f-8493-4fff-b4cd-da90ec4b67db")
+		)
+		(embedded_fonts no)
+	)
+	(footprint "DropOut_Fiducial:Fiducial_1mm_Mask2mm"
+		(locked yes)
+		(layer "B.Cu")
+		(uuid "70f1dfc7-77a4-42c3-977f-c61cb9358d8e")
+		(at 44 136)
+		(descr "Fiducial, circular marking, 1mm bare copper, 2mm soldermask opening (Level A); PCB copper only, nothing to buy or place, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/Fiducial.py")
+		(tags "fiducial")
+		(property "Reference" "FID906"
+			(at 0 1.95 180)
+			(layer "B.SilkS")
+			(uuid "988551f8-21e8-4cd5-8b58-a900c714c81e")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Value" "Fiducial_1mm_Mask2mm"
+			(at 0 -1.95 180)
+			(layer "B.Fab")
+			(uuid "d9add5f6-497b-4dab-817d-2c0741cab608")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Datasheet" ""
+			(at 0 0 180)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "33767a32-a3f5-4cd5-afc4-c903f0708d71")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Description" ""
+			(at 0 0 180)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "bd5de1de-37f1-485f-9f5f-714c42c98bd9")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify mirror)
+			)
+		)
+		(path "/e572f86f-2725-4aae-a9c5-04dc01b6640e/f699f3da-5617-4429-a5dd-52150987c02a")
+		(sheetname "Connectors")
+		(sheetfile "sheets/connectors.kicad_sch")
+		(attr exclude_from_pos_files exclude_from_bom)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_circle
+			(center 0 0)
+			(end 1.25 0)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "B.CrtYd")
+			(uuid "1e98261d-8714-4123-b0d5-47e745c29922")
+		)
+		(fp_circle
+			(center 0 0)
+			(end 1 0)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill no)
+			(layer "B.Fab")
+			(uuid "9d58043d-34ec-4e40-b6fd-5c703bd995c8")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 180)
+			(layer "B.Fab")
+			(uuid "dd0a8c72-48c9-493b-90a6-79102be1e342")
+			(effects
+				(font
+					(size 0.5 0.5)
+					(thickness 0.08)
+				)
+				(justify mirror)
+			)
+		)
+		(pad "" smd circle
+			(at 0 0)
+			(size 1 1)
+			(layers "B.Cu" "B.Mask")
+			(solder_mask_margin 0.5)
+			(clearance 0.6)
+			(uuid "a55f25e5-5797-47ab-ac4d-36988df0c236")
+		)
+		(embedded_fonts no)
 	)
 	(footprint "DropOut_Resistor_SMD:R_0402_1005Metric"
 		(layer "B.Cu")
@@ -52563,7 +53227,7 @@
 		)
 		(fill no)
 		(layer "Dwgs.User")
-		(uuid "330b0106-559b-4a67-8029-dce049f3b87f")
+		(uuid "6a9e8955-c695-493e-a119-e4b82469aa97")
 	)
 	(gr_rect
 		(start 92.475 90.074999)
@@ -52574,7 +53238,7 @@
 		)
 		(fill no)
 		(layer "Dwgs.User")
-		(uuid "26c59aa5-8e04-4103-92c7-c3daa02cd261")
+		(uuid "0c459715-aefc-48b1-9f82-1be843da0fb8")
 	)
 	(gr_rect
 		(start 40 30)
@@ -52585,12 +53249,12 @@
 		)
 		(fill no)
 		(layer "Edge.Cuts")
-		(uuid "d6700ca1-96b4-48c0-b25d-f5cca0a29d6c")
+		(uuid "c7535214-7705-4c35-8f64-5ec6bc590215")
 	)
 	(gr_text "GND busbar 19.05 x 3.175 Cu (1/8\" x 3/4\" C110 copper flat bar), on top: no parts under it"
 		(at 155 59.074999 0)
 		(layer "Dwgs.User")
-		(uuid "0ea776d9-3e15-439d-8a68-7bdcdb5f8eb4")
+		(uuid "ad854d06-dc8f-4b3e-a256-9a53b03306f7")
 		(effects
 			(font
 				(size 1.5 1.5)
@@ -52600,7 +53264,7 @@
 	(gr_text "VBAT_IN busbar 19.05 x 3.175 Cu (1/8\" x 3/4\" C110 copper flat bar), on top: no parts under it"
 		(at 155 88.074999 0)
 		(layer "Dwgs.User")
-		(uuid "542ba8c0-cdd1-4bb6-b178-f5c8489fe569")
+		(uuid "846fca67-1de4-4d02-85f9-d4cdd7a44f5a")
 		(effects
 			(font
 				(size 1.5 1.5)
