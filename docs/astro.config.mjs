@@ -35,6 +35,7 @@ export default defineConfig({
 							label: 'Enclosure options',
 							items: [
 								{ label: 'Overview', slug: 'subsystems/enclosure' },
+								{ label: 'Power receptacles: RADLOK vs SurLok', slug: 'subsystems/enclosure/receptacles' },
 								{ label: 'Version 1: board flipped', slug: 'subsystems/enclosure/v1' },
 								{ label: 'Version 2: busbars, raised T', slug: 'subsystems/enclosure/v2' },
 								{ label: 'Version 3: busbars, raised front', slug: 'subsystems/enclosure/v3' },
