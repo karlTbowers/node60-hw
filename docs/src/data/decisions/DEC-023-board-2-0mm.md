@@ -1,7 +1,7 @@
 ---
 id: DEC-023
 title: Board 2.0 mm thick, the busbars resting on the REDCUBE spigots (enclosure version 10)
-status: accepted
+status: superseded
 date: 2026-11-01
 revision: B
 page: subsystems/enclosure
