@@ -5,11 +5,13 @@
 # allowed there (user, 2026-11-02, placement decision D01): every via under a bar is covered by
 # solder mask, never left open. scripts/place_connectors.py draws the
 # areas (rule areas BUSBAR_<net>, the bar's outline); the net names here match its BUSBARS.
+# The VBAT_IN bar is the net tie BB901 between VBAT_IN (J910) and VBAT_IN_DOWNSTREAM (J901), so
+# both nets may have copper under it.
 # Parts are kept out by the busbar footprints' courtyards (BB901, BB902), not here.
 
 (rule "F.Cu under the VBAT_IN busbar: VBAT_IN only"
 	(layer "F.Cu")
-	(condition "A.intersectsArea('BUSBAR_VBAT_IN') && A.NetName != '/VBAT_IN'")
+	(condition "A.intersectsArea('BUSBAR_VBAT_IN') && A.NetName != '/VBAT_IN' && A.NetName != '/Connectors/VBAT_IN_DOWNSTREAM'")
 	(constraint disallow track zone))
 
 (rule "F.Cu under the GND busbar: GND only"

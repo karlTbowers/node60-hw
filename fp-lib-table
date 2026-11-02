@@ -17,4 +17,6 @@
   (lib (name "DropOut_TerminalBlock_Wuerth")(type "KiCad")(uri "${KIPRJMOD}/lib/dropout-kicad-library/footprints/DropOut_TerminalBlock_Wuerth.pretty")(options "")(descr "DropOut library"))
   (lib (name "DropOut_TestPoint")(type "KiCad")(uri "${KIPRJMOD}/lib/dropout-kicad-library/footprints/DropOut_TestPoint.pretty")(options "")(descr "DropOut library"))
   (lib (name "DropOut_Relay_SMD")(type "KiCad")(uri "${KIPRJMOD}/lib/dropout-kicad-library/footprints/DropOut_Relay_SMD.pretty")(options "")(descr "DropOut library"))
+  (lib (name "DropOut_Busbar")(type "KiCad")(uri "${KIPRJMOD}/lib/dropout-kicad-library/footprints/DropOut_Busbar.pretty")(options "")(descr "DropOut library"))
+  (lib (name "DropOut_Fiducial")(type "KiCad")(uri "${KIPRJMOD}/lib/dropout-kicad-library/footprints/DropOut_Fiducial.pretty")(options "")(descr "DropOut library"))
 )

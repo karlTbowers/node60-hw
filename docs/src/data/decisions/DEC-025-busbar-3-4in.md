@@ -7,7 +7,7 @@ revision: B
 page: subsystems/enclosure
 supersedes: [DEC-024]
 requirements: [REQ-PWR-002, REQ-QUAL-001]
-parts: [74660016R, SLPRATPSR, SLPRATPSB]
+parts: [74660016R, SLPRATPSR, SLPRATPSB, Busbar_Cu_19.05x3.175mm_L125.05mm_2xD6.5mm_P106mm, Busbar_Cu_19.05x3.175mm_L176.05mm_2xD6.5mm_P157mm]
 gates: [GATE-HAR-02, GATE-THM-02]
 rejected:
   - option: Keep version 11's 1/8" × 1" busbars (DEC-024)

@@ -12,9 +12,10 @@ Run with KiCad's own Python (it provides the pcbnew module):
     /Applications/KiCad/KiCad.app/Contents/Frameworks/Python.framework/Versions/Current/bin/python3 \
         scripts/place_connectors.py /tmp/node60.net [v2]
 
-Close the PCB editor first. The script moves J901-J912, redraws the Edge.Cuts outline and
-the busbar outlines (User.Drawings), footprints (BB901, BB902) and rule areas; every other
-item on the board is left alone.
+Close the PCB editor first. The script moves J901-J912, the busbars BB901 and BB902 (schematic
+parts since placement decision D02) and the fiducials FID901-FID906, redraws the Edge.Cuts
+outline, the busbar outlines (User.Drawings) and the busbar rule areas; every other item on the
+board is left alone.
 Footprints get the schematic symbol path, so a later Update PCB from Schematic (F8) links
 to them and keeps their positions. A version whose terminal footprint differs from the
 schematic's (the press-fit versions) can't be placed until the schematic changes.
@@ -158,15 +159,19 @@ BUSBAR_STOCK = '1/8" x 1" C110 copper flat bar'
 BUSBAR_HOLE = 6.5    # M6 clearance
 BUSBARS = {"VBAT_IN": ("J910", "J901"), "GND": ("J911", "J902")}
 # The bar rests on the spigots 0.6 mm above the top face (DEC-023), so no part fits under it.
-# Each bar goes on the board as a generated board-only footprint (BUSBAR_REFS; not in the
-# library or the schematic, out of the BOM and placement files) whose F.CrtYd is the bar
-# outline, so KiCad's courtyard check keeps top-side parts out; the parts' own courtyard
-# margin covers the bar's play on the stud (M6 clearance hole, about +/-0.25 mm). A rule area
-# BUSBAR_<net> on F.Cu, the same size, lets node60.kicad_dru keep other nets' copper out.
+# A bar's footprint has the bar outline as its F.CrtYd, so KiCad's courtyard check keeps
+# top-side parts out; the parts' own courtyard margin covers the bar's play on the stud (M6
+# clearance hole, about +/-0.25 mm). A rule area BUSBAR_<net> on F.Cu, the same size, lets
+# node60.kicad_dru keep other nets' copper out.
+# Both bars are schematic parts, placed from their library footprints (DropOut_Busbar net ties),
+# which hold the courtyard and the tie pads in the terminals' pad 1 rings: BB901 joins J910's
+# VBAT_IN to J901's VBAT_IN_DOWNSTREAM (placement decision D02, 2026-11-02), BB902 has both pins
+# on GND (the same treatment, user 2026-11-02; the GND plane joins J911 and J902 as well). Until
+# then the script drew each bar as a generated board-only footprint.
 BUSBAR_REFS = {"VBAT_IN": "BB901", "GND": "BB902"}
-# Each bar footprint carries the library's model of that bar (model-only parts DropOut_Busbar,
-# named from width, thickness, length and hole pitch) when the library has one, raised onto
-# the spigots. Versions whose bar the library doesn't model get no 3D model.
+# A bar's library part is named from width, thickness, length and hole pitch, as its model in
+# BUSBAR_MODELS; the placed model is raised onto the spigots. A version whose bars differ from
+# the schematic's can't be placed until the schematic changes.
 BUSBAR_MODELS = "lib/dropout-kicad-library/3dmodels/DropOut_Busbar.3dshapes"
 BUSBAR_Z = 0.6       # spigots above the top face (DEC-023)
 
@@ -354,6 +359,14 @@ VERSIONS["v15"] = {**VERSIONS["v11"], "title": "Version 15: version 11 with 1/8 
 
 CURRENT = "v15"      # the version on node60.kicad_pcb (DEC-025)
 
+# Board fiducials (placement decision D03, 2026-11-02): three per side, FID901-FID903 on top and
+# FID904-FID906 on the bottom, (x, y, bottom) in KiCad coordinates. Measured on the version 15
+# board clear of every courtyard, hole and busbar; other versions have none (their fiducials, if
+# the schematic has them, are left where they are).
+FIDUCIALS = {"v15": {"FID901": (44.0, 34.0, False), "FID902": (266.0, 34.0, False), "FID903": (44.0, 115.0, False),
+                     "FID904": (44.0, 34.0, True), "FID905": (266.0, 34.0, True), "FID906": (44.0, 136.0, True)}}
+FIDUCIAL = ("DropOut_Fiducial", "Fiducial_1mm_Mask2mm")
+
 
 def left(v):
     """KiCad X of the board's west edge (the board is centred on CX in every version)."""
@@ -472,7 +485,7 @@ def read_netlist(path, refs):
         if ref not in refs:
             continue
         sheet = child(comp, "sheetpath")
-        props = {child(p, "name")[1]: child(p, "value")[1]
+        props = {child(p, "name")[1]: (child(p, "value") or [None, ""])[1]   # flags (exclude_from_bom) have no value
                  for p in comp[1:] if isinstance(p, list) and p[0] == "property"}
         comps[ref] = dict(value=child(comp, "value")[1],
                           footprint=child(comp, "footprint")[1],
@@ -494,7 +507,20 @@ def main(netlist, version=CURRENT):
     if v.get("t1s_board", "main") != "main":
         sys.exit(f"{version}: J903/J912 sit on the MCU board, which isn't a separate PCB yet; not placeable")
     place = placements(version)
-    comps, pin_nets = read_netlist(netlist, set(place))
+    place.update({ref: (*FIDUCIAL, x, y, 0, bottom) for ref, (x, y, bottom) in FIDUCIALS.get(version, {}).items()})
+    comps, pin_nets = read_netlist(netlist, set(place) | set(BUSBAR_REFS.values()))
+    # The bars are placed from their library footprints at each bar's centre
+    bars = {net: BUSBAR_REFS[net] for net in (BUSBARS if v["busbars"] else ()) if BUSBAR_REFS[net] in comps}
+    if v["busbars"] and len(bars) != len(BUSBARS):
+        sys.exit(f"not in the netlist: {sorted(set(BUSBAR_REFS.values()) - set(comps))}")
+    for net, ref in bars.items():
+        x0, y0, x1, y1 = busbar_outline(v, net)
+        want = os.path.basename(busbar_model(v, net))[:-len(".step")]
+        lib, _, name = comps[ref]["footprint"].partition(":")
+        if v["board"] == "down" or name != want:
+            sys.exit(f"{version}: {ref}'s schematic footprint {comps[ref]['footprint']} is not this version's bar "
+                     f"({want}); not placeable until the schematic changes")
+        place[ref] = (lib, name, (x0 + x1) / 2, (y0 + y1) / 2, 0, False)
     missing = set(place) - set(comps)
     if missing:
         sys.exit(f"not in the netlist: {sorted(missing)}")
@@ -509,14 +535,15 @@ def main(netlist, version=CURRENT):
            for ref, (lib, name, *_rest) in place.items()}
 
     board = pcbnew.LoadBoard(PCB)
+    # A footprint already on the board is moved. The bars are loaded anew from the library every
+    # run, so a library change reaches them, and the old ones removed just before saving (see
+    # above); the rule areas are reused.
     existing = {fp.GetReference(): fp for fp in board.GetFootprints()
-                if fp.GetReference() in place}
+                if fp.GetReference() in place and fp.GetReference() not in BUSBAR_REFS.values()}
+    old_bars = [fp for fp in board.GetFootprints() if fp.GetReference() in BUSBAR_REFS.values()]
     # board.GetDrawings() isn't iterable in KiCad 10's bindings
     board.RemoveAllItemsOnLayer(pcbnew.Edge_Cuts)
     board.RemoveAllItemsOnLayer(pcbnew.Dwgs_User)     # busbar outlines, redrawn below
-    # The busbar footprints are drawn anew and the old ones removed just before saving (see
-    # above); the rule areas are reused.
-    old_bars = [fp for fp in (board.FindFootprintByReference(ref) for ref in BUSBAR_REFS.values()) if fp]
     areas = {z.GetZoneName(): z for z in board.Zones()
              if z.GetIsRuleArea() and z.GetZoneName().startswith("BUSBAR_")}
     board.GetDesignSettings().SetBoardThickness(pcbnew.FromMM(v.get("thickness", THICKNESS)))
@@ -529,6 +556,7 @@ def main(netlist, version=CURRENT):
             board.Add(ni)
         netinfo[name] = ni
 
+    placed = {}
     for ref, (lib, name, x, y, rot, bottom) in sorted(place.items()):
         c = comps[ref]
         fp = existing.get(ref)
@@ -553,6 +581,7 @@ def main(netlist, version=CURRENT):
             if net:
                 pad.SetNet(netinfo[net])
         fp.SetLocked(True)
+        placed[ref] = fp
 
     outline = pcbnew.PCB_SHAPE(board, pcbnew.SHAPE_T_RECT)
     outline.SetStart(pcbnew.VECTOR2I(pcbnew.FromMM(left(v)), pcbnew.FromMM(Y0)))
@@ -594,47 +623,14 @@ def main(netlist, version=CURRENT):
         corners.NewOutline()
         for x, y in ((x0, y0), (x1, y0), (x1, y1), (x0, y1)):
             corners.Append(mm(x), mm(y))
-        fp = pcbnew.FOOTPRINT(board)
-        fp.SetReference(BUSBAR_REFS[net])
-        board.Add(fp)
-        fp.SetFPID(pcbnew.LIB_ID("", f"Busbar_{bw:g}x{bt:g}mm"))
-        fp.SetValue(f"{stock}, {x1 - x0:.1f} mm")
-        fp.SetAttributes(pcbnew.FP_BOARD_ONLY | pcbnew.FP_EXCLUDE_FROM_BOM | pcbnew.FP_EXCLUDE_FROM_POS_FILES)
-        fp.SetPosition(pcbnew.VECTOR2I(mm((x0 + x1) / 2), mm((y0 + y1) / 2)))
-        for text, dy in ((fp.Reference(), -2), (fp.Value(), 2)):
-            text.SetLayer(pcbnew.F_Fab)
-            text.SetPosition(pcbnew.VECTOR2I(mm((x0 + x1) / 2), mm((y0 + y1) / 2 + dy)))
-            text.SetTextSize(pcbnew.VECTOR2I(mm(1.0), mm(1.0)))
-        for layer, width in ((pcbnew.F_CrtYd, 0.05), (pcbnew.F_Fab, 0.1)):
-            r = pcbnew.PCB_SHAPE(fp, pcbnew.SHAPE_T_RECT)
-            r.SetStart(pcbnew.VECTOR2I(mm(x0), mm(y0)))
-            r.SetEnd(pcbnew.VECTOR2I(mm(x1), mm(y1)))
-            r.SetLayer(layer)
-            r.SetWidth(mm(width))
-            fp.Add(r)
-        # The terminals' spigot holes (NPTH) are cut out of the courtyard, which would otherwise
-        # hold another footprint's hole (a DRC error); nothing else fits there anyway.
-        for term in BUSBARS[net]:
-            for pad in board.FindFootprintByReference(term).Pads():
-                if pad.GetAttribute() == pcbnew.PAD_ATTRIB_NPTH:
-                    hole = pcbnew.PCB_SHAPE(fp, pcbnew.SHAPE_T_CIRCLE)
-                    hole.SetCenter(pad.GetPosition())
-                    hole.SetRadius(pad.GetDrillSize().x // 2 + mm(0.1))
-                    hole.SetLayer(pcbnew.F_CrtYd)
-                    hole.SetWidth(mm(0.05))
-                    fp.Add(hole)
-        step = busbar_model(v, net)
-        if v["board"] == "up" and os.path.exists(step):
-            model = pcbnew.FP_3DMODEL()
-            model.m_Filename = "${KIPRJMOD}/" + step
+        # the bar's model (bottom face at z = 0) rests on the spigots
+        for model in placed[bars[net]].Models():
             model.m_Offset = pcbnew.VECTOR3D(0, 0, BUSBAR_Z)
-            fp.Models().push_back(model)
-        fp.SetLocked(True)
 
     if areas:
         sys.exit(f"{version}: no such busbars, but the board has {sorted(areas)}; delete them in KiCad first")
     for ref in sorted(place):
-        fp = board.FindFootprintByReference(ref)
+        fp = placed[ref]
         bb = fp.GetCourtyard(fp.GetLayer()).BBox() if fp.GetCourtyard(fp.GetLayer()).OutlineCount() else fp.GetBoundingBox()
         print(f"{ref} {fp.GetLayerName():5} {pcbnew.ToMM(fp.GetPosition().x):7.2f} {pcbnew.ToMM(fp.GetPosition().y):7.2f} "
               f"rot {fp.GetOrientationDegrees():6.1f}  courtyard x {pcbnew.ToMM(bb.GetLeft()):.1f}..{pcbnew.ToMM(bb.GetRight()):.1f} "
