@@ -117,6 +117,14 @@
   title: Amphenol PowerLok / RADLOK / HC32 catalogue (RADLOK on PDF pp. 26-33)
   url: https://www.amphenol-industrial.de/media/pages/downloads/ev/a8dde4ca91-1707818191/powerlok-radlok-hc32-katalog-en.pdf
   verified: 2026-11-02
+- id: S34
+  title: JLCPCB online PCB quote (instant quotes for Node60's 230 × 110 mm board, 6 and 8 layers, 1.6 and 2.0 mm)
+  url: https://cart.jlcpcb.com/quote
+  verified: 2026-11-01
+- id: S35
+  title: JLCPCB PCB manufacturing capabilities (drilling, traces, thickness, copper weights)
+  url: https://jlcpcb.com/capabilities/pcb-capabilities
+  verified: 2026-11-01
 - id: Z1
   title: Upstream Zephyr S32 SoC tree
   url: https://github.com/zephyrproject-rtos/zephyr/tree/main/soc/nxp/s32
