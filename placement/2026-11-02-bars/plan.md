@@ -1,6 +1,6 @@
 # Node60 placement plan, v1 (2026-11-02)
 
-Status: approved 2026-11-02 (decision D01: option B, tented vias allowed under the bars).
+Status: v2 (2026-11-02). v1 approved with D01 option B (tented vias allowed under the bars). v2 changes: the busbar net tie (D02) and the fiducials (D03) can't be done as v1 wrote them and wait on their decisions; the U401 scoped rule is dropped (at 0.1 mm track, the board minimum, and 0.15 mm clearance, the Default class, the BGA escapes, so no rule is needed).
 
 Run: `placement/2026-11-02-bars/`. Starting board: `main` at 63ff75e (PR #38's placement, busbar
 3D models from PR #37). Measurements below were taken on that board with this skill's scripts
@@ -84,7 +84,7 @@ Placed by `scripts/place_connectors.py` and locked.
 |---|---|---|---|---|
 | everything else | Default | 0.2 | 0.15 | `node60.kicad_pro` |
 | T1S line | T1S_100R | 0.165 | 0.15 | DEC-012 |
-| U401 ball field | scoped rule area `BGA_U401`: 0.1 track, 0.1 clearance | | | proposed: Default does not fit between 0.8 mm balls (0.46 mm gap) |
+| U401 ball field | none needed: 0.1 mm track (board minimum, as KiCad's DRC measures tracks) at 0.15 mm clearance fits one track per channel | | | `escape_budget.py --space 0.15`, v2 |
 | VBAT_PROT, VBAT_D, VBAT_Q2D, outputs | power widths per path, from IPC-2152 at the routing stage | | | handbook ch. 05 |
 
 High-current pads (1 A per 0.45/0.25 via, **assumed**): Q201.9–Q204.9 30 A, R201.1/.2 60 A,

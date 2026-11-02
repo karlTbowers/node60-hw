@@ -113,7 +113,7 @@ def via_sites_row(board, plan, rules_text):
                 "NOT RUN", "the plan lists no high-current pads (`high_current`)")
     via, space = plan["via_mm"], plan["space_mm"]
     pitch = via + space
-    areas = blocking_areas(board, rules_text)
+    areas = blocking_areas(board, rules_text, blocks=("via",))
     pads = [p for fp in board.GetFootprints() for p in fp.Pads()]
     short = []
     for h in hc:

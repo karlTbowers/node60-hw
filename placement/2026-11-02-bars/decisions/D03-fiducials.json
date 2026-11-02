@@ -1,0 +1,40 @@
+{
+  "id": "D03",
+  "name": "Node60 fiducials",
+  "question": "Should Node60 carry board fiducials, three per side, through a new DropOut library footprint?",
+  "board": "node60", "stage": "1 Plan (v2)", "date": "2026-11-02",
+  "why_now": "Plan v1 asked for three fiducials per side. The board has none, and the DropOut library has no fiducial footprint, so this run can't place them. A footprint goes through the library's `add-part` process in its own repo.\n\nMeanwhile the run reserves the six spots below as keep-outs, so the annealer leaves room either way.",
+  "facts": [
+    {"label": "Fiducials on the board", "value": "0", "source": "gate.py"},
+    {"label": "Library fiducial footprint", "value": "none in DropOut library", "source": "lib/dropout-kicad-library/footprints"},
+    {"label": "Assembly", "value": "both sides reflowed; U401 is a 257-ball 0.8 mm BGA on the bottom", "source": "DEC-024, plan v1"},
+    {"label": "Free spots measured (2.5 mm clear of every courtyard, hole and busbar)", "value": "top: (44, 34), (266, 34), (44, 115); bottom: (44, 34), (266, 34), (44, 136)", "source": "this run, on main 63ff75e"}
+  ],
+  "options": [
+    {
+      "key": "A", "name": "Board fiducials, 3 per side",
+      "summary": "Add a fiducial footprint to the DropOut library (1 mm copper dot, 2 mm mask opening, a part with nothing to buy: out of BOM and placement files, per CONTRIBUTING's rule). Place six on Node60 from `place_connectors.py` at the measured spots, asymmetric on each side so a half-turned board can't be mistaken.",
+      "images": [{"path": "img/fiducials.svg", "caption": "The six spots; each is clear of parts, holes and the busbars"}],
+      "measures": [
+        {"label": "Fiducials per side", "value": "3", "limit": "2 or 4, not symmetric", "status": "pass"},
+        {"label": "Work outside this run", "value": "library add-part", "limit": "-", "status": "warn"}
+      ],
+      "gains": ["Local fiducials for the BGA side's placement accuracy", "No dependence on how the assembler panels the board"],
+      "costs": ["A small library PR", "Six spots of 4 to 5 mm reserved at the corners"]
+    },
+    {
+      "key": "B", "name": "Panel fiducials only",
+      "summary": "No board fiducials. The assembler's panel rails carry them (JLCPCB adds rails and fiducials when it panels a board). The gate's fiducial row becomes ACCEPTED with this decision.",
+      "images": [{"path": "img/fiducials.svg", "caption": "The spots stay free but unused"}],
+      "measures": [
+        {"label": "Fiducials per side", "value": "0 on the board", "limit": "2 or 4, not symmetric", "status": "warn"},
+        {"label": "Work outside this run", "value": "none", "limit": "-", "status": "pass"}
+      ],
+      "gains": ["No library change"],
+      "costs": ["Placement accuracy then depends on panel rails some distance from the BGA", "Each assembler's panelling has to be checked"]
+    }
+  ],
+  "recommendation": {"option": "A", "why": "A 0.8 mm BGA on a board assembled on both sides is where board fiducials earn their place, and the cost is a small library part. B is fine for a first prototype if the assembler confirms its panel fiducials."},
+  "answer": "Reply with A or B.",
+  "sources": ["gate.py fiducial row; DropOut library footprints; this run's free-spot search on main 63ff75e"]
+}

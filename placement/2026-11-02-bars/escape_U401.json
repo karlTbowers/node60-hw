@@ -1,0 +1,57 @@
+{
+  "ref": "U401",
+  "side": "B.Cu",
+  "pitch_mm": 0.8,
+  "pad_mm": 0.34,
+  "grid": "17 x 17",
+  "balls": 257,
+  "rings": {
+    "1": {
+      "nc": 44,
+      "signal": 19,
+      "plane": 1
+    },
+    "2": {
+      "plane": 6,
+      "signal": 13,
+      "nc": 37
+    },
+    "3": {
+      "nc": 36,
+      "signal": 12
+    },
+    "4": {
+      "plane": 6,
+      "nc": 26,
+      "signal": 8
+    },
+    "6": {
+      "signal": 5,
+      "nc": 18,
+      "plane": 1
+    },
+    "7": {
+      "plane": 4,
+      "signal": 6,
+      "nc": 6
+    },
+    "8": {
+      "signal": 8
+    },
+    "9": {
+      "plane": 1
+    }
+  },
+  "deepest_signal_ring": 8,
+  "tracks_per_channel": 1,
+  "via_between_balls": true,
+  "rings_per_layer": 2,
+  "signal_layers_needed": 4,
+  "signal_layers_available": [
+    "F.Cu",
+    "In2.Cu",
+    "In3.Cu",
+    "B.Cu"
+  ],
+  "covered_by": {}
+}

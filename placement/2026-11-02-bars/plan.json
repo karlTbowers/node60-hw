@@ -19,7 +19,7 @@
   "VBAT_PROT"
  ],
  "track_mm": 0.1,
- "space_mm": 0.1,
+ "space_mm": 0.15,
  "via_mm": 0.45,
  "bgas": [
   "U401"

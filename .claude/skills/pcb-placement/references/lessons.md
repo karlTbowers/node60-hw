@@ -73,3 +73,24 @@ repair move that remains goes in REPORT.md.
 
 The fast-routed board is never the placement. Copy the seed's own `s<S>.kicad_pcb` (with
 `copy_board.py`) as the kept placement; the fast route is evidence only.
+
+## A net tie doesn't join two pads of the same net
+
+**What happened (2026-11-02).** Plan v1 tied the busbar footprint's two pads (one inside each
+terminal's pad, same net) as a KiCad net tie, so the bar would join J901 to J910 on the board.
+VBAT_IN had 17 unconnected items before and after: KiCad's net tie only lets copper of different
+nets touch without a DRC error.
+
+**What the skill does.** A part that joins two points with no board copper between them (a busbar,
+a cable, a jumper wire) is a two-net part in the schematic (a net-tie symbol between two nets), or
+an accepted exception on a decision page. The judging route moves the far terminal to a stand-in
+net meanwhile, so the router doesn't lay copper in parallel with the part.
+
+## A rule that forbids tracks is not a rule that forbids vias
+
+**What happened (2026-11-02).** After decision D01 the busbar rules forbid other nets' tracks and
+pours but not vias. `escape_budget.blocking_areas` returned any area whose rule named a via *or* a
+track, so the via checks still treated the bars as via-free and couldn't measure the decision.
+
+**What the skill does.** `blocking_areas(..., blocks=("via",))` for via questions; tracks only where
+a check is about tracks.

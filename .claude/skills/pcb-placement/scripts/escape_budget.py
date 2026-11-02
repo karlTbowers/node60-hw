@@ -31,19 +31,22 @@ def mm(v):
     return pcbnew.ToMM(v)
 
 
-def blocking_areas(board, rules_text):
+def blocking_areas(board, rules_text, blocks=("via", "track")):
     """Areas over which another net's via or track is not allowed: name -> (zone, why, exempt nets).
 
-    A rule's exempt nets are the ones its condition names with `A.NetName != '...'`."""
+    `blocks` names what the caller asks about: an area is returned only when it forbids one of
+    them, so a via question (`blocks=("via",)`) never sees an area that forbids only tracks (Node60's
+    busbar rules since decision D01). A rule's exempt nets are the ones its condition names with
+    `A.NetName != '...'`."""
     out = {}
     for z in board.Zones():
         if not z.GetIsRuleArea():
             continue
         name = z.GetZoneName()
         layers = ",".join(board.GetLayerName(l) for l in z.GetLayerSet().Seq())
-        if z.GetDoNotAllowVias():
+        if z.GetDoNotAllowVias() and "via" in blocks:
             out[name] = (z, f"native keep-out: no vias ({layers})", set())
-        elif z.GetDoNotAllowTracks():
+        elif z.GetDoNotAllowTracks() and "track" in blocks:
             out[name] = (z, f"native keep-out: no tracks ({layers})", set())
     text = "\n".join(l for l in rules_text.splitlines() if not l.lstrip().startswith("#"))
     starts = [m.start() for m in re.finditer(r"\(rule\b", text)] + [len(text)]
@@ -55,7 +58,7 @@ def blocking_areas(board, rules_text):
             items = dis.group(1).split()
             lay = re.search(r'\(layer "([^"]+)"\)', rule)
             zone = next((z for z in board.Zones() if z.GetIsRuleArea() and z.GetZoneName() == name), None)
-            if zone is not None and ("via" in items or "track" in items):
+            if zone is not None and any(k in items for k in blocks):
                 title = re.search(r'\(rule\s+"([^"]+)"', rule)
                 what = "no other-net via" if "via" in items else "no other-net track"
                 where = f" on {lay.group(1)}" if lay else ""
@@ -123,7 +126,7 @@ def main():
     sig = a.signal_layers.split(",") if a.signal_layers else all_layers
 
     covered = {}
-    for name, (zone, why, exempt) in blocking_areas(board, rules_text).items():
+    for name, (zone, why, exempt) in blocking_areas(board, rules_text, blocks=("via",)).items():
         hit = [n for n, (_, cls, p) in ball_ring.items()
                if zone.Outline().Contains(p.GetPosition()) and cls != "nc"
                and p.GetNetname().lstrip("/") not in exempt]
