@@ -102,10 +102,10 @@ LM74900-Q1 saves about $1 at 1,000 pieces but latches off after SLEEP-mode overc
     S32K344 I/O/analog, LAN8670 VDDA/VDDP, switch VDD, SPI NOR, and clock. The first LMQ66430 is enabled directly by PHY INH.
   </Card>
   <Card title="1V5_CORE">
-    S32K344 VDD_LV via the second LMQ66430-Q1. EN-pin chaining establishes the order and allows at least 250 mA transient margin.
+    S32K344 V15 via a TPS628502-Q1 buck fed from 3V3_MAIN (<Ref id="DEC-026" />): fixed 2.25 MHz with spread spectrum, out of the AM band at any battery voltage. EN-pin chaining from 3V3_MAIN establishes the order and allows at least 250 mA transient margin.
   </Card>
   <Card title="VBAT_PROT">
-    VOUT after Q2 feeds the always-on LDO, both bucks, and all three TPS2HCS08A-Q1 devices so shared RSENSE sees the complete downstream current.
+    VOUT after Q2 feeds the always-on LDO, the 3.3 V buck, and all three TPS2HCS08A-Q1 devices so shared RSENSE sees the complete downstream current.
   </Card>
 </CardGrid>
 
@@ -115,7 +115,7 @@ On bus wake, LAN8670 drives INH high. The OPEN Alliance limit is supply ramp plu
 
 ## FS26 removed from Rev A
 
-The first version stays discrete. FS26’s original roles are now covered by the two LMQ66430 bucks, the S32K344 internal windowed SWT, the TPS3702 rail supervisor, and the LAN8670 INH gatekeeper. Do not place FS26 in the Rev A schematic or BOM. Reconsider an SBC only in a later revision if wake or sequencing requirements outgrow direct INH gating and EN-pin chaining. See <Ref id="DEC-004" long />.
+The first version stays discrete. FS26’s original roles are now covered by the 3.3 V and 1.5 V bucks, the S32K344 internal windowed SWT, the TPS3702 rail supervisor, and the LAN8670 INH gatekeeper. Do not place FS26 in the Rev A schematic or BOM. Reconsider an SBC only in a later revision if wake or sequencing requirements outgrow direct INH gating and EN-pin chaining. See <Ref id="DEC-004" long />.
 
 ## Decisions
 
