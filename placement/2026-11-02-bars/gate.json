@@ -1,6 +1,6 @@
 {
   "board": "/Users/karl/Dev/node60-hw-place/node60.kicad_pcb",
-  "sha256": "0670a4fe0a962bf1",
+  "sha256": "68cbce0e9e582b8a",
   "pass": false,
   "rows": [
     {
@@ -19,7 +19,7 @@
       "check": "Schematic parity",
       "how": "kicad-cli pcb drc --schematic-parity (field mismatches warn)",
       "status": "FAIL",
-      "result": "footprint_symbol_field_mismatch 199, missing_footprint 2, footprint_symbol_mismatch 56"
+      "result": "missing_footprint 2, footprint_symbol_field_mismatch 19"
     },
     {
       "check": "Heights, B side, whole board",
@@ -61,7 +61,7 @@
       "check": "Critical blocks",
       "how": "block_poses.py check: core parts exact, flex within allowance, approved",
       "status": "PASS",
-      "result": "power: 13 parts, 0 off their table pose; approved 2026-11-02 (D04); t1s: 19 parts, 0 off their table pose; approved 2026-11-02 (D05); buck_1v5: 12 parts, 0 off their table pose; approved 2026-11-02 (D06); buck_3v3: 9 parts, 0 off their table pose; approved 2026-11-02 (D06); crystal: 5 parts, 0 off their table pose; approved 2026-11-02 (D07); u701: 22 parts, 0 off their table pose; approved 2026-11"
+      "result": "power: 13 parts, 0 off their table pose; approved 2026-11-02 (D04); t1s: 19 parts, 0 off their table pose; approved 2026-11-02 (D05); u303: 11 parts, 0 off their table pose; approved 2026-11-02 (D10); buck_3v3: 9 parts, 0 off their table pose; approved 2026-11-02 (D06); crystal: 5 parts, 0 off their table pose; approved 2026-11-02 (D07); u701: 22 parts, 0 off their table pose; approved 2026-11-02 "
     },
     {
       "check": "Fiducials",
@@ -85,13 +85,13 @@
       "check": "Fast route, KRT score",
       "how": "quick_score: blocking (open nets, floorplan, assembly)",
       "status": "FAIL",
-      "result": "blocking 2, joins_needed 1"
+      "result": "blocking 10, joins_needed 10"
     },
     {
       "check": "Fast route, board's own rules",
       "how": "grade_route.py: KiCad DRC with the board's .kicad_pro and .kicad_dru",
       "status": "FAIL",
-      "result": "  unconnected items : 1  nets: 3V3_MAIN /   not blocking (silk, dangling, library, mask): 616 /   NOTE: lib_footprint_issues, silk_overlap, silk_over_copper reached KiCad's 199-entry report cap; the count is a floor / BLOCKING=1"
+      "result": "  unconnected items : 10  nets: /T1S/T1S_REFCLK, /T1S_IRQ_L, 3V3_MAIN /   not blocking (silk, dangling, library, mask): 614 /   NOTE: lib_footprint_issues, silk_overlap, silk_over_copper reached KiCad's 199-entry report cap; the count is a floor / BLOCKING=10"
     }
   ]
 }

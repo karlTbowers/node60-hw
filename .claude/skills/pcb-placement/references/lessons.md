@@ -159,6 +159,11 @@ intent to `check_assembly` (waivers), resolves `${KIPRJMOD}` to the project, and
 `circles` and `except`. A row whose tool printed a traceback or a missing-library line is NOT RUN,
 never PASS (follow-up: the gate doesn't detect that yet).
 
+Keep that Python in `~/.cache/dropout/krt-venv`, beside the library's `klt-venv`, never in a session's
+scratch folder: the first one lived there and was gone the next morning, with every script that
+named it. Rebuild it with `uv venv --python 3.12 ~/.cache/dropout/krt-venv && uv pip install --python
+~/.cache/dropout/krt-venv/bin/python numpy scipy shapely pillow`, and set the plan's `krt_python` to it.
+
 ## KRT waives test points' courtyard overlaps, even under a BGA
 
 **What happened (2026-11-02).** Moving test point TP407 away from the MCU crystal, the search accepted a

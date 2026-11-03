@@ -553,5 +553,6 @@
   "accepted": [],
   "assumed": [
     "1 A per 0.45/0.25 mm via (to be checked against the stackup's plating and the 10 A thermal test)"
-  ]
+  ],
+  "krt_python": "/Users/karl/.cache/dropout/krt-venv/bin/python"
 }
