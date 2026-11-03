@@ -91,6 +91,8 @@ def check_table(board, table):
     if anc["side"] != table["anchor_pose"]["side"]:
         rows[0] = {"ref": table["anchor"], "status": "FAIL", "note": "anchor changed side"}
     for ref, rel in table["parts"].items():
+        if ref == table["anchor"]:
+            continue   # the anchor's own row carries its reason, not a pose: it is checked above
         fp = board.FindFootprintByReference(ref)
         if fp is None:
             rows.append({"ref": ref, "status": "FAIL", "note": "not on the board"})

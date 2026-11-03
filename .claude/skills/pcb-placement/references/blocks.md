@@ -28,7 +28,9 @@ choice:
 Match the figure to the board by net and pin function, never by designator: the datasheet's
 C1 is not the board's C1. For switching stages and RF chains, KRT's `fit_template.py` does the
 seating (its skill's §3.5: sketch in the footprint's frame, hot loop first); its result is the
-starting pose table. For other blocks, place by hand with `place_pose.py set` or in KiCad.
+starting pose table. For other blocks, place by hand with `place_pose.py set` or in KiCad. To move parts to the
+nearest legal pose (a test point off a connector, a resistor off a courtyard), use
+`pose_search.py`, never a shell loop round `place_pose.py` (see lessons).
 
 Then extract the table and give every part its reason:
 

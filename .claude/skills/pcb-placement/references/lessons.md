@@ -69,6 +69,20 @@ Y401 had to be brought back to its oscillator balls).
 placement; a part that needs a repair in every seed is an input to fix (KRT §3.6), and every
 repair move that remains goes in REPORT.md.
 
+## Search poses in one process
+
+**What happened (2026-11-02).** `nudge.sh` tried each pose with KRT's `place_pose.py`, then
+`check_floorplan` and `check_assembly`: a new Python process and a full board load per tool per
+pose, about a minute a pose, so one test point's search (TP806, 4 targets) ran 30 minutes. It
+also reported "nothing found" for every pose because a stale `t.kicad_dru` beside its output
+made `place_pose` refuse, and the loop discarded the refusal.
+
+**What the skill does.** `pose_search.py` loads the board once, screens every candidate in
+memory (courtyards, pad and hole clearance, edge, rule areas, the spec's `require`), keeps the
+nearest legal pose of each part in turn and runs KRT's checks once on the result. TP806 and
+four courtyard fixes together: 5 s, verify included. Failures say why (the most common
+reasons), never just "nothing found".
+
 ## Grade the kept seed, not the last file written
 
 The fast-routed board is never the placement. Copy the seed's own `s<S>.kicad_pcb` (with

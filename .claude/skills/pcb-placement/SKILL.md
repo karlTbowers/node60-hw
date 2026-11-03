@@ -53,6 +53,7 @@ The lessons that shaped it are in `references/lessons.md`; read it once before a
 | `layer_capacity.py` | board, `.kicad_dru` | connection demand against tracks that fit, per window of each cut |
 | `hot_loop.py` | board, switcher spec | each switcher's input cap, inductor and feedback parts against its datasheet |
 | `block_poses.py` | board, pose tables | extract, apply, copy and check hand-reviewed blocks |
+| `pose_search.py` | board, pose spec | legal poses for parts, searched in one process; KRT checks only the result |
 | `grade_route.py` | fast-routed board, `.kicad_pro`, `.kicad_dru` | KiCad DRC with the board's own rules: open nets, custom-rule hits |
 | `gate.py` | board, `plan.json` | the placement gate table (`gate.md`) |
 | `decision_page.py` | decision JSON, pictures | one self-contained decision page |
@@ -131,7 +132,8 @@ twice), compose it on a copy and write its pose table with a reason for every pa
 next, the house rules last. Switching stages use KRT's `fit_template.py` to seat the datasheet
 layout; check them with `hot_loop.py`. Identical channels are composed and reviewed once, then
 copied (`block_poses.py copy`, KRT `place_pose.py replicate`), and their copies are checked, not
-reviewed again.
+reviewed again. A copy that lands on a neighbour (a test point on a connector, a resistor a
+hair inside a courtyard) gets its flex parts moved by `pose_search.py`.
 
 **Decision:** one page per block (a zoomed render of each side with net names, the pose table's
 reasons, the hot-loop rows, what the arrangement gives up). Approve sets `approved` in its table.
@@ -148,6 +150,11 @@ intent, write `groups.json`, declare edges, covers, keep-outs and templates, the
   approved block, `escape_budget.py` on every BGA, `hot_loop.py`, `layer_capacity.py`. A seed
   that moves a core part, covers balls or breaks a hot-loop limit is repaired or dropped
   (KRT §3.6 "when no seed can be judged"), and every repair move is logged in REPORT.md.
+- Repairs and nudges go through `pose_search.py`: one spec lists the parts, their search
+  radius, rotations and any `require` (e.g. a GND test point within 12 mm of its pin); it loads
+  the board once, screens every pose in memory and runs `check_floorplan` and
+  `check_assembly` once, on the result (`--verify`). Never a shell loop that runs KRT's tools
+  per pose: about a minute a pose, against seconds for the whole search.
 
 ### 5. Fast route, judged by the board's own rules
 
