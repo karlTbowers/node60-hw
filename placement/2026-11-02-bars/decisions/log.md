@@ -9,7 +9,7 @@
 | D05 | 2026-11-02 | T1S block as it stands | https://claude.ai/artifact/3qNtDXwTVFXDRsiMQj4BjQ | A, as it stands (user, 2026-11-02) | T1S block v1 approved, held through placement; R503 swap dropped |
 | D06 | 2026-11-02 | Buck cells (U302, U303) as composed, U303 divider on the SW side | https://claude.ai/artifact/WajY8VuzyCVy9FZJmUXBPT | A, as composed (user, 2026-11-02) | buck cells approved as seated; route U303's FB round the north of the chip, away from SW; check 1V5_CORE ripple on the first boards |
 | D07 | 2026-11-02 | MCU crystal block as composed, with a no-via rule on the crystal nets | https://claude.ai/artifact/7cWymGEgGDMhtveNwaRFJy | A, as composed with the no-via rule (user, 2026-11-02) | crystal block approved; node60.kicad_dru forbids vias on the FXOSC nets; routing routes them first on B.Cu |
-| D08 | 2026-11-02 | One output-switch cell, U701's, copied to U601 and U801 | https://claude.ai/artifact/V4af2FuXFsyNta7XuYQYwC | awaiting answer | |
+| D08 | 2026-11-02 | One output-switch cell, U701's, copied to U601 and U801 | https://claude.ai/artifact/V4af2FuXFsyNta7XuYQYwC | A, as composed (user, 2026-11-02) | output cells approved: U601 turned 90° and moved 4.3 mm, U801 to (224, 113), TP806 at (231, 107.75) |
 
 ## Skill gaps found in this run
 
