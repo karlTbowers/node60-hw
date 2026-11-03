@@ -3,3 +3,4 @@ dist/
 .astro/
 src/diagrams/build/
 public/mockups/
+scripts/hero/build/

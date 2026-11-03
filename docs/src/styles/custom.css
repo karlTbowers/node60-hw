@@ -141,3 +141,102 @@ tr[id] { scroll-margin-top: 5rem; }
 .mcu-chip.st-used { background: color-mix(in srgb, var(--sl-color-accent) 25%, transparent); }
 .mcu-chip.st-available { background: color-mix(in srgb, var(--n60-locked) 30%, transparent); }
 .mcu-chip.st-conflict { background: color-mix(in srgb, var(--n60-blocked) 30%, transparent); }
+
+/* Front-page hero: enclosure renderings (scripts/render-hero.mjs), assembled / exploded. The
+   renders have a light studio background in both themes (the case is black), so the text on
+   them is dark in both. */
+.n60-hero { margin: 0 0 2rem; }
+.n60-hero-stage { position: relative; overflow: hidden; border-radius: 0.75rem; border: 1px solid var(--n60-border); background: #e3e8ec; }
+.n60-hero-pics { position: relative; aspect-ratio: 2 / 1; }
+.n60-hero-stage input { position: absolute; opacity: 0; pointer-events: none; }
+.n60-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 0.5s ease; }
+.n60-hero-exploded { opacity: 0; }
+#n60-hero-exploded:checked ~ .n60-hero-pics .n60-hero-exploded { opacity: 1; }
+#n60-hero-exploded:checked ~ .n60-hero-pics .n60-hero-assembled { opacity: 0; }
+.n60-hero-text { position: absolute; left: clamp(1rem, 3.5%, 2.25rem); top: clamp(0.9rem, 5%, 2.25rem); max-width: 36%; color: #15191e; }
+.n60-hero-kicker { margin: 0; font-size: var(--sl-text-xs); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #4b5560; }
+.n60-hero-title { margin: 0.3rem 0 0; font-size: clamp(1.25rem, 2.6vw, 2rem); font-weight: 700; line-height: 1.1; color: #15191e; text-wrap: balance; }
+.n60-hero-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1rem; margin: 0.75rem 0 0; font-size: var(--sl-text-sm); font-weight: 600; }
+.n60-hero-links a { color: #a11d22; text-decoration: none; }
+.n60-hero-links a:hover { text-decoration: underline; }
+.n60-hero-switch { position: absolute; right: clamp(0.75rem, 2.5%, 1.5rem); bottom: clamp(0.75rem, 3%, 1.5rem); display: inline-flex; border: 1px solid #b9c1c9; border-radius: 999px; background: rgba(255, 255, 255, 0.85); overflow: hidden; }
+.n60-hero-switch label { padding: 0.3rem 0.85rem; font-size: var(--sl-text-xs); font-weight: 600; color: #3c4650; cursor: pointer; user-select: none; }
+#n60-hero-assembled:checked ~ .n60-hero-switch label[for='n60-hero-assembled'],
+#n60-hero-exploded:checked ~ .n60-hero-switch label[for='n60-hero-exploded'] { background: #15191e; color: #fff; }
+#n60-hero-assembled:focus-visible ~ .n60-hero-switch label[for='n60-hero-assembled'],
+#n60-hero-exploded:focus-visible ~ .n60-hero-switch label[for='n60-hero-exploded'] { outline: 2px solid var(--sl-color-accent); outline-offset: -2px; }
+.n60-hero figcaption { margin-top: 0.5rem; font-size: var(--sl-text-xs); color: var(--sl-color-gray-3); }
+/* Narrow: the headline sits above the picture, which is cropped to the case. */
+@media (max-width: 60rem) {
+	.n60-hero-stage { display: flex; flex-direction: column; }
+	.n60-hero-text { order: -1; position: static; max-width: none; padding: 1rem 1.25rem 0; }
+	.n60-hero-switch { position: static; align-self: flex-end; margin: 0 0.75rem 0.75rem; }
+	.n60-hero-pics { aspect-ratio: 16 / 10; }
+	.n60-hero-img { object-position: 62% 50%; }
+}
+
+/* Vehicle wiring concept (VehicleWiring.astro, scripts/render-vehicle.mjs): a painted pickup that
+   fades to a ghost while the wiring draws on. Warm and light in both themes, like the hero render.
+   Default state: the truck; #n60-vw-wiring checked: the wiring, each cable after its --d delay. */
+.n60-vw { margin: 1.5rem 0 2rem; }
+.n60-vw-stage { position: relative; overflow: hidden; border-radius: 0.75rem; border: 1px solid var(--n60-border); background: #f7f0e3; }
+.n60-vw-stage > input { position: absolute; opacity: 0; pointer-events: none; }
+.n60-vw-svg { display: block; width: 100%; height: auto; font-family: var(--sl-font); }
+.n60-vw-svg polygon, .n60-vw-svg path { stroke: #5b4636; stroke-width: 2.2; stroke-linejoin: round; }
+.n60-vw-svg .e-soft { stroke: #3e3733; stroke-width: 0.8; }
+.n60-vw-svg .e-thin { stroke-width: 1.2; }
+.n60-vw-svg .e-none { stroke: none; }
+.n60-vw-svg .glass { fill-opacity: 0.5; }
+.n60-vw-svg .shadow { fill: #d6b98f; stroke: none; opacity: 0.55; }
+.n60-vw-svg .cable { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.n60-vw-svg .feed { stroke: #2b2522; stroke-width: 9; }
+.n60-vw-svg .feed-core { stroke: #d9443e; stroke-width: 4.5; }
+.n60-vw-svg .t1s { stroke: #5b4fd6; stroke-width: 7; }
+.n60-vw-svg .t1s-core { stroke: #fff; stroke-width: 1.8; stroke-dasharray: 5 7; }
+.n60-vw-svg .out { stroke: #e08a1e; stroke-width: 3; }
+.n60-vw-svg .glow { stroke: none; opacity: 0; filter: url(#vw-glow); }
+.n60-vw-svg .glow.head, .n60-vw-svg .glow.fog, .n60-vw-svg .glow.plate { fill: #ffe98a; }
+.n60-vw-svg .glow.turn { fill: #ffaa3b; }
+.n60-vw-svg .glow.tail { fill: #ff4b3e; }
+.n60-vw-svg .leader { fill: none; stroke: #8a735e; stroke-width: 1.4; }
+.n60-vw-svg .pin { fill: #5b4636; }
+.n60-vw-svg text { font-size: 34px; }
+.n60-vw-svg .lt { fill: #33281f; font-weight: 600; }
+.n60-vw-svg .ls { fill: #6b5a4a; font-size: 28px; }
+
+.n60-vw-svg .vw-body, .n60-vw-svg .vw-inner, .n60-vw-svg .vw-notes, .n60-vw-svg .vw-parts,
+.n60-vw-svg .glow, .n60-vw-svg [class*='-core'] { transition: opacity 0.5s ease; }
+.n60-vw-svg .vw-wiring .cable[pathLength] { stroke-dasharray: 1 1; stroke-dashoffset: 1; transition: stroke-dashoffset 0.3s ease; }
+.n60-vw-svg .vw-wiring [class*='-core'], .n60-vw-svg .vw-parts, .n60-vw-svg .vw-notes { opacity: 0; }
+#n60-vw-wiring:checked ~ .n60-vw-art .vw-body { opacity: 0.2; transition: opacity 0.9s ease; }
+#n60-vw-wiring:checked ~ .n60-vw-art .vw-inner { opacity: 0.35; transition: opacity 0.9s ease; }
+#n60-vw-wiring:checked ~ .n60-vw-art .vw-parts { opacity: 1; transition: opacity 0.5s ease 0.45s; }
+#n60-vw-wiring:checked ~ .n60-vw-art .vw-wiring .cable[pathLength] { stroke-dashoffset: 0; transition: stroke-dashoffset 0.8s ease-in-out var(--d); }
+#n60-vw-wiring:checked ~ .n60-vw-art .vw-wiring [class*='-core'] { opacity: 1; transition: opacity 0.3s ease calc(var(--d) + 0.6s); }
+#n60-vw-wiring:checked ~ .n60-vw-art .glow { opacity: 0.85; transition: opacity 0.6s ease 2.5s; }
+#n60-vw-wiring:checked ~ .n60-vw-art .vw-notes { opacity: 1; transition: opacity 0.6s ease 2.6s; }
+@media (prefers-reduced-motion: reduce) {
+	.n60-vw-svg *, #n60-vw-wiring:checked ~ .n60-vw-art * { transition: none !important; }
+}
+
+.n60-vw-switch { position: absolute; left: 1rem; top: 1rem; display: flex; gap: 0.15rem; padding: 0.2rem; border-radius: 999px; background: rgba(255, 252, 245, 0.85); border: 1px solid #d9c9b0; box-shadow: 0 1px 3px rgba(60, 40, 20, 0.12); }
+.n60-vw-switch label { padding: 0.3rem 0.85rem; border-radius: 999px; font-size: var(--sl-text-sm); color: #5b4636; cursor: pointer; user-select: none; }
+#n60-vw-truck:checked ~ .n60-vw-switch label[for='n60-vw-truck'],
+#n60-vw-wiring:checked ~ .n60-vw-switch label[for='n60-vw-wiring'] { background: #5b4636; color: #fff8ec; }
+#n60-vw-truck:focus-visible ~ .n60-vw-switch label[for='n60-vw-truck'],
+#n60-vw-wiring:focus-visible ~ .n60-vw-switch label[for='n60-vw-wiring'] { outline: 2px solid var(--sl-color-accent); outline-offset: 2px; }
+/* On narrow screens the drawing's own labels are too small to read: hide them and show the key below. */
+.n60-vw-key { display: none; }
+@media (max-width: 50rem) {
+	.n60-vw-svg .vw-notes { display: none; }
+	.n60-vw-switch { position: static; width: max-content; margin: 0 auto 0.6rem; }
+	.n60-vw-key { display: flex; flex-wrap: wrap; gap: 0.35rem 1rem; margin: 0.6rem 0 0; padding: 0; list-style: none; font-size: var(--sl-text-sm); color: var(--sl-color-gray-2); }
+	.n60-vw-key li { display: flex; align-items: center; gap: 0.4rem; }
+	.n60-vw-key i { display: inline-block; flex: none; width: 1.4rem; height: 0.35rem; border-radius: 0.2rem; }
+	.n60-vw-key .k-node { width: 0.9rem; height: 0.55rem; border-radius: 0.1rem; background: #1d1f22; outline: 1px solid var(--sl-color-gray-4); }
+	.n60-vw-key .k-hub { width: 0.9rem; height: 0.55rem; border-radius: 0.1rem; background: #6a5ed2; }
+	.n60-vw-key .k-feed { background: #d9443e; box-shadow: 0 0 0 1.5px #2b2522; }
+	.n60-vw-key .k-t1s { background: #5b4fd6; }
+	.n60-vw-key .k-out { height: 0.18rem; background: #e08a1e; }
+}
+.n60-vw figcaption { margin-top: 0.5rem; font-size: var(--sl-text-sm); color: var(--sl-color-gray-3); }
