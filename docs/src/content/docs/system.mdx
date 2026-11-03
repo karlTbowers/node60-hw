@@ -12,7 +12,7 @@ Battery protection, low-power control, logic, network, and six load channels are
 
 ## Power view
 
-<D2Diagram name="power" caption="Battery, control, network wake, and switched-load domains. LAN8670 VDDAU is the sole always-on load; its INH output gates the main rails directly. Line weight shows current: thick = battery path (up to 60 A), medium = VBAT_PROT branches, thin = regulated rails; dashed = supervision. Click a block for its subsystem page." />
+<D2Diagram name="power" caption="Battery, control, network wake, and switched-load domains. LAN8670 VDDAU is the sole always-on load; its INH output gates the main rails directly. The EMI filter (L201, C207) feeds only the 3.3 V buck; the switches and the always-on LDO take VBAT_PROT directly, and the 1.5 V buck runs from 3V3_MAIN. Line weight shows current: thick = battery path (up to 60 A), medium = VBAT_PROT branches, thin = regulated rails; dashed purple = supervision, dotted teal = enable (INH and the EN chain). Click a block for its subsystem page." />
 
 ## Signals view
 
@@ -23,7 +23,7 @@ Battery protection, low-power control, logic, network, and six load channels are
 Keep dirty load current outside the logic return path. The protected battery node feeds both the smart switches and the logic converters. Each output returns directly to the power-entry ground/star region; ADC and PHY grounds join through the quiet logic plane. The T1S coupling and ESD network sit at the connector boundary.
 
 <Aside type="tip" title="Rev A power-gate decision">
-FS26 is removed. A nanopower LDO supplies only LAN8670 VDDAU while parked; LAN8670 INH directly enables the LMQ66430-Q1 3.3 V buck, and the 1.5 V buck (a TPS628502-Q1 on 3V3_MAIN since DEC-026) follows it. EN-pin chaining establishes the 3.3 V / 1.5 V order without an SBC, wake latch, or extra logic. See <Ref id="DEC-004" long />.
+FS26 is removed. A nanopower LDO supplies only LAN8670 VDDAU while parked; LAN8670 INH directly enables U302, the LMQ66430-Q1 3.3 V buck on VBAT_FILT, and U303, the TPS628502-Q1 1.5 V buck fed from 3V3_MAIN (<Ref id="DEC-026" />), follows it through its EN divider. EN-pin chaining establishes the 3.3 V / 1.5 V order without an SBC, wake latch, or extra logic. See <Ref id="DEC-004" long />.
 </Aside>
 
 ## Controlled power cycle

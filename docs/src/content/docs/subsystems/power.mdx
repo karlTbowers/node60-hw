@@ -99,18 +99,18 @@ LM74900-Q1 saves about $1 at 1,000 pieces but latches off after SLEEP-mode overc
     A TPS7B8133-Q1 nanopower LDO supplies only LAN8670 VDDAU while parked. Its 3.5 µA quiescent current is above the ≈1–2 µA Rev A target; no 40 V Grade 1 part met that target, and the ≈52 µA parked budget was accepted on 2026-10-28.
   </Card>
   <Card title="3V3_MAIN">
-    S32K344 I/O/analog, LAN8670 VDDA/VDDP, switch VDD, SPI NOR, and clock. The first LMQ66430 is enabled directly by PHY INH.
+    S32K344 I/O/analog, LAN8670 VDDA/VDDP, switch VDD, SPI NOR, clock, and the 1.5 V buck's input. U302, an LMQ66430-Q1 at 2.2 MHz on VBAT_FILT, is enabled directly by PHY INH.
   </Card>
   <Card title="1V5_CORE">
     S32K344 V15 via a TPS628502-Q1 buck fed from 3V3_MAIN (<Ref id="DEC-026" />): fixed 2.25 MHz with spread spectrum, out of the AM band at any battery voltage. EN-pin chaining from 3V3_MAIN establishes the order and allows at least 250 mA transient margin.
   </Card>
   <Card title="VBAT_PROT">
-    VOUT after Q2 feeds the always-on LDO, the 3.3 V buck, and all three TPS2HCS08A-Q1 devices so shared RSENSE sees the complete downstream current.
+    VOUT after Q2 feeds the always-on LDO, all three TPS2HCS08A-Q1 devices, and, through the L201 EMI filter (VBAT_FILT), the 3.3 V buck, so shared RSENSE sees the complete downstream current.
   </Card>
 </CardGrid>
 
 <Aside type="caution" title="Power-sequencing hold point">
-On bus wake, LAN8670 drives INH high. The OPEN Alliance limit is supply ramp plus PHY initialization within 15 ms (Sleep/Wake-Up Electrical Interface Specification v1.0, §5.2); the LAN8670 datasheet's "within 1 ms" is Microchip's own allocation. With the LMQ66430 (~6–7 ms to regulation) and the LAN8670 D0 reset and initialization (~3 ms), the estimate is about 10 ms. Rev A accepts this and measures it (GATE-NET-01). Verify EN-chain delay, regulator soft-start, MCU reset release, PHY-ready T1S_IRQ_L, and whole-board inrush together. VDDA must never exceed VDDAU by more than 0.5 V; the always-on-first topology satisfies that rule by construction.
+On bus wake, LAN8670 drives INH high. The OPEN Alliance limit is supply ramp plus PHY initialization within 15 ms (Sleep/Wake-Up Electrical Interface Specification v1.0, §5.2); the LAN8670 datasheet's "within 1 ms" is Microchip's own allocation. With the LMQ66430 (~6–7 ms to regulation; the TPS628502 adds its 1 ms soft-start once 3V3_MAIN is up) and the LAN8670 D0 reset and initialization (~3 ms), the estimate is about 10 ms. Rev A accepts this and measures it (GATE-NET-01). Verify EN-chain delay, regulator soft-start, MCU reset release, PHY-ready T1S_IRQ_L, and whole-board inrush together. VDDA must never exceed VDDAU by more than 0.5 V; the always-on-first topology satisfies that rule by construction.
 </Aside>
 
 ## FS26 removed from Rev A

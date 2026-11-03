@@ -43,7 +43,7 @@ TI **TMP126-Q1** was the only verified higher-accuracy option: ±0.4 °C maximum
 | INA228A-Q1 die temperature | ±2 °C maximum, but it measures the monitor IC die rather than the high-dissipation shunt body. | Retain for monitor health; fit the shunt NTC for shunt temperature. |
 | S32K344 internal TempSense | ±10 °C maximum. | Use only for MCU die-health checks, not hotspot derating. |
 | LM74910H-Q1 / external NFETs | The adopted interface provides current/fault protection but no NFET temperature measurement. | The external FET bank remains the primary thermal blind spot; TMP175-Q1 closes it. |
-| LMQ66430-Q1 / LAN8670 | Buck converters provide thermal shutdown only; LAN8670 provides a binary overtemperature indication based on characterization data. | Treat these as protection/fault indications, not hotspot measurements. |
+| LMQ66430-Q1, TPS628502-Q1 / LAN8670 | Buck converters provide thermal shutdown only; LAN8670 provides a binary overtemperature indication based on characterization data. | Treat these as protection/fault indications, not hotspot measurements. |
 
 <Aside type="caution" title="I²t telemetry blackout">
 Firmware must never trust TPS2HCS08A-Q1 temperature registers during an I²t event. Record the blackout state with every temperature sample, use the three package NTCs for fault-time thermal decisions, and continue honoring the switch warning and shutdown bits.
