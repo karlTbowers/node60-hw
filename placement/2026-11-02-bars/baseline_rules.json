@@ -1,0 +1,37 @@
+{
+  "board": "/Users/karl/Dev/node60-hw/placement-compare/V16/route1t/routed.kicad_pcb",
+  "kicad": "10.0.0",
+  "refilled": true,
+  "blocking": 756,
+  "unconnected_items": 3,
+  "open_nets": [
+    "/VBAT_IN",
+    "3V3_MAIN"
+  ],
+  "custom_rule_hits": {},
+  "custom_rules_loaded": [
+    "F.Cu under the VBAT_IN busbar: VBAT_IN only",
+    "F.Cu under the GND busbar: GND only"
+  ],
+  "other_errors": {
+    "annular_width": 3,
+    "clearance": 499,
+    "hole_clearance": 27,
+    "drill_out_of_range": 40,
+    "track_width": 144,
+    "via_diameter": 40
+  },
+  "warnings": {
+    "track_dangling": 12,
+    "silk_edge_clearance": 16,
+    "lib_footprint_issues": 199,
+    "silk_overlap": 199,
+    "silk_over_copper": 199
+  },
+  "capped_types": [
+    "clearance",
+    "lib_footprint_issues",
+    "silk_overlap",
+    "silk_over_copper"
+  ]
+}

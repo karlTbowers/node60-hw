@@ -1,0 +1,181 @@
+{
+  "layers": [
+    "F.Cu",
+    "In2.Cu",
+    "In3.Cu",
+    "B.Cu"
+  ],
+  "pitch_mm": 0.2,
+  "worst": [
+    {
+      "cut": "x = 207.9",
+      "window": "y 50.0..60.0",
+      "demand": 13.6,
+      "capacity": 200.0,
+      "fill": 0.068,
+      "nets": [
+        "/I2C0_TELEMETRY_SDA",
+        "/MCU and NVM/1V1_MCU_V11",
+        "/MCU and NVM/SPI2_FLASH_CS_L",
+        "/MCU and NVM/SPI2_FLASH_MISO",
+        "/MCU and NVM/SPI2_FLASH_MOSI",
+        "/MCU and NVM/SPI2_FLASH_SCK",
+        "/MCU and NVM/UART0_DEBUG_RX",
+        "/MCU and NVM/UART0_DEBUG_TX",
+        "/SPI3_SWITCH3_CS_L",
+        "/SPI3_SWITCH3_MISO",
+        "/SPI3_SWITCH3_MOSI",
+        "/SPI3_SWITCH3_SCK"
+      ]
+    },
+    {
+      "cut": "x = 209.9",
+      "window": "y 50.0..60.0",
+      "demand": 13.1,
+      "capacity": 200.0,
+      "fill": 0.066,
+      "nets": [
+        "/MCU and NVM/1V1_MCU_V11",
+        "/MCU and NVM/SPI2_FLASH_CS_L",
+        "/MCU and NVM/SPI2_FLASH_MISO",
+        "/MCU and NVM/SPI2_FLASH_MOSI",
+        "/MCU and NVM/SPI2_FLASH_SCK",
+        "/MCU and NVM/UART0_DEBUG_RX",
+        "/MCU and NVM/UART0_DEBUG_TX",
+        "/SPI3_SWITCH3_CS_L",
+        "/SPI3_SWITCH3_MISO",
+        "/SPI3_SWITCH3_MOSI",
+        "/SPI3_SWITCH3_SCK",
+        "/SPI5_SWITCH2_SCK"
+      ]
+    },
+    {
+      "cut": "x = 135.9",
+      "window": "y 80.0..90.0",
+      "demand": 12.0,
+      "capacity": 199.1,
+      "fill": 0.06,
+      "nets": [
+        "/I2C0_TELEMETRY_SDA",
+        "/NTC_RSENSE",
+        "/NTC_SW1",
+        "/Power entry/DGATE",
+        "/Power entry/HGATE",
+        "/Power entry/LM_ISCP",
+        "/Power entry/LM_TMR",
+        "/Power entry/LM_UVLO",
+        "/Power entry/VBAT_D",
+        "/Power entry/VBAT_Q2D",
+        "/SPI4_SWITCH1_CS_L",
+        "/SPI4_SWITCH1_MISO"
+      ]
+    },
+    {
+      "cut": "x = 177.9",
+      "window": "y 50.0..60.0",
+      "demand": 12.1,
+      "capacity": 200.0,
+      "fill": 0.06,
+      "nets": [
+        "/BATT_MON",
+        "/LM_FLT_L",
+        "/MDIO0_T1S_MDIO",
+        "/NTC_RSENSE",
+        "/NTC_SW1",
+        "/NTC_SW2",
+        "/RMII0_T1S_CRS_DV",
+        "/RMII0_T1S_REF_CLK",
+        "/RMII0_T1S_RXD0",
+        "/RMII0_T1S_RXD1",
+        "/RMII0_T1S_RX_ER",
+        "/RMII0_T1S_TXD0"
+      ]
+    },
+    {
+      "cut": "x = 133.9",
+      "window": "y 80.0..90.0",
+      "demand": 11.8,
+      "capacity": 199.1,
+      "fill": 0.059,
+      "nets": [
+        "/I2C0_TELEMETRY_SDA",
+        "/NTC_RSENSE",
+        "/NTC_SW1",
+        "/Power entry/DGATE",
+        "/Power entry/HGATE",
+        "/Power entry/LM_CSP",
+        "/Power entry/LM_ISCP",
+        "/Power entry/LM_TMR",
+        "/Power entry/VBAT_D",
+        "/Power entry/VBAT_Q2D",
+        "/SPI4_SWITCH1_CS_L",
+        "/SPI4_SWITCH1_MISO"
+      ]
+    },
+    {
+      "cut": "y = 58.0",
+      "window": "x 199.9..209.9",
+      "demand": 11.6,
+      "capacity": 200.0,
+      "fill": 0.058,
+      "nets": [
+        "/I2C0_TELEMETRY_SDA",
+        "/LM_FLT_L",
+        "/NTC_SW2",
+        "/NTC_SW3",
+        "/SPI3_SWITCH3_MISO",
+        "/SPI4_SWITCH1_CS_L",
+        "/SPI4_SWITCH1_MISO",
+        "/SPI4_SWITCH1_MOSI",
+        "/SPI4_SWITCH1_SCK",
+        "/SPI5_SWITCH2_CS_L",
+        "/SPI5_SWITCH2_MISO",
+        "/SPI5_SWITCH2_MOSI"
+      ]
+    },
+    {
+      "cut": "x = 165.9",
+      "window": "y 60.0..70.0",
+      "demand": 8.4,
+      "capacity": 155.6,
+      "fill": 0.054,
+      "nets": [
+        "/BATT_MON",
+        "/I2C0_TELEMETRY_SCL",
+        "/INH",
+        "/LM_FLT_L",
+        "/NTC_SW1",
+        "/NTC_SW2",
+        "/SPI4_SWITCH1_CS_L",
+        "/SPI4_SWITCH1_MISO",
+        "/SPI4_SWITCH1_MOSI",
+        "/SPI4_SWITCH1_SCK",
+        "/SPI5_SWITCH2_CS_L",
+        "/SPI5_SWITCH2_MISO"
+      ]
+    },
+    {
+      "cut": "x = 201.9",
+      "window": "y 50.0..60.0",
+      "demand": 10.8,
+      "capacity": 200.0,
+      "fill": 0.054,
+      "nets": [
+        "/I2C0_TELEMETRY_SDA",
+        "/LM_FLT_L",
+        "/MCU and NVM/1V1_MCU_V11",
+        "/MCU and NVM/SPI2_FLASH_CS_L",
+        "/MCU and NVM/SPI2_FLASH_MISO",
+        "/MCU and NVM/SPI2_FLASH_MOSI",
+        "/MCU and NVM/SPI2_FLASH_SCK",
+        "/MCU and NVM/SWD_DIO",
+        "/SPI4_SWITCH1_CS_L",
+        "/SPI4_SWITCH1_MOSI",
+        "/SPI4_SWITCH1_SCK",
+        "/SPI5_SWITCH2_SCK"
+      ]
+    }
+  ],
+  "errors": 0,
+  "warns": 0
+}

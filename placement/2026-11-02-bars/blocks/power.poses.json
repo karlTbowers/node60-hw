@@ -1,0 +1,121 @@
+{
+ "block": "power",
+ "anchor": "R201",
+ "approved": "2026-11-02 (D04)",
+ "anchor_pose": {
+  "x": 116.1826,
+  "y": 77.5783,
+  "rot": 180.0,
+  "side": "B"
+ },
+ "parts": {
+  "Q201": {
+   "dx": -29.9536,
+   "dy": -10.4744,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "Ideal-diode FET, source on VBAT_IN beside J910 so the 60 A path from the terminal is short; tab VBAT_D (LM74910H 9.5.1: A, DGATE, C close to source, gate, drain). Unchanged."
+  },
+  "Q202": {
+   "dx": -9.7238,
+   "dy": 1.0631,
+   "rot": 270.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "Second ideal-diode FET in parallel with Q201; same reasons. Its tab sits under the GND bar, allowed with tented vias (D01: 199 via sites, 30 needed). Unchanged."
+  },
+  "Q203": {
+   "dx": 21.5916,
+   "dy": -4.9733,
+   "rot": 270.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "Load-disconnect FET, drain VBAT_Q2D from the shunt, source VBAT_PROT to the In4 plane (LM74910H 9.5.1: HGATE and OUT close to gate and source). Unchanged."
+  },
+  "Q204": {
+   "dx": 10.475,
+   "dy": -4.9766,
+   "rot": 270.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "Second load-disconnect FET in parallel with Q203. Unchanged."
+  },
+  "U202": {
+   "dx": 5.6826,
+   "dy": 7.5783,
+   "rot": 180.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "INA228 moved from (187.2, 90.6) to beside the shunt: IN+ 8.7 mm and IN- 7.2 mm from R201's pads (was 68 mm). INA228-Q1 10.1: Kelvin (4-wire) connection to the sense resistor; any high-current impedance between the pins is measurement error."
+  },
+  "C214": {
+   "dx": 0.4826,
+   "dy": 9.5783,
+   "rot": 180.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "U202's 100 nF supply bypass, moved from F.Cu (68 mm away) to B.Cu beside pin 6 (VS), 2.7 mm pad to pin. INA228-Q1 10.1: bypass as close as possible to the supply and ground pins. The top above U202 is under the GND bar, so it can't stay on top."
+  },
+  "U201": {
+   "dx": -19.8808,
+   "dy": -10.1987,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "LM74910H stays between the two FET pairs: DGATE reaches Q201/Q202's gates in 6 to 9 mm; CS+ and CS- sense R201 through R209/C212 (LM74910H 9.5.1: Kelvin connection for CS+ and CS-). Unchanged."
+  },
+  "R209": {
+   "dx": -15.7449,
+   "dy": -10.8634,
+   "rot": 180.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "CS+ filter resistor, 1.5 mm from U201's CSP pin; the Kelvin trace runs from R201. Unchanged."
+  },
+  "C212": {
+   "dx": -15.989,
+   "dy": -8.4332,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "CS filter capacitor at U201's CSP pin. Unchanged."
+  },
+  "C213": {
+   "dx": -11.8772,
+   "dy": -12.0546,
+   "rot": 270.0,
+   "side": "B",
+   "role": "flex",
+   "flex_mm": 2,
+   "why": "ISCP filter capacitor; slow, may move 2 mm."
+  },
+  "R202": {
+   "dx": -9.9069,
+   "dy": -12.0829,
+   "rot": 180.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "HGATE series resistor to Q203/Q204's gates. Unchanged."
+  },
+  "C209": {
+   "dx": -16.5308,
+   "dy": -13.9497,
+   "rot": 180.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "Charge-pump capacitor (CAP to VS), 4.5 mm from U201, kept off the FET bodies (LM74910H 9.5.1: keep it away from the MOSFET to lower thermal effects on its value). Unchanged."
+  }
+ }
+}

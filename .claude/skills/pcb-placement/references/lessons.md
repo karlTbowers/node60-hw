@@ -69,7 +69,112 @@ Y401 had to be brought back to its oscillator balls).
 placement; a part that needs a repair in every seed is an input to fix (KRT §3.6), and every
 repair move that remains goes in REPORT.md.
 
+## Search poses in one process
+
+**What happened (2026-11-02).** `nudge.sh` tried each pose with KRT's `place_pose.py`, then
+`check_floorplan` and `check_assembly`: a new Python process and a full board load per tool per
+pose, about a minute a pose, so one test point's search (TP806, 4 targets) ran 30 minutes. It
+also reported "nothing found" for every pose because a stale `t.kicad_dru` beside its output
+made `place_pose` refuse, and the loop discarded the refusal.
+
+**What the skill does.** `pose_search.py` loads the board once, screens every candidate in
+memory (courtyards, pad and hole clearance, edge, rule areas, the spec's `require`), keeps the
+nearest legal pose of each part in turn and runs KRT's checks once on the result. TP806 and
+four courtyard fixes together: 5 s, verify included. Failures say why (the most common
+reasons), never just "nothing found".
+
+Its courtyard test keeps a 0.02 mm gap (`--courtyard-gap`): an exact polygon test passed C803
+beside J908, and KRT's floorplan check, which measures arcs as polygons, read 0.006 mm2 of
+overlap and put the board over its declared overlap budget.
+
 ## Grade the kept seed, not the last file written
 
 The fast-routed board is never the placement. Copy the seed's own `s<S>.kicad_pcb` (with
 `copy_board.py`) as the kept placement; the fast route is evidence only.
+
+## A net tie doesn't join two pads of the same net
+
+**What happened (2026-11-02).** Plan v1 tied the busbar footprint's two pads (one inside each
+terminal's pad, same net) as a KiCad net tie, so the bar would join J901 to J910 on the board.
+VBAT_IN had 17 unconnected items before and after: KiCad's net tie only lets copper of different
+nets touch without a DRC error.
+
+**What the skill does.** A part that joins two points with no board copper between them (a busbar,
+a cable, a jumper wire) is a two-net part in the schematic (a net-tie symbol between two nets), or
+an accepted exception on a decision page. The judging route moves the far terminal to a stand-in
+net meanwhile, so the router doesn't lay copper in parallel with the part.
+
+## A rule that forbids tracks is not a rule that forbids vias
+
+**What happened (2026-11-02).** After decision D01 the busbar rules forbid other nets' tracks and
+pours but not vias. `escape_budget.blocking_areas` returned any area whose rule named a via *or* a
+track, so the via checks still treated the bars as via-free and couldn't measure the decision.
+
+**What the skill does.** `blocking_areas(..., blocks=("via",))` for via questions; tracks only where
+a check is about tracks.
+
+## Measure parts by courtyard or pads, never by a footprint's bounding box
+
+**What happened (2026-11-02).** `hot_loop.py` measured a feedback resistor's distance from the switch
+node with `FOOTPRINT.GetBoundingBox()`, which includes the reference and value text: an 0402 read
+4.1 x 4 mm, and R304 read 0.0 mm from U303's SW pin, which it is 1.5 mm from (courtyard to pad).
+The run reported it as touching the switch node before the number was checked.
+
+**What the skill does.** Footprints are measured by their courtyard (their pads when they have none);
+a surprising number is checked against the courtyard or pad geometry before it reaches a page.
+
+## A one-net difference between two placements is noise until reachability says otherwise
+
+**What happened (2026-11-02).** Three judging routes of nearly the same placement each left one
+different net open at U501 (T1S_REFCLK, T1S_IRQ_L, T1S_MODE0). A swap of R503 with a strap resistor
+was made to fix REFCLK and judged on one route; REFCLK stayed open and MODE0 opened instead. KRT's
+`check_reachability` then read PASSABLE (0.3 mm margin) on every one of those pins: the router
+lost them, not the placement.
+
+**What the skill does.** Before a block change is made for an open net, run `check_reachability` on
+the stranded pad (CAGED is geometry, PASSABLE is the router), and route a changed placement at least
+twice before calling it better. KRT's tools need numpy, scipy and shapely; KiCad's bundled Python
+has none of them, so run them from a Python that does (KRT's checks report a missing library as
+"cannot parse ... No module named 'numpy'" and NOT BUILDABLE, which is not a verdict).
+
+## The router's fab floor is not the board's floor
+
+**What happened (2026-11-02).** With `--fab-tier standard --escalation off`, the pair router still
+necked T1S_PHY_P to 0.0889 mm at U501's pins: KRT's standard 4-layer floor is 0.0889 mm, below
+Node60's 0.1 mm minimum, and KiCad's DRC counted 2 track-width errors on every route.
+
+**What the skill does.** The judging chain passes `--fab-overrides` with the board's own floors
+(track, clearance, via) to every step.
+
+## A check that can't run must not pass
+
+**What happened (2026-11-02).** Under KiCad's Python (no numpy), KRT's `check_floorplan` couldn't parse
+the board and the gate still printed "0 error(s)", a PASS; run under a Python with numpy it found 3.
+`part_heights.py` on a board in the run folder found no 3D model for 220 parts, because `${KIPRJMOD}`
+pointed at the run folder, and the gate read that as "no height", not as a broken path. Height
+limits were applied to the whole side, so 28 mm headers under the raised band "failed" the low lid.
+
+**What the skill does.** The gate runs KRT under `KRT_PY` (or the plan's `krt_python`), passes the
+intent to `check_assembly` (waivers), resolves `${KIPRJMOD}` to the project, and honours a height row's
+`circles` and `except`. A row whose tool printed a traceback or a missing-library line is NOT RUN,
+never PASS (follow-up: the gate doesn't detect that yet).
+
+## KRT waives test points' courtyard overlaps, even under a BGA
+
+**What happened (2026-11-02).** Moving test point TP407 away from the MCU crystal, the search accepted a
+pose inside U401's courtyard on the same side, under the BGA's body: KRT's `check_assembly` waives a
+test point's courtyard overlaps as a marker class, so it read buildable, and only the renderer's
+"courtyard overlap 2.90 mm2" header showed it.
+
+**What the skill does.** A move of a test point (or any part KRT treats as a marker) also checks its
+courtyard against every package courtyard on its side, and the render's overlap total is read
+before and after every block change.
+
+## Saving the repo's board from Python rewrites its project file
+
+**What happened (2026-11-02).** Applying the placement with pcbnew's `LoadBoard` / `Save` on
+`node60.kicad_pcb` also rewrote `node60.kicad_pro` with every KiCad default (about 230 new
+lines); the PR #21 `unconnected_items` override survived, but nothing else was meant to change.
+
+**What the skill does.** After writing the repo's board, `git checkout -- <project>.kicad_pro`
+unless the run meant to change it, then re-run CI's DRC.

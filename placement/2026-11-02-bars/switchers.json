@@ -1,0 +1,10 @@
+[
+ {"name": "U302 3V3_MAIN buck", "ic": "U302",
+  "source": "TI LMQ66430-Q1 datasheet SNVSBV1F (rev. F, September 2026), 8.5.1 Layout Guidelines and Figure 8-34; no numeric limits given (input caps 'as close as possible to the VIN and GND terminals', SW area 'short and wide', feedback 'close to the VOUT / FB pin', away from SW)",
+  "vin": ["3"], "pgnd": ["6", "13", "15"], "sw": ["7"],
+  "hf_cap": "C303", "limits": {}},
+ {"name": "U303 1V5_CORE buck", "ic": "U303",
+  "source": "TI LMQ66430-Q1 datasheet SNVSBV1F (rev. F, September 2026), 8.5.1 Layout Guidelines and Figure 8-34; no numeric limits given",
+  "vin": ["3"], "pgnd": ["6", "13", "15"], "sw": ["7"], "fb": ["11"],
+  "hf_cap": "C310", "limits": {}}
+]

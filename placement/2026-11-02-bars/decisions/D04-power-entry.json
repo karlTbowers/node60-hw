@@ -1,0 +1,49 @@
+{
+  "id": "D04",
+  "name": "Power entry block",
+  "question": "Approve the power-entry block as composed, with the INA228 moved next to its shunt?",
+  "board": "node60", "stage": "3 Blocks", "date": "2026-11-02",
+  "why_now": "This is the first hand-reviewed block. Its sense path was the worst item the plan measured: the INA228 (U202) sat 68 mm from its 0.25 mΩ shunt R201, so its Kelvin pair would cross most of the board. Under D01 (tented vias under the bars) the FET bank can stay where it is, beside J910, so only the sense parts move.\n\nOnce approved, the block's parts are held at these poses when the rest of the board is placed again (stage 4).",
+  "facts": [
+    {"label": "INA228 layout rule", "value": "Kelvin (4-wire) connection to the sense resistor; bypass cap as close as possible to the supply and ground pins", "source": "TI INA228-Q1 datasheet, 10.1 Layout Guidelines"},
+    {"label": "LM74910H layout rules", "value": "A, DGATE, C close to the ideal-diode FET's source, gate, drain; HGATE and OUT close to the disconnect FET; Kelvin connection for CS+ and CS-; charge-pump cap away from the MOSFETs", "source": "TI LM74910H-Q1 datasheet SNOSDE6C, 9.5.1 Layout Guidelines"},
+    {"label": "Current path", "value": "J910 → Q201/Q202 (ideal diode) → R201 → Q203/Q204 (disconnect) → VBAT_PROT plane; 60 A node load", "source": "schematic, plan v1"},
+    {"label": "What moved", "value": "U202 from (187.2, 90.6) to (110.5, 70.0), B.Cu; C214 from F.Cu to B.Cu beside U202 pin 6. Nothing else in the block moved.", "source": "blocks/power.poses.json"},
+    {"label": "Checks on the composed copy", "value": "buildable (check_assembly); no floorplan errors", "source": "KRT check_assembly, check_floorplan"}
+  ],
+  "options": [
+    {
+      "key": "A", "name": "As composed: INA228 beside the shunt",
+      "summary": "U202 sits on the bottom just north-west of R201, its IN+ and IN- pins 7 to 9 mm from the shunt's pads, with its 100 nF bypass C214 at pin 6. The FET bank, the shunt, the LM74910H and its gate, sense-filter and charge-pump parts stay where they are.",
+      "images": [{"path": "img/power_composed_B.png", "caption": "Bottom side, seen from above: U202 (top left of R201) and C214 beside it; FET bank, R201 and U201 unchanged"}],
+      "measures": [
+        {"label": "INA228 IN+ to R201 pad", "value": "8.7 mm", "limit": "10 mm (plan budget, assumed)", "status": "pass"},
+        {"label": "INA228 IN- to R201 pad", "value": "7.2 mm", "limit": "10 mm (plan budget, assumed)", "status": "pass"},
+        {"label": "C214 pad to U202 VS pin", "value": "2.7 mm", "limit": "as close as possible", "status": "info"},
+        {"label": "INA228 I2C to the MCU (straight line)", "value": "92 mm", "limit": "-", "status": "info"},
+        {"label": "Board ratsnest crossings", "value": "945", "limit": "-", "status": "info"},
+        {"label": "Board half-perimeter wirelength", "value": "5982 mm", "limit": "-", "status": "info"}
+      ],
+      "gains": ["The current measurement sees only the shunt, not 68 mm of copper the 60 A path shares", "Fewer crossings and less total wiring than today"],
+      "costs": ["The INA228's I2C pair runs about 92 mm to the MCU instead of 29 mm. It is a slow bus (400 kHz), so length costs little, but it crosses the board under the bars on an inner layer"]
+    },
+    {
+      "key": "B", "name": "As it is on main",
+      "summary": "Leave U202 where the annealer put it, beside the MCU. Its Kelvin pair to R201 runs about 68 mm.",
+      "images": [{"path": "img/power_now_B.png", "caption": "Bottom side today: U202 is off to the east, near U401"}],
+      "measures": [
+        {"label": "INA228 IN+ to R201 pad", "value": "67.7 mm", "limit": "10 mm (plan budget, assumed)", "status": "fail"},
+        {"label": "INA228 IN- to R201 pad", "value": "67.8 mm", "limit": "10 mm (plan budget, assumed)", "status": "fail"},
+        {"label": "C214 pad to U202 VS pin", "value": "68.6 mm (C214 on top, far away)", "limit": "as close as possible", "status": "fail"},
+        {"label": "INA228 I2C to the MCU (straight line)", "value": "29 mm", "limit": "-", "status": "info"},
+        {"label": "Board ratsnest crossings", "value": "1041", "limit": "-", "status": "info"},
+        {"label": "Board half-perimeter wirelength", "value": "6065 mm", "limit": "-", "status": "info"}
+      ],
+      "gains": ["Short I2C"],
+      "costs": ["The sense pair runs 68 mm beside high-current copper; pickup and shared resistance become measurement error", "The bypass cap is nowhere near the chip"]
+    }
+  ],
+  "recommendation": {"option": "A", "why": "The Kelvin pair is what the INA228's datasheet asks for and what the current telemetry depends on; the I2C length it costs doesn't matter at 400 kHz. The rest of the block was already arranged as the LM74910H's layout section asks, so it stays."},
+  "answer": "Reply with A or B, or with a change (for example: put U202 south of R201 instead).",
+  "sources": ["TI INA228-Q1 datasheet, 10.1", "TI LM74910H-Q1 datasheet SNOSDE6C, 9.5.1", "blocks/power.poses.json (reasons per part)", "KRT render_placement, check_assembly, check_floorplan"]
+}

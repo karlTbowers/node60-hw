@@ -1,0 +1,42 @@
+{
+  "id": "D02",
+  "name": "Busbar join on the board",
+  "question": "How should the board show that the VBAT_IN busbar joins J901 to J910?",
+  "board": "node60", "stage": "1 Plan (v2)", "date": "2026-11-02",
+  "why_now": "Plan v1 said the busbar footprint would carry a pad in each terminal, tied as a net tie, so KiCad would see the bar join J901 to J910. **That does not work.** KiCad's net tie only lets copper of different nets touch without a DRC error. It joins nothing, and with it on the board VBAT_IN still had the same 17 unconnected items.\n\nUntil the join is modelled, KiCad reports J901 unconnected on every board, and the fast route's grade counts it as blocking. So no placement can reach DONE. The GND bar has no such problem, because the GND plane joins J902 and J911 anyway.\n\nThe judging route moves J901's pad to a stand-in net meanwhile, so the router lays no VBAT_IN copper beside the bar. That copper would carry current, and fuse, if a spigot joint went bad.",
+  "facts": [
+    {"label": "J901's only link to the rest of VBAT_IN", "value": "the busbar (BB901) on the J901 and J910 spigots; no board copper", "source": "DEC-016, DEC-025"},
+    {"label": "Net-tie attempt", "value": "VBAT_IN unconnected items 17 before and 17 after; KiCad 10 net ties don't join same-net pads", "source": "kicad-cli DRC on both boards, this run"},
+    {"label": "Downstream feed", "value": "J901 feeds the downstream node, limited to 40 A, before the LM74910H and the shunt", "source": "harness page, DEC-016"},
+    {"label": "Busbar BOM line", "value": "the bar is bought stock, cut in house, but has no schematic part today, so it isn't on the BOM", "source": "earlier discussion, 2026-11-01"}
+  ],
+  "options": [
+    {
+      "key": "A", "name": "A busbar part in the schematic",
+      "summary": "Add the busbar to the schematic as a two-pin net-tie part (BB901) between VBAT_IN (J910's side) and a new net for the downstream terminal (J901's side, for example `VBAT_IN_DOWNSTREAM`). Its footprint is the generated bar footprint with a pad in each terminal. KiCad then sees two nets joined on purpose by the bar, nothing is unconnected, and the bar gets a BOM line with its stock and cut length. Needs a library symbol and part (`add-part`, library repo) and a schematic edit on the connectors sheet.",
+      "images": [{"path": "img/nettie.svg", "caption": "The join KiCad can't see today: J910 to J901 through the bar"}],
+      "measures": [
+        {"label": "J901 unconnected on every board", "value": "no", "limit": "no", "status": "pass"},
+        {"label": "Fast route can reach DONE", "value": "yes", "limit": "yes", "status": "pass"},
+        {"label": "Work outside this run", "value": "library part + schematic edit", "limit": "-", "status": "warn"}
+      ],
+      "gains": ["The board says what the hardware does", "The busbar gets a BOM line", "DRC and the gate pass without exceptions"],
+      "costs": ["A library PR and a schematic change, about an hour each", "One more net name (the downstream terminal's)"]
+    },
+    {
+      "key": "B", "name": "Accept it as a known exception",
+      "summary": "Leave the schematic alone. The gate lists \"J901 unconnected\" as ACCEPTED (this decision), the fast route's grade counts that one item apart, and before the unconnected-items override (PR #21) comes off, a DRC exclusion is added for it.",
+      "images": [{"path": "img/nettie.svg", "caption": "The same join, left unmodelled"}],
+      "measures": [
+        {"label": "J901 unconnected on every board", "value": "yes", "limit": "no", "status": "warn"},
+        {"label": "Fast route can reach DONE", "value": "with an accepted exception", "limit": "yes", "status": "warn"},
+        {"label": "Work outside this run", "value": "none now; a DRC exclusion later", "limit": "-", "status": "pass"}
+      ],
+      "gains": ["No schematic or library change now"],
+      "costs": ["A standing exception that every DRC report and gate has to explain", "The bar stays off the BOM", "A DRC exclusion is tied to item IDs and can go stale when the board changes"]
+    }
+  ],
+  "recommendation": {"option": "A", "why": "The bar is a real part that carries up to 40 A between two nets. Modelling it removes the only item that blocks DONE for every placement, and gives the bar its BOM line. B works, but it leaves an exception on every report until someone fixes it properly."},
+  "answer": "Reply with A or B. For A, I'll open the library part and schematic change as their own task, and keep the stand-in net in the judging route until it lands.",
+  "sources": ["kicad-cli DRC on node60.kicad_pcb with and without the tie pads (this run)", "DEC-016, DEC-025, harness page"]
+}

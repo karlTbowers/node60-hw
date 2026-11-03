@@ -1,0 +1,506 @@
+[
+  {
+    "ref": "J903",
+    "side": "F",
+    "footprint": "DropOut_Connector_Amphenol:Amphenol_ATM13-2P-BMxx_1x02_P4.20mm_Horizontal",
+    "height_mm": 28.475,
+    "method": "mesh",
+    "all_points_mm": 18.41,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Connector_Amphenol.3dshapes/Amphenol_ATM13-2P-BMxx_1x02_P4.20mm_Horizontal.step"
+  },
+  {
+    "ref": "J912",
+    "side": "F",
+    "footprint": "DropOut_Connector_Amphenol:Amphenol_ATM13-2P-BMxx_1x02_P4.20mm_Horizontal",
+    "height_mm": 28.475,
+    "method": "mesh",
+    "all_points_mm": 18.41,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Connector_Amphenol.3dshapes/Amphenol_ATM13-2P-BMxx_1x02_P4.20mm_Horizontal.step"
+  },
+  {
+    "ref": "J906",
+    "side": "F",
+    "footprint": "DropOut_Connector_Amphenol:Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal",
+    "height_mm": 27.843,
+    "method": "mesh",
+    "all_points_mm": 17.6,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Connector_Amphenol.3dshapes/Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal.step"
+  },
+  {
+    "ref": "J909",
+    "side": "F",
+    "footprint": "DropOut_Connector_Amphenol:Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal",
+    "height_mm": 27.843,
+    "method": "mesh",
+    "all_points_mm": 17.6,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Connector_Amphenol.3dshapes/Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal.step"
+  },
+  {
+    "ref": "J905",
+    "side": "F",
+    "footprint": "DropOut_Connector_Amphenol:Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal",
+    "height_mm": 27.843,
+    "method": "mesh",
+    "all_points_mm": 17.6,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Connector_Amphenol.3dshapes/Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal.step"
+  },
+  {
+    "ref": "J904",
+    "side": "F",
+    "footprint": "DropOut_Connector_Amphenol:Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal",
+    "height_mm": 27.843,
+    "method": "mesh",
+    "all_points_mm": 17.6,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Connector_Amphenol.3dshapes/Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal.step"
+  },
+  {
+    "ref": "J907",
+    "side": "F",
+    "footprint": "DropOut_Connector_Amphenol:Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal",
+    "height_mm": 27.843,
+    "method": "mesh",
+    "all_points_mm": 17.6,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Connector_Amphenol.3dshapes/Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal.step"
+  },
+  {
+    "ref": "J908",
+    "side": "F",
+    "footprint": "DropOut_Connector_Amphenol:Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal",
+    "height_mm": 27.843,
+    "method": "mesh",
+    "all_points_mm": 17.6,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Connector_Amphenol.3dshapes/Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal.step"
+  },
+  {
+    "ref": "J401",
+    "side": "F",
+    "footprint": "DropOut_Connector_Samtec:Samtec_FTSH-105-01-x-DV_2x05_P1.27mm_Vertical_SMD",
+    "height_mm": 5.56,
+    "method": "mesh",
+    "all_points_mm": 5.56,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Connector_Samtec.3dshapes/Samtec_FTSH-105-01-x-DV_2x05_P1.27mm_Vertical_SMD.step"
+  },
+  {
+    "ref": "D201",
+    "side": "F",
+    "footprint": "DropOut_Diode_SMD:D_DO-218AC",
+    "height_mm": 4.85,
+    "method": "mesh",
+    "all_points_mm": 4.85,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Diode_SMD.3dshapes/D_DO-218AC.step"
+  },
+  {
+    "ref": "BB901",
+    "side": "F",
+    "footprint": "Busbar_19.05x3.175mm",
+    "height_mm": 3.775,
+    "method": "mesh",
+    "all_points_mm": 3.775,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Busbar.3dshapes/Busbar_Cu_19.05x3.175mm_L125.05mm_2xD6.5mm_P106mm.step"
+  },
+  {
+    "ref": "BB902",
+    "side": "F",
+    "footprint": "Busbar_19.05x3.175mm",
+    "height_mm": 3.775,
+    "method": "mesh",
+    "all_points_mm": 3.775,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Busbar.3dshapes/Busbar_Cu_19.05x3.175mm_L176.05mm_2xD6.5mm_P157mm.step"
+  },
+  {
+    "ref": "C415",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0603_1608Metric",
+    "height_mm": 0.95,
+    "method": "mesh",
+    "all_points_mm": 0.95,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+  },
+  {
+    "ref": "C601",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0603_1608Metric",
+    "height_mm": 0.95,
+    "method": "mesh",
+    "all_points_mm": 0.95,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+  },
+  {
+    "ref": "C801",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0603_1608Metric",
+    "height_mm": 0.95,
+    "method": "mesh",
+    "all_points_mm": 0.95,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+  },
+  {
+    "ref": "C203",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0603_1608Metric",
+    "height_mm": 0.95,
+    "method": "mesh",
+    "all_points_mm": 0.95,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+  },
+  {
+    "ref": "C421",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0603_1608Metric",
+    "height_mm": 0.95,
+    "method": "mesh",
+    "all_points_mm": 0.95,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+  },
+  {
+    "ref": "C603",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0603_1608Metric",
+    "height_mm": 0.95,
+    "method": "mesh",
+    "all_points_mm": 0.95,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+  },
+  {
+    "ref": "C701",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0603_1608Metric",
+    "height_mm": 0.95,
+    "method": "mesh",
+    "all_points_mm": 0.95,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+  },
+  {
+    "ref": "C803",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0603_1608Metric",
+    "height_mm": 0.95,
+    "method": "mesh",
+    "all_points_mm": 0.95,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+  },
+  {
+    "ref": "C302",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0603_1608Metric",
+    "height_mm": 0.95,
+    "method": "mesh",
+    "all_points_mm": 0.95,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+  },
+  {
+    "ref": "C204",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0603_1608Metric",
+    "height_mm": 0.95,
+    "method": "mesh",
+    "all_points_mm": 0.95,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+  },
+  {
+    "ref": "C208",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0603_1608Metric",
+    "height_mm": 0.95,
+    "method": "mesh",
+    "all_points_mm": 0.95,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+  },
+  {
+    "ref": "C703",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0603_1608Metric",
+    "height_mm": 0.95,
+    "method": "mesh",
+    "all_points_mm": 0.95,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+  },
+  {
+    "ref": "C201",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0603_1608Metric",
+    "height_mm": 0.95,
+    "method": "mesh",
+    "all_points_mm": 0.95,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+  },
+  {
+    "ref": "C214",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C412",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C401",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C503",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C403",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C509",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C318",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C406",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C423",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C510",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C502",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C404",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C418",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C417",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C420",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C413",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C506",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C501",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C215",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C408",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C414",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C504",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C409",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C507",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C513",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C422",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C419",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C402",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C410",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C407",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  },
+  {
+    "ref": "C411",
+    "side": "F",
+    "footprint": "DropOut_Capacitor_SMD:C_0402_1005Metric",
+    "height_mm": 0.55,
+    "method": "mesh",
+    "all_points_mm": 0.55,
+    "model": "lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+  }
+]

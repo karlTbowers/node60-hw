@@ -1,0 +1,20 @@
+# pcb-placement run folder: commit the records, not the boards.
+# Kept: plan.md plan.json switchers.json groups.json intent.json blocks/*.poses.json decisions/*.json decisions/log.md gate.md gate.json REPORT.md
+*.kicad_pcb
+*.kicad_pro
+*.kicad_prl
+*.kicad_dru
+*.kicad_pcb.*
+*.lck
+*.log
+*.png
+*.svg
+*.jpg
+*.html
+s[0-9]*_route/
+s[0-9]*_full*
+s[0-9]*_fast*
+s[0-9]*.json
+judge.json
+decisions/img/
+*.log.p[0-9]*

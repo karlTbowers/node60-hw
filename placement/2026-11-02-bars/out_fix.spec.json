@@ -1,0 +1,6 @@
+[{"ref": "R605", "radius": 0.6, "step": 0.05},
+ {"ref": "R705", "radius": 0.6, "step": 0.05},
+ {"ref": "R805", "radius": 0.6, "step": 0.05},
+ {"ref": "C803", "radius": 1.5, "step": 0.05},
+ {"ref": "TP806", "near": [231, 108], "radius": 4, "step": 0.25, "rots": [0, 90, 180, 270],
+  "require": "dist(m('TP806','1'), m('U801','1')) <= 12"}]

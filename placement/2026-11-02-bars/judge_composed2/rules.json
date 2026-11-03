@@ -1,0 +1,31 @@
+{
+  "board": "/Users/karl/Dev/node60-hw-place/placement/2026-11-02-bars/judge_composed2/s6.kicad_pcb",
+  "kicad": "10.0.7",
+  "refilled": true,
+  "blocking": 2,
+  "unconnected_items": 2,
+  "open_nets": [
+    "/T1S/T1S_RBIAS",
+    "3V3_MAIN"
+  ],
+  "custom_rule_hits": {},
+  "custom_rules_loaded": [
+    "F.Cu under the VBAT_IN busbar: VBAT_IN only",
+    "F.Cu under the GND busbar: GND only",
+    "No vias on the MCU crystal nets"
+  ],
+  "other_errors": {},
+  "warnings": {
+    "courtyards_overlap": 1,
+    "track_dangling": 2,
+    "silk_edge_clearance": 16,
+    "lib_footprint_issues": 199,
+    "silk_overlap": 199,
+    "silk_over_copper": 199
+  },
+  "capped_types": [
+    "lib_footprint_issues",
+    "silk_overlap",
+    "silk_over_copper"
+  ]
+}

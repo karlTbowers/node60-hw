@@ -1,0 +1,37 @@
+{
+  "board": "/Users/karl/Dev/node60-hw-place/placement/2026-11-02-bars/judge_crystal_rule/s6.kicad_pcb",
+  "kicad": "10.0.7",
+  "refilled": true,
+  "blocking": 3,
+  "unconnected_items": 1,
+  "open_nets": [
+    "/T1S_IRQ_L"
+  ],
+  "custom_rule_hits": {
+    "No vias on the MCU crystal nets": {
+      "count": 2,
+      "examples": [
+        "Via [/MCU and NVM/FXOSC_EXTAL] on F.Cu - B.Cu",
+        "Via [/MCU and NVM/FXOSC_EXTAL] on F.Cu - B.Cu"
+      ]
+    }
+  },
+  "custom_rules_loaded": [
+    "F.Cu under the VBAT_IN busbar: VBAT_IN only",
+    "F.Cu under the GND busbar: GND only",
+    "No vias on the MCU crystal nets"
+  ],
+  "other_errors": {},
+  "warnings": {
+    "courtyards_overlap": 1,
+    "silk_edge_clearance": 16,
+    "lib_footprint_issues": 199,
+    "silk_overlap": 199,
+    "silk_over_copper": 199
+  },
+  "capped_types": [
+    "lib_footprint_issues",
+    "silk_overlap",
+    "silk_over_copper"
+  ]
+}

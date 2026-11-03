@@ -1,0 +1,176 @@
+[
+  {
+    "name": "U302 3V3_MAIN buck",
+    "ic": "U302",
+    "source": "TI LMQ66430-Q1 datasheet SNVSBV1F (rev. F, September 2026), 8.5.1 Layout Guidelines and Figure 8-34; no numeric limits given (input caps 'as close as possible to the VIN and GND terminals', SW area 'short and wide', feedback 'close to the VOUT / FB pin', away from SW)",
+    "rows": [
+      {
+        "check": "HF cap C303 on the IC's side",
+        "value": null,
+        "limit": null,
+        "unit": "",
+        "grade": "info",
+        "note": "yes"
+      },
+      {
+        "check": "HF cap C303 VIN pad to VIN pin 3",
+        "value": 0.66,
+        "limit": null,
+        "unit": "mm",
+        "grade": "info",
+        "note": ""
+      },
+      {
+        "check": "HF cap C303 GND pad to PGND pin 15",
+        "value": 1.66,
+        "limit": null,
+        "unit": "mm",
+        "grade": "info",
+        "note": ""
+      },
+      {
+        "check": "HF cap C303 loop plan area (pad centres)",
+        "value": 1.62,
+        "limit": null,
+        "unit": "mm2",
+        "grade": "info",
+        "note": "the copper loop is larger"
+      },
+      {
+        "check": "other parts inside C303's loop",
+        "value": 0,
+        "limit": 0,
+        "unit": "parts",
+        "grade": "PASS",
+        "note": ""
+      },
+      {
+        "check": "other input cap C304: VIN / GND pad gaps",
+        "value": 3.3,
+        "limit": null,
+        "unit": "mm",
+        "grade": "info",
+        "note": "2.40 / 3.30"
+      },
+      {
+        "check": "other input cap C305: VIN / GND pad gaps",
+        "value": 3.58,
+        "limit": null,
+        "unit": "mm",
+        "grade": "info",
+        "note": "3.58 / 1.65"
+      },
+      {
+        "check": "L301 SW pad to SW pin 7",
+        "value": 3.16,
+        "limit": null,
+        "unit": "mm",
+        "grade": "info",
+        "note": ""
+      }
+    ]
+  },
+  {
+    "name": "U303 1V5_CORE buck",
+    "ic": "U303",
+    "source": "TI LMQ66430-Q1 datasheet SNVSBV1F (rev. F, September 2026), 8.5.1 Layout Guidelines and Figure 8-34; no numeric limits given",
+    "rows": [
+      {
+        "check": "HF cap C310 on the IC's side",
+        "value": null,
+        "limit": null,
+        "unit": "",
+        "grade": "info",
+        "note": "yes"
+      },
+      {
+        "check": "HF cap C310 VIN pad to VIN pin 3",
+        "value": 0.66,
+        "limit": null,
+        "unit": "mm",
+        "grade": "info",
+        "note": ""
+      },
+      {
+        "check": "HF cap C310 GND pad to PGND pin 15",
+        "value": 1.66,
+        "limit": null,
+        "unit": "mm",
+        "grade": "info",
+        "note": ""
+      },
+      {
+        "check": "HF cap C310 loop plan area (pad centres)",
+        "value": 1.62,
+        "limit": null,
+        "unit": "mm2",
+        "grade": "info",
+        "note": "the copper loop is larger"
+      },
+      {
+        "check": "other parts inside C310's loop",
+        "value": 0,
+        "limit": 0,
+        "unit": "parts",
+        "grade": "PASS",
+        "note": ""
+      },
+      {
+        "check": "other input cap C311: VIN / GND pad gaps",
+        "value": 3.3,
+        "limit": null,
+        "unit": "mm",
+        "grade": "info",
+        "note": "2.40 / 3.30"
+      },
+      {
+        "check": "other input cap C312: VIN / GND pad gaps",
+        "value": 3.58,
+        "limit": null,
+        "unit": "mm",
+        "grade": "info",
+        "note": "3.58 / 1.65"
+      },
+      {
+        "check": "L302 SW pad to SW pin 7",
+        "value": 3.16,
+        "limit": null,
+        "unit": "mm",
+        "grade": "info",
+        "note": ""
+      },
+      {
+        "check": "R305 to FB pin 11",
+        "value": 2.81,
+        "limit": null,
+        "unit": "mm",
+        "grade": "info",
+        "note": ""
+      },
+      {
+        "check": "R305 distance from the switch node",
+        "value": 0.99,
+        "limit": null,
+        "unit": "mm (at least)",
+        "grade": "info",
+        "note": ""
+      },
+      {
+        "check": "R304 to FB pin 11",
+        "value": 2.37,
+        "limit": null,
+        "unit": "mm",
+        "grade": "info",
+        "note": ""
+      },
+      {
+        "check": "R304 distance from the switch node",
+        "value": 0.0,
+        "limit": null,
+        "unit": "mm (at least)",
+        "grade": "info",
+        "note": ""
+      }
+    ]
+  }
+]

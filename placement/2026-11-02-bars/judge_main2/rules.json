@@ -1,0 +1,32 @@
+{
+  "board": "/Users/karl/Dev/node60-hw-place/placement/2026-11-02-bars/judge_main2/s6.kicad_pcb",
+  "kicad": "10.0.0",
+  "refilled": true,
+  "blocking": 5,
+  "unconnected_items": 3,
+  "open_nets": [
+    "/T1S/T1S_REFCLK",
+    "1V5_CORE",
+    "3V3_MAIN"
+  ],
+  "custom_rule_hits": {},
+  "custom_rules_loaded": [
+    "F.Cu under the VBAT_IN busbar: VBAT_IN only",
+    "F.Cu under the GND busbar: GND only"
+  ],
+  "other_errors": {
+    "track_width": 2
+  },
+  "warnings": {
+    "track_dangling": 7,
+    "silk_edge_clearance": 16,
+    "lib_footprint_issues": 199,
+    "silk_overlap": 199,
+    "silk_over_copper": 199
+  },
+  "capped_types": [
+    "lib_footprint_issues",
+    "silk_overlap",
+    "silk_over_copper"
+  ]
+}

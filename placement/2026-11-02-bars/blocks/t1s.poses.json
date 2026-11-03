@@ -1,0 +1,175 @@
+{
+ "block": "t1s",
+ "anchor": "K501",
+ "approved": "2026-11-02 (D05)",
+ "anchor_pose": {
+  "x": 157.814,
+  "y": 54.3316,
+  "rot": 0.0,
+  "side": "B"
+ },
+ "parts": {
+  "R516": {
+   "dx": -7.101,
+   "dy": 0.6,
+   "rot": 0.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "1.5 k\u03a9 drop-node leg, at K501's drop contact (pin 2), next to its partner R518, so both legs meet the centre tap with equal length (DEC-017, OA \u00a75.3)."
+  },
+  "R517": {
+   "dx": -4.9702,
+   "dy": -6.5642,
+   "rot": 0.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "49.9 \u03a9 end-node leg at K501's end contact (pin 4), beside R519 (DEC-017, OA \u00a76.4.1)."
+  },
+  "R518": {
+   "dx": -12.6476,
+   "dy": 4.7829,
+   "rot": 270.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "1.5 k\u03a9 drop-node leg on the N side, mirror of R516 (DEC-017)."
+  },
+  "R519": {
+   "dx": 5.4932,
+   "dy": -6.6845,
+   "rot": 0.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "49.9 \u03a9 end-node leg on the N side, mirror of R517 (DEC-017)."
+  },
+  "R520": {
+   "dx": 2.0806,
+   "dy": -7.7962,
+   "rot": 90.0,
+   "side": "B",
+   "role": "flex",
+   "flex_mm": 2,
+   "why": "Centre-tap 100 k\u03a9 bleed; DC only, may move 2 mm (DEC-017)."
+  },
+  "C514": {
+   "dx": -0.2711,
+   "dy": -7.5876,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "Centre-tap 100 nF to ground, between the four legs (DEC-017)."
+  },
+  "D501": {
+   "dx": 12.716,
+   "dy": -7.278,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "ESD on T1S_P at J903's pins, in line on the pair at the connector (Microchip AN1718 rev. D \u00a72.0)."
+  },
+  "D502": {
+   "dx": 12.3246,
+   "dy": -9.3304,
+   "rot": 270.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "ESD on T1S_N, beside D501 (Microchip AN1718 rev. D \u00a72.0)."
+  },
+  "C511": {
+   "dx": 8.4731,
+   "dy": 1.5471,
+   "rot": 180.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "DC-block on T1S_P at the choke's line side (DEC-012 rev. B: DC block on the connector side of the choke); pad within 3 mm of FL501 (intent)."
+  },
+  "C512": {
+   "dx": 4.95,
+   "dy": 6.551,
+   "rot": 180.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "DC-block on T1S_N, mirror of C511 (DEC-012 rev. B)."
+  },
+  "FL501": {
+   "dx": 11.3495,
+   "dy": 5.76,
+   "rot": 180.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "Common-mode choke between the DC block and the PHY; nothing on any layer under it (Microchip AN1718 rev. D \u00a72.0); PHY line pins within 12 mm (intent)."
+  },
+  "U501": {
+   "dx": 16.3823,
+   "dy": -0.6737,
+   "rot": 0.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "LAN8670 PHY north of both busbars, between the T1S zone and the MCU: line stub from the trunk short, RMII to U401 within 25 mm (plan v1)."
+  },
+  "Y501": {
+   "dx": 22.686,
+   "dy": 3.1684,
+   "rot": 0.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "50 MHz oscillator south-east of U501, its output to R503 within 5 mm; 35 mm from the nearest switch node (plan: quiet zone)."
+  },
+  "R503": {
+   "dx": 21.936,
+   "dy": 0.4184,
+   "rot": 180.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "REFCLK series resistor beside Y501, 4.6 mm from U501's pin 27 (as placed). A swap into U501's corner was tried and routed worse; reachability on pin 27 reads PASSABLE (0.3 mm margin), so the pose stays."
+  },
+  "R504": {
+   "dx": 23.436,
+   "dy": 0.1684,
+   "rot": 270.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "RMII REF_CLK series resistor at the oscillator, its far side toward U401's U6 ball."
+  },
+  "R501": {
+   "dx": 16.5608,
+   "dy": 3.0572,
+   "rot": 180.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "RBIAS 12.4 k\u03a9 directly under U501's RBIAS pin 26, as placed."
+  },
+  "Q501": {
+   "dx": 8.2491,
+   "dy": 9.3499,
+   "rot": 180.0,
+   "side": "B",
+   "role": "flex",
+   "flex_mm": 2,
+   "why": "Relay coil driver (set), within 8 mm of K501 (intent); slow pulse drive, may move 2 mm."
+  },
+  "Q502": {
+   "dx": -2.62,
+   "dy": 8.7189,
+   "rot": 0.0,
+   "side": "B",
+   "role": "flex",
+   "flex_mm": 2,
+   "why": "Relay coil driver (reset), within 8 mm of K501 (intent)."
+  }
+ }
+}

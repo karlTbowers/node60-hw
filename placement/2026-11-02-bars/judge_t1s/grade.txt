@@ -1,0 +1,6 @@
+KiCad DRC with the board's own rules (2 custom rule(s) loaded)
+  unconnected items : 2  nets: /T1S/T1S_MODE0, /T1S/T1S_REFCLK
+  track_width: 2
+  not blocking (silk, dangling, library, mask): 618
+  NOTE: lib_footprint_issues, silk_overlap, silk_over_copper reached KiCad's 199-entry report cap; the count is a floor
+BLOCKING=4

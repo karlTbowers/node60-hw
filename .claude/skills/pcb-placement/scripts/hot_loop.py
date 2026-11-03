@@ -45,7 +45,20 @@ def mm(v):
 
 
 def box(item):
-    b = item.GetBoundingBox()
+    """A pad's copper box, or a footprint's courtyard box (its pads' box when it has no courtyard).
+    Never a footprint's GetBoundingBox(): that includes its reference and value text, which made
+    an 0402 read 4 mm wide and a feedback resistor 0.0 mm from a switch pin 1.7 mm away."""
+    if isinstance(item, pcbnew.FOOTPRINT):
+        cy = item.GetCourtyard(pcbnew.B_CrtYd if item.IsFlipped() else pcbnew.F_CrtYd)
+        if cy.OutlineCount():
+            b = cy.BBox()
+        else:
+            pads = [p.GetBoundingBox() for p in item.Pads()]
+            b = pads[0]
+            for q in pads[1:]:
+                b.Merge(q)
+    else:
+        b = item.GetBoundingBox()
     return mm(b.GetLeft()), mm(b.GetTop()), mm(b.GetRight()), mm(b.GetBottom())
 
 
