@@ -8,11 +8,12 @@
     "diagrams": "node scripts/render-diagrams.mjs",
     "mockups": "node scripts/wrap-mockups.mjs",
     "drawings": "python3 ../scripts/enclosure_versions.py src/diagrams/build",
-    "dev": "npm run diagrams && npm run drawings && npm run mockups && astro dev",
-    "build": "npm run diagrams && npm run drawings && npm run mockups && astro build",
+    "dev": "npm run diagrams && npm run drawings && npm run vehicle && npm run mockups && astro dev",
+    "build": "npm run diagrams && npm run drawings && npm run vehicle && npm run mockups && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "hero": "node scripts/render-hero.mjs"
+    "hero": "node scripts/render-hero.mjs",
+    "vehicle": "node scripts/render-vehicle.mjs"
   },
   "dependencies": {
     "@astrojs/starlight": "^0.42.6",

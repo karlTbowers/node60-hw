@@ -8,12 +8,19 @@ import { Aside } from '@astrojs/starlight/components';
 import StatusGrid from '../../components/StatusGrid.astro';
 import Ref from '../../components/Ref.astro';
 import HeroRender from '../../components/HeroRender.astro';
+import VehicleWiring from '../../components/VehicleWiring.astro';
 
 <HeroRender />
 
 **Architecture Rev A · dated 2026-10-13 · schematic baseline.** Automotive, six outputs, 10BASE-T1S.
 
 Six protected high-side outputs with current and voltage telemetry, built around S32K344EHT1MMMST and LAN8670D0-E/LMXVAO. Output stage: 3 × TPS2HCS08A-Q1.
+
+## One node per corner
+
+Node60 is made for wiring classic and older vehicles with very little wire. Instead of a fuse panel with a wire to every lamp, a node sits beside each group of loads: one behind each headlight, one by each taillight. Battery power jumps from node to node, and one 10BASE-T1S pair from Hub 100 under the dash carries the control.
+
+<VehicleWiring />
 
 <Aside type="tip" title="Architecture decision">
 Use three TPS2HCS08A-Q1 dual-channel smart high-side switches for the six-output active design (<Ref id="DEC-008" />), each on its own MCU SPI bus so that one switch fault affects only its two outputs (<Ref id="DEC-018" />). At the input, **LM74910H-Q1** and INA228A-Q1 Kelvin-share one 0.25 mΩ RSENSE (<Ref id="DEC-001" />, <Ref id="DEC-002" />). For Rev A, keep power sequencing **discrete**: LAN8670 INH directly enables the LMQ66430 bucks, with no FS26, wake latch, or MCU standby dependency (<Ref id="DEC-004" />). An automotive 32 Mbit SPI NOR retains the diagnostic log across complete power-down (<Ref id="DEC-011" />). Firmware runs on Zephyr RTOS (<Ref id="DEC-019" />).
