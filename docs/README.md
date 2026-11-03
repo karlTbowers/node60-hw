@@ -32,6 +32,7 @@ npm run dev        # renders diagrams, then serves http://localhost:4321/node60-
 npm run build      # renders diagrams, validates data, builds dist/
 npm run vehicle    # draws the front page's pickup wiring concept (also part of dev and build)
 npm run hero       # re-renders the front page's enclosure images (needs kicad-cli; commit them)
+                   # e.g. `npm run hero -- lamps --reuse --ss 1 --out /tmp/x` for a quick trial of one view
 ```
 
 To change a fact, edit its data file, not the page. A reference to an ID that doesn't exist fails the build (`<Ref id="DEC-001" />` in pages, `verified_by`, `parts`, `gates`, … in data).
