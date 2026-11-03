@@ -169,3 +169,12 @@ test point's courtyard overlaps as a marker class, so it read buildable, and onl
 **What the skill does.** A move of a test point (or any part KRT treats as a marker) also checks its
 courtyard against every package courtyard on its side, and the render's overlap total is read
 before and after every block change.
+
+## Saving the repo's board from Python rewrites its project file
+
+**What happened (2026-11-02).** Applying the placement with pcbnew's `LoadBoard` / `Save` on
+`node60.kicad_pcb` also rewrote `node60.kicad_pro` with every KiCad default (about 230 new
+lines); the PR #21 `unconnected_items` override survived, but nothing else was meant to change.
+
+**What the skill does.** After writing the repo's board, `git checkout -- <project>.kicad_pro`
+unless the run meant to change it, then re-run CI's DRC.

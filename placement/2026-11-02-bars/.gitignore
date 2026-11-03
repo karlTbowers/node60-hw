@@ -17,3 +17,4 @@ s[0-9]*_fast*
 s[0-9]*.json
 judge.json
 decisions/img/
+*.log.p[0-9]*

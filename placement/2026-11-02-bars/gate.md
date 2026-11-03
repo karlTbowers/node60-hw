@@ -1,6 +1,6 @@
-# Placement gate: candidate.kicad_pcb
+# Placement gate: node60.kicad_pcb
 
-- Date: 2026-11-02; KiCad 10.0.7; board sha256 0c012b7fe2123f6e…
+- Date: 2026-11-02; KiCad 10.0.7; board sha256 0670a4fe0a962bf1…
 - Verdict: **NOT PASSED**
 
 | Check | How it is measured | Status | Result |
@@ -14,9 +14,9 @@
 | BGA escape U401 | escape_budget.py: layers needed vs planned, nothing over the ball field | PASS | diagonal gap 0.791 mm -> a 0.45 mm via between four balls: fits / deepest signal ring 8, 2 ring(s) per layer -> 4 signal layer(s) needed; 4 available (F.Cu, In2.Cu, In3.Cu, B.Cu) |
 | Layer capacity | layer_capacity.py: MST demand vs tracks per 10 mm window | PASS | 0 window(s) over 100 % (ERROR), 0 over 60 % (WARN) |
 | Switcher hot loops | hot_loop.py against each datasheet's layout limits | PASS | 0 FAIL |
-| Critical blocks | block_poses.py check: core parts exact, flex within allowance, approved | PASS | power: 13 parts, 0 off their table pose; approved 2026-11-02 (D04); t1s: 19 parts, 0 off their table pose; approved 2026-11-02 (D05) |
+| Critical blocks | block_poses.py check: core parts exact, flex within allowance, approved | PASS | power: 13 parts, 0 off their table pose; approved 2026-11-02 (D04); t1s: 19 parts, 0 off their table pose; approved 2026-11-02 (D05); buck_1v5: 12 parts, 0 off their table pose; approved 2026-11-02 (D06); buck_3v3: 9 parts, 0 off their table pose; approved 2026-11-02 (D06); crystal: 5 parts, 0 off their table pose; approved 2026-11-02 (D07); u701: 22 parts, 0 off their table pose; approved 2026-11 |
 | Fiducials | FID parts per assembled side; 2 or 4, not symmetric under a half turn | PASS | F: 3; B: 3 |
 | Net classes | each planned class assigned to its nets, track width at least its minimum | PASS | 4 planned class row(s) on the board |
 | Vias at high-current layer changes | free via sites within reach of each pad vs ceil(I / I per via) | PASS | 9 pad(s) have room |
-| Fast route, KRT score | quick_score: blocking (open nets, floorplan, assembly) | PASS | blocking 0, joins_needed 0 |
-| Fast route, board's own rules | grade_route.py: KiCad DRC with the board's .kicad_pro and .kicad_dru | PASS |   unconnected items : 0 /   not blocking (silk, dangling, library, mask): 614 /   NOTE: lib_footprint_issues, silk_overlap, silk_over_copper reached KiCad's 199-entry report cap; the count is a floor / BLOCKING=0 |
+| Fast route, KRT score | quick_score: blocking (open nets, floorplan, assembly) | FAIL | blocking 2, joins_needed 1 |
+| Fast route, board's own rules | grade_route.py: KiCad DRC with the board's .kicad_pro and .kicad_dru | FAIL |   unconnected items : 1  nets: 3V3_MAIN /   not blocking (silk, dangling, library, mask): 616 /   NOTE: lib_footprint_issues, silk_overlap, silk_over_copper reached KiCad's 199-entry report cap; the count is a floor / BLOCKING=1 |
