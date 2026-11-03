@@ -544,7 +544,8 @@
   "blocks/power.poses.json",
   "blocks/t1s.poses.json",
   "blocks/buck_1v5.poses.json",
-  "blocks/buck_3v3.poses.json"
+  "blocks/buck_3v3.poses.json",
+  "blocks/crystal.poses.json"
  ],
  "accepted": [],
  "assumed": [
