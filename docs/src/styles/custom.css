@@ -142,7 +142,7 @@ tr[id] { scroll-margin-top: 5rem; }
 .mcu-chip.st-available { background: color-mix(in srgb, var(--n60-locked) 30%, transparent); }
 .mcu-chip.st-conflict { background: color-mix(in srgb, var(--n60-blocked) 30%, transparent); }
 
-/* Front-page hero: enclosure renderings (scripts/render-hero.mjs), assembled / exploded / wired. The
+/* Front-page hero: enclosure renderings (scripts/render-hero.mjs), assembled / wired. The
    renders have a light studio background in both themes (the case is black), so the text on
    them is dark in both. */
 .n60-hero { margin: 0 0 2rem; }
@@ -150,10 +150,8 @@ tr[id] { scroll-margin-top: 5rem; }
 .n60-hero-pics { position: relative; aspect-ratio: 2 / 1; }
 .n60-hero-stage input { position: absolute; opacity: 0; pointer-events: none; }
 .n60-hero-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity 0.5s ease; }
-.n60-hero-exploded, .n60-hero-lamps { opacity: 0; }
-#n60-hero-exploded:checked ~ .n60-hero-pics .n60-hero-exploded,
+.n60-hero-lamps { opacity: 0; }
 #n60-hero-lamps:checked ~ .n60-hero-pics .n60-hero-lamps { opacity: 1; }
-#n60-hero-exploded:checked ~ .n60-hero-pics .n60-hero-assembled,
 #n60-hero-lamps:checked ~ .n60-hero-pics .n60-hero-assembled { opacity: 0; }
 .n60-hero-text { position: absolute; left: clamp(1rem, 3.5%, 2.25rem); top: clamp(0.9rem, 5%, 2.25rem); max-width: 36%; color: #15191e; }
 .n60-hero-kicker { margin: 0; font-size: var(--sl-text-xs); font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #4b5560; }
@@ -164,10 +162,8 @@ tr[id] { scroll-margin-top: 5rem; }
 .n60-hero-switch { position: absolute; right: clamp(0.75rem, 2.5%, 1.5rem); bottom: clamp(0.75rem, 3%, 1.5rem); display: inline-flex; border: 1px solid #b9c1c9; border-radius: 999px; background: rgba(255, 255, 255, 0.85); overflow: hidden; }
 .n60-hero-switch label { padding: 0.3rem 0.85rem; font-size: var(--sl-text-xs); font-weight: 600; color: #3c4650; cursor: pointer; user-select: none; }
 #n60-hero-assembled:checked ~ .n60-hero-switch label[for='n60-hero-assembled'],
-#n60-hero-exploded:checked ~ .n60-hero-switch label[for='n60-hero-exploded'],
 #n60-hero-lamps:checked ~ .n60-hero-switch label[for='n60-hero-lamps'] { background: #15191e; color: #fff; }
 #n60-hero-assembled:focus-visible ~ .n60-hero-switch label[for='n60-hero-assembled'],
-#n60-hero-exploded:focus-visible ~ .n60-hero-switch label[for='n60-hero-exploded'],
 #n60-hero-lamps:focus-visible ~ .n60-hero-switch label[for='n60-hero-lamps'] { outline: 2px solid var(--sl-color-accent); outline-offset: -2px; }
 .n60-hero figcaption { margin-top: 0.5rem; font-size: var(--sl-text-xs); color: var(--sl-color-gray-3); }
 /* Narrow: the headline sits above the picture, which is cropped to the case. */
