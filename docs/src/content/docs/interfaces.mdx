@@ -8,7 +8,7 @@ The page split and net rules expose every decision that still needs evidence.
 | Sheet | Page | Contents | Must expose |
 |---|---|---|---|
 | A · Power entry | 2 | Fuse, TVS, LM74910H-Q1, DGATE/HGATE MOSFETs, shared 0.25 mΩ RSENSE, EMI, SW-pin OV/UV monitor divider, INA228A-Q1, TMP175-Q1, RSENSE NTC | VBAT_RAW, BATT_MON, VOUT/VBAT_PROT, RSENSE± star taps, INA228_IN+/IN−, LM_FLT_L, shared I2C, TMP175 ALERT, NTC_RSENSE, reverse/OV/OCP/SCP faults |
-| B · Regulators | 3 | Nanopower VDDAU LDO, 2 × LMQ66430, direct INH gating, EN-pin chaining, TPS3702-Q1 | VDDAU_AON, INH, 3V3_MAIN, 1V5_CORE, startup timing, RESET_L supervisor path; no FS26 or wake latch |
+| B · Regulators | 3 | Nanopower VDDAU LDO, LMQ66430 3.3 V buck on VBAT_FILT, TPS628502 1.5 V buck on 3V3_MAIN, direct INH gating, EN-pin chaining, TPS3702-Q1 | VDDAU_AON, INH, 3V3_MAIN, 1V5_CORE, startup timing, RESET_L supervisor path; no FS26 or wake latch |
 | C · MCU / NVM | 4 | S32K344, IS25LP032D SPI NOR, reset, SWT/CMU, debug, ADC, four LPSPI buses, LPI2C | RMII, MDIO, 3 SNS, BATT_MON ADC, 4 NTC ADCs, INA228/TMP175 I2C, flash SPI/CS, three output-switch SPI buses, faults |
 | D · T1S | 5 | LAN8670, VDDAU/VDDA/VDDP domain split, clock, straps, coupling, ESD | TRXP/N, direct INH-to-buck-EN path, T1S_IRQ_L, PHYAD; no local wake input |
 | E–G · Outputs | 6–8 | One dual-channel switch block and one package NTC per sheet | SPI, SNS, LHI, SWn_FLT_L (FLT/WAKE pin), NTC ADC net, two outputs, thermal pad |
@@ -19,7 +19,7 @@ Schematic page numbers: page 1 is the root (index) sheet. Reference designators 
 ## Net-level rules
 
 - Name all six outputs and all three SNS nets; document every SPI diagnostic-mux mapping.
-- Route LAN8670 INH directly to the first LMQ66430 EN and chain regulator EN pins for rail order. Do not add FS26, a wake latch, or an MCU-controlled gate in this path.
+- Route LAN8670 INH directly to the LMQ66430 (U302) EN and chain the TPS628502 (U303) EN from 3V3_MAIN for rail order. Do not add FS26, a wake latch, or an MCU-controlled gate in this path.
 - Keep VDDAU on the nanopower always-on LDO and put LAN8670 VDDA/VDDP, MCU, flash, and all remaining logic on switched rails. Enforce VDDA ≤ VDDAU + 0.5 V through all transients.
 - Place IS25LP032D-JNLA3 on switched 3V3_MAIN with dedicated chip select, decoupling, and accessible SPI test pads.
 - Label the SW-divider ADC net **BATT_MON** and its reported quantity **VBAT_RAW**; ensure its ADC tap does not add material parked current, and set cold-crank behavior with the separate UVLO pin.

@@ -26,6 +26,8 @@ Changes accepted since Rev A. Rev B is tagged when the user closes it.
 - The board is 230 × 110 mm (enclosure version 11, version 7 made as small as it goes, on 2.0 mm), after a placement trial fitted every part, nearly all on the bottom side ([DEC-024](../decisions/dec-024/), supersedes DEC-023).
 - The busbars are 1/8" × 3/4" instead of 1/8" × 1" (enclosure version 15): the same top-side area comes free as with version 14's 3/16" × 3/4" bars, and the SurLok stud still engages the REDCUBE's whole thread ([DEC-025](../decisions/dec-025/), supersedes DEC-024).
 - Both busbars are schematic and BOM parts: BB901 a net tie between J910's VBAT_IN and J901's new net VBAT_IN_DOWNSTREAM, with no board copper between the two terminals, and BB902 the same part with both pins on GND ([DEC-016](../decisions/dec-016/) rev. B).
+- The 1.5 V core buck U303 is a TPS628502-Q1 fed from 3V3_MAIN, at a fixed 2.25 MHz with spread spectrum and forced PWM, instead of a second LMQ66430-Q1 on the battery, which folded back into the AM band; VBAT_FILT now feeds only the 3.3 V buck ([DEC-026](../decisions/dec-026/)).
+- Regulator-branch EMI filter parts chosen (2026-11-03): L201 Würth 74438356022HT 2.2 µH, C207 Nichicon GYF1H470MCQ1GS 47 µF 50 V hybrid polymer on the top side, and C217 the same part not fitted, for bench tuning ([Power entry & regulated rails](../subsystems/power/)).
 
 ## Rev A
 
