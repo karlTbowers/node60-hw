@@ -83,6 +83,10 @@ nearest legal pose of each part in turn and runs KRT's checks once on the result
 four courtyard fixes together: 5 s, verify included. Failures say why (the most common
 reasons), never just "nothing found".
 
+Its courtyard test keeps a 0.02 mm gap (`--courtyard-gap`): an exact polygon test passed C803
+beside J908, and KRT's floorplan check, which measures arcs as polygons, read 0.006 mm2 of
+overlap and put the board over its declared overlap budget.
+
 ## Grade the kept seed, not the last file written
 
 The fast-routed board is never the placement. Copy the seed's own `s<S>.kicad_pcb` (with

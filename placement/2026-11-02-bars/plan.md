@@ -75,7 +75,7 @@ Placed by `scripts/place_connectors.py` and locked.
 | Buck 3V3_MAIN, buck 1V5_CORE | U302, U303 | yes (KRT templates, `hot_loop.py`) |
 | Power entry: FET bank, shunt, INA228, LM74910 | U201 | yes |
 | MCU crystal | Y401 | yes |
-| Output channel | U601 (U701, U801 copies) | yes, once |
+| Output channel | U701 (U601, U801 copies; D08) | yes, once |
 | Everything else | — | annealer |
 
 ## Net classes and high-current pads

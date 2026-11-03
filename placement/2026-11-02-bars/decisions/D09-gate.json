@@ -1,0 +1,147 @@
+{
+  "id": "D09",
+  "name": "Placement gate",
+  "question": "Accept the four open gate items and put this placement on the board in a PR?",
+  "board": "node60",
+  "stage": "6 Gate",
+  "date": "2026-11-02",
+  "why_now": "Every block is approved (D04\u2013D08) and the rest of the board is placed. The gate passes 11 of 15 checks. The four it fails were all known before this run, or come from how the router works, not from where the parts sit. Each needs your call before the placement goes onto `node60.kicad_pcb`.",
+  "facts": [
+    {
+      "label": "Passes",
+      "value": "floorplan intent (0 errors); heights on the bottom (6.17 mm), under the low lid (9.0 mm) and under the lid bosses (5.03 mm); U401 BGA escape (4 signal layers, 4 available); layer capacity (no window over 60 %); both buck hot loops; every approved block on its table pose (power, T1S, both bucks, crystal, three output cells); fiducials 3 per side; net classes; via room at all 9 high-current pads",
+      "source": "gate.md"
+    },
+    {
+      "label": "Moved against main",
+      "value": "52 parts: the power-entry block, the crystal's C424, C425 and TP407, the U601 and U801 cells, TP402 (0.2 mm off TP407)",
+      "source": "render against node60.kicad_pcb"
+    },
+    {
+      "label": "One change after approval",
+      "value": "C803 (U801's VDD decap) moved 0.05 mm further from J908 after D08, so its courtyard clears J908's by KRT's measure; recorded in U801's table",
+      "source": "blocks/out_8x.poses.json"
+    },
+    {
+      "label": "Search speed",
+      "value": "pose_search.py placed TP806 and cleared five courtyard touches in about 5 s each run (the old per-pose loop took about 30 min for one part)",
+      "source": "this run"
+    },
+    {
+      "label": "Busbar overlaps",
+      "value": "Each busbar footprint (BB901, BB902) carries a tie pad inside each REDCUBE terminal's pad, so the board shows the bar joining its two terminals (D02, option A). Two parts' pads in one place is never legal to KRT, and it can't waive locked parts, so check_assembly says NOT BUILDABLE. KiCad's own DRC accepts them (net tie). Accepting means REPORT.md names these four as by design.",
+      "source": "D02; check_assembly"
+    },
+    {
+      "label": "Schematic parity",
+      "value": "kicad-cli reports the same counts on main's `node60.kicad_pcb`, so they predate this run. C207 and L201 have no footprint on the board; the 56 mismatches are footprints that differ from their symbol's; the 199 are field values. Follow-up: a schematic/library pass before routing sign-off.",
+      "source": "kicad-cli pcb drc --schematic-parity on both boards"
+    },
+    {
+      "label": "U501 pin 29 and the PHY's south edge",
+      "value": "Pins 26\u201331 sit at 0.5 mm pitch: RBIAS, REFCLK, an unused pin, 3V3_MAIN, then the T1S pair. Every pin reads PASSABLE (a route exists). Each order tried closes some and loses others: REFCLK and RBIAS first left only pin 29 open; 3V3_MAIN first left 3 open, the T1S pair among them; REFCLK and RBIAS after the T1S pair (the chain's order now, since T1S has priority) left REFCLK and CRS_DV. The cause found: the bulk pass rips all of 3V3_MAIN, pin 29's fan-out stub included, to make room, and restores 67 of its 68 connections. 3V3_MAIN has endpoints in the moved output cells, so this board changes its routing order; the PHY's parts did not move. Follow-up for real routing: hand-route the PHY's south edge first (pin 29 straight out to a via, then REFCLK and RBIAS).",
+      "source": "judge_composed2\u20135; check_reachability"
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "name": "Accept the four items, open the PR",
+      "summary": "Put the composed placement on `node60.kicad_pcb` (busbars, fiducials and rule areas kept), write REPORT.md, and open a PR for your review. Each item below goes into REPORT.md as accepted, with its follow-up.",
+      "images": [
+        {
+          "path": "img/final_moved_B.png",
+          "caption": "Bottom side seen from above, against main's placement: dashed outlines and arrows show the 52 parts that moved. The orange squares are the busbar terminals' accepted overlaps"
+        },
+        {
+          "path": "img/final_moved_F.png",
+          "caption": "Top side: decaps, D201, J401 and the busbar outlines"
+        }
+      ],
+      "measures": [
+        {
+          "label": "Buildable: busbar tie pads on the terminal pads (BB901/J901, J910; BB902/J902, J911)",
+          "value": "4 pad overlaps, 2.56 mm\u00b2 each",
+          "limit": "0, or accepted",
+          "status": "warn"
+        },
+        {
+          "label": "Schematic parity",
+          "value": "199 field mismatches, 2 missing footprints (C207, L201), 56 footprint/symbol mismatches",
+          "limit": "0",
+          "status": "warn"
+        },
+        {
+          "label": "Fast route, board's own rules",
+          "value": "1 open: U501 pin 29 (3V3_MAIN)",
+          "limit": "0",
+          "status": "warn"
+        },
+        {
+          "label": "Fast route, KRT score",
+          "value": "2 blocking: U501 pin 29, and VBAT_IN's J901\u2013J910 join, which only the busbar makes",
+          "limit": "0",
+          "status": "warn"
+        }
+      ],
+      "gains": [
+        "The approved blocks on the board now; routing can start",
+        "Each open item has a stated reason and owner"
+      ],
+      "costs": [
+        "The skill's DONE rule (0 open by KRT and by the board's rules) is not met; REPORT.md says so"
+      ]
+    },
+    {
+      "key": "B",
+      "name": "Fix the schematic parity first",
+      "summary": "Before the PR, bring the schematic and the board into line: add C207 and L201's footprints, and resolve the 56 footprint/symbol and 199 field mismatches.",
+      "images": [],
+      "measures": [
+        {
+          "label": "Parity on main's board today",
+          "value": "the same 199 / 2 / 56",
+          "limit": "",
+          "status": "info"
+        }
+      ],
+      "gains": [
+        "Parity clean before routing"
+      ],
+      "costs": [
+        "Schematic and library work, not placement: none of it comes from this run, so it holds up the placement without changing it"
+      ]
+    },
+    {
+      "key": "C",
+      "name": "Keep working the PHY route",
+      "summary": "Keep changing the fast route's order until one run closes every net at the PHY.",
+      "images": [],
+      "measures": [
+        {
+          "label": "Open, five fast-route runs",
+          "value": "3, 2, 1, 3, 2 (best: pin 29 only)",
+          "limit": "0",
+          "status": "fail"
+        }
+      ],
+      "gains": [
+        "The DONE rule met in this run"
+      ],
+      "costs": [
+        "It has not converged: each order closes one PHY net and loses another"
+      ]
+    }
+  ],
+  "recommendation": {
+    "option": "A",
+    "why": "None of the four comes from where the parts sit, and each has a follow-up that does not need the placement to change."
+  },
+  "answer": "Reply with A, B or C, or a change.",
+  "sources": [
+    "gate.md (gate.py on composed.kicad_pcb)",
+    "judge_composed2\u20135 fast routes",
+    "check_reachability on U501 pins 26, 27, 29",
+    "kicad-cli schematic parity on main's node60.kicad_pcb"
+  ]
+}

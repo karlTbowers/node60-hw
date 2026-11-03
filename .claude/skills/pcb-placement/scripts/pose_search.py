@@ -8,7 +8,8 @@ every pose took about a minute per pose; this screens hundreds of poses a second
 
 The screen, per candidate, against every other part on the board (parts already moved in this
 run included):
-- courtyard overlap on the same side (any area: the project grades courtyards as errors);
+- courtyard overlap on the same side, or courtyards closer than --courtyard-gap (0.02 mm; any
+  overlap is an error in the project, and KRT's polygon measure reads a touch as a sliver);
 - pad copper within the clearance of another part's pad on a shared copper layer, any net
   (same-net pads may not touch either: two parts' pads stacked are never legal);
 - pad copper within the hole clearance of another part's hole (NPTH included), and the
@@ -61,12 +62,13 @@ def apart(a, b, margin=0):
 
 
 class Board:
-    def __init__(self, path, clearance, hole_clearance, edge):
+    def __init__(self, path, clearance, hole_clearance, edge, courtyard_gap=0.02):
         self.b = pcbnew.LoadBoard(path)
         ds = self.b.GetDesignSettings()
         self.clr = FM(clearance) if clearance is not None else ds.m_NetSettings.GetDefaultNetclass().GetClearance()
         self.hclr = FM(hole_clearance) if hole_clearance is not None else ds.m_HoleClearance
         self.edge = FM(edge) if edge is not None else ds.m_CopperEdgeClearance
+        self.cy_gap = FM(courtyard_gap)
         o = self.b.GetBoardEdgesBoundingBox()
         self.outline = (o.GetLeft() + self.edge, o.GetTop() + self.edge, o.GetRight() - self.edge, o.GetBottom() - self.edge)
         self.cy_outline = bbox(o)
@@ -106,10 +108,12 @@ class Board:
                 continue
             if cyb and o.IsFlipped() == fp.IsFlipped():
                 ocy = side_cy(o)
-                if ocy.OutlineCount() and not apart(cyb, bbox(ocy.BBox())):
+                if ocy.OutlineCount() and not apart(cyb, bbox(ocy.BBox()), self.cy_gap):
                     x = pcbnew.SHAPE_POLY_SET(cy)
                     x.BooleanIntersection(ocy)
-                    if x.Area() > 0:
+                    # within cy_gap counts too: KRT measures arcs as polygons, so a pose this test
+                    # calls touching-free can read 0.006 mm2 in check_floorplan's overlap budget
+                    if x.Area() > 0 or any(cy.Collide(ocy.Outline(i), self.cy_gap) for i in range(ocy.OutlineCount())):
                         return f"courtyard overlaps {oref}"
             for p, b in zip(pads, pb):
                 for q in o.Pads():
@@ -234,6 +238,8 @@ def main():
     ap.add_argument("--clearance", type=float, help="mm; default the board's Default net class")
     ap.add_argument("--hole-clearance", type=float, help="mm; default the board's")
     ap.add_argument("--edge", type=float, help="mm; default the board's copper-to-edge clearance")
+    ap.add_argument("--courtyard-gap", type=float, default=0.02,
+                    help="mm courtyards must stay apart (default 0.02, so KRT's polygon measure reads no overlap)")
     ap.add_argument("--verify", action="store_true")
     ap.add_argument("--intent")
     ap.add_argument("--baseline")
@@ -251,7 +257,7 @@ def main():
         specs = [s]
     else:
         ap.error("give a SPEC.json or --ref")
-    B = Board(a.board, a.clearance, a.hole_clearance, a.edge)
+    B = Board(a.board, a.clearance, a.hole_clearance, a.edge, a.courtyard_gap)
     found = [search(B, s) for s in specs]
     B.b.Save(a.out)
     # KRT reads the project and rule files beside a board, and refuses a board whose siblings

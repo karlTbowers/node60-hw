@@ -28,13 +28,13 @@
       "why": "VBB bulk cap, beside the VBB pad, on the channel's VBAT_PROT pour"
     },
     "C803": {
-      "dx": -4.006,
+      "dx": -3.956,
       "dy": 0.3438,
       "rot": 180.0,
       "side": "F",
       "role": "core",
       "flex_mm": 0,
-      "why": "VDD decap (SW_VDD). On F.Cu (decaps go on top), over pin 3"
+      "why": "VDD decap (SW_VDD). On F.Cu (decaps go on top), over pin 3; 0.05 mm further from J908 after D08, so its courtyard clears J908's by KRT's measure (the floorplan's overlap budget)"
     },
     "C804": {
       "dx": -5.0782,
