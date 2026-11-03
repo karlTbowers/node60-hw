@@ -13,6 +13,7 @@
 | D09 | 2026-11-02 | Placement gate: accept the four open items (busbar tie-pad overlaps, schematic parity, U501 pin 29, KRT's busbar join) and open the PR | https://claude.ai/artifact/1z4TKiSdvHmywjzRExvkxU | A, open the PR (user, 2026-11-02) | the four items accepted (REPORT.md); composed placement applied to node60.kicad_pcb |
 | D10 | 2026-11-02 | U303's 1.5 V core buck cell recomposed round the TPS628502-Q1 (DEC-026) | https://claude.ai/artifact/FcS4kULQHc7bRbmQPYejuZ | A, as composed (user, 2026-11-02) | buck_1v5 cell table approved for the TPS628502-Q1; replaces D06's LMQ66430 cell |
 | D11 | 2026-11-03 | Ready for routing: start full routing on this placement | https://claude.ai/artifact/FQKm81rbkJqD8XYJGVBc1m | A, start routing (user, 2026-11-03: after a review of KRT's routing tools and ee-skills' ee-layout-rules) | placement done; routing next |
+| D12 | 2026-11-03 | Routing review: layer roles, outer copper, output cells, supply balance, input shunt, via current, routing method (7 decisions) | https://claude.ai/artifact/CYdagJE6yYyxJGvN8GtZcC | awaiting answer | |
 
 ## Skill gaps found in this run
 

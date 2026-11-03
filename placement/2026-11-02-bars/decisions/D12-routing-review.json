@@ -1,0 +1,170 @@
+{
+  "id": "D12",
+  "name": "Routing review",
+  "question": "Before routing: the layer roles, the power copper and how routing runs",
+  "board": "node60", "phase": "Routing", "stage": "0 Review", "date": "2026-11-03",
+  "why_now": "You asked for routing to start, with six outputs that perform the same and the lowest DCR, and for a review of KiCadRoutingTools (KRT) and ee-skills' `ee-layout-rules` first. Two read-only reviews, a resistance model of the board's planes and U401 fan-out trials found seven things to settle before any copper goes down. They depend on each other, D12-1 most of all. DEC-027 (PR #53) chose JLCPCB's JLC062012-1080 (1 oz outer, 2 oz inner) and left exactly these open: the layer roles, the outer copper and the via option.\n\nEvery number below can be re-run: the plane model is `placement/2026-11-02-bars/power/plane_model.py` (85 °C, all six outputs at 10 A unless stated). The fan-out trials are KRT's `bga_fanout.py` on the placed board.",
+  "facts": [
+    {"label": "A channel's own resistance", "value": "TPS2HCS08A on-resistance 8.9 mΩ typical at 25 °C, 17.8 mΩ max at 150 °C; channels may differ by up to 7 % (ΔRON). Copper differences well under that are not what makes one output worse", "source": "TI TPS2HCS08-Q1 SLVSHR0, RON characteristics"},
+    {"label": "What the fast routes got wrong (KRT review)", "value": "Every 10 A output went out at 0.1 mm (OUT1–OUT6 were never given a power width); 3V3_MAIN was 465 tracks of 0.1 mm; the bulk step named the T1S trunk in --rip-existing-nets, which lifts route_diff's protection (16 of 82 mm coupled, 22 mm skew); route_open.sh's rip-anything-40-times laps caused the PHY/BGA churn. The fast routes were placement judges, not a routing method", "source": "judge_final, judge_route.sh, KRT review"},
+    {"label": "U401 escape on the chosen stackup", "value": "JLCPCB allows 0.09/0.09 mm on the 1 oz outer layers and 0.15/0.15 mm on the 2 oz inner layers. Fan-out trials: F.Cu + B.Cu alone at 0.1/0.1 mm escape 55 of 55 signals with 0.45 mm vias; at 0.15/0.15 (2 oz outer) 54 of 55 (SWD_SWO) with 0.45 mm vias, 55 with 0.35/0.2 mm. The plan's \"4 signal layers\" count was wrong (it used the ball gap on every layer) and `escape_budget.py` now counts each layer's own channel", "source": "bga_fanout.py trials; escape_budget.py --layer-rules"},
+    {"label": "Current per via", "value": "IPC-2221's internal-conductor curve at JLCPCB's 18 µm plating gives 0.65 A per 0.45/0.25 mm via at a 10 °C rise, not the 1 A the placement plan assumed: 31 vias per switch's 20 A, 47 per FET pad's 30 A, 93 for the shunt's 60 A", "source": "ee-layout-rules fab defaults (method); JLCPCB via stack on the fab page"},
+    {"label": "Rules ee-layout-rules adds with no decision needed", "value": "Confine 0.1 mm track to scoped U401/U501 escape areas; no vias on the buck switch nodes; 1V5_CORE_FB 1 mm from either switch node; T1S pairs coupled (gap 0.15 ± 0.01 mm, ≤ 2 mm uncoupled, skew ≤ 0.5 mm) and 0.75 mm from other nets; switch nodes 10 mm from the T1S line; nothing but their own nets and GND under Y401/Y501; 0.3 mm PTH hole to copper; high-current pads solid to their pours; text 1.0 / 0.15 mm, mask web 0.10 mm; and prove every DRU rule fires on a copy before use. Net classes PWR_BATT, PWR_RAIL and SW_NODE with width floors follow D12-2", "source": "ee-layout-rules review, items 4–10, 14"},
+    {"label": "Not adopted from ee-layout-rules", "value": "Its 0.6/0.3 mm default via (Node60 keeps 0.45/0.25), 2 or 4 fiducials (D03 chose 3), light parts only on the bottom (Node60 reflows the bottom second), decaps on the IC's side (Node60 puts them on top, about 4 nH per loop, stated per rail), Tj ≤ 110 °C (the handbook's Tj(max) − 25 °C wins)", "source": "ee-layout-rules review, conflicts 4–8"}
+  ],
+  "decisions": [
+    {
+      "id": "D12-1",
+      "question": "Which job does each inner layer do?",
+      "why_now": "The layer next to the parts decides what every bottom-side net returns through: the T1S pair, both bucks, both crystals and the INA228 Kelvin lines all sit on B.Cu. The power planes decide the DCR of every output.",
+      "options": [
+        {"key": "A", "name": "GND next to both outer layers, VBAT_PROT on In2 + In3",
+         "summary": "In1 GND, In2 VBAT_PROT, In3 VBAT_PROT, In4 GND, as the fab page's stackup names them. Signals on F.Cu and B.Cu, which the fan-out trial shows is enough for U401; In2/In3 may carry short signal runs in windows away from the power path if routing needs them.",
+         "measures": [
+           {"label": "B.Cu references", "value": "GND (In4), 0.14 mm away", "limit": "GND (SI-01)", "status": "pass"},
+           {"label": "VBAT_PROT to U601 / U701 / U801", "value": "0.17 / 0.34 / 0.44 mΩ", "limit": "lowest, even", "status": "pass"},
+           {"label": "Return from the six headers", "value": "0.31–0.38 mΩ", "limit": "lowest, even", "status": "pass"},
+           {"label": "U401 escape", "value": "F + B: 55 of 55", "limit": "all", "status": "pass"},
+           {"label": "Signal layers", "value": "2 (+ local windows)", "limit": "enough to route", "status": "warn"}],
+         "gains": ["Half the plane resistance of the other options, on both the supply and the return", "Every outer layer sits on GND: the T1S pair, bucks and crystals included", "Symmetric stackup, as quoted; no fab change"],
+         "costs": ["Two routing layers for most of the board; the bottom is dense (280 parts), so routing is tighter", "Signals crossing the board under the power path have only F and B"]},
+        {"key": "B", "name": "The placement plan: In1 GND, In2/In3 signal, In4 VBAT_PROT",
+         "summary": "Four signal layers, one plane each for GND and VBAT_PROT.",
+         "measures": [
+           {"label": "B.Cu references", "value": "VBAT_PROT (In4)", "limit": "GND (SI-01)", "status": "fail"},
+           {"label": "VBAT_PROT to U601 / U701 / U801", "value": "0.35 / 0.68 / 0.88 mΩ", "limit": "lowest, even", "status": "warn"},
+           {"label": "Return from the six headers", "value": "0.61–0.75 mΩ", "limit": "lowest, even", "status": "warn"},
+           {"label": "U401 escape", "value": "4 layers: 54 of 55 at 0.45 mm vias, 55 at 0.35", "limit": "all", "status": "pass"},
+           {"label": "Signal layers", "value": "4", "limit": "enough to route", "status": "pass"}],
+         "gains": ["The most routing room"],
+         "costs": ["The T1S pair, bucks and crystals on B.Cu return through the 60 A battery plane", "Twice the plane resistance of A"]},
+        {"key": "C", "name": "Swap: In1 VBAT_PROT, In2/In3 signal, In4 GND",
+         "summary": "B with the planes swapped, so B.Cu sits on GND and F.Cu (decaps, J401, D201, C207/C217 only) on VBAT_PROT.",
+         "measures": [
+           {"label": "B.Cu references", "value": "GND (In4)", "limit": "GND (SI-01)", "status": "pass"},
+           {"label": "VBAT_PROT to U601 / U701 / U801", "value": "0.35 / 0.68 / 0.88 mΩ", "limit": "lowest, even", "status": "warn"},
+           {"label": "Return from the six headers", "value": "0.61–0.75 mΩ", "limit": "lowest, even", "status": "warn"},
+           {"label": "U401 escape", "value": "4 layers: 54 of 55 at 0.45 mm vias, 55 at 0.35", "limit": "all", "status": "pass"},
+           {"label": "Signal layers", "value": "4", "limit": "enough to route", "status": "pass"}],
+         "gains": ["Four routing layers and GND under B.Cu"],
+         "costs": ["Twice the plane resistance of A", "In2 and In3 sit next to each other with no plane between: they need opposite directions (ee L-26)"]}
+      ],
+      "recommendation": {"option": "A", "why": "You asked for the lowest DCR: A halves every plane path and puts GND under both outer layers. U401 escapes on the outer layers alone, so the cost is routing room, which routing will tell; if B.Cu runs out, short In2/In3 windows away from the power path are the relief."}
+    },
+    {
+      "id": "D12-2",
+      "question": "Outer copper: 1 oz as quoted, or 2 oz?",
+      "why_now": "The handbook asks for 2 oz on high-current paths. With D12-1 A the big currents run in the 2 oz inner planes, but the six outputs (switch to header) and the power entry's pours are on the outer layers.",
+      "options": [
+        {"key": "A", "name": "1 oz outer, as quoted (DEC-027)",
+         "summary": "Outputs as parallel pours on F.Cu and B.Cu with via arrays; the 0.09–0.1 mm escape stays.",
+         "measures": [
+           {"label": "One output run, ~20 mm of a 6 mm pour on F + B", "value": "about 1.0 mΩ, 0.10 W at 10 A", "limit": "lowest", "status": "warn"},
+           {"label": "U401 escape", "value": "55 of 55 at 0.45 mm vias", "limit": "all", "status": "pass"},
+           {"label": "Fab", "value": "as quoted, $263 for 5", "limit": "", "status": "info"}],
+         "gains": ["No change to DEC-027 or the quote", "Finest escape rules on the outer layers"],
+         "costs": ["Output runs about twice the resistance of 2 oz"]},
+        {"key": "B", "name": "2 oz outer",
+         "summary": "A different JLCPCB stackup (amends DEC-027, needs a new quote); 0.15/0.15 mm on every layer.",
+         "measures": [
+           {"label": "One output run, ~20 mm of a 6 mm pour on F + B", "value": "about 0.5 mΩ, 0.05 W at 10 A", "limit": "lowest", "status": "pass"},
+           {"label": "U401 escape", "value": "54 of 55 at 0.45 mm vias; 55 with the 0.20 mm via option", "limit": "all", "status": "warn"},
+           {"label": "Fab", "value": "new quote needed", "limit": "", "status": "warn"}],
+         "gains": ["Lowest DCR on the outputs and the power entry", "Follows the handbook"],
+         "costs": ["New stackup and quote; probably the 0.20 mm via option ($37.90 for 5) for U401"]}
+      ],
+      "recommendation": {"option": "A", "why": "On a channel of about 10–18 mΩ the output run is 1.0 against 0.5 mΩ, equal on all six; the quote, the stackup and the escape stay as they are. Take B if you want the last 5 % of DCR and accept a re-quote."}
+    },
+    {
+      "id": "D12-3",
+      "question": "Re-compose the three output cells so all six outputs are identical?",
+      "why_now": "The cells approved in D08 turn each switch 90°, so one output leaves south and the other north, and no switch is centred between its headers. Switch pins to header pin 1: OUT1 29.7, OUT2 21.2, OUT3 29.6, OUT4 21.3, OUT5 16.9, OUT6 27.6 mm.",
+      "options": [
+        {"key": "A", "name": "Turn and centre every switch",
+         "summary": "Each switch turned so its OUTa pins face its west header and OUTb its east one, centred between the two headers' pin 1 (x 77.65, 152.3, 226.9 mm), the cell's other parts re-placed round it the same way in all three. Every output becomes the same run: 18.65 mm sideways plus the same drop to the header row, as a mirrored pair of pours. A new block page (D13) shows it before it lands.",
+         "images": [{"path": "img/out12_moved_B.png", "caption": "Today's U601 cell (D08): OUT1 leaves south, OUT2 north"}],
+         "measures": [{"label": "Output runs", "value": "six equal, about 20 mm each", "limit": "equal", "status": "pass"}],
+         "gains": ["Six identical output paths by construction", "Shorter worst run (29.7 → about 20 mm)"],
+         "costs": ["Replaces D08's three cells; the SNS/FLT parts and test points move with them"]},
+        {"key": "B", "name": "Keep the D08 cells",
+         "summary": "Equalise in copper: lengthen or narrow the shorter runs to match the longest.",
+         "measures": [{"label": "Output runs", "value": "16.9–29.7 mm, equalised to the longest", "limit": "equal", "status": "warn"}],
+         "gains": ["No placement change"],
+         "costs": ["Every output gets the worst output's resistance: the opposite of lowest DCR"]}
+      ],
+      "recommendation": {"option": "A", "why": "It is the only way to have six equal outputs without making five of them as bad as the sixth."}
+    },
+    {
+      "id": "D12-4",
+      "question": "Balance the supply between the three switches?",
+      "why_now": "Power enters on the left (J910, Q201/Q202, R201, Q203/Q204) and the switches run to the right, so with D12-1 A the supply plane is 0.17 / 0.34 / 0.44 mΩ to U601 / U701 / U801: a 0.27 mΩ spread, about 2 % of a channel and well under the switches' own 7 %.",
+      "options": [
+        {"key": "A", "name": "Accept the spread",
+         "summary": "Keep the power entry where it is; the spread is 2.7 mV at 10 A between the best and worst channel.",
+         "measures": [{"label": "Supply to U601 / U701 / U801", "value": "0.17 / 0.34 / 0.44 mΩ", "limit": "even", "status": "warn"},
+                      {"label": "Supply-plane loss, all on", "value": "0.39 W", "limit": "lowest", "status": "info"}],
+         "gains": ["No change to the power-entry block (D04)"], "costs": ["U801's channel about 2 % more drop than U601's"]},
+        {"key": "B", "name": "Feed VBAT_PROT at mid-board",
+         "summary": "Move the disconnect FETs Q203/Q204 (and their gate drive) toward mid-board, so the planes are fed between U701 and the outer switches.",
+         "measures": [{"label": "Supply to U601 / U701 / U801", "value": "0.27 / 0.18 / 0.27 mΩ", "limit": "even", "status": "pass"},
+                      {"label": "Supply-plane loss, all on", "value": "0.29 W", "limit": "lowest", "status": "info"}],
+         "gains": ["Outer switches equal, all within 0.09 mΩ, and less loss"], "costs": ["Re-opens D04: the 60 A path from J910 to the FETs gets longer, and the HGATE drive runs further"]},
+        {"key": "C", "name": "A slot in the planes to force a mid feed (modelled, rejected)",
+         "summary": "A 1 mm slot along y 95.5 mm, open only at x 150–165 mm.",
+         "measures": [{"label": "Supply to U601 / U701 / U801", "value": "1.31 / 1.05 / 1.32 mΩ", "limit": "even", "status": "fail"},
+                      {"label": "Supply-plane loss, all on", "value": "1.47 W", "limit": "lowest", "status": "fail"}],
+         "gains": ["Outer switches equal"], "costs": ["Three times the resistance: the gap is a bottleneck"]}
+      ],
+      "recommendation": {"option": "A", "why": "With the planes of D12-1 A the spread is 2 % of a channel, a third of what the switches themselves may differ by; B buys equality by re-opening the power entry. If you want the outer two exactly equal, B is the way, not C."}
+    },
+    {
+      "id": "D12-5",
+      "question": "The input shunt: one 0.25 mΩ, two in parallel, or a 4-terminal part?",
+      "why_now": "All the node's current, up to 60 A, passes R201 (Stackpole CSS2725FTL250, 0.25 mΩ, 4 W, 0.9 W at 60 A). At 0.65 A per via its pads need about 93 vias to reach the planes, and its two pads are the narrowest point of the 60 A path. The LM74910H breaker and the INA228 are both set for 0.25 mΩ (DEC-001, DEC-002).",
+      "options": [
+        {"key": "A", "name": "Keep one CSS2725FTL250",
+         "summary": "Wide pours on both outer layers into its pads, the via arrays beside them.",
+         "measures": [{"label": "Current per footprint", "value": "60 A", "limit": "spread", "status": "warn"}],
+         "gains": ["No change; settings stay"], "costs": ["One footprint carries 60 A; the via field around it crowds the Kelvin taps"]},
+        {"key": "B", "name": "Two 0.5 mΩ in parallel",
+         "summary": "Same 0.25 mΩ, so the LM74910H and INA228 settings stay; 30 A and 0.45 W each, the current spread over two footprints.",
+         "measures": [{"label": "Current per footprint", "value": "30 A", "limit": "spread", "status": "pass"}],
+         "gains": ["Half the current density at each pad", "Settings unchanged"], "costs": ["The sense voltage must be averaged across the two (equal-length Kelvin taps through matching resistors), or the INA228 reads one shunt's share"]},
+        {"key": "C", "name": "One larger 4-terminal shunt",
+         "summary": "Separate current and Kelvin terminals in a larger body (the parts record already looks for one; the library holds Isabellenhütte BVR/BVB and Vishay WSK1216 candidates). A part search sets the value; 0.2 or 0.3 mΩ means new LM74910H/INA228 settings.",
+         "measures": [{"label": "Current per footprint", "value": "60 A, wider terminals", "limit": "spread", "status": "pass"}],
+         "gains": ["Best sense accuracy (true Kelvin)", "Wider current terminals"], "costs": ["A part search, new library part, and recalculated breaker and INA228 settings"]}
+      ],
+      "recommendation": {"option": "C", "why": "It fixes the layout constraint and the sense accuracy at once, and the parts record already plans it; a parts session can search 4-terminal shunts and two-in-parallel 0.5 mΩ together, so you choose between B and C with real parts in front of you before the power entry is routed."}
+    },
+    {
+      "id": "D12-6",
+      "question": "Count vias at 0.65 A each?",
+      "why_now": "The gate's \"room for vias at high-current pads\" passed at 1 A per via, an assumption. IPC-2221 at JLCPCB's 18 µm plating gives 0.65 A at a 10 °C rise.",
+      "options": [
+        {"key": "A", "name": "0.65 A per 0.45/0.25 mm via", "summary": "Re-run the gate's via-room row at 0.65 A: 31 vias per switch's 20 A, 47 per FET pad, 93 for the shunt.",
+         "measures": [{"label": "Basis", "value": "IPC-2221, 18 µm plating, 10 °C", "limit": "", "status": "pass"}],
+         "gains": ["A basis that can be checked"], "costs": ["Bigger via fields at the power pads"]},
+        {"key": "B", "name": "Keep 1 A and confirm in the thermal test", "summary": "Count at 1 A and let GATE-THM-02 prove it.",
+         "measures": [{"label": "Basis", "value": "assumed", "limit": "", "status": "warn"}],
+         "gains": ["Smaller via fields"], "costs": ["Risk found only on the bench"]}
+      ],
+      "recommendation": {"option": "A", "why": "It is the published method at the plating the fab states; the thermal test still confirms it."}
+    },
+    {
+      "id": "D12-7",
+      "question": "How should routing run?",
+      "why_now": "KRT routes signals well but doesn't size 10 A copper, ignores custom DRU rules and the crystal no-via rule, and churned at the PHY/BGA when allowed to rip anything. ee-layout-rules (L-69) says no unattended whole-board routing on the master.",
+      "options": [
+        {"key": "A", "name": "Staged: power and critical nets by hand, KRT for the rest",
+         "summary": "In order: (1) the new DRU rules, each proven to fire; (2) by hand and locked: the 60 A power entry, the six output cells' 10 A pours and via fields, both bucks' hot loops, the Kelvin nets, the T1S chain, U501's south edge and U401's 3V3 balls; (3) KRT: planes, U401/U501 fan-out (with --immovable-refs, never moving approved parts), the crystal on B.Cu, the remaining pairs; (4) KRT bulk route with power widths and the T1S never in --rip-existing-nets, laps limited to 5 rip-ups; (5) review: KiCad DRC with the board's own rules, KRT's review-routed-board, widths and via counts checked against IPC-2152, the six outputs' DCR re-measured from the copper. Every stage on a copy, each PR reviewed.",
+         "measures": [], "gains": ["Every high-current and critical path decided by a person and locked before the router runs"], "costs": ["Slower than one router pass"]},
+        {"key": "B", "name": "KRT end to end, then fix", "summary": "Route everything with KRT's pipeline and repair what review finds.",
+         "measures": [], "gains": ["Fast"], "costs": ["The 10 A copper and the T1S pair are what it handled worst"]}
+      ],
+      "recommendation": {"option": "A", "why": "The power copper you want equal and lowest-DCR is exactly what KRT can't size; the router is good at the 250 nets that remain."}
+    }
+  ],
+  "answer": "Reply with each decision and a letter, for example \"D12-1 A, D12-2 A, D12-3 A, D12-4 A, D12-5 C, D12-6 A, D12-7 A\", or a change to any. The no-decision rules in the facts above go in with D12-1.",
+  "sources": ["placement/2026-11-02-bars/power/plane_model.py and power_geom.json", "KRT bga_fanout.py trials (judge_final/s1)", "escape_budget.py --layer-rules", "KRT routing review; ee-skills ee-layout-rules review (origin/main eded36c)", "TI TPS2HCS08-Q1 SLVSHR0", "DEC-027 (PR #53): JLC062012-1080", "parts.yaml: CSS2725FTL250"]
+}
