@@ -1,0 +1,56 @@
+---
+// The vehicle wiring concept drawn by scripts/render-vehicle.mjs (src/diagrams/build/vehicle-wiring.svg),
+// inlined so CSS can animate it (.n60-vw in custom.css). Two radio buttons switch between the truck
+// and its wiring; the reveal plays once by itself when the drawing first scrolls into view.
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+
+const file = join(process.cwd(), 'src/diagrams/build/vehicle-wiring.svg');
+let svg: string;
+try {
+	svg = readFileSync(file, 'utf8');
+} catch {
+	throw new Error('The vehicle wiring concept is not drawn: run `npm run vehicle`.');
+}
+---
+
+<figure class="n60-vw not-content">
+	<div class="n60-vw-stage">
+		<input type="radio" name="n60-vw-view" id="n60-vw-truck" checked />
+		<input type="radio" name="n60-vw-view" id="n60-vw-wiring" />
+		<div class="n60-vw-art" set:html={svg} />
+		<div class="n60-vw-switch" role="group" aria-label="Show">
+			<label for="n60-vw-truck">Truck</label>
+			<label for="n60-vw-wiring">Wiring</label>
+		</div>
+	</div>
+	<ul class="n60-vw-key">
+		<li><i class="k-node"></i>Node60, one per corner</li>
+		<li><i class="k-hub"></i>Hub 100 under the dash</li>
+		<li><i class="k-feed"></i>Power and ground; node to node: the jumper</li>
+		<li><i class="k-t1s"></i>10BASE-T1S pair</li>
+		<li><i class="k-out"></i>Switched output to a lamp</li>
+	</ul>
+	<figcaption>
+		A concept, not a wiring diagram: a classic pickup with a Node60 at each corner, drawn larger than scale.
+		The battery sends one fused feed to each pair of nodes, and each node passes power on to its neighbour.
+		Hub 100, the controller under the dash, replaces the fuse panel and runs one T1S pair to each pair of nodes.
+	</figcaption>
+</figure>
+
+<script>
+	// Reveal the wiring once, shortly after the drawing is mostly in view, unless the reader has
+	// already used the switch or prefers reduced motion.
+	const wiring = document.getElementById('n60-vw-wiring') as HTMLInputElement | null;
+	const stage = wiring?.closest('.n60-vw-stage');
+	if (wiring && stage && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+		let touched = false;
+		stage.addEventListener('change', () => { touched = true; });
+		const io = new IntersectionObserver((entries) => {
+			if (!entries.some((e) => e.isIntersecting)) return;
+			io.disconnect();
+			setTimeout(() => { if (!touched) wiring.checked = true; }, 900);
+		}, { threshold: 0.6 });
+		io.observe(stage);
+	}
+</script>
