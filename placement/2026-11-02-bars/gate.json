@@ -1,6 +1,6 @@
 {
   "board": "/Users/karl/Dev/node60-hw-place/node60.kicad_pcb",
-  "sha256": "68cbce0e9e582b8a",
+  "sha256": "6a1b1d86073458ec",
   "pass": false,
   "rows": [
     {
@@ -18,8 +18,8 @@
     {
       "check": "Schematic parity",
       "how": "kicad-cli pcb drc --schematic-parity (field mismatches warn)",
-      "status": "FAIL",
-      "result": "missing_footprint 2, footprint_symbol_field_mismatch 19"
+      "status": "WARN",
+      "result": "footprint_symbol_field_mismatch 19"
     },
     {
       "check": "Heights, B side, whole board",

@@ -1,13 +1,13 @@
 # Placement gate: node60.kicad_pcb
 
-- Date: 2026-11-03; KiCad 10.0.7; board sha256 68cbce0e9e582b8a…
+- Date: 2026-11-03; KiCad 10.0.7; board sha256 6a1b1d86073458ec…
 - Verdict: **NOT PASSED**
 
 | Check | How it is measured | Status | Result |
 |---|---|---|---|
 | Buildable | KRT check_assembly --baseline (parts on the board, courtyards, bodies, pads) | FAIL |   VERDICT: NOT BUILDABLE / EXIT=4 |
 | Floorplan intent | KRT check_floorplan --intent (edges, groups, templates, keep-outs, decaps) | PASS | 0 error(s) |
-| Schematic parity | kicad-cli pcb drc --schematic-parity (field mismatches warn) | FAIL | missing_footprint 2, footprint_symbol_field_mismatch 19 |
+| Schematic parity | kicad-cli pcb drc --schematic-parity (field mismatches warn) | WARN | footprint_symbol_field_mismatch 19 |
 | Heights, B side, whole board | part_heights.py: model body, limit 6.17 mm (CLAUDE.md: board 6.17 mm off the floor (K501 5.2 mm accepted at 0.97 mm, user 2026-11-01)) | PASS | none over |
 | Heights, F side, under the low lid | part_heights.py: model body, limit 9.0 mm (CLAUDE.md: 9.0 mm under the low lid above the board; the output and T1S headers stand under the raised front band and T1S hood (1 mm above the tallest header), not the low lid) | PASS | none over |
 | Heights, F side, lid bosses, Ø8 mm at each SurLok M4 hole | part_heights.py: model body, limit 5.03 mm (scripts/enclosure_geometry.py v15: boss ends 16.2 mm, board top 11.17 mm) | PASS | none over |

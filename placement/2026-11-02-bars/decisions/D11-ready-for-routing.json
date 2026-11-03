@@ -1,0 +1,46 @@
+{
+  "id": "D11",
+  "name": "Ready for routing",
+  "question": "Start full routing on this placement?",
+  "board": "node60", "stage": "6 Gate", "date": "2026-11-03",
+  "why_now": "Every part on the schematic is now on the board (280 footprints). The last ones were C207 and C217 (47 µF hybrid; C217 not fitted) and L201 (2.2 µH), chosen in node60-hw #49. The 1.5 V buck's new cell (DEC-026, approved in D10) is in. The gate on this board is the same as at D09, plus the cleaner parity, and nothing the gate checks is left for placement to fix.\n\nWhat stays open is the fast router, not the placement. Three nets at the PHY and MCU don't close in the fast route, and every pin they leave open has a legal route. Routing should take them first, by hand. The rest of this page is the list routing starts from.",
+  "facts": [
+    {"label": "Gate (gate.md)", "value": "12 pass, 1 warning, 3 fail. Pass: floorplan, every height limit (bottom 6.17 mm, under the low lid 9.0 mm, under the lid bosses 5.03 mm), BGA escape, layer capacity, both buck hot loops, all 8 approved blocks on their table poses, fiducials, net classes, via room at the 9 high-current pads. Warning: parity, only the 19 ki_fp_filters fields KiCad always reports. Fail: buildable (the busbar tie pads, accepted in D09) and the two fast-route rows", "source": "gate.py on node60.kicad_pcb, judge_final"},
+    {"label": "Approved blocks", "value": "power entry (D04), T1S (D05), 3.3 V buck (D06), 1.5 V buck (D10), MCU crystal (D07), three output cells (D08)", "source": "blocks/*.poses.json"},
+    {"label": "New since D09", "value": "U303 is a TPS628502-Q1 on 3V3_MAIN (DEC-026, D10). L201 on the bottom beside U302's input. C207/C217 on the top side beside J912, 8.01 mm tall under the 9.0 mm low lid and at least 8.5 mm from every lid boss: the top side otherwise carries only decaps, D201 and J401. No 47 µF / 50 V / 125 °C cap fits under the board's 6.17 mm", "source": "node60-hw #48, #49; this branch"},
+    {"label": "Fast route", "value": "3 nets open, 10 items: 3V3_MAIN at U401 balls H6, H7, L8, K11 and U501 pins 18, 29; T1S_REFCLK and T1S_IRQ_L at U501. All PASSABLE (check_reachability). Every other net routed, the T1S pairs and C207/C217/L201 included; 0 vias on the crystal nets", "source": "judge_final, check_reachability"},
+    {"label": "Before routing sign-off", "value": "node60.kicad_pro keeps unconnected items as DRC warnings (PR #21) while routing is in progress; set it back to error before routing is signed off and before any rev-* tag", "source": "CLAUDE.md"}
+  ],
+  "options": [
+    {
+      "key": "A", "name": "Start full routing",
+      "summary": "Route this placement. Routing starts from this order: (1) the T1S pairs, DEC-012 rev. B order, 0.165 / 0.15 mm in the T1S_100R class; (2) the crystal nets on B.Cu with no via (node60.kicad_dru), MDC routed away from the oscillator; (3) by hand, U501's south edge (pin 29 3V3_MAIN straight to a via, then REFCLK and RBIAS) and U401's 3V3_MAIN balls H6, H7, L8 and K11 and IRQ_L; (4) the BGA escape on F.Cu, In2, In3 and B.Cu at 0.1 mm / 0.15 mm with 0.45 / 0.25 mm vias; (5) the high-current pads with their via sites; (6) the rest. The busbar rule areas allow only the bar's nets in F.Cu tracks and pours, tented vias of any net.",
+      "images": [
+        {"path": "img/ready_B.png", "caption": "Bottom side seen from above, every part placed, coloured by block"},
+        {"path": "img/ready_F.png", "caption": "Top side: decaps, D201, J401, the busbars, and C207/C217 beside J912"},
+        {"path": "img/ready_phy_route.png", "caption": "The fast route at the PHY (U501) and MCU (U401), where the open items are: every one reads PASSABLE"}
+      ],
+      "measures": [
+        {"label": "Parts placed", "value": "280 of 280", "limit": "all", "status": "pass"},
+        {"label": "Gate", "value": "12 pass, 1 warn, 3 fail (all accepted or router-only)", "limit": "as at D09", "status": "warn"},
+        {"label": "Fast route, open", "value": "3 nets, 10 items, all PASSABLE", "limit": "0 (DONE rule; D09 accepted)", "status": "warn"},
+        {"label": "Crystal-net vias", "value": "0", "limit": "0", "status": "pass"}
+      ],
+      "gains": ["Routing can start now, with the hard spots named and an order to take them in"],
+      "costs": ["The skill's DONE rule (0 open in the fast route) stays unmet, as D09 accepted"]
+    },
+    {
+      "key": "B", "name": "Another placement pass at the PHY first",
+      "summary": "Try moving parts round U501 and U401 until a fast route closes every net.",
+      "images": [],
+      "measures": [
+        {"label": "Fast-route runs so far", "value": "seven, 1–3 nets open each, a different set each time", "limit": "0", "status": "fail"}
+      ],
+      "gains": ["The DONE rule might be met"],
+      "costs": ["Every open pin already has a legal route, so moving parts treats the router, not the board; earlier attempts didn't converge"]
+    }
+  ],
+  "recommendation": {"option": "A", "why": "Placement has nothing left that its checks can find; what remains is routing order at two dense chips, which a router or a human handles directly."},
+  "answer": "Reply with A or B, or a change.",
+  "sources": ["placement/2026-11-02-bars/gate.md", "judge_final fast route", "REPORT.md (what routing inherits)", "CLAUDE.md"]
+}
