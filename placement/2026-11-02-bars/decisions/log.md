@@ -11,6 +11,7 @@
 | D07 | 2026-11-02 | MCU crystal block as composed, with a no-via rule on the crystal nets | https://claude.ai/artifact/7cWymGEgGDMhtveNwaRFJy | A, as composed with the no-via rule (user, 2026-11-02) | crystal block approved; node60.kicad_dru forbids vias on the FXOSC nets; routing routes them first on B.Cu |
 | D08 | 2026-11-02 | One output-switch cell, U701's, copied to U601 and U801 | https://claude.ai/artifact/V4af2FuXFsyNta7XuYQYwC | A, as composed (user, 2026-11-02) | output cells approved: U601 turned 90° and moved 4.3 mm, U801 to (224, 113), TP806 at (231, 107.75) |
 | D09 | 2026-11-02 | Placement gate: accept the four open items (busbar tie-pad overlaps, schematic parity, U501 pin 29, KRT's busbar join) and open the PR | https://claude.ai/artifact/1z4TKiSdvHmywjzRExvkxU | A, open the PR (user, 2026-11-02) | the four items accepted (REPORT.md); composed placement applied to node60.kicad_pcb |
+| D10 | 2026-11-02 | U303's 1.5 V core buck cell recomposed round the TPS628502-Q1 (DEC-026) | https://claude.ai/artifact/FcS4kULQHc7bRbmQPYejuZ | awaiting answer | |
 
 ## Skill gaps found in this run
 
