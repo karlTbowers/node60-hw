@@ -3,7 +3,7 @@
 // Amphenol's SurLok Plus models, lit and rendered by scripts/hero/scene.js in headless Chrome.
 // Needs kicad-cli, so it runs on a workstation, not in CI; the images are committed.
 //   npm run drawings && npm run hero
-// Options: view names to render only those (assembled, exploded, lamps); --reuse to keep the GLBs
+// Options: view names to render only those (assembled, lamps; exploded too, no longer on the site); --reuse to keep the GLBs
 // already in build/; --ss N for the supersampling; --out DIR to write somewhere else.
 import { execFileSync } from 'node:child_process';
 import { createServer } from 'node:http';
@@ -21,7 +21,7 @@ const argv = process.argv.slice(2), opt = (name) => { const i = argv.indexOf(nam
 const out = opt('--out') ?? join(docs, 'src/assets/hero');
 const SS = +(opt('--ss') ?? 2);              // rendered SS times larger, then downsampled
 const reuse = argv.includes('--reuse'), names = argv.filter(a => !a.startsWith('--'));
-const VIEWS = names.length ? names : ['assembled', 'exploded', 'lamps'];
+const VIEWS = names.length ? names : ['assembled', 'lamps'];
 mkdirSync(build, { recursive: true });
 mkdirSync(out, { recursive: true });
 const WIDTH = 2400, HEIGHT = 1200;           // output size
