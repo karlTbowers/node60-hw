@@ -1,0 +1,116 @@
+{
+  "id": "D10",
+  "name": "1.5 V core buck cell",
+  "question": "Approve U303's cell recomposed round the TPS628502-Q1?",
+  "board": "node60",
+  "stage": "3 Blocks",
+  "date": "2026-11-02",
+  "why_now": "DEC-026 (your choice, 2026-11-02) replaced U303's LMQ66430 with a TPS628502QDRLRQ1 fed from 3V3_MAIN, so the 1.5 V core rail stays out of the AM band. You approved the LMQ66430 cell in D06; the new chip is a smaller SOT-583 with a different pinout. VIN (pin 1) and GND (pin 8) now sit together at one end, so the cell had to be recomposed.\n\nThe parts that stay (L302, the divider, the output caps) changed value, not place in the circuit. C312 and the LMQ66430's VCC cap C313 are gone, and a 10 pF feed-forward cap, C319, is new. Every part was placed with `pose_search.py`, ranked by its distance to the pins TI says it serves.",
+  "facts": [
+    {
+      "label": "TI layout rules",
+      "value": "input cap as close as possible between VIN and GND; switched-current paths short and wide; FB resistors close to the IC and away from SW; thermal vias on VIN and GND",
+      "source": "TI TPS62850x-Q1 SLUSDM0N (January 2026), \u00a79.5.1 and Figure 9-61"
+    },
+    {
+      "label": "Settings",
+      "value": "COMP/FSET and MODE/SYNC tied to VIN: internal 2.25 MHz, spread spectrum on, forced PWM; 76.8k / 51k divider with 10 pF feed-forward (TI Table 9-2); L302 0.56 \u00b5H 744383560056HT; C311 10 \u00b5F 16 V 1206",
+      "source": "DEC-026, sheets/regulators.kicad_sch"
+    },
+    {
+      "label": "Library",
+      "value": "TPS628502QDRLRQ1 (new SOT-583 footprint), 744383560056HT, AC0402FR-0776K8L and AC0402FR-0751KL: dropout-kicad-library PR #49, which the node60 branch is pinned to until it merges",
+      "source": "library PR #49"
+    },
+    {
+      "label": "Board checks",
+      "value": "floorplan 0 errors; assembly blocking only the four busbar tie pads you accepted in D09; KiCad DRC 0 errors; schematic parity down to the known 19 ki_fp_filters warnings and C207/L201; closest switch node to the T1S line still U302's, 11.8 mm",
+      "source": "check_floorplan, check_assembly, kicad-cli"
+    },
+    {
+      "label": "The open items",
+      "value": "All at the MCU and PHY, 20\u201340 mm from U303, and every pin reads PASSABLE (a route exists), as in D09: the bulk pass rips 3V3_MAIN and does not restore every connection. 3V3_MAIN now also reaches U303, which changes its routing order. Routing inherits the PHY's south edge (and now these BGA balls) as items to route by hand first",
+      "source": "judge_dec026, check_reachability"
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "name": "As composed",
+      "summary": "C310 and C311 across the VIN/GND end, L302 north over SW, the output caps off L302's output with their ground near C310's, and R304/R305/C319 on the FB side, as in TI's Figure 9-61.",
+      "images": [
+        {
+          "path": "img/u303_tps_B.png",
+          "caption": "Bottom side seen from above: dashed outlines and arrows show where the LMQ66430 cell's parts were (main's board)"
+        },
+        {
+          "path": "img/tps628502_fig9-61.png",
+          "caption": "TI SLUSDM0N Figure 9-61, the layout example"
+        }
+      ],
+      "measures": [
+        {
+          "label": "HF input cap C310 to VIN pin 1 / GND pin 8",
+          "value": "0.67 / 0.67 mm",
+          "limit": "as close as possible",
+          "status": "pass"
+        },
+        {
+          "label": "Input loop plan area (pad centres)",
+          "value": "1.94 mm\u00b2",
+          "limit": "as small as possible",
+          "status": "pass"
+        },
+        {
+          "label": "10 \u00b5F C311 to the pins",
+          "value": "2.15 mm",
+          "limit": "close",
+          "status": "pass"
+        },
+        {
+          "label": "L302 SW pad to SW pin 7",
+          "value": "1.97 mm",
+          "limit": "short",
+          "status": "pass"
+        },
+        {
+          "label": "R304 / R305 / C319 to FB pin 5",
+          "value": "0.60 / 0.55 / 0.71 mm",
+          "limit": "close to the IC",
+          "status": "pass"
+        },
+        {
+          "label": "FB parts from the switch node",
+          "value": "1.4 / 1.1 / 1.4 mm",
+          "limit": "away from SW (FB is 1 mm from SW inside the package)",
+          "status": "info"
+        },
+        {
+          "label": "Fast route of the board",
+          "value": "every net in U303's cell routed. 3 nets still open elsewhere (10 items): 3V3_MAIN at U401 balls H6/H7/L8/K11 and U501 pins 18/29, REFCLK and IRQ_L at U501. All PASSABLE; the same routing order left 2 open before DEC-026",
+          "limit": "0 / 0 (judged at the gate; D09 accepted the PHY item)",
+          "status": "warn"
+        }
+      ],
+      "gains": [
+        "TI's layout for the new chip, with the input loop as tight as the LMQ66430's",
+        "The core rail switches at a fixed 2.25 MHz with spread spectrum at any battery voltage (DEC-026)"
+      ],
+      "costs": [
+        "The D06 cell is replaced; the 1V5 cell's pose table is rewritten and waits on this approval"
+      ]
+    }
+  ],
+  "recommendation": {
+    "option": "A",
+    "why": "It follows TI's layout example part for part, and every check that passed for the D06 cell still passes."
+  },
+  "answer": "Reply with A, or a change.",
+  "sources": [
+    "TI TPS62850x-Q1 SLUSDM0N, \u00a79.5.1, Figure 9-61, Table 8-1, Table 9-2",
+    "DEC-026",
+    "blocks/buck_1v5.poses.json",
+    "hot_loop.py with switchers.json (U303 spec updated)",
+    "judge_dec026 fast route"
+  ]
+}

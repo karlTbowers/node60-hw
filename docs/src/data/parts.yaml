@@ -123,13 +123,41 @@
 - id: LMQ66430MC3RXBRQ1
   mpn: LMQ66430MC3RXBRQ1
   manufacturer: Texas Instruments
-  qty: 2
-  function: INH-gated 3.3 V and 1.5 V low-Iq bucks
+  qty: 1
+  function: INH-gated 3.3 V low-Iq buck (3V3_MAIN); until DEC-026 also the 1.5 V buck
   subsystem: power
   status: selected
-  decision_note: "Selected discrete power tree. Direct INH enable plus EN-pin chaining; no FS26. MC3 variant (2.2 MHz, fixed 3.3 V or adjustable) chosen 2026-10-22; the earlier code LMQ66430QMC5RXBRQ1 does not exist"
+  decision_note: "Selected discrete power tree. Direct INH enable plus EN-pin chaining; no FS26. MC3 variant (2.2 MHz, fixed 3.3 V or adjustable) chosen 2026-10-22; the earlier code LMQ66430QMC5RXBRQ1 does not exist. The 1.5 V buck became a TPS628502-Q1 on 3V3_MAIN on 2026-11-02 (DEC-026): from the battery the LMQ66430 folds back into the AM band"
   supply_note: Not verified
-  decisions: [DEC-004]
+  decisions: [DEC-004, DEC-026]
+
+- id: TPS628502QDRLRQ1
+  mpn: TPS628502QDRLRQ1
+  manufacturer: Texas Instruments
+  qty: 1
+  label: TPS628502-Q1 automotive 2 A buck
+  function: 1.5 V MCU core rail (1V5_CORE) from 3V3_MAIN, fixed 2.25 MHz with spread spectrum, forced PWM
+  subsystem: power
+  status: selected
+  decision_note: "Selected 2026-11-02 (user, DEC-026). 2.7–6 V in, 2 A, AEC-Q100 Grade 1, TJ to 150 °C, SOT-583 (data sheet SLUSDM0N, January 2026). Holds 2.25 MHz at 3.3 V in (duty about 45 %). Rejected: TPS628122GQWRWYRQ1 (fixed 1.5 V; full reels only at DigiKey), MAX20004E (3.5 V minimum input), TPS62903-Q1 (3.0 V minimum input, no stock), MPQ2143-AEC1 (not for new designs)"
+  second_source: TPS628503QDRLRQ1
+  observations:
+    - { date: 2026-11-02, source: DigiKey, prices: [{ qty: "1", usd: 2.06 }], stock: 7465 }
+    - { date: 2026-11-02, source: Mouser, stock: 3466 }
+  decisions: [DEC-026]
+
+- id: TPS628503QDRLRQ1
+  mpn: TPS628503QDRLRQ1
+  manufacturer: Texas Instruments
+  qty: 0
+  function: 3 A version of the 1.5 V core buck; same SOT-583 pinout and data sheet as TPS628502QDRLRQ1
+  subsystem: power
+  status: alternative
+  decision_note: "Second source in the same family (DEC-026, 2026-11-02): pin-compatible, same compensation and frequency settings (SLUSDM0N Table 8-1). No other maker's drop-in found"
+  observations:
+    - { date: 2026-11-02, source: DigiKey, stock: 13283 }
+    - { date: 2026-11-02, source: Mouser, stock: 4733 }
+  decisions: [DEC-026]
 
 - id: TBD-VDDAU-LDO
   mpn: TPS7B8133QWDRVRQ1
