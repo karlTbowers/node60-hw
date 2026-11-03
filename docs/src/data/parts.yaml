@@ -159,6 +159,93 @@
     - { date: 2026-11-02, source: Mouser, stock: 4733 }
   decisions: [DEC-026]
 
+- id: GYF1H470MCQ1GS
+  mpn: GYF1H470MCQ1GS
+  manufacturer: Nichicon
+  qty: 1
+  label: GYF1H470MCQ1GS (47 µF 50 V hybrid polymer)
+  function: "VBAT_FILT damping capacitor C207 for the L201 EMI filter (U302's input); C217 beside it is the same part, not fitted (DNP), for bench tuning"
+  subsystem: power
+  status: selected
+  decision_note: "Selected 2026-11-03 (user, decision page). Hybrid polymer aluminium, 47 µF ±20 %, 50 V, ESR 40 mΩ, 4000 h at 125 °C, AEC-Q200, 6.3 × 7.7 mm can (8.0 mm max), so it goes on the top side under the 9.0 mm low lid: no 47 µF / ≥ 50 V / 125 °C electrolytic fits under the board (6.17 mm). Damping per TI AN-2162: Cd ≥ 4 × CIN (about 12 µF effective), filter peak 0.66 Ω with 2.2 µH against U302's 3.1 Ω worst input impedance (3 A out, 6 V in). 50 V = 1.47 × the 34 V OV cut-off (AN-2162 asks ≥ 1.25 ×). C217 (DNP, same footprint CP_Elec_6.3x7.7) takes a second 47 µF or, with C207, 2 × 22 µF. Rejected: UCZ1H470MCS6GS (plain aluminium; ESR 0.5 Ω rises to 5 Ω at −40 °C, filter peak 2.5 Ω), T598X156M063ATE075 × 3 (fits the bottom side, 4.3 mm, but about $17), every 35 V polymer tantalum and T598D106M050 (below 34 V at 125 °C), a ceramic bank (no ESR to damp; would need a series resistor)"
+  second_source: HHXC500ARA220MF61G
+  observations:
+    - { date: 2026-11-03, source: DigiKey GYF1H470MCQ1GCT-ND, prices: [{ qty: "1", usd: 1.40 }], stock: 10450 }
+    - { date: 2026-11-03, source: Mouser 647-GYF1H470MCQ1GS, stock: 392 }
+  library: DropOut_Capacitor:GYF1H470MCQ1GS
+
+- id: HHXC500ARA220MF61G
+  mpn: HHXC500ARA220MF61G
+  manufacturer: Chemi-Con
+  qty: 0
+  label: HHXC500ARA220MF61G (22 µF 50 V hybrid polymer)
+  function: "2 × 22 µF alternative to the 47 µF C207, fitted on C207 and C217 (6.3 × 5.8 mm can, 6.1 mm max, same land)"
+  subsystem: power
+  status: alternative
+  decision_note: "Candidate 2026-11-03 (user's 2 × 22 µF request): ESR 80 mΩ each, two give 44 µF / 40 mΩ, the same damping as one GYF1H470MCQ1GS. Also the fallback if Nichicon's 47 µF is short: no other maker's 47 µF / 50 V / 125 °C hybrid in a 6.3 mm can was found"
+  second_source: EEH-ZC1H220P
+  observations:
+    - { date: 2026-11-03, source: DigiKey 565-4782-1-ND, prices: [{ qty: "1", usd: 0.82 }], stock: 52115 }
+    - { date: 2026-11-03, source: Mouser 661-HHXC500A220MF61G, stock: 921 }
+  library: DropOut_Capacitor:HHXC500ARA220MF61G
+
+- id: EEH-ZC1H220P
+  mpn: EEH-ZC1H220P
+  manufacturer: Panasonic
+  qty: 0
+  label: EEH-ZC1H220P (22 µF 50 V hybrid polymer)
+  function: Second source for HHXC500ARA220MF61G (2 × 22 µF option on C207/C217)
+  subsystem: power
+  status: alternative
+  decision_note: "Candidate 2026-11-03: Panasonic ZC, 22 µF 50 V, ESR 80 mΩ, 4000 h at 125 °C, 6.3 × 5.8 mm"
+  observations:
+    - { date: 2026-11-03, source: DigiKey P15463CT-ND, prices: [{ qty: "1", usd: 0.89 }], stock: 8772 }
+    - { date: 2026-11-03, source: Mouser 667-EEH-ZC1H220P, stock: 1050 }
+  library: DropOut_Capacitor:EEH-ZC1H220P
+
+- id: 74438356022HT
+  mpn: 74438356022HT
+  manufacturer: Würth Elektronik
+  qty: 2
+  label: 74438356022HT (WE-MAPI 4020 HT, 2.2 µH)
+  function: "EMI filter inductor L201 (VBAT_PROT to VBAT_FILT); the same part is U302's buck inductor L301"
+  subsystem: power
+  status: selected
+  decision_note: "L201 selected 2026-11-03 (user, decision page). 2.2 µH ±20 %, Isat 3.7 A (−10 %), IRP 5.9 A, DCR 32.2 mΩ, AEC-Q200, −55 to +150 °C, 4.1 × 4.1 × 2.1 mm, bottom side. Starting value: TI AN-2162 puts the filter inductor at 1–10 µH; with about 9 µF on VBAT_PROT the LC attenuates the 2.2 MHz fundamental by 72 dB, resonance 31 kHz. Current: 2.1 A worst case (U302 at its 3 A rating at the 5.47 V UVLO floor; no 3V3_MAIN load budget exists yet). The value follows the emissions test: 74438356010HT (1.0 µH, in the library) and 74438356047HT (4.7 µH) fit the same footprint L_Wuerth_MAPI-4020. TI's own filter (SNVSBV1F Fig. 8-25) uses a ferrite bead, which has less inductance at 2.2 MHz"
+  second_source: VCHA042A-2R2MS6
+  observations:
+    - { date: 2026-11-03, source: DigiKey 732-74438356022HTCT-ND, prices: [{ qty: "1", usd: 2.09 }], stock: 2844 }
+    - { date: 2026-11-03, source: Mouser 710-74438356022HT, stock: 900 }
+  library: DropOut_Inductor:74438356022HT
+
+- id: VCHA042A-2R2MS6
+  mpn: VCHA042A-2R2MS6
+  manufacturer: Cyntec
+  qty: 0
+  label: VCHA042A-2R2MS6 (2.2 µH)
+  function: Alternate L201 (EMI filter inductor); needs its own footprint L_Cyntec_VCHA042A
+  subsystem: power
+  status: alternative
+  decision_note: "Candidate 2026-11-03: 2.2 µH, DCR 23.0 mΩ, Isat 4.5 A (−30 %), Idc 5.3 A, −55 to +165 °C, AEC-Q200, 4.2 × 4.0 × 2.1 mm; deep DigiKey stock, thin at Mouser"
+  observations:
+    - { date: 2026-11-03, source: DigiKey 2037-VCHA042A-2R2MS6CT-ND, prices: [{ qty: "1", usd: 1.43 }], stock: 35362 }
+    - { date: 2026-11-03, source: Mouser 108-VCHA042A-2R2MS6, stock: 8 }
+  library: DropOut_Inductor:VCHA042A-2R2MS6
+
+- id: SRP4020FA-2R2M
+  mpn: SRP4020FA-2R2M
+  manufacturer: Bourns
+  qty: 0
+  label: SRP4020FA-2R2M (2.2 µH)
+  function: Alternate L201 (EMI filter inductor); needs its own footprint L_Bourns_SRP4020FA
+  subsystem: power
+  status: alternative
+  decision_note: "Candidate 2026-11-03: 2.2 µH, DCR 23.5 mΩ, Isat 3.8 A (−20 %), Irms 8.0 A, −55 to +155 °C, AEC-Q200, 4.1 × 4.1 × 2.1 mm; cheapest, stocked at both distributors"
+  observations:
+    - { date: 2026-11-03, source: DigiKey SRP4020FA-2R2MCT-ND, prices: [{ qty: "1", usd: 1.17 }], stock: 4618 }
+    - { date: 2026-11-03, source: Mouser 652-SRP4020FA-2R2M, stock: 1519 }
+  library: DropOut_Inductor:SRP4020FA-2R2M
+
 - id: TBD-VDDAU-LDO
   mpn: TPS7B8133QWDRVRQ1
   manufacturer: Texas Instruments
