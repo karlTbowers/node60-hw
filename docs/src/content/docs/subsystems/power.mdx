@@ -21,7 +21,7 @@ A protected 60 A-capable VBAT path and deliberately split low-power rails suppor
 | Ideal-diode controller | LM74910HQRGERQ1, VQFN-24 (4 × 4 mm), AEC-Q100 Grade 1 | Choose 80–100 V AEC-Q101 MOSFETs after surge/thermal calculation; verify VOUT tap after Q2 |
 | Primary TVS | XLD8A24CA, 24 V, 7 kW class | Verify clamp against regulator and MOSFET limits |
 | Input fuse | Source-mounted; one per feed when dual-fed | Coordinate 60 A load, wire ampacity, inrush, and fault clearing |
-| EMI filter | Damped π filter after protection | Finalize current and damping after emissions test |
+| EMI filter | Damped π filter after protection, regulator branch only: L201 Würth 74438356022HT 2.2 µH; C207 Nichicon GYF1H470MCQ1GS 47 µF 50 V hybrid polymer as the damping capacitor, with C217 (same footprint) not fitted | Values follow the emissions test: 1.0 or 4.7 µH fit L201's footprint; C217 takes a second 47 µF, or C207 + C217 take 2 × 22 µF |
 
 ## VBAT_RAW voltage telemetry
 
