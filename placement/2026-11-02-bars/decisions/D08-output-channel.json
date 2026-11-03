@@ -1,0 +1,170 @@
+{
+  "id": "D08",
+  "name": "Output channel cell",
+  "question": "Approve one output-switch cell, laid out round U701 and copied to U601 and U801?",
+  "board": "node60",
+  "stage": "3 Blocks",
+  "date": "2026-11-02",
+  "why_now": "Each TPS2HCS08A-Q1 drives two outputs and has 21 parts round it. The annealer placed the three channels differently. Channel 3-4 came out close to TI's layout, but in channels 1-2 and 5-6 the current-sense parts were 12 to 38 mm from their SNS pin, which makes the current reading noisy. The fault line from U801 was also caged: no track could leave pin 12.\n\nThe cell is U701's, tidied, then copied to the other two switches by reference. Only the anchors and one test point differ.",
+  "facts": [
+    {
+      "label": "TI layout rules",
+      "value": "RSNS and CSNS close to the SNS pin; CVBB1 as close as possible to the VBB and GND pins; exposed pad on a large pour with a VBB plane inside the board (In4 here); MCU signals to a via and an inner layer",
+      "source": "TI TPS2HCS08-Q1 datasheet SLVSHR0 (May 2025), \u00a79.4.1, Figure 9-5"
+    },
+    {
+      "label": "Cell",
+      "value": "U701 and its 21 parts (7 caps, 7 resistors, the NTC, 6 test points); 13 core, 8 flex (the NTC divider and filter and the test points, up to 4 mm; the GND probe loop up to 12 mm)",
+      "source": "blocks/out_34.poses.json"
+    },
+    {
+      "label": "U601",
+      "value": "turned from 180\u00b0 to 90\u00b0 and moved 4.3 mm, to (87.5, 109.4), so it matches U701's cell",
+      "source": "blocks/out_6x.poses.json"
+    },
+    {
+      "label": "U801",
+      "value": "moved from (220.0, 112.1) to (224.0, 113.0). FLT pin 12 was caged at the annealer's pose and at (220, 112); here the reachability check passes it",
+      "source": "check_reachability, blocks/out_8x.poses.json"
+    },
+    {
+      "label": "TP806 (GND probe loop)",
+      "value": "the copied pose overlapped the J908 header, so it sits at (231, 107.75), 9.4 mm from pin 1",
+      "source": "pose_search.py"
+    },
+    {
+      "label": "Small fixes in all three cells",
+      "value": "RSNS (R605/R705/R805) 0.1 mm off the switch's courtyard; C803 0.3 mm off J908's courtyard",
+      "source": "pose_search.py"
+    },
+    {
+      "label": "Top side",
+      "value": "CVBB1 (C601/C701/C801) and the VDD decap (C603/C703/C803) are on F.Cu directly over their pins, as the project puts every decap on top; the rest of the cell is on B.Cu with the switch",
+      "source": "plan.md"
+    },
+    {
+      "label": "The one open pin",
+      "value": "U501 pin 29 (3V3_MAIN), between the unused pin 28 and the T1S pair on 30-31, at 0.5 mm pitch. It reads PASSABLE, so a route exists. The fan-out gives it a stub; the bulk pass then rips all of 3V3_MAIN to make room and restores 67 of its 68 connections, not this one. 3V3_MAIN has endpoints in the moved output cells (R601/R701/R801, R607/R707/R807), so the composed board changes that net's routing order; the PHY's parts did not move. Carried to the final gate as its own row",
+      "source": "check_reachability; judge_composed3 chain.log"
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "name": "One cell, copied three times",
+      "summary": "U701's cell, with U601 turned and U801 moved so all three are identical. The sense parts sit by the SNS pin in every channel.",
+      "images": [
+        {
+          "path": "img/out12_moved_B.png",
+          "caption": "Channel 1-2 (U601), bottom side seen from above. Dashed outlines and arrows show where each part was; most came from 10\u201315 mm east"
+        },
+        {
+          "path": "img/out34_moved_B.png",
+          "caption": "Channel 3-4 (U701), the cell the others copy. Only RSNS (R705) and CSNS (C704) moved, each by about 1 mm, onto the SNS pin"
+        },
+        {
+          "path": "img/out56_moved_B.png",
+          "caption": "Channel 5-6 (U801): the cell moved 4 mm east; CSNS came from 38 mm west, and TP806 sits top right, clear of J908"
+        },
+        {
+          "path": "img/tps_fig9-5.png",
+          "caption": "TI SLVSHR0 Figure 9-5, the layout example"
+        }
+      ],
+      "measures": [
+        {
+          "label": "RSNS to SNS pin, pad gap (all three)",
+          "value": "0.55 mm",
+          "limit": "close to the SNS pin",
+          "status": "pass"
+        },
+        {
+          "label": "CSNS to SNS pin, pad gap (all three)",
+          "value": "2.36 mm",
+          "limit": "close to the SNS pin",
+          "status": "pass"
+        },
+        {
+          "label": "CVBB1 over the VBB pad (all three)",
+          "value": "directly over it, on F.Cu",
+          "limit": "as close as possible",
+          "status": "pass"
+        },
+        {
+          "label": "FLT pin 12 reachable (U601 / U701 / U801)",
+          "value": "yes / yes / yes",
+          "limit": "yes",
+          "status": "pass"
+        },
+        {
+          "label": "OUT pins to header, centre to centre (1/2, 3/4, 5/6)",
+          "value": "29.1/20.9, 29.0/21.0, 16.3/27.0 mm",
+          "limit": "short (set by the header pitch)",
+          "status": "info"
+        },
+        {
+          "label": "Fast route of the composed board (KRT / board rules)",
+          "value": "1 open / 1 open: U501 pin 29 (3V3_MAIN), at the PHY. 0 in the output channels: all 12 OUT, SNS and FLT nets routed",
+          "limit": "0 / 0 (judged at the final gate)",
+          "status": "warn"
+        }
+      ],
+      "gains": [
+        "The same cell three times, each with its sense parts by the SNS pin, so the three channels read current alike",
+        "U801's fault line can be routed"
+      ],
+      "costs": [
+        "U601 and U801 moved, so their neighbours were checked again (the board stays buildable, 0 floorplan errors)"
+      ]
+    },
+    {
+      "key": "B",
+      "name": "As the annealer left them",
+      "summary": "Keep the three channels as on main.",
+      "images": [
+        {
+          "path": "img/out56_moved_B.png",
+          "caption": "The dashed outlines are the annealer's poses"
+        }
+      ],
+      "measures": [
+        {
+          "label": "RSNS to SNS pin (1-2 / 3-4 / 5-6)",
+          "value": "13.0 / 2.2 / 16.8 mm",
+          "limit": "close to the SNS pin",
+          "status": "fail"
+        },
+        {
+          "label": "CSNS to SNS pin (1-2 / 3-4 / 5-6)",
+          "value": "11.7 / 3.4 / 38.0 mm",
+          "limit": "close to the SNS pin",
+          "status": "fail"
+        },
+        {
+          "label": "FLT pin 12 reachable (U801)",
+          "value": "no (caged)",
+          "limit": "yes",
+          "status": "fail"
+        }
+      ],
+      "gains": [
+        "No change"
+      ],
+      "costs": [
+        "Two channels with sense parts far from their pin, and one fault line that cannot be routed"
+      ]
+    }
+  ],
+  "recommendation": {
+    "option": "A",
+    "why": "It meets TI's placement rules in all three channels and makes every fault line routable."
+  },
+  "answer": "Reply with A or B, or a change.",
+  "sources": [
+    "TI TPS2HCS08-Q1 datasheet SLVSHR0, \u00a79.4.1 and Figure 9-5",
+    "blocks/out_34.poses.json, out_6x.poses.json, out_8x.poses.json",
+    "check_reachability on U601/U701/U801 pin 12",
+    "judge_composed2 fast route",
+    "judge_composed3 (REFCLK and RBIAS routed after the T1S pair, then three targeted passes)"
+  ]
+}

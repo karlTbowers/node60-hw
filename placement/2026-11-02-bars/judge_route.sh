@@ -39,6 +39,11 @@ step decap py_placer/place_fanout_clearance.py $OUT/s2.kicad_pcb $OUT/s3.kicad_p
 # The MCU crystal's nets route on B.Cu only, with no via (NXP S32K3 HDG §3.2; node60.kicad_dru), before anything else claims the area
 step crystal py_router/route.py $OUT/s3.kicad_pcb $OUT/s3.kicad_pcb --nets '*FXOSC*' --clearance 0.15 --clearance-ceiling 0.15 --track-width 0.1 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off $FAB --layers B.Cu
 step diff py_router/route_diff.py $OUT/s3.kicad_pcb $OUT/s4.kicad_pcb --nets /T1S/T1S_CMC_P /T1S/T1S_CMC_N /T1S/T1S_PHY_P /T1S/T1S_PHY_N /T1S_P /T1S_N --track-width 0.165 --diff-pair-gap 0.15 --clearance 0.15 --clearance-ceiling 0.15 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off $FAB $L
+# After the T1S pair (pins 30-31, same edge), which has priority.
+# The PHY's south pins 26-29 (RBIAS, REFCLK, 3V3_MAIN) sit at 0.5 mm pitch; the bulk passes lose one of
+# them each run though each reads PASSABLE. Route the two signals first, before anything crowds them
+# (3V3_MAIN first as well was worse: 3 open, the T1S pair among them).
+step phy_first py_router/route.py $OUT/s4.kicad_pcb $OUT/s4.kicad_pcb --nets /T1S/T1S_REFCLK /T1S/T1S_RBIAS --clearance 0.15 --clearance-ceiling 0.15 --track-width 0.1 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off $FAB $L
 PW=(--power-nets 'GN[D/]' 'VBAT_PRO[T/]' /VBAT_IN "/Power entry/VBAT_D" 'VBAT_FIL[T/]' "/Power entry/VBAT_Q2D" 'VDDAU_AO[N/]' "/Outputs 1-2/SW_VDD" "/Outputs 5-6/SW_VDD" "/Outputs 3-4/SW_VDD" /Regulators/VDDAU_AON_REG --power-nets-widths 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3)
 step route py_router/route.py $OUT/s4.kicad_pcb $OUT/s5.kicad_pcb --nets "*" --no-bga-zones --clearance 0.15 --clearance-ceiling 0.15 --track-width 0.1 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off $FAB --max-ripup 5 --rip-existing-nets /T1S_N /T1S_P $PW $L
 step route_p2 py_router/route.py $OUT/s5.kicad_pcb $OUT/s6.kicad_pcb --nets "*" --no-bga-zones --clearance 0.15 --clearance-ceiling 0.15 --track-width 0.1 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off $FAB --max-ripup 5 $PW $L
@@ -54,7 +59,8 @@ PY
 )
 cp $OUT/s6.kicad_pcb $OUT/s6_before_p3.kicad_pcb
 if [ -n "$OPEN" ]; then
-  step route_p3 py_router/route.py $OUT/s6.kicad_pcb $OUT/s6.kicad_pcb --nets ${(f)OPEN} --no-bga-zones --clearance 0.15 --clearance-ceiling 0.15 --track-width 0.1 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off $FAB --max-ripup 20 --rip-existing-nets '*' $L
+  echo "== route_open: ${(f)OPEN}" >> $OUT/chain.log
+  KRT_PY=$KRT_PY $HERE/route_open.sh $OUT/s6.kicad_pcb $OUT/route_open.log 3 ${(f)OPEN} | tee -a $OUT/chain.log
 fi
 cd $REPO
 $KP .claude/skills/pcb-placement/scripts/grade_route.py $OUT/s6.kicad_pcb --project node60.kicad_pro --rules node60.kicad_dru --json $OUT/rules.json > $OUT/grade.txt 2>&1 || true

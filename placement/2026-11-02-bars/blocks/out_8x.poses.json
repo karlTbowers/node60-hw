@@ -1,14 +1,10 @@
 {
-  "block": "out_8x",
+  "block": "u801",
   "anchor": "U801",
   "approved": null,
-  "copied_from": {
-    "table": "placement/2026-11-02-bars/blocks/out_34.poses.json",
-    "approved": null
-  },
   "anchor_pose": {
-    "x": 219.9771,
-    "y": 112.0971,
+    "x": 224.0,
+    "y": 113.0,
     "rot": 90.0,
     "side": "B"
   },
@@ -20,7 +16,7 @@
       "side": "F",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "CVBB1, VBB to GND. TI SLVSHR0 \u00a79.4.1: as close as possible to the VBB and GND pins. On F.Cu (decaps go on top), directly over the exposed VBB pad"
     },
     "C802": {
       "dx": 0.5838,
@@ -29,16 +25,16 @@
       "side": "B",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "VBB bulk cap, beside the VBB pad, on the channel's VBAT_PROT pour"
     },
     "C803": {
-      "dx": -4.306,
+      "dx": -4.006,
       "dy": 0.3438,
       "rot": 180.0,
       "side": "F",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "VDD decap (SW_VDD). On F.Cu (decaps go on top), over pin 3"
     },
     "C804": {
       "dx": -5.0782,
@@ -47,7 +43,7 @@
       "side": "B",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "CSNS, SNS to GND. TI SLVSHR0 \u00a79.4.1: close to the SNS pin (2.36 mm pad gap)"
     },
     "C805": {
       "dx": -5.551,
@@ -56,7 +52,7 @@
       "side": "B",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "First output's cap to GND, at the first output's pins (6-8)"
     },
     "C806": {
       "dx": 2.9,
@@ -65,16 +61,16 @@
       "side": "B",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "Second output's cap to GND, at the second output's pins (9-11)"
     },
     "C807": {
       "dx": 1.1937,
       "dy": -7.3416,
       "rot": 90.0,
       "side": "B",
-      "role": "core",
-      "flex_mm": 0,
-      "why": ""
+      "role": "flex",
+      "flex_mm": 4,
+      "why": "NTC filter cap, beside the thermistor; position not critical"
     },
     "R801": {
       "dx": 4.265,
@@ -83,7 +79,7 @@
       "side": "B",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "SW_VDD feed from 3V3_MAIN, on the VDD side of the chip"
     },
     "R802": {
       "dx": -1.3923,
@@ -92,7 +88,7 @@
       "side": "B",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "DI pull-down, by pin 4"
     },
     "R803": {
       "dx": -2.9,
@@ -101,7 +97,7 @@
       "side": "B",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "LHI pull-down, by pin 5"
     },
     "R804": {
       "dx": 6.6836,
@@ -110,16 +106,16 @@
       "side": "B",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "FLT pull-up to SW_VDD, by pin 12"
     },
     "R805": {
-      "dx": -4.5782,
+      "dx": -4.6782,
       "dy": 1.583,
       "rot": 270.0,
       "side": "B",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "RSNS, SNS to GND. TI SLVSHR0 \u00a79.4.1: close to the SNS pin (0.55 mm pad gap)"
     },
     "R806": {
       "dx": -5.9045,
@@ -128,16 +124,16 @@
       "side": "B",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "SNS series resistor to the MCU's ADC, from the SNS node to the channel's SNS test point"
     },
     "R807": {
       "dx": 0.3513,
       "dy": -4.1385,
       "rot": 0.0,
       "side": "B",
-      "role": "core",
-      "flex_mm": 0,
-      "why": ""
+      "role": "flex",
+      "flex_mm": 4,
+      "why": "NTC divider, beside the thermistor; position not critical"
     },
     "RT801": {
       "dx": -2.0418,
@@ -146,61 +142,62 @@
       "side": "B",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "Thermistor beside the switch, to read its temperature"
     },
     "TP801": {
       "dx": -3.8535,
       "dy": 6.188,
       "rot": 270.0,
       "side": "B",
-      "role": "core",
-      "flex_mm": 0,
-      "why": ""
+      "role": "flex",
+      "flex_mm": 4,
+      "why": "SNS test point (MCU side)"
     },
     "TP802": {
       "dx": 6.7413,
       "dy": -2.3336,
       "rot": 270.0,
       "side": "B",
-      "role": "core",
-      "flex_mm": 0,
-      "why": ""
+      "role": "flex",
+      "flex_mm": 4,
+      "why": "FLT test point"
     },
     "TP803": {
       "dx": 5.051,
       "dy": 0.975,
       "rot": 270.0,
       "side": "B",
-      "role": "core",
-      "flex_mm": 0,
-      "why": ""
+      "role": "flex",
+      "flex_mm": 4,
+      "why": "SPI MISO test point"
     },
     "TP804": {
       "dx": -8.2048,
       "dy": -1.0045,
       "rot": 270.0,
       "side": "B",
-      "role": "core",
-      "flex_mm": 0,
-      "why": ""
+      "role": "flex",
+      "flex_mm": 4,
+      "why": "First output's test point"
     },
     "TP805": {
       "dx": 2.9,
       "dy": 7.052,
       "rot": 270.0,
       "side": "B",
-      "role": "core",
-      "flex_mm": 0,
-      "why": ""
+      "role": "flex",
+      "flex_mm": 4,
+      "why": "Second output's test point"
     },
     "TP806": {
-      "dx": -8.1731,
-      "dy": -3.3589,
-      "rot": 180.0,
+      "dx": 5.25,
+      "dy": 7.0,
+      "rot": 270.0,
       "side": "B",
-      "role": "core",
-      "flex_mm": 0,
-      "why": ""
+      "role": "flex",
+      "flex_mm": 12,
+      "why": "GND probe loop for the channel, anywhere within 12 mm of pin 1; at (231, 107.75) because the copied pose overlapped J908 (pose_search.py)"
     }
-  }
+  },
+  "anchor_why": "Moved to (224, 113): FLT pin 12 was caged at the annealer's pose and at (220, 112); here it routes"
 }

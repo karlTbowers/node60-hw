@@ -1,5 +1,5 @@
 {
-  "block": "out_34",
+  "block": "u701",
   "anchor": "U701",
   "approved": null,
   "anchor_pose": {
@@ -16,7 +16,7 @@
       "side": "F",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "CVBB1, VBB to GND. TI SLVSHR0 \u00a79.4.1: as close as possible to the VBB and GND pins. On F.Cu (decaps go on top), directly over the exposed VBB pad"
     },
     "C702": {
       "dx": 0.5838,
@@ -25,7 +25,7 @@
       "side": "B",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "VBB bulk cap, beside the VBB pad, on the channel's VBAT_PROT pour"
     },
     "C703": {
       "dx": -4.306,
@@ -34,7 +34,7 @@
       "side": "F",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "VDD decap (SW_VDD). On F.Cu (decaps go on top), over pin 3"
     },
     "C704": {
       "dx": -5.0782,
@@ -43,7 +43,7 @@
       "side": "B",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "CSNS, SNS to GND. TI SLVSHR0 \u00a79.4.1: close to the SNS pin (2.36 mm pad gap)"
     },
     "C705": {
       "dx": -5.551,
@@ -52,7 +52,7 @@
       "side": "B",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "First output's cap to GND, at the first output's pins (6-8)"
     },
     "C706": {
       "dx": 2.9,
@@ -61,16 +61,16 @@
       "side": "B",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "Second output's cap to GND, at the second output's pins (9-11)"
     },
     "C707": {
       "dx": 1.1937,
       "dy": -7.3416,
       "rot": 90.0,
       "side": "B",
-      "role": "core",
-      "flex_mm": 0,
-      "why": ""
+      "role": "flex",
+      "flex_mm": 4,
+      "why": "NTC filter cap, beside the thermistor; position not critical"
     },
     "R701": {
       "dx": 4.265,
@@ -79,7 +79,7 @@
       "side": "B",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "SW_VDD feed from 3V3_MAIN, on the VDD side of the chip"
     },
     "R702": {
       "dx": -1.3923,
@@ -88,7 +88,7 @@
       "side": "B",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "DI pull-down, by pin 4"
     },
     "R703": {
       "dx": -2.9,
@@ -97,7 +97,7 @@
       "side": "B",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "LHI pull-down, by pin 5"
     },
     "R704": {
       "dx": 6.6836,
@@ -106,16 +106,16 @@
       "side": "B",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "FLT pull-up to SW_VDD, by pin 12"
     },
     "R705": {
-      "dx": -4.5782,
+      "dx": -4.6782,
       "dy": 1.583,
       "rot": 270.0,
       "side": "B",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "RSNS, SNS to GND. TI SLVSHR0 \u00a79.4.1: close to the SNS pin (0.55 mm pad gap)"
     },
     "R706": {
       "dx": -5.9045,
@@ -124,16 +124,16 @@
       "side": "B",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "SNS series resistor to the MCU's ADC, from the SNS node to the channel's SNS test point"
     },
     "R707": {
       "dx": 0.3513,
       "dy": -4.1385,
       "rot": 0.0,
       "side": "B",
-      "role": "core",
-      "flex_mm": 0,
-      "why": ""
+      "role": "flex",
+      "flex_mm": 4,
+      "why": "NTC divider, beside the thermistor; position not critical"
     },
     "RT701": {
       "dx": -2.0418,
@@ -142,61 +142,62 @@
       "side": "B",
       "role": "core",
       "flex_mm": 0,
-      "why": ""
+      "why": "Thermistor beside the switch, to read its temperature"
     },
     "TP701": {
       "dx": -3.8535,
       "dy": 6.188,
       "rot": 270.0,
       "side": "B",
-      "role": "core",
-      "flex_mm": 0,
-      "why": ""
+      "role": "flex",
+      "flex_mm": 4,
+      "why": "SNS test point (MCU side)"
     },
     "TP702": {
       "dx": 6.7413,
       "dy": -2.3336,
       "rot": 270.0,
       "side": "B",
-      "role": "core",
-      "flex_mm": 0,
-      "why": ""
+      "role": "flex",
+      "flex_mm": 4,
+      "why": "FLT test point"
     },
     "TP703": {
       "dx": 5.051,
       "dy": 0.975,
       "rot": 270.0,
       "side": "B",
-      "role": "core",
-      "flex_mm": 0,
-      "why": ""
+      "role": "flex",
+      "flex_mm": 4,
+      "why": "SPI MISO test point"
     },
     "TP704": {
       "dx": -8.2048,
       "dy": -1.0045,
       "rot": 270.0,
       "side": "B",
-      "role": "core",
-      "flex_mm": 0,
-      "why": ""
+      "role": "flex",
+      "flex_mm": 4,
+      "why": "First output's test point"
     },
     "TP705": {
       "dx": 2.9,
       "dy": 7.052,
       "rot": 270.0,
       "side": "B",
-      "role": "core",
-      "flex_mm": 0,
-      "why": ""
+      "role": "flex",
+      "flex_mm": 4,
+      "why": "Second output's test point"
     },
     "TP706": {
       "dx": -8.1731,
       "dy": -3.3589,
       "rot": 180.0,
       "side": "B",
-      "role": "core",
-      "flex_mm": 0,
-      "why": ""
+      "role": "flex",
+      "flex_mm": 12,
+      "why": "GND probe loop for the channel, anywhere within 12 mm of pin 1"
     }
-  }
+  },
+  "anchor_why": "The reviewed cell; U601 and U801 are copies of it"
 }
