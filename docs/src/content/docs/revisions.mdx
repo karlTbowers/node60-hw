@@ -28,6 +28,7 @@ Changes accepted since Rev A. Rev B is tagged when the user closes it.
 - Both busbars are schematic and BOM parts: BB901 a net tie between J910's VBAT_IN and J901's new net VBAT_IN_DOWNSTREAM, with no board copper between the two terminals, and BB902 the same part with both pins on GND ([DEC-016](../decisions/dec-016/) rev. B).
 - The 1.5 V core buck U303 is a TPS628502-Q1 fed from 3V3_MAIN, at a fixed 2.25 MHz with spread spectrum and forced PWM, instead of a second LMQ66430-Q1 on the battery, which folded back into the AM band; VBAT_FILT now feeds only the 3.3 V buck ([DEC-026](../decisions/dec-026/)).
 - Regulator-branch EMI filter parts chosen (2026-11-03): L201 Würth 74438356022HT 2.2 µH, C207 Nichicon GYF1H470MCQ1GS 47 µF 50 V hybrid polymer on the top side, and C217 the same part not fitted, for bench tuning ([Power entry & regulated rails](../subsystems/power/)).
+- The PCB is 6 layers, 2.0 mm, made by JLCPCB on its stackup JLC062012-1080 (1 oz outer, 2 oz inner copper), after instant quotes in 6 and 8 layers at 1.6 and 2.0 mm ([DEC-027](../decisions/dec-027/)). Outer copper weight and the via option stay open.
 
 ## Rev A
 

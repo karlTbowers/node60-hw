@@ -6,7 +6,7 @@ description: JLCPCB instant quotes for Node60's 230 × 110 mm board in 6 and 8 l
 import { Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 import Ref from '../../components/Ref.astro';
 
-The stackup and the fab house are still open. <Ref id="DEC-023" /> made the board 2.0 mm thick because JLCPCB builds 6 and 8 layers only up to 2.0 mm, and <Ref id="DEC-024" /> shrank it to 230 × 110 mm. This page holds the JLCPCB prototype quotes for that board (<Ref id="S34" />), taken on **2026-11-01**, with every selection on JLCPCB's quote form so they can be rebuilt by hand, the stackup JLCPCB builds for each, and the via stack.
+**Node60 is built on 6 layers, 2.0 mm, by JLCPCB, on its stackup JLC062012-1080** (<Ref id="DEC-027" />, 2026-11-03). <Ref id="DEC-023" /> made the board 2.0 mm thick because JLCPCB builds 6 and 8 layers only up to 2.0 mm, and <Ref id="DEC-024" /> shrank it to 230 × 110 mm. The outer copper weight (below) and the via option are still open. This page holds the JLCPCB prototype quotes that led to the choice (<Ref id="S34" />), taken on **2026-11-01**, with every selection on JLCPCB's quote form so they can be rebuilt by hand, the stackup JLCPCB builds for each, and the via stack.
 
 <Aside type="caution" title="Dated observations, not quotes">
 These are instant prices from JLCPCB's web form on 2026-11-01, without Gerbers. JLCPCB reviews the real files after upload and may change the price. Re-quote before ordering.
@@ -16,7 +16,7 @@ These are instant prices from JLCPCB's web form on 2026-11-01, without Gerbers. 
 
 Five boards, 230 × 110 mm, Shengyi S1000-2M (Tg 170), ENIG, 1 oz outer and 2 oz inner copper, epoxy-filled and capped vias with a 0.20 mm minimum hole. Only the layer count and the thickness change.
 
-| | 6 layers, 2.0 mm | 6 layers, 1.6 mm | 8 layers, 1.6 mm | 8 layers, 2.0 mm |
+| | 6 layers, 2.0 mm (chosen) | 6 layers, 1.6 mm | 8 layers, 1.6 mm | 8 layers, 2.0 mm |
 |---|---:|---:|---:|---:|
 | JLCPCB stackup | JLC062012-1080 | JLC061612-1080 | JLC081612-1080 | JLC082012-1080 |
 | Engineering fee | $99.00 | $33.00 | $99.00 | $132.00 |
@@ -114,9 +114,9 @@ Set the fields in this order to avoid most of it: layers, dimensions, thickness,
 JLCPCB's own stackup tables, as the quote form shows them (Specify Stackup → View Stackup). Thicknesses are JLCPCB's figures; the finished board is ±10 % (<Ref id="S35" />). Copper is the finished thickness: 1 oz outer is 0.035 mm, 2 oz inner 0.061 mm. The laminate is Shengyi S1000-2M; JLCPCB's generic FR-4 figures are Dk 4.16 for 2116 prepreg, 4.1 for 3313 and 4.4 for 7628.
 
 <Tabs>
-<TabItem label="6 L, 2.0 mm">
+<TabItem label="6 L, 2.0 mm (chosen)">
 
-**JLC062012-1080**, the stackup already in `node60.kicad_pcb`. The layer roles are the board's current ones. JLCPCB also offers JLC062012-3313 and JLC062012-2116 at this thickness (not viewed).
+**JLC062012-1080**, chosen in <Ref id="DEC-027" /> and already in `node60.kicad_pcb`. The layer roles are the board's current ones. JLCPCB also offers JLC062012-3313 and JLC062012-2116 at this thickness (not viewed).
 
 | JLCPCB layer | KiCad layer | Material | Thickness (mm) | Role |
 |---|---|---|---:|---|
