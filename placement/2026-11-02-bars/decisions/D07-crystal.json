@@ -1,0 +1,47 @@
+{
+  "id": "D07",
+  "name": "MCU crystal block",
+  "question": "Approve the MCU crystal block as composed, with a board rule forbidding vias on the crystal nets?",
+  "board": "node60", "stage": "3 Blocks", "date": "2026-11-02",
+  "why_now": "The 16 MHz crystal Y401 sits by U401's EXTAL/XTAL balls (K1, L1), but the annealer had left one load cap 8.4 mm from its crystal pin, a flash SPI clock test point 2.2 mm from the oscillator, and the fast route put 4 vias on the oscillator nets. NXP asks for short, symmetric, via-free traces and no clocks nearby.\n\nThe block was composed by moving three parts. The vias went from 4 to 0, but **not** because of the new board rule: KRT's fan-out and router ignore that rule. What did it is the judging chain routing the three crystal nets first, on B.Cu only, and leaving them out of the BGA fan-out. Routing has to keep doing that; the rule makes KiCad's DRC catch any via that slips in.",
+  "facts": [
+    {"label": "NXP layout rules", "value": "traces between XTAL/EXTAL, the crystal and the load caps as short as possible, without any via, connected to nothing else; symmetric layout; other digital lines, especially clocks, far away; a clean ground area under the crystal", "source": "NXP S32K3xx Hardware Design Guidelines Rev E2, §3.2, Figure 37 (257 MAPBGA)"},
+    {"label": "Parts moved", "value": "C425 (8.4 → 1.5 mm from Y401 pin 3), C424 (3.1 → 1.6 mm from Y401 pin 1), TP407 (SPI2_FLASH_SCK test point) from 2.2 mm from the oscillator to (212, 57), 7 mm away and clear of U401's courtyard", "source": "blocks/crystal.poses.json"},
+    {"label": "Unchanged", "value": "Y401 (3.9 mm from ball K1), R408 (RsEXT, 2.2 mm from ball L1), all on B.Cu with U401", "source": "measured"},
+    {"label": "Nearest clock pad now", "value": "U401's own ball N3 (MDIO0_T1S_MDC), 2.3 mm from the oscillator pads: fixed by NXP's ball map, so routing takes MDC away from the crystal", "source": "measured"},
+    {"label": "New board rule", "value": "node60.kicad_dru: \"No vias on the MCU crystal nets\" (FXOSC_EXTAL, FXOSC_XTAL, FXOSC_XTAL_X)", "source": "this run"}
+  ],
+  "options": [
+    {
+      "key": "A", "name": "As composed, with the no-via rule",
+      "summary": "Keep the three moves and add the rule to `node60.kicad_dru`. The judging chain (and routing later) routes the crystal nets first on B.Cu, outside the BGA fan-out.",
+      "images": [
+        {"path": "img/crystal_moved_B.png", "caption": "Bottom side seen from above, U401 on the right: dashed outlines and arrows show C424, C425 and TP407 moving from where they were to where they are now"},
+        {"path": "img/nxp_fig37.png", "caption": "NXP S32K3 Hardware Design Guidelines Rev E2, page 56: the oscillator layout rules and Figure 37"}
+      ],
+      "measures": [
+        {"label": "Load cap to crystal pin (C424 / C425)", "value": "1.6 / 1.5 mm", "limit": "as short as possible, symmetric", "status": "pass"},
+        {"label": "Vias on the crystal nets (fast route)", "value": "0", "limit": "0", "status": "pass"},
+        {"label": "Nearest clock pad (other than U401's own balls)", "value": "TP407 moved 7 mm away", "limit": "as far as possible", "status": "pass"},
+        {"label": "U401's MDC ball to the oscillator", "value": "2.3 mm", "limit": "as far as possible", "status": "warn"}
+      ],
+      "gains": ["The crystal layout NXP asks for, and a rule that keeps it via-free through routing"],
+      "costs": ["A routing step dedicated to the crystal nets (B.Cu only, first)"]
+    },
+    {
+      "key": "B", "name": "As on main",
+      "summary": "Leave the parts where the annealer put them.",
+      "images": [{"path": "img/crystal_moved_B.png", "caption": "The dashed outlines are main's poses"}],
+      "measures": [
+        {"label": "Load cap to crystal pin (C424 / C425)", "value": "3.1 / 8.4 mm", "limit": "as short as possible, symmetric", "status": "fail"},
+        {"label": "Vias on the crystal nets (fast route)", "value": "4", "limit": "0", "status": "fail"},
+        {"label": "Nearest clock pad (other than U401's own balls)", "value": "TP407, 2.2 mm", "limit": "as far as possible", "status": "fail"}
+      ],
+      "gains": ["No change"],
+      "costs": ["An asymmetric oscillator with a long load-cap trace, a clock test point beside it, and vias NXP says not to use"]
+    }
+  ],
+  "recommendation": {"option": "A", "why": "Every NXP rule the placement can meet is met, and the rule makes DRC hold routing to the rest."},
+  "answer": "Reply with A or B, or a change.",
+  "sources": ["NXP S32K3xx Hardware Design Guidelines Rev E2, §3.2, Figure 37", "blocks/crystal.poses.json", "judge_crystal, judge_crystal_rule, judge_composed fast routes"]
+}

@@ -42,6 +42,20 @@ step diff py_router/route_diff.py $OUT/s3.kicad_pcb $OUT/s4.kicad_pcb --nets /T1
 PW=(--power-nets 'GN[D/]' 'VBAT_PRO[T/]' /VBAT_IN "/Power entry/VBAT_D" 'VBAT_FIL[T/]' "/Power entry/VBAT_Q2D" 'VDDAU_AO[N/]' "/Outputs 1-2/SW_VDD" "/Outputs 5-6/SW_VDD" "/Outputs 3-4/SW_VDD" /Regulators/VDDAU_AON_REG --power-nets-widths 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3)
 step route py_router/route.py $OUT/s4.kicad_pcb $OUT/s5.kicad_pcb --nets "*" --no-bga-zones --clearance 0.15 --clearance-ceiling 0.15 --track-width 0.1 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off $FAB --max-ripup 5 --rip-existing-nets /T1S_N /T1S_P $PW $L
 step route_p2 py_router/route.py $OUT/s5.kicad_pcb $OUT/s6.kicad_pcb --nets "*" --no-bga-zones --clearance 0.15 --clearance-ceiling 0.15 --track-width 0.1 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off $FAB --max-ripup 5 $PW $L
+# Last pass: the nets still open after route_p2 (KRT's JSON_SUMMARY_MIN), again with rip-up of their
+# neighbours allowed. On Node60 the PHY's east pins read PASSABLE but were lost by the bulk passes.
+OPEN=$(python3 - $OUT/chain.log <<'PY'
+import json, re, sys
+s = [l for l in open(sys.argv[1]) if l.startswith("JSON_SUMMARY: ")]
+d = json.loads(s[-1][len("JSON_SUMMARY: "):]) if s else {}
+nets = list(d.get("failed_single", [])) + [m["net_name"] for m in d.get("failed_multipoint", [])]
+print("\n".join(dict.fromkeys(nets)))
+PY
+)
+cp $OUT/s6.kicad_pcb $OUT/s6_before_p3.kicad_pcb
+if [ -n "$OPEN" ]; then
+  step route_p3 py_router/route.py $OUT/s6.kicad_pcb $OUT/s6.kicad_pcb --nets ${(f)OPEN} --no-bga-zones --clearance 0.15 --clearance-ceiling 0.15 --track-width 0.1 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off $FAB --max-ripup 20 --rip-existing-nets '*' $L
+fi
 cd $REPO
 $KP .claude/skills/pcb-placement/scripts/grade_route.py $OUT/s6.kicad_pcb --project node60.kicad_pro --rules node60.kicad_dru --json $OUT/rules.json > $OUT/grade.txt 2>&1 || true
 grep -v -E "wxApp|Fontconfig|Debug|assert" $OUT/grade.txt | tail -15

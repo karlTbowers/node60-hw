@@ -8,6 +8,7 @@
 | D04 | 2026-11-02 | Power-entry block: INA228 beside its shunt | https://claude.ai/artifact/TmF2g6F2qwuSfKVdGnomnn | A, as composed (user, 2026-11-02) | power block v1 approved: U202 beside R201, C214 on B.Cu at U202 pin 6; held through placement |
 | D05 | 2026-11-02 | T1S block as it stands | https://claude.ai/artifact/3qNtDXwTVFXDRsiMQj4BjQ | A, as it stands (user, 2026-11-02) | T1S block v1 approved, held through placement; R503 swap dropped |
 | D06 | 2026-11-02 | Buck cells (U302, U303) as composed, U303 divider on the SW side | https://claude.ai/artifact/WajY8VuzyCVy9FZJmUXBPT | A, as composed (user, 2026-11-02) | buck cells approved as seated; route U303's FB round the north of the chip, away from SW; check 1V5_CORE ripple on the first boards |
+| D07 | 2026-11-02 | MCU crystal block as composed, with a no-via rule on the crystal nets | https://claude.ai/artifact/7cWymGEgGDMhtveNwaRFJy | waiting | |
 
 ## Skill gaps found in this run
 
