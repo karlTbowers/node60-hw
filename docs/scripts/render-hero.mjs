@@ -3,9 +3,11 @@
 // Amphenol's SurLok Plus models, lit and rendered by scripts/hero/scene.js in headless Chrome.
 // Needs kicad-cli, so it runs on a workstation, not in CI; the images are committed.
 //   npm run drawings && npm run hero
+// Options: view names to render only those (assembled, lamps; exploded too, no longer on the site); --reuse to keep the GLBs
+// already in build/; --ss N for the supersampling; --out DIR to write somewhere else.
 import { execFileSync } from 'node:child_process';
 import { createServer } from 'node:http';
-import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { extname, join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import puppeteer from 'puppeteer';
@@ -15,10 +17,14 @@ const docs = join(dirname(fileURLToPath(import.meta.url)), '..');
 const repo = join(docs, '..');
 const sceneDir = join(docs, 'scripts/hero');
 const build = join(sceneDir, 'build');
-const out = join(docs, 'src/assets/hero');
+const argv = process.argv.slice(2), opt = (name) => { const i = argv.indexOf(name); return i < 0 ? null : argv.splice(i, 2)[1]; };
+const out = opt('--out') ?? join(docs, 'src/assets/hero');
+const SS = +(opt('--ss') ?? 2);              // rendered SS times larger, then downsampled
+const reuse = argv.includes('--reuse'), names = argv.filter(a => !a.startsWith('--'));
+const VIEWS = names.length ? names : ['assembled', 'lamps'];
 mkdirSync(build, { recursive: true });
 mkdirSync(out, { recursive: true });
-const WIDTH = 2400, HEIGHT = 1200, SS = 2;   // output size; rendered SS times larger, then downsampled
+const WIDTH = 2400, HEIGHT = 1200;           // output size
 
 // Geometry: the current version, as the drawings and the 3D mockup use it.
 const index = JSON.parse(readFileSync(join(docs, 'src/diagrams/build/enclosure-versions.json'), 'utf8'));
@@ -34,7 +40,7 @@ writeFileSync(join(build, 'hero.json'), JSON.stringify({ geometry, kicad }));
 
 // The board with its models, and the receptacles and plugs (enclosure parts, not on the board)
 // through a scratch board so they come out in the same units and colours.
-const cli = (...args) => execFileSync('kicad-cli', ['pcb', 'export', 'glb', '-f', ...args], { stdio: ['ignore', 'ignore', 'inherit'] });
+const cli = (...args) => reuse && existsSync(args.at(-2)) ? null : execFileSync('kicad-cli', ['pcb', 'export', 'glb', '-f', ...args], { stdio: ['ignore', 'ignore', 'inherit'] });
 cli('--include-pads', '--include-silkscreen', '--include-soldermask', '--include-tracks', '--subst-models',
     '-o', join(build, 'board.glb'), pcbFile);
 const models = join(repo, 'lib/dropout-kicad-library/3dmodels/DropOut_Connector_Amphenol.3dshapes');
@@ -65,7 +71,7 @@ const browser = await puppeteer.launch({
   args: ['--no-sandbox', '--ignore-gpu-blocklist', '--enable-gpu', '--use-angle=metal', '--enable-unsafe-swiftshader'],
 });
 try {
-  for (const view of ['assembled', 'exploded']) {
+  for (const view of VIEWS) {
     const page = await browser.newPage();
     page.on('console', (msg) => console.log(`[${view}] ${msg.text()}`));
     page.on('pageerror', (err) => { throw err; });

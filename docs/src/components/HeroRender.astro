@@ -1,10 +1,10 @@
 ---
 // Front-page hero: renderings of the current enclosure (scripts/render-hero.mjs, committed images),
-// assembled and exploded, switched by two radio buttons (no script).
+// assembled and wired to a vehicle's front lamps, switched by two radio buttons (no script).
 import { Image } from 'astro:assets';
 import Ref from './Ref.astro';
 import assembled from '../assets/hero/node60-enclosure-assembled.webp';
-import exploded from '../assets/hero/node60-enclosure-exploded.webp';
+import lamps from '../assets/hero/node60-enclosure-lamps.webp';
 
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const img = { widths: [800, 1200, 1600, 2400], sizes: '(min-width: 72rem) 62rem, 100vw', format: 'webp', quality: 88 } as const;
@@ -13,7 +13,7 @@ const img = { widths: [800, 1200, 1600, 2400], sizes: '(min-width: 72rem) 62rem,
 <figure class="n60-hero not-content">
 	<div class="n60-hero-stage">
 		<input type="radio" name="n60-hero-view" id="n60-hero-assembled" checked />
-		<input type="radio" name="n60-hero-view" id="n60-hero-exploded" />
+		<input type="radio" name="n60-hero-view" id="n60-hero-lamps" />
 		<div class="n60-hero-pics">
 		<Image
 			{...img}
@@ -25,9 +25,9 @@ const img = { widths: [800, 1200, 1600, 2400], sizes: '(min-width: 72rem) 62rem,
 		/>
 		<Image
 			{...img}
-			src={exploded}
-			class="n60-hero-img n60-hero-exploded"
-			alt="Exploded rendering of the Node60 enclosure: the SurLok Plus receptacles with their screws above the lid, the lid with its raised front band and T1S hood, the board with its copper busbars, grey AT13 output headers and ATM13 T1S headers, and the black anodized case below with its output cutouts."
+			src={lamps}
+			class="n60-hero-img n60-hero-lamps"
+			alt="Rendering of the Node60 enclosure wired to a vehicle's front lamps, one plug in each output, labelled on the floor: OUT1 a daytime running light bar, OUT2 a parking light, OUT3 an amber turn signal, OUT4 a round fog light, OUT5 and OUT6 the low and high beams of a 7-inch round headlight with one dual-filament bulb. A white and blue twisted pair leaves each T1S socket and runs beside the black return cable."
 		/>
 		</div>
 		<div class="n60-hero-text">
@@ -40,11 +40,12 @@ const img = { widths: [800, 1200, 1600, 2400], sizes: '(min-width: 72rem) 62rem,
 		</div>
 		<div class="n60-hero-switch" role="group" aria-label="Rendering">
 			<label for="n60-hero-assembled">Assembled</label>
-			<label for="n60-hero-exploded">Exploded</label>
+			<label for="n60-hero-lamps">Wired</label>
 		</div>
 	</div>
 	<figcaption>
 		A rendering, not a photograph: enclosure version 15 (<Ref id="DEC-025" />) with the board as placed in KiCad today
-		(layout in progress, not routed) and the library's 3D models of every part.
+		(layout in progress, not routed) and the library's 3D models of every part. In the wired view the plugs, cables
+		and lamps are generic shapes drawn for the picture, not makers' models.
 	</figcaption>
 </figure>
