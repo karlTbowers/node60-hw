@@ -35,3 +35,7 @@ D13 answered 2026-11-03: **A, as turned** (user). `blocks/out_6x`, `out_34`, `ou
 D12 rules adopted 2026-11-03 (D12-1 A, D12-7 step 1): `node60.kicad_dru` routing rules, net classes PWR_BATT / PWR_RAIL / SW_NODE, T1S class extended to the K501 legs, mask web 0.10 mm, rule areas ESCAPE_U401/U501 and UNDER_Y401/Y501 (`scripts/draw_rule_areas.py`). `rules/prove_rules.py`: 24 of 24 cases pass (16 fire, 8 controls quiet). Real board: DRC 0 errors, parity 0, ERC 0.
 
 D12-6 applied 2026-11-03: `plan.json` counts 0.65 A per via; R201's high-current pads are now its force pads 1 and 4 (BVR4026). Gate row "Vias at high-current layer changes" PASS, free/needed: Q201–Q204.9 242/47, R201.1 206/93, R201.4 199/93, U601/U701/U801.17 55/31 (R201's two pads share some sites).
+
+## D16 T1S line layout (2026-11-03) — https://claude.ai/artifact/Y3JvotHyv5ecsbPLXwQEUK
+
+User 2026-11-03: T1S runs short and equal; either connector may be used, also as an end node; move the PHY if needed. Composed: PHY chain north of the trunk's midpoint, K501 centred on it, trunk on F.Cu with via taps. `blocks/t1s.poses.json` re-extracted (approved: null). D16-2 asks about a second ESD pair at J912. Awaiting the user's answer.

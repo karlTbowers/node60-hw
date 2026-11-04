@@ -1,0 +1,75 @@
+{
+  "id": "D16",
+  "name": "T1S line layout",
+  "question": "Approve the T1S line re-composed around the trunk's midpoint, and add ESD at J912?",
+  "board": "node60", "phase": "Placement", "stage": "3 Blocks", "date": "2026-11-03",
+  "why_now": "You asked for the T1S runs from the connectors to the PHY to be as short and as equal as possible: the relay already costs some signal integrity, the board has no controlled impedance, and nobody controls which connector a harness uses, including when this node is the end of the bus. You also expected the PHY would have to move.\n\nOn a multidrop bus J912 and J903 are the two ends of one 39 mm trunk that passes through the board; the PHY and the termination relay hang off it. So what matters is (1) the PHY's stub off the trunk, short and with P and N equal, and (2) where the termination sits: as an end node the line dangles from the relay to the unused connector, so the relay at the trunk's midpoint makes both ports the same. D05's block had the PHY chain doubling back south of the trunk and the relay 2.8 mm east of the midpoint.\n\nThis page replaces D05's T1S block (`blocks/t1s.poses.json`, 20 parts, a reason for each).",
+  "facts": [
+    {"label": "Trunk", "value": "On F.Cu, straight between the connectors' pins (through-hole, so any layer; only the housings are above). Each tap is one via down to the bottom side. 39 mm, fixed by the enclosure (DEC-025)", "source": "J912/J903 footprints"},
+    {"label": "One crossing", "value": "FL501's P winding and U501's P pin are on opposite sides at every legal rotation (their pinouts), so the PHY pair crosses once. It was there in D05 too. Placed between FL501 and U501, where one line hops to F.Cu for about 1.5 mm. A 10BASE-T1S link is differential Manchester coded, so swapping P and N at the PHY in the schematic would also work; not proposed here", "source": "FL501, U501 footprints"},
+    {"label": "Measured by", "value": "`rules/t1s_stubs.py`: on a routed board, a tap's stub is (dAC + dBC − dAB)/2 over the routed copper; before routing, a pin-based estimate (trunk straight at the pins' y, a via counted as 2 mm, both relay legs tapping on K501's centre line). Both columns below are that estimate", "source": "rules/t1s_stubs.py"},
+    {"label": "Rules (D12 amended)", "value": "The trunk keeps the 0.14–0.16 mm gap rule; the 2 mm uncoupled limit and the 0.5 mm skew limit now apply only to the PHY side's two-pin pairs (cap to choke, choke to PHY). On the trunk they can't be met (the AT13 pins put P and N 4.2 mm apart, about 2.8 mm uncoupled at each connector) and a branching net's length isn't skew. `prove_rules.py`: 26 of 26", "source": "node60.kicad_dru"},
+    {"label": "Checks", "value": "KiCad DRC 0 errors, parity 0; floorplan 1 error, the U501–U401 distance below; assembly only D09's busbar items; every other approved block on its table pose", "source": "kicad-cli, check_floorplan, check_assembly, block_poses.py"}
+  ],
+  "decisions": [
+    {
+      "id": "D16-1",
+      "question": "Approve the re-composed T1S line?",
+      "options": [
+        {"key": "A", "name": "As composed",
+         "summary": "U501 north of the trunk with its line pins centred on x 155.0, FL501 straight below them, C511/C512 side by side under the trunk (pad 2 under it: the via is the whole tap). K501 moved 2.8 mm west to the midpoint, its termination and drop resistors mirrored either side. The 50 MHz oscillator Y501 east of U501, outside the line zone.",
+         "images": [
+           {"path": "img/t1s_d16_B.png", "caption": "Bottom side seen from above, new block: dashed outlines and lines show where each part was in D05. The trunk runs on F.Cu along the connector pins (y 46)"},
+           {"path": "img/t1s_d05_B.png", "caption": "D05's block for comparison"}
+         ],
+         "measures": [
+           {"label": "PHY stub P / N (trunk to U501 pin)", "value": "12.5 / 12.5 mm", "limit": "short, equal", "status": "pass"},
+           {"label": "of which the tap (trunk to the DC block)", "value": "2.1 / 2.1 mm (one via)", "limit": "short", "status": "pass"},
+           {"label": "End node, J912 used: line dangling past the relay, P / N", "value": "21.6 / 17.4 mm", "limit": "same both ports", "status": "pass"},
+           {"label": "End node, J903 used: line dangling past the relay, P / N", "value": "17.4 / 21.6 mm (the same, mirrored)", "limit": "same both ports", "status": "pass"},
+           {"label": "Relay legs P / N", "value": "12.2 / 12.2 mm", "limit": "equal", "status": "pass"},
+           {"label": "RMII, U501 to U401 pin to pin (Manhattan)", "value": "mean 54 mm, longest 59 mm", "limit": "plan: 25 mm body to body", "status": "warn"},
+           {"label": "U501 to U401, body to body", "value": "36.4 mm", "limit": "25 mm (plan)", "status": "fail"},
+           {"label": "DRC / floorplan", "value": "0 / 1 (the line above)", "limit": "0", "status": "warn"}
+         ],
+         "gains": ["The PHY stub is half as long and P and N are equal (D05: 26.0 / 31.3 mm)", "Either port gives the same end-node line (D05: 18.8 / 14.6 mm one way, 20.2 / 24.4 mm the other)", "The clock stays off the line chain"],
+         "costs": ["RMII about 24 mm longer (mean 30 → 54 mm): at 50 MHz that is about 0.2 ns more, far inside RMII's timing, but past the plan's 25 mm intent, which this answer would raise to 40 mm", "One P/N crossing between FL501 and U501 (as in D05)", "The 4.2 mm P/N difference in the dangling line comes from the AT13 pinout; routing can't remove it without meanders"]},
+        {"key": "B", "name": "Keep D05's block",
+         "summary": "PHY chain south of the trunk doubling back to U501 at (174, 54); relay 2.8 mm east of the midpoint.",
+         "measures": [
+           {"label": "PHY stub P / N (trunk to U501 pin)", "value": "26.0 / 31.3 mm", "limit": "short, equal", "status": "fail"},
+           {"label": "of which the tap (trunk to the DC block)", "value": "11.9 / 16.9 mm", "limit": "short", "status": "fail"},
+           {"label": "End node, J912 used: line dangling past the relay, P / N", "value": "18.8 / 14.6 mm", "limit": "same both ports", "status": "warn"},
+           {"label": "End node, J903 used: line dangling past the relay, P / N", "value": "20.2 / 24.4 mm", "limit": "same both ports", "status": "warn"},
+           {"label": "Relay legs P / N", "value": "12.2 / 12.2 mm", "limit": "equal", "status": "pass"},
+           {"label": "RMII, U501 to U401 pin to pin (Manhattan)", "value": "mean 30 mm, longest 33 mm", "limit": "plan: 25 mm body to body", "status": "pass"},
+           {"label": "U501 to U401, body to body", "value": "under 25 mm", "limit": "25 mm (plan)", "status": "pass"}
+         ],
+         "gains": ["Short RMII"], "costs": ["Longer, unequal PHY stub; the two ports differ as an end node"]}
+      ],
+      "recommendation": {"option": "A", "why": "It is what you asked for: the PHY's stub halves and matches, and the two ports become identical, including as an end node. The price is longer RMII, which at 50 MHz costs timing nothing that matters."}
+    },
+    {
+      "id": "D16-2",
+      "question": "Add an ESD pair at J912?",
+      "why_now": "D501/D502 sit at J903's pins only. A discharge into J912 travels about 35 mm of trace (roughly 1 nH per mm) past the relay contacts and the DC-block caps before it reaches a clamp. Since either connector may face the harness, both should be protected the same.",
+      "options": [
+        {"key": "A", "name": "Second pair at J912",
+         "summary": "Two more VETH100A1DD1HG3-08 (≤ 2.0 pF, 24 V, AEC-Q101, DFN1006-2B) at J912's pins, mirroring D501/D502. Schematic change on p5 and a BOM line; placement adds two 0402-size parts beside J912 on the bottom.",
+         "measures": [
+           {"label": "Trace from J912 to a clamp", "value": "under 2 mm", "limit": "at the connector (AN1718 2.0)", "status": "pass"},
+           {"label": "Line capacitance added", "value": "≤ 2 pF per line more (≤ 4 pF in all)", "limit": "the node's budget: to check first", "status": "warn"}],
+         "gains": ["Both ports protected alike"], "costs": ["Two parts; parts.yaml's note \"one per T1S line\" changes; the extra capacitance must fit the node's budget on the bus"]},
+        {"key": "B", "name": "Keep J903 only",
+         "summary": "As today.",
+         "measures": [
+           {"label": "Trace from J912 to a clamp", "value": "about 35 mm", "limit": "at the connector (AN1718 2.0)", "status": "fail"},
+           {"label": "Line capacitance added", "value": "none", "limit": "the node's budget: to check first", "status": "pass"}],
+         "gains": ["No schematic change"], "costs": ["J912 is the weaker port for ESD"]}
+      ],
+      "recommendation": {"option": "A", "why": "Symmetry is the point of this whole change, and a clamp 35 mm from the pin protects little. Do it in a schematic session that first checks the extra 2 pF per line against the node's capacitance budget; if it doesn't fit, a lower-capacitance diode at both ports is the fallback."}
+    }
+  ],
+  "answer": "Reply with each decision and a letter, for example \"D16-1 A, D16-2 A\", or a change.",
+  "sources": ["blocks/t1s.poses.json", "rules/t1s_stubs.py (estimate mode)", "Microchip AN1718 rev. D §2.0", "parts.yaml: VETH100A1DD1HG3-08", "D05, D12, DEC-012 rev. B, DEC-017"]
+}
