@@ -234,13 +234,13 @@ The same in all four quotes. JLCPCB's standard multilayer process makes through 
 |---|---|---|
 | Via type | Through, F.Cu to B.Cu (L1–L6 or L1–L8); no blind, buried or micro vias; no backdrill | Quote form |
 | Barrel length | Board thickness: 2.0 or 1.6 mm | |
-| Minimum drill | 0.20 mm (KiCad rule `min_through_hole_diameter`); Default class 0.25 mm | `node60.kicad_pro` |
+| Minimum drill | 0.20 mm (KiCad rule `min_through_hole_diameter`); Default class 0.25 mm. Via presets in the PCB editor: 0.35/0.20, 0.40/0.20, 0.45/0.25, 0.60/0.30 and 0.80/0.40 mm (see [KiCad PCB settings](../pcb-settings/)) | `node60.kicad_pro` |
 | Minimum pad | 0.35 mm (rule `min_via_diameter`, annular ring ≥ 0.075 mm); Default class 0.45 mm. JLCPCB wants the pad 0.10 mm larger than the hole, 0.15 mm preferred | `node60.kicad_pro`, <Ref id="S35" /> |
 | Aspect ratio at 0.20 mm | 10 : 1 at 2.0 mm, 8 : 1 at 1.6 mm | |
 | Quote option | Min via hole size/diameter 0.2mm/(0.3/0.35mm): $19.68 plus the forced 4-wire Kelvin test, $18.22 | Quote form |
 | Hole plating | 18 µm average | <Ref id="S35" /> |
 | Fill and cap | Epoxy filled and copper capped, free on 6 layers and up. Tented vias up to 0.5 mm and untented vias up to 0.3 mm are filled. Capped vias can sit in pads, including the BGA's | Quote form, <Ref id="S35" /> |
-| Tenting | Both sides (`node60.kicad_pcb`: tenting front and back) | `node60.kicad_pcb` |
+| Tenting, filling, capping | Tented both sides, filled and capped (`node60.kicad_pcb` via protection; filling and capping set 2026-11-04 to match the order) | `node60.kicad_pcb` |
 | Inner-layer clearance | Via hole to copper ≥ 0.20 mm, so plane antipads ≥ hole + 0.40 mm (0.60 mm for a 0.20 mm hole) | <Ref id="S35" /> |
 | Hole to hole | Via to via ≥ 0.20 mm; pad holes ≥ 0.45 mm | <Ref id="S35" /> |
 | Track and space by copper | 1 oz multilayer: 0.09 / 0.09 mm (0.076 mm allowed in BGA fan-outs). 2 oz: 0.15 / 0.15 mm, so any signal routed on a 2 oz inner layer needs 0.15 mm | <Ref id="S35" /> |

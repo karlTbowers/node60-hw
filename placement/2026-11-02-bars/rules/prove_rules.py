@@ -46,6 +46,7 @@ def via(b, net, x, y):
     v.SetWidth(FM(0.45))
     v.SetDrill(FM(0.25))
     v.SetNet(b.FindNet(net))
+    v.SetIsFree(True)          # else KiCad gives a via standing in a pour the pour's net on save
     b.Add(v)
 
 
@@ -125,11 +126,11 @@ CASES = [
                      centre(b, "Y401")[0] + 1, centre(b, "Y401")[1], 0.2)),
     ("SDA via under Y501", "Under Y501", True, None,
      lambda b: via(b, SDA, *centre(b, "Y501"))),
-    ("other-net track on In2.Cu 0.25 mm from J904 pin 1's hole, its unused inner copper removed", "Plated holes 0.3 mm", True, None,
+    ("other-net track on In2.Cu 0.32 mm from J904 pin 1's hole, its unused inner copper removed", "Plated holes 0.35 mm", True, None,
      lambda b: (pad_of(b, "J904", "1").SetRemoveUnconnected(True), b.BuildConnectivity(),
-                track(b, SDA, "In2.Cu", TM(pad_of(b, "J904", "1").GetPosition().x) + 0.925 + 0.25 + 0.1,
+                track(b, SDA, "In2.Cu", TM(pad_of(b, "J904", "1").GetPosition().x) + 0.925 + 0.32 + 0.1,
                      TM(pad_of(b, "J904", "1").GetPosition().y) - 3,
-                     TM(pad_of(b, "J904", "1").GetPosition().x) + 0.925 + 0.25 + 0.1,
+                     TM(pad_of(b, "J904", "1").GetPosition().x) + 0.925 + 0.32 + 0.1,
                      TM(pad_of(b, "J904", "1").GetPosition().y) + 3, 0.2))),
     ("0.8 mm text on F.Silkscreen", "Silk text 1.0 mm", True, FREE,
      lambda b: text(b, "F.Silkscreen", FREE[0] + 3, FREE[1], 0.8)),
@@ -180,10 +181,12 @@ def run_case(i, case, src):
     return name, rule, fires, where, path
 
 
-def drc(path):
+def drc(path, refill=False):
+    """refill: the case adds a via, which since the power shapes (2026-11-04) lands on plane copper;
+    without a refill DRC reports the short and not the rule under test"""
     out = path + ".drc.json"
-    subprocess.run([KICAD_CLI, "pcb", "drc", "--format", "json", "--units", "mm", "-o", out, path],
-                   capture_output=True)
+    subprocess.run([KICAD_CLI, "pcb", "drc", "--format", "json", "--units", "mm", "-o", out]
+                   + (["--refill-zones"] if refill else []) + [path], capture_output=True)
     return json.load(open(out))
 
 
@@ -229,7 +232,7 @@ def main():
     src = os.path.join(ROOT, BOARD)
     prepared = [run_case(i, c, src) for i, c in enumerate(CASES)]
     with cf.ThreadPoolExecutor(max_workers=5) as ex:
-        reports = list(ex.map(lambda p: drc(p[4]), prepared))
+        reports = list(ex.map(lambda p: drc(p[4], refill=" via " in f" {p[0]} "), prepared))
     failed = 0
     for (name, rule, fires, where, path), rep in zip(prepared, reports):
         hits = [v for v in rep.get("violations", []) if rule in v["description"] and near(v, where)]
