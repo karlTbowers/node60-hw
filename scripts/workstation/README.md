@@ -132,8 +132,8 @@ The script **recreates the reference layout** instead of making paths configurab
 
 These absolute paths remain in the repo:
 
-- `/Applications/KiCad/KiCad.app/Contents/Frameworks/Python.framework/Versions/Current/bin/python3`, KiCad's Python, in `judge_route*.sh` (five), `nudge.sh`, and the run instructions of `prove_rules.py`, `draw_rule_areas.py`, `place_connectors.py`, `sync_footprint_fields.py`, `import_footprints.py`, `add_missing_footprints.py` and the skill's `SKILL.md`. Also `.../MacOS/kicad-cli`, as the fallback after `kicad-cli` on PATH, in `prove_rules.py`, `check_schematic.py`, `mcu_pinmap.py`, and the skill's `gate.py` and `grade_route.py`. The script installs KiCad there.
-- `~/Dev/KiCadRoutingTools` is fixed (`KRT=`) in the five `judge_route*.sh`. The skill's `pose_search.py` takes `KRT_DIR`, and `gate.py` takes the plan's `krt`.
+- `/Applications/KiCad/KiCad.app/Contents/Frameworks/Python.framework/Versions/Current/bin/python3`, KiCad's Python, in `judge_route.sh` and `judge_route_v1old.sh`, `nudge.sh`, and the run instructions of `prove_rules.py`, `draw_rule_areas.py`, `place_connectors.py`, `sync_footprint_fields.py`, `import_footprints.py`, `add_missing_footprints.py` and the skill's `SKILL.md`. Also `.../MacOS/kicad-cli`, as the fallback after `kicad-cli` on PATH, in `prove_rules.py`, `check_schematic.py`, `mcu_pinmap.py`, and the skill's `gate.py` and `grade_route.py`. The script installs KiCad there.
+- `~/Dev/KiCadRoutingTools` is fixed (`KRT=`) in `judge_route.sh` and `judge_route_v1old.sh`. The setup script's verification points a temporary copy of `judge_route.sh` at its own KRT copy. The skill's `pose_search.py` takes `KRT_DIR`, and `gate.py` takes the plan's `krt`.
 - **`/Users/karl`**, which breaks under any other user name:
   - `placement/2026-11-02-bars/plan.json` `krt_python`, read by the skill's `gate.py` unless `KRT_PY` is set. With another user name, set `KRT_PY=~/.cache/dropout/krt-venv/bin/python`.
   - `nudge.sh` (`cd /Users/karl/Dev/KiCadRoutingTools`, and `bosses.json` under `/Users/karl/Dev/node60-hw-place`) and the retired `route_open.sh`.
