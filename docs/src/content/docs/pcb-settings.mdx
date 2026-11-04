@@ -101,6 +101,22 @@ KiCad 10 keeps via protection (IPC-4761) as a board setting with a per-via overr
 
 Filling and capping were off until 2026-11-04. The board was already designed and quoted for filled, capped vias, so the change only makes KiCad's fab outputs say so.
 
+## Text & Graphics
+
+### Defaults
+
+The sizes KiCad gives new text and lines. They are in `node60.kicad_pro` (`board.design_settings.defaults`). Only silk text differs from KiCad's defaults.
+
+| Layer | Text height | Text thickness | Line width | Why |
+|---|---:|---:|---:|---|
+| Silkscreen | 1.0 mm | **0.15 mm** (KiCad default 0.10; set 2026-11-04) | 0.10 mm | New silk text meets JLCPCB's 1.0 / 0.15 mm minimum and the custom rule "Silk text 1.0 mm high, 0.15 mm stroke" |
+| Copper | 1.5 mm | 0.30 mm | 0.20 mm | KiCad default |
+| Fab | 1.0 mm | 0.15 mm | 0.10 mm | KiCad default |
+| Other layers | 1.0 mm | 0.15 mm | 0.10 mm | KiCad default |
+| Courtyard / board outline | | | 0.05 mm | KiCad default |
+
+The silk line width stays at KiCad's 0.10 mm; JLCPCB asks for silk lines of 0.15 mm or more and may not print thinner ones. Footprint text keeps each footprint's own sizes (**Apply defaults to footprint text** is off).
+
 ## Design Rules
 
 ### Constraints
