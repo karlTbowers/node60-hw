@@ -73,6 +73,10 @@ The scripts read only this. Paths are relative to the plan.
   "baseline": "fixed.kicad_pcb",
   "signal_layers": ["F.Cu", "In2.Cu", "In3.Cu", "B.Cu"],
   "plane_nets": ["GND", "VBAT_PROT"],
+  "plane_layers": {"In1.Cu": "GND", "In2.Cu": "VBAT_PROT", "In3.Cu": "VBAT_PROT", "In4.Cu": "GND"},
+  "plane_windows": {"In1.Cu": "power_only", "In2.Cu": {"window": [145, 29.95, 215, 62], "keep": 0.5,
+                    "cost": "U601/U701/U801 +1 to +2 % supply resistance (plane_model.py)", "decision": "D17"},
+                    "In3.Cu": "power_only", "In4.Cu": "power_only"},
   "track_mm": 0.1, "space_mm": 0.1, "via_mm": 0.45,
   "bgas": ["U401"],
   "heights": [{"side": "B", "limit_mm": 6.17, "area": "whole board", "source": "CLAUDE.md: board 6.17 mm off the floor"}],
@@ -90,6 +94,16 @@ The scripts read only this. Paths are relative to the plan.
   or a scoped rule area's), never lower ones a router would like.
 - `signal_layers` is the layer plan's, not every copper layer: a plane layer is not a signal
   layer because a track can be put on it.
+- `plane_windows` is required whenever `plane_layers` is set: for **every** plane layer, either
+  `"power_only"` (no signal tracks anywhere on it; vias pass, since through vias cross every
+  layer) or a `window` rectangle (mm, x0, y0, x1, y1) where signal tracks may run and the plane
+  is not poured, with its `cost` (the plane model's supply resistance to each load with and
+  without it) and the `decision` that approved it. `keep` is the plane copper left in the window
+  across that net's plane layers (0.5 = one of two equal layers windowed). Windows go where the
+  plane carries little current (away from the path from source to loads); the model shows how
+  little. `scripts/draw_rule_areas.py --window LAYER:X0,Y0,X1,Y1 --power-only LAYER` draws them
+  (SIGNAL_WINDOW_* with no pour, POWER_ONLY_* with tracks not allowed), and the fast route
+  runs with them, so the judge never puts a signal where the plane must be whole.
 - `accepted` grows only from decision pages.
 
 ## The plan picture

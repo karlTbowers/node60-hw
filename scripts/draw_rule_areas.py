@@ -17,7 +17,15 @@ the busbar areas (BUSBAR_*) belong to place_connectors.py and are left alone.
   1 oz outer layers) to escape the BGA and the PHY's QFN. 1 mm past the courtyard.
 - UNDER_Y401, UNDER_Y501: under the MCU crystal and the PHY's oscillator only their own nets and
   GND, on the part's layer and the GND plane next to it (In4). Their courtyard, 0.5 mm grown.
+
+Plane layers and signal windows (placement decision D17): `--window LAYER:X0,Y0,X1,Y1` (repeatable)
+opens a rectangle of a plane layer to signal tracks: SIGNAL_WINDOW_<layer>_<n> keeps the plane's
+pour out of it (zone fill not allowed), and POWER_ONLY_<layer>_<n> keep-outs cover the rest of
+that layer with tracks not allowed (vias allowed: every via is through-hole, so signal vias must
+pass the planes). `--power-only LAYER` (repeatable) covers a whole plane layer with such a keep-out.
+Window and keep-out areas are redrawn on every run; the plan's windows are the source.
 """
+import argparse
 import sys
 
 import pcbnew
@@ -31,12 +39,57 @@ AREAS = {
 }
 
 
-def main(path):
+def rule_area(board, name, layers, box, no_tracks=False, no_fill=False):
+    mm = pcbnew.FromMM
+    area = pcbnew.ZONE(board)
+    area.SetZoneName(name)
+    area.SetIsRuleArea(True)
+    ls = pcbnew.LSET()
+    for layer in layers:
+        ls.AddLayer(board.GetLayerID(layer))
+    area.SetLayerSet(ls)
+    area.SetDoNotAllowTracks(no_tracks)
+    area.SetDoNotAllowVias(False)
+    area.SetDoNotAllowPads(False)
+    area.SetDoNotAllowZoneFills(no_fill)
+    area.SetDoNotAllowFootprints(False)
+    o = area.Outline(); o.RemoveAllContours(); o.NewOutline()
+    x0, y0, x1, y1 = box
+    for x, y in ((x0, y0), (x1, y0), (x1, y1), (x0, y1)):
+        o.Append(mm(x), mm(y))
+    board.Add(area)
+
+
+def complement(outer, hole):
+    """outer rectangle minus an inner one, as up to four rectangles"""
+    X0, Y0, X1, Y1 = outer; x0, y0, x1, y1 = (max(hole[0], X0), max(hole[1], Y0), min(hole[2], X1), min(hole[3], Y1))
+    parts = [(X0, Y0, X1, y0), (X0, y1, X1, Y1), (X0, y0, x0, y1), (x1, y0, X1, y1)]
+    return [p for p in parts if p[2] - p[0] > 0.01 and p[3] - p[1] > 0.01]
+
+
+def main(path, windows=(), power_only=()):
     board = pcbnew.LoadBoard(path)
     fps = {fp.GetReference(): fp for fp in board.GetFootprints()}
     for z in list(board.Zones()):
-        if z.GetIsRuleArea() and z.GetZoneName() in AREAS:
+        if z.GetIsRuleArea() and (z.GetZoneName() in AREAS or z.GetZoneName().startswith(("SIGNAL_WINDOW_", "POWER_ONLY_"))):
             board.Delete(z)
+    e = board.GetBoardEdgesBoundingBox()
+    outer = (pcbnew.ToMM(e.GetLeft()), pcbnew.ToMM(e.GetTop()), pcbnew.ToMM(e.GetRight()), pcbnew.ToMM(e.GetBottom()))
+    by_layer = {}
+    for w in windows:
+        layer, box = w.split(":"); by_layer.setdefault(layer, []).append(tuple(float(v) for v in box.split(",")))
+    for layer, boxes in by_layer.items():
+        if len(boxes) > 1:
+            sys.exit(f"{layer}: one window per layer for now")
+        tag = layer.replace(".", "")
+        rule_area(board, f"SIGNAL_WINDOW_{tag}_1", [layer], boxes[0], no_fill=True)
+        for k, part in enumerate(complement(outer, boxes[0]), 1):
+            rule_area(board, f"POWER_ONLY_{tag}_{k}", [layer], part, no_tracks=True)
+        print(f"{layer}: signal window x {boxes[0][0]:.2f}..{boxes[0][2]:.2f} y {boxes[0][1]:.2f}..{boxes[0][3]:.2f}; "
+              f"the rest of the layer tracks not allowed (vias allowed)")
+    for layer in power_only:
+        rule_area(board, f"POWER_ONLY_{layer.replace('.', '')}_1", [layer], outer, no_tracks=True)
+        print(f"{layer}: power only, tracks not allowed (vias allowed)")
     mm = pcbnew.FromMM
     for name, (ref, margin, layers) in AREAS.items():
         fp = fps[ref]
@@ -64,4 +117,9 @@ def main(path):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1] if len(sys.argv) > 1 else "node60.kicad_pcb")
+    ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    ap.add_argument("board", nargs="?", default="node60.kicad_pcb")
+    ap.add_argument("--window", action="append", default=[], metavar="LAYER:X0,Y0,X1,Y1")
+    ap.add_argument("--power-only", action="append", default=[], metavar="LAYER")
+    a = ap.parse_args()
+    main(a.board, a.window, a.power_only)
