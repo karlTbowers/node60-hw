@@ -381,6 +381,7 @@ if [[ -d $N60/.git ]]; then
   fi
 
   JR=$W/placement/2026-11-02-bars/judge_route.sh
+  JBLOB=$(git hash-object $JR 2>/dev/null)   # before any patching: the blob id is the same on every machine
   if (( JUDGE )) && [[ -f $JR ]]; then
     [[ -z $JOUT ]] && JOUT=$DEV/node60-judge-runs/$(hostname -s)-$(date +%Y%m%d-%H%M)
     mkdir -p ${JOUT:h}
@@ -405,7 +406,7 @@ if [[ -d $N60/.git ]]; then
     mkdir -p $JOUT
     { print "host\t$(hostname -s) $(sysctl -n hw.model) $(sysctl -n machdep.cpu.brand_string), $P P + $E E cores, $MEM_GB GB, macOS $MACOS"
       print "node60_commit\t$C"
-      print "judge\t$(shasum $JR | cut -c1-12) (placement/2026-11-02-bars/judge_route.sh at that commit)"
+      print "judge\t$JBLOB (git blob of placement/2026-11-02-bars/judge_route.sh)"
       print "krt_commit\t$RUN_KRT ($KRT_AT)"
       print "grid_router\t$(shasum -a 256 $KX/rust_router/grid_router.so | cut -c1-12)"
       print "kicad\t$KV"; print "started\t$(date '+%Y-%m-%d %H:%M:%S')"; } > $JOUT/versions.txt
