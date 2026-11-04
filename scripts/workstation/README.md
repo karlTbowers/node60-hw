@@ -40,7 +40,7 @@ Options:
 | `--no-judge` | Skip the timed judging run (7–36 min). |
 | `--extras` | Also install the reference Mac's other Homebrew packages. The process doesn't need them. |
 | `--no-plugins` | Don't install the Claude Code plugins `dropout-hardware` and `kicad-happy`. |
-| `--ref REF` | The node60-hw commit to verify. The default is `origin/placement/routing-readiness` (the reference run's branch), or `origin/main` if that branch is gone. |
+| `--ref REF` | The node60-hw commit to verify. The default is the reference run's commit, `b6d7085` on `placement/routing-readiness`, so the comparison is like-for-like. A commit missing from your clones is fetched by hash into the temporary folder. |
 | `--judge-out DIR` | Where the judging run goes. The default is `~/Dev/node60-judge-runs/<host>-<time>`. |
 
 The script exits 0 only when every check passes. Warnings, such as a newer Homebrew formula than the reference, don't fail it.
@@ -153,7 +153,15 @@ wait
 python3 placement/2026-11-02-bars/rules/perf_report.py runs/a runs/b runs/c runs/d
 ```
 
-- Run at most one per performance core (`sysctl -n hw.perflevel0.physicalcpu`): an M5 MacBook Pro or an M1 Ultra has 10 to 16 of them. The setup script prints the suggested number, which also respects memory. One run peaks at about the `maxrss_mb` in [`reference/timing.tsv`](reference/timing.tsv).
+- **Memory caps it before cores do.** Each run peaks at 6.8 GB during the bulk `route` step, and 5.4 GB in `route_p2` (see [`reference/timing.tsv`](reference/timing.tsv)). Runs started together hit those peaks together. So run at most N = min(performance cores, 0.8 × memory ÷ 6.8 GB). The script prints this number for the machine it runs on (`sysctl -n hw.perflevel0.physicalcpu`, `hw.memsize`). Some examples:
+
+  | Mac | P cores | Memory | N |
+  |---|---:|---:|---:|
+  | M3 MacBook Air (reference) | 4 | 24 GB | 2 |
+  | M1 Ultra Mac Studio | 16 | 64 GB | 7 |
+  | M1 Ultra Mac Studio | 16 | 128 GB | 15 |
+
+  Past that number, the Mac swaps and every run slows.
 - macOS can't pin a process to a core, and doesn't need to: the scheduler puts busy default-priority threads on the performance cores. Don't use `nice`, `taskpolicy -b` or a background QoS, which push the work onto the efficiency cores.
 - Give each variant its own output folder. `judge_route.sh` copies `node60.kicad_pro` and `node60.kicad_dru` from its own checkout, so variants with different rules need their own checkouts (`git worktree add`).
 - Leave headroom for the grading step at the end, which runs KiCad.

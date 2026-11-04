@@ -1,0 +1,11 @@
+KiCad DRC with the board's own rules (18 custom rule(s) loaded)
+  unconnected items : 297  nets: /BATT_MON, /I2C0_TELEMETRY_SCL, /I2C0_TELEMETRY_SDA, /INH, /LM_FLT_L, /MCU and NVM/1V1_MCU_V11, /MCU and NVM/2V5_MCU_V25, /MCU and NVM/FLASH_HOLD_L, /MCU and NVM/SPI2_FLASH_CS_L, /MCU and NVM/SPI2_FLASH_MISO, /MCU and NVM/SPI2_FLASH_MOSI, /MCU and NVM/SPI2_FLASH_SCK
+  rule 'Under Y501: its own nets and GND only': 9   e.g. Track [/RMII0_T1S_RXD1] on B.Cu, length 0.4750 mm
+  rule 'No vias on the buck switch nodes': 2   e.g. Via [/Regulators/1V5_CORE_SW] on F.Cu - B.Cu
+  clearance: 4
+  skew_out_of_range: 1
+  diff_pair_gap_out_of_range: 15
+  diff_pair_uncoupled_length_too_long: 2
+  not blocking (silk, dangling, library, mask): 797
+  NOTE: lib_footprint_issues, silk_overlap reached KiCad's 199-entry report cap; the count is a floor
+BLOCKING=330

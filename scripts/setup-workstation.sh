@@ -8,7 +8,7 @@
 #   options:  --no-judge        skip the timed judging run (7-36 min) in the verification
 #             --extras          also install the reference Mac's other Homebrew packages (not needed)
 #             --no-plugins      don't install the Claude Code plugins (dropout-hardware, kicad-happy)
-#             --ref REF         node60-hw commit to verify (default: pins.env REF_JUDGE_REF, else origin/main)
+#             --ref REF         node60-hw commit to verify (default: the reference run's commit, REF_JUDGE_COMMIT)
 #             --judge-out DIR   where the judging run goes (default ~/Dev/node60-judge-runs/<host>-<time>)
 #
 # Pins and reference versions: scripts/workstation/pins.env. How-to: scripts/workstation/README.md.
@@ -304,23 +304,30 @@ N60=$DEV/node60-hw
 [[ -d $N60/.git ]] || { fail "verify" "no $N60"; }
 W=$(mktemp -d -t node60-verify)
 trap 'rm -rf $W' EXIT
-if [[ -d $N60/.git ]]; then
-  [[ -z $REF ]] && { git -C $N60 rev-parse -q --verify "$REF_JUDGE_REF^{commit}" >/dev/null && REF=$REF_JUDGE_REF || REF=origin/main; }
-  C=$(git -C $N60 rev-parse --short "$REF^{commit}")
-  say "node60-hw ref" "$REF = $C (not fetched: git -C $N60 fetch to update)"
-  git -C $N60 archive $C | tar -x -C $W
-  G=$(git -C $N60 ls-tree $C lib/dropout-kicad-library | awk '{print $3}')
-  mkdir -p $W/lib/dropout-kicad-library
-  got=""
-  for d in $N60/lib/dropout-kicad-library $DEV/dropout-kicad-library; do
-    git -C $d archive $G 2>/dev/null | tar -x -C $W/lib/dropout-kicad-library 2>/dev/null && { got=$d; break; }
+# export_commit SHA DEST URL CLONE...: git-archive SHA into DEST from the first local clone that has it,
+# else fetch just that commit from URL into a scratch repo inside the temp folder (never into a repo).
+export_commit() {
+  local sha=$1 dest=$2 url=$3 d; shift 3
+  mkdir -p $dest
+  for d in "$@"; do
+    [[ -d $d ]] && git -C $d cat-file -e "$sha^{commit}" 2>/dev/null && { git -C $d archive $sha | tar -x -C $dest; print -- "$d"; return 0; }
   done
-  if [[ -z $got ]]; then   # not in any local clone: fetch that one commit into the temp folder
-    git init -q $W/.libfetch && git -C $W/.libfetch -c credential.helper='!gh auth git-credential' \
-      fetch -q --depth 1 https://github.com/karlTbowers/dropout-kicad-library.git $G \
-      && git -C $W/.libfetch archive FETCH_HEAD | tar -x -C $W/lib/dropout-kicad-library && got="GitHub (temp fetch)"
-  fi
-  [[ -n $got ]] && ok "library ${G:0:8}" "from $got" || fail "library ${G:0:8}" "commit not found"
+  local f=$W/.fetch-${sha:0:12}
+  git init -q $f && git -C $f -c credential.helper='!gh auth git-credential' fetch -q --depth 1 $url $sha 2>/dev/null \
+    && git -C $f archive FETCH_HEAD | tar -x -C $dest && { print -- "GitHub (fetched into the temp folder)"; return 0; }
+  return 1
+}
+if [[ -d $N60/.git ]]; then
+  [[ -z $REF ]] && REF=$REF_JUDGE_COMMIT
+  C=$(git -C $N60 rev-parse -q --verify "$REF^{commit}" 2>/dev/null || print -- $REF)
+  if from=$(export_commit $C $W https://github.com/karlTbowers/node60-hw.git $N60); then
+    ok "node60-hw ${C:0:8}" "($REF) from $from"
+  else fail "node60-hw ${C:0:8}" "$REF not found locally or on GitHub"; fi
+  G=$(git -C $N60 ls-tree $C lib/dropout-kicad-library 2>/dev/null | awk '{print $3}')
+  [[ -z $G ]] && G=$(git -C $W/.fetch-${C:0:12} ls-tree FETCH_HEAD lib/dropout-kicad-library 2>/dev/null | awk '{print $3}')
+  if [[ -n $G ]] && from=$(export_commit $G $W/lib/dropout-kicad-library https://github.com/karlTbowers/dropout-kicad-library.git \
+       $N60/lib/dropout-kicad-library $DEV/dropout-kicad-library); then ok "library ${G:0:8}" "from $from"
+  else fail "library ${G:0:8}" "submodule commit not found"; fi
 
   out=$($KICAD_PY -c 'import pcbnew; print(pcbnew.GetBuildVersion())' 2>&1 | tail -1) && ok "pcbnew" "imports in KiCad's Python ($out)" || fail "pcbnew" "$out"
   out=$(cd $KRT && $VENV/bin/python -c 'import sys; sys.path.insert(0, "rust_router"); import grid_router, numpy, scipy, shapely; print(grid_router.__version__, numpy.__version__, scipy.__version__, shapely.__version__)' 2>&1 | tail -1) \
@@ -366,7 +373,7 @@ if [[ -d $N60/.git ]]; then
       REFJ=$HERE/workstation/reference/rules.json
       read -r RBLK ROPEN <<<"$(python3 -c 'import json,sys; d=json.load(open(sys.argv[1])); print(d["blocking"], ",".join(d["open_nets"]) or "-")' $REFJ)"
       say "judging run" "$(( T1 - T0 )) s wall; blocking $BLK, open nets $OPEN"
-      if [[ $C != ${REF_JUDGE_COMMIT:0:7}* ]]; then
+      if [[ $C != ${REF_JUDGE_COMMIT}* ]]; then
         warn "judging vs reference" "ran at $C, the reference at $REF_JUDGE_COMMIT: counts not comparable"
       elif [[ $BLK == $RBLK && $OPEN == $ROPEN ]]; then ok "judging vs reference" "same result: blocking $BLK, open $OPEN"
       else fail "judging vs reference" "blocking $BLK (reference $RBLK), open $OPEN (reference $ROPEN)"; fi
