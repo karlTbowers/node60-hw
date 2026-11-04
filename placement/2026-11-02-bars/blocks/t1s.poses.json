@@ -1,7 +1,7 @@
 {
  "block": "k501",
  "anchor": "K501",
- "approved": "2026-11-03 (D16-1 A)",
+ "approved": "2026-11-03 (D16-1 A; D503/D504 added as D16-2 A, mirrors of D501/D502)",
  "anchor_pose": {
   "x": 155.0,
   "y": 54.33,
@@ -61,7 +61,7 @@
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "ESD on T1S_P at J903's pins, unchanged (AN1718 2.0). J912 has none: D16-2."
+   "why": "ESD on T1S_P at J903, on the trunk just inside J903's inner pin (AN1718 2.0). Mirrored at J912 by D503 (D16-2 A)."
   },
   "D502": {
    "dx": 15.1386,
@@ -70,7 +70,25 @@
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "ESD on T1S_N beside D501, unchanged."
+   "why": "ESD on T1S_N at J903, beside D501. Mirrored at J912 by D504."
+  },
+  "D503": {
+   "dx": -15.53,
+   "dy": -7.276,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "ESD on T1S_P at J912 (D16-2 A, DEC-012 rev. C): D501 mirrored about the trunk's midpoint x 155, so both connectors are protected alike; 1.9 mm from J912 pin 1."
+  },
+  "D504": {
+   "dx": -15.139,
+   "dy": -9.329,
+   "rot": 270.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "ESD on T1S_N at J912: D502 mirrored about x 155."
   },
   "Q501": {
    "dx": 7.1,
