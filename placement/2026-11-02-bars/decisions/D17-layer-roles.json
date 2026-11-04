@@ -1,0 +1,196 @@
+{
+  "id": "D17",
+  "name": "Inner layer roles",
+  "question": "How should signals share the inner layers with VBAT_PROT?",
+  "board": "node60",
+  "phase": "Routing readiness",
+  "stage": "6 Gate",
+  "date": "2026-11-04",
+  "why_now": "D12-1 A gave In1 and In4 to GND and In2 and In3 to VBAT_PROT, with signals on F.Cu and B.Cu (plus short runs in windows if needed). The fast routes say that is not enough: with signals on the outer layers only, about 35 nets don't route. You set the rule for using the inner layers: signals may go on In2 and In3, but they must not degrade VBAT_PROT's current-carrying copper or anything downstream to the output connectors. That is now a standard step of the process: every plane layer is power-only or has a costed signal window (pcb-placement skill, PR #56).\n\nThis page compares the ways to get there, each with its routing result (fast route, KRT at its latest commit, the board's own rules) and its cost in supply resistance (plane model, both VBAT_PROT layers, 85 °C, all three switches on at 20 A).",
+  "facts": [
+    {
+      "label": "Where the router wants In2",
+      "value": "With In2 open everywhere (variant e: 12 nets failed) it laid 1,877 mm on 66 nets in three places: around U401 and U501, over the power entry (INA228 I2C, the LM74910H fault and sense lines), and along the switch row (SPI, FLT and sense lines to U601/U701/U801). The last two sit on the VBAT_PROT current path",
+      "source": "judge_d17e"
+    },
+    {
+      "label": "What is left failing",
+      "value": "Every variant's leftovers cluster in the same places: RMII and other PHY nets around U501 (the PHY's north-edge spot next to the oscillator keep-out), the power entry's sense and fault lines, and the switch control lines",
+      "source": "judge runs c, e, W1, W2"
+    },
+    {
+      "label": "The PHY's nets",
+      "value": "RMII and MDIO nets (TX, RX, REF_CLK, MDC/MDIO) are among the failures in every variant, even with In2 and In3 both open (C). The congestion is local: U501 at the board's north edge, its oscillator's keep-out (UNDER_Y501) beside it, the T1S line zone south of it. A placement fix there comes next, whatever this page decides",
+      "source": "all judge runs"
+    },
+    {
+      "label": "Via holes",
+      "value": "Signal vias pass every layer (through-hole only), so each leaves a clearance hole in the planes. The plane model does not count them; the routing's last step re-measures the supply resistance from the copper (D12-7)",
+      "source": "D12-7"
+    },
+    {
+      "label": "8-layer price",
+      "value": "JLCPCB, 230 × 110 mm, 5 boards, 2.0 mm: 6 layers $263, 8 layers $387 (2026-11-01). Whether JLCPCB's 8-layer 2.0 mm stackup offers 2 oz inner copper is not checked; with thinner inner copper the two VBAT_PROT planes would be weaker than today's",
+      "source": "PCB stackup & fab quotes page, DEC-027"
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "name": "In2 window across the north band",
+      "summary": "In2 is signal copper north of y 70 mm (MCU, PHY, T1S, flash, the bucks' area) and VBAT_PROT south of it; In3 stays whole VBAT_PROT; In1 and In4 stay whole GND.",
+      "images": [
+        {
+          "path": "img/d17_opt_north.png",
+          "caption": "In2 seen from above: the window (cyan) and the plane (tan); the orange line is the main VBAT_PROT current path"
+        }
+      ],
+      "measures": [
+        {
+          "label": "Nets failed in the fast route",
+          "value": "23 (24 with round pads)",
+          "limit": "0",
+          "status": "fail"
+        },
+        {
+          "label": "Supply resistance U601 / U701 / U801",
+          "value": "0.306 / 0.171 / 0.256 mΩ (+8 / +4 / +5 %)",
+          "limit": "two whole planes: 0.284 / 0.165 / 0.243",
+          "status": "warn"
+        },
+        {
+          "label": "Board",
+          "value": "6 layers, as DEC-027",
+          "limit": "",
+          "status": "pass"
+        }
+      ],
+      "gains": [
+        "Small cost to VBAT_PROT",
+        "No stackup change"
+      ],
+      "costs": [
+        "About two dozen nets still need hand routing or another window"
+      ]
+    },
+    {
+      "key": "B",
+      "name": "North band plus channels",
+      "summary": "Option A, plus 4 mm wide In2 channels running south to each output switch and a box over the power entry's sense lines. A first sketch: U701 sits right under the VBAT_PROT source, so its channel passes beside Q203/Q204, and on In2 the power entry has its own pre-protection copper there; the channels need placing with care.",
+      "images": [
+        {
+          "path": "img/d17_opt_channels.png",
+          "caption": "In2: north band, three channels and the power-entry box"
+        }
+      ],
+      "measures": [
+        {
+          "label": "Nets failed in the fast route",
+          "value": "15 (18 unconnected items): 9 of them RMII and MDIO nets at the PHY, the rest LM_CAP, LM_CSP, SPI4_SWITCH1_CS_L and SW_LHI",
+          "limit": "0",
+          "status": "fail"
+        },
+        {
+          "label": "Supply resistance U601 / U701 / U801",
+          "value": "0.326 / 0.184 / 0.264 mΩ (+15 / +11 / +9 %)",
+          "limit": "two whole planes: 0.284 / 0.165 / 0.243",
+          "status": "warn"
+        },
+        {
+          "label": "Board",
+          "value": "6 layers, as DEC-027",
+          "limit": "",
+          "status": "pass"
+        }
+      ],
+      "gains": [
+        "Reaches the switches and the power entry on In2",
+        "No stackup change"
+      ],
+      "costs": [
+        "Up to 15 % more supply resistance, most on U601; the outputs drift apart a little more"
+      ]
+    },
+    {
+      "key": "C",
+      "name": "One VBAT_PROT plane",
+      "summary": "In2 and In3 both signal layers; VBAT_PROT on In4 alone, GND on In1 (variant c).",
+      "measures": [
+        {
+          "label": "Nets failed in the fast route",
+          "value": "9",
+          "limit": "0",
+          "status": "warn"
+        },
+        {
+          "label": "Supply resistance U601 / U701 / U801",
+          "value": "0.569 / 0.330 / 0.486 mΩ (twice today)",
+          "limit": "two whole planes: 0.284 / 0.165 / 0.243",
+          "status": "fail"
+        },
+        {
+          "label": "Board",
+          "value": "6 layers, as DEC-027",
+          "limit": "",
+          "status": "pass"
+        }
+      ],
+      "gains": [
+        "Best routing on 6 layers"
+      ],
+      "costs": [
+        "Doubles the supply resistance and its spread; B.Cu loses its GND neighbour"
+      ]
+    },
+    {
+      "key": "D",
+      "name": "8 layers",
+      "summary": "F, GND, signal, VBAT_PROT, VBAT_PROT, signal, GND, B: both VBAT_PROT planes whole, two inner signal layers each next to a GND plane. Reopens DEC-027.",
+      "images": [
+        {
+          "path": "img/d17_opt_whole.png",
+          "caption": "Both VBAT_PROT layers stay whole; the signal windows move to their own layers"
+        }
+      ],
+      "measures": [
+        {
+          "label": "Nets failed in the fast route",
+          "value": "not run (expected near C's 9, or better: two signal layers with GND beside them)",
+          "limit": "0",
+          "status": "warn"
+        },
+        {
+          "label": "Supply resistance U601 / U701 / U801",
+          "value": "0.284 / 0.165 / 0.243 mΩ if the inner copper stays 2 oz",
+          "limit": "two whole planes: 0.284 / 0.165 / 0.243",
+          "status": "pass"
+        },
+        {
+          "label": "Board",
+          "value": "8 layers: $387 against $263 for 5 boards",
+          "limit": "DEC-027: 6 layers",
+          "status": "warn"
+        }
+      ],
+      "gains": [
+        "No compromise on VBAT_PROT",
+        "Signal layers referenced to GND, good for EMC and the RMII",
+        "Leaves room for the routing to come"
+      ],
+      "costs": [
+        "About $124 more per 5 prototypes, more in production",
+        "A new stackup and quote (2 oz inner copper to confirm), DEC-027 revised"
+      ]
+    }
+  ],
+  "recommendation": {
+    "option": "D",
+    "why": "You asked that signals on the inner layers not degrade VBAT_PROT's current path. Every 6-layer window costs some supply resistance (4–8 % for A, 9–15 % for B), and neither routes the board yet; giving up a plane (C) doubles it. Eight layers keep both VBAT_PROT planes whole and give the signals two layers of their own, each beside a GND plane, for about $124 more per 5 prototypes. Before the quote, check that JLCPCB's 8-layer 2.0 mm stackup keeps 2 oz inner copper; if it doesn't, or the cost is the deciding factor, A is the 6-layer choice (the smallest cost to VBAT_PROT), with the leftover nets routed by hand.\n\nWhichever you pick, the RMII and MDIO nets at the PHY fail in every variant, including C with two signal layers. That is local to U501's north-edge spot beside the oscillator keep-out, not a layer problem, and is the next placement fix after this answer."
+  },
+  "answer": "Reply with a letter, or a change (for example other window shapes).",
+  "sources": [
+    "judge runs: judge_d16_c, judge_d17e, judge_d17w1, judge_d17w2, judge_d17w2rp, judge_d17wd",
+    "power/plane_model.py --window --window-keep",
+    "DEC-027, D12-1, PCB stackup & fab quotes page"
+  ]
+}

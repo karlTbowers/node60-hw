@@ -43,3 +43,7 @@ User 2026-11-03: T1S runs short and equal; either connector may be used, also as
 D16 answered 2026-11-03: **D16-1 A, D16-2 A** (user). `blocks/t1s.poses.json` approved (replaces D05's table); intent's U501–U401 limit raised to 40 mm. D16-2 A: a second ESD pair at J912's pins, a schematic change that first checks the extra capacitance against the node's budget; then placed beside J912.
 
 D16-2 A done 2026-11-03: PR #55 merged (D503/D504 on p5, DEC-012 rev. C, capacitance budget 20.5 of 25 pF at maxima). Board: D503/D504 placed as mirrors of D501/D502 about x 155; t1s.poses.json 22 parts. DRC 0, parity 0, floorplan 0.
+
+## D17 Inner layer roles (2026-11-04) — https://claude.ai/artifact/CTqnFVautEjPcK5j1MXTmk
+
+Options: A In2 north-band window (23 failed, +4–8 % supply resistance), B north band plus channels (15 failed, +9–15 %), C one VBAT_PROT plane (9 failed, 2×), D 8 layers (planes whole, $387 vs $263). Recommendation D; A as the 6-layer fallback. The PHY's RMII/MDIO nets fail in every variant: a local placement fix follows. Awaiting the user's answer.
