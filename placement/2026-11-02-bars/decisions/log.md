@@ -29,3 +29,5 @@
 Published (https://claude.ai/artifact/ESfjfBiHEvP6z8EAyY6TFh): the re-ordered power entry (D14-2 B) as a block page; `blocks/power.poses.json` replaces D04's table (approved: null). Recommendation A. C214 moved to F.Cu over U202 pin 6. Awaiting the user's answer.
 
 D15 answered 2026-11-03: **A, as composed** (user). `blocks/power.poses.json` approved; it replaces D04's table. Board already matched to node60 #54 (R201 Kelvin nets, R208 0402, R210 383 Ω).
+
+D13 answered 2026-11-03: **A, as turned** (user). `blocks/out_6x`, `out_34`, `out_8x` approved; they replace D08's cells.

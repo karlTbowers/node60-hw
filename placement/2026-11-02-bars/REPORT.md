@@ -56,9 +56,9 @@ their own decisions (D02, D03) and dropped the U401 scoped rule (the BGA escapes
 | Buck 1V5_CORE | U303 | 11 | D06, 2026-11-02 | divider on the SW side, 2.55 mm from the switch node |
 | Buck 3V3_MAIN | U302 | 8 | D06, 2026-11-02 | |
 | MCU crystal | Y401 | 5 | D07, 2026-11-02 | C424, C425 to their pins; TP407 7 mm away; no-via rule on the crystal nets |
-| Output cell 3-4 | U701 | 21 | D08, 2026-11-02 | the reviewed cell |
-| Output cell 1-2 | U601 | 21 | D08, 2026-11-02 | copy; U601 turned 180° → 90°, moved 4.3 mm |
-| Output cell 5-6 | U801 | 21 | D08, 2026-11-02 | copy; U801 to (224, 113) so FLT pin 12 routes; TP806 at (231, 107.75) |
+| Output cell 3-4 | U701 | 21 | D13, 2026-11-03 (D08 turned to 0°) | the reviewed cell, centred between J906/J907 pin 1 |
+| Output cell 1-2 | U601 | 21 | D13, 2026-11-03 | copy at 0°, centred between its headers |
+| Output cell 5-6 | U801 | 21 | D13, 2026-11-03 | copy at 0°, centred between its headers |
 
 Every block is on its table pose on `node60.kicad_pcb` (`block_poses.py check`).
 
