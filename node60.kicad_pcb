@@ -23218,7 +23218,7 @@
 			(size 1 0.95)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
-			(net "/Power entry/VBAT_Q2D")
+			(net "/Power entry/RS_SENSE_N")
 			(uuid "01fc16d9-2916-49b2-bc67-0b54b8001c35")
 		)
 		(embedded_fonts no)
@@ -33642,7 +33642,7 @@
 			(size 1 0.95)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
-			(net "/Power entry/VBAT_Q2D")
+			(net "/Power entry/RS_SENSE_N")
 			(uuid "d9277bf7-1631-4549-aa0d-3267e76f6ca9")
 		)
 		(pad "2" smd roundrect
@@ -53823,7 +53823,7 @@
 			(size 0.25 0.6)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
-			(net "/Power entry/VBAT_Q2D")
+			(net "/Power entry/RS_SENSE_N")
 			(uuid "ff4dc70a-a95f-4891-a543-6b7ad3e08f7a")
 		)
 		(pad "20" smd roundrect
@@ -62017,7 +62017,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.isabellenhuette.com/hubfs/Files/Data-sheets/BVR.pdf"
 			(at 0 0 180)
 			(layer "B.Fab")
 			(hide yes)
@@ -62029,7 +62029,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Description" ""
+		(property "Description" "Isabellenhuette BVR ISA-WELD 4-terminal (Kelvin) current sense resistor, 0.3 mΩ ±1 %, 11 W at 70 °C / 5 W above 100 °C terminal temperature, TCR 0 ±20 ppm/K, AEC-Q200, -65 to +170 °C, 4026 (10.1 x 6.6 mm)"
 			(at 0 0 180)
 			(layer "B.Fab")
 			(hide yes)
@@ -62039,6 +62039,114 @@
 					(size 1.27 1.27)
 				)
 				(justify mirror)
+			)
+		)
+		(property "Manufacturer" "Isabellenhuette"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "199acb9c-0851-4256-9802-658013f0bbca")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "BVR-Z-R0003-1.0"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "b2a99b1d-0a0c-4549-8dc2-3cd7ece232e1")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_PN" "4423-BVR-Z-R0003-1.0CT-ND"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "6b24dcbd-36c1-4c75-9838-704ee731ba70")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Mouser_PN" "-"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "38b4e520-7a0c-4a43-9ae0-3367e5a51595")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -65 to +170 °C"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "aa9ef316-d679-46a7-bb55-be9ecda3eab4")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Resistance" "0.3mR"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "8b0127e5-5899-4773-b462-45d4e9472bc0")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Tolerance" "±1%"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "48598c30-14ef-4eeb-9355-c5b9c9b5a9cb")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Power" "5W"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "f12072e0-513b-4844-986b-446751b48df5")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Case" "4026"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "aa187a41-ceb8-4c1d-9f24-5e799a7dfec9")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
 			)
 		)
 		(attr smd)
@@ -62178,7 +62286,7 @@
 			(size 2.55 0.9)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
-			(net "/Power entry/VBAT_D")
+			(net "/Power entry/RS_SENSE_P")
 			(uuid "0d22adf7-9891-4e07-a320-66bbe19e9573")
 		)
 		(pad "3" smd roundrect
@@ -62186,7 +62294,7 @@
 			(size 2.55 0.9)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
-			(net "/Power entry/VBAT_Q2D")
+			(net "/Power entry/RS_SENSE_N")
 			(uuid "ae4cd56f-6fc5-433e-98e2-0dcaef138aa8")
 		)
 		(pad "4" smd roundrect
@@ -62449,7 +62557,7 @@
 			(size 0.925 1)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
-			(net "/Power entry/VBAT_D")
+			(net "/Power entry/RS_SENSE_P")
 			(uuid "459606df-0eda-4fae-8bf0-81a129f66b1a")
 		)
 		(pad "2" smd roundrect
@@ -70750,7 +70858,7 @@
 			(size 1.45 0.3)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
-			(net "/Power entry/VBAT_Q2D")
+			(net "/Power entry/RS_SENSE_N")
 			(uuid "4c1265fd-4c75-4cc4-a9c3-015a7af2fedc")
 		)
 		(pad "10" smd roundrect
@@ -70758,7 +70866,7 @@
 			(size 1.45 0.3)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
-			(net "/Power entry/VBAT_D")
+			(net "/Power entry/RS_SENSE_P")
 			(uuid "fd63b2d1-69f6-438a-ac49-91cd9123d449")
 		)
 		(embedded_fonts no)
@@ -71637,7 +71745,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Value" "0R"
+		(property "Value" "383R"
 			(at 0 -1.15 270)
 			(layer "B.Fab")
 			(uuid "d2895dff-5079-41be-8d65-af65defc5d8a")
@@ -71661,7 +71769,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Description" "Yageo AC thick film chip jumper, 0 Ω, 1 A rated, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+		(property "Description" "Yageo AC thick film chip resistor, 383 Ω ±1%, 1/16 W, 50 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
 			(at 0 0 270)
 			(layer "B.Fab")
 			(hide yes)
@@ -71698,7 +71806,7 @@
 				)
 			)
 		)
-		(property "MPN" "AC0402JR-070RL"
+		(property "MPN" "AC0402FR-07383RL"
 			(at 0 0 180)
 			(layer "B.Fab")
 			(hide yes)
@@ -71710,7 +71818,7 @@
 				)
 			)
 		)
-		(property "DigiKey_PN" "311-0.0LBCT-ND"
+		(property "DigiKey_PN" "AC0402FR-07383RL-ND"
 			(at 0 0 180)
 			(layer "B.Fab")
 			(hide yes)
@@ -71722,7 +71830,7 @@
 				)
 			)
 		)
-		(property "Mouser_PN" "603-AC0402JR-070RL"
+		(property "Mouser_PN" "603-AC0402FR-07383RL"
 			(at 0 0 180)
 			(layer "B.Fab")
 			(hide yes)
@@ -71751,6 +71859,54 @@
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "cbf191e3-c17e-41ca-88e2-5acb34d6ef70")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Tolerance" "±1%"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "788456ea-79cb-4261-b336-a6d70c0919eb")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Power" "1/16W"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "579a7201-66c7-4bc6-8838-bb04cbc60d8a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Voltage" "50V"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "76b99d27-6943-41b3-8440-9ccc7dc9cd10")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Notes" "Node60 LM74910H RISCP for the 0.3 mΩ BVR-Z-R0003-1.0 shunt (24.0 mV fast trip = 80 A), decision D14-1, 2026-11-03. No stock seen on 2026-11-03 (DigiKey lists full reels only)."
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "9fda3561-4b73-4766-8876-dd3fb7bb0e57")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -71802,7 +71958,7 @@
 			(size 0.59 0.6)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
-			(net "/Power entry/VBAT_D")
+			(net "/Power entry/RS_SENSE_P")
 			(uuid "06f41141-fc05-475e-b583-866802c27138")
 		)
 		(pad "2" smd roundrect
@@ -74994,281 +75150,6 @@
 	)
 	(footprint "DropOut_Resistor_SMD:R_0603_1608Metric"
 		(layer "B.Cu")
-		(uuid "ea17f3b7-2c3b-4a5f-a632-4d63c616303b")
-		(at 138 73)
-		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Yageo AC, Panasonic ERJ-3E/3G/ERA-3A, Vishay CRCW/CRCW-HP/TNPW, Susumu RG, KOA RK73Z and Stackpole RNCF 0603 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Resistor_SMD.yaml)")
-		(tags "resistor")
-		(property "Reference" "R208"
-			(at 0 1.45 180)
-			(layer "B.SilkS")
-			(uuid "d0861d6e-5032-4276-b258-57af77ecbb16")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Value" "32k"
-			(at 0 -1.45 180)
-			(layer "B.Fab")
-			(uuid "666d51d5-0598-43ab-b44a-09ca329d6725")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Datasheet" "https://www.vishay.com/docs/28758/tnpw_e3.pdf"
-			(at 0 0 180)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "4ded5a05-1ca3-4521-97c7-c3ddcd37e37e")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Description" "Vishay TNPW e3 thin film chip resistor, 32 kΩ ±0.1%, 0.11 W, 100 V, ±25 ppm/K, AEC-Q200, -55 to +175 °C, 0603 (1608 metric)"
-			(at 0 0 180)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "437d5193-0a96-4fc1-afdf-38bf21558986")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-				(justify mirror)
-			)
-		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 180)
-			(layer "B.SilkS")
-			(hide yes)
-			(uuid "a585eae2-615e-427e-99b7-d7cc931e9c0c")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-				(justify mirror)
-			)
-		)
-		(property "Manufacturer" "Vishay"
-			(at 0 0 270)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "67847b18-289b-49c1-aa34-6f7ab0fe8e64")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MPN" "TNPW060332K0BEEA"
-			(at 0 0 270)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "1d1412a5-4b43-4cd4-a3d8-2e045f3c007c")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "DigiKey_PN" "541-TNPW060332K0BEEACT-ND"
-			(at 0 0 270)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "8e7e3887-b04c-46f5-8793-8d8be171b19e")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Mouser_PN" "71-TNPW060332K0BEEA"
-			(at 0 0 270)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "b95dd2b4-a484-4e47-b355-395e7b6d832a")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Temperature_Grade" "AEC-Q200, -55 to +175 °C"
-			(at 0 0 270)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "ab96b02b-3f9e-4857-87f9-107b1e743677")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Tolerance" "±0.1%"
-			(at 0 0 270)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "7eef66ca-4eda-45d3-966a-f296293ffc1e")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Power" "0.11W"
-			(at 0 0 270)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "26dabc13-2148-4d1a-9110-8e957cc74829")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Voltage" "100V"
-			(at 0 0 270)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "8ee04660-1db6-4223-8888-741764c64a7c")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Case" "0603"
-			(at 0 0 270)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "fb5dd6bc-7083-4b2b-929d-b61189f2294c")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "32 kΩ is an E192 value: no AEC-Q200 1 % thick film part offers it (Yageo AC and Panasonic ERJ-3EKF are E24/E96 only), so this 0.1 % thin film part serves the 1 % line."
-			(at 0 0 270)
-			(layer "B.Fab")
-			(hide yes)
-			(uuid "a10bb720-cd95-4783-9adc-b585e3ba9e2e")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(path "/822dbac5-68ee-4519-a5d1-8bcf1992c5d9/13ee13d5-4b60-578b-8ec8-54d5dccf576a")
-		(sheetname "Power entry")
-		(sheetfile "sheets/power-entry.kicad_sch")
-		(attr smd)
-		(duplicate_pad_numbers_are_jumpers no)
-		(fp_line
-			(start -0.128319 -0.51)
-			(end 0.128319 -0.51)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "B.SilkS")
-			(uuid "ac29a4ee-73b1-4e80-a924-455cf375581f")
-		)
-		(fp_line
-			(start -0.128319 0.51)
-			(end 0.128319 0.51)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "B.SilkS")
-			(uuid "9bdcc113-5464-4d8a-8aa8-61c894839328")
-		)
-		(fp_rect
-			(start -1.5 0.75)
-			(end 1.5 -0.75)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "B.CrtYd")
-			(uuid "cf2d89e3-d6f2-45f5-a053-5fe1cc7e2462")
-		)
-		(fp_rect
-			(start -0.8 0.4)
-			(end 0.8 -0.4)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(fill no)
-			(layer "B.Fab")
-			(uuid "03b081a4-d8f0-4708-ac8c-bb237c796761")
-		)
-		(fp_text user "${REFERENCE}"
-			(at 0 0 180)
-			(layer "B.Fab")
-			(uuid "bcf0c077-39bc-4e98-8b70-7d5b6f6de037")
-			(effects
-				(font
-					(size 0.4 0.4)
-					(thickness 0.06)
-				)
-				(justify mirror)
-			)
-		)
-		(pad "1" smd roundrect
-			(at -0.7875 0)
-			(size 0.925 1)
-			(layers "B.Cu" "B.Mask" "B.Paste")
-			(roundrect_rratio 0.25)
-			(net "/Power entry/LM_ILIM")
-			(uuid "7199e0fb-3388-473e-b398-3899eeee3c3d")
-		)
-		(pad "2" smd roundrect
-			(at 0.7875 0)
-			(size 0.925 1)
-			(layers "B.Cu" "B.Mask" "B.Paste")
-			(roundrect_rratio 0.25)
-			(net "GND")
-			(uuid "18281ae4-ad25-4e7a-b3ad-c86ba110a7fa")
-		)
-		(embedded_fonts no)
-		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Resistor_SMD.3dshapes/R_0603_1608Metric.step"
-			(offset
-				(xyz 0 0 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
-	)
-	(footprint "DropOut_Resistor_SMD:R_0603_1608Metric"
-		(layer "B.Cu")
 		(uuid "ea1c0563-5508-4c45-b25c-0c1e0fbab067")
 		(at 213.5794 32.0898 180)
 		(descr "Resistor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Yageo AC, Panasonic ERJ-3E/3G/ERA-3A, Vishay CRCW/CRCW-HP/TNPW, Susumu RG, KOA RK73Z and Stackpole RNCF 0603 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Resistor_SMD.yaml)")
@@ -77158,6 +77039,259 @@
 		)
 		(embedded_fonts no)
 		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "DropOut_Resistor_SMD:R_0402_1005Metric"
+		(layer "B.Cu")
+		(uuid "f00dfb59-c00d-4004-b5a8-f0cb68a1654e")
+		(at 138 73)
+		(descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Yageo AC0402 and Panasonic ERJ-2G/ERJ-2R datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Resistor_SMD.yaml)")
+		(tags "resistor")
+		(property "Reference" "R208"
+			(at 0 1.15 180)
+			(layer "B.SilkS")
+			(uuid "91760397-6766-4793-a5ad-95f2ce1b3ab1")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Value" "26.7k"
+			(at 0 -1.15 180)
+			(layer "B.Fab")
+			(uuid "3096cbed-ac5d-40b0-a2ab-41c5ab6290f3")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+			(at 0 0 180)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "34ec6836-df55-472c-805b-62f09384ba76")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Description" "Yageo AC thick film chip resistor, 26.7 kΩ ±1%, 1/16 W, 50 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+			(at 0 0 180)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "413318cf-56f6-48e6-a297-e91ea044d00b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify mirror)
+			)
+		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 0 0 180)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "e3c18985-5281-4a22-8f41-7b30662d86d2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "13ffc297-3391-43a8-adfe-b67ef71d1ddd")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "MPN" "AC0402FR-0726K7L"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "08a55303-5f20-4ad7-af74-12c4c5855e5b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "DigiKey_PN" "YAG5658CT-ND"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "7d63ac38-b6d9-497f-9423-5de7c7094129")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Mouser_PN" "603-AC0402FR-0726K7L"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "569776d9-0188-47f4-aa2b-2d5614dc6144")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "361a6070-9bc1-495d-bf42-ea754f816dc5")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Tolerance" "±1%"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "40edbff0-76e8-44f0-a83f-bd0152504c03")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Power" "1/16W"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "a358e9b1-c4d9-4909-9182-e59f04ff1db9")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Voltage" "50V"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "91085931-90fc-487d-b765-ea5a2cbf810e")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Case" "0402"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "ab6ddf24-3655-4d3a-9d51-ff316d1af8b7")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(property "Notes" "Node60 LM74910H R(ILIM) for the 0.3 mΩ BVR-Z-R0003-1.0 shunt (74.8 A breaker), decision D14-1, 2026-11-03."
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "e8ee9306-24ce-4f5b-9ba4-f58e5d615306")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+			)
+		)
+		(path "/822dbac5-68ee-4519-a5d1-8bcf1992c5d9/13ee13d5-4b60-578b-8ec8-54d5dccf576a")
+		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_rect
+			(start -0.9 0.45)
+			(end 0.9 -0.45)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "B.CrtYd")
+			(uuid "d00fd10d-3593-4f69-8f3e-62f71fdce1f6")
+		)
+		(fp_rect
+			(start -0.5 0.25)
+			(end 0.5 -0.25)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill no)
+			(layer "B.Fab")
+			(uuid "0345bb75-7390-428d-a7fd-1ffca4c551e9")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 180)
+			(layer "B.Fab")
+			(uuid "cd96e349-45dd-403b-91cc-acaa6e410fce")
+			(effects
+				(font
+					(size 0.25 0.25)
+					(thickness 0.04)
+				)
+				(justify mirror)
+			)
+		)
+		(pad "1" smd roundrect
+			(at -0.455 0)
+			(size 0.59 0.6)
+			(layers "B.Cu" "B.Mask" "B.Paste")
+			(roundrect_rratio 0.25)
+			(net "/Power entry/LM_ILIM")
+			(uuid "5f9db7d3-fc40-42aa-a086-1d27e1352ac6")
+		)
+		(pad "2" smd roundrect
+			(at 0.455 0)
+			(size 0.59 0.6)
+			(layers "B.Cu" "B.Mask" "B.Paste")
+			(roundrect_rratio 0.25)
+			(net "GND")
+			(uuid "169d29db-2e77-4db9-90bd-b2f0b0251bbd")
+		)
+		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Resistor_SMD.3dshapes/R_0402_1005Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
