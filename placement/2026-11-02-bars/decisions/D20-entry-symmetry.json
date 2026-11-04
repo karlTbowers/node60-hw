@@ -1,0 +1,172 @@
+{
+  "id": "D20",
+  "name": "Power entry symmetry",
+  "question": "Mirror the power entry about x 155 so both battery bosses feed it the same way?",
+  "board": "node60",
+  "phase": "Routing",
+  "stage": "Power shapes",
+  "date": "2026-11-04",
+  "why_now": "You can't control which battery boss a harness lands on, so **both bosses become `VBAT_IN`** (your call, 2026-11-04; recorded as DEC-016 rev. C: either boss may be the source or the pass-through to the next node). `VBAT_IN_DOWNSTREAM` goes away.\n\nThat rename forces a layout change by itself. BB901 has no board copper between its two pads, so with J901 on `VBAT_IN` and nothing else, DRC lists J901 as an unconnected item (checked on a copy). J901 needs board copper into the net. The question is where the power entry sits so that copper is the same from either boss. Today the entry chain (ideal-diode FETs Q201/Q202 → shunt R201 → disconnect FETs Q203/Q204) is stacked at J910's end, 10 mm from J910 and 90 mm from J901.",
+  "facts": [
+    {
+      "label": "Bosses",
+      "value": "J910 at x 102 and J901 at x 208, both at y 99.6 on B.Cu; midpoint x 155. BB901 (1/8\" × 3/4\" C110) rests on both spigots",
+      "source": "node60.kicad_pcb"
+    },
+    {
+      "label": "Rename alone",
+      "value": "On a copy with J901 on VBAT_IN: 0 DRC errors, but J901 pad 1 is an unconnected item (the bar is not board copper). Option B's strip or option A's pours fix it",
+      "source": "kicad-cli DRC on a copy, 2026-11-04"
+    },
+    {
+      "label": "Room",
+      "value": "Between the bosses on B.Cu, y 72–100 holds only the entry chain and small parts (test points, RT201, C205). K501's T1S parts sit at x 148–164, y 57–70 and U701's cell at x 145–158, y 100–115, so a chain on the centre line has y 72–100 to work in. That is today's two FET rows (y 72.5–83.5 and 87.5–98.5)",
+      "source": "board"
+    },
+    {
+      "label": "Today's copper",
+      "value": "60 A path J910 → Q203/Q204 tabs 0.194 mΩ (D18 model, 85 °C). VBAT_PROT to U601 / U701 / U801: 0.486 / 0.283 / 0.307 mΩ, because VBAT_PROT leaves the disconnect FETs at x 161, east of centre",
+      "source": "D18"
+    },
+    {
+      "label": "Bar",
+      "value": "About 0.04 mΩ between the two spigots at 85 °C (19.05 × 3.175 mm copper, 106 mm), plus a bolted joint at each end (not known; tens of µΩ each)",
+      "source": "estimate"
+    },
+    {
+      "label": "Pass-through",
+      "value": "The source boss carries the node's current plus the pass-through (up to 120 A at 60 + 60 A) whichever option; DEC-016's 40 A provisional pass-through limit does not change",
+      "source": "DEC-016"
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "name": "Mirror the chain about x 155",
+      "summary": "Q201 moves to the west half and Q202 to the east half of the south row, sources facing their own boss (J910 and J901), tabs facing the centre. R201 turns north–south on the centre line, VBAT_D at its south end, VBAT_Q2D at its north. Q203 and Q204 take the north row either side of R201, tabs facing it, sources (VBAT_PROT) facing out. U201 (LM74910) and U202 (INA228) go on the centre line beside R201's sense pins. The pours are drawn as mirror images, so each boss sees the same copper to its FET. The small parts follow in a new pose table for the power block.",
+      "images": [
+        {
+          "path": "img/d20_mirror.png",
+          "caption": "Option A, B.Cu seen from above: each boss feeds its own ideal-diode FET; the chain is a mirror image about x 155 (pads coloured by net)"
+        }
+      ],
+      "measures": [
+        {
+          "label": "Copper from each boss to its FET",
+          "value": "equal by construction (mirror image); each about what J910 has today",
+          "limit": "equal",
+          "status": "pass"
+        },
+        {
+          "label": "Feed resistance into the ideal-diode FETs",
+          "value": "about half today's (two feeds in parallel, one per boss); estimate, measured after drawing",
+          "limit": "low",
+          "status": "pass"
+        },
+        {
+          "label": "Battery bar's worst current",
+          "value": "pass-through + about half the node current",
+          "limit": "low",
+          "status": "pass"
+        },
+        {
+          "label": "Pass-through current in board copper",
+          "value": "about 10 % (6 A of 60 A, about 0.02 W): the bar is about a tenth of the board path; estimate, measured after drawing",
+          "limit": "small",
+          "status": "info"
+        },
+        {
+          "label": "VBAT_PROT to the three switches",
+          "value": "likely more even: VBAT_PROT leaves at x ≈ 135 and x ≈ 175 instead of x 161; measured after drawing",
+          "limit": "even",
+          "status": "info"
+        },
+        {
+          "label": "Gate drive",
+          "value": "U201 central: DGATE about 28 mm to each ideal-diode FET, HGATE about 14 mm to each disconnect FET (today about 5–20 mm); to check against TI's LM74910-Q1 layout guidance in the pose table",
+          "limit": "short",
+          "status": "warn"
+        }
+      ],
+      "gains": [
+        "Either boss can be the source with the same result",
+        "Lower feed resistance: both bosses feed the chain",
+        "The bar carries less of the node's current",
+        "VBAT_PROT leaves from two points, likely evening the three switches"
+      ],
+      "costs": [
+        "The approved power block is re-composed (new pose table) and D18's power shapes are redrawn",
+        "Longer gate traces from U201 to the FETs"
+      ]
+    },
+    {
+      "key": "B",
+      "name": "Keep the chain, join J901 with a strip",
+      "summary": "Leave the entry chain where it is and add a narrow VBAT_IN strip from J901 west to J910's copper on an inner layer, south of the chain (y 100–107). That satisfies DRC. Current from a battery on J901 still crosses the bar to reach the chain.",
+      "images": [
+        {
+          "path": "img/d20_now.png",
+          "caption": "Today, B.Cu: the chain at J910's end; J901 (grey, VBAT_IN_DOWNSTREAM until the rename) has no board copper"
+        }
+      ],
+      "measures": [
+        {
+          "label": "Copper from each boss to its FET",
+          "value": "J910: 10 mm of wide copper; J901: the bar and its two joints (about 0.04 mΩ plus joints) or the strip",
+          "limit": "equal",
+          "status": "fail"
+        },
+        {
+          "label": "Feed resistance into the ideal-diode FETs",
+          "value": "today's, from J910 only",
+          "limit": "low",
+          "status": "warn"
+        },
+        {
+          "label": "Battery bar's worst current",
+          "value": "pass-through + all of the node current when the battery is on J901 (up to 120 A)",
+          "limit": "low",
+          "status": "warn"
+        },
+        {
+          "label": "Pass-through current in board copper",
+          "value": "small (the strip is narrow)",
+          "limit": "small",
+          "status": "info"
+        },
+        {
+          "label": "VBAT_PROT to the three switches",
+          "value": "0.486 / 0.283 / 0.307 mΩ (D18), and the strip carves the plane south of the chain",
+          "limit": "even",
+          "status": "warn"
+        },
+        {
+          "label": "Gate drive",
+          "value": "as today",
+          "limit": "short",
+          "status": "pass"
+        }
+      ],
+      "gains": [
+        "Little layout work"
+      ],
+      "costs": [
+        "The two bosses don't feed the node the same way",
+        "A 90 mm strip cut into an inner layer"
+      ]
+    }
+  ],
+  "recommendation": {
+    "option": "A",
+    "why": "You want either boss to work the same, and A gives that by construction rather than by leaning on the bar. It also lowers the feed resistance, since both bosses feed the chain, and it likely evens VBAT_PROT to the three switches, which you want equal. The cost is a re-composed power block and redrawn power shapes, the same kind of work as D18 and D19. The gate-trace lengths get checked against TI's guidance when the pose table is written."
+  },
+  "answer": "Reply with A or B. The rename (both bosses VBAT_IN) happens either way.",
+  "sources": [
+    "kicad-cli DRC on a copy with J901 on VBAT_IN",
+    "power/d20_picture.py",
+    "D18 (power/entry_model.py, power/plane_model.py)",
+    "DEC-016",
+    "D02"
+  ],
+  "answered": "A (user, 2026-11-04)"
+}

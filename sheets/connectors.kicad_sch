@@ -4206,13 +4206,14 @@
 		(color 0 0 0 0)
 		(uuid "517fa5ca-674e-4fed-a2dd-e1855f2bb889")
 	)
-	(label "VBAT_IN_DOWNSTREAM"
+	(hierarchical_label "VBAT_IN"
+		(shape output)
 		(at 66.04 76.2 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left bottom)
+			(justify left)
 		)
 		(uuid "9abf0bfd-52d3-4aad-a958-e713e3567528")
 	)
@@ -4333,7 +4334,7 @@
 			)
 		)
 	)
-	(text "SurLok Plus SLPRATPSR (red) in each terminal: M6, 3 N-m (REDCUBE max 3.9 N-m); Ø9.3 NPTH; hold while tightening.\nBB901: busbar on the spigots joins J910 (VBAT_IN, this node) and J901 (VBAT_IN_DOWNSTREAM, downstream node).\nPASS-THROUGH is raw battery: it bypasses the LM74910H breaker and the INA228 shunt (DEC-016).\nLAYOUT: 60 A + 40 A downstream (provisional). No board copper J901-J910: the bar is the only join (net tie)."
+	(text "SurLok Plus SLPRATPSR (red) in each terminal: M6, 3 N-m (REDCUBE max 3.9 N-m); Ø9.3 NPTH; hold while tightening.\nBB901: busbar on the spigots joins J910 and J901, both VBAT_IN: either may be the source or the pass-through (DEC-016 rev. C).\nPASS-THROUGH is raw battery: it bypasses the LM74910H breaker and the INA228 shunt (DEC-016).\nLAYOUT: 60 A + 40 A pass-through (provisional). Board copper feeds the entry from both terminals, mirrored (D20)."
 		(exclude_from_sim no)
 		(at 27.94 62.23 0)
 		(effects

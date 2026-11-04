@@ -164,10 +164,11 @@ BUSBARS = {"VBAT_IN": ("J910", "J901"), "GND": ("J911", "J902")}
 # clearance hole, about +/-0.25 mm). A rule area BUSBAR_<net> on F.Cu, the same size, lets
 # node60.kicad_dru keep other nets' copper out.
 # Both bars are schematic parts, placed from their library footprints (DropOut_Busbar net ties),
-# which hold the courtyard and the tie pads in the terminals' pad 1 rings: BB901 joins J910's
-# VBAT_IN to J901's VBAT_IN_DOWNSTREAM (placement decision D02, 2026-11-02), BB902 has both pins
-# on GND (the same treatment, user 2026-11-02; the GND plane joins J911 and J902 as well). Until
-# then the script drew each bar as a generated board-only footprint.
+# which hold the courtyard and the tie pads in the terminals' pad 1 rings: BB901 has both pins on
+# VBAT_IN (J910 and J901; DEC-016 rev. C, 2026-11-04: either may be the source, and the mirrored
+# power entry joins them on the board too; from D02, 2026-11-02, J901 had its own net
+# VBAT_IN_DOWNSTREAM), BB902 has both pins on GND (the GND plane joins J911 and J902 as well).
+# Until D02 the script drew each bar as a generated board-only footprint.
 BUSBAR_REFS = {"VBAT_IN": "BB901", "GND": "BB902"}
 # A bar's library part is named from width, thickness, length and hole pitch, as its model in
 # BUSBAR_MODELS; the placed model is raised onto the spigots. A version whose bars differ from
