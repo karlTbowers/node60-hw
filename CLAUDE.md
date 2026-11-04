@@ -2,7 +2,9 @@
 
 Node60 is DropOut's open-hardware automotive power distribution node: six protected high-side outputs (10 A target each) with current and voltage telemetry, controlled over multidrop 10BASE-T1S.
 
-**Follows DropOut Hardware Handbook v0.10.0** (updated from v0.4.0 on 2026-10-29) (the `dropout-hardware` Claude Code plugin; working copy at `~/Dev/dropout-hardware-handbook`). Use the `dropout-standards` skill for process and conventions, `find-part` for part selection, and the library repo's `add-part` skill for new library parts. This file holds only what is specific to Node60; the handbook covers everything else.
+**Follows DropOut Hardware Handbook v0.10.0** (updated from v0.4.0 on 2026-10-29) (the `dropout-hardware` Claude Code plugin; working copy at `~/Dev/dropout-hardware-handbook`). Use the `dropout-standards` skill for process and conventions, `find-part` for part selection, and the library repo's `add-part` skill for new library parts. This file holds only what is specific to Node60; the handbook covers everything else. The plugin is installed on every workstation (user scope, from GitHub; `scripts/setup-workstation.sh` installs it).
+
+**When work would disagree with the handbook, stop and ask the user before doing it** (user, 2026-11-03). The question has two answers: a Node60 exception, recorded under "Deviations from the handbook" below, or a handbook change (a rule added or changed in the handbook repo, through its own PR). Don't decide either one yourself, and don't silently follow whichever of the two is more convenient. Additions the handbook doesn't cover, such as KRT for placement, aren't disagreements.
 
 ## Board facts
 

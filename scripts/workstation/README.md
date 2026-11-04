@@ -2,6 +2,8 @@
 
 `scripts/setup-workstation.sh` rebuilds the Node60 design environment of the reference Mac (an M3 MacBook Air, macOS 26.4) on another Apple-silicon Mac, then checks that the new machine reproduces the process: KiCad's `pcbnew`, KiCadRoutingTools (KRT) and its router, CI's DRC, the rule proofs, and one timed judging run compared with the Air's.
 
+It follows the handbook's "Setting up a new Mac" (chapter 07, in the `dropout-hardware` plugin) and adds what Node60's placement process needs: KRT, its Python, `ee-skills` and the pinned versions. Where the two disagree, the user decides: a Node60 exception or a handbook change (CLAUDE.md).
+
 It is safe to re-run. It installs only what is missing, prints `CHANGED` for each change, and never touches an existing git checkout: no checkout, pull or fetch. On the reference Mac it changes nothing.
 
 ## Use
@@ -37,7 +39,7 @@ Options:
 | `--check` | Change nothing. Report what is missing and what would run, then verify. |
 | `--no-judge` | Skip the timed judging run (7–36 min). |
 | `--extras` | Also install the reference Mac's other Homebrew packages. The process doesn't need them. |
-| `--plugin` | Also install the `dropout-hardware` Claude Code plugin from `~/Dev/dropout-hardware-handbook`. It isn't installed on the reference Mac. |
+| `--no-plugins` | Don't install the Claude Code plugins `dropout-hardware` and `kicad-happy`. |
 | `--ref REF` | The node60-hw commit to verify. The default is `origin/placement/routing-readiness` (the reference run's branch), or `origin/main` if that branch is gone. |
 | `--judge-out DIR` | Where the judging run goes. The default is `~/Dev/node60-judge-runs/<host>-<time>`. |
 
@@ -53,24 +55,30 @@ The script exits 0 only when every check passes. Warnings, such as a newer Homeb
    Open a new terminal afterwards.
 3. **Homebrew packages** the process needs. These are the brew commands the script runs:
    ```bash
-   brew install gh uv node git-lfs poppler
+   brew install gh uv poppler git-lfs d2 node
    ```
    ```bash
    brew install --cask kicad
    ```
    The cask is used only while it is still at 10.0.7. Once it moves on, the script downloads the same `kicad-unified-universal-10.0.7.dmg` from KiCad's GitHub releases, checks its sha256, copies `KiCad` into `/Applications/KiCad` and links `kicad-cli` into `/opt/homebrew/bin`, as the cask does. With `--extras` it also runs the reference Mac's other on-request packages, which the design process doesn't use:
    ```bash
-   brew install python@3.15 python-tk@3.15 numpy scipy imagemagick-full d2 cmake ncdu sdl2_image sdl2_mixer sdl2_ttf
+   brew install python@3.15 python-tk@3.15 numpy scipy imagemagick-full cmake ncdu sdl2_image sdl2_mixer sdl2_ttf
    ```
    ```bash
    brew install --cask inkscape blender iina pairpods
    ```
-4. **GitHub:** `gh auth login` must be done (`dropout-vendor-docs` is private), then `git lfs install`.
-5. **Repos under `~/Dev`,** cloned only when missing: `node60-hw` (with the `lib/dropout-kicad-library` submodule), `dropout-hardware-handbook`, `dropout-kicad-library`, `dropout-vendor-docs` (185 LFS files) and `ee-skills` (from `charlesh97/ee-skills`).
+4. **GitHub and credentials:** you must have run `gh auth login` (`dropout-vendor-docs` is private). The script then runs `git lfs install`. It checks your git `user.name` and `user.email`, that `~/.local/share/dropout/vendor-logins` exists with mode 600, and that `~/.zshrc` runs `vendor-env.sh`. It never reads the credentials file, and it never edits `~/.zshrc`; those are your steps (handbook steps 5 and 8).
+5. **Repos under `~/Dev`,** cloned only when missing: `node60-hw` (with the `lib/dropout-kicad-library` submodule), `dropout-hardware-handbook`, `dropout-kicad-library`, `dropout-library-catalog`, `dropout-vendor-docs` (185 LFS files) and `ee-skills` (from `charlesh97/ee-skills`).
 6. **KRT** at `~/Dev/KiCadRoutingTools`: cloned from `drandyhaas/KiCadRoutingTools`, with `main` at `e91017d1`. An existing checkout at another commit gets a warning and is left alone. The Rust router `rust_router/grid_router.so` comes from `build_router.py --tag v0.23.7`, which downloads the release's `grid_router-macos-arm64.so`, checked by sha256. `rust_router/` hasn't changed between v0.23.7 and `e91017d1`, so no cargo is needed.
 7. **KRT's Python** at `~/.cache/dropout/krt-venv`: `uv python install 3.12.16`, `uv venv`, then `uv pip sync` with [`krt-requirements.txt`](krt-requirements.txt) (numpy 2.5.4, scipy 1.18.1, shapely 2.2.0, pillow 13.0.0).
 8. **The library's tools:** it runs `dropout-kicad-library/scripts/setup_tools.sh`, the library's own setup, which builds `~/.cache/dropout/klt-venv` with CadQuery.
-9. **Claude Code:** reports the CLI version and whether the plugin is installed. With `--plugin` it runs `claude plugin marketplace add ~/Dev/dropout-hardware-handbook` and `claude plugin install dropout-hardware@dropout`. For ee-skills, add `~/Dev/ee-skills/skills/pcb-placement` to a session as a folder when the skill needs it. That's how the reference Mac uses it.
+9. **Claude Code plugins,** user scope, from GitHub, as in handbook step 7:
+   ```bash
+   claude plugin marketplace add karlTbowers/dropout-hardware-handbook && claude plugin install dropout-hardware@dropout
+   ```
+   ```bash
+   claude plugin marketplace add aklofas/kicad-happy && claude plugin install kicad-happy@kicad-happy
+   ``` For ee-skills, add `~/Dev/ee-skills/skills/pcb-placement` to a session as a folder when the skill needs it. That's how the reference Mac uses it.
 
 ## Verify ("done")
 
@@ -80,6 +88,7 @@ The checks run on a `git archive` export of `--ref` in a temporary folder, with 
 - `krt-venv` imports `grid_router` (from `rust_router/`), numpy, scipy and shapely.
 - CI's check, `kicad-cli pcb drc --exit-code-violations --severity-error --schematic-parity node60.kicad_pcb`, exits 0.
 - `rules/prove_rules.py` passes every case.
+- The handbook's own checks (step 11): the library's `setup_tools.sh --check`, `distributor_lookup.py S32K344EHT1MMMST` and `klc_check.py`. These run on the library checkout as it is, so they only warn: the first needs your API keys, and the last depends on the library branch you have checked out.
 - One judging run: `judge_route.sh node60.kicad_pcb`, with `KRT_PY` set to the venv. Then `perf_report.py` reports this run beside the reference in [`reference/`](reference/). The blocking count and open nets must match the reference. That comparison only holds at the reference commit (`b6d7085`), and the script says so when `--ref` is a different commit.
 
 ## Pins
@@ -98,6 +107,9 @@ The checks run on a `git archive` export of `--ref` in a temporary folder, with 
 | gh | 2.103.3 | recorded |
 | git-lfs | 3.8.1 | recorded |
 | poppler | current | not recorded |
+| d2 | 0.9.0 | recorded |
+| dropout-hardware plugin | 0.10.1 | recorded (follows the handbook's `main`) |
+| kicad-happy plugin | 3.0.0 | recorded (follows its repo) |
 | KRT | `e91017d1` | pinned (new clones) |
 | grid_router.so | v0.23.7 macos-arm64, sha256 `4ef09467…` | pinned |
 | KRT's Python | CPython 3.12.16 (uv) | pinned |

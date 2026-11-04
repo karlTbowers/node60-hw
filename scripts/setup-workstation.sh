@@ -7,28 +7,29 @@
 #   scripts/setup-workstation.sh --check      change nothing; report, then verify
 #   options:  --no-judge        skip the timed judging run (7-36 min) in the verification
 #             --extras          also install the reference Mac's other Homebrew packages (not needed)
-#             --plugin          also install the dropout-hardware Claude Code plugin (not on the reference Mac)
+#             --no-plugins      don't install the Claude Code plugins (dropout-hardware, kicad-happy)
 #             --ref REF         node60-hw commit to verify (default: pins.env REF_JUDGE_REF, else origin/main)
 #             --judge-out DIR   where the judging run goes (default ~/Dev/node60-judge-runs/<host>-<time>)
 #
 # Pins and reference versions: scripts/workstation/pins.env. How-to: scripts/workstation/README.md.
 # The layout is recreated as on the reference Mac (~/Dev/..., ~/.cache/dropout/krt-venv,
-# /Applications/KiCad), because the judging scripts hard-code it.
+# /Applications/KiCad), because the judging scripts hard-code it. It follows the handbook's
+# "Setting up a new Mac" (chapter 07) and adds what Node60's placement process needs.
 emulate zsh
 setopt pipe_fail no_unset
 HERE=${0:A:h}
 source $HERE/workstation/pins.env
 
-CHECK=0 JUDGE=1 EXTRAS=0 PLUGIN=0 REF="" JOUT=""
+CHECK=0 JUDGE=1 EXTRAS=0 PLUGINS_ON=1 REF="" JOUT=""
 while (( $# )); do
   case $1 in
     --check) CHECK=1 ;;
     --no-judge) JUDGE=0 ;;
     --extras) EXTRAS=1 ;;
-    --plugin) PLUGIN=1 ;;
+    --no-plugins) PLUGINS_ON=0 ;;
     --ref) REF=$2; shift ;;
     --judge-out) JOUT=$2; shift ;;
-    -h|--help) sed -n '2,15p' $0; exit 0 ;;
+    -h|--help) sed -n '2,17p' $0; exit 0 ;;
     *) print -u2 "unknown option $1"; exit 2 ;;
   esac
   shift
@@ -107,7 +108,7 @@ export HOMEBREW_NO_ENV_HINTS=1
 # ---------------------------------------------------------------------------------------------
 section "Homebrew packages"
 ver_of() { $BREW list --versions $1 2>/dev/null | awk '{print $NF}' | sed 's/_[0-9]*$//'; }
-ref_of() { case $1 in uv) print $REF_UV;; node) print $REF_NODE;; gh) print $REF_GH;; git-lfs) print $REF_GIT_LFS;; *) print "";; esac; }
+ref_of() { case $1 in uv) print $REF_UV;; node) print $REF_NODE;; gh) print $REF_GH;; git-lfs) print $REF_GIT_LFS;; d2) print $REF_D2;; *) print "";; esac; }
 for f in ${=BREW_FORMULAE}; do
   v=$(ver_of $f)
   if [[ -z $v ]]; then
@@ -172,6 +173,14 @@ else
 fi
 if git config --global filter.lfs.process >/dev/null; then ok "git-lfs hooks" "in ~/.gitconfig"
 else do_or_would "git-lfs hooks" git lfs install && changed "git-lfs hooks" "git lfs install (filters in ~/.gitconfig)" || true; fi
+GN=$(git config --global user.name || true); GE=$(git config --global user.email || true)
+[[ -n $GN && -n $GE ]] && ok "git identity" "$GN" || warn "git identity" "set git config --global user.name / user.email (handbook ch. 07 step 5; you)"
+VL=$HOME/.local/share/dropout/vendor-logins   # never read here: only its presence and mode
+if [[ -f $VL ]]; then
+  [[ $(stat -f %Lp $VL) == 600 ]] && ok "vendor-logins" "present, mode 600" || warn "vendor-logins" "mode $(stat -f %Lp $VL); chmod 600 $VL"
+else warn "vendor-logins" "missing: you create $VL (mode 600), handbook ch. 07 Credentials"; fi
+if grep -q 'scripts/vendor-env.sh' ~/.zshrc 2>/dev/null; then ok "vendor-env in ~/.zshrc" "API keys reach shells"
+else warn "vendor-env in ~/.zshrc" "missing (handbook ch. 07 step 8): API keys don't reach shells or Claude"; fi
 (( CHECK )) || mkdir -p $DEV
 repo_state() {   # name dir
   local d=$2 br sha dirty url
@@ -259,11 +268,20 @@ section "Claude Code"
 if command -v claude >/dev/null; then
   CV=$(claude --version 2>/dev/null | awk '{print $1}')
   [[ $CV == $REF_CLAUDE ]] && ok "claude" "$CV" || warn "claude" "$CV (reference $REF_CLAUDE; updates itself)"
-  if claude plugin list 2>/dev/null | grep -q dropout-hardware; then ok "dropout-hardware plugin" "installed"
-  elif (( PLUGIN && ! CHECK )); then
-    claude plugin marketplace add $DEV/dropout-hardware-handbook && claude plugin install dropout-hardware@dropout \
-      && changed "dropout-hardware plugin" "installed from $DEV/dropout-hardware-handbook" || fail "dropout-hardware plugin" "install failed"
-  else say "dropout-hardware plugin" "not installed (as on the reference Mac; --plugin installs it)"; fi
+  PL=$(claude plugin list 2>/dev/null || true)
+  for line in ${(f)PLUGINS}; do
+    id=${line%%|*} rest=${line#*|}; mrepo=${rest%%|*} rver=${rest#*|}
+    pv=$(print -- "$PL" | awk -v id="$id" '$0 ~ id {f=1; next} f && /Version:/ {print $2; exit}')
+    if [[ -n $pv ]]; then
+      [[ $pv == $rver ]] && ok "${id%@*} plugin" "$pv" || warn "${id%@*} plugin" "$pv (reference $rver; follows its repo)"
+    elif (( ! PLUGINS_ON )); then say "${id%@*} plugin" "not installed (--no-plugins)"
+    elif (( CHECK )); then would "${id%@*} plugin" "claude plugin marketplace add $mrepo; claude plugin install $id"
+    else
+      print -- "    \$ claude plugin marketplace add $mrepo && claude plugin install $id"
+      claude plugin marketplace add $mrepo >/dev/null && claude plugin install $id >/dev/null \
+        && changed "${id%@*} plugin" "installed $id (user scope)" || fail "${id%@*} plugin" "install failed"
+    fi
+  done
 else warn "claude" "not installed: curl -fsSL https://claude.ai/install.sh | bash, or the desktop app"; fi
 say "ee-skills" "add $DEV/ee-skills/skills/pcb-placement to a session as a folder when the skill needs it"
 
@@ -310,6 +328,19 @@ if [[ -d $N60/.git ]]; then
     (( rc == 0 )) && [[ $last =~ '^([0-9]+) of ([0-9]+) cases pass' && $match[1] == $match[2] ]] && ok "prove_rules.py" "$last" \
       || { fail "prove_rules.py" "$last"; print -- "$out" | grep FAIL | sed 's/^/      /'; }
   else warn "prove_rules.py" "not at $REF"; fi
+
+  # The handbook's own checks (ch. 07 step 11) beyond setup_tools.sh --check, on the library checkout as it is.
+  LIB=$DEV/dropout-kicad-library
+  if [[ -f $LIB/scripts/distributor_lookup.py ]]; then
+    eval "$($LIB/scripts/vendor-env.sh 2>/dev/null)" 2>/dev/null || true
+    python3 $LIB/scripts/distributor_lookup.py S32K344EHT1MMMST >/dev/null 2>&1 && ok "distributor_lookup.py" "S32K344EHT1MMMST found" \
+      || warn "distributor_lookup.py" "failed (API keys from vendor-logins, or the network)"
+  fi
+  if [[ -x $HOME/.cache/dropout/klt-venv/bin/python && -f $LIB/scripts/klc_check.py ]]; then
+    out=$(cd $LIB && $HOME/.cache/dropout/klt-venv/bin/python scripts/klc_check.py 2>&1); rc=$?
+    (( rc == 0 )) && ok "klc_check.py" "no FAIL in $LIB ($(git -C $LIB branch --show-current))" \
+      || warn "klc_check.py" "exit $rc on $LIB as checked out: $(print -- "$out" | grep -c '^FAIL') FAIL"
+  fi
 
   JR=$W/placement/2026-11-02-bars/judge_route.sh
   if (( JUDGE )) && [[ -f $JR ]]; then
