@@ -7,7 +7,7 @@ The page split and net rules expose every decision that still needs evidence.
 
 | Sheet | Page | Contents | Must expose |
 |---|---|---|---|
-| A · Power entry | 2 | Fuse, TVS, LM74910H-Q1, DGATE/HGATE MOSFETs, shared 0.25 mΩ RSENSE, EMI, SW-pin OV/UV monitor divider, INA228A-Q1, TMP175-Q1, RSENSE NTC | VBAT_RAW, BATT_MON, VOUT/VBAT_PROT, RSENSE± star taps, INA228_IN+/IN−, LM_FLT_L, shared I2C, TMP175 ALERT, NTC_RSENSE, reverse/OV/OCP/SCP faults |
+| A · Power entry | 2 | Fuse, TVS, LM74910H-Q1, DGATE/HGATE MOSFETs, shared 0.3 mΩ 4-terminal RSENSE, EMI, SW-pin OV/UV monitor divider, INA228A-Q1, TMP175-Q1, RSENSE NTC | VBAT_RAW, BATT_MON, VOUT/VBAT_PROT, RS_SENSE_P/RS_SENSE_N sense pairs, INA228_IN+/IN−, LM_FLT_L, shared I2C, TMP175 ALERT, NTC_RSENSE, reverse/OV/OCP/SCP faults |
 | B · Regulators | 3 | Nanopower VDDAU LDO, LMQ66430 3.3 V buck on VBAT_FILT, TPS628502 1.5 V buck on 3V3_MAIN, direct INH gating, EN-pin chaining, TPS3702-Q1 | VDDAU_AON, INH, 3V3_MAIN, 1V5_CORE, startup timing, RESET_L supervisor path; no FS26 or wake latch |
 | C · MCU / NVM | 4 | S32K344, IS25LP032D SPI NOR, reset, SWT/CMU, debug, ADC, four LPSPI buses, LPI2C | RMII, MDIO, 3 SNS, BATT_MON ADC, 4 NTC ADCs, INA228/TMP175 I2C, flash SPI/CS, three output-switch SPI buses, faults |
 | D · T1S | 5 | LAN8670, VDDAU/VDDA/VDDP domain split, clock, straps, coupling, ESD | TRXP/N, direct INH-to-buck-EN path, T1S_IRQ_L, PHYAD; no local wake input |
@@ -23,7 +23,7 @@ Schematic page numbers: page 1 is the root (index) sheet. Reference designators 
 - Keep VDDAU on the nanopower always-on LDO and put LAN8670 VDDA/VDDP, MCU, flash, and all remaining logic on switched rails. Enforce VDDA ≤ VDDAU + 0.5 V through all transients.
 - Place IS25LP032D-JNLA3 on switched 3V3_MAIN with dedicated chip select, decoupling, and accessible SPI test pads.
 - Label the SW-divider ADC net **BATT_MON** and its reported quantity **VBAT_RAW**; ensure its ADC tap does not add material parked current, and set cold-crank behavior with the separate UVLO pin.
-- Place the shared 0.25 mΩ RSENSE between the DGATE and HGATE FET stages. Route separate star Kelvin pairs from the resistor pads to LM74910H and INA228A-Q1, expose both nodes as test points, and couple NTC_RSENSE tightly to the resistor body.
+- Place the shared 0.3 mΩ 4-terminal RSENSE (R201, BVR-Z-R0003-1.0) between the DGATE and HGATE FET stages. Route two separate pairs from its sense pads (2 = RS_SENSE_P, 3 = RS_SENSE_N) to LM74910H and INA228A-Q1, expose both nodes as test points, and couple NTC_RSENSE tightly to the resistor body.
 - Route every buck/MCU and output branch from VOUT after the Q2 disconnect FET so shared RSENSE measures the complete downstream current.
 - Fit R(ILIM) = 32 kΩ 1%, RSET = 50 Ω, and TMR ≈68 nF; route LM74910H FLT to the MCU as LM_FLT_L and leave IMON floating when INA228 is populated.
 - Name and route NTC_RSENSE plus NTC_SW1–NTC_SW3 to separate ADC channels; keep divider returns quiet and document each thermistor’s exact coefficients.
@@ -53,4 +53,4 @@ The schematic and this site follow the naming rules adopted on 2026-10-22 (handb
 | Shared I²C | `I2C0_TELEMETRY_SCL`, `I2C0_TELEMETRY_SDA` |
 | RMII / MDIO | `RMII0_T1S_*`, `MDIO0_T1S_MDC`, `MDIO0_T1S_MDIO` |
 | T1S pair | `T1S_P`, `T1S_N` |
-| RSENSE± star taps | `VBAT_D`, `VBAT_Q2D` (the shunt is 2-terminal; Kelvin taps start at its pads) |
+| RSENSE± sense taps | `RS_SENSE_P`, `RS_SENSE_N` (R201's sense pads 2 and 3; its force pads 1 and 4 are `VBAT_D` and `VBAT_Q2D`) |

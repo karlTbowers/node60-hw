@@ -24,7 +24,7 @@ Five added sensors close the input-stage and overload blind spots: one digital s
 | Sensor / quantity | Placement and interface | Accuracy and role |
 |---|---|---|
 | 1 × TMP175-Q1 | Place adjacent to the LM74910H-controlled DGATE/HGATE NFET bank on the 60 A path. Share the INA228 I²C/SMBus bus; use a distinct address. Optionally route ALERT to the S32K344 as a hardware overtemperature interrupt. | ±1 °C typical / ±2 °C maximum from −40…+125 °C; 12-bit, 0.0625 °C resolution. Measures the NFET-bank neighborhood and doubles as the power-input board-ambient reference. |
-| 1 × 10 kΩ NTC | AEC-Q200, 0603, ±1% R25 / ±1% B; place tight to the 0.25 mΩ shared-RSENSE body. Read through a resistor divider on a dedicated S32K344 ADC channel. | About ±0.5–1 °C mid-range and about ±1.5 °C at +125 °C after lookup-table or Steinhart–Hart linearization. These are tolerance-derived planning estimates, not guaranteed datasheet maxima. |
+| 1 × 10 kΩ NTC | AEC-Q200, 0603, ±1% R25 / ±1% B; place tight to the 0.3 mΩ shared-RSENSE body. Read through a resistor divider on a dedicated S32K344 ADC channel. | About ±0.5–1 °C mid-range and about ±1.5 °C at +125 °C after lookup-table or Steinhart–Hart linearization. These are tolerance-derived planning estimates, not guaranteed datasheet maxima. |
 | 3 × 10 kΩ NTC | One AEC-Q200 0603 thermistor beside each TPS2HCS08A-Q1 package; each gets its own resistor divider and S32K344 ADC channel. | Same tolerance-derived estimate as the shunt NTC. Preserves package-temperature visibility when switch FET telemetry is unavailable during an I²t event. |
 
 <Aside type="tip" title="Digital sensor baseline">

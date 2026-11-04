@@ -37,7 +37,7 @@ entry: "Power entry · always connected" {
   class: group
   term: "Power terminals\n2 × REDCUBE 74660016R + SurLok Plus\nbusbar to the second pair" {class: battery; link: "/subsystems/harness/"}
   tvs: "Primary TVS\nXLD8A24CA\n24 V · 7 kW" {class: battery; link: "/subsystems/power/"}
-  lm: "LM74910H-Q1 ideal diode + breaker\nQ1 (DGATE) → RSENSE 0.25 mΩ → Q2 (HGATE)\nreverse · OV · 75 A breaker · 80 A SCP" {class: battery; link: "/subsystems/power/"}
+  lm: "LM74910H-Q1 ideal diode + breaker\nQ1 (DGATE) → RSENSE 0.3 mΩ → Q2 (HGATE)\nreverse · OV · 75 A breaker · 80 A SCP" {class: battery; link: "/subsystems/power/"}
 }
 
 downstream: "Downstream node\nlower current · own protection" {class: external; link: "/subsystems/harness/"}
