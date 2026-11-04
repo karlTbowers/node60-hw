@@ -1,5 +1,5 @@
 {
- "about": "Node60 power shapes, stage 1 (2026-11-04): inner planes (D12-1/D17 A), the 60 A entry path on B, In2, In3 and the F band (D18 A), VBAT_PROT at the disconnect FETs' sources, GND pours, and via fields at 0.65 A per 0.45/0.25 mm via (D12-6). Stage 2: each switch's VBB pad gets in-pad vias (filled and capped, DEC-027); each output a pour on B and F from its pins to its header's pin 1, OUTb the mirror image of OUTa, with mirrored via fields so both outputs of a switch get the same copper.",
+ "about": "Node60 power shapes, stage 1 (2026-11-04): inner planes (D12-1/D17 A), the 60 A entry path on B, In2, In3 and the F band (D18 A), VBAT_PROT at the disconnect FETs' sources, GND pours, and via fields at 0.65 A per 0.45/0.25 mm via (D12-6). Stage 2: each switch's VBB pad gets in-pad vias (filled and capped, DEC-027); each output a pour on B and F from its pins to its header's pin 1, OUTb the mirror image of OUTa, with mirrored via fields so both outputs of a switch get the same copper. D19 A (2026-11-04): the cells' small parts moved clear of the OUT exits; the B output pours reach north to y 104.5 beside the pins (F stays south of the VBAT_IN bar area).",
  "via": {
   "size": 0.45,
   "drill": 0.25,
@@ -296,6 +296,14 @@
    "poly": [
     [
      75.5,
+     104.5
+    ],
+    [
+     68.65,
+     104.5
+    ],
+    [
+     68.65,
      108.9
     ],
     [
@@ -349,8 +357,16 @@
      108.9
     ],
     [
-     79.8,
+     86.65,
      108.9
+    ],
+    [
+     86.65,
+     104.5
+    ],
+    [
+     79.8,
+     104.5
     ]
    ]
   },
@@ -432,6 +448,14 @@
    "poly": [
     [
      150.15,
+     104.5
+    ],
+    [
+     143.3,
+     104.5
+    ],
+    [
+     143.3,
      108.9
     ],
     [
@@ -485,8 +509,16 @@
      108.9
     ],
     [
-     154.45,
+     161.3,
      108.9
+    ],
+    [
+     161.3,
+     104.5
+    ],
+    [
+     154.45,
+     104.5
     ]
    ]
   },
@@ -568,6 +600,14 @@
    "poly": [
     [
      224.8,
+     104.5
+    ],
+    [
+     217.95,
+     104.5
+    ],
+    [
+     217.95,
      108.9
     ],
     [
@@ -621,8 +661,16 @@
      108.9
     ],
     [
-     229.1,
+     235.95,
      108.9
+    ],
+    [
+     235.95,
+     104.5
+    ],
+    [
+     229.1,
+     104.5
     ]
    ]
   },

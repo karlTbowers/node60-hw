@@ -2,33 +2,119 @@
   "id": "D19",
   "name": "Output cell exits",
   "question": "Re-place the output cells' small parts so each output's copper can leave its switch wide?",
-  "board": "node60", "phase": "Routing", "stage": "Power shapes", "date": "2026-11-04",
+  "board": "node60",
+  "phase": "Routing",
+  "stage": "Power shapes",
+  "date": "2026-11-04",
   "why_now": "The power shapes are drawn (PR #62), and measuring the outputs from the copper shows where their resistance sits. Each output leaves its switch through three 0.45 mm pins, and the cell's small parts crowd the bottom side right beside them: C605, TP604, TP606, R605, RT601 and R607 next to the OUTa pins, R601, TP602, R604 and TP603 next to the OUTb pins, C603 on top. So the 10 A squeezes through a strip about 2 mm wide of 1 oz copper before it reaches the wide pours and their vias. The output cells were approved in D08 and D13, so moving their parts is your call.",
   "facts": [
-    {"label": "Measured", "value": "power/copper_r.py: each output's resistance from its switch pins to its header's pin 1, through the filled B and F pours and their vias, at 85 °C. The result holds within 2 % from a 0.25 to a 0.1 mm grid", "source": "run folder"},
-    {"label": "Scale", "value": "TPS2HCS08A on-resistance: 8.9 mΩ typical, up to 7 % (0.6 mΩ) between channels", "source": "data sheet"},
-    {"label": "Why OUT5 differs", "value": "U801's cell is not an exact copy: D08 moved a few of its parts so its FLT pin could route, which happens to leave OUT5 a cleaner exit", "source": "D08"},
-    {"label": "Vias", "value": "Every output already gets the same vias (4 beside the pins, 24 in the band), kept only where free at all six; the in-pad VBB vias (30 per switch) don't depend on this", "source": "power_shapes.json"}
+    {
+      "label": "Measured",
+      "value": "power/copper_r.py: each output's resistance from its switch pins to its header's pin 1, through the filled B and F pours and their vias, at 85 °C. The result holds within 2 % from a 0.25 to a 0.1 mm grid",
+      "source": "run folder"
+    },
+    {
+      "label": "Scale",
+      "value": "TPS2HCS08A on-resistance: 8.9 mΩ typical, up to 7 % (0.6 mΩ) between channels",
+      "source": "data sheet"
+    },
+    {
+      "label": "Why OUT5 differs",
+      "value": "U801's cell is not an exact copy: D08 moved a few of its parts so its FLT pin could route, which happens to leave OUT5 a cleaner exit",
+      "source": "D08"
+    },
+    {
+      "label": "Vias",
+      "value": "Every output already gets the same vias (4 beside the pins, 24 in the band), kept only where free at all six; the in-pad VBB vias (30 per switch) don't depend on this",
+      "source": "power_shapes.json"
+    }
   ],
   "options": [
-    {"key": "A", "name": "Clear the exits, identically in all three cells",
-     "summary": "Move the small parts that sit beside the OUT pins (the list above) to the switch's north and south sides or further out, the same way in all three cells, keeping each part's job (decaps at their pins, test points reachable). Then widen the output pours and the via strips into the space freed, and re-measure.",
-     "images": [{"path": "img/d19_cell_B.Cu.png", "caption": "U601's cell today, B.Cu: the two output pours (outlined) narrow to a neck beside the switch"}],
-     "measures": [
-       {"label": "Output resistance, switch pins to header pin 1", "value": "about 2.5 mΩ each, measured on a copy with U601's small parts moved away (2.47 / 2.45 mΩ); lower once the pours widen", "limit": "low", "status": "pass"},
-       {"label": "Spread between the six outputs", "value": "about 1 % (by construction: same cell, same copper, same vias)", "limit": "equal", "status": "pass"},
-       {"label": "Loss per output at 10 A", "value": "about 0.25 W", "limit": "", "status": "info"}],
-     "gains": ["Half the output resistance", "Six outputs equal"], "costs": ["A re-placement of the three cells (D13 revised), done the same way three times"]},
-    {"key": "B", "name": "Keep the cells",
-     "summary": "Leave the cells as approved.",
-     "images": [{"path": "img/d19_cell_F.Cu.png", "caption": "U601's cell today, F.Cu"}],
-     "measures": [
-       {"label": "Output resistance, switch pins to header pin 1", "value": "OUT1–OUT6: 4.83 / 4.59 / 4.83 / 4.59 / 3.03 / 4.53 mΩ", "limit": "low", "status": "fail"},
-       {"label": "Spread between the six outputs", "value": "1.8 mΩ (OUT5 lowest, OUT1/OUT3 highest)", "limit": "equal", "status": "fail"},
-       {"label": "Loss per output at 10 A", "value": "0.30–0.48 W", "limit": "", "status": "info"}],
-     "gains": ["No change"], "costs": ["Up to half the switch's own on-resistance again in copper, and the outputs differ by more than the switches do"]}
+    {
+      "key": "A",
+      "name": "Clear the exits, identically in all three cells",
+      "summary": "Move the small parts that sit beside the OUT pins (the list above) to the switch's north and south sides or further out, the same way in all three cells, keeping each part's job (decaps at their pins, test points reachable). Then widen the output pours and the via strips into the space freed, and re-measure.",
+      "images": [
+        {
+          "path": "img/d19_cell_B.Cu.png",
+          "caption": "U601's cell today, B.Cu: the two output pours (outlined) narrow to a neck beside the switch"
+        }
+      ],
+      "measures": [
+        {
+          "label": "Output resistance, switch pins to header pin 1",
+          "value": "about 2.5 mΩ each, measured on a copy with U601's small parts moved away (2.47 / 2.45 mΩ); lower once the pours widen",
+          "limit": "low",
+          "status": "pass"
+        },
+        {
+          "label": "Spread between the six outputs",
+          "value": "about 1 % (by construction: same cell, same copper, same vias)",
+          "limit": "equal",
+          "status": "pass"
+        },
+        {
+          "label": "Loss per output at 10 A",
+          "value": "about 0.25 W",
+          "limit": "",
+          "status": "info"
+        }
+      ],
+      "gains": [
+        "Half the output resistance",
+        "Six outputs equal"
+      ],
+      "costs": [
+        "A re-placement of the three cells (D13 revised), done the same way three times"
+      ]
+    },
+    {
+      "key": "B",
+      "name": "Keep the cells",
+      "summary": "Leave the cells as approved.",
+      "images": [
+        {
+          "path": "img/d19_cell_F.Cu.png",
+          "caption": "U601's cell today, F.Cu"
+        }
+      ],
+      "measures": [
+        {
+          "label": "Output resistance, switch pins to header pin 1",
+          "value": "OUT1–OUT6: 4.83 / 4.59 / 4.83 / 4.59 / 3.03 / 4.53 mΩ",
+          "limit": "low",
+          "status": "fail"
+        },
+        {
+          "label": "Spread between the six outputs",
+          "value": "1.8 mΩ (OUT5 lowest, OUT1/OUT3 highest)",
+          "limit": "equal",
+          "status": "fail"
+        },
+        {
+          "label": "Loss per output at 10 A",
+          "value": "0.30–0.48 W",
+          "limit": "",
+          "status": "info"
+        }
+      ],
+      "gains": [
+        "No change"
+      ],
+      "costs": [
+        "Up to half the switch's own on-resistance again in copper, and the outputs differ by more than the switches do"
+      ]
+    }
   ],
-  "recommendation": {"option": "A", "why": "You asked for the lowest copper resistance and six equal outputs; today's cells give neither. The parts in the way are small (0402–0603 caps and resistors, test points), so moving them costs little."},
+  "recommendation": {
+    "option": "A",
+    "why": "You asked for the lowest copper resistance and six equal outputs; today's cells give neither. The parts in the way are small (0402–0603 caps and resistors, test points), so moving them costs little."
+  },
   "answer": "Reply with A or B.",
-  "sources": ["power/copper_r.py", "power/power_shapes.json", "D08, D13, D12-7"]
+  "sources": [
+    "power/copper_r.py",
+    "power/power_shapes.json",
+    "D08, D13, D12-7"
+  ],
+  "answered": "A (user, 2026-11-04)"
 }

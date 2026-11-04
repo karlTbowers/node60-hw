@@ -1,7 +1,11 @@
 {
  "block": "u801",
  "anchor": "U801",
- "approved": "2026-11-03 (D13 A)",
+ "approved": "2026-11-04 (D19 A; D13 A before)",
+ "copied_from": {
+  "table": "/tmp/n60/out_6x.new.json",
+  "approved": null
+ },
  "anchor_pose": {
   "x": 226.95,
   "y": 111.6,
@@ -16,7 +20,7 @@
    "side": "F",
    "role": "core",
    "flex_mm": 0,
-   "why": "CVBB1, VBB to GND. TI SLVSHR0 \u00a79.4.1: as close as possible to the VBB and GND pins. On F.Cu (decaps go on top), directly over the exposed VBB pad"
+   "why": "CVBB1, VBB to GND. TI SLVSHR0 §9.4.1: as close as possible to the VBB and GND pins. On F.Cu (decaps go on top), directly over the exposed VBB pad"
   },
   "C802": {
    "dx": 0.5838,
@@ -28,7 +32,7 @@
    "why": "VBB bulk cap, beside the VBB pad, on the channel's VBAT_PROT pour"
   },
   "C803": {
-   "dx": -3.956,
+   "dx": -4.306,
    "dy": 0.3438,
    "rot": 180.0,
    "side": "F",
@@ -43,7 +47,7 @@
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "CSNS, SNS to GND. TI SLVSHR0 \u00a79.4.1: close to the SNS pin (2.36 mm pad gap)"
+   "why": "CSNS, SNS to GND. TI SLVSHR0 §9.4.1: close to the SNS pin (2.36 mm pad gap)"
   },
   "C805": {
    "dx": -5.551,
@@ -64,22 +68,22 @@
    "why": "Second output's cap to GND, at the second output's pins (9-11)"
   },
   "C807": {
-   "dx": 1.1937,
-   "dy": -7.3416,
+   "dx": 1.25,
+   "dy": -9.35,
    "rot": 90.0,
-   "side": "B",
-   "role": "flex",
-   "flex_mm": 4,
-   "why": "NTC filter cap, beside the thermistor; position not critical"
-  },
-  "R801": {
-   "dx": 4.265,
-   "dy": -3.351,
-   "rot": 0.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "SW_VDD feed from 3V3_MAIN, on the VDD side of the chip"
+   "why": "NTC filter capacitor beside RT601 and R607, north of the switch (D19 A)."
+  },
+  "R801": {
+   "dx": -6.0,
+   "dy": 1.4,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "SW_VDD series resistor near pin 3, on the switch's south-west signal side (D19 A: moved off the OUT2 exit)."
   },
   "R802": {
    "dx": -1.3923,
@@ -100,13 +104,13 @@
    "why": "LHI pull-down, by pin 5"
   },
   "R804": {
-   "dx": 6.6836,
-   "dy": -0.2664,
+   "dx": 4.5,
+   "dy": 2.9,
    "rot": 270.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "FLT pull-up to SW_VDD, by pin 12"
+   "why": "FLT pull-up near pin 12, on the south-east signal side (D19 A: moved off the OUT2 exit)."
   },
   "R805": {
    "dx": -4.6782,
@@ -115,7 +119,7 @@
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "RSNS, SNS to GND. TI SLVSHR0 \u00a79.4.1: close to the SNS pin (0.55 mm pad gap)"
+   "why": "RSNS, SNS to GND. TI SLVSHR0 §9.4.1: close to the SNS pin (0.55 mm pad gap)"
   },
   "R806": {
    "dx": -5.9045,
@@ -127,48 +131,48 @@
    "why": "SNS series resistor to the MCU's ADC, from the SNS node to the channel's SNS test point"
   },
   "R807": {
-   "dx": 0.3513,
-   "dy": -4.1385,
-   "rot": 0.0,
+   "dx": -0.75,
+   "dy": -9.35,
+   "rot": 90.0,
    "side": "B",
-   "role": "flex",
-   "flex_mm": 4,
-   "why": "NTC divider, beside the thermistor; position not critical"
+   "role": "core",
+   "flex_mm": 0,
+   "why": "NTC divider resistor beside RT601, north of the switch (D19 A: moved with RT601)."
   },
   "RT801": {
-   "dx": -2.0418,
-   "dy": -4.2113,
+   "dx": -0.75,
+   "dy": -6.35,
    "rot": 270.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "Thermistor beside the switch, to read its temperature"
+   "why": "NTC for U801's temperature, north of the switch between the two output exits (D19 A, 2026-11-04: moved off the OUT1 exit), 3.75 mm from the VBB pad's centre."
   },
   "TP801": {
    "dx": -3.8535,
    "dy": 6.188,
    "rot": 270.0,
    "side": "B",
-   "role": "flex",
-   "flex_mm": 4,
+   "role": "core",
+   "flex_mm": 0,
    "why": "SNS test point (MCU side)"
   },
   "TP802": {
-   "dx": 6.7413,
-   "dy": -2.3336,
-   "rot": 270.0,
+   "dx": 0.75,
+   "dy": -3.85,
+   "rot": 0.0,
    "side": "B",
-   "role": "flex",
-   "flex_mm": 4,
-   "why": "FLT test point"
+   "role": "core",
+   "flex_mm": 0,
+   "why": "FLT test point north of the switch, between the output exits (D19 A)."
   },
   "TP803": {
    "dx": 5.051,
    "dy": 0.975,
    "rot": 270.0,
    "side": "B",
-   "role": "flex",
-   "flex_mm": 4,
+   "role": "core",
+   "flex_mm": 0,
    "why": "SPI MISO test point"
   },
   "TP804": {
@@ -176,8 +180,8 @@
    "dy": -1.0045,
    "rot": 270.0,
    "side": "B",
-   "role": "flex",
-   "flex_mm": 4,
+   "role": "core",
+   "flex_mm": 0,
    "why": "First output's test point"
   },
   "TP805": {
@@ -185,19 +189,18 @@
    "dy": 7.052,
    "rot": 270.0,
    "side": "B",
-   "role": "flex",
-   "flex_mm": 4,
+   "role": "core",
+   "flex_mm": 0,
    "why": "Second output's test point"
   },
   "TP806": {
-   "dx": 5.25,
-   "dy": 7.0,
-   "rot": 270.0,
+   "dx": 0.0,
+   "dy": 10.4,
+   "rot": 180.0,
    "side": "B",
-   "role": "flex",
-   "flex_mm": 12,
-   "why": "GND probe loop for the channel, anywhere within 12 mm of pin 1; at (231, 107.75) because the copied pose overlapped J908 (pose_search.py)"
+   "role": "core",
+   "flex_mm": 0,
+   "why": "GND test point south of the switch (D19 A: moved off the OUT1 exit)."
   }
- },
- "anchor_why": "Turned to 0\u00b0 and centred between its two headers' pin 1 at y 111.6 (D12-3, 2026-11-03): OUTa faces the west header, OUTb the east one, and both runs are 15.75 \u00b1 0.05 mm sideways and 15.0 mm down, the same in all three cells. The cell turned rigidly with the switch, so every part keeps D08's relation to its pin"
+ }
 }
