@@ -39,3 +39,5 @@ D12-6 applied 2026-11-03: `plan.json` counts 0.65 A per via; R201's high-current
 ## D16 T1S line layout (2026-11-03) — https://claude.ai/artifact/Y3JvotHyv5ecsbPLXwQEUK
 
 User 2026-11-03: T1S runs short and equal; either connector may be used, also as an end node; move the PHY if needed. Composed: PHY chain north of the trunk's midpoint, K501 centred on it, trunk on F.Cu with via taps. `blocks/t1s.poses.json` re-extracted (approved: null). D16-2 asks about a second ESD pair at J912. Awaiting the user's answer.
+
+D16 answered 2026-11-03: **D16-1 A, D16-2 A** (user). `blocks/t1s.poses.json` approved (replaces D05's table); intent's U501–U401 limit raised to 40 mm. D16-2 A: a second ESD pair at J912's pins, a schematic change that first checks the extra capacitance against the node's budget; then placed beside J912.

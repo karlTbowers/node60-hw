@@ -1187,11 +1187,11 @@
   {
    "ref": "U501",
    "near": "U401",
-   "max_mm": 25.0,
+   "max_mm": 40.0,
    "basis": "body",
    "source": "brief",
    "context": {
-    "why": "RMII (50 MHz reference clock) kept short"
+    "why": "RMII (50 MHz reference clock) kept short; 40 mm since D16-1 A (user 2026-11-03): the PHY moved north of the T1S trunk's midpoint for a short, matched line stub, RMII about 54 mm pin to pin, about 0.2 ns more"
    }
   },
   {

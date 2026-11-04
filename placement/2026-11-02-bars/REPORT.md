@@ -52,7 +52,7 @@ their own decisions (D02, D03) and dropped the U401 scoped rule (the BGA escapes
 | Block | Anchor | Parts | Approved | Notes |
 |---|---|---|---|---|
 | Power entry | R201 | 35 | D15, 2026-11-03 (replaces D04) | Re-ordered to flow east; BVR4026 Kelvin shunt, INA228 beside it |
-| T1S line interface and PHY | K501 | 18 | D05, 2026-11-02 | as it stood on main (PR #35) |
+| T1S line interface and PHY | K501 | 20 | D16, 2026-11-03 (replaces D05) | PHY chain north of the trunk midpoint, K501 on it; stub 12.5/12.5 mm |
 | Buck 1V5_CORE | U303 | 11 | D06, 2026-11-02 | divider on the SW side, 2.55 mm from the switch node |
 | Buck 3V3_MAIN | U302 | 8 | D06, 2026-11-02 | |
 | MCU crystal | Y401 | 5 | D07, 2026-11-02 | C424, C425 to their pins; TP407 7 mm away; no-via rule on the crystal nets |
