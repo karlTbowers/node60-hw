@@ -1,0 +1,8 @@
+# KiCadRoutingTools' Python environment (~/.cache/dropout/krt-venv, CPython 3.12.16 from uv),
+# exactly as on the reference Mac (`uv pip freeze`, 2026-11-03). KRT's requirements.txt at
+# e91017d1 also lists ortools>=9.15 for its bus step (awx/route_bus.py), which the Node60
+# judging flow doesn't use; the reference venv doesn't have it, so neither does this one.
+numpy==2.5.4
+pillow==13.0.0
+scipy==1.18.1
+shapely==2.2.0
