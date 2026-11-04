@@ -416,13 +416,15 @@ if [[ -d $N60/.git ]]; then
     cp $W/placement/2026-11-02-bars/rules/perf_report.py $JOUT/ 2>/dev/null || true
     PERF=$W/placement/2026-11-02-bars/rules/perf_report.py
     if [[ -f $JOUT/rules.json ]]; then
-      # Same commit, same KRT, same inputs -> the same blocking count and the same open nets.
+      # Same commit, same KRT, same inputs: the same open nets, and a blocking count within max(2, 1 %).
+      # KRT is not bit-for-bit repeatable: four runs on the Air gave 330, 329, 330, 329 (one clearance item).
       cmp_out=$(python3 - $JOUT/rules.json $HERE/workstation/reference/rules.json <<'PY'
 import json, sys
 a, r = (json.load(open(p)) for p in sys.argv[1:])
 sa, sr = set(a["open_nets"]), set(r["open_nets"])
-same = a["blocking"] == r["blocking"] and sa == sr
-d = [f"blocking {a['blocking']} (reference {r['blocking']})", f"{len(sa)} open nets (reference {len(sr)})"]
+tol = max(2, round(0.01 * r["blocking"]))
+same = abs(a["blocking"] - r["blocking"]) <= tol and sa == sr
+d = [f"blocking {a['blocking']} (reference {r['blocking']}, within {tol} passes)", f"{len(sa)} open nets (reference {len(sr)})"]
 if sa - sr: d.append("open only here: " + ", ".join(sorted(sa - sr)))
 if sr - sa: d.append("open only in the reference: " + ", ".join(sorted(sr - sa)))
 for k in sorted(set(a["other_errors"]) | set(r["other_errors"])):
@@ -434,7 +436,7 @@ PY
       say "judging run" "$(( T1 - T0 )) s wall"
       if [[ $C != ${REF_JUDGE_COMMIT}* || $RUN_KRT != $REF_KRT_COMMIT ]]; then
         warn "judging vs reference" "node60 ${C:0:8} + KRT ${RUN_KRT:0:8}, the reference ${REF_JUDGE_COMMIT:0:8} + ${REF_KRT_COMMIT:0:8}: information only (${cmp_out#* })"
-      elif [[ $cmp_out == SAME* ]]; then ok "judging vs reference" "same result: ${cmp_out#SAME }"
+      elif [[ $cmp_out == SAME* ]]; then ok "judging vs reference" "matches: ${cmp_out#SAME }"
       else fail "judging vs reference" "${cmp_out#DIFF }"; fi
       [[ -f $PERF ]] && python3 $PERF $JOUT $HERE/workstation/reference --md $JOUT/perf.md >/dev/null 2>&1 \
         && { say "perf_report.py" "this run vs the reference (left: this machine):"; sed 's/^/      /' $JOUT/perf.md | head -40; }
