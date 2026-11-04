@@ -137,6 +137,17 @@
   title: TI AN-2162 Simple Success With Conducted EMI From DC-DC Converters, SNVA489 (L201/C207 damped input filter)
   url: https://www.ti.com/lit/pdf/snva489
   verified: 2026-11-03
+- id: S39
+  title: Microchip AN1718 LAN86xx Bus Interface Network (BIN) Reference Design, DS60001718D (line interface, layout rules; 15 pF note citing IEEE 802.3cg 147.9.2)
+  url: https://ww1.microchip.com/downloads/aemDocuments/documents/AIS/ApplicationNotes/ApplicationNotes/LAN86xx-BIN-Ref-Design-Application-Note-60001718.pdf
+  verified: 2026-11-03
+- id: S40
+  title: Vishay VETH100A1DD1 data sheet, doc. 86195 rev. 1.3 (capacitance per diode and per pair; D501-D504)
+  url: https://www.vishay.com/docs/86195/veth100a1dd1.pdf
+  verified: 2026-11-03
+- id: S41
+  title: Omron G6K data sheet K106-E1, revised 2026-03 (high-frequency isolation curve, p. 5; K501 open-contact estimate)
+  url: https://www.aratas.com/us-en/datasheet_pdf/K106-E1.pdf
 - id: Z1
   title: Upstream Zephyr S32 SoC tree
   url: https://github.com/zephyrproject-rtos/zephyr/tree/main/soc/nxp/s32
