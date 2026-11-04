@@ -51,7 +51,7 @@ their own decisions (D02, D03) and dropped the U401 scoped rule (the BGA escapes
 
 | Block | Anchor | Parts | Approved | Notes |
 |---|---|---|---|---|
-| Power entry | R201 | 12 | D04, 2026-11-02 | INA228 beside its shunt |
+| Power entry | R201 | 35 | D15, 2026-11-03 (replaces D04) | Re-ordered to flow east; BVR4026 Kelvin shunt, INA228 beside it |
 | T1S line interface and PHY | K501 | 18 | D05, 2026-11-02 | as it stood on main (PR #35) |
 | Buck 1V5_CORE | U303 | 11 | D06, 2026-11-02 | divider on the SW side, 2.55 mm from the switch node |
 | Buck 3V3_MAIN | U302 | 8 | D06, 2026-11-02 | |
