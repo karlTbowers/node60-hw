@@ -295,16 +295,21 @@
     "D502",
     "C511",
     "C512",
-    "FL501"
+    "FL501",
+    "C509",
+    "C510",
+    "R501",
+    "D503",
+    "D504"
    ],
    "side": "B",
    "zone": [
     139.0,
-    40.0,
+    37.2,
     171.0,
     62.0
    ],
-   "why": "T1S line interface on the trunk's midpoint between J912 and J903, under the trunk on the bottom (the top is under the header housings); AN1718 2.0: ESD and termination in line on the pair at the connectors (user 2026-11-01: T1S first)",
+   "why": "T1S line interface between J912 and J903 (pending D16, 2026-11-03): the trunk on F.Cu between the connector pins, the relay K501 and its termination south of it at the trunk's midpoint, the PHY chain (C511/C512 under the trunk, FL501, then U501 north of the zone) straight north from the same point, so either port sees the same line; nothing else in the zone (user 2026-11-01: T1S first; 2026-11-03: short, matched stubs, the PHY moved for them) C509/C510 (VDDAU) and R501 (RBIAS) at U501's south-east pins 25-26 are allowed in the zone's north-east corner, clear of the choke; the 50 MHz clock (Y501, R503, R504) stays out.",
    "exclusive": true
   },
   {
@@ -1063,10 +1068,10 @@
    "basis": "body",
    "context": {
     "brief_row": 3,
-    "why": "schematic layout note: TMP175 FET-bank temperature, place beside the FET bank"
+    "why": "schematic layout note: TMP175 FET-bank temperature, place beside the FET bank; Q201 since the power entry was re-ordered to flow east (D14-2, 2026-11-03): Q201 and Q202 are the same ideal-diode bank and Q201 is the one beside U203"
    },
    "max_mm": 5.0,
-   "near": "Q202",
+   "near": "Q201",
    "ref": "U203",
    "source": "brief"
   },
@@ -1184,11 +1189,11 @@
   {
    "ref": "U501",
    "near": "U401",
-   "max_mm": 25.0,
+   "max_mm": 40.0,
    "basis": "body",
    "source": "brief",
    "context": {
-    "why": "RMII (50 MHz reference clock) kept short"
+    "why": "RMII (50 MHz reference clock) kept short; 40 mm since D16-1 A (user 2026-11-03): the PHY moved north of the T1S trunk's midpoint for a short, matched line stub, RMII about 54 mm pin to pin, about 0.2 ns more"
    }
   },
   {

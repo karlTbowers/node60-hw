@@ -79,6 +79,9 @@ section { min-width: 0 }
 .fact .k { font: 600 11px/1.3 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted) }
 .fact .v { font-weight: 600; overflow-wrap: anywhere }
 .fact .s { font-size: 13px; color: var(--muted); overflow-wrap: anywhere }
+.part { border-top: 2px solid var(--rule); padding-top: 28px; }
+.part h2.ph { font-size: 1.35rem; margin: 6px 0 10px; }
+.part h3 { margin-top: 18px; }
 .options { display: grid; gap: 18px; grid-template-columns: 1fr }
 @media (min-width: 760px) { .options.n2 { grid-template-columns: 1fr 1fr } .options.n3 { grid-template-columns: repeat(3, 1fr) } }
 .opt { background: var(--sheet); border: 1px solid var(--rule); padding: 16px; display: grid; gap: 12px; align-content: start; min-width: 0 }
@@ -151,8 +154,6 @@ def chip(status, value):
 
 
 def build(d, base):
-    opts = d.get("options", [])
-    rec = (d.get("recommendation") or {}).get("option")
     missing = []
 
     def fig(img):
@@ -164,51 +165,79 @@ def build(d, base):
         return (f'<figure><button type="button" aria-label="Enlarge: {cap}"><img src="{data_uri(p)}" '
                 f'alt="{cap}" loading="lazy"></button><figcaption>{cap}</figcaption></figure>')
 
-    cards = []
-    for o in opts:
-        is_rec = o.get("key") == rec
-        gains = "".join(f"<li>{inline(g)}</li>" for g in o.get("gains", []))
-        costs = "".join(f"<li>{inline(c)}</li>" for c in o.get("costs", []))
-        cards.append(
-            f'<article class="opt{" rec" if is_rec else ""}" id="option-{html.escape(str(o.get("key")))}">'
-            f'<div class="opt-head"><span class="key">{inline(o.get("key", "?"))}</span>'
-            f'<h3>{inline(o.get("name", ""))}</h3>{"<span class=tag>Recommended</span>" if is_rec else ""}</div>'
-            f'{paras(o.get("summary"))}{"".join(fig(i) for i in o.get("images", []))}'
-            f'<div class="gc"><div><h4>Gains</h4><ul>{gains or "<li>-</li>"}</ul></div>'
-            f'<div><h4>Costs</h4><ul>{costs or "<li>-</li>"}</ul></div></div></article>')
+    def facts_of(x):
+        return "".join(
+            f'<div class="fact"><span class="k">{inline(f["label"])}</span><span class="v">{inline(f["value"])}</span>'
+            + (f'<span class="s">{inline(f["source"])}</span>' if f.get("source") else "") + "</div>"
+            for f in x.get("facts", []))
 
-    labels = []
-    for o in opts:
-        for m in o.get("measures", []):
-            if m["label"] not in labels:
-                labels.append(m["label"])
-    table = ""
-    if labels:
-        head = "".join(f"<th>{inline(o.get('key'))} · {inline(o.get('name', ''))}</th>" for o in opts)
+    def options_of(x, h="h2"):
+        """options, measures table and recommendation of one decision, as sections"""
+        opts = x.get("options", [])
+        rec = (x.get("recommendation") or {}).get("option")
+        pre = f'{x["id"]}-' if x.get("_part") else ""
+        cards = []
+        for o in opts:
+            is_rec = o.get("key") == rec
+            gains = "".join(f"<li>{inline(g)}</li>" for g in o.get("gains", []))
+            costs = "".join(f"<li>{inline(c)}</li>" for c in o.get("costs", []))
+            cards.append(
+                f'<article class="opt{" rec" if is_rec else ""}" id="option-{pre}{html.escape(str(o.get("key")))}">'
+                f'<div class="opt-head"><span class="key">{inline(o.get("key", "?"))}</span>'
+                f'<h3>{inline(o.get("name", ""))}</h3>{"<span class=tag>Recommended</span>" if is_rec else ""}</div>'
+                f'{paras(o.get("summary"))}{"".join(fig(i) for i in o.get("images", []))}'
+                f'<div class="gc"><div><h4>Gains</h4><ul>{gains or "<li>-</li>"}</ul></div>'
+                f'<div><h4>Costs</h4><ul>{costs or "<li>-</li>"}</ul></div></div></article>')
+        labels = []
+        for o in opts:
+            for m in o.get("measures", []):
+                if m["label"] not in labels:
+                    labels.append(m["label"])
+        table = ""
+        if labels:
+            head = "".join(f"<th>{inline(o.get('key'))} · {inline(o.get('name', ''))}</th>" for o in opts)
+            body = []
+            for lab in labels:
+                cells, limit = [], ""
+                for o in opts:
+                    m = next((m for m in o.get("measures", []) if m["label"] == lab), None)
+                    if m:
+                        limit = limit or m.get("limit", "")
+                        cells.append(f"<td>{chip(m.get('status'), m.get('value', ''))}</td>")
+                    else:
+                        cells.append("<td>-</td>")
+                body.append(f"<tr><td>{inline(lab)}</td><td class=lim>{inline(limit)}</td>{''.join(cells)}</tr>")
+            table = (f'<section><{h}>Measured</{h}><div class="table"><table><thead><tr><th>Check</th><th>Limit</th>{head}'
+                     f'</tr></thead><tbody>{"".join(body)}</tbody></table></div></section>')
+        r = x.get("recommendation") or {}
+        n = min(len(opts), 3)
+        return (f'<section><{h}>Options</{h}><div class="options n{n}">{"".join(cards)}</div></section>{table}'
+                + (f'<section class="callout"><{h}>Recommendation: {inline(r.get("option", ""))}</{h}>{paras(r.get("why"))}</section>' if r else ""))
+
+    parts = d.get("decisions")
+    if parts:
         body = []
-        for lab in labels:
-            cells, limit = [], ""
-            for o in opts:
-                m = next((m for m in o.get("measures", []) if m["label"] == lab), None)
-                if m:
-                    limit = limit or m.get("limit", "")
-                    cells.append(f"<td>{chip(m.get('status'), m.get('value', ''))}</td>")
-                else:
-                    cells.append("<td>-</td>")
-            body.append(f"<tr><td>{inline(lab)}</td><td class=lim>{inline(limit)}</td>{''.join(cells)}</tr>")
-        table = (f'<section><h2>Measured</h2><div class="table"><table><thead><tr><th>Check</th><th>Limit</th>{head}'
-                 f'</tr></thead><tbody>{"".join(body)}</tbody></table></div></section>')
-
-    facts = "".join(
-        f'<div class="fact"><span class="k">{inline(f["label"])}</span><span class="v">{inline(f["value"])}</span>'
-        + (f'<span class="s">{inline(f["source"])}</span>' if f.get("source") else "") + "</div>"
-        for f in d.get("facts", []))
-    r = d.get("recommendation") or {}
-    keys = "".join(f"<span>{inline(o.get('key'))}: {inline(o.get('name', ''))}</span>" for o in opts)
-    answer = d.get("answer") or ("Reply in the Claude session with the option's letter, or with a change to one. "
-                                 "A comment on this page reaches Claude too. Nothing goes ahead until you answer.")
+        for x in parts:
+            x["_part"] = True
+            fx = facts_of(x)
+            body.append(
+                f'<section class="part" id="{html.escape(x["id"])}"><div class="eyebrow"><b>{inline(x["id"])}</b></div>'
+                f'<h2 class="ph">{inline(x.get("question", ""))}</h2>{paras(x.get("why_now"))}'
+                + (f'<div class="facts">{fx}</div>' if fx else "") + options_of(x, "h3") + "</section>")
+        keys = "".join(f'<span>{inline(x["id"])}: ' + " / ".join(inline(o.get("key")) for o in x.get("options", []))
+                       + "</span>" for x in parts)
+        main = "".join(body)
+        answer = d.get("answer") or ("Reply in the Claude session with each decision's id and letter (for example "
+                                     f"{parts[0]['id']} A), or a change to one. Nothing goes ahead until you answer.")
+        toc = "".join(f'<li><a href="#{html.escape(x["id"])}">{inline(x["id"])}</a> {inline(x.get("question", ""))}</li>' for x in parts)
+        main = f'<section><h2>Decisions on this page</h2><ol class="sources">{toc}</ol></section>' + main
+    else:
+        main = options_of(d)
+        keys = "".join(f"<span>{inline(o.get('key'))}: {inline(o.get('name', ''))}</span>" for o in d.get("options", []))
+        answer = d.get("answer") or ("Reply in the Claude session with the option's letter, or with a change to one. "
+                                     "A comment on this page reaches Claude too. Nothing goes ahead until you answer.")
+    facts = facts_of(d)
     sources = "".join(f"<li>{inline(s)}</li>" for s in d.get("sources", []))
-    n = min(len(opts), 3)
     page = f"""<title>{html.escape(d.get('name', d.get('id', 'Decision')))}</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -216,14 +245,12 @@ def build(d, base):
 <style>{CSS}</style>
 <div class="wrap">
 <header>
-  <div class="eyebrow"><b>{inline(d.get('id', ''))}</b><span>{inline(d.get('board', ''))}</span><span>Placement · {inline(d.get('stage', ''))}</span><span>{inline(d.get('date', ''))}</span></div>
+  <div class="eyebrow"><b>{inline(d.get('id', ''))}</b><span>{inline(d.get('board', ''))}</span><span>{inline(d.get('phase', 'Placement'))} · {inline(d.get('stage', ''))}</span><span>{inline(d.get('date', ''))}</span></div>
   <h1>{inline(d.get('question', ''))}</h1>
 </header>
 <section><h2>Why this is decided now</h2>{paras(d.get('why_now'))}</section>
 {f'<section><h2>Facts it rests on</h2><div class="facts">{facts}</div></section>' if facts else ''}
-<section><h2>Options</h2><div class="options n{n}">{''.join(cards)}</div></section>
-{table}
-{f'<section class="callout"><h2>Recommendation: {inline(r.get("option", ""))}</h2>{paras(r.get("why"))}</section>' if r else ''}
+{main}
 <section class="answer"><h2>How to answer</h2><p>{inline(answer)}</p><div class="opts">{keys}</div></section>
 {f'<section><h2>Sources</h2><ul class="sources">{sources}</ul></section>' if sources else ''}
 <footer>Node60 pcb-placement skill · decision {inline(d.get('id', ''))} · built from {inline(os.path.basename(d.get('_src', '')))}</footer>
@@ -241,7 +268,7 @@ def main():
     a = ap.parse_args()
     d = json.load(open(a.decision))
     d["_src"] = a.decision
-    for k in ("id", "name", "question", "options"):
+    for k in ("id", "name", "question") + (() if d.get("decisions") else ("options",)):
         if not d.get(k):
             print(f"ERROR: the decision has no '{k}'", file=sys.stderr)
             return 2

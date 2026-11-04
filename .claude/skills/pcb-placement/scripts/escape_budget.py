@@ -78,6 +78,9 @@ def main():
     ap.add_argument("--plane-nets", default="GND", help="comma-separated globs of nets that go to a plane")
     ap.add_argument("--signal-layers", help="comma-separated layers the escape may use (default: all copper)")
     ap.add_argument("--rules", help="the board's .kicad_dru (default: sibling)")
+    ap.add_argument("--layer-rules", help="per-layer track/space, e.g. 'B.Cu:0.09/0.09,In2.Cu:0.15/0.15'; a layer "
+                    "not named uses --track/--space. With it, each layer's channel is counted where it is: the "
+                    "ball side between balls, every other layer between the dog-bone vias (pitch - via)")
     ap.add_argument("--json")
     a = ap.parse_args()
 
@@ -124,6 +127,25 @@ def main():
 
     all_layers = [board.GetStandardLayerName(l) for l in board.GetEnabledLayers().CuStack()]
     sig = a.signal_layers.split(",") if a.signal_layers else all_layers
+    per_layer = None
+    if a.layer_rules:
+        # each layer's own channel: the ball side passes tracks between ball pads, every other layer
+        # between the escape vias on the same pitch (Node60, 2026-11-03: counting the ball gap on every
+        # layer called 4 layers enough when the inner 2 oz layers pass nothing between 0.45 mm vias)
+        lr = {}
+        for item in a.layer_rules.split(","):
+            name, ts = item.split(":")
+            t, sp = (float(v) for v in ts.split("/"))
+            lr[name.strip()] = (t, sp)
+        ball_side = fp.GetLayerName()
+        per_layer, total = {}, 0
+        for name in sig:
+            t, sp = lr.get(name, (a.track, a.space))
+            ch = gap if name == ball_side else pitch - a.via
+            n = max(0, math.floor((ch - sp) / (t + sp)))
+            per_layer[name] = {"channel_mm": round(ch, 3), "track": t, "space": sp, "tracks": n, "rings": n + 1}
+            total += n + 1
+        need = None
 
     covered = {}
     for name, (zone, why, exempt) in blocking_areas(board, rules_text, blocks=("via",)).items():
@@ -148,9 +170,19 @@ def main():
         print(f"{r:4}  {c['signal']:6}  {c['plane']:5}  {c['nc']:3}")
     print(f"channel gap {gap:.3f} mm -> {per_channel} track(s) of {a.track} at {a.space} space between balls")
     print(f"diagonal gap {diag:.3f} mm -> a {a.via} mm via between four balls: {'fits' if via_fits else 'does NOT fit'}")
-    print(f"deepest signal ring {deepest}, {rings_per_layer} ring(s) per layer -> {need} signal layer(s) needed;"
-          f" {len(sig)} available ({', '.join(sig)})")
-    fail = need > len(sig)
+    if per_layer:
+        for name, r in per_layer.items():
+            print(f"  {name:7} channel {r['channel_mm']:.3f} mm at {r['track']}/{r['space']} -> {r['tracks']} track(s), {r['rings']} ring(s)")
+        rings_total = sum(r["rings"] for r in per_layer.values())
+        print(f"deepest signal ring {deepest}; the {len(sig)} layers escape {rings_total} ring(s)"
+              + (": enough" if rings_total >= deepest else ": NOT enough"))
+        report["per_layer"] = per_layer
+        report["rings_escaped"] = rings_total
+        fail = rings_total < deepest
+    else:
+        print(f"deepest signal ring {deepest}, {rings_per_layer} ring(s) per layer -> {need} signal layer(s) needed;"
+              f" {len(sig)} available ({', '.join(sig)})")
+        fail = need > len(sig)
     if fail:
         print("ERROR: the escape needs more signal layers than the layer plan gives it")
     if not via_fits and deepest > rings_per_layer:

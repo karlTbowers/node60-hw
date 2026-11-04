@@ -1,0 +1,78 @@
+{
+  "id": "D14",
+  "name": "Shunt and power entry",
+  "question": "Which shunt, and how should the power entry move right?",
+  "board": "node60", "phase": "Placement", "stage": "3 Blocks", "date": "2026-11-03",
+  "why_now": "D12-5 (C): a bigger 4-terminal shunt, or two 0.5 mΩ in parallel if none is found. D12-4 (B): move the power entry right so the VBAT_PROT planes are fed nearer mid-board, spread out for the via fields. The shunt's footprint shapes the power entry's layout, so the two are decided together; the layout itself then comes to you as a block page.\n\nAll of the node's current, up to 60 A, passes the shunt. The LM74910H breaker and short-circuit threshold and the INA228 range are set from its value (DEC-001, DEC-002).",
+  "facts": [
+    {"label": "Search", "value": "15 parts compared (Isabellenhütte BVR, BVB; Vishay WSLP4026, WSK1216; Stackpole HCSK4026, CSS; KOA PSG4; Bourns CSS4J; and others), live DigiKey/Mouser data and datasheets, 2026-11-03. 1216-size parts rejected: their force lands can't take a 60 A via field", "source": "shunt search report"},
+    {"label": "Best 4-terminal part", "value": "Isabellenhütte BVR-Z, 4026 body (10.1 × 6.6 mm): ZERANIN alloy, TCR 0 ± 20 ppm/K (today ±50), AEC-Q200, −65…+170 °C, separate Kelvin leads, force lands 2.55 × 5.6 mm with a 5.5 mm gap. No 0.25 mΩ code. DigiKey only (Mouser doesn't list it); the second source is Vishay WSLP4026 (same outline, other land pattern, ±75 ppm/K)", "source": "Isabellenhütte BVR datasheet, issue 12-Sep-2024"},
+    {"label": "Derating at 125 °C", "value": "At an estimated 145 °C terminal temperature: R0003 5 W available for 1.08 W at 60 A (3.1×); R0002 6 W for 0.72 W (5.6×); R0005 3.1 W for 0.45 W at 30 A (4.6×). The handbook asks for 1.5×", "source": "BVR datasheet, terminal-temperature curve"},
+    {"label": "Library", "value": "BVR-Z-R0002-1.0 and BVR-Z-R0003-1.0 and the R_Shunt_Isabellenhuette_BVR4026 footprint are already in the library; R0005 needs a symbol. The library's 3D model is 2.4 mm tall where DigiKey gives 3.45–3.80 mm: to be corrected (still far under the 6.17 mm limit)", "source": "~/Dev/dropout-kicad-library"},
+    {"label": "Stock, 2026-11-03", "value": "BVR-Z-R0003-1.0: DigiKey 5,311, $5.20. BVR-Z-R0002-1.0: 10,935, $5.20. BVR-Z-R0005-1.0: 14,803, $4.95. Today's CSS2725FTL250: 499 at DigiKey, $1.70", "source": "DigiKey API"},
+    {"label": "Today's 60 A path", "value": "J910 (x 102 mm) → east to Q201/Q202 (x 126–146) → back west through R201 (x 116) → Q203/Q204 (x 95–106) → VBAT_PROT: about 74 mm of 60 A copper, and the planes are fed at the west end (x ≈ 99)", "source": "board"}
+  ],
+  "decisions": [
+    {
+      "id": "D14-1",
+      "question": "Which shunt?",
+      "options": [
+        {"key": "A", "name": "BVR-Z-R0003-1.0, 0.3 mΩ",
+         "summary": "R208 (ILIM) 32 k → 26.7 kΩ for a 74.8 A breaker; R210 (RISCP) 0 Ω → 383 Ω, which keeps today's short-circuit window exactly (80 A typical, 71.4–92 A). INA228 ADCRANGE 1 stays; CURRENT_LSB 260.4 µA, SHUNT_CAL 4096.",
+         "measures": [
+           {"label": "At 60 A", "value": "18 mV, 1.08 W", "limit": "", "status": "info"},
+           {"label": "Short-circuit trip", "value": "80 A typ (71.4–92 A), as today", "limit": "DEC-001: 80 A", "status": "pass"},
+           {"label": "Settings changed", "value": "R208, R210; firmware LSB", "limit": "", "status": "info"}],
+         "gains": ["Today's protection thresholds kept exactly", "True Kelvin sensing, ±20 ppm/K"],
+         "costs": ["Two resistor values and DEC-001/002 updated", "0.18 W more than today's 0.9 W"]},
+        {"key": "B", "name": "BVR-Z-R0002-1.0, 0.2 mΩ",
+         "summary": "R208 → 40.2 kΩ for 74.5 A; R210 stays 0 Ω, so the short-circuit trip rises to 100 A typical (89–115 A) and can't be set lower.",
+         "measures": [
+           {"label": "At 60 A", "value": "12 mV, 0.72 W", "limit": "", "status": "info"},
+           {"label": "Short-circuit trip", "value": "100 A typ (89–115 A)", "limit": "DEC-001: 80 A", "status": "warn"},
+           {"label": "Settings changed", "value": "R208; firmware LSB", "limit": "", "status": "info"}],
+         "gains": ["Lowest DCR and loss"], "costs": ["Short-circuit trip 25 % higher; the FETs' SOA at 115 A has to be checked"]},
+        {"key": "C", "name": "2 × BVR-Z-R0005-1.0 in parallel (the fallback)",
+         "summary": "0.25 mΩ effective, so every setting stays. The INA228 averages the two through matched 0.1 % resistors (2 × 20 Ω per input); the LM74910H senses one shunt and relies on an even split.",
+         "measures": [
+           {"label": "At 60 A", "value": "15 mV, 0.9 W (0.45 W each)", "limit": "", "status": "info"},
+           {"label": "Short-circuit trip", "value": "as today, if the copper splits evenly (0.05 mΩ of asymmetry = +4.8 %)", "limit": "DEC-001: 80 A", "status": "warn"},
+           {"label": "Settings changed", "value": "none; 4 averaging resistors and a new library symbol", "limit": "", "status": "info"}],
+         "gains": ["No threshold changes", "Current spread over two footprints"],
+         "costs": ["The breaker's accuracy depends on mirror-symmetric copper", "More parts"]}
+      ],
+      "recommendation": {"option": "A", "why": "A bigger 4-terminal shunt exists, so D12-5's first choice holds; 0.3 mΩ keeps today's short-circuit protection exactly with one added resistor, where 0.2 mΩ would raise it 25 %."}
+    },
+    {
+      "id": "D14-2",
+      "question": "How should the power entry move right?",
+      "why_now": "The 60 A path costs about 0.007 mΩ per mm on four layers (the pre-protection nets get In2/In3 in the power-entry region, where the VBAT_PROT planes are cut back), so path length is loss: about 0.24 W per 10 mm at 60 A. Figures below are estimates from that rate; the block page will model the real layout.",
+      "options": [
+        {"key": "A", "name": "Shift the group east as it is",
+         "summary": "Every part moves about 35 mm east, keeping today's order and spacing (spread a little for the vias).",
+         "measures": [
+           {"label": "60 A path", "value": "about 109 mm", "limit": "short", "status": "fail"},
+           {"label": "Loss in the 60 A path at 60 A", "value": "about 2.7 W", "limit": "lowest", "status": "fail"},
+           {"label": "Supply to U601 / U701 / U801", "value": "0.24 / 0.20 / 0.32 mΩ", "limit": "even", "status": "warn"}],
+         "gains": ["The group's internal layout (D04) unchanged"], "costs": ["The run from J910 grows by the shift: about 0.9 W more loss for 0.1 mΩ of balance"]},
+        {"key": "B", "name": "Re-order it to flow east",
+         "summary": "Same parts, same block, the chain laid in the current's order: Q201/Q202 beside J910, then the shunt, then Q203/Q204 at about x 142, U201/U202 beside the shunt, spread for the via fields. It ends about 43 mm further east than today.",
+         "measures": [
+           {"label": "60 A path", "value": "about 48 mm", "limit": "short", "status": "pass"},
+           {"label": "Loss in the 60 A path at 60 A", "value": "about 1.2 W", "limit": "lowest", "status": "pass"},
+           {"label": "Supply to U601 / U701 / U801", "value": "0.25 / 0.19 / 0.30 mΩ", "limit": "even", "status": "pass"}],
+         "gains": ["Shorter 60 A path and the feed moved right: lower DCR and better balance at once"], "costs": ["The group is rearranged, not just shifted: a new block page replaces D04"]},
+        {"key": "C", "name": "Compact at J910",
+         "summary": "Everything packed as close to J910 as the via fields allow; the planes are fed at the west end.",
+         "measures": [
+           {"label": "60 A path", "value": "about 30 mm", "limit": "short", "status": "pass"},
+           {"label": "Loss in the 60 A path at 60 A", "value": "about 0.7 W", "limit": "lowest", "status": "pass"},
+           {"label": "Supply to U601 / U701 / U801", "value": "0.19 / 0.31 / 0.43 mΩ", "limit": "even", "status": "warn"}],
+         "gains": ["Lowest total loss"], "costs": ["The supply imbalance stays (you chose D12-4 B to reduce it)"]}
+      ],
+      "recommendation": {"option": "B", "why": "It is what D12-4 B asks for done the efficient way: the feed moves right and the 60 A path gets shorter instead of longer. A plain shift pays about 0.9 W for 0.1 mΩ of balance."}
+    }
+  ],
+  "answer": "Reply with each decision and a letter, for example \"D14-1 A, D14-2 B\", or a change.",
+  "sources": ["shunt search report (2026-11-03): Isabellenhütte BVR/BVB datasheets, Vishay WSLP4026 doc 30180, Stackpole SEI-HCSK, DigiKey/Mouser APIs", "TI LM74910H-Q1 SNOSDE6C, INA228-Q1 SLYS022A", "DEC-001, DEC-002", "power/plane_model.py sweep"]
+}
