@@ -83,11 +83,11 @@
 - id: VETH100A1DD1HG3-08
   mpn: VETH100A1DD1HG3-08
   manufacturer: Vishay
-  qty: 2
+  qty: 4
   function: OPEN Alliance 10BASE-T1S ESD diode, ≤2.0 pF, 24 V working, AEC-Q101, DFN1006-2B
   subsystem: network
   status: selected
-  decision_note: One per T1S line, between connector and choke
+  decision_note: "One per T1S line at each T1S connector, right at its pins: D501/D502 at J903, D503/D504 at J912 (decision D16-2, 2026-11-03; DEC-012 rev. C). The two pairs add at most 2.0 pF across the line, within the OPEN Alliance CMDI ≤ 25 pF node budget"
   observations:
     - { date: 2026-10-22, source: DigiKey, prices: [{ qty: "1", usd: 0.48 }], stock: 15582 }
     - { date: 2026-10-22, source: Mouser, prices: [{ qty: "1", usd: 0.48 }, { qty: 1k, usd: 0.13 }], stock: 30510 }
