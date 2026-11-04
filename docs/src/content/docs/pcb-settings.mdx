@@ -12,23 +12,23 @@ The settings live in three files at the repo root:
 
 | File | Holds | KiCad menu |
 |---|---|---|
-| `node60.kicad_pcb` | Stackup, finish, solder mask, via protection | **File → Board Setup → Board Stackup** |
+| `node60.kicad_pcb` | Stackup, finish, solder mask, via protection | **File → Board Setup → Board Stackup** (via filling and capping have no control there; see [Via protection](#via-protection)) |
 | `node60.kicad_pro` | Constraints, pre-defined sizes, net classes, violation severities | **File → Board Setup → Design Rules** |
 | `node60.kicad_dru` | Custom rules | **File → Board Setup → Design Rules → Custom Rules** |
 
 <Aside type="caution" title="Edit the files, then check KiCad's diff">
-The repo's scripts write these settings as text edits, and CI runs DRC on them. Saving the board in pcbnew rewrites `node60.kicad_pro`, sometimes dropping settings. After any save in KiCad, check `git diff node60.kicad_pro` before committing. If KiCad is open while a setting changes on disk, close and reopen the project.
+The repo's scripts write these settings as text edits, and CI runs DRC on them. KiCad rewrites `node60.kicad_pro` when the board editor closes, even after **Discard Changes** (seen 2026-11-04: it writes out every default), and a pcbnew save can drop settings. After using KiCad, check `git diff node60.kicad_pro` and restore the file unless you meant to change it. If KiCad is open while a setting changes on disk, close and reopen the project.
 </Aside>
 
-<Aside type="note" title="Pictures to come">
-The KiCad dialog pictures are not on this page yet. Each section names the dialog page it shows.
-</Aside>
+The pictures are KiCad 10.0's dialogs on this board, taken 2026-11-04 with the files at commit `4d44ab5`.
 
 ## Board Stackup
 
 ### Board Editor Layers
 
-Six copper layers: F.Cu, In1.Cu–In4.Cu, B.Cu. Layer roles come from placement decisions D12-1 and D17 A; the rule areas below enforce them:
+![Board Setup, Board Editor Layers: the six copper layers with their user names and types](../../assets/kicad-settings/01-board-editor-layers.jpg)
+
+Six copper layers: F.Cu, In1.Cu–In4.Cu, B.Cu. The inner layers carry user names that show their role (`In1.Cu.GND`, `In2.Cu.PWR`, `In3.Cu.PWR`, `In4.Cu.GND`) and a KiCad layer type: F.Cu and B.Cu **signal**, In1 and In4 **power plane**, In2 and In3 **mixed**. Layer roles come from placement decisions D12-1 and D17 A; the rule areas below enforce them:
 
 | Layer | Role |
 |---|---|
@@ -40,6 +40,8 @@ Six copper layers: F.Cu, In1.Cu–In4.Cu, B.Cu. Layer roles come from placement 
 | B.Cu | Bottom, where nearly every part sits |
 
 ### Physical Stackup
+
+![Board Setup, Physical Stackup: JLC062012-1080 entered layer by layer](../../assets/kicad-settings/02-physical-stackup.jpg)
 
 JLCPCB's JLC062012-1080, entered layer by layer. KiCad uses it for impedance and length calculations and writes it into the fab outputs.
 
@@ -59,9 +61,11 @@ JLCPCB's JLC062012-1080, entered layer by layer. KiCad uses it for impedance and
 | B.Cu | Copper | 0.035 mm (1 oz) | | | |
 | B.Mask | Solder mask | 0.010 mm | | | |
 
-Board thickness: 2.0 mm. **Impedance controlled** is off, since controlled impedance isn't ordered; the T1S lines are kept short and matched instead (D16). Why 2 oz inside: the VBAT_PROT and power-entry planes carry up to 60 A, so the 2 oz inner layers halve their resistance (see [PCB stackup & fab quotes](../pcb-fabrication/)).
+KiCad shows 2.02 mm as "Board thickness from stackup": 2.00 mm of copper and dielectric plus the two 0.01 mm mask layers, so the board is the 2.0 mm JLCPCB builds. **Impedance controlled** is off, since controlled impedance isn't ordered; the T1S lines are kept short and matched instead (D16). Why 2 oz inside: the VBAT_PROT and power-entry planes carry up to 60 A, so the 2 oz inner layers halve their resistance (see [PCB stackup & fab quotes](../pcb-fabrication/)).
 
 ### Board Finish
+
+![Board Setup, Board Finish: ENIG, no plated edge, no edge card connectors](../../assets/kicad-settings/03-board-finish.jpg)
 
 | Setting | Value | Why |
 |---|---|---|
@@ -70,6 +74,8 @@ Board thickness: 2.0 mm. **Impedance controlled** is off, since controlled imped
 | Edge card connector | None | Not used |
 
 ### Solder Mask/Paste
+
+![Board Setup, Solder Mask/Paste: 0.05 mm expansion, 0.1 mm web, vias tented front and back](../../assets/kicad-settings/04-solder-mask-paste.jpg)
 
 | Setting | Value | JLCPCB | Why |
 |---|---|---|---|
@@ -80,7 +86,10 @@ Board thickness: 2.0 mm. **Impedance controlled** is off, since controlled imped
 
 ### Via protection
 
-KiCad 10 sets via protection (IPC-4761) for the whole board; every via uses the board setting (none of the 1,463 vias on the board overrides it).
+KiCad 10 keeps via protection (IPC-4761) as a board setting with a per-via override. In Board Setup only **tenting** has a control (on the Solder Mask/Paste page above); the board's **filling** and **capping** values are in `node60.kicad_pcb`'s setup section, written there by text edit. Each via's own setting is in its Properties dialog (double-click a via): **Protection features: From rules** means it follows the board. All 1,463 vias on the board are set that way.
+
+![A power via's Properties dialog: 0.45/0.25 mm preset, annular rings on all copper layers, protection features from rules](../../assets/kicad-settings/10-via-properties.jpg)
+
 
 | Setting | Value | Why |
 |---|---|---|
@@ -95,6 +104,8 @@ Filling and capping were off until 2026-11-04. The board was already designed an
 ## Design Rules
 
 ### Constraints
+
+![Board Setup, Constraints: copper, holes, microvias, silk, arc approximation, zone fill and length tuning](../../assets/kicad-settings/05-constraints.jpg)
 
 The board-wide minimums. Custom rules and net classes ask for more where they need it.
 
@@ -118,7 +129,12 @@ The board-wide minimums. Custom rules and net classes ask for more where they ne
 
 ### Pre-defined Sizes
 
+![Board Setup, Pre-defined Sizes: tracks, vias and the T1S differential pair](../../assets/kicad-settings/06-predefined-sizes.jpg)
+
 These sizes appear in the track and via drop-downs on the PCB editor's toolbar. Each is inside JLCPCB's capabilities.
+
+![The PCB editor toolbar's via drop-down listing the five via presets](../../assets/kicad-settings/11-via-size-dropdown.jpg)
+
 
 **Tracks:** 0.10, 0.15, 0.20, 0.25, 0.30, 0.40, 0.50, 0.60, 0.80, 1.00 mm.
 
@@ -153,12 +169,18 @@ Vias with a 0.20 mm hole make JLCPCB add the small-via option ($19.68 plus a for
 | Default | 0.15 mm | 0.20 mm | 0.45 / 0.25 mm | 0.20 / 0.15 mm | Everything else |
 | T1S_100R | 0.15 mm | 0.165 mm | 0.45 / 0.25 mm | 0.165 / 0.15 mm | `/T1S_P`, `/T1S_N`, `/T1S/T1S_*_P`, `/T1S/T1S_*_N`, `/T1S/T1S_*_DROP`, `/T1S/T1S_*_END` |
 | PWR_BATT | 0.15 mm | 0.60 mm | 0.45 / 0.25 mm | — | `/VBAT_IN`, `VBAT_IN_DOWNSTREAM`, `VBAT_D`, `VBAT_Q2D`, `VBAT_PROT`, `/OUT*` |
-| PWR_RAIL | 0.15 mm | 0.40 mm | 0.45 / 0.25 mm | — | `3V3_MAIN`, `1V5_CORE`, `VDDAU_AON` |
-| SW_NODE | 0.15 mm | 0.60 mm | 0.45 / 0.25 mm | — | The buck switch nodes |
+| PWR_RAIL | 0.15 mm | 0.40 mm | 0.45 / 0.25 mm | — | `3V3_MAIN`, `1V5_CORE`, `VDDAU_AON`, `VBAT_FILT` |
+| SW_NODE | 0.15 mm | 0.60 mm | 0.45 / 0.25 mm | — | `/Regulators/3V3_MAIN_SW`, `/Regulators/1V5_CORE_SW` |
 
-The power classes' widths are for tracks drawn by hand; the power nets themselves are carried by pours (`scripts/draw_power.py`). The T1S pair width and gap were picked for coupling and space, not impedance (no impedance control ordered).
+![Board Setup, Net Classes: the five classes and their 18 assignment patterns](../../assets/kicad-settings/07-net-classes.jpg)
+
+Every class has 0.3 / 0.1 mm microvia values (KiCad's defaults, unused) and no tuning profile or colour. The power classes' widths are for tracks drawn by hand; the power nets themselves are carried by pours (`scripts/draw_power.py`). The T1S pair width and gap were picked for coupling and space, not impedance (no impedance control ordered).
 
 ### Custom Rules
+
+![Board Setup, Custom Rules: the start of node60.kicad_dru, with KiCad's syntax check](../../assets/kicad-settings/08-custom-rules.jpg)
+
+KiCad's syntax check reports no errors. It notes that "T1S pairs matched within 0.5 mm" and "T1S PHY-side pairs: 2 mm uncoupled at most" share a condition; that is deliberate (KiCad 10 never reported skew from the same rule as the coupling constraints).
 
 `node60.kicad_dru`, in file order; later rules win. Each one was shown to fire on a copy of the board carrying one deliberate violation (`placement/2026-11-02-bars/rules/prove_rules.py`, 26 of 26 cases on 2026-11-04).
 
@@ -183,6 +205,8 @@ The power classes' widths are for tracks drawn by hand; the power nets themselve
 | Thermal reliefs: one spoke is enough | Small parts' pads may join a pour through one spoke | Crowded power pours |
 
 ### Violation Severity
+
+![Board Setup, Violation Severity: Missing connection between items set to warning](../../assets/kicad-settings/09-violation-severity.jpg)
 
 All KiCad defaults except **Missing connection between items: warning** (`unconnected_items`), set on 2026-10-30 while the board is being routed, so CI's DRC passes on an unrouted board. It goes back to error before routing is signed off and before any `rev-*` tag (see the project's deviations from the handbook).
 
