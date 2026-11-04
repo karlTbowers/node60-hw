@@ -190,3 +190,8 @@ unless the run meant to change it, then re-run CI's DRC.
 - `skew ... (within_diff_pairs)` in the same rule as `diff_pair_gap` / `diff_pair_uncoupled` was never reported; in a rule of its own it is. Skew is measured only on tracks that reach the pads, so prove it pad to pad.
 - A through-hole pad keeps its copper on every inner layer unless its unused layers are removed, so its annular ring, not `hole_clearance`, sets the spacing there; to prove the hole rule, remove the pad's unused copper on the copy.
 - Prove each rule on a copy with one planted violation and a control (`rules/prove_rules.py` in the Node60 run).
+
+## Plane layers need a signal policy before any fast route (2026-11-03, Node60 D17)
+- A layer plan of "planes on the inner layers, signals on the outer two" did not route Node60 (35 nets open); opening both VBAT_PROT layers to signals everywhere did (9), at the cost of cutting the plane where current flows. The user's rule: signals may use plane layers only where they don't degrade the current path. So every plane layer gets `power_only` or a costed `window` in `plan.json` (`plane_windows`), drawn as rule areas and checked by the gate's "Plane layers: signal windows" row.
+- Cost a window with `power/plane_model.py --window X0,Y0,X1,Y1 [--window-keep 0.5]`: even a window far from the source-to-load path costs a few percent, since current spreads over the whole plane; windowing one of two parallel layers halves that.
+- KRT routes each net class at its width and over-applies scoped clearance rules (a 0.75 mm T1S spacing or a 10 mm switch-node spacing walled off ~75 nets). The judge routes with class widths at the Default and those rules stripped from the router's copy; KiCad grades against the real files.

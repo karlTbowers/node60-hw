@@ -109,6 +109,44 @@ def netclass_row(board, plan, project):
             if bad else f"{len(rows)} planned class row(s) on the board")
 
 
+def plane_windows_row(board, plan):
+    """every plane layer has a signal policy in the plan, and the board's rule areas match it"""
+    name, how = "Plane layers: signal windows", "plan's plane_windows vs SIGNAL_WINDOW_* / POWER_ONLY_* rule areas"
+    layers = plan.get("plane_layers") or {}
+    if not layers:
+        return (name, how, "NOT RUN", "the plan lists no plane layers (`plane_layers`)")
+    pw = plan.get("plane_windows") or {}
+    areas = {}
+    for z in board.Zones():
+        if z.GetIsRuleArea() and z.GetZoneName().startswith(("SIGNAL_WINDOW_", "POWER_ONLY_")):
+            bb = z.Outline().BBox()
+            areas[z.GetZoneName()] = (z, [round(mm(v), 2) for v in (bb.GetLeft(), bb.GetTop(), bb.GetRight(), bb.GetBottom())])
+    bad, ok = [], []
+    for layer in layers:
+        tag = layer.replace(".", "")
+        spec = pw.get(layer)
+        if spec is None:
+            bad.append(f"{layer}: no policy (power_only or a window) in plane_windows")
+        elif spec == "power_only":
+            z = areas.get(f"POWER_ONLY_{tag}_1")
+            if not z or not z[0].GetDoNotAllowTracks():
+                bad.append(f"{layer}: power_only in the plan, no POWER_ONLY_{tag}_1 keep-out on the board")
+            else:
+                ok.append(f"{layer} power-only")
+        else:
+            w = [round(v, 2) for v in spec["window"]]
+            z = areas.get(f"SIGNAL_WINDOW_{tag}_1")
+            if not z or any(abs(a - b) > 0.05 for a, b in zip(z[1], w)) or not z[0].GetDoNotAllowZoneFills():
+                bad.append(f"{layer}: window {w} in the plan, the board has {z[1] if z else 'none'}")
+            elif not any(k.startswith(f"POWER_ONLY_{tag}_") for k in areas):
+                bad.append(f"{layer}: window drawn but the rest of the layer has no keep-out")
+            elif not spec.get("decision") or not spec.get("cost"):
+                bad.append(f"{layer}: window without its cost and decision")
+            else:
+                ok.append(f"{layer} window {w} ({spec['decision']})")
+    return (name, how, "FAIL" if bad else "PASS", "; ".join(bad) if bad else "; ".join(ok))
+
+
 def via_sites_row(board, plan, rules_text):
     hc = plan.get("high_current")
     if not hc:
@@ -311,6 +349,7 @@ def main():
     rows.append(netclass_row(board, plan, project) if project else
                 ("Net classes", "planned classes on the board", "NOT RUN", "plan needs `project`"))
     rows.append(via_sites_row(board, plan, rules_text))
+    rows.append(plane_windows_row(board, plan))
 
     # DONE: the fast route
     if a.fast_score and os.path.exists(a.fast_score):

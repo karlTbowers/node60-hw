@@ -43,9 +43,26 @@ for c in p["net_settings"]["classes"]:
         c["track_width"] = d["track_width"]
 json.dump(p, open(sys.argv[2], "w"), indent=2)
 PY
-cp $REPO/node60.kicad_dru $OUT/s0.kicad_dru
+# The router's copy of the rules lacks two scoped clearance rules: KRT models 'T1S 0.75 mm from
+# other nets' and 'Buck switch nodes 10 mm from the T1S line' by over-approximating per obstacle net,
+# which walled off about 75 nets (2026-11-03: 113 failed with them, 35 without). KiCad still grades
+# both against the real node60.kicad_dru; routing keeps them by hand-routing the T1S chain first.
+python3 - $REPO/node60.kicad_dru $OUT/s0.kicad_dru <<'PY'
+import re, sys
+s = open(sys.argv[1]).read()
+for n in ['Buck switch nodes 10 mm from the T1S line', 'T1S 0.75 mm from other nets']:
+    s = re.sub(r'\(rule "' + re.escape(n) + r'"[\s\S]*?\)\)\n', '', s)
+open(sys.argv[2], 'w').write(s)
+PY
 cd $KRT
-L=(--layers F.Cu In1.Cu In2.Cu In3.Cu In4.Cu B.Cu --layer-costs 1.0 -1.0 -1.0 -1.0 -1.0 1.0)
+# Layer roles (defaults: D12-1 A, In1/In4 GND, In2/In3 VBAT_PROT, signals on F.Cu and B.Cu). Override
+# for variants, e.g. PLANE_NETS="GND VBAT_PROT GND" PLANE_LAYERS="In1.Cu In3.Cu In4.Cu"
+# LAYER_COSTS="1.0 -1.0 1.0 -1.0 -1.0 1.0" (a negative cost = no tracks on that layer).
+PLANE_NETS=${PLANE_NETS:-"GND VBAT_PROT VBAT_PROT GND"}
+PLANE_LAYERS=${PLANE_LAYERS:-"In1.Cu In2.Cu In3.Cu In4.Cu"}
+LAYER_COSTS=${LAYER_COSTS:-"1.0 -1.0 -1.0 -1.0 -1.0 1.0"}
+echo "layers: planes ${PLANE_NETS} on ${PLANE_LAYERS}; track costs F In1 In2 In3 In4 B = ${LAYER_COSTS}" >> $OUT/chain.log
+L=(--layers F.Cu In1.Cu In2.Cu In3.Cu In4.Cu B.Cu --layer-costs ${=LAYER_COSTS})
 SZ=(--clearance 0.15 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off $FAB)
 # Every step is timed (user, 2026-11-03: find the design loop's bottlenecks): wall, user and system
 # CPU seconds and peak resident memory per step, from /usr/bin/time -l, into $OUT/timing.tsv;
@@ -65,7 +82,7 @@ step() {
     timed $n $KRT_PY -X utf8 "$@" >> $OUT/chain.log 2>&1
   fi
 }
-step planes py_router/route_planes.py $OUT/s0.kicad_pcb $OUT/s1.kicad_pcb --nets GND VBAT_PROT VBAT_PROT GND --plane-layers In1.Cu In2.Cu In3.Cu In4.Cu --clearance 0.15 --escalation off $FAB
+step planes py_router/route_planes.py $OUT/s0.kicad_pcb $OUT/s1.kicad_pcb --nets ${=PLANE_NETS} --plane-layers ${=PLANE_LAYERS} --clearance 0.15 --escalation off $FAB
 cp $OUT/s0.kicad_pro $OUT/s1.kicad_pro; cp $OUT/s0.kicad_dru $OUT/s1.kicad_dru
 ESC=(--clearance 0.1 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off $FAB)
 step fanout_U401 py_router/bga_fanout.py $OUT/s1.kicad_pcb --component U401 --nets "*" "!GND" "!VBAT_PROT" "!*FXOSC*" --output $OUT/s2.kicad_pcb --track-width 0.1 $ESC $L
