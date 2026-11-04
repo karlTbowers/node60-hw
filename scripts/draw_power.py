@@ -20,12 +20,17 @@ SPEC.json:
             "rect": [x0, y0, x1, y1] | "annulus": [cx, cy, r0, r1],
             "toward": [[x, y], ...] (rank: nearest first), "min": 93, "max": 200,
             "clip": [x0, y0, x1, y1] (sites only inside: keep a via field within its own zone),
+            "pitch": 0.65 (the field's own), "in_pad": ["U601", "17"] (vias inside that pad, filled and
+            capped: DEC-027), "mirror": {"net": "/OUT2", "axis_x": 77.65} (the same sites mirrored about
+            x = axis_x on another net; a site is kept only if both are free: identical outputs),
+            "copies": [{"dx": 0, "net": "/OUT1", "mirror_net": "/OUT2", "axis_x": 77.65}, ...] (the field
+            repeated at each dx, with its mirror; a site is kept only if free at every copy),
             "allow_under": ["REF", ...]}]
 }
 
 A via site is kept when, at the spec's via size: it is inside the board by the edge clearance; it
 clears every pad on any copper layer by the clearance (including its own net's pads: no vias in
-pads), and every drilled hole by the hole clearance; it is not inside the courtyard of any part
+pads, except an in_pad field's own pad), and every drilled hole by the hole clearance; it is not inside the courtyard of any part
 (either side) except those named in allow_under and the busbars; and it clears the sites already
 placed. Zones are filled (ZONE_FILLER) unless --no-fill; everything drawn is locked (D12-7).
 """
@@ -122,15 +127,30 @@ def main():
     for z in list(board.Zones()):
         if not z.GetIsRuleArea() and z.GetZoneName().startswith("PWR_"):
             board.Delete(z)
-    regions = [(v["net"], v) for v in spec.get("vias", [])]
+    def region(v):
+        """(rect or None, annulus or None) a via field covers, for removing a previous run's vias"""
+        if "in_pad" in v:
+            pad = next(p for fp in board.GetFootprints() if fp.GetReference() == v["in_pad"][0] for p in fp.Pads()
+                       if p.GetNumber() == v["in_pad"][1])
+            bb = pad.GetBoundingBox()
+            return [M(bb.GetLeft()), M(bb.GetTop()), M(bb.GetRight()), M(bb.GetBottom())], None
+        return v.get("rect"), v.get("annulus")
+
+    regions = []
+    for v in spec.get("vias", []):
+        rect, ann = region(v)
+        regions.append((v["net"], rect, ann))
+        if "mirror" in v and rect:
+            ax = v["mirror"]["axis_x"]
+            regions.append((v["mirror"]["net"], [2 * ax - rect[2], rect[1], 2 * ax - rect[0], rect[3]], None))
     for t in list(board.GetTracks()):
         if t.Type() == pcbnew.PCB_VIA_T and t.IsLocked():
             x, y = M(t.GetPosition().x), M(t.GetPosition().y)
-            for n, v in regions:
+            for n, rect, ann in regions:
                 if t.GetNetname() != n:
                     continue
-                inside = (v["rect"][0] - 0.01 <= x <= v["rect"][2] + 0.01 and v["rect"][1] - 0.01 <= y <= v["rect"][3] + 0.01) \
-                    if "rect" in v else abs(math.hypot(x - v["annulus"][0], y - v["annulus"][1])) <= v["annulus"][3] + 0.01
+                inside = (rect[0] - 0.01 <= x <= rect[2] + 0.01 and rect[1] - 0.01 <= y <= rect[3] + 0.01) if rect \
+                    else math.hypot(x - ann[0], y - ann[1]) <= ann[3] + 0.01
                 if inside:
                     board.Delete(t); break
 
@@ -139,7 +159,7 @@ def main():
     print(f"{len(spec.get('zones', []))} zone(s)")
 
     # obstacles for via sites
-    pads = [p for fp in board.GetFootprints() for p in fp.Pads()]
+    pads = [p for fp in board.GetFootprints() for p in fp.Pads() if p.IsOnCopperLayer() or p.HasHole()]   # paste-only pads don't block a via
     bucket = {}
     for p in pads:
         bb = p.GetBoundingBox()
@@ -148,43 +168,76 @@ def main():
                 bucket.setdefault((i, j), []).append(p)
     cyards = []
     for fp in board.GetFootprints():
+        nets = {p.GetNetname() for p in fp.Pads()}
         for L in (pcbnew.F_CrtYd, pcbnew.B_CrtYd):
             c = fp.GetCourtyard(L)
             if c.OutlineCount():
-                cyards.append((fp.GetReference(), c, c.BBox()))
+                cyards.append((fp.GetReference(), c, c.BBox(), nets))
     placed = [(M(t.GetPosition().x), M(t.GetPosition().y)) for t in board.GetTracks() if t.Type() == pcbnew.PCB_VIA_T]
     r = vsize / 2
     total = 0
     short = []
+
+    def free(x, y, allow, own_pad=None, netname=None):
+        """a via site clear of the edge, pads (but own_pad, the pad a via-in-pad field fills), holes, and the
+        courtyards of parts with no pad on the via's own net (a via in a pad skips courtyards: only pads matter)"""
+        if not (outer[0] + M(edge) + r <= x <= outer[2] - M(edge) - r and outer[1] + M(edge) + r <= y <= outer[3] - M(edge) - r):
+            return False
+        pt = pcbnew.VECTOR2I(F(x), F(y))
+        for p in bucket.get((int(x // 5), int(y // 5)), []):
+            if own_pad is not None and p.GetParentFootprint().GetReference() == own_pad[0] and p.GetNumber() == own_pad[1]:
+                continue
+            if p.HitTest(pt, F(r + clr)):
+                return False
+            if p.HasHole():
+                d = p.GetDrillSize()
+                if math.hypot(x - M(p.GetPosition().x), y - M(p.GetPosition().y)) < M(max(d.x, d.y)) / 2 + r + hclr:
+                    return False
+        if own_pad is not None:
+            return True
+        for ref, c, bb, nets in cyards:
+            if ref in allow or (netname and netname in nets):
+                continue
+            if M(bb.GetLeft()) - r <= x <= M(bb.GetRight()) + r and M(bb.GetTop()) - r <= y <= M(bb.GetBottom()) + r \
+                    and c.Contains(pt, -1, F(r)):
+                return False
+        return True
+
     for v in spec.get("vias", []):
         allow = set(v.get("allow_under", [])) | {"BB901", "BB902"}
         cand = []
         clip = v.get("clip")
-        for x, y in sites(v, pitch):
+        vp = v.get("pitch", pitch)
+        own = pad = None
+        if "in_pad" in v:                                   # vias inside one pad (filled and capped, DEC-027)
+            ref, num = v["in_pad"]
+            pad = next(p for fp in board.GetFootprints() if fp.GetReference() == ref for p in fp.Pads() if p.GetNumber() == num)
+            bb = pad.GetBoundingBox()
+            v = dict(v, rect=[M(bb.GetLeft()) + r, M(bb.GetTop()) + r, M(bb.GetRight()) - r, M(bb.GetBottom()) - r])
+            own = (ref, num)
+            allow.add(ref)
+        # every image of a site: itself, its mirror, and both in each copy (dx, net, mirror net, axis)
+        if "copies" in v:
+            images = []
+            for c in v["copies"]:
+                images.append((lambda x, y, dx=c["dx"]: (x + dx, y), c["net"]))
+                if "mirror_net" in c:
+                    images.append((lambda x, y, dx=c["dx"], ax=c["axis_x"]: (2 * ax - (x + dx), y), c["mirror_net"]))
+        else:
+            images = [(lambda x, y: (x, y), v["net"])]
+            if v.get("mirror"):
+                m = v["mirror"]
+                images.append((lambda x, y, ax=m["axis_x"]: (2 * ax - x, y), m["net"]))
+        for x, y in sites(v, vp):
             if clip and not (clip[0] + r <= x <= clip[2] - r and clip[1] + r <= y <= clip[3] - r):
                 continue
-            if not (outer[0] + M(edge) + r <= x <= outer[2] - M(edge) - r and outer[1] + M(edge) + r <= y <= outer[3] - M(edge) - r):
-                continue
-            pt = pcbnew.VECTOR2I(F(x), F(y))
-            bad = False
-            for p in bucket.get((int(x // 5), int(y // 5)), []):
-                if p.HitTest(pt, F(r + clr)):
-                    bad = True; break
-                if p.HasHole():
-                    d = p.GetDrillSize()
-                    if math.hypot(x - M(p.GetPosition().x), y - M(p.GetPosition().y)) < M(max(d.x, d.y)) / 2 + r + hclr:
-                        bad = True; break
-            if bad:
-                continue
-            for ref, c, bb in cyards:
-                if ref in allow:
-                    continue
-                if M(bb.GetLeft()) - r <= x <= M(bb.GetRight()) + r and M(bb.GetTop()) - r <= y <= M(bb.GetBottom()) + r \
-                        and c.Contains(pt, -1, F(r)):
-                    bad = True; break
-            if bad:
-                continue
-            cand.append((x, y))
+            ok = True
+            for k, (f_, n_) in enumerate(images):            # kept only if every image is free (identical outputs)
+                xi, yi = f_(x, y)
+                if not free(xi, yi, allow, own if k == 0 else None, n_):
+                    ok = False; break
+            if ok:
+                cand.append((x, y))
         tow = v.get("toward")
         if tow:
             cand.sort(key=lambda s: min(math.hypot(s[0] - tx, s[1] - ty) for tx, ty in tow))
@@ -192,18 +245,21 @@ def main():
         for x, y in cand:
             if len(keep) >= v.get("max", 10 ** 6):
                 break
-            if any(math.hypot(x - px, y - py) < pitch - 1e-6 for px, py in placed + keep):
+            if any(math.hypot(x - px, y - py) < vp - 1e-6 for px, py in keep):
+                continue
+            if any(math.hypot(f_(x, y)[0] - px, f_(x, y)[1] - py) < vp - 1e-6 for f_, _ in images for px, py in placed):
                 continue
             keep.append((x, y))
-        n = net(board, v["net"])
-        for x, y in keep:
-            via = pcbnew.PCB_VIA(board)
-            via.SetPosition(pcbnew.VECTOR2I(F(x), F(y)))
-            via.SetWidth(F(vsize)); via.SetDrill(F(vdrill))
-            via.SetNet(n); via.SetLocked(True)
-            board.Add(via)
-        placed += keep
-        total += len(keep)
+        groups = [(net(board, n_), [f_(x, y) for x, y in keep]) for f_, n_ in images]
+        for n, pts in groups:
+            for x, y in pts:
+                via = pcbnew.PCB_VIA(board)
+                via.SetPosition(pcbnew.VECTOR2I(F(x), F(y)))
+                via.SetWidth(F(vsize)); via.SetDrill(F(vdrill))
+                via.SetNet(n); via.SetLocked(True)
+                board.Add(via)
+            placed += pts
+        total += sum(len(p) for _, p in groups)
         flag = "" if len(keep) >= v.get("min", 0) else f"  BELOW the {v['min']} needed"
         if flag:
             short.append(v["name"])
