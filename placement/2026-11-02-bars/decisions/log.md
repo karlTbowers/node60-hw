@@ -15,7 +15,7 @@
 | D11 | 2026-11-03 | Ready for routing: start full routing on this placement | https://claude.ai/artifact/FQKm81rbkJqD8XYJGVBc1m | A, start routing (user, 2026-11-03: after a review of KRT's routing tools and ee-skills' ee-layout-rules) | placement done; routing next |
 | D12 | 2026-11-03 | Routing review: layer roles, outer copper, output cells, supply balance, input shunt, via current, routing method (7 decisions) | https://claude.ai/artifact/CYdagJE6yYyxJGvN8GtZcC | 1A 2A 3A 4B 5C 6A 7A (user, 2026-11-03). 4B: shift the power-entry group right without changing it much, and spread it for the vias. 5C: a bigger 4-terminal shunt, or two 0.5 mΩ in parallel if none is found | layer roles In1 GND / In2+In3 VBAT_PROT / In4 GND; 1 oz outer; output cells re-composed; power entry shifted right; shunt search; 0.65 A per via; staged routing |
 | D13 | 2026-11-03 | The three output cells turned to 0° and centred between their headers (D12-3) | https://claude.ai/artifact/KSbSL664A3kcrYLYsxawG9 | awaiting answer | |
-| D14 | 2026-11-03 | The input shunt (BVR 4026 0.3 / 0.2 mΩ, or 2 × 0.5 mΩ) and how the power entry moves right (shift, re-order, or compact) | https://claude.ai/artifact/KmXzdSwfgmrct2UQr6QukC | awaiting answer | |
+| D14 | 2026-11-03 | The input shunt (BVR 4026 0.3 / 0.2 mΩ, or 2 × 0.5 mΩ) and how the power entry moves right (shift, re-order, or compact) | https://claude.ai/artifact/KmXzdSwfgmrct2UQr6QukC | D14-1 A, D14-2 B (user, 2026-11-03) | R201 becomes Isabellenhütte BVR-Z-R0003-1.0 (0.3 mΩ, 4-terminal; R208 26.7 kΩ, R210 383 Ω); the power entry re-ordered to flow east |
 
 ## Skill gaps found in this run
 
