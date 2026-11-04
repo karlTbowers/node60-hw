@@ -1,0 +1,164 @@
+{
+  "id": "D18",
+  "name": "Power entry inner layers",
+  "question": "Which inner layers carry the 60 A power-entry path?",
+  "board": "node60",
+  "phase": "Routing",
+  "stage": "Power shapes",
+  "date": "2026-11-04",
+  "why_now": "You asked me to draw the power shapes and their vias and leave the signals to you. The 60 A path from J910 through the ideal-diode FETs, the shunt and the disconnect FETs (VBAT_IN, VBAT_D, VBAT_Q2D) cannot use much of F.Cu: the two busbar areas cover F.Cu at y 61–80 (GND only) and y 90–109 (VBAT_IN only), and the power entry sits at y 73–99, leaving it a 9 mm band between them. So it needs the inner layers, as D14 assumed, and every inner layer it takes is cut out of the VBAT_PROT plane there. That carve was not in the supply-resistance figures so far.",
+  "facts": [
+    {
+      "label": "Region",
+      "value": "The three segments sit in x 93.5–158 mm, y 72.5–99.5 mm, between J910 and the disconnect FETs' tabs; VBAT_PROT leaves the FETs' sources at x 161 and must reach U601 (x 78), U701 (x 152) and U801 (x 227)",
+      "source": "board"
+    },
+    {
+      "label": "Models",
+      "value": "power/entry_model.py (the three 60 A segments, layers joined by vias, other nets' pads not cut out: a comparison, a little optimistic) and power/plane_model.py (VBAT_PROT to each switch, both plane layers, with D17 A's north window), 85 °C, full load: 60 A in, 20 A per switch",
+      "source": "run folder"
+    },
+    {
+      "label": "Scale",
+      "value": "Each switch's on-resistance is 8.9 mΩ typical and channels may differ by up to 7 % (0.6 mΩ); the copper spreads below are a fraction of that",
+      "source": "TPS2HCS08A-Q1 data sheet"
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "name": "In2 and In3 both",
+      "summary": "VBAT_IN, VBAT_D and VBAT_Q2D on B.Cu, In2, In3 and the F.Cu band in the power entry; VBAT_PROT on In2 and In3 everywhere else.",
+      "images": [
+        {
+          "path": "img/d18_carve_both.png",
+          "caption": "In2 and In3: the box carries the 60 A path on both layers"
+        }
+      ],
+      "measures": [
+        {
+          "label": "60 A path",
+          "value": "0.194 mΩ, 0.70 W",
+          "limit": "lowest",
+          "status": "pass"
+        },
+        {
+          "label": "VBAT_PROT to U601 / U701 / U801",
+          "value": "0.486 / 0.283 / 0.307 mΩ",
+          "limit": "even",
+          "status": "warn"
+        },
+        {
+          "label": "Spread between switches",
+          "value": "0.20 mΩ (4.1 mV at 20 A)",
+          "limit": "smallest",
+          "status": "warn"
+        },
+        {
+          "label": "Total copper loss at full load",
+          "value": "1.13 W",
+          "limit": "lowest",
+          "status": "pass"
+        }
+      ],
+      "gains": [
+        "Lowest total loss"
+      ],
+      "costs": [
+        "U601's supply resistance rises the most; the switches spread a little more"
+      ]
+    },
+    {
+      "key": "B",
+      "name": "In2 only",
+      "summary": "The 60 A path on B.Cu, In2 and the F.Cu band; In3 stays a whole VBAT_PROT plane.",
+      "images": [
+        {
+          "path": "img/d18_carve_in2.png",
+          "caption": "In2 carries the box; In3 (not drawn) stays whole VBAT_PROT"
+        }
+      ],
+      "measures": [
+        {
+          "label": "60 A path",
+          "value": "0.308 mΩ, 1.11 W",
+          "limit": "lowest",
+          "status": "warn"
+        },
+        {
+          "label": "VBAT_PROT to U601 / U701 / U801",
+          "value": "0.360 / 0.200 / 0.270 mΩ",
+          "limit": "even",
+          "status": "pass"
+        },
+        {
+          "label": "Spread between switches",
+          "value": "0.16 mΩ (3.2 mV at 20 A)",
+          "limit": "smallest",
+          "status": "pass"
+        },
+        {
+          "label": "Total copper loss at full load",
+          "value": "1.44 W",
+          "limit": "lowest",
+          "status": "warn"
+        }
+      ],
+      "gains": [
+        "The six outputs closer together"
+      ],
+      "costs": [
+        "About 0.3 W more total loss"
+      ]
+    },
+    {
+      "key": "C",
+      "name": "Neither (B.Cu and the F.Cu band only)",
+      "summary": "Both VBAT_PROT planes whole; the 60 A path on the outer layers alone.",
+      "measures": [
+        {
+          "label": "60 A path",
+          "value": "0.768 mΩ, 2.76 W",
+          "limit": "lowest",
+          "status": "fail"
+        },
+        {
+          "label": "VBAT_PROT to U601 / U701 / U801",
+          "value": "0.306 / 0.171 / 0.256 mΩ",
+          "limit": "even",
+          "status": "pass"
+        },
+        {
+          "label": "Spread between switches",
+          "value": "0.14 mΩ (2.7 mV at 20 A)",
+          "limit": "smallest",
+          "status": "pass"
+        },
+        {
+          "label": "Total copper loss at full load",
+          "value": "3.05 W",
+          "limit": "lowest",
+          "status": "fail"
+        }
+      ],
+      "gains": [
+        "Best balance"
+      ],
+      "costs": [
+        "Nearly 3 W in the power entry's 1 oz copper: a hot spot"
+      ]
+    }
+  ],
+  "recommendation": {
+    "option": "A",
+    "why": "It has the lowest loss by 0.3 W, and the extra spread between the switches (0.20 against 0.16 mΩ) is a third of the switches' own on-resistance tolerance. If even outputs matter more to you than that 0.3 W, B is the choice."
+  },
+  "answer": "Reply with A, B or C.",
+  "sources": [
+    "power/entry_model.py",
+    "power/plane_model.py --window X0,Y0,X1,Y1,KEEP",
+    "D14, D15, D17",
+    "node60.kicad_dru busbar rules"
+  ],
+  "answered": "A (user, 2026-11-04)"
+}

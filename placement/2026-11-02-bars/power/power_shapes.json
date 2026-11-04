@@ -1,0 +1,994 @@
+{
+ "about": "Node60 power shapes, stage 1 (2026-11-04): inner planes (D12-1/D17 A), the 60 A entry path on B, In2, In3 and the F band (D18 A), VBAT_PROT at the disconnect FETs' sources, GND pours, and via fields at 0.65 A per 0.45/0.25 mm via (D12-6). Stage 2: each switch's VBB pad gets in-pad vias (filled and capped, DEC-027); each output a pour on B and F from its pins to its header's pin 1, OUTb the mirror image of OUTa, with mirrored via fields so both outputs of a switch get the same copper. D19 A (2026-11-04): the cells' small parts moved clear of the OUT exits; the B output pours reach north to y 104.5 beside the pins (F stays south of the VBAT_IN bar area).",
+ "via": {
+  "size": 0.45,
+  "drill": 0.25,
+  "pitch": 0.9,
+  "clearance": 0.15,
+  "hole_clearance": 0.3
+ },
+ "zones": [
+  {
+   "name": "PWR_GND_In1",
+   "net": "GND",
+   "layers": [
+    "In1.Cu"
+   ],
+   "priority": 0,
+   "rects": "board"
+  },
+  {
+   "name": "PWR_GND_In4",
+   "net": "GND",
+   "layers": [
+    "In4.Cu"
+   ],
+   "priority": 0,
+   "rects": "board"
+  },
+  {
+   "name": "PWR_VBAT_PROT_In2",
+   "net": "VBAT_PROT",
+   "layers": [
+    "In2.Cu"
+   ],
+   "priority": 0,
+   "rects": "board"
+  },
+  {
+   "name": "PWR_VBAT_PROT_In3",
+   "net": "VBAT_PROT",
+   "layers": [
+    "In3.Cu"
+   ],
+   "priority": 0,
+   "rects": "board"
+  },
+  {
+   "name": "PWR_GND_B",
+   "net": "GND",
+   "layers": [
+    "B.Cu"
+   ],
+   "priority": 0,
+   "rects": "board"
+  },
+  {
+   "name": "PWR_GND_F",
+   "net": "GND",
+   "layers": [
+    "F.Cu"
+   ],
+   "priority": 0,
+   "rects": "board",
+   "holes": [
+    [
+     92.2,
+     89.8,
+     217.8,
+     109.4
+    ]
+   ]
+  },
+  {
+   "name": "PWR_VBAT_IN_bar_F",
+   "net": "/VBAT_IN",
+   "layers": [
+    "F.Cu"
+   ],
+   "priority": 10,
+   "rects": [
+    [
+     92.6,
+     90.2,
+     200.0,
+     109.0
+    ]
+   ]
+  },
+  {
+   "name": "PWR_VBAT_IN_entry",
+   "net": "/VBAT_IN",
+   "layers": [
+    "B.Cu",
+    "In2.Cu",
+    "In3.Cu"
+   ],
+   "priority": 10,
+   "rects": [
+    [
+     93.5,
+     72.5,
+     112.6,
+     107.5
+    ]
+   ]
+  },
+  {
+   "name": "PWR_VBAT_D_entry_in",
+   "net": "/Power entry/VBAT_D",
+   "layers": [
+    "In2.Cu",
+    "In3.Cu"
+   ],
+   "priority": 10,
+   "rects": [
+    [
+     113.4,
+     73.0,
+     133.6,
+     99.5
+    ]
+   ]
+  },
+  {
+   "name": "PWR_VBAT_D_entry_B",
+   "net": "/Power entry/VBAT_D",
+   "layers": [
+    "B.Cu"
+   ],
+   "priority": 10,
+   "poly": [
+    [
+     113.4,
+     73.0
+    ],
+    [
+     130.9,
+     73.0
+    ],
+    [
+     130.9,
+     83.8
+    ],
+    [
+     133.6,
+     83.8
+    ],
+    [
+     133.6,
+     90.8
+    ],
+    [
+     130.9,
+     90.8
+    ],
+    [
+     130.9,
+     99.5
+    ],
+    [
+     113.4,
+     99.5
+    ]
+   ]
+  },
+  {
+   "name": "PWR_VBAT_D_entry_F",
+   "net": "/Power entry/VBAT_D",
+   "layers": [
+    "F.Cu"
+   ],
+   "priority": 10,
+   "rects": [
+    [
+     113.4,
+     80.6,
+     130.9,
+     89.6
+    ]
+   ]
+  },
+  {
+   "name": "PWR_VBAT_Q2D_entry_in",
+   "net": "/Power entry/VBAT_Q2D",
+   "layers": [
+    "In2.Cu",
+    "In3.Cu"
+   ],
+   "priority": 10,
+   "rects": [
+    [
+     138.4,
+     73.0,
+     158.0,
+     99.5
+    ]
+   ]
+  },
+  {
+   "name": "PWR_VBAT_Q2D_entry_B",
+   "net": "/Power entry/VBAT_Q2D",
+   "layers": [
+    "B.Cu"
+   ],
+   "priority": 10,
+   "poly": [
+    [
+     141.2,
+     73.0
+    ],
+    [
+     158.0,
+     73.0
+    ],
+    [
+     158.0,
+     99.5
+    ],
+    [
+     141.2,
+     99.5
+    ],
+    [
+     141.2,
+     90.8
+    ],
+    [
+     138.4,
+     90.8
+    ],
+    [
+     138.4,
+     83.8
+    ],
+    [
+     141.2,
+     83.8
+    ]
+   ]
+  },
+  {
+   "name": "PWR_VBAT_Q2D_entry_F",
+   "net": "/Power entry/VBAT_Q2D",
+   "layers": [
+    "F.Cu"
+   ],
+   "priority": 10,
+   "rects": [
+    [
+     141.2,
+     80.6,
+     158.0,
+     89.6
+    ]
+   ]
+  },
+  {
+   "name": "PWR_VBAT_PROT_source_B",
+   "net": "VBAT_PROT",
+   "layers": [
+    "B.Cu"
+   ],
+   "priority": 10,
+   "rects": [
+    [
+     159.9,
+     74.9,
+     176.0,
+     99.5
+    ]
+   ]
+  },
+  {
+   "name": "PWR_VBAT_PROT_source_F",
+   "net": "VBAT_PROT",
+   "layers": [
+    "F.Cu"
+   ],
+   "priority": 10,
+   "rects": [
+    [
+     159.9,
+     80.6,
+     176.0,
+     89.6
+    ]
+   ]
+  },
+  {
+   "name": "PWR_OUT1_B",
+   "net": "/OUT1",
+   "layers": [
+    "B.Cu"
+   ],
+   "priority": 20,
+   "poly": [
+    [
+     75.5,
+     104.5
+    ],
+    [
+     68.65,
+     104.5
+    ],
+    [
+     68.65,
+     108.9
+    ],
+    [
+     56.05,
+     108.9
+    ],
+    [
+     56.05,
+     127.0
+    ],
+    [
+     68.65,
+     127.0
+    ],
+    [
+     68.65,
+     111.0
+    ],
+    [
+     75.5,
+     111.0
+    ]
+   ]
+  },
+  {
+   "name": "PWR_OUT2_B",
+   "net": "/OUT2",
+   "layers": [
+    "B.Cu"
+   ],
+   "priority": 20,
+   "poly": [
+    [
+     79.8,
+     111.0
+    ],
+    [
+     86.65,
+     111.0
+    ],
+    [
+     86.65,
+     127.0
+    ],
+    [
+     99.25,
+     127.0
+    ],
+    [
+     99.25,
+     108.9
+    ],
+    [
+     86.65,
+     108.9
+    ],
+    [
+     86.65,
+     104.5
+    ],
+    [
+     79.8,
+     104.5
+    ]
+   ]
+  },
+  {
+   "name": "PWR_OUT1_F",
+   "net": "/OUT1",
+   "layers": [
+    "F.Cu"
+   ],
+   "priority": 20,
+   "poly": [
+    [
+     75.5,
+     109.25
+    ],
+    [
+     56.05,
+     109.25
+    ],
+    [
+     56.05,
+     127.0
+    ],
+    [
+     68.65,
+     127.0
+    ],
+    [
+     68.65,
+     111.0
+    ],
+    [
+     75.5,
+     111.0
+    ]
+   ]
+  },
+  {
+   "name": "PWR_OUT2_F",
+   "net": "/OUT2",
+   "layers": [
+    "F.Cu"
+   ],
+   "priority": 20,
+   "poly": [
+    [
+     79.8,
+     111.0
+    ],
+    [
+     86.65,
+     111.0
+    ],
+    [
+     86.65,
+     127.0
+    ],
+    [
+     99.25,
+     127.0
+    ],
+    [
+     99.25,
+     109.25
+    ],
+    [
+     79.8,
+     109.25
+    ]
+   ]
+  },
+  {
+   "name": "PWR_OUT3_B",
+   "net": "/OUT3",
+   "layers": [
+    "B.Cu"
+   ],
+   "priority": 20,
+   "poly": [
+    [
+     150.15,
+     104.5
+    ],
+    [
+     143.3,
+     104.5
+    ],
+    [
+     143.3,
+     108.9
+    ],
+    [
+     130.7,
+     108.9
+    ],
+    [
+     130.7,
+     127.0
+    ],
+    [
+     143.3,
+     127.0
+    ],
+    [
+     143.3,
+     111.0
+    ],
+    [
+     150.15,
+     111.0
+    ]
+   ]
+  },
+  {
+   "name": "PWR_OUT4_B",
+   "net": "/OUT4",
+   "layers": [
+    "B.Cu"
+   ],
+   "priority": 20,
+   "poly": [
+    [
+     154.45,
+     111.0
+    ],
+    [
+     161.3,
+     111.0
+    ],
+    [
+     161.3,
+     127.0
+    ],
+    [
+     173.9,
+     127.0
+    ],
+    [
+     173.9,
+     108.9
+    ],
+    [
+     161.3,
+     108.9
+    ],
+    [
+     161.3,
+     104.5
+    ],
+    [
+     154.45,
+     104.5
+    ]
+   ]
+  },
+  {
+   "name": "PWR_OUT3_F",
+   "net": "/OUT3",
+   "layers": [
+    "F.Cu"
+   ],
+   "priority": 20,
+   "poly": [
+    [
+     150.15,
+     109.25
+    ],
+    [
+     130.7,
+     109.25
+    ],
+    [
+     130.7,
+     127.0
+    ],
+    [
+     143.3,
+     127.0
+    ],
+    [
+     143.3,
+     111.0
+    ],
+    [
+     150.15,
+     111.0
+    ]
+   ]
+  },
+  {
+   "name": "PWR_OUT4_F",
+   "net": "/OUT4",
+   "layers": [
+    "F.Cu"
+   ],
+   "priority": 20,
+   "poly": [
+    [
+     154.45,
+     111.0
+    ],
+    [
+     161.3,
+     111.0
+    ],
+    [
+     161.3,
+     127.0
+    ],
+    [
+     173.9,
+     127.0
+    ],
+    [
+     173.9,
+     109.25
+    ],
+    [
+     154.45,
+     109.25
+    ]
+   ]
+  },
+  {
+   "name": "PWR_OUT5_B",
+   "net": "/OUT5",
+   "layers": [
+    "B.Cu"
+   ],
+   "priority": 20,
+   "poly": [
+    [
+     224.8,
+     104.5
+    ],
+    [
+     217.95,
+     104.5
+    ],
+    [
+     217.95,
+     108.9
+    ],
+    [
+     205.35,
+     108.9
+    ],
+    [
+     205.35,
+     127.0
+    ],
+    [
+     217.95,
+     127.0
+    ],
+    [
+     217.95,
+     111.0
+    ],
+    [
+     224.8,
+     111.0
+    ]
+   ]
+  },
+  {
+   "name": "PWR_OUT6_B",
+   "net": "/OUT6",
+   "layers": [
+    "B.Cu"
+   ],
+   "priority": 20,
+   "poly": [
+    [
+     229.1,
+     111.0
+    ],
+    [
+     235.95,
+     111.0
+    ],
+    [
+     235.95,
+     127.0
+    ],
+    [
+     248.55,
+     127.0
+    ],
+    [
+     248.55,
+     108.9
+    ],
+    [
+     235.95,
+     108.9
+    ],
+    [
+     235.95,
+     104.5
+    ],
+    [
+     229.1,
+     104.5
+    ]
+   ]
+  },
+  {
+   "name": "PWR_OUT5_F",
+   "net": "/OUT5",
+   "layers": [
+    "F.Cu"
+   ],
+   "priority": 20,
+   "poly": [
+    [
+     224.8,
+     109.25
+    ],
+    [
+     205.35,
+     109.25
+    ],
+    [
+     205.35,
+     127.0
+    ],
+    [
+     217.95,
+     127.0
+    ],
+    [
+     217.95,
+     111.0
+    ],
+    [
+     224.8,
+     111.0
+    ]
+   ]
+  },
+  {
+   "name": "PWR_OUT6_F",
+   "net": "/OUT6",
+   "layers": [
+    "F.Cu"
+   ],
+   "priority": 20,
+   "poly": [
+    [
+     229.1,
+     111.0
+    ],
+    [
+     235.95,
+     111.0
+    ],
+    [
+     235.95,
+     127.0
+    ],
+    [
+     248.55,
+     127.0
+    ],
+    [
+     248.55,
+     109.25
+    ],
+    [
+     229.1,
+     109.25
+    ]
+   ]
+  }
+ ],
+ "vias": [
+  {
+   "name": "VBAT_IN at J910's ring",
+   "net": "/VBAT_IN",
+   "annulus": [
+    102.0,
+    99.6,
+    7.4,
+    11.0
+   ],
+   "toward": [
+    [
+     102.0,
+     99.6
+    ]
+   ],
+   "min": 93,
+   "max": 150,
+   "allow_under": [
+    "J910"
+   ],
+   "clip": [
+    93.5,
+    72.5,
+    112.6,
+    107.5
+   ]
+  },
+  {
+   "name": "VBAT_IN at Q201/Q202 sources",
+   "net": "/VBAT_IN",
+   "rect": [
+    102.6,
+    74.0,
+    108.7,
+    92.4
+   ],
+   "toward": [
+    [
+     109.35,
+     78.8
+    ],
+    [
+     109.35,
+     91.8
+    ]
+   ],
+   "min": 93,
+   "max": 130
+  },
+  {
+   "name": "VBAT_D corridor",
+   "net": "/Power entry/VBAT_D",
+   "rect": [
+    123.1,
+    73.6,
+    130.2,
+    99.0
+   ],
+   "min": 93,
+   "max": 220
+  },
+  {
+   "name": "VBAT_Q2D corridor",
+   "net": "/Power entry/VBAT_Q2D",
+   "rect": [
+    141.8,
+    73.6,
+    148.9,
+    99.0
+   ],
+   "min": 93,
+   "max": 220
+  },
+  {
+   "name": "VBAT_PROT at Q203/Q204 sources",
+   "net": "VBAT_PROT",
+   "rect": [
+    163.0,
+    75.4,
+    175.5,
+    99.0
+   ],
+   "toward": [
+    [
+     162.65,
+     81.0
+    ],
+    [
+     162.65,
+     94.0
+    ]
+   ],
+   "min": 93,
+   "max": 180
+  },
+  {
+   "name": "GND at J911's ring",
+   "net": "GND",
+   "annulus": [
+    76.5,
+    70.6,
+    7.4,
+    11.0
+   ],
+   "toward": [
+    [
+     76.5,
+     70.6
+    ]
+   ],
+   "min": 93,
+   "max": 150,
+   "allow_under": [
+    "J911"
+   ]
+  },
+  {
+   "name": "GND at J902's ring",
+   "net": "GND",
+   "annulus": [
+    233.5,
+    70.6,
+    7.4,
+    11.0
+   ],
+   "toward": [
+    [
+     233.5,
+     70.6
+    ]
+   ],
+   "min": 93,
+   "max": 150,
+   "allow_under": [
+    "J902"
+   ]
+  },
+  {
+   "name": "VBB in U601 pad 17",
+   "net": "VBAT_PROT",
+   "in_pad": [
+    "U601",
+    "17"
+   ],
+   "pitch": 0.65,
+   "min": 28,
+   "max": 40
+  },
+  {
+   "name": "VBB in U701 pad 17",
+   "net": "VBAT_PROT",
+   "in_pad": [
+    "U701",
+    "17"
+   ],
+   "pitch": 0.65,
+   "min": 28,
+   "max": 40
+  },
+  {
+   "name": "VBB in U801 pad 17",
+   "net": "VBAT_PROT",
+   "in_pad": [
+    "U801",
+    "17"
+   ],
+   "pitch": 0.65,
+   "min": 28,
+   "max": 40
+  },
+  {
+   "name": "OUT strips (all six, identical)",
+   "net": "/OUT1",
+   "rect": [
+    68.65,
+    109.5,
+    75.25,
+    110.9
+   ],
+   "toward": [
+    [
+     74.75,
+     110.0
+    ]
+   ],
+   "min": 0,
+   "max": 20,
+   "copies": [
+    {
+     "dx": 0.0,
+     "net": "/OUT1",
+     "mirror_net": "/OUT2",
+     "axis_x": 77.65
+    },
+    {
+     "dx": 74.65,
+     "net": "/OUT3",
+     "mirror_net": "/OUT4",
+     "axis_x": 152.3
+    },
+    {
+     "dx": 149.3,
+     "net": "/OUT5",
+     "mirror_net": "/OUT6",
+     "axis_x": 226.95
+    }
+   ]
+  },
+  {
+   "name": "OUT bands (all six, identical)",
+   "net": "/OUT1",
+   "rect": [
+    56.35,
+    109.2,
+    68.65,
+    126.6
+   ],
+   "toward": [
+    [
+     68.65,
+     110.0
+    ]
+   ],
+   "min": 16,
+   "max": 24,
+   "copies": [
+    {
+     "dx": 0.0,
+     "net": "/OUT1",
+     "mirror_net": "/OUT2",
+     "axis_x": 77.65
+    },
+    {
+     "dx": 74.65,
+     "net": "/OUT3",
+     "mirror_net": "/OUT4",
+     "axis_x": 152.3
+    },
+    {
+     "dx": 149.3,
+     "net": "/OUT5",
+     "mirror_net": "/OUT6",
+     "axis_x": 226.95
+    }
+   ]
+  }
+ ]
+}

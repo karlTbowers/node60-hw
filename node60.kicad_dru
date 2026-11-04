@@ -109,3 +109,9 @@
 (rule "Buck switch nodes 10 mm from the T1S line"
 	(condition "(A.NetName == '/Regulators/3V3_MAIN_SW' || A.NetName == '/Regulators/1V5_CORE_SW') && B.NetClass == 'T1S_100R'")
 	(constraint clearance (min 10mm)))
+
+# Power pours (2026-11-04): a small part's pad in a crowded spot may join a pour through one thermal
+# spoke (KiCad's default asks for two). High-current pads join solid ("High-current pads solid to
+# their pours"), so this only concerns small parts, where a solid joint would risk tombstoning.
+(rule "Thermal reliefs: one spoke is enough"
+	(constraint min_resolved_spokes 1))
