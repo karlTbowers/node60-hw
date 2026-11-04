@@ -67,7 +67,11 @@ The script exits 0 only when every check passes. Warnings, such as a newer Homeb
    ```bash
    brew install --cask inkscape blender iina pairpods
    ```
-4. **GitHub and credentials:** you must have run `gh auth login` (`dropout-vendor-docs` is private). The script then runs `git lfs install`. It checks your git `user.name` and `user.email`, that `~/.local/share/dropout/vendor-logins` exists with mode 600, and that `~/.zshrc` runs `vendor-env.sh`. It never reads the credentials file, and it never edits `~/.zshrc`; those are your steps (handbook steps 5 and 8).
+4. **GitHub and credentials:** you must have run `gh auth login` (`dropout-vendor-docs` is private). The script then runs `git lfs install`. It checks your git `user.name` and `user.email`, that `~/.local/share/dropout/vendor-logins` exists with mode 600, and that `~/.zshrc` runs `vendor-env.sh`. It never reads the credentials file; creating it is your step (handbook step 8). Once the file exists, the script adds the handbook's line to `~/.zshrc` in a marked block, after making a backup, so the API keys reach every shell and Claude:
+   ```bash
+   eval "$("$HOME/Dev/dropout-kicad-library/scripts/vendor-env.sh")"
+   ```
+   Open a new terminal, or restart the Claude app, afterwards.
 5. **Repos under `~/Dev`,** cloned only when missing: `node60-hw` (with the `lib/dropout-kicad-library` submodule), `dropout-hardware-handbook`, `dropout-kicad-library`, `dropout-library-catalog`, `dropout-vendor-docs` (185 LFS files) and `ee-skills` (from `charlesh97/ee-skills`).
 6. **KRT** at `~/Dev/KiCadRoutingTools`: cloned from `drandyhaas/KiCadRoutingTools`, with `main` at `e91017d1`. An existing checkout at another commit gets a warning and is left alone. The Rust router `rust_router/grid_router.so` comes from `build_router.py --tag v0.23.7`, which downloads the release's `grid_router-macos-arm64.so`, checked by sha256. `rust_router/` hasn't changed between v0.23.7 and `e91017d1`, so no cargo is needed.
 7. **KRT's Python** at `~/.cache/dropout/krt-venv`: `uv python install 3.12.16`, `uv venv`, then `uv pip sync` with [`krt-requirements.txt`](krt-requirements.txt) (numpy 2.5.4, scipy 1.18.1, shapely 2.2.0, pillow 13.0.0).

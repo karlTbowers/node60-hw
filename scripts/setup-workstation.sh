@@ -179,8 +179,17 @@ VL=$HOME/.local/share/dropout/vendor-logins   # never read here: only its presen
 if [[ -f $VL ]]; then
   [[ $(stat -f %Lp $VL) == 600 ]] && ok "vendor-logins" "present, mode 600" || warn "vendor-logins" "mode $(stat -f %Lp $VL); chmod 600 $VL"
 else warn "vendor-logins" "missing: you create $VL (mode 600), handbook ch. 07 Credentials"; fi
+# Handbook ch. 07 step 8: the API keys reach every shell, and Claude, through ~/.zshrc (user, 2026-11-03: the script adds it)
 if grep -q 'scripts/vendor-env.sh' ~/.zshrc 2>/dev/null; then ok "vendor-env in ~/.zshrc" "API keys reach shells"
-else warn "vendor-env in ~/.zshrc" "missing (handbook ch. 07 step 8): API keys don't reach shells or Claude"; fi
+elif [[ ! -f $VL ]]; then warn "vendor-env in ~/.zshrc" "not added until $VL exists; re-run then"
+elif (( CHECK )); then would "vendor-env in ~/.zshrc" "add 'eval \"\$(\"\$HOME/Dev/dropout-kicad-library/scripts/vendor-env.sh\")\"' to ~/.zshrc"
+else
+  [[ -f ~/.zshrc ]] && cp -p ~/.zshrc ~/.zshrc.bak-$(date +%Y%m%d%H%M%S)
+  print -l '' '# >>> node60 setup-workstation: distributor API keys (handbook ch. 07) >>>' \
+    'eval "$("$HOME/Dev/dropout-kicad-library/scripts/vendor-env.sh")"' \
+    '# <<< node60 setup-workstation <<<' >> ~/.zshrc
+  changed "vendor-env in ~/.zshrc" "added (backup beside it); open a new terminal or restart the Claude app"
+fi
 (( CHECK )) || mkdir -p $DEV
 repo_state() {   # name dir
   local d=$2 br sha dirty url
