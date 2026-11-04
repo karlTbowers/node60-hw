@@ -24,6 +24,10 @@ git clone --recursive https://github.com/karlTbowers/node60-hw.git
 
 Already cloned without it? Run `git submodule update --init`.
 
+## Workstation
+
+To set up a new Apple-silicon Mac with the whole design environment, run `scripts/setup-workstation.sh`. It installs KiCad 10.0.7, the Homebrew tools, the DropOut repos, KiCadRoutingTools and its Python, then checks that the Mac reproduces the reference judging run. See [`scripts/workstation/README.md`](scripts/workstation/README.md).
+
 ## Layout
 
 ```

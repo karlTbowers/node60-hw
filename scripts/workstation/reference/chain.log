@@ -1,0 +1,33 @@
+# judge_route.sh chain.log, reduced to the step headers and the timing keys of KRT's JSON_SUMMARY lines (what perf_report.py reads)
+== planes: py_router/route_planes.py <out>/s0.kicad_pcb <out>/s1.kicad_pcb --nets GND VBAT_PROT VBAT_PROT GND --plane-layers In1.Cu In2.Cu In3.Cu In4.Cu --clearance 0.15 --escalation off --fab-overrides <export>/placement/2026-11-02-bars/node60_fab.txt
+== fanout_U401: py_router/bga_fanout.py <out>/s1.kicad_pcb --component U401 --nets * !GND !VBAT_PROT !*FXOSC* --output <out>/s2.kicad_pcb --track-width 0.1 --clearance 0.1 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off --fab-overrides <export>/placement/2026-11-02-bars/node60_fab.txt --layers F.Cu In1.Cu In2.Cu In3.Cu In4.Cu B.Cu --layer-costs 1.0 -1.0 -1.0 -1.0 -1.0 1.0
+== fanout_U201: py_router/qfn_fanout.py <out>/s2.kicad_pcb --component U201 --output <out>/s2.kicad_pcb --track-width 0.15 --clearance 0.15 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off --fab-overrides <export>/placement/2026-11-02-bars/node60_fab.txt
+== fanout_U302: py_router/qfn_fanout.py <out>/s2.kicad_pcb --component U302 --output <out>/s2.kicad_pcb --track-width 0.15 --clearance 0.15 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off --fab-overrides <export>/placement/2026-11-02-bars/node60_fab.txt
+== fanout_U303: py_router/qfn_fanout.py <out>/s2.kicad_pcb --component U303 --output <out>/s2.kicad_pcb --track-width 0.15 --clearance 0.15 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off --fab-overrides <export>/placement/2026-11-02-bars/node60_fab.txt
+== fanout_U501: py_router/qfn_fanout.py <out>/s2.kicad_pcb --component U501 --output <out>/s2.kicad_pcb --track-width 0.1 --clearance 0.1 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off --fab-overrides <export>/placement/2026-11-02-bars/node60_fab.txt
+== decap: py_placer/place_fanout_clearance.py <out>/s2.kicad_pcb <out>/s3.kicad_pcb --clearance 0.15
+== crystal: py_router/route.py <out>/s3.kicad_pcb <out>/s3.kicad_pcb --nets *FXOSC* --clearance 0.15 --clearance-ceiling 0.15 --track-width 0.15 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off --fab-overrides <export>/placement/2026-11-02-bars/node60_fab.txt --layers B.Cu
+JSON_SUMMARY: {"total_time": 0.65, "rescue": {"time": 0.38}}
+JSON_SUMMARY: {"total_time": 0.87, "rescue": {"time": 0.87}}
+JSON_SUMMARY: {"total_time": 0.43, "rescue": {"time": 0.84}}
+JSON_SUMMARY_MIN: {"main_loop_time_s": 1.95}
+== diff: py_router/route_diff.py <out>/s3.kicad_pcb <out>/s4.kicad_pcb --nets /T1S/T1S_CMC_P /T1S/T1S_CMC_N /T1S/T1S_PHY_P /T1S/T1S_PHY_N /T1S_P /T1S_N --track-width 0.165 --diff-pair-gap 0.15 --clearance 0.15 --clearance-ceiling 0.15 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off --fab-overrides <export>/placement/2026-11-02-bars/node60_fab.txt --layers F.Cu In1.Cu In2.Cu In3.Cu In4.Cu B.Cu --layer-costs 1.0 -1.0 -1.0 -1.0 -1.0 1.0
+JSON_SUMMARY: {"total_time": 2.58}
+== phy_first: py_router/route.py <out>/s4.kicad_pcb <out>/s4.kicad_pcb --nets /T1S/T1S_REFCLK /T1S/T1S_RBIAS --clearance 0.15 --clearance-ceiling 0.15 --track-width 0.15 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off --fab-overrides <export>/placement/2026-11-02-bars/node60_fab.txt --layers F.Cu In1.Cu In2.Cu In3.Cu In4.Cu B.Cu --layer-costs 1.0 -1.0 -1.0 -1.0 -1.0 1.0
+JSON_SUMMARY: {"total_time": 0.74, "rescue": {"time": 2.17}}
+JSON_SUMMARY: {"total_time": 0.68, "rescue": {"time": 2.91}}
+JSON_SUMMARY_MIN: {"main_loop_time_s": 1.42}
+== route: py_router/route.py <out>/s4.kicad_pcb <out>/s5.kicad_pcb --nets * --no-bga-zones --clearance 0.15 --clearance-ceiling 0.15 --track-width 0.15 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off --fab-overrides <export>/placement/2026-11-02-bars/node60_fab.txt --max-ripup 5 --power-nets GN[D/] VBAT_PRO[T/] /VBAT_IN /Power entry/VBAT_D VBAT_FIL[T/] /Power entry/VBAT_Q2D /OUT? VDDAU_AO[N/] /Outputs 1-2/SW_VDD /Outputs 5-6/SW_VDD /Outputs 3-4/SW_VDD /Regulators/VDDAU_AON_REG --power-nets-widths 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 --layers F.Cu In1.Cu In2.Cu In3.Cu In4.Cu B.Cu --layer-costs 1.0 -1.0 -1.0 -1.0 -1.0 1.0
+JSON_SUMMARY: {"total_time": 15.82, "rescue": {"time": 281.92}}
+JSON_SUMMARY: {"total_time": 0.35, "rescue": {"time": 1.88}}
+JSON_SUMMARY: {"total_time": 0.42, "rescue": {"time": 2.29}}
+JSON_SUMMARY: {"total_time": 0.41, "rescue": {"time": 4.25}}
+JSON_SUMMARY: {"total_time": 1.58, "rescue": {"time": 12.86}}
+JSON_SUMMARY: {"total_time": 22.17, "rescue": {"time": 350.11}}
+JSON_SUMMARY: {"total_time": 25.5, "rescue": {"time": 317.77}}
+JSON_SUMMARY_MIN: {"main_loop_time_s": 66.25}
+== route_p2: py_router/route.py <out>/s5.kicad_pcb <out>/s6.kicad_pcb --nets * --no-bga-zones --clearance 0.15 --clearance-ceiling 0.15 --track-width 0.15 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off --fab-overrides <export>/placement/2026-11-02-bars/node60_fab.txt --max-ripup 5 --power-nets GN[D/] VBAT_PRO[T/] /VBAT_IN /Power entry/VBAT_D VBAT_FIL[T/] /Power entry/VBAT_Q2D /OUT? VDDAU_AO[N/] /Outputs 1-2/SW_VDD /Outputs 5-6/SW_VDD /Outputs 3-4/SW_VDD /Regulators/VDDAU_AON_REG --power-nets-widths 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 --layers F.Cu In1.Cu In2.Cu In3.Cu In4.Cu B.Cu --layer-costs 1.0 -1.0 -1.0 -1.0 -1.0 1.0
+JSON_SUMMARY: {"total_time": 23.96, "rescue": {"time": 289.17}}
+JSON_SUMMARY: {"total_time": 0.62, "rescue": {"time": 2.84}}
+JSON_SUMMARY: {"total_time": 22.47, "rescue": {"time": 268.3}}
+JSON_SUMMARY_MIN: {"main_loop_time_s": 47.05}

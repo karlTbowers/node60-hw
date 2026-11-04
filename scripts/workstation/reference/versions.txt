@@ -1,0 +1,7 @@
+host	karls-Air Mac15,13 Apple M3, 4 P + 4 E cores, 24 GB, macOS 26.4
+node60_commit	b6d7085193df990d04e49bf4cd03ee5e9f5c3683
+judge	cdd70f9368288aae573581e0d45a5440a458cda3 (git blob of placement/2026-11-02-bars/judge_route.sh)
+krt_commit	e91017d121e4455f997eca056b8747c890f28bcc (live checkout at the time)
+grid_router	4ef094676987 (v0.23.7 macos-arm64)
+kicad	10.0.7
+started	2026-11-03 23:14:15
