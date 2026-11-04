@@ -1,11 +1,11 @@
 {
   "block": "u701",
   "anchor": "U701",
-  "approved": "2026-11-02 (D08)",
+  "approved": null,
   "anchor_pose": {
-    "x": 162.017,
-    "y": 109.4218,
-    "rot": 90.0,
+    "x": 152.3,
+    "y": 111.6,
+    "rot": 0.0,
     "side": "B"
   },
   "parts": {
@@ -199,5 +199,5 @@
       "why": "GND probe loop for the channel, anywhere within 12 mm of pin 1"
     }
   },
-  "anchor_why": "The reviewed cell; U601 and U801 are copies of it"
+  "anchor_why": "Turned to 0\u00b0 and centred between its two headers' pin 1 at y 111.6 (D12-3, 2026-11-03): OUTa faces the west header, OUTb the east one, and both runs are 15.75 \u00b1 0.05 mm sideways and 15.0 mm down, the same in all three cells. The cell turned rigidly with the switch, so every part keeps D08's relation to its pin"
 }

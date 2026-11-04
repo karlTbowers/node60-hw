@@ -1,0 +1,43 @@
+{
+  "id": "D13",
+  "name": "Output cells turned",
+  "question": "Approve the three output cells turned and centred between their headers?",
+  "board": "node60", "phase": "Placement", "stage": "3 Blocks", "date": "2026-11-03",
+  "why_now": "D12-3 (A): six identical outputs need each switch to face both of its headers the same way. The D08 cells were turned 90°, so one output left south and the other north, and runs ran 16.9 to 29.7 mm.\n\nEach D08 cell was turned as a rigid whole to 0° and centred between its two headers' pin 1. Every part keeps D08's relation to its pin (the SNS and FLT parts, CVBB1 over the VBB pad, the test points), so nothing in the cell was re-designed. All three cells sit at y 111.6 mm, 2.2 mm south of before, so the top-side decaps clear the VBAT_IN busbar's courtyard.",
+  "facts": [
+    {"label": "Rotation", "value": "At 0° OUTa (pins 6–8) sits 2.90 mm west of the switch centre and OUTb (pins 9–11) 2.90 mm east, both 1.62 mm north of it: each pair of outputs is a mirror image", "source": "measured on the board"},
+    {"label": "One asymmetry left", "value": "Every AT13 header has pin 1 (OUT) on its west side, so the west output passes its header's GND pin to reach pin 1 and the east output arrives at its header's near pin. Run lengths are equal; the pour shapes differ round that one pin", "source": "header footprints (fixed by the enclosure)"},
+    {"label": "Checks", "value": "KiCad DRC 0 errors; floorplan 0 errors; assembly only the busbar tie pads accepted in D09; FLT (pin 12) and SNS (pin 2) of all three switches PASSABLE; every other approved block on its table pose", "source": "kicad-cli, check_floorplan, check_assembly, check_reachability, block_poses.py"}
+  ],
+  "options": [
+    {
+      "key": "A", "name": "As turned",
+      "summary": "U601 at (77.65, 111.6), U701 at (152.3, 111.6), U801 at (226.95, 111.6), all at 0°, each with its 21 parts turned with it.",
+      "images": [
+        {"path": "img/cell12_turned_B.png", "caption": "U601 (OUT1/OUT2), bottom side seen from above: dashed outlines and arrows show the D08 poses"},
+        {"path": "img/cell34_turned_B.png", "caption": "U701 (OUT3/OUT4)"},
+        {"path": "img/cell56_turned_B.png", "caption": "U801 (OUT5/OUT6)"}
+      ],
+      "measures": [
+        {"label": "Output runs, switch pins to header pin 1 (sideways × down)", "value": "all six 15.70–15.80 × 15.02 mm", "limit": "equal", "status": "pass"},
+        {"label": "Longest run (Manhattan)", "value": "30.8 mm (was 29.7 direct, 16.9–29.7 spread)", "limit": "equal", "status": "pass"},
+        {"label": "FLT and SNS pins", "value": "all PASSABLE", "limit": "PASSABLE", "status": "pass"},
+        {"label": "DRC / floorplan", "value": "0 / 0 errors", "limit": "0", "status": "pass"}
+      ],
+      "gains": ["Six outputs with the same run, by construction", "No part of the cell re-designed: D08's reasons all hold"],
+      "costs": ["Replaces D08's cells; the cells sit 2.2 mm closer to the headers"]
+    },
+    {
+      "key": "B", "name": "Keep D08's cells",
+      "summary": "Equalise in copper instead.",
+      "measures": [
+        {"label": "Output runs, switch pins to header pin 1 (sideways × down)", "value": "16.9–29.7 mm direct", "limit": "equal", "status": "fail"}
+      ],
+      "gains": ["No placement change"],
+      "costs": ["Five outputs made as long as the sixth"]
+    }
+  ],
+  "recommendation": {"option": "A", "why": "It is D12-3 done with the least change: the cells turned whole, every check clean."},
+  "answer": "Reply with A or B, or a change. The power entry's move (D12-4) and the shunt (D12-5) follow on D14, once the shunt search reports.",
+  "sources": ["blocks/out_6x.poses.json, out_34.poses.json, out_8x.poses.json", "D08, D12"]
+}

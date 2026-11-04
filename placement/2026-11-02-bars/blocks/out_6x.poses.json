@@ -1,11 +1,11 @@
 {
   "block": "u601",
   "anchor": "U601",
-  "approved": "2026-11-02 (D08)",
+  "approved": null,
   "anchor_pose": {
-    "x": 87.5,
-    "y": 109.4,
-    "rot": 90.0,
+    "x": 77.65,
+    "y": 111.6,
+    "rot": 0.0,
     "side": "B"
   },
   "parts": {
@@ -199,5 +199,5 @@
       "why": "GND probe loop for the channel, anywhere within 12 mm of pin 1"
     }
   },
-  "anchor_why": "Turned 90\u00b0 (was 180\u00b0) and moved 4.3 mm, so the cell is U701's and FLT pin 12 is reachable"
+  "anchor_why": "Turned to 0\u00b0 and centred between its two headers' pin 1 at y 111.6 (D12-3, 2026-11-03): OUTa faces the west header, OUTb the east one, and both runs are 15.75 \u00b1 0.05 mm sideways and 15.0 mm down, the same in all three cells. The cell turned rigidly with the switch, so every part keeps D08's relation to its pin"
 }

@@ -14,6 +14,7 @@
 | D10 | 2026-11-02 | U303's 1.5 V core buck cell recomposed round the TPS628502-Q1 (DEC-026) | https://claude.ai/artifact/FcS4kULQHc7bRbmQPYejuZ | A, as composed (user, 2026-11-02) | buck_1v5 cell table approved for the TPS628502-Q1; replaces D06's LMQ66430 cell |
 | D11 | 2026-11-03 | Ready for routing: start full routing on this placement | https://claude.ai/artifact/FQKm81rbkJqD8XYJGVBc1m | A, start routing (user, 2026-11-03: after a review of KRT's routing tools and ee-skills' ee-layout-rules) | placement done; routing next |
 | D12 | 2026-11-03 | Routing review: layer roles, outer copper, output cells, supply balance, input shunt, via current, routing method (7 decisions) | https://claude.ai/artifact/CYdagJE6yYyxJGvN8GtZcC | 1A 2A 3A 4B 5C 6A 7A (user, 2026-11-03). 4B: shift the power-entry group right without changing it much, and spread it for the vias. 5C: a bigger 4-terminal shunt, or two 0.5 mΩ in parallel if none is found | layer roles In1 GND / In2+In3 VBAT_PROT / In4 GND; 1 oz outer; output cells re-composed; power entry shifted right; shunt search; 0.65 A per via; staged routing |
+| D13 | 2026-11-03 | The three output cells turned to 0° and centred between their headers (D12-3) | https://claude.ai/artifact/KSbSL664A3kcrYLYsxawG9 | awaiting answer | |
 
 ## Skill gaps found in this run
 
