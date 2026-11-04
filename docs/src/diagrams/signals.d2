@@ -27,7 +27,7 @@ classes: {
 network: "10BASE-T1S" {
   class: group
   ecu: "Controller ECU\nPLCA coordinator\nsole wake source" {class: external; link: "/subsystems/harness/"}
-  line: "Line interface\n2 × 100 nF · ESD pair\nswitchable 100 Ω termination" {class: network; link: "/subsystems/network/"}
+  line: "Line interface\n2 × 100 nF · ESD pair at each connector\nswitchable 100 Ω termination" {class: network; link: "/subsystems/network/"}
   phy: "LAN8670D0\nPLCA follower · TC10 wake" {class: network; link: "/subsystems/network/"}
   osc: "50 MHz oscillator\nECS-3225SMVQ" {class: network; link: "/subsystems/network/"}
 }

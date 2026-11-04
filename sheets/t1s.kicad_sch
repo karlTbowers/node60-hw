@@ -10367,7 +10367,7 @@
 		)
 		(uuid "89d712d9-f98c-5e5b-ba43-75aa97f550fe")
 	)
-	(text "T1S line interface: CMC, DC block, ESD (FL501, C511-C512, D501-D502)"
+	(text "T1S line interface: CMC, DC block, ESD at J903 (FL501, C511-C512, D501-D502)"
 		(exclude_from_sim no)
 		(at 312.42 133.35 0)
 		(effects
@@ -15804,7 +15804,7 @@
 			)
 		)
 	)
-	(text "DESIGN VALUES (LAN8670 DS60001573K; OPEN Alliance 10BASE-T1S; Node60 DEC-007, DEC-012)\nMode straps MODE[1:0] = 10b (RMII, 50 MHz REFCLKIN): RXD3/MODE1 pulled up, RXD2/MODE0 pulled down, 10k each.\nPHYAD[4:0] = 00001b: RXER/PHYAD0 up; CRSDV/PHYAD1, RXD0/PHYAD2, RXD1/PHYAD3, CRS/PHYAD4 down (10k).\n  PHYAD is a hardware strap only; the PLCA node ID is commissioned in flash (separate from PHYAD).\nTXEN 10k pull-down (Microchip: prevents transmission while the MAC is in reset). MDIO 10k pull-up to VDDP.\nIRQ_N open drain, 10k pull-up to 3V3_MAIN -> T1S_IRQ_L to the MCU (PHY ready after cold boot).\nINH: P-channel open drain to VDDAU with 10k pull-down (Microchip ref.), drives the 3V3_MAIN buck EN and the\n  LM74910H SLEEP pin directly (DEC-004). No FS26, latch or MCU gate.\nRESET_N on RESET_L (TPS3702 window supervisor + S32K344 RESET_B): every MCU reset also resets the PHY,\n  so straps are re-latched and firmware always re-initializes from a known state.\nWAKE_IN unused (no local wake, DEC-007) -> VSS per datasheet. TXD2/TXD3 unused in RMII (internal pull-downs).\nTXER/ACMA unused -> VSS. TXCLK/RXPI, COL, RXCLK/WAKE_OUT, GPIO0, XTO unused: no-connect.\nRBIAS 12.4k 1 % (Microchip reference).\nDecoupling: 10nF + 100nF at every VDDP/VDDA/VDDAU pin, 10uF bulk on VDDP and VDDA (Microchip sec. 6).\n  10nF goes closest to its pin. Ferrite beads in the reference are optional and not fitted.\nLine interface (DEC-012 rev. B, Microchip AN1718), layout order connector -> ESD -> termination -> DC block -> CMC -> PHY:\n  C DC block 2 x 100nF C0G 100 V (OPEN Alliance: >= 50 V). FL501 ACT1210E-241 (240 uH, 10BASE-T1S rated).\n  D ESD 2 x VETH100A1DD1 (<= 2 pF/line) right at the connector. Keep the pair symmetric through the CMC.\n  Capacitance budget: CMDI <= 25 pF: transceiver 10 + CMC 10 + ESD 1 (pair) leaves ~4 pF for connector + traces.\n  Termination: OA split network switched by latching relay K501 (DEC-017), box below right.\n50 MHz clock: Y501 ECS-3225SMVQ, enable tied high (runs with 3V3_MAIN). One output, two 33R series resistors,\n  one to PHY XTI/REFCLKIN, one to the MCU RMII REF_CLK. Length-match both traces (Microchip layout note).\nOPEN: TDK has not published a CMC class for ACT1210E-241 (DEC-012 risk). VETH100A1DD1 24 V working voltage\n  vs a 24 V short to battery on the bus: see DEC-012.\n"
+	(text "DESIGN VALUES (LAN8670 DS60001573K; OPEN Alliance 10BASE-T1S; Node60 DEC-007, DEC-012)\nMode straps MODE[1:0] = 10b (RMII, 50 MHz REFCLKIN): RXD3/MODE1 pulled up, RXD2/MODE0 pulled down, 10k each.\nPHYAD[4:0] = 00001b: RXER/PHYAD0 up; CRSDV/PHYAD1, RXD0/PHYAD2, RXD1/PHYAD3, CRS/PHYAD4 down (10k).\n  PHYAD is a hardware strap only; the PLCA node ID is commissioned in flash (separate from PHYAD).\nTXEN 10k pull-down (Microchip: prevents transmission while the MAC is in reset). MDIO 10k pull-up to VDDP.\nIRQ_N open drain, 10k pull-up to 3V3_MAIN -> T1S_IRQ_L to the MCU (PHY ready after cold boot).\nINH: P-channel open drain to VDDAU with 10k pull-down (Microchip ref.), drives the 3V3_MAIN buck EN and the\n  LM74910H SLEEP pin directly (DEC-004). No FS26, latch or MCU gate.\nRESET_N on RESET_L (TPS3702 window supervisor + S32K344 RESET_B): every MCU reset also resets the PHY,\n  so straps are re-latched and firmware always re-initializes from a known state.\nWAKE_IN unused (no local wake, DEC-007) -> VSS per datasheet. TXD2/TXD3 unused in RMII (internal pull-downs).\nTXER/ACMA unused -> VSS. TXCLK/RXPI, COL, RXCLK/WAKE_OUT, GPIO0, XTO unused: no-connect.\nRBIAS 12.4k 1 % (Microchip reference).\nDecoupling: 10nF + 100nF at every VDDP/VDDA/VDDAU pin, 10uF bulk on VDDP and VDDA (Microchip sec. 6).\n  10nF goes closest to its pin. Ferrite beads in the reference are optional and not fitted.\nLine interface (DEC-012 rev. C, Microchip AN1718), layout order connector -> ESD -> termination -> DC block -> CMC -> PHY:\n  C DC block 2 x 100nF C0G 100 V (OPEN Alliance: >= 50 V). FL501 ACT1210E-241 (240 uH, 10BASE-T1S rated).\n  D ESD 4 x VETH100A1DD1 (<= 2 pF/line each): D501/D502 at J903, D503/D504 at J912 (DEC-012 rev. C, D16-2).\n  Keep the pair symmetric through the CMC.\n  Capacitance budget: CMDI <= 25 pF: PHY 8.5 + CMC 10 + ESD 2 x 1.0 (two pairs) leaves ~4.5 pF for connectors + traces.\n  Termination: OA split network switched by latching relay K501 (DEC-017), box below right.\n50 MHz clock: Y501 ECS-3225SMVQ, enable tied high (runs with 3V3_MAIN). One output, two 33R series resistors,\n  one to PHY XTI/REFCLKIN, one to the MCU RMII REF_CLK. Length-match both traces (Microchip layout note).\nOPEN: TDK has not published a CMC class for ACT1210E-241 (DEC-012 risk). VETH100A1DD1 24 V working voltage\n  vs a 24 V short to battery on the bus: see DEC-012.\n"
 		(exclude_from_sim no)
 		(at 381 40.64 0)
 		(effects
@@ -19496,6 +19496,479 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "ae3dde4e-9064-40ac-86e7-ee2e04ddac6e")
+	)
+	(symbol
+		(lib_id "DropOut_Protection:VETH100A1DD1HG3-08")
+		(at 335.28 218.44 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "b0a44556-1db0-411e-9f91-1b56cbf3e821")
+		(property "Reference" "D"
+			(at 338.328 217.17 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "VETH100A1DD1HG3-08"
+			(at 338.328 219.71 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "DropOut_Diode_SMD:Vishay_DFN1006-2B_1.0x0.6mm"
+			(at 335.28 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/86195/veth100a1dd1.pdf"
+			(at 335.28 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Vishay single-line bidirectional ESD protection diode for automotive Ethernet (OPEN Alliance 10BASE-T1S, 100BASE-T1, 1000BASE-T1), 24 V working, >100 V trigger, 2.0 pF max, ±15 kV ISO 10605, AEC-Q101, DFN1006-2B"
+			(at 335.28 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Vishay"
+			(at 335.28 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "VETH100A1DD1HG3-08"
+			(at 335.28 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "112-VETH100A1DD1HG3-08CT-ND"
+			(at 335.28 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "78-VETH100A1DD1HG308"
+			(at 335.28 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q101, TJ -55 to +150 °C"
+			(at 335.28 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "6e218f80-c081-4cf9-9de9-bd119bafc0e8")
+		)
+		(pin "2"
+			(uuid "356bd227-c9e1-4a03-ac7b-8a2183985a70")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
+					(reference "D503")
+					(unit 1)
+				)
+			)
+		)
+	)
+
+	(symbol
+		(lib_id "power:GND")
+		(at 335.28 226.06 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "2a878ab1-f2ca-4736-ac5e-4f5291765975")
+		(property "Reference" "#PWR040"
+			(at 335.28 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 335.28 230.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 335.28 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 335.28 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "67d2a516-ab60-447b-be82-82dde3d3849c")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
+					(reference "#PWR05040")
+					(unit 1)
+				)
+			)
+		)
+	)
+
+	(wire
+		(pts
+			(xy 325.12 210.82) (xy 335.28 210.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c007395a-2084-49bb-8eb7-8bc3136358b1")
+	)
+	(wire
+		(pts
+			(xy 335.28 210.82) (xy 335.28 213.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "756a5b23-8b42-48e5-8290-2c62c2f90a4a")
+	)
+	(wire
+		(pts
+			(xy 335.28 223.52) (xy 335.28 226.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1766f29e-14dd-4494-bf49-7631dd1eea56")
+	)
+	(hierarchical_label "T1S_P"
+		(shape bidirectional)
+		(at 325.12 210.82 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "27375d72-adce-4b6c-a9ba-a1c5c8d1f75e")
+	)
+	(symbol
+		(lib_id "DropOut_Protection:VETH100A1DD1HG3-08")
+		(at 373.38 218.44 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "5a38248b-f903-49d5-ad72-1e974c4bb388")
+		(property "Reference" "D"
+			(at 376.428 217.17 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "VETH100A1DD1HG3-08"
+			(at 376.428 219.71 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" "DropOut_Diode_SMD:Vishay_DFN1006-2B_1.0x0.6mm"
+			(at 373.38 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://www.vishay.com/docs/86195/veth100a1dd1.pdf"
+			(at 373.38 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Vishay single-line bidirectional ESD protection diode for automotive Ethernet (OPEN Alliance 10BASE-T1S, 100BASE-T1, 1000BASE-T1), 24 V working, >100 V trigger, 2.0 pF max, ±15 kV ISO 10605, AEC-Q101, DFN1006-2B"
+			(at 373.38 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Vishay"
+			(at 373.38 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "VETH100A1DD1HG3-08"
+			(at 373.38 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "DigiKey_PN" "112-VETH100A1DD1HG3-08CT-ND"
+			(at 373.38 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "78-VETH100A1DD1HG308"
+			(at 373.38 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q101, TJ -55 to +150 °C"
+			(at 373.38 218.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "dfed09f4-3a0c-4c81-9b57-45ecb7ea6f51")
+		)
+		(pin "2"
+			(uuid "3076bedb-b08f-4b17-90c3-40161b24f1be")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
+					(reference "D504")
+					(unit 1)
+				)
+			)
+		)
+	)
+
+	(symbol
+		(lib_id "power:GND")
+		(at 373.38 226.06 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "21861b25-cb13-474e-85ea-4c1b5ab74b57")
+		(property "Reference" "#PWR041"
+			(at 373.38 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 373.38 230.96 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 373.38 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 373.38 226.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "7a8f94a2-1b33-4793-9f57-7fd0369a520f")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e"
+					(reference "#PWR05041")
+					(unit 1)
+				)
+			)
+		)
+	)
+
+	(wire
+		(pts
+			(xy 363.22 210.82) (xy 373.38 210.82)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9b9b7fbd-d64e-413e-8d19-d6d64080f06b")
+	)
+	(wire
+		(pts
+			(xy 373.38 210.82) (xy 373.38 213.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a9fbb91f-d17c-4f0d-9fc6-e5d05ea06215")
+	)
+	(wire
+		(pts
+			(xy 373.38 223.52) (xy 373.38 226.06)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bdfe2c19-015d-4b61-aea0-8ca737bb9a56")
+	)
+	(hierarchical_label "T1S_N"
+		(shape bidirectional)
+		(at 363.22 210.82 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "cdf3e1ae-9551-44ba-9d9a-b24cfc44ce0f")
+	)
+	(rectangle
+		(start 312.42 203.2)
+		(end 403.86 243.84)
+		(stroke
+			(width 0.254)
+			(type dash)
+			(color 132 132 132 1)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "584327cb-3004-4a14-bf94-4074981baa89")
+	)
+	(text "T1S ESD at J912 (D503-D504)"
+		(exclude_from_sim no)
+		(at 312.42 201.93 0)
+		(effects
+			(font
+				(size 1.778 1.778)
+				(thickness 0.3)
+				bold
+			)
+			(justify left bottom)
+		)
+		(uuid "2c96dab2-c696-4206-9e12-3a1df8a57d84")
+	)
+	(text "Decision D16-2 (2026-11-03): one ESD pair at each T1S connector,\nsince either connector may face the harness. D501/D502 go at J903's pins,\nD503/D504 at J912's, each right at its connector (DEC-012 rev. C)."
+		(exclude_from_sim no)
+		(at 314.96 233.68 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "2b30a691-d2f2-43b8-97be-689dfa27f012")
 	)
 	(embedded_fonts no)
 )
