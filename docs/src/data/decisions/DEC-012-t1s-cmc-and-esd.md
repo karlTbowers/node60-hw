@@ -84,7 +84,7 @@ Placement decision D16-2 A (user, 2026-11-03) added **D503/D504**, a second VETH
 | FL501 ACT1210E-241 | ≤ 10 pF if Class III; TDK publishes no class (open risk above) | OA CMC test specification V1.1 (S22), Table A-1 |
 | D501/D502 and D503/D504 | 2 × 1.0 pF max (2 × 0.85 typ); each diode 2.0 pF max to GND, so 4.0 pF per line to GND | Vishay VETH100A1DD1 data sheet, doc. 86195 rev. 1.3 (S40): CD at VR = 0 V, 1 MHz |
 | C511/C512 DC block | none: 100 nF in series with about 20 pF changes it by 0.02 % | |
-| K501 open contacts | about 0.03 pF per open contact (estimate, not a rating) | Derived from Omron's G6K isolation curve (S41, p. 5: G6K-2G, about 75 dB at 10 MHz in 50 Ω, so the S21 magnitude ≈ 2π f C × 100 Ω); Omron publishes no capacitance |
+| K501 open contacts | about 0.015 pF (estimate, not a rating): about 0.03 pF per open contact, each from a line to AC ground through its idle leg and C514 | Derived from Omron's G6K isolation curve (S41, p. 5: G6K-2G, about 75 dB at 10 MHz in 50 Ω, so the S21 magnitude ≈ 2π f C × 100 Ω); Omron publishes no capacitance |
 | **Total of the parts** | **20.5 pF** (the relay adds about 0.02 pF) | |
 | Left for J903, J912, the trunk and the PHY stub | about 4.5 pF of 25 pF (3 pF against the 10 / 10 / 5 split) | |
 
