@@ -14,10 +14,10 @@ stackup and fab house still **open**.
 | Layer | Job | Source |
 |---|---|---|
 | F.Cu | signal; decoupling caps, J401, D201; under each busbar only the bar's net | DEC-024, `node60.kicad_dru` |
-| In1.Cu | GND plane | autoplan's plane map, accepted here |
-| In2.Cu | signal | escape budget |
-| In3.Cu | signal | escape budget |
-| In4.Cu | VBAT_PROT plane | autoplan's plane map, accepted here |
+| In1.Cu | GND plane | D12-1 A (user, 2026-11-03) |
+| In2.Cu | VBAT_PROT plane (short signal windows away from the power path if routing needs them) | D12-1 A (user, 2026-11-03) |
+| In3.Cu | VBAT_PROT plane, in parallel with In2 | D12-1 A (user, 2026-11-03) |
+| In4.Cu | GND plane, under B.Cu | D12-1 A (user, 2026-11-03); was VBAT_PROT |
 | B.Cu | signal; nearly every part | DEC-024 |
 
 U401's escape needs 4 signal layers (deepest signal ring 8, 2 rings per layer) and has 4; a 0.45 mm
@@ -53,7 +53,7 @@ Placed by `scripts/place_connectors.py` and locked.
 | Zone | Parts | Why | Keep away from |
 |---|---|---|---|
 | Power entry | Q201–Q204, R201 | 60 A node load through the FET bank and the 0.25 mΩ shunt | the INA228's Kelvin lines' routing, the crystal |
-| Output switches | U601, U701, U801 | 2 × 10 A each; exposed pad 17 (VBAT_PROT) needs a via field to In4 | their pad's via field kept clear of the busbar rule areas |
+| Output switches | U601, U701, U801 | 2 × 10 A each; exposed pad 17 (VBAT_PROT) needs a via field to the VBAT_PROT planes (In2, In3) | their pad's via field kept clear of the busbar rule areas |
 | Switchers (noisy) | U302 + L301 (3V3_MAIN), U303 + L302 (1V5_CORE) | switch nodes | T1S line nets 10 mm (11.8 now), crystals and the 50 MHz clock 3 mm |
 | Quiet | T1S line, Y401, Y501, INA228 sense | — | switch nodes |
 
@@ -111,4 +111,4 @@ bar joins its terminals on the board. Needed before the PR #21 override comes of
 
 - 1 A per via: to be checked against the stackup's plating and the 10 A thermal test.
 - The Kelvin lane budget (10 mm): to be confirmed against the INA228 datasheet's layout section in stage 3.
-- In1 GND / In4 VBAT_PROT as the plane layers: the stackup is open.
+- Layer roles settled in D12-1 (2026-11-03): In1 GND, In2 + In3 VBAT_PROT, In4 GND; signals on F.Cu and B.Cu (DEC-027's JLC062012-1080).

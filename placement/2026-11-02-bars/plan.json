@@ -10,8 +10,6 @@
   "baseline": "../../node60.kicad_pcb",
   "signal_layers": [
     "F.Cu",
-    "In2.Cu",
-    "In3.Cu",
     "B.Cu"
   ],
   "plane_nets": [
@@ -554,5 +552,11 @@
   "assumed": [
     "1 A per 0.45/0.25 mm via (to be checked against the stackup's plating and the 10 A thermal test)"
   ],
-  "krt_python": "/Users/karl/.cache/dropout/krt-venv/bin/python"
+  "krt_python": "/Users/karl/.cache/dropout/krt-venv/bin/python",
+  "plane_layers": {
+    "In1.Cu": "GND",
+    "In2.Cu": "VBAT_PROT",
+    "In3.Cu": "VBAT_PROT",
+    "In4.Cu": "GND"
+  }
 }
