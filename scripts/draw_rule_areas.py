@@ -60,11 +60,25 @@ def rule_area(board, name, layers, box, no_tracks=False, no_fill=False):
     board.Add(area)
 
 
-def complement(outer, hole):
-    """outer rectangle minus an inner one, as up to four rectangles"""
-    X0, Y0, X1, Y1 = outer; x0, y0, x1, y1 = (max(hole[0], X0), max(hole[1], Y0), min(hole[2], X1), min(hole[3], Y1))
-    parts = [(X0, Y0, X1, y0), (X0, y1, X1, Y1), (X0, y0, x0, y1), (x1, y0, X1, y1)]
-    return [p for p in parts if p[2] - p[0] > 0.01 and p[3] - p[1] > 0.01]
+def complement(outer, holes):
+    """outer rectangle minus a set of rectangles, as rectangles (coordinate compression, then each
+    row's free cells merged into runs)"""
+    X0, Y0, X1, Y1 = outer
+    clip = [(max(h[0], X0), max(h[1], Y0), min(h[2], X1), min(h[3], Y1)) for h in holes]
+    xs = sorted({X0, X1, *[h[0] for h in clip], *[h[2] for h in clip]})
+    ys = sorted({Y0, Y1, *[h[1] for h in clip], *[h[3] for h in clip]})
+    out = []
+    for j in range(len(ys) - 1):
+        run = None
+        for i in range(len(xs) - 1):
+            cx, cy = (xs[i] + xs[i + 1]) / 2, (ys[j] + ys[j + 1]) / 2
+            free = not any(h[0] < cx < h[2] and h[1] < cy < h[3] for h in clip)
+            if free and run is None:
+                run = xs[i]
+            if (not free or i == len(xs) - 2) and run is not None:
+                end = xs[i + 1] if free else xs[i]
+                out.append((run, ys[j], end, ys[j + 1])); run = None
+    return [p for p in out if p[2] - p[0] > 0.01 and p[3] - p[1] > 0.01]
 
 
 def main(path, windows=(), power_only=()):
@@ -79,14 +93,14 @@ def main(path, windows=(), power_only=()):
     for w in windows:
         layer, box = w.split(":"); by_layer.setdefault(layer, []).append(tuple(float(v) for v in box.split(",")))
     for layer, boxes in by_layer.items():
-        if len(boxes) > 1:
-            sys.exit(f"{layer}: one window per layer for now")
         tag = layer.replace(".", "")
-        rule_area(board, f"SIGNAL_WINDOW_{tag}_1", [layer], boxes[0], no_fill=True)
-        for k, part in enumerate(complement(outer, boxes[0]), 1):
+        for n, box in enumerate(boxes, 1):
+            rule_area(board, f"SIGNAL_WINDOW_{tag}_{n}", [layer], box, no_fill=True)
+            print(f"{layer}: signal window {n} x {box[0]:.2f}..{box[2]:.2f} y {box[1]:.2f}..{box[3]:.2f}")
+        parts = complement(outer, boxes)
+        for k, part in enumerate(parts, 1):
             rule_area(board, f"POWER_ONLY_{tag}_{k}", [layer], part, no_tracks=True)
-        print(f"{layer}: signal window x {boxes[0][0]:.2f}..{boxes[0][2]:.2f} y {boxes[0][1]:.2f}..{boxes[0][3]:.2f}; "
-              f"the rest of the layer tracks not allowed (vias allowed)")
+        print(f"{layer}: the rest of the layer, {len(parts)} keep-out(s), tracks not allowed (vias allowed)")
     for layer in power_only:
         rule_area(board, f"POWER_ONLY_{layer.replace('.', '')}_1", [layer], outer, no_tracks=True)
         print(f"{layer}: power only, tracks not allowed (vias allowed)")
