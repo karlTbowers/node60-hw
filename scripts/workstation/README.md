@@ -2,7 +2,7 @@
 
 `scripts/setup-workstation.sh` rebuilds the Node60 design environment of the reference Mac (an M3 MacBook Air, macOS 26.4) on another Apple-silicon Mac, then checks that the new machine reproduces the process: KiCad's `pcbnew`, KiCadRoutingTools (KRT) and its router, CI's DRC, the rule proofs, and one timed judging run compared with the Air's.
 
-It follows the handbook's "Setting up a new Mac" (chapter 07, in the `dropout-hardware` plugin) and adds what Node60's placement process needs: KRT, its Python, `ee-skills` and the pinned versions. Where the two disagree, the user decides: a Node60 exception or a handbook change (CLAUDE.md).
+It follows the handbook's "Setting up a new Mac" (chapter 07, in the `dropout-hardware` plugin) and adds what Node60's placement process needs: KRT, its Python, `ee-skills`, and pinned KiCad and Python versions. Where the two disagree, the user decides: a Node60 exception or a handbook change (CLAUDE.md).
 
 It is safe to re-run. It installs only what is missing, prints `CHANGED` for each change, and never touches an existing git checkout: no checkout, pull or fetch. On the reference Mac it changes nothing.
 
@@ -40,6 +40,8 @@ Options:
 | `--no-judge` | Skip the timed judging run (7–36 min). |
 | `--extras` | Also install the reference Mac's other Homebrew packages. The process doesn't need them. |
 | `--no-plugins` | Don't install the Claude Code plugins `dropout-hardware` and `kicad-happy`. |
+| `--update-krt` | Fast-forward an existing `~/Dev/KiCadRoutingTools` to `origin/main`, if it is on a clean `main`. Off by default, because other sessions' judging runs may be using that checkout. |
+| `--krt-at WHICH` | KRT for the judging run. `reference` (the default) uses a temporary copy of the reference run's KRT commit, and the result must then match. `live` uses the checkout as it is, and the result is information only. |
 | `--ref REF` | The node60-hw commit to verify. The default is the reference run's commit, `b6d7085` on `placement/routing-readiness`, so the comparison is like-for-like. A commit missing from your clones is fetched by hash into the temporary folder. |
 | `--judge-out DIR` | Where the judging run goes. The default is `~/Dev/node60-judge-runs/<host>-<time>`. |
 
@@ -73,7 +75,7 @@ The script exits 0 only when every check passes. Warnings, such as a newer Homeb
    ```
    Open a new terminal, or restart the Claude app, afterwards.
 5. **Repos under `~/Dev`,** cloned only when missing: `node60-hw` (with the `lib/dropout-kicad-library` submodule), `dropout-hardware-handbook`, `dropout-kicad-library`, `dropout-library-catalog`, `dropout-vendor-docs` (185 LFS files) and `ee-skills` (from `charlesh97/ee-skills`).
-6. **KRT** at `~/Dev/KiCadRoutingTools`: cloned from `drandyhaas/KiCadRoutingTools`, with `main` at `e91017d1`. An existing checkout at another commit gets a warning and is left alone. The Rust router `rust_router/grid_router.so` comes from `build_router.py --tag v0.23.7`, which downloads the release's `grid_router-macos-arm64.so`, checked by sha256. `rust_router/` hasn't changed between v0.23.7 and `e91017d1`, so no cargo is needed.
+6. **KRT** at `~/Dev/KiCadRoutingTools`, cloned from `drandyhaas/KiCadRoutingTools` at `origin/main`. KRT isn't pinned: it tracks its latest commit (user, 2026-11-04: KRT is under heavy development). An existing checkout is reported with its commit and how far it is behind `origin/main` as last fetched. It is moved only with `--update-krt`. The Rust router `rust_router/grid_router.so` is the published prebuilt whose version matches the checkout's `rust_router/Cargo.toml`, installed by KRT's `build_router.py`. That's the check KRT itself makes when it starts. No cargo is needed. If KRT's crate gets ahead of its last release, the script says so and fails, because that would need a source build.
 7. **KRT's Python** at `~/.cache/dropout/krt-venv`: `uv python install 3.12.16`, `uv venv`, then `uv pip sync` with [`krt-requirements.txt`](krt-requirements.txt) (numpy 2.5.4, scipy 1.18.1, shapely 2.2.0, pillow 13.0.0).
 8. **The library's tools:** it runs `dropout-kicad-library/scripts/setup_tools.sh`, the library's own setup, which builds `~/.cache/dropout/klt-venv` with CadQuery.
 9. **Claude Code plugins,** user scope, from GitHub, as in handbook step 7:
@@ -93,7 +95,7 @@ The checks run on a `git archive` export of `--ref` in a temporary folder, with 
 - CI's check, `kicad-cli pcb drc --exit-code-violations --severity-error --schematic-parity node60.kicad_pcb`, exits 0.
 - `rules/prove_rules.py` passes every case.
 - The handbook's own checks (step 11): the library's `setup_tools.sh --check`, `distributor_lookup.py S32K344EHT1MMMST` and `klc_check.py`. These run on the library checkout as it is, so they only warn: the first needs your API keys, and the last depends on the library branch you have checked out.
-- One judging run: `judge_route.sh node60.kicad_pcb`, with `KRT_PY` set to the venv. It routes with KRT exported at the pinned commit into the temporary folder, with the checked router binary, not with `~/Dev/KiCadRoutingTools` as checked out. Something on the reference Mac pulls that checkout every night (`git reflog` shows `pull --ff --recurse-submodules` on 10-30, 11-01, 11-02 and 11-03), and on 2026-11-03 one pull landed in the middle of a verification run. Then `perf_report.py` reports this run beside the reference in [`reference/`](reference/). The blocking count and open nets must match the reference. That comparison only holds at the reference commit (`b6d7085`), and the script says so when `--ref` is a different commit.
+- One judging run: `judge_route.sh node60.kicad_pcb`, with `KRT_PY` set to the venv. By default (`--krt-at reference`) it uses KRT at the reference run's commit (`e91017d1`), exported into the temporary folder with its v0.23.7 router binary. `~/Dev/KiCadRoutingTools` itself is never moved: other sessions use it, and something on the reference Mac pulls it every night (`git reflog` shows `pull --ff --recurse-submodules` on 10-30, 11-01, 11-02, 11-03 and 11-04). With the same node60-hw commit and the same KRT, a run must reproduce the reference exactly. On the Air it did: the same 330 blocking items and 113 open nets, twice. A run at KRT `87596863` gave 329, so a different KRT commit gives a different count. That's why the check holds only for the reference pair, node60-hw `b6d7085` with KRT `e91017d1`; with `--ref` or `--krt-at live`, the script shows the differences as information. The run writes `versions.txt` (host, node60-hw commit, judge script hash, KRT commit, router hash, KiCad) next to its results. Then `perf_report.py` reports this run beside the reference in [`reference/`](reference/).
 
 ## Pins
 
@@ -114,15 +116,15 @@ The checks run on a `git archive` export of `--ref` in a temporary folder, with 
 | d2 | 0.9.0 | recorded |
 | dropout-hardware plugin | 0.10.1 | recorded (follows the handbook's `main`) |
 | kicad-happy plugin | 3.0.0 | recorded (follows its repo) |
-| KRT | `e91017d1` | pinned (new clones) |
-| grid_router.so | v0.23.7 macos-arm64, sha256 `4ef09467…` | pinned |
+| KRT | `origin/main` (reference run: `e91017d1`) | not pinned: tracks its latest commit |
+| grid_router.so | the prebuilt matching the crate (reference: v0.23.7 macos-arm64, sha256 `4ef09467…`) | follows KRT |
 | KRT's Python | CPython 3.12.16 (uv) | pinned |
 | numpy, scipy, shapely, pillow | 2.5.4, 1.18.1, 2.2.0, 13.0.0 | pinned |
 | klt-venv | the library's `setup_tools.sh` | not pinned here |
 | Claude Code | 2.1.314 | recorded (it updates itself) |
 | Repos | their current branches | not pinned (cloned at the default branch) |
 
-KRT's `requirements.txt` at `e91017d1` also asks for `ortools>=9.15`, for its bus step. The Node60 judging flow never runs that step and the reference venv doesn't have it, so the pin leaves it out.
+KRT's `requirements.txt` (at `e91017d1` and `87596863`) also asks for `ortools>=9.15`, for its bus step. The Node60 judging flow never runs that step and the reference venv doesn't have it, so the pin leaves it out.
 
 ## Paths
 
@@ -157,7 +159,7 @@ rings        ../node60.kicad_pcb           JUDGE_KEEP_RINGS=1
 u401_west    u401_west.kicad_pcb
 ```
 
-To run a set of boards with no extra settings, list them instead of a file: `scripts/judge_batch.sh DIR a.kicad_pcb b.kicad_pcb`. With `--repeat K`, each variant runs K times. KRT isn't bit-for-bit repeatable, so repeats show how much a result moves. `-j N` overrides the number at once.
+To run a set of boards with no extra settings, list them instead of a file: `scripts/judge_batch.sh DIR a.kicad_pcb b.kicad_pcb`. With `--repeat K`, each variant runs K times. At a fixed KRT commit the router gave identical results twice on the Air, so repeats are a check, not a way to measure spread. `-j N` overrides the number at once.
 
 What the batch runner does:
 

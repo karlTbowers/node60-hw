@@ -12,4 +12,6 @@
 
 The high blocking count is this commit's real result under the D12 routing rules. The branch's own D12 runs show the same order (`judge_d12` 379, `judge_d12_win` 372, `judge_v1cmp` 400). It is not a broken run.
 
-Files: `timing.tsv` and `rules.json` as the run wrote them; `grade.txt` with KiCad's log noise filtered out; `chain.log` cut down to the step headers and the timing keys of KRT's `JSON_SUMMARY` lines. That is all `perf_report.py` reads, and its report from this folder is identical to the one from the full 4.9 MB log. Paths are shortened to `<export>` and `<out>`.
+Files: `versions.txt` (what judged it, in the format the setup script writes); `timing.tsv` and `rules.json` as the run wrote them; `grade.txt` with KiCad's log noise filtered out; `chain.log` cut down to the step headers and the timing keys of KRT's `JSON_SUMMARY` lines. That is all `perf_report.py` reads, and its report from this folder is identical to the one from the full 4.9 MB log. Paths are shortened to `<export>` and `<out>`.
+
+Repeated on 2026-11-04 by the setup script with the same node60-hw commit and the same KRT commit: blocking 330 and the same 113 open nets, 2101 s. A run with KRT at `87596863` (after a nightly pull) gave 329 blocking (one clearance fewer), with the same open nets.

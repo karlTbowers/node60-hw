@@ -83,7 +83,7 @@ ROUTER=$(cd $KRT && $KRT_PY -c 'import sys; sys.path.insert(0, "rust_router"); i
 {
   print "host\t$(hostname -s) $(sysctl -n hw.model) $(sysctl -n machdep.cpu.brand_string), $P P + $(sysctl -n hw.perflevel1.physicalcpu) E cores, $(( MEM_MB / 1024 )) GB"
   print "node60_commit\t$(git -C $TOP rev-parse HEAD)$([[ -n $(git -C $TOP status --porcelain -- ${JUDGE:h} $TOP/node60.kicad_pro $TOP/node60.kicad_dru 2>/dev/null) ]] && print ' (uncommitted changes in the judge folder or rules)')"
-  print "judge\t$JUDGE  sha1 $(shasum $JUDGE | cut -c1-12)"
+  print "judge\t$JUDGE  git blob $(git hash-object $JUDGE)"
   print "krt_commit\t$KRT0"
   print "grid_router\t$ROUTER  sha256 $(shasum -a 256 $KRT/rust_router/grid_router.so | cut -c1-12)"
   print "krt_python\t$KRT_PY"

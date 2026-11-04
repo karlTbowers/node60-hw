@@ -8,6 +8,10 @@
 #   options:  --no-judge        skip the timed judging run (7-36 min) in the verification
 #             --extras          also install the reference Mac's other Homebrew packages (not needed)
 #             --no-plugins      don't install the Claude Code plugins (dropout-hardware, kicad-happy)
+#             --update-krt      fast-forward an existing ~/Dev/KiCadRoutingTools to origin/main (off by
+#                               default: other sessions' runs may be using that checkout)
+#             --krt-at WHICH    KRT for the judging run: 'reference' (default; a temp copy of the reference
+#                               run's commit, so the result must match) or 'live' (the checkout as it is)
 #             --ref REF         node60-hw commit to verify (default: the reference run's commit, REF_JUDGE_COMMIT)
 #             --judge-out DIR   where the judging run goes (default ~/Dev/node60-judge-runs/<host>-<time>)
 #
@@ -20,16 +24,18 @@ setopt pipe_fail no_unset
 HERE=${0:A:h}
 source $HERE/workstation/pins.env
 
-CHECK=0 JUDGE=1 EXTRAS=0 PLUGINS_ON=1 REF="" JOUT=""
+CHECK=0 JUDGE=1 EXTRAS=0 PLUGINS_ON=1 UPDATE_KRT=0 KRT_AT=reference REF="" JOUT=""
 while (( $# )); do
   case $1 in
     --check) CHECK=1 ;;
     --no-judge) JUDGE=0 ;;
     --extras) EXTRAS=1 ;;
     --no-plugins) PLUGINS_ON=0 ;;
+    --update-krt) UPDATE_KRT=1 ;;
+    --krt-at) KRT_AT=$2; shift ;;
     --ref) REF=$2; shift ;;
     --judge-out) JOUT=$2; shift ;;
-    -h|--help) sed -n '2,17p' $0; exit 0 ;;
+    -h|--help) sed -n '2,22p' $0; exit 0 ;;
     *) print -u2 "unknown option $1"; exit 2 ;;
   esac
   shift
@@ -216,18 +222,27 @@ fi
 
 # ---------------------------------------------------------------------------------------------
 section "KiCadRoutingTools ($KRT)"
+# Not pinned: KRT tracks origin/main (user, 2026-11-04). A new clone is at origin/main; an existing
+# checkout is reported, and moved only with --update-krt (fast-forward, on main, clean).
+krt_ver() { sed -n 's/^version *= *"\(.*\)"/\1/p' $KRT/rust_router/Cargo.toml 2>/dev/null | head -1; }
 if [[ ! -d $KRT/.git ]]; then
-  if do_or_would "KRT" git clone -q $KRT_URL $KRT; then
-    git -C $KRT checkout -q -B main $KRT_COMMIT
-    changed "KRT" "cloned, main at ${KRT_COMMIT:0:8}"
+  do_or_would "KRT" git clone -q $KRT_URL $KRT && changed "KRT" "cloned origin/main at $(git -C $KRT rev-parse --short=8 HEAD)" || true
+elif (( UPDATE_KRT )); then
+  B=$(git -C $KRT branch --show-current); H0=$(git -C $KRT rev-parse HEAD)
+  if [[ $B != main || -n $(git -C $KRT status --porcelain) ]]; then warn "KRT update" "not on a clean main ($B); left alone"
+  elif (( CHECK )); then would "KRT update" "git -C $KRT pull --ff-only"
+  else
+    git -C $KRT pull -q --ff-only && H1=$(git -C $KRT rev-parse HEAD)
+    [[ $H1 == $H0 ]] && ok "KRT update" "already at origin/main" || changed "KRT update" "fast-forwarded ${H0:0:8} -> ${H1:0:8}"
   fi
 fi
 if [[ -d $KRT/.git ]]; then
   H=$(git -C $KRT rev-parse HEAD)
-  if [[ $H == $KRT_COMMIT ]]; then ok "KRT commit" "${H:0:8} ($(git -C $KRT branch --show-current || true))"
-  else warn "KRT commit" "${H:0:8}, pin ${KRT_COMMIT:0:8}; left alone (to match: git -C $KRT checkout -B main $KRT_COMMIT)"; fi
-  if git -C $KRT diff --quiet $KRT_ROUTER_TAG HEAD -- rust_router 2>/dev/null; then ok "KRT rust_router/" "same as $KRT_ROUTER_TAG, so its prebuilt binary applies (no cargo)"
-  else warn "KRT rust_router/" "differs from $KRT_ROUTER_TAG: the prebuilt may not match; build from source (cargo)"; fi
+  behind=$(git -C $KRT rev-list --count HEAD..origin/main 2>/dev/null || print '?')
+  info="$(git -C $KRT describe --tags 2>/dev/null || print ${H:0:8}), $(git -C $KRT branch --show-current || true), crate $(krt_ver)"
+  if [[ $behind == 0 ]]; then ok "KRT commit" "${H:0:8} = origin/main as last fetched ($info)"
+  else say "KRT commit" "${H:0:8}, $behind behind origin/main as last fetched ($info; --update-krt to fast-forward)"; fi
+  [[ $H == $REF_KRT_COMMIT ]] || say "" "(the reference run used ${REF_KRT_COMMIT:0:8}; information only)"
 fi
 
 section "KRT Python ($VENV)"
@@ -251,17 +266,23 @@ if [[ -x $VENV/bin/python ]]; then
 fi
 
 section "KRT router binary"
+# The published prebuilt whose version matches the checkout's crate (KRT's own startup guard), from
+# build_router.py. No cargo: if no prebuilt matches (crate ahead of the last release), that fails here.
 SO=$KRT/rust_router/grid_router.so
-so_sha() { [[ -f $SO ]] && shasum -a 256 $SO | awk '{print $1}' || true; }
-if [[ $(so_sha) == $KRT_ROUTER_SHA256 ]]; then ok "grid_router.so" "$KRT_ROUTER_TAG macos-arm64 (sha256 ${KRT_ROUTER_SHA256:0:12})"
-elif [[ -d $KRT ]]; then
-  [[ -f $SO ]] && say "grid_router.so" "sha256 $(so_sha | cut -c1-12), not the pin"
-  if (( CHECK )); then would "grid_router.so" "(cd $KRT && python3 build_router.py --tag $KRT_ROUTER_TAG)"
+so_ver() { (cd $KRT && $VENV/bin/python -c 'import sys; sys.path.insert(0, "rust_router"); import grid_router; print(grid_router.__version__)' 2>/dev/null) || true; }
+if [[ -d $KRT/.git && -x $VENV/bin/python ]]; then
+  WV=$(krt_ver); HV=$(so_ver)
+  if [[ -n $HV && $HV == $WV ]]; then ok "grid_router.so" "$HV, matches the crate (sha256 $(shasum -a 256 $SO | cut -c1-12))"
   else
-    print "    \$ (cd $KRT && $VENV/bin/python build_router.py --tag $KRT_ROUTER_TAG)"
-    (cd $KRT && $VENV/bin/python build_router.py --tag $KRT_ROUTER_TAG) || true
-    [[ $(so_sha) == $KRT_ROUTER_SHA256 ]] && changed "grid_router.so" "downloaded $KRT_ROUTER_TAG macos-arm64" \
-      || fail "grid_router.so" "sha256 $(so_sha) after build_router.py, want $KRT_ROUTER_SHA256"
+    [[ -n $HV ]] && say "grid_router.so" "$HV, crate is $WV"
+    if (( CHECK )); then would "grid_router.so" "(cd $KRT && python3 build_router.py)"
+    else
+      print "    \$ (cd $KRT && $VENV/bin/python build_router.py)"
+      (cd $KRT && $VENV/bin/python build_router.py) || true
+      HV=$(so_ver)
+      [[ -n $HV && $HV == $WV ]] && changed "grid_router.so" "installed prebuilt $HV (sha256 $(shasum -a 256 $SO | cut -c1-12))" \
+        || fail "grid_router.so" "${HV:-none} after build_router.py, crate $WV: no matching prebuilt yet (that needs cargo)"
+    fi
   fi
 fi
 
@@ -364,16 +385,30 @@ if [[ -d $N60/.git ]]; then
     [[ -z $JOUT ]] && JOUT=$DEV/node60-judge-runs/$(hostname -s)-$(date +%Y%m%d-%H%M)
     mkdir -p ${JOUT:h}
     say "judging run" "$JOUT (7-36 min) ..."
-    # Route with KRT exactly at the pin, exported beside the board, not with the live checkout:
-    # something on the reference Mac pulls ~/Dev/KiCadRoutingTools nightly, and one pull landed
-    # mid-verification (2026-11-03). The exported judge_route.sh is pointed at the copy.
-    KX=$W/krt
-    if from=$(export_commit $KRT_COMMIT $KX $KRT_URL $KRT) && cp $SO $KX/rust_router/ \
-       && [[ $(shasum -a 256 $KX/rust_router/grid_router.so | awk '{print $1}') == $KRT_ROUTER_SHA256 ]]; then
-      sed -i '' "s#^KRT=~/Dev/KiCadRoutingTools\$#KRT=$KX#" $JR
-      grep -q "^KRT=$KX\$" $JR && ok "KRT for the run" "${KRT_COMMIT:0:8} exported from $from, router sha256 ok" \
-        || warn "KRT for the run" "couldn't point judge_route.sh at the export; the run uses $KRT as checked out"
-    else warn "KRT for the run" "couldn't export ${KRT_COMMIT:0:8}; the run uses $KRT as checked out"; fi
+    # --krt-at reference (default): route with the reference run's KRT, exported into the temp folder with
+    # its router binary, never moving ~/Dev/KiCadRoutingTools (other sessions use it, and something pulls
+    # it nightly). Then the result must equal the reference. --krt-at live: the checkout as it is.
+    KX=$KRT RUN_KRT=$(git -C $KRT rev-parse HEAD 2>/dev/null)
+    if [[ $KRT_AT == reference ]]; then
+      KX=$W/krt RUN_KRT=$REF_KRT_COMMIT
+      RTAG=${REF_KRT_ROUTER%% *} RSHA=${REF_KRT_ROUTER##* }
+      if from=$(export_commit $REF_KRT_COMMIT $KX $KRT_URL $KRT); then
+        if [[ $(shasum -a 256 $SO 2>/dev/null | awk '{print $1}') == $RSHA ]]; then cp $SO $KX/rust_router/
+        else (cd $KX && $VENV/bin/python build_router.py --tag $RTAG >/dev/null 2>&1) || true; fi
+        if [[ $(shasum -a 256 $KX/rust_router/grid_router.so 2>/dev/null | awk '{print $1}') == $RSHA ]]; then
+          sed -i '' "s#^KRT=~/Dev/KiCadRoutingTools\$#KRT=$KX#" $JR
+          grep -q "^KRT=$KX\$" $JR && ok "KRT for the run" "reference ${REF_KRT_COMMIT:0:8} (from $from), router $RTAG" \
+            || { fail "KRT for the run" "couldn't point judge_route.sh at the copy"; KX=$KRT RUN_KRT=$(git -C $KRT rev-parse HEAD); }
+        else fail "KRT for the run" "no $RTAG router binary for the copy"; KX=$KRT RUN_KRT=$(git -C $KRT rev-parse HEAD); fi
+      else fail "KRT for the run" "couldn't export ${REF_KRT_COMMIT:0:8}"; KX=$KRT RUN_KRT=$(git -C $KRT rev-parse HEAD); fi
+    else ok "KRT for the run" "live checkout ${RUN_KRT:0:8}"; fi
+    mkdir -p $JOUT
+    { print "host\t$(hostname -s) $(sysctl -n hw.model) $(sysctl -n machdep.cpu.brand_string), $P P + $E E cores, $MEM_GB GB, macOS $MACOS"
+      print "node60_commit\t$C"
+      print "judge\t$(shasum $JR | cut -c1-12) (placement/2026-11-02-bars/judge_route.sh at that commit)"
+      print "krt_commit\t$RUN_KRT ($KRT_AT)"
+      print "grid_router\t$(shasum -a 256 $KX/rust_router/grid_router.so | cut -c1-12)"
+      print "kicad\t$KV"; print "started\t$(date '+%Y-%m-%d %H:%M:%S')"; } > $JOUT/versions.txt
     T0=$(date +%s)
     (cd $W && KRT_PY=$VENV/bin/python zsh $JR node60.kicad_pcb $JOUT >/dev/null 2>&1) || true
     T1=$(date +%s)
@@ -396,8 +431,8 @@ print(("SAME " if same else "DIFF ") + "; ".join(d))
 PY
 )
       say "judging run" "$(( T1 - T0 )) s wall"
-      if [[ $C != ${REF_JUDGE_COMMIT}* ]]; then
-        warn "judging vs reference" "ran at ${C:0:8}, the reference at ${REF_JUDGE_COMMIT:0:8}: not comparable (${cmp_out#* })"
+      if [[ $C != ${REF_JUDGE_COMMIT}* || $RUN_KRT != $REF_KRT_COMMIT ]]; then
+        warn "judging vs reference" "node60 ${C:0:8} + KRT ${RUN_KRT:0:8}, the reference ${REF_JUDGE_COMMIT:0:8} + ${REF_KRT_COMMIT:0:8}: information only (${cmp_out#* })"
       elif [[ $cmp_out == SAME* ]]; then ok "judging vs reference" "same result: ${cmp_out#SAME }"
       else fail "judging vs reference" "${cmp_out#DIFF }"; fi
       [[ -f $PERF ]] && python3 $PERF $JOUT $HERE/workstation/reference --md $JOUT/perf.md >/dev/null 2>&1 \
