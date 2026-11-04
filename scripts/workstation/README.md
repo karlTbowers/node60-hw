@@ -93,7 +93,7 @@ The checks run on a `git archive` export of `--ref` in a temporary folder, with 
 - CI's check, `kicad-cli pcb drc --exit-code-violations --severity-error --schematic-parity node60.kicad_pcb`, exits 0.
 - `rules/prove_rules.py` passes every case.
 - The handbook's own checks (step 11): the library's `setup_tools.sh --check`, `distributor_lookup.py S32K344EHT1MMMST` and `klc_check.py`. These run on the library checkout as it is, so they only warn: the first needs your API keys, and the last depends on the library branch you have checked out.
-- One judging run: `judge_route.sh node60.kicad_pcb`, with `KRT_PY` set to the venv. Then `perf_report.py` reports this run beside the reference in [`reference/`](reference/). The blocking count and open nets must match the reference. That comparison only holds at the reference commit (`b6d7085`), and the script says so when `--ref` is a different commit.
+- One judging run: `judge_route.sh node60.kicad_pcb`, with `KRT_PY` set to the venv. It routes with KRT exported at the pinned commit into the temporary folder, with the checked router binary, not with `~/Dev/KiCadRoutingTools` as checked out. Something on the reference Mac pulls that checkout every night (`git reflog` shows `pull --ff --recurse-submodules` on 10-30, 11-01, 11-02 and 11-03), and on 2026-11-03 one pull landed in the middle of a verification run. Then `perf_report.py` reports this run beside the reference in [`reference/`](reference/). The blocking count and open nets must match the reference. That comparison only holds at the reference commit (`b6d7085`), and the script says so when `--ref` is a different commit.
 
 ## Pins
 
@@ -141,27 +141,37 @@ The script warns when `$HOME` isn't `/Users/karl`.
 
 ## Running N judging variants at once
 
-The router is single-threaded, and a judging run is about 90 % KRT route passes, so a Mac with N performance cores can judge N placements in about the time of one. The runs share nothing but read-only inputs: each writes only to its own output folder. KRT's own checkout gains only `py_router/__pycache__`, which Python writes safely from several processes.
+The router is single-threaded: about 94 % of a judging run is KRT's two route passes, each one core at 100 %. More cores don't make one run faster, but they run more variants in the same time. [`scripts/judge_batch.sh`](../judge_batch.sh) does this. It is written for the **M1 Ultra Mac Studio with 128 GB** (16 performance and 4 efficiency cores), which runs 14 judges at once:
 
 ```bash
 cd ~/Dev/node60-hw
-for v in a b c d; do
-  KRT_PY=~/.cache/dropout/krt-venv/bin/python \
-    zsh placement/2026-11-02-bars/judge_route.sh variants/$v.kicad_pcb runs/$v > runs/$v.out 2>&1 &
-done
-wait
-python3 placement/2026-11-02-bars/rules/perf_report.py runs/a runs/b runs/c runs/d
+scripts/judge_batch.sh ~/Dev/node60-judge-runs/batch-01 variants.txt
 ```
 
-- **Memory caps it before cores do.** Each run peaks at 6.8 GB during the bulk `route` step, and 5.4 GB in `route_p2` (see [`reference/timing.tsv`](reference/timing.tsv)). Runs started together hit those peaks together. So run at most N = min(performance cores, 0.8 × memory ÷ 6.8 GB). The script prints this number for the machine it runs on (`sysctl -n hw.perflevel0.physicalcpu`, `hw.memsize`). Some examples:
+`variants.txt` holds one run per line: a name, a board, and optional environment settings for `judge_route.sh`. Relative board paths are taken from the file's folder:
 
-  | Mac | P cores | Memory | N |
-  |---|---:|---:|---:|
-  | M3 MacBook Air (reference) | 4 | 24 GB | 2 |
-  | M1 Ultra Mac Studio | 16 | 64 GB | 7 |
-  | M1 Ultra Mac Studio | 16 | 128 GB | 15 |
+```
+# name       board                         environment for judge_route.sh
+base         ../node60.kicad_pcb
+rings        ../node60.kicad_pcb           JUDGE_KEEP_RINGS=1
+u401_west    u401_west.kicad_pcb
+```
 
-  Past that number, the Mac swaps and every run slows.
-- macOS can't pin a process to a core, and doesn't need to: the scheduler puts busy default-priority threads on the performance cores. Don't use `nice`, `taskpolicy -b` or a background QoS, which push the work onto the efficiency cores.
-- Give each variant its own output folder. `judge_route.sh` copies `node60.kicad_pro` and `node60.kicad_dru` from its own checkout, so variants with different rules need their own checkouts (`git worktree add`).
-- Leave headroom for the grading step at the end, which runs KiCad.
+To run a set of boards with no extra settings, list them instead of a file: `scripts/judge_batch.sh DIR a.kicad_pcb b.kicad_pcb`. With `--repeat K`, each variant runs K times. KRT isn't bit-for-bit repeatable, so repeats show how much a result moves. `-j N` overrides the number at once.
+
+What the batch runner does:
+
+- **Sizes the batch to the machine.** It starts min(performance cores, 0.8 × memory ÷ 7.4 GB) runs at once, and before each start it checks that the Mac has 7.4 GB free. One run peaks at 6.4–6.8 GB in the bulk `route` step and 5.4–7.3 GB in `route_p2` (the two runs on the Air; [`reference/timing.tsv`](reference/timing.tsv)), and runs started together peak together. 7.4 GB is that peak plus 10 %. Past this number the Mac swaps and every run slows.
+
+  | Mac | P cores | Memory | At once | Limited by |
+  |---|---:|---:|---:|---|
+  | M3 MacBook Air (reference) | 4 | 24 GB | 2 | memory |
+  | M1 Ultra Mac Studio | 16 | 64 GB | 7 | memory |
+  | **M1 Ultra Mac Studio** | **16** | **128 GB** | **14** | memory, with 2 P cores and 4 E cores left for KiCad's grading step and the system |
+
+- **Keeps the runs on the performance cores.** Runs start at normal priority, and `caffeinate` keeps the Mac from idle sleep until the batch ends. macOS can't pin a process to a core, and doesn't need to. Don't add `nice`, `taskpolicy -b` or a background QoS, which would push the runs onto the efficiency cores.
+- **Shares nothing but read-only inputs.** Each run writes only to `DIR/<name>/`. After a run, KRT's checkout has nothing new except `py_router/__pycache__`, which Python writes safely from several processes. Variants that change the rules themselves (`node60.kicad_pro`, `node60.kicad_dru`) need their own checkout (`git worktree add`), because `judge_route.sh` copies the rules from the checkout it lives in. Run the batch from that checkout.
+- **Records what judged each run.** `DIR/versions.txt` and each run's copy hold the host, the node60-hw commit, the judge script's hash, KRT's commit and `grid_router` version, and the Python. Each run's `env.txt` holds its settings. KRT tracks its latest commit, and something on the reference Mac pulls `~/Dev/KiCadRoutingTools` every night. So the runner records KRT's commit at the start and at the end, and warns when it moved during the batch. Compare only runs judged by the same node60-hw and KRT commits.
+- **Ranks the results.** `DIR/summary.tsv` lists each variant's blocking count, open nets, wall time and peak memory, best first. `DIR/perf.md` is `perf_report.py` over every run.
+
+Per-run speed on the Studio still needs measuring. One M1 Ultra core is slower than one M3 core, but the Studio has a fan and the Air doesn't, so the Air may slow down during a 36-minute run. Fourteen runs also share one memory system. The first batch's `summary.tsv` and `perf.md` will show the real numbers; compare them with [`reference/`](reference/).
