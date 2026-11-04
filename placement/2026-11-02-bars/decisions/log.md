@@ -26,4 +26,4 @@
 
 ## D15 Power entry block (2026-11-03)
 
-Published: the re-ordered power entry (D14-2 B) as a block page; `blocks/power.poses.json` replaces D04's table (approved: null). Recommendation A. C214 moved to F.Cu over U202 pin 6. Awaiting the user's answer.
+Published (https://claude.ai/artifact/ESfjfBiHEvP6z8EAyY6TFh): the re-ordered power entry (D14-2 B) as a block page; `blocks/power.poses.json` replaces D04's table (approved: null). Recommendation A. C214 moved to F.Cu over U202 pin 6. Awaiting the user's answer.
