@@ -70,6 +70,24 @@ def centre(b, ref):
     return TM(fp.GetPosition().x), TM(fp.GetPosition().y)
 
 
+def phy_pair(b, detour=0.0, split=0.0):
+    """FL501 PHY pins (1 P, 2 N) to U501 pins 30/31 on B.Cu: a straight pair, P with an optional
+    sideways detour (skew), or the two lines run apart (uncoupled)"""
+    p1, p2 = pad_of(b, "FL501", "1"), pad_of(b, "FL501", "2")
+    u30, u31 = pad_of(b, "U501", "30"), pad_of(b, "U501", "31")
+    P = lambda p: (TM(p.GetPosition().x), TM(p.GetPosition().y))
+    (ax, ay), (bx, by), (cx, cy), (dx, dy) = P(p1), P(p2), P(u30), P(u31)
+    if detour:
+        my = (ay + cy) / 2
+        track(b, "/T1S/T1S_PHY_P", "B.Cu", ax, ay, ax - detour, my, 0.165)
+        track(b, "/T1S/T1S_PHY_P", "B.Cu", ax - detour, my, cx, cy, 0.165)
+    else:
+        track(b, "/T1S/T1S_PHY_P", "B.Cu", ax, ay, ax - split, ay - 1.2, 0.165)
+        track(b, "/T1S/T1S_PHY_P", "B.Cu", ax - split, ay - 1.2, cx, cy, 0.165)
+    track(b, "/T1S/T1S_PHY_N", "B.Cu", bx, by, bx + split, by - 1.2, 0.165)
+    track(b, "/T1S/T1S_PHY_N", "B.Cu", bx + split, by - 1.2, dx, dy, 0.165)
+
+
 SDA = "/I2C0_TELEMETRY_SDA"
 SCL = "/I2C0_TELEMETRY_SCL"
 FREE = (95.0, 36.0)        # checked free of parts on B.Cu and In2/In3 (see the "free spot" case)
@@ -120,15 +138,21 @@ CASES = [
     ("T1S pair 6 mm side by side at 0.3 mm gap", "T1S pairs coupled", True, FREE,
      lambda b: (track(b, "/T1S_P", "B.Cu", FREE[0], FREE[1], FREE[0] + 6, FREE[1], 0.165),
                 track(b, "/T1S_N", "B.Cu", FREE[0], FREE[1] + 0.465, FREE[0] + 6, FREE[1] + 0.465, 0.165))),
-    ("T1S pair coupled at 0.15 mm, P 4 mm longer", "T1S pairs coupled", True, FREE,
+    ("trunk pair coupled at 0.15 mm, P 4 mm longer (control: the trunk's uncoupled length is not a DRC rule since D16)",
+     "T1S PHY-side pairs", False, FREE,
      lambda b: (track(b, "/T1S_P", "B.Cu", FREE[0], FREE[1], FREE[0] + 10, FREE[1], 0.165),
                 track(b, "/T1S_N", "B.Cu", FREE[0], FREE[1] + 0.315, FREE[0] + 6, FREE[1] + 0.315, 0.165))),
-    ("T1S trunk J912 to J903 on F.Cu, P 2.5 mm longer by a detour (skew, pad to pad: KiCad measures"
-     " skew only on tracks that reach the pads)", "T1S pairs matched within 0.5 mm", True, (137.6, 46),
-     lambda b: (track(b, "/T1S_P", "F.Cu", 137.6, 46, 150, 46, 0.165), track(b, "/T1S_P", "F.Cu", 150, 46, 151, 44, 0.165),
-                track(b, "/T1S_P", "F.Cu", 151, 44, 152, 46, 0.165), track(b, "/T1S_P", "F.Cu", 152, 46, 176.6, 46, 0.165),
-                track(b, "/T1S_N", "F.Cu", 133.4, 46, 133.4, 46.4, 0.165), track(b, "/T1S_N", "F.Cu", 133.4, 46.4, 172.4, 46.4, 0.165),
-                track(b, "/T1S_N", "F.Cu", 172.4, 46.4, 172.4, 46, 0.165))),
+    ("PHY-side pair FL501 to U501, P 2 mm longer by a detour (skew, pad to pad: KiCad measures"
+     " skew only on tracks that reach the pads)", "T1S pairs matched within 0.5 mm", True, None,
+     lambda b: phy_pair(b, detour=1.0)),
+    ("PHY-side pair FL501 to U501 split 3 mm apart (uncoupled)", "T1S PHY-side pairs: 2 mm uncoupled", True, None,
+     lambda b: phy_pair(b, split=3.0)),
+    ("trunk J912 to J903 with 2.8 mm breakouts at each connector (control: no uncoupled or skew rule on the trunk)",
+     "T1S PHY-side pairs", False, (155, 46),
+     lambda b: (track(b, "/T1S_P", "F.Cu", 137.6, 46, 140.2, 45.85, 0.165), track(b, "/T1S_P", "F.Cu", 140.2, 45.85, 174.0, 45.85, 0.165),
+                track(b, "/T1S_P", "F.Cu", 174.0, 45.85, 176.6, 46, 0.165),
+                track(b, "/T1S_N", "F.Cu", 133.4, 46, 136.0, 46.165, 0.165), track(b, "/T1S_N", "F.Cu", 136.0, 46.165, 169.8, 46.165, 0.165),
+                track(b, "/T1S_N", "F.Cu", 169.8, 46.165, 172.4, 46, 0.165))),
     ("T1S_P track 0.4 mm from an SDA track", "T1S 0.75 mm", True, FREE,
      lambda b: (track(b, "/T1S_P", "B.Cu", FREE[0], FREE[1], FREE[0] + 6, FREE[1], 0.165),
                 track(b, SDA, "B.Cu", FREE[0], FREE[1] + 0.6, FREE[0] + 6, FREE[1] + 0.6, 0.2))),
@@ -149,7 +173,7 @@ def run_case(i, case, src):
     b = pcbnew.LoadBoard(src)
     add(b)
     if where is None:
-        where = centre(b, "Y401") if "Y401" in name else centre(b, "Y501") if "Y501" in name else \
+        where = centre(b, "FL501") if "FL501" in name else centre(b, "Y401") if "Y401" in name else centre(b, "Y501") if "Y501" in name else \
             (TM(pad_of(b, "J904", "1").GetPosition().x) + 1.3, TM(pad_of(b, "J904", "1").GetPosition().y))
     path = os.path.join(d, "node60.kicad_pcb")
     b.Save(path)
@@ -164,7 +188,7 @@ def drc(path):
 
 
 def near(v, where, r=3.0):
-    if "Skew" in v["description"]:       # reported at the pair's ends
+    if "Skew" in v["description"] or "uncoupled" in v["description"]:       # reported at the pair's ends
         r = 45.0
     for it in v.get("items", []):
         p = it.get("pos", {})

@@ -87,12 +87,19 @@
 # (node60.kicad_pro), the K501 legs (T1S_*_DROP, T1S_*_END) included.
 (rule "T1S pairs coupled"
 	(condition "A.inDiffPair('/T1S*')")
-	(constraint diff_pair_gap (min 0.14mm) (opt 0.15mm) (max 0.16mm))
+	(constraint diff_pair_gap (min 0.14mm) (opt 0.15mm) (max 0.16mm)))
+
+# Uncoupled length and skew only on the PHY side's two-pin pairs (cap to choke, choke to PHY). The
+# trunk (/T1S_P, /T1S_N) is a branching net: its total length is no skew, and the AT13 pins (P and N
+# 4.2 mm apart at both connectors) alone need about 2.8 mm uncoupled at each end. The trunk's taps
+# are measured by placement/2026-11-02-bars/rules/t1s_stubs.py instead (D16).
+(rule "T1S PHY-side pairs: 2 mm uncoupled at most"
+	(condition "A.inDiffPair('/T1S/T1S_CMC') || A.inDiffPair('/T1S/T1S_PHY')")
 	(constraint diff_pair_uncoupled (max 2mm)))
 
 # Skew in a rule of its own: in the same rule as the gap constraints KiCad 10 never reported it.
 (rule "T1S pairs matched within 0.5 mm"
-	(condition "A.inDiffPair('/T1S*')")
+	(condition "A.inDiffPair('/T1S/T1S_CMC') || A.inDiffPair('/T1S/T1S_PHY')")
 	(constraint skew (max 0.5mm) (within_diff_pairs)))
 
 (rule "T1S 0.75 mm from other nets"
