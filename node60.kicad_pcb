@@ -10678,275 +10678,6 @@
 			)
 		)
 	)
-	(footprint "DropOut_Capacitor_SMD:C_0603_1608Metric"
-		(layer "F.Cu")
-		(uuid "9cb4f5ef-4f78-4541-8ae9-e826ddf1d728")
-		(at 176.8076 111.0953 -90)
-		(descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Murata GCM188/GCJ188, TDK CGA3, KEMET, KYOCERA AVX KAM15, Taiyo Yuden MCAS and Yageo AC 0603 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Capacitor_SMD.yaml)")
-		(tags "capacitor")
-		(property "Reference" "C302"
-			(at 0 -1.43 270)
-			(layer "F.SilkS")
-			(uuid "0793f7ae-a236-473b-b719-b6ee4a1b0b14")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Value" "2.2uF"
-			(at 0 1.43 270)
-			(layer "F.Fab")
-			(uuid "61e02b9f-cc5f-4548-8ab4-63bfb0c75d0c")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Datasheet" "https://www.yageogroup.com/content/datasheet/asset/file/UPY-AC_HICAP_X7RX7S"
-			(at 0 0 270)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "4a75dd90-56dd-43f8-8c2f-20d78cc13573")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Yageo AC HiCap automotive MLCC, 2.2 µF ±10%, 10 V, X7R, AEC-Q200, -55 to +125 °C, 0603 (1608 metric)"
-			(at 0 0 270)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "d95b54e0-a4b0-4ad9-ac50-c7e81cdf1bc1")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 270)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "3e779429-b6b7-4dcb-88a2-162785075a04")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Manufacturer" "Yageo"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "ae094097-4b0c-4f0e-813b-d57dff27d563")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MPN" "AC0603KRX7R6BB225"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "91f657a3-c242-41b9-afde-9b46efde74de")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "DigiKey_PN" "13-AC0603KRX7R6BB225CT-ND"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "ed40caac-5c73-406a-b545-c7a763f4a849")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Mouser_PN" "603-C0603KRX7R6BB225"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "6551a6c1-f6fd-4b8b-a05d-64a21ccdb3ed")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "404e2db8-d092-4282-9039-dc957c396d20")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Voltage" "10V"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "dd6b1c70-b84b-41d2-8fed-a280e5b9cec6")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Tolerance" "±10%"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "46c764f7-ec44-4fe1-be29-2999c1cd317d")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Dielectric" "X7R"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "c8c1a1cc-c8a1-45b0-bdcd-9b50a651c9f7")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Case" "0603"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "d336ba68-b30b-4a4d-81c0-4177117e9776")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Notes" "Murata and TDK make no 10 V 2.2 uF X7R automotive part in 0603."
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "32273457-e38c-4b46-ba13-f7428277d652")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(path "/0b1fdde0-4dcf-41c8-a0be-e22a76779263/0babf284-cf09-5eb8-b862-4caca33d9016")
-		(sheetname "Regulators")
-		(sheetfile "sheets/regulators.kicad_sch")
-		(attr smd)
-		(duplicate_pad_numbers_are_jumpers no)
-		(fp_line
-			(start -0.198104 0.51)
-			(end 0.198104 0.51)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "7dd2e7e0-8900-41f6-8c81-e9f36bcc9c83")
-		)
-		(fp_line
-			(start -0.198104 -0.51)
-			(end 0.198104 -0.51)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "F.SilkS")
-			(uuid "db56218a-0dec-4bb6-92c9-c301bc6b33d1")
-		)
-		(fp_rect
-			(start -1.5 -0.73)
-			(end 1.5 0.73)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "a1732050-2a0b-422b-9368-27bd2a8af5f7")
-		)
-		(fp_rect
-			(start -0.8 -0.4)
-			(end 0.8 0.4)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.Fab")
-			(uuid "fabba878-55cb-4e4a-a1bc-01f90d0c2120")
-		)
-		(fp_text user "${REFERENCE}"
-			(at 0 0 270)
-			(layer "F.Fab")
-			(uuid "3eb962c9-4c82-43e6-9374-2f6bdb7dd745")
-			(effects
-				(font
-					(size 0.4 0.4)
-					(thickness 0.06)
-				)
-			)
-		)
-		(pad "1" smd roundrect
-			(at -0.75 0 270)
-			(size 1 0.95)
-			(layers "F.Cu" "F.Mask" "F.Paste")
-			(roundrect_rratio 0.25)
-			(net "/Regulators/VDDAU_AON_REG")
-			(uuid "be78b820-e24e-4f1a-8d96-90ca8bc979ee")
-		)
-		(pad "2" smd roundrect
-			(at 0.75 0 270)
-			(size 1 0.95)
-			(layers "F.Cu" "F.Mask" "F.Paste")
-			(roundrect_rratio 0.25)
-			(net "GND")
-			(uuid "d9f93e72-4671-40ea-8e53-926b0f5f3fbb")
-		)
-		(embedded_fonts no)
-		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
-			(offset
-				(xyz 0 0 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
-	)
 	(footprint "DropOut_Connector_Amphenol:Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal"
 		(locked yes)
 		(layer "F.Cu")
@@ -41142,11 +40873,11 @@
 	(footprint "DropOut_Capacitor_SMD:C_1206_3216Metric"
 		(layer "B.Cu")
 		(uuid "542fb0bc-62c8-4f0b-bdbb-32fe2cb7828b")
-		(at 174.919 113.69 -90)
+		(at 165.25 48)
 		(descr "Capacitor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Murata GCM31C, TDK CGA5 and KEMET 1206 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Capacitor_SMD.yaml)")
 		(tags "capacitor")
 		(property "Reference" "C301"
-			(at 0 1.85 90)
+			(at 0 1.85 180)
 			(layer "B.SilkS")
 			(uuid "be0d7393-f4b0-4aa1-8b59-3ae37023bcce")
 			(effects
@@ -41158,7 +40889,7 @@
 			)
 		)
 		(property "Value" "1uF"
-			(at 0 -1.85 90)
+			(at 0 -1.85 180)
 			(layer "B.Fab")
 			(uuid "e1e75703-91bf-4145-8a1d-dcb61ee88700")
 			(effects
@@ -41170,7 +40901,7 @@
 			)
 		)
 		(property "Datasheet" "https://product.tdk.com/system/files/dam/doc/product/capacitor/ceramic/mlcc/catalog/mlcc_automotive_midvoltage_en.pdf"
-			(at 0 0 90)
+			(at 0 0 180)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "8b01a90c-4d60-4a51-b762-57c8b1976e79")
@@ -41182,7 +40913,7 @@
 			)
 		)
 		(property "Description" "TDK CGA automotive mid voltage MLCC, 1 µF ±10%, 100 V, X7R, AEC-Q200, -55 to +125 °C, 1206 (3216 metric)"
-			(at 0 0 90)
+			(at 0 0 180)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "38106e32-815e-456c-84fc-dfd721802e80")
@@ -41194,7 +40925,7 @@
 			)
 		)
 		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
+			(at 0 0 180)
 			(layer "B.SilkS")
 			(hide yes)
 			(uuid "3a173969-d9fb-4dca-a313-76e89e52a01f")
@@ -41207,7 +40938,7 @@
 			)
 		)
 		(property "Manufacturer" "TDK"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "551c00d6-3168-47c9-88e7-37481df80fcc")
@@ -41219,7 +40950,7 @@
 			)
 		)
 		(property "MPN" "CGA5L2X7R2A105K160AA"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "c1a33e6e-7652-42fb-9f88-c69477df829f")
@@ -41231,7 +40962,7 @@
 			)
 		)
 		(property "DigiKey_PN" "445-5845-1-ND"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "d0ee61fd-7fb7-4ef0-9b04-51817ac08d91")
@@ -41243,7 +40974,7 @@
 			)
 		)
 		(property "Mouser_PN" "810-CGA5L2X7R2A105K"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "3b802728-6297-40f1-823f-6fc3f47992ff")
@@ -41255,7 +40986,7 @@
 			)
 		)
 		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "58e7450b-9f7d-4c51-9b94-186f1c34a589")
@@ -41267,7 +40998,7 @@
 			)
 		)
 		(property "Voltage" "100V"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "b8895ba2-bfce-4ae8-83d4-13d73bce3d13")
@@ -41279,7 +41010,7 @@
 			)
 		)
 		(property "Tolerance" "±10%"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "b64000f4-b9e8-4022-9ea8-ce3707771227")
@@ -41291,7 +41022,7 @@
 			)
 		)
 		(property "Dielectric" "X7R"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "3196022c-ee5a-40a8-ab50-c8059cdce01b")
@@ -41303,7 +41034,7 @@
 			)
 		)
 		(property "Case" "1206"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "590189da-e49d-4881-8af7-c33aff390fdb")
@@ -41320,16 +41051,6 @@
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
-			(start -0.661252 0.91)
-			(end 0.661252 0.91)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "B.SilkS")
-			(uuid "cd8a8d04-ddc6-4d4f-997b-c6ade0c59239")
-		)
-		(fp_line
 			(start -0.661252 -0.91)
 			(end 0.661252 -0.91)
 			(stroke
@@ -41338,6 +41059,16 @@
 			)
 			(layer "B.SilkS")
 			(uuid "8448519d-9b04-4a63-99d0-5873afec8310")
+		)
+		(fp_line
+			(start -0.661252 0.91)
+			(end 0.661252 0.91)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "B.SilkS")
+			(uuid "cd8a8d04-ddc6-4d4f-997b-c6ade0c59239")
 		)
 		(fp_rect
 			(start -2.3 1.15)
@@ -41362,7 +41093,7 @@
 			(uuid "f13d8057-cbb2-4b77-8a31-74d5ed862bf3")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 90)
+			(at 0 0 180)
 			(layer "B.Fab")
 			(uuid "f8a3823e-f59d-4e19-ad09-91877451ea5b")
 			(effects
@@ -41374,7 +41105,7 @@
 			)
 		)
 		(pad "1" smd roundrect
-			(at -1.45 0 270)
+			(at -1.45 0)
 			(size 1.2 1.8)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.208333)
@@ -41382,7 +41113,7 @@
 			(uuid "29d9679f-faca-45a3-b900-77b92a0a66b1")
 		)
 		(pad "2" smd roundrect
-			(at 1.45 0 270)
+			(at 1.45 0)
 			(size 1.2 1.8)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.208333)
@@ -55305,11 +55036,11 @@
 	(footprint "DropOut_Package_DFN_QFN:Texas_DRV0006A_WSON-6-1EP_2x2mm_P0.65mm_EP1x1.6mm"
 		(layer "B.Cu")
 		(uuid "92364036-1365-4b5b-8816-5342564ac9a2")
-		(at 175.8024 109.4623)
+		(at 161.25 47.75 180)
 		(descr "Texas DRV0006A WSON, 6 Pin (https://www.ti.com/lit/ds/symlink/tps7b81-q1.pdf#page=27)")
 		(tags "Texas WSON NoLead")
 		(property "Reference" "U301"
-			(at 0 1.95 180)
+			(at 0 1.95 0)
 			(layer "B.SilkS")
 			(uuid "eb5ee275-0e8c-41d4-ae5d-04397053f5ea")
 			(effects
@@ -55321,7 +55052,7 @@
 			)
 		)
 		(property "Value" "TPS7B8133QWDRVRQ1"
-			(at 0 -1.95 180)
+			(at 0 -1.95 0)
 			(layer "B.Fab")
 			(uuid "150639ab-9df5-4b8f-bfbf-9ac9c0b7b29b")
 			(effects
@@ -55333,7 +55064,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps7b81-q1.pdf"
-			(at 0 0 180)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "404e0853-6795-42a8-b4e0-fec48848f452")
@@ -55345,7 +55076,7 @@
 			)
 		)
 		(property "Description" "TI TPS7B81-Q1 40 V 150 mA ultra-low-Iq LDO, fixed 3.3 V, 2.7 µA typ / 4.5 µA max Iq, enable, AEC-Q100 Grade 1, WSON-6 2x2 mm with wettable flanks"
-			(at 0 0 180)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "1692abab-a1b7-47da-8e46-21596f6b5373")
@@ -55357,7 +55088,7 @@
 			)
 		)
 		(property "KiLib_Generator" "package/no_lead"
-			(at 0 0 180)
+			(at 0 0 0)
 			(layer "B.SilkS")
 			(hide yes)
 			(uuid "ddf969ca-f023-4986-aebd-a43791ed5cee")
@@ -55370,7 +55101,7 @@
 			)
 		)
 		(property "Manufacturer" "Texas Instruments"
-			(at 0 0 0)
+			(at 0 0 180)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "1c87badc-302b-4b07-a180-3d9952c5ba8f")
@@ -55382,7 +55113,7 @@
 			)
 		)
 		(property "MPN" "TPS7B8133QWDRVRQ1"
-			(at 0 0 0)
+			(at 0 0 180)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "943dc496-3586-4270-962b-03f9b56090e4")
@@ -55394,7 +55125,7 @@
 			)
 		)
 		(property "DigiKey_PN" "296-TPS7B8133QWDRVRQ1CT-ND"
-			(at 0 0 0)
+			(at 0 0 180)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "e2635ad0-be22-4460-8821-e0232982de2e")
@@ -55406,7 +55137,7 @@
 			)
 		)
 		(property "Mouser_PN" "595-PS7B8133QWDRVRQ1"
-			(at 0 0 0)
+			(at 0 0 180)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "c3439238-c5ff-4b5c-bfa1-6174750b40da")
@@ -55418,7 +55149,7 @@
 			)
 		)
 		(property "Temperature_Grade" "AEC-Q100 Grade 1, TJ -40 to +150 °C"
-			(at 0 0 0)
+			(at 0 0 180)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "eba34136-915d-4832-838a-e90c1ef0c32f")
@@ -55435,44 +55166,14 @@
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
-			(start -1.11 -1.11)
-			(end -1.11 -1.06)
+			(start 1.11 1.11)
+			(end 1.11 1.06)
 			(stroke
 				(width 0.12)
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "1cdb090e-481a-434b-aae1-f2d1d62b0fca")
-		)
-		(fp_line
-			(start -1.11 1.06)
-			(end -1.11 1.11)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "B.SilkS")
-			(uuid "8b9348d5-0433-476f-90d7-3564ab2645f9")
-		)
-		(fp_line
-			(start -1.11 1.11)
-			(end 1.11 1.11)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "B.SilkS")
-			(uuid "71c308a7-8eff-4999-981a-c0fea342add7")
-		)
-		(fp_line
-			(start 1.11 -1.11)
-			(end -1.11 -1.11)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "B.SilkS")
-			(uuid "2c700f7f-8cf3-4ef3-a8ef-d347e32a1c4c")
+			(uuid "f4c825e9-3451-4389-8fa7-50e915f1e1d8")
 		)
 		(fp_line
 			(start 1.11 -1.06)
@@ -55485,14 +55186,44 @@
 			(uuid "5ce145b6-e933-4023-8e5b-411f8bf59e70")
 		)
 		(fp_line
-			(start 1.11 1.11)
-			(end 1.11 1.06)
+			(start 1.11 -1.11)
+			(end -1.11 -1.11)
 			(stroke
 				(width 0.12)
 				(type solid)
 			)
 			(layer "B.SilkS")
-			(uuid "f4c825e9-3451-4389-8fa7-50e915f1e1d8")
+			(uuid "2c700f7f-8cf3-4ef3-a8ef-d347e32a1c4c")
+		)
+		(fp_line
+			(start -1.11 1.11)
+			(end 1.11 1.11)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "B.SilkS")
+			(uuid "71c308a7-8eff-4999-981a-c0fea342add7")
+		)
+		(fp_line
+			(start -1.11 1.06)
+			(end -1.11 1.11)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "B.SilkS")
+			(uuid "8b9348d5-0433-476f-90d7-3564ab2645f9")
+		)
+		(fp_line
+			(start -1.11 -1.11)
+			(end -1.11 -1.06)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "B.SilkS")
+			(uuid "1cdb090e-481a-434b-aae1-f2d1d62b0fca")
 		)
 		(fp_poly
 			(pts
@@ -55507,104 +55238,14 @@
 			(uuid "8b62c636-e8e7-4a1e-9841-4520db361680")
 		)
 		(fp_line
-			(start -1.45 -1.05)
-			(end -1.45 1.05)
+			(start 1.45 1.05)
+			(end 1.45 -1.05)
 			(stroke
 				(width 0.05)
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "9c6edcd9-5cbd-49e8-93ac-f3d3d20f98b6")
-		)
-		(fp_line
-			(start -1.45 1.05)
-			(end -1.25 1.05)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "B.CrtYd")
-			(uuid "804440b9-aefa-4fa0-9319-8fc3b4a57343")
-		)
-		(fp_line
-			(start -1.25 -1.25)
-			(end -1.25 -1.05)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "B.CrtYd")
-			(uuid "f55d0d3b-384f-47b7-83d3-a7595571fac2")
-		)
-		(fp_line
-			(start -1.25 -1.05)
-			(end -1.45 -1.05)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "B.CrtYd")
-			(uuid "85e0c952-1e0d-41a1-996f-f04676cfc6d5")
-		)
-		(fp_line
-			(start -1.25 1.05)
-			(end -1.25 1.25)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "B.CrtYd")
-			(uuid "df37c059-b43f-47ba-a263-2164559faabf")
-		)
-		(fp_line
-			(start -1.25 1.25)
-			(end 1.25 1.25)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "B.CrtYd")
-			(uuid "ffb8ec11-5ae2-40ae-b9a2-372dcf8b289c")
-		)
-		(fp_line
-			(start 1.25 -1.25)
-			(end -1.25 -1.25)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "B.CrtYd")
-			(uuid "16a00292-1363-4a7a-bfc0-ab93e79400fa")
-		)
-		(fp_line
-			(start 1.25 -1.05)
-			(end 1.25 -1.25)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "B.CrtYd")
-			(uuid "4d0b228c-6646-43fb-a77c-460e2175c6b0")
-		)
-		(fp_line
-			(start 1.25 1.05)
-			(end 1.45 1.05)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "B.CrtYd")
-			(uuid "9f33e4db-2015-479f-8017-12f80026e8f9")
-		)
-		(fp_line
-			(start 1.25 1.25)
-			(end 1.25 1.05)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "B.CrtYd")
-			(uuid "3b786f72-ddca-406f-81de-3a5be7e14ed2")
+			(uuid "5fa55054-913d-41bb-8130-caa7d78dcc37")
 		)
 		(fp_line
 			(start 1.45 -1.05)
@@ -55617,14 +55258,104 @@
 			(uuid "fdbdfab8-1d99-49e1-a2b3-08a7979fbd23")
 		)
 		(fp_line
-			(start 1.45 1.05)
-			(end 1.45 -1.05)
+			(start 1.25 1.25)
+			(end 1.25 1.05)
 			(stroke
 				(width 0.05)
 				(type solid)
 			)
 			(layer "B.CrtYd")
-			(uuid "5fa55054-913d-41bb-8130-caa7d78dcc37")
+			(uuid "3b786f72-ddca-406f-81de-3a5be7e14ed2")
+		)
+		(fp_line
+			(start 1.25 1.05)
+			(end 1.45 1.05)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "B.CrtYd")
+			(uuid "9f33e4db-2015-479f-8017-12f80026e8f9")
+		)
+		(fp_line
+			(start 1.25 -1.05)
+			(end 1.25 -1.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "B.CrtYd")
+			(uuid "4d0b228c-6646-43fb-a77c-460e2175c6b0")
+		)
+		(fp_line
+			(start 1.25 -1.25)
+			(end -1.25 -1.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "B.CrtYd")
+			(uuid "16a00292-1363-4a7a-bfc0-ab93e79400fa")
+		)
+		(fp_line
+			(start -1.25 1.25)
+			(end 1.25 1.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "B.CrtYd")
+			(uuid "ffb8ec11-5ae2-40ae-b9a2-372dcf8b289c")
+		)
+		(fp_line
+			(start -1.25 1.05)
+			(end -1.25 1.25)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "B.CrtYd")
+			(uuid "df37c059-b43f-47ba-a263-2164559faabf")
+		)
+		(fp_line
+			(start -1.25 -1.05)
+			(end -1.45 -1.05)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "B.CrtYd")
+			(uuid "85e0c952-1e0d-41a1-996f-f04676cfc6d5")
+		)
+		(fp_line
+			(start -1.25 -1.25)
+			(end -1.25 -1.05)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "B.CrtYd")
+			(uuid "f55d0d3b-384f-47b7-83d3-a7595571fac2")
+		)
+		(fp_line
+			(start -1.45 1.05)
+			(end -1.25 1.05)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "B.CrtYd")
+			(uuid "804440b9-aefa-4fa0-9319-8fc3b4a57343")
+		)
+		(fp_line
+			(start -1.45 -1.05)
+			(end -1.45 1.05)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "B.CrtYd")
+			(uuid "9c6edcd9-5cbd-49e8-93ac-f3d3d20f98b6")
 		)
 		(fp_poly
 			(pts
@@ -55639,7 +55370,7 @@
 			(uuid "1b0a122d-dd71-4493-9bfe-7dde6ed1c258")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 180)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(uuid "5187c913-1cd7-473e-901d-a1aae4ec1d40")
 			(effects
@@ -55651,21 +55382,21 @@
 			)
 		)
 		(pad "" smd roundrect
-			(at 0 -0.4)
+			(at 0 -0.4 180)
 			(size 0.94 0.75)
 			(layers "B.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "6e732724-9700-4c03-9de0-0cf172d5b699")
 		)
 		(pad "" smd roundrect
-			(at 0 0.4)
+			(at 0 0.4 180)
 			(size 0.94 0.75)
 			(layers "B.Paste")
 			(roundrect_rratio 0.25)
 			(uuid "aba2a599-48c3-4220-a6b8-781a56ee7995")
 		)
 		(pad "1" smd roundrect
-			(at -0.975 0.65)
+			(at -0.975 0.65 180)
 			(size 0.45 0.3)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -55673,7 +55404,7 @@
 			(uuid "4070991e-26ad-40b3-ae14-240c759ac38a")
 		)
 		(pad "2" smd roundrect
-			(at -0.975 0)
+			(at -0.975 0 180)
 			(size 0.45 0.3)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -55681,7 +55412,7 @@
 			(uuid "0b329e8f-e4d9-43b3-bfc1-c0b0188209b9")
 		)
 		(pad "3" smd roundrect
-			(at -0.975 -0.65)
+			(at -0.975 -0.65 180)
 			(size 0.45 0.3)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -55689,7 +55420,7 @@
 			(uuid "1e519d88-914d-4fb9-b576-1de0e7384128")
 		)
 		(pad "4" smd roundrect
-			(at 0.975 -0.65)
+			(at 0.975 -0.65 180)
 			(size 0.45 0.3)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -55697,7 +55428,7 @@
 			(uuid "ab3d3979-16e1-4445-b4f8-5365c45438d3")
 		)
 		(pad "5" smd roundrect
-			(at 0.975 0)
+			(at 0.975 0 180)
 			(size 0.45 0.3)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -55705,7 +55436,7 @@
 			(uuid "ee752fd6-767d-474c-bbf5-baa864128ec9")
 		)
 		(pad "6" smd roundrect
-			(at 0.975 0.65)
+			(at 0.975 0.65 180)
 			(size 0.45 0.3)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -55713,7 +55444,7 @@
 			(uuid "04c271a7-7c54-4cc6-8e3d-3b8f6a850403")
 		)
 		(pad "7" smd rect
-			(at 0 0)
+			(at 0 0 180)
 			(size 1 1.6)
 			(property pad_prop_heatsink)
 			(layers "B.Cu" "B.Mask")
@@ -57224,6 +56955,291 @@
 		)
 		(embedded_fonts no)
 		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_1206_3216Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "DropOut_Capacitor_SMD:C_0603_1608Metric"
+		(layer "B.Cu")
+		(uuid "9cb4f5ef-4f78-4541-8ae9-e826ddf1d728")
+		(at 161.25 49.75)
+		(descr "Capacitor SMD 0603 (1608 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Murata GCM188/GCJ188, TDK CGA3, KEMET, KYOCERA AVX KAM15, Taiyo Yuden MCAS and Yageo AC 0603 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Capacitor_SMD.yaml)")
+		(tags "capacitor")
+		(property "Reference" "C302"
+			(at 0 1.43 180)
+			(layer "B.SilkS")
+			(uuid "0793f7ae-a236-473b-b719-b6ee4a1b0b14")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Value" "2.2uF"
+			(at 0 -1.43 180)
+			(layer "B.Fab")
+			(uuid "61e02b9f-cc5f-4548-8ab4-63bfb0c75d0c")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Datasheet" "https://www.yageogroup.com/content/datasheet/asset/file/UPY-AC_HICAP_X7RX7S"
+			(at 0 0 180)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "4a75dd90-56dd-43f8-8c2f-20d78cc13573")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Description" "Yageo AC HiCap automotive MLCC, 2.2 µF ±10%, 10 V, X7R, AEC-Q200, -55 to +125 °C, 0603 (1608 metric)"
+			(at 0 0 180)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "d95b54e0-a4b0-4ad9-ac50-c7e81cdf1bc1")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify mirror)
+			)
+		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 0 0 180)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "3e779429-b6b7-4dcb-88a2-162785075a04")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "ae094097-4b0c-4f0e-813b-d57dff27d563")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "MPN" "AC0603KRX7R6BB225"
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "91f657a3-c242-41b9-afde-9b46efde74de")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "DigiKey_PN" "13-AC0603KRX7R6BB225CT-ND"
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "ed40caac-5c73-406a-b545-c7a763f4a849")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Mouser_PN" "603-C0603KRX7R6BB225"
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "6551a6c1-f6fd-4b8b-a05d-64a21ccdb3ed")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "404e2db8-d092-4282-9039-dc957c396d20")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Voltage" "10V"
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "dd6b1c70-b84b-41d2-8fed-a280e5b9cec6")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Tolerance" "±10%"
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "46c764f7-ec44-4fe1-be29-2999c1cd317d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Dielectric" "X7R"
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "c8c1a1cc-c8a1-45b0-bdcd-9b50a651c9f7")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Case" "0603"
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "d336ba68-b30b-4a4d-81c0-4177117e9776")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Notes" "Murata and TDK make no 10 V 2.2 uF X7R automotive part in 0603."
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "32273457-e38c-4b46-ba13-f7428277d652")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(path "/0b1fdde0-4dcf-41c8-a0be-e22a76779263/0babf284-cf09-5eb8-b862-4caca33d9016")
+		(sheetname "Regulators")
+		(sheetfile "sheets/regulators.kicad_sch")
+		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_line
+			(start -0.198104 -0.51)
+			(end 0.198104 -0.51)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "B.SilkS")
+			(uuid "7dd2e7e0-8900-41f6-8c81-e9f36bcc9c83")
+		)
+		(fp_line
+			(start -0.198104 0.51)
+			(end 0.198104 0.51)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "B.SilkS")
+			(uuid "db56218a-0dec-4bb6-92c9-c301bc6b33d1")
+		)
+		(fp_rect
+			(start -1.5 0.73)
+			(end 1.5 -0.73)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "B.CrtYd")
+			(uuid "a1732050-2a0b-422b-9368-27bd2a8af5f7")
+		)
+		(fp_rect
+			(start -0.8 0.4)
+			(end 0.8 -0.4)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill no)
+			(layer "B.Fab")
+			(uuid "fabba878-55cb-4e4a-a1bc-01f90d0c2120")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 180)
+			(layer "B.Fab")
+			(uuid "3eb962c9-4c82-43e6-9374-2f6bdb7dd745")
+			(effects
+				(font
+					(size 0.4 0.4)
+					(thickness 0.06)
+				)
+				(justify mirror)
+			)
+		)
+		(pad "1" smd roundrect
+			(at -0.75 0)
+			(size 1 0.95)
+			(layers "B.Cu" "B.Mask" "B.Paste")
+			(roundrect_rratio 0.25)
+			(net "/Regulators/VDDAU_AON_REG")
+			(uuid "be78b820-e24e-4f1a-8d96-90ca8bc979ee")
+		)
+		(pad "2" smd roundrect
+			(at 0.75 0)
+			(size 1 0.95)
+			(layers "B.Cu" "B.Mask" "B.Paste")
+			(roundrect_rratio 0.25)
+			(net "GND")
+			(uuid "d9f93e72-4671-40ea-8e53-926b0f5f3fbb")
+		)
+		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0603_1608Metric.step"
 			(offset
 				(xyz 0 0 0)
 			)
@@ -64722,11 +64738,11 @@
 	(footprint "DropOut_Resistor_SMD:R_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "c00536ec-049d-4152-b1b2-2f6097dadeae")
-		(at 176.143 107.1254 90)
+		(at 157.75 49.25 180)
 		(descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Yageo AC0402 and Panasonic ERJ-2G/ERJ-2R datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Resistor_SMD.yaml)")
 		(tags "resistor")
 		(property "Reference" "R301"
-			(at 0 1.15 270)
+			(at 0 1.15 0)
 			(layer "B.SilkS")
 			(uuid "7370410b-81a7-4e82-a3ed-cc6421f3c170")
 			(effects
@@ -64738,7 +64754,7 @@
 			)
 		)
 		(property "Value" "0R"
-			(at 0 -1.15 270)
+			(at 0 -1.15 0)
 			(layer "B.Fab")
 			(uuid "f28cb1c8-2cb9-4032-a4ae-7b240454505f")
 			(effects
@@ -64750,7 +64766,7 @@
 			)
 		)
 		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
-			(at 0 0 270)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "bb7e63d3-cbba-4a7c-9857-cf0835e99d49")
@@ -64762,7 +64778,7 @@
 			)
 		)
 		(property "Description" "Yageo AC thick film chip jumper, 0 Ω, 1 A rated, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
-			(at 0 0 270)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "f89e8951-9712-4def-9555-9d6ec7bac54f")
@@ -64774,7 +64790,7 @@
 			)
 		)
 		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 270)
+			(at 0 0 0)
 			(layer "B.SilkS")
 			(hide yes)
 			(uuid "a9ec5898-88bf-43bc-a769-f6d69f43e77c")
@@ -64787,7 +64803,7 @@
 			)
 		)
 		(property "Manufacturer" "Yageo"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "e9f203d7-6241-4ed1-820e-44f8f2ed3a0b")
@@ -64799,7 +64815,7 @@
 			)
 		)
 		(property "MPN" "AC0402JR-070RL"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "9fffa913-72bc-4fcf-9969-6caa6abc44dc")
@@ -64811,7 +64827,7 @@
 			)
 		)
 		(property "DigiKey_PN" "311-0.0LBCT-ND"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "a9b9c322-1edb-4eb4-a1ad-885d1d73e1d5")
@@ -64823,7 +64839,7 @@
 			)
 		)
 		(property "Mouser_PN" "603-AC0402JR-070RL"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "c8b80a37-a72f-4804-a2e0-fc4024c84eb6")
@@ -64835,7 +64851,7 @@
 			)
 		)
 		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "5d435e04-2504-48c0-86d1-c8fbdcb0b772")
@@ -64847,7 +64863,7 @@
 			)
 		)
 		(property "Case" "0402"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "4ae167f2-2506-4654-87cf-3a20a6b4a592")
@@ -64886,7 +64902,7 @@
 			(uuid "13ffd83f-2619-4893-8633-13be6e160e96")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 270)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(uuid "acf33d2d-6d18-43e5-bd76-70920bc41577")
 			(effects
@@ -64898,7 +64914,7 @@
 			)
 		)
 		(pad "1" smd roundrect
-			(at -0.455 0 90)
+			(at -0.455 0 180)
 			(size 0.59 0.6)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -64906,7 +64922,7 @@
 			(uuid "57e84d27-1328-44fa-9c01-1c72cd028f46")
 		)
 		(pad "2" smd roundrect
-			(at 0.455 0 90)
+			(at 0.455 0 180)
 			(size 0.59 0.6)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)

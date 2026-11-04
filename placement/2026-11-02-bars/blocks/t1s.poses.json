@@ -1,7 +1,7 @@
 {
  "block": "k501",
  "anchor": "K501",
- "approved": "2026-11-04 (user: shift U501 and its parts south; D16-1 A otherwise)",
+ "approved": "2026-11-04 (user: shift U501 and its parts south; D16-1 A otherwise); U301 group added 2026-11-04 (user)",
  "anchor_pose": {
   "x": 155.0,
   "y": 64.33,
@@ -9,6 +9,69 @@
   "side": "B"
  },
  "parts": {
+  "C501": {
+   "dx": -2.7,
+   "dy": -23.53,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "U501 3V3 decoupling at pin 8, bottom side (the top over U501 is under the T1S connector housings); placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
+  },
+  "C503": {
+   "dx": 3.7,
+   "dy": -24.53,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "U501 3V3 decoupling at pin 18, bottom side (the top over U501 is under the T1S connector housings); placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
+  },
+  "C504": {
+   "dx": -1.7,
+   "dy": -24.53,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "U501 3V3 decoupling at pin 8, bottom side (the top over U501 is under the T1S connector housings); placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
+  },
+  "C505": {
+   "dx": -5.5,
+   "dy": -24.58,
+   "rot": 180.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "U501 3V3 bulk (10 uF) beside the PHY, bottom side; placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
+  },
+  "C506": {
+   "dx": 2.2,
+   "dy": -24.53,
+   "rot": 180.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "U501 3V3 decoupling at pin 18, bottom side (the top over U501 is under the T1S connector housings); placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
+  },
+  "C507": {
+   "dx": -2.25,
+   "dy": -17.33,
+   "rot": 0.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "U501 3V3 decoupling at pin 29, bottom side (the top over U501 is under the T1S connector housings); placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
+  },
+  "C508": {
+   "dx": 0.0,
+   "dy": -26.33,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "U501 3V3 bulk (10 uF) beside the PHY, bottom side; placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
+  },
   "C509": {
    "dx": 3.25,
    "dy": -17.08,
@@ -189,6 +252,15 @@
    "flex_mm": 0,
    "why": "Centre-tap bleed resistor beside C514. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
   },
+  "R521": {
+   "dx": 7.75,
+   "dy": -2.33,
+   "rot": 270.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "Relay set-coil drive pull-down beside Q502, east of K501, inside the line zone."
+  },
   "U501": {
    "dx": 1.0,
    "dy": -20.78,
@@ -207,77 +279,41 @@
    "flex_mm": 0,
    "why": "50 MHz oscillator east of U501, outside the line zone so its clock stays off the T1S chain; UNDER_Y501 keeps foreign nets out from under it. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
   },
-  "C501": {
-   "dx": -2.7,
-   "dy": -23.53,
-   "rot": 90.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "U501 3V3 decoupling at pin 8, bottom side (the top over U501 is under the T1S connector housings); placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
-  },
-  "C503": {
-   "dx": 3.7,
-   "dy": -24.53,
-   "rot": 90.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "U501 3V3 decoupling at pin 18, bottom side (the top over U501 is under the T1S connector housings); placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
-  },
-  "C504": {
-   "dx": -1.7,
-   "dy": -24.53,
-   "rot": 90.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "U501 3V3 decoupling at pin 8, bottom side (the top over U501 is under the T1S connector housings); placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
-  },
-  "C505": {
-   "dx": -5.5,
-   "dy": -24.58,
+  "U301": {
+   "dx": 6.25,
+   "dy": -16.58,
    "rot": 180.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "U501 3V3 bulk (10 uF) beside the PHY, bottom side; placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
+   "why": "VDDAU_AON regulator (TPS7B8133); its only load is U501 pin 25, so it sits beside U501, output pin 6 2.8 mm from pin 25 (user, 2026-11-04: it was 70 mm away by the output switches). Input from VBAT_PROT by via to the In3 plane."
   },
-  "C506": {
-   "dx": 2.2,
-   "dy": -24.53,
+  "R301": {
+   "dx": 2.75,
+   "dy": -15.08,
    "rot": 180.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "U501 3V3 decoupling at pin 18, bottom side (the top over U501 is under the T1S connector housings); placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
+   "why": "0 ohm debug link VDDAU_AON_REG -> VDDAU_AON (CLAUDE.md), between U301 pin 6 (3.0 mm) and U501 pin 25 (3.3 mm)."
   },
-  "C507": {
-   "dx": -2.25,
-   "dy": -17.33,
+  "C301": {
+   "dx": 10.25,
+   "dy": -16.33,
    "rot": 0.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "U501 3V3 decoupling at pin 29, bottom side (the top over U501 is under the T1S connector housings); placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
+   "why": "U301 input capacitor (1 uF, VBAT_PROT) at pins 1/2, 1.8 mm."
   },
-  "C508": {
-   "dx": 0.0,
-   "dy": -26.33,
-   "rot": 90.0,
+  "C302": {
+   "dx": 6.25,
+   "dy": -14.58,
+   "rot": 0.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "U501 3V3 bulk (10 uF) beside the PHY, bottom side; placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
-  },
-  "R521": {
-   "dx": 7.75,
-   "dy": -2.33,
-   "rot": 270.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "Relay set-coil drive pull-down beside Q502, east of K501, inside the line zone."
+   "why": "U301 output capacitor (2.2 uF) at pin 6, 2.7 mm; bottom side (was top)."
   }
  }
 }
