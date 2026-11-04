@@ -15,7 +15,7 @@ from scipy.sparse.linalg import spsolve
 ap = argparse.ArgumentParser()
 ap.add_argument('geom'); ap.add_argument('--oz', type=float, default=1.0)
 ap.add_argument('--temp', type=float, default=20.0); ap.add_argument('--cell', type=float, default=0.5)
-ap.add_argument('--window', action='append', default=[], metavar='X0,Y0,X1,Y1',
+ap.add_argument('--window', action='append', default=[], metavar='X0,Y0,X1,Y1[,KEEP]',
                 help='a signal window cut out of the VBAT_PROT plane (mm, repeatable); the GND plane is whole')
 ap.add_argument('--window-keep', type=float, default=0.0, metavar='F',
                 help='fraction of the copper left inside the windows: 0 = cut on every plane layer, 0.5 = cut on '
@@ -42,8 +42,10 @@ def solve(net, source, loads):
     wt = np.ones((nx, ny))                      # conductance weight per cell (thinned copper in a window)
     if net != 'GND':
         for w in a.window:
-            for c in cells_in(tuple(float(v) for v in w.split(','))):
-                if a.window_keep > 0: wt[c] = a.window_keep
+            v = [float(t) for t in w.split(',')]
+            keep = v[4] if len(v) > 4 else a.window_keep     # X0,Y0,X1,Y1[,KEEP]: a window's own fraction
+            for c in cells_in(tuple(v[:4])):
+                if keep > 0: wt[c] = min(wt[c], keep)
                 else: ok[c] = False
     for hx, hy, d, hn in g['holes']:
         if hn == net: continue

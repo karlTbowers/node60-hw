@@ -123,7 +123,12 @@ step() {
     timed $n $KRT_PY -X utf8 "$@" >> $OUT/chain.log 2>&1
   fi
 }
-step planes py_router/route_planes.py $OUT/s0.kicad_pcb $OUT/s1.kicad_pcb --nets ${=PLANE_NETS} --plane-layers ${=PLANE_LAYERS} --clearance 0.15 --escalation off $FAB
+# The board's own power zones (scripts/draw_power.py, 2026-11-04) replace this step once drawn.
+if grep -q '(name "PWR_' $OUT/s0.kicad_pcb; then
+  cp $OUT/s0.kicad_pcb $OUT/s1.kicad_pcb; echo "== planes: skipped, the board has its power zones" >> $OUT/chain.log
+else
+  step planes py_router/route_planes.py $OUT/s0.kicad_pcb $OUT/s1.kicad_pcb --nets ${=PLANE_NETS} --plane-layers ${=PLANE_LAYERS} --clearance 0.15 --escalation off $FAB
+fi
 cp $OUT/s0.kicad_pro $OUT/s1.kicad_pro; cp $OUT/s0.kicad_dru $OUT/s1.kicad_dru
 ESC=(--clearance 0.1 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off $FAB)
 step fanout_U401 py_router/bga_fanout.py $OUT/s1.kicad_pcb --component U401 --nets "*" "!GND" "!VBAT_PROT" "!*FXOSC*" --output $OUT/s2.kicad_pcb --track-width 0.1 $ESC $L
