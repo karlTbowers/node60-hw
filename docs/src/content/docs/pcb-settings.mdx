@@ -208,5 +208,5 @@ To show that every custom rule still fires, run `placement/2026-11-02-bars/rules
 
 ## Open with JLCPCB
 
-- **Via annular ring on the 2 oz inner layers.** JLCPCB asks 0.254 mm of annular ring on 2 oz copper for plated through holes. It gives no via figure for 2 oz inner layers, and the 0.35 / 0.20 mm via has a 0.075 mm ring. Confirm with JLCPCB's engineering review before ordering: the order's DFM check, or a question to their support with the Gerbers. The board's vias keep their pad on every inner layer (none removes unused layers), so the question applies to every via drawn with a 0.20 mm hole.
+- **Via annular ring on the 2 oz inner layers.** JLCPCB asks 0.254 mm of annular ring on 2 oz copper for plated through holes. It gives no via figure for 2 oz inner layers, and every via preset is under that: 0.075 mm on the 0.35 / 0.20 mm via, 0.10 mm on the Default 0.45 / 0.25 mm, 0.20 mm on the largest. Confirm with JLCPCB's engineering review before ordering: the order's DFM check, or a question to their support with the Gerbers. The board's vias keep their pad on every inner layer (none removes unused layers), so the question applies to every via on the board.
 - **Silkscreen over pads.** DRC warns where silk overlaps pads. JLCPCB clips silk off the pads, so this is cosmetic.
