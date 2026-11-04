@@ -67,6 +67,7 @@ say "Memory" "$MEM_GB GB"
 # One judging run peaks at about 1.6 GB (reference timing.tsv); the router is single-threaded.
 PEAK_MB=$(awk -F'\t' 'NR>1 && $5>m {m=$5} END {print m+0}' $HERE/workstation/reference/timing.tsv 2>/dev/null || echo 0)
 (( PEAK_MB > 0 )) || PEAK_MB=2048
+PEAK_MB=$(( PEAK_MB * 11 / 10 ))   # +10 %: the peak varies between runs (5.4-7.3 GB in route_p2)
 NPAR=$(( MEM_GB * 1024 * 8 / 10 / PEAK_MB )); (( NPAR > P )) && NPAR=$P; (( NPAR < 1 )) && NPAR=1
 say "Parallel judging runs" "up to $NPAR at once (one per P core, peak ${PEAK_MB} MB each, 80 % of memory)"
 MACOS=$(sw_vers -productVersion)
@@ -363,20 +364,42 @@ if [[ -d $N60/.git ]]; then
     [[ -z $JOUT ]] && JOUT=$DEV/node60-judge-runs/$(hostname -s)-$(date +%Y%m%d-%H%M)
     mkdir -p ${JOUT:h}
     say "judging run" "$JOUT (7-36 min) ..."
+    # Route with KRT exactly at the pin, exported beside the board, not with the live checkout:
+    # something on the reference Mac pulls ~/Dev/KiCadRoutingTools nightly, and one pull landed
+    # mid-verification (2026-11-03). The exported judge_route.sh is pointed at the copy.
+    KX=$W/krt
+    if from=$(export_commit $KRT_COMMIT $KX $KRT_URL $KRT) && cp $SO $KX/rust_router/ \
+       && [[ $(shasum -a 256 $KX/rust_router/grid_router.so | awk '{print $1}') == $KRT_ROUTER_SHA256 ]]; then
+      sed -i '' "s#^KRT=~/Dev/KiCadRoutingTools\$#KRT=$KX#" $JR
+      grep -q "^KRT=$KX\$" $JR && ok "KRT for the run" "${KRT_COMMIT:0:8} exported from $from, router sha256 ok" \
+        || warn "KRT for the run" "couldn't point judge_route.sh at the export; the run uses $KRT as checked out"
+    else warn "KRT for the run" "couldn't export ${KRT_COMMIT:0:8}; the run uses $KRT as checked out"; fi
     T0=$(date +%s)
     (cd $W && KRT_PY=$VENV/bin/python zsh $JR node60.kicad_pcb $JOUT >/dev/null 2>&1) || true
     T1=$(date +%s)
     cp $W/placement/2026-11-02-bars/rules/perf_report.py $JOUT/ 2>/dev/null || true
     PERF=$W/placement/2026-11-02-bars/rules/perf_report.py
     if [[ -f $JOUT/rules.json ]]; then
-      read -r BLK OPEN <<<"$(python3 -c 'import json,sys; d=json.load(open(sys.argv[1])); print(d["blocking"], ",".join(d["open_nets"]) or "-")' $JOUT/rules.json)"
-      REFJ=$HERE/workstation/reference/rules.json
-      read -r RBLK ROPEN <<<"$(python3 -c 'import json,sys; d=json.load(open(sys.argv[1])); print(d["blocking"], ",".join(d["open_nets"]) or "-")' $REFJ)"
-      say "judging run" "$(( T1 - T0 )) s wall; blocking $BLK, open nets $OPEN"
+      # Same commit, same KRT, same inputs -> the same blocking count and the same open nets.
+      cmp_out=$(python3 - $JOUT/rules.json $HERE/workstation/reference/rules.json <<'PY'
+import json, sys
+a, r = (json.load(open(p)) for p in sys.argv[1:])
+sa, sr = set(a["open_nets"]), set(r["open_nets"])
+same = a["blocking"] == r["blocking"] and sa == sr
+d = [f"blocking {a['blocking']} (reference {r['blocking']})", f"{len(sa)} open nets (reference {len(sr)})"]
+if sa - sr: d.append("open only here: " + ", ".join(sorted(sa - sr)))
+if sr - sa: d.append("open only in the reference: " + ", ".join(sorted(sr - sa)))
+for k in sorted(set(a["other_errors"]) | set(r["other_errors"])):
+    x, y = a["other_errors"].get(k, 0), r["other_errors"].get(k, 0)
+    if x != y: d.append(f"{k} {x} (reference {y})")
+print(("SAME " if same else "DIFF ") + "; ".join(d))
+PY
+)
+      say "judging run" "$(( T1 - T0 )) s wall"
       if [[ $C != ${REF_JUDGE_COMMIT}* ]]; then
-        warn "judging vs reference" "ran at $C, the reference at $REF_JUDGE_COMMIT: counts not comparable"
-      elif [[ $BLK == $RBLK && $OPEN == $ROPEN ]]; then ok "judging vs reference" "same result: blocking $BLK, open $OPEN"
-      else fail "judging vs reference" "blocking $BLK (reference $RBLK), open $OPEN (reference $ROPEN)"; fi
+        warn "judging vs reference" "ran at ${C:0:8}, the reference at ${REF_JUDGE_COMMIT:0:8}: not comparable (${cmp_out#* })"
+      elif [[ $cmp_out == SAME* ]]; then ok "judging vs reference" "same result: ${cmp_out#SAME }"
+      else fail "judging vs reference" "${cmp_out#DIFF }"; fi
       [[ -f $PERF ]] && python3 $PERF $JOUT $HERE/workstation/reference --md $JOUT/perf.md >/dev/null 2>&1 \
         && { say "perf_report.py" "this run vs the reference (left: this machine):"; sed 's/^/      /' $JOUT/perf.md | head -40; }
     else fail "judging run" "no rules.json in $JOUT (see $JOUT/chain.log)"; fi
