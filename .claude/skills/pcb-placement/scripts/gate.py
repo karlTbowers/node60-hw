@@ -118,7 +118,7 @@ def via_sites_row(board, plan, rules_text):
     pitch = via + space
     areas = blocking_areas(board, rules_text, blocks=("via",))
     pads = [p for fp in board.GetFootprints() for p in fp.Pads()]
-    short = []
+    short, counts = [], []
     for h in hc:
         ref, num = h["pad"].split(".")
         fp = board.FindFootprintByReference(ref)
@@ -148,10 +148,11 @@ def via_sites_row(board, plan, rules_text):
                         clear = False
                         break
                 free += clear
+        counts.append(f"{h['pad']} {free}/{need}")
         if free < need:
             short.append(f"{h['pad']} ({net}, {h['amps']} A): {free} free site(s), needs {need}")
     return ("Vias at high-current layer changes", "free via sites within reach of each pad vs ceil(I / I per via)",
-            "FAIL" if short else "PASS", "; ".join(short) if short else f"{len(hc)} pad(s) have room")
+            "FAIL" if short else "PASS", "; ".join(short) if short else f"{len(hc)} pad(s) have room (free/needed: {', '.join(counts)})")
 
 
 def main():

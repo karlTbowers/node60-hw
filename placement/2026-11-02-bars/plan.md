@@ -87,7 +87,7 @@ Placed by `scripts/place_connectors.py` and locked.
 | U401 ball field | none needed: 0.1 mm track (board minimum, as KiCad's DRC measures tracks) at 0.15 mm clearance fits one track per channel | | | `escape_budget.py --space 0.15`, v2 |
 | VBAT_PROT, VBAT_D, VBAT_Q2D, outputs | power widths per path, from IPC-2152 at the routing stage | | | handbook ch. 05 |
 
-High-current pads (1 A per 0.45/0.25 via, **assumed**): Q201.9–Q204.9 30 A, R201.1/.2 60 A,
+High-current pads (0.65 A per 0.45/0.25 via, IPC-2221 at 18 µm plating, D12-6 A): Q201.9–Q204.9 30 A, R201.1/.4 (force pads, BVR4026) 60 A,
 U601/U701/U801.17 20 A. Via sites measured on the current board: see D01.
 
 ## Assembly
@@ -109,6 +109,6 @@ bar joins its terminals on the board. Needed before the PR #21 override comes of
 
 ## Assumed
 
-- 1 A per via: to be checked against the stackup's plating and the 10 A thermal test.
+- 0.65 A per via (D12-6 A, 2026-11-03), replacing the assumed 1 A; the 10 A thermal test (GATE-THM-02) still confirms it.
 - The Kelvin lane budget (10 mm): to be confirmed against the INA228 datasheet's layout section in stage 3.
 - Layer roles settled in D12-1 (2026-11-03): In1 GND, In2 + In3 VBAT_PROT, In4 GND; signals on F.Cu and B.Cu (DEC-027's JLC062012-1080).
