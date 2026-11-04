@@ -2964,243 +2964,6 @@
 			)
 		)
 	)
-	(footprint "DropOut_Capacitor_SMD:C_0402_1005Metric"
-		(layer "F.Cu")
-		(uuid "385b991e-7735-42d8-b07c-a2aaf6432105")
-		(at 155.2169 60.1582 90)
-		(descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Murata GCM155 and TDK CGA2 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Capacitor_SMD.yaml)")
-		(tags "capacitor")
-		(property "Reference" "C503"
-			(at 0 -1.15 90)
-			(layer "F.SilkS")
-			(uuid "7b56a684-4e1a-4b89-8f8d-78323fecb3b2")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Value" "10nF"
-			(at 0 1.15 90)
-			(layer "F.Fab")
-			(uuid "40c3f0e0-791c-4e60-8e37-addfa9454c5a")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM155R71H103KA55-01A-EN_PDF_CERAMICCAPACITORSMD"
-			(at 0 0 90)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "0891e51c-66bb-436f-8ada-c1bcc08b92a8")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 10 nF ±10%, 50 V, X7R, AEC-Q200, -55 to +125 °C, 0402 (1005 metric)"
-			(at 0 0 90)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "dfe2d642-f0d6-489a-8ca9-1e81dd0b9086")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "5690b363-0403-41fa-9367-bb8285b9f078")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Manufacturer" "Murata"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "8c42d68a-d6b0-4e0d-9b32-a211510f87c4")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MPN" "GCM155R71H103KA55D"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "7f30bea2-d5c6-4a65-aa49-475a173e076a")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "DigiKey_PN" "490-4762-1-ND"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "677a3f0f-d42c-483e-b97f-16faeb9a07d4")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Mouser_PN" "81-GCM155R71H103KA5D"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "6862e3c2-c2af-4b86-b52d-2ec7932bc9dc")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "a6b443b4-473f-4df3-bd4f-cb449b5444c7")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Voltage" "50V"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "1ca8e957-aefe-45ff-9536-1dbb8347d1df")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Tolerance" "±10%"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "f48e6225-e2fe-405f-8623-47db9e86c7aa")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Dielectric" "X7R"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "b14fa650-569b-4171-9141-f614e46bba48")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Case" "0402"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "81e054e9-ec36-40d7-bde7-526e6d87050d")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(path "/3875e4cc-63e7-4387-b67f-49f6a7b34a4e/b2bc8a77-43f4-5e24-82b7-6bc699131b94")
-		(sheetname "T1S")
-		(sheetfile "sheets/t1s.kicad_sch")
-		(attr smd)
-		(duplicate_pad_numbers_are_jumpers no)
-		(fp_rect
-			(start -0.9 -0.45)
-			(end 0.9 0.45)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "8e26d7f9-00f3-40f1-8123-f6b6337d1a0a")
-		)
-		(fp_rect
-			(start -0.5 -0.25)
-			(end 0.5 0.25)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.Fab")
-			(uuid "dbdb06dc-ea5e-49db-9f52-533ac090db00")
-		)
-		(fp_text user "${REFERENCE}"
-			(at 0 0 90)
-			(layer "F.Fab")
-			(uuid "c70b4706-ea96-4e78-9430-14ef61694acd")
-			(effects
-				(font
-					(size 0.25 0.25)
-					(thickness 0.04)
-				)
-			)
-		)
-		(pad "1" smd roundrect
-			(at -0.46 0 90)
-			(size 0.58 0.6)
-			(layers "F.Cu" "F.Mask" "F.Paste")
-			(roundrect_rratio 0.25)
-			(net "3V3_MAIN")
-			(uuid "f23d7f76-7b8d-4949-809f-1d59688bdb08")
-		)
-		(pad "2" smd roundrect
-			(at 0.46 0 90)
-			(size 0.58 0.6)
-			(layers "F.Cu" "F.Mask" "F.Paste")
-			(roundrect_rratio 0.25)
-			(net "GND")
-			(uuid "58dd1186-b004-4ac7-a2f5-3ad15a929f90")
-		)
-		(embedded_fonts no)
-		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-			(offset
-				(xyz 0 0 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
-	)
 	(footprint "DropOut_Fiducial:Fiducial_1mm_Mask2mm"
 		(locked yes)
 		(layer "F.Cu")
@@ -7885,7 +7648,7 @@
 	(footprint "DropOut_Capacitor_SMD:C_0402_1005Metric"
 		(layer "F.Cu")
 		(uuid "70014292-00d8-4f8f-9f76-e5cb3b1cf144")
-		(at 155 35.5 90)
+		(at 155 45.5 90)
 		(descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Murata GCM155 and TDK CGA2 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Capacitor_SMD.yaml)")
 		(tags "capacitor")
 		(property "Reference" "C502"
@@ -12316,480 +12079,6 @@
 		)
 		(embedded_fonts no)
 	)
-	(footprint "DropOut_Capacitor_SMD:C_0402_1005Metric"
-		(layer "F.Cu")
-		(uuid "a26b5e31-ae44-4e53-a8d3-e6f4092d0d0a")
-		(at 143.1952 60.5772 180)
-		(descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Murata GCM155 and TDK CGA2 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Capacitor_SMD.yaml)")
-		(tags "capacitor")
-		(property "Reference" "C506"
-			(at 0 -1.15 180)
-			(layer "F.SilkS")
-			(uuid "4a965657-01aa-4737-ab72-768723097e2b")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Value" "10nF"
-			(at 0 1.15 180)
-			(layer "F.Fab")
-			(uuid "3172bb6c-f6b8-403c-9283-8da4c28443f8")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM155R71H103KA55-01A-EN_PDF_CERAMICCAPACITORSMD"
-			(at 0 0 180)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "4872c8f2-95a3-4284-ab26-b863daeecca9")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 10 nF ±10%, 50 V, X7R, AEC-Q200, -55 to +125 °C, 0402 (1005 metric)"
-			(at 0 0 180)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "72c1008c-90d3-4cc1-a883-24f46240ab72")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 180)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "2d8f1fec-09b2-43c8-b141-f6204ce9fedb")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Manufacturer" "Murata"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "247fb1c4-826e-4b71-af23-da647cc837d8")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MPN" "GCM155R71H103KA55D"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "f3216992-8e37-4c42-a231-66fa97ba2b78")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "DigiKey_PN" "490-4762-1-ND"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "070f284a-6219-4802-be4e-37977110df36")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Mouser_PN" "81-GCM155R71H103KA5D"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "bc5a6d9b-6fa2-40f1-bd35-8789dd0d1c76")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "31cfc296-14e2-4fa7-8434-9ea921b6bd1b")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Voltage" "50V"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "c1b8d652-cbb5-4957-8935-720498efd0e1")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Tolerance" "±10%"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "de83380d-6a8c-4067-bf7d-da115e0a42ce")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Dielectric" "X7R"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "a0c3b364-d583-4884-aeac-b4a0479d1281")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Case" "0402"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "96c35fa1-4983-418a-a01d-83d1c3aeb413")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(path "/3875e4cc-63e7-4387-b67f-49f6a7b34a4e/2c155089-757b-5559-bd0c-d9d600e7ae5d")
-		(sheetname "T1S")
-		(sheetfile "sheets/t1s.kicad_sch")
-		(attr smd)
-		(duplicate_pad_numbers_are_jumpers no)
-		(fp_rect
-			(start -0.9 -0.45)
-			(end 0.9 0.45)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "2d8e84ba-e410-4e75-85b0-7a27460af59e")
-		)
-		(fp_rect
-			(start -0.5 -0.25)
-			(end 0.5 0.25)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.Fab")
-			(uuid "80729b5a-2101-43c5-8523-ebb6f3b96be1")
-		)
-		(fp_text user "${REFERENCE}"
-			(at 0 0 180)
-			(layer "F.Fab")
-			(uuid "9ae30270-d27d-4931-8c08-128f5b678f31")
-			(effects
-				(font
-					(size 0.25 0.25)
-					(thickness 0.04)
-				)
-			)
-		)
-		(pad "1" smd roundrect
-			(at -0.46 0 180)
-			(size 0.58 0.6)
-			(layers "F.Cu" "F.Mask" "F.Paste")
-			(roundrect_rratio 0.25)
-			(net "3V3_MAIN")
-			(uuid "cc1c976e-6a37-4911-9ec4-ce2063229b2a")
-		)
-		(pad "2" smd roundrect
-			(at 0.46 0 180)
-			(size 0.58 0.6)
-			(layers "F.Cu" "F.Mask" "F.Paste")
-			(roundrect_rratio 0.25)
-			(net "GND")
-			(uuid "855e42df-1e5b-422e-bb61-154e4bc1e577")
-		)
-		(embedded_fonts no)
-		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-			(offset
-				(xyz 0 0 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
-	)
-	(footprint "DropOut_Capacitor_SMD:C_0402_1005Metric"
-		(layer "F.Cu")
-		(uuid "ac80c3e4-426c-45e7-b0af-1979f9ebe5d6")
-		(at 152.2968 60.0123)
-		(descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Murata GCM155 and TDK CGA2 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Capacitor_SMD.yaml)")
-		(tags "capacitor")
-		(property "Reference" "C501"
-			(at 0 -1.15 0)
-			(layer "F.SilkS")
-			(uuid "ed0bc465-0f44-439c-8a14-797604f3d5a0")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Value" "10nF"
-			(at 0 1.15 0)
-			(layer "F.Fab")
-			(uuid "3b7823f9-1060-4fc9-ab71-68383868b392")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM155R71H103KA55-01A-EN_PDF_CERAMICCAPACITORSMD"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "b6fc5a79-7def-47cf-bfb9-d5c66e08f891")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 10 nF ±10%, 50 V, X7R, AEC-Q200, -55 to +125 °C, 0402 (1005 metric)"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "0b540e7b-7337-4bc2-89c5-450942cf5ade")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 0)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "95a3a2d4-b53e-4ba2-ab70-807ee061087f")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Manufacturer" "Murata"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "9eb7ba21-41cd-41e1-a390-f1d4e9a66ac9")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MPN" "GCM155R71H103KA55D"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "a7897833-5707-424c-bf58-b787ed8c98f6")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "DigiKey_PN" "490-4762-1-ND"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "a67178d3-1e8f-41c8-87e2-0b58b58f41db")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Mouser_PN" "81-GCM155R71H103KA5D"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "2a9c75aa-e165-4bc7-8aba-fc1d596a91dc")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "e12e06b3-f277-4c37-8135-b19ab0bfb417")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Voltage" "50V"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "3213c704-a9af-47d5-a769-9d7420be8d94")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Tolerance" "±10%"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "8bab67f7-8844-4890-8f22-495c5250310a")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Dielectric" "X7R"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "4afab202-13c0-42c5-b943-8476be43dae2")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Case" "0402"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "7d2cb0c4-4a8e-4e21-8266-4ff47ec6e071")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(path "/3875e4cc-63e7-4387-b67f-49f6a7b34a4e/7fc05156-a232-5833-9598-05782a206e5c")
-		(sheetname "T1S")
-		(sheetfile "sheets/t1s.kicad_sch")
-		(attr smd)
-		(duplicate_pad_numbers_are_jumpers no)
-		(fp_rect
-			(start -0.9 -0.45)
-			(end 0.9 0.45)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "0562266b-d6f3-49c4-8891-8bb7374424a3")
-		)
-		(fp_rect
-			(start -0.5 -0.25)
-			(end 0.5 0.25)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.Fab")
-			(uuid "a4b695a6-f129-450d-bcdd-3d1d7fb9b82b")
-		)
-		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(uuid "1c91bbe2-9614-4821-b2c6-ed40ede2f1cd")
-			(effects
-				(font
-					(size 0.25 0.25)
-					(thickness 0.04)
-				)
-			)
-		)
-		(pad "1" smd roundrect
-			(at -0.46 0)
-			(size 0.58 0.6)
-			(layers "F.Cu" "F.Mask" "F.Paste")
-			(roundrect_rratio 0.25)
-			(net "3V3_MAIN")
-			(uuid "4051022f-36fa-47b0-a2c2-5b2e893e0f32")
-		)
-		(pad "2" smd roundrect
-			(at 0.46 0)
-			(size 0.58 0.6)
-			(layers "F.Cu" "F.Mask" "F.Paste")
-			(roundrect_rratio 0.25)
-			(net "GND")
-			(uuid "61017a2e-aa57-43b2-8d17-06dec3ec4770")
-		)
-		(embedded_fonts no)
-		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-			(offset
-				(xyz 0 0 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
-	)
 	(footprint "DropOut_Capacitor_SMD:C_0603_1608Metric"
 		(layer "F.Cu")
 		(uuid "af71fc4a-1881-433c-b753-bff091d1fa14")
@@ -15751,243 +15040,6 @@
 			)
 		)
 	)
-	(footprint "DropOut_Capacitor_SMD:C_0402_1005Metric"
-		(layer "F.Cu")
-		(uuid "d7359060-6e25-434a-9ef1-f4eed7047aba")
-		(at 156.4112 59.3187 90)
-		(descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Murata GCM155 and TDK CGA2 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Capacitor_SMD.yaml)")
-		(tags "capacitor")
-		(property "Reference" "C504"
-			(at 0 -1.15 90)
-			(layer "F.SilkS")
-			(uuid "2d676f53-0ac2-43e3-aeae-8a1c49c9ae2b")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Value" "100nF"
-			(at 0 1.15 90)
-			(layer "F.Fab")
-			(uuid "7079c058-99e6-448d-9467-3d8bddadda98")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM155R71C104KA55-01A-EN_PDF_CERAMICCAPACITORSMD"
-			(at 0 0 90)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "f3e345bc-b178-44b0-8e13-fab7abf8758c")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 100 nF ±10%, 16 V, X7R, AEC-Q200, -55 to +125 °C, 0402 (1005 metric)"
-			(at 0 0 90)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "d68feb60-5da2-4272-bc7e-761caa347aeb")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 90)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "83dc7476-f4ec-44a4-b93a-10169ecee988")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Manufacturer" "Murata"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "a299ee53-d35f-4d15-8d86-3f6720861fec")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MPN" "GCM155R71C104KA55D"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "694dde70-848d-4819-81fa-b60db68901cd")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "DigiKey_PN" "490-4759-1-ND"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "3ea03820-3fd0-414f-be84-282ba59b1028")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Mouser_PN" "81-GCM155R71C104KA5D"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "fd34eab3-2ca8-4e96-ac54-76175eb0e57c")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "ffed6c67-7639-4749-afd7-08f9f6442ed2")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Voltage" "16V"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "6dbe85da-cd44-4c6c-8427-258880bdf2e8")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Tolerance" "±10%"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "b1c870b9-ad8f-4755-a8af-8856f2fe4770")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Dielectric" "X7R"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "d78a17ff-da83-45ba-8db1-2410a9440dfe")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Case" "0402"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "6520ec8e-92b4-4c28-a144-8e68f9fbb0d4")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(path "/3875e4cc-63e7-4387-b67f-49f6a7b34a4e/898481af-a1f3-54cd-b730-7d25c47807a5")
-		(sheetname "T1S")
-		(sheetfile "sheets/t1s.kicad_sch")
-		(attr smd)
-		(duplicate_pad_numbers_are_jumpers no)
-		(fp_rect
-			(start -0.9 -0.45)
-			(end 0.9 0.45)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "24997e3f-db72-4e3e-b012-760728e82cfe")
-		)
-		(fp_rect
-			(start -0.5 -0.25)
-			(end 0.5 0.25)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.Fab")
-			(uuid "f4eb722a-437c-4d66-b6ef-bf452c1a92c4")
-		)
-		(fp_text user "${REFERENCE}"
-			(at 0 0 90)
-			(layer "F.Fab")
-			(uuid "5f77d93c-fdd3-45e9-beb8-bdd301ee75bf")
-			(effects
-				(font
-					(size 0.25 0.25)
-					(thickness 0.04)
-				)
-			)
-		)
-		(pad "1" smd roundrect
-			(at -0.46 0 90)
-			(size 0.58 0.6)
-			(layers "F.Cu" "F.Mask" "F.Paste")
-			(roundrect_rratio 0.25)
-			(net "3V3_MAIN")
-			(uuid "6e566a12-2abf-4999-8d04-6182865c7b7d")
-		)
-		(pad "2" smd roundrect
-			(at 0.46 0 90)
-			(size 0.58 0.6)
-			(layers "F.Cu" "F.Mask" "F.Paste")
-			(roundrect_rratio 0.25)
-			(net "GND")
-			(uuid "c750e46f-a4d6-4269-82cd-f81da87bb113")
-		)
-		(embedded_fonts no)
-		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-			(offset
-				(xyz 0 0 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
-	)
 	(footprint "DropOut_Connector_Amphenol:Amphenol_AT13-2P-BMxx_1x02_P5.40mm_Horizontal"
 		(locked yes)
 		(layer "F.Cu")
@@ -17230,243 +16282,6 @@
 			)
 		)
 	)
-	(footprint "DropOut_Capacitor_SMD:C_0402_1005Metric"
-		(layer "F.Cu")
-		(uuid "e5b81e49-7817-4341-a5f0-ba87182d462c")
-		(at 170.0808 58.2703 -90)
-		(descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Murata GCM155 and TDK CGA2 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Capacitor_SMD.yaml)")
-		(tags "capacitor")
-		(property "Reference" "C507"
-			(at 0 -1.15 270)
-			(layer "F.SilkS")
-			(uuid "7f811dc3-9751-4fbb-9da4-9adef69e1b09")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Value" "100nF"
-			(at 0 1.15 270)
-			(layer "F.Fab")
-			(uuid "9376dbcc-9df6-4b32-ae42-2d4f05def5ed")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM155R71C104KA55-01A-EN_PDF_CERAMICCAPACITORSMD"
-			(at 0 0 270)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "6de26227-db94-4bd5-a545-a5539abf5f27")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 100 nF ±10%, 16 V, X7R, AEC-Q200, -55 to +125 °C, 0402 (1005 metric)"
-			(at 0 0 270)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "1a024231-85fa-4822-858e-e6dc736572eb")
-			(effects
-				(font
-					(size 1.27 1.27)
-				)
-			)
-		)
-		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 270)
-			(layer "F.SilkS")
-			(hide yes)
-			(uuid "3741fc1d-edf7-444d-bcb5-7da91f3193b0")
-			(effects
-				(font
-					(size 1 1)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Manufacturer" "Murata"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "3395b3c1-901b-4046-a144-dcfe91f73455")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "MPN" "GCM155R71C104KA55D"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "b6f12ed9-f7d8-4dd9-86e7-68c7d55f4f1d")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "DigiKey_PN" "490-4759-1-ND"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "32dd028a-0b74-49ea-84bc-e0d507253e8d")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Mouser_PN" "81-GCM155R71C104KA5D"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "2fa3ca5e-e129-4d93-a58f-831e20e3a18a")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "0dd211ac-58ca-42bb-bb9f-7f1bccafd81c")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Voltage" "16V"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "b12eea82-ce65-42f8-80f0-66d89c5bec10")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Tolerance" "±10%"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "8790feeb-2d07-4562-b4c7-6b0b7e89c4d9")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Dielectric" "X7R"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "88db09c5-8c09-4e05-99f6-759977e216b1")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(property "Case" "0402"
-			(at 0 0 0)
-			(layer "F.Fab")
-			(hide yes)
-			(uuid "ada6ce9d-34e5-4cca-a1e1-93bd660af39a")
-			(effects
-				(font
-					(size 1.27 1.27)
-					(thickness 0.15)
-				)
-			)
-		)
-		(path "/3875e4cc-63e7-4387-b67f-49f6a7b34a4e/6c6207ff-9c08-58c9-b030-c3fb89e98b26")
-		(sheetname "T1S")
-		(sheetfile "sheets/t1s.kicad_sch")
-		(attr smd)
-		(duplicate_pad_numbers_are_jumpers no)
-		(fp_rect
-			(start -0.9 -0.45)
-			(end 0.9 0.45)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.CrtYd")
-			(uuid "f51a098e-58a8-4a56-bb81-39dfc32102a1")
-		)
-		(fp_rect
-			(start -0.5 -0.25)
-			(end 0.5 0.25)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(fill no)
-			(layer "F.Fab")
-			(uuid "d805f6ce-0bf1-49e4-9889-57c570a1a384")
-		)
-		(fp_text user "${REFERENCE}"
-			(at 0 0 270)
-			(layer "F.Fab")
-			(uuid "4a534274-8236-4d5e-aa7b-f356235c2247")
-			(effects
-				(font
-					(size 0.25 0.25)
-					(thickness 0.04)
-				)
-			)
-		)
-		(pad "1" smd roundrect
-			(at -0.46 0 270)
-			(size 0.58 0.6)
-			(layers "F.Cu" "F.Mask" "F.Paste")
-			(roundrect_rratio 0.25)
-			(net "3V3_MAIN")
-			(uuid "80007128-8dfb-4560-85ee-d1a25656712e")
-		)
-		(pad "2" smd roundrect
-			(at 0.46 0 270)
-			(size 0.58 0.6)
-			(layers "F.Cu" "F.Mask" "F.Paste")
-			(roundrect_rratio 0.25)
-			(net "GND")
-			(uuid "9f1b96a1-799a-4bbe-b91f-d2378b40a962")
-		)
-		(embedded_fonts no)
-		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
-			(offset
-				(xyz 0 0 0)
-			)
-			(scale
-				(xyz 1 1 1)
-			)
-			(rotate
-				(xyz 0 0 0)
-			)
-		)
-	)
 	(footprint "DropOut_Busbar:Busbar_Cu_19.05x3.175mm_L125.05mm_2xD6.5mm_P106mm"
 		(locked yes)
 		(layer "F.Cu")
@@ -17691,7 +16506,7 @@
 	(footprint "DropOut_Capacitor_SMD:C_0402_1005Metric"
 		(layer "F.Cu")
 		(uuid "e9f1244c-cf04-4204-b6e9-e986141a6465")
-		(at 155 33.5 90)
+		(at 155 43.5 90)
 		(descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Murata GCM155 and TDK CGA2 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Capacitor_SMD.yaml)")
 		(tags "capacitor")
 		(property "Reference" "C513"
@@ -23514,7 +22329,7 @@
 	(footprint "DropOut_Resistor_SMD:R_1206_3216Metric"
 		(layer "B.Cu")
 		(uuid "0971bb2a-01b1-4ff1-9451-af6a12f06b75")
-		(at 149 56.75 90)
+		(at 149 66.75 90)
 		(descr "Resistor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Yageo AC1206, Vishay CRCW1206/CRCW1206-HP, Panasonic ERJ-P08 and KOA SG73P2B datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Resistor_SMD.yaml)")
 		(tags "resistor")
 		(property "Reference" "R516"
@@ -26175,7 +24990,7 @@
 	(footprint "DropOut_Resistor_SMD:R_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "146c6e0f-e267-417a-8996-553c152a02c0")
-		(at 157.75 38.25 180)
+		(at 157.75 48.25 180)
 		(descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Yageo AC0402 and Panasonic ERJ-2G/ERJ-2R datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Resistor_SMD.yaml)")
 		(tags "resistor")
 		(property "Reference" "R501"
@@ -27880,7 +26695,7 @@
 	(footprint "DropOut_Resistor_SMD:R_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "1df3ec68-c416-499c-9986-87072ddd445f")
-		(at 159.7 35.5 -90)
+		(at 159.7 45.5 -90)
 		(descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Yageo AC0402 and Panasonic ERJ-2G/ERJ-2R datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Resistor_SMD.yaml)")
 		(tags "resistor")
 		(property "Reference" "R503"
@@ -28123,7 +26938,7 @@
 	(footprint "DropOut_Resistor_SMD:R_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "1e01a1d5-d619-4ea0-890a-24a72e96caab")
-		(at 160.75 35.5 -90)
+		(at 160.75 45.5 -90)
 		(descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Yageo AC0402 and Panasonic ERJ-2G/ERJ-2R datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Resistor_SMD.yaml)")
 		(tags "resistor")
 		(property "Reference" "R504"
@@ -30309,7 +29124,7 @@
 	(footprint "DropOut_Capacitor_SMD:C_1210_3225Metric"
 		(layer "B.Cu")
 		(uuid "23638f8b-b973-4a0b-8b80-bf06116d3db7")
-		(at 146 34.75 180)
+		(at 146 32.5 180)
 		(descr "Capacitor SMD 1210 (3225 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Murata GCM32E, TDK CNA6, KEMET and KYOCERA AVX 1210 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Capacitor_SMD.yaml)")
 		(tags "capacitor")
 		(property "Reference" "C206"
@@ -31672,11 +30487,11 @@
 	(footprint "DropOut_Capacitor_SMD:C_1206_3216Metric"
 		(layer "B.Cu")
 		(uuid "308d8b09-b1ac-41b7-adcc-6498499f666f")
-		(at 163.073 66.0471 180)
+		(at 155 38 90)
 		(descr "Capacitor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Murata GCM31C, TDK CGA5 and KEMET 1206 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Capacitor_SMD.yaml)")
 		(tags "capacitor")
 		(property "Reference" "C508"
-			(at 0 1.85 0)
+			(at 0 1.85 270)
 			(layer "B.SilkS")
 			(uuid "fe536142-8347-48a3-8728-6eee20f340fd")
 			(effects
@@ -31688,7 +30503,7 @@
 			)
 		)
 		(property "Value" "10uF"
-			(at 0 -1.85 0)
+			(at 0 -1.85 270)
 			(layer "B.Fab")
 			(uuid "c3b149f2-d5f0-4bb2-a9ea-f319626ea144")
 			(effects
@@ -31700,7 +30515,7 @@
 			)
 		)
 		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM31CR71C106KA64-01A-EN_PDF_CERAMICCAPACITORSMD"
-			(at 0 0 0)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "71f6f9bd-fe1e-46c6-ba1e-4224750e3585")
@@ -31712,7 +30527,7 @@
 			)
 		)
 		(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 10 µF ±10%, 16 V, X7R, AEC-Q200, -55 to +125 °C, 1206 (3216 metric)"
-			(at 0 0 0)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "c5ab6f03-b2b8-46df-b77e-f7d32255982c")
@@ -31724,7 +30539,7 @@
 			)
 		)
 		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 0)
+			(at 0 0 270)
 			(layer "B.SilkS")
 			(hide yes)
 			(uuid "a0bc2f44-f8a1-4806-998f-4807d322ed10")
@@ -31737,7 +30552,7 @@
 			)
 		)
 		(property "Manufacturer" "Murata"
-			(at 0 0 0)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "c0c12ce9-d2b3-4af1-8f91-8ced447dde3a")
@@ -31749,7 +30564,7 @@
 			)
 		)
 		(property "MPN" "GCM31CR71C106KA64L"
-			(at 0 0 0)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "fc447929-ffd0-4876-9b7b-cd1112070718")
@@ -31761,7 +30576,7 @@
 			)
 		)
 		(property "DigiKey_PN" "490-4793-1-ND"
-			(at 0 0 0)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "48bc11a9-05cd-427b-83ce-9b0c73b7bd3f")
@@ -31773,7 +30588,7 @@
 			)
 		)
 		(property "Mouser_PN" "81-GCM31CR71C106KA4L"
-			(at 0 0 0)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "e400740b-fef2-4617-a587-2fbe90f749f3")
@@ -31785,7 +30600,7 @@
 			)
 		)
 		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
-			(at 0 0 0)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "9d4682c3-a333-44c2-b55b-f662625096b4")
@@ -31797,7 +30612,7 @@
 			)
 		)
 		(property "Voltage" "16V"
-			(at 0 0 0)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "922f85f7-928d-473a-8577-f960a2b6ea6f")
@@ -31809,7 +30624,7 @@
 			)
 		)
 		(property "Tolerance" "±10%"
-			(at 0 0 0)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "c22c55de-ae2d-4696-8240-403391717856")
@@ -31821,7 +30636,7 @@
 			)
 		)
 		(property "Dielectric" "X7R"
-			(at 0 0 0)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "7b94b6bc-3404-4d54-8350-1feb2d0a1d39")
@@ -31833,7 +30648,7 @@
 			)
 		)
 		(property "Case" "1206"
-			(at 0 0 0)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "8e597e61-f54a-4888-86a0-d9073c08725b")
@@ -31845,7 +30660,7 @@
 			)
 		)
 		(property "Notes" "No AEC-Q200 10 uF 16 V X7R part exists in the drawn 0805 package (DigiKey parametric search, 2026-10-22); built in the next larger package, 1206."
-			(at 0 0 0)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "26cf485d-1e74-4b0d-944b-ccf653143663")
@@ -31862,16 +30677,6 @@
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
-			(start -0.661252 0.91)
-			(end 0.661252 0.91)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "B.SilkS")
-			(uuid "86e301a3-c33e-4d76-8873-d91ef5c18e21")
-		)
-		(fp_line
 			(start -0.661252 -0.91)
 			(end 0.661252 -0.91)
 			(stroke
@@ -31880,6 +30685,16 @@
 			)
 			(layer "B.SilkS")
 			(uuid "73568c88-495b-4664-b2a7-b71d4e9d125b")
+		)
+		(fp_line
+			(start -0.661252 0.91)
+			(end 0.661252 0.91)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "B.SilkS")
+			(uuid "86e301a3-c33e-4d76-8873-d91ef5c18e21")
 		)
 		(fp_rect
 			(start -2.3 1.15)
@@ -31904,7 +30719,7 @@
 			(uuid "b7a1cb25-e74a-4f04-9758-0c2b3ebe3efc")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(uuid "e7d9497e-9edc-4d60-a0cf-f6bc1c2772ad")
 			(effects
@@ -31916,7 +30731,7 @@
 			)
 		)
 		(pad "1" smd roundrect
-			(at -1.45 0 180)
+			(at -1.45 0 90)
 			(size 1.2 1.8)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.208333)
@@ -31924,7 +30739,7 @@
 			(uuid "aa5ed44b-a1fc-465a-83db-8a32aec294fb")
 		)
 		(pad "2" smd roundrect
-			(at 1.45 0 180)
+			(at 1.45 0 90)
 			(size 1.2 1.8)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.208333)
@@ -33047,6 +31862,258 @@
 		)
 		(embedded_fonts no)
 	)
+	(footprint "DropOut_Capacitor_SMD:C_0402_1005Metric"
+		(layer "B.Cu")
+		(uuid "385b991e-7735-42d8-b07c-a2aaf6432105")
+		(at 158.7 39.8 90)
+		(descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Murata GCM155 and TDK CGA2 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Capacitor_SMD.yaml)")
+		(tags "capacitor")
+		(property "Reference" "C503"
+			(at 0 1.15 90)
+			(layer "B.SilkS")
+			(uuid "7b56a684-4e1a-4b89-8f8d-78323fecb3b2")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Value" "10nF"
+			(at 0 -1.15 90)
+			(layer "B.Fab")
+			(uuid "40c3f0e0-791c-4e60-8e37-addfa9454c5a")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM155R71H103KA55-01A-EN_PDF_CERAMICCAPACITORSMD"
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "0891e51c-66bb-436f-8ada-c1bcc08b92a8")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 10 nF ±10%, 50 V, X7R, AEC-Q200, -55 to +125 °C, 0402 (1005 metric)"
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "dfe2d642-f0d6-489a-8ca9-1e81dd0b9086")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify mirror)
+			)
+		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 0 0 90)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "5690b363-0403-41fa-9367-bb8285b9f078")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Manufacturer" "Murata"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "8c42d68a-d6b0-4e0d-9b32-a211510f87c4")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "MPN" "GCM155R71H103KA55D"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "7f30bea2-d5c6-4a65-aa49-475a173e076a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "DigiKey_PN" "490-4762-1-ND"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "677a3f0f-d42c-483e-b97f-16faeb9a07d4")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Mouser_PN" "81-GCM155R71H103KA5D"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "6862e3c2-c2af-4b86-b52d-2ec7932bc9dc")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "a6b443b4-473f-4df3-bd4f-cb449b5444c7")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Voltage" "50V"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "1ca8e957-aefe-45ff-9536-1dbb8347d1df")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Tolerance" "±10%"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "f48e6225-e2fe-405f-8623-47db9e86c7aa")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Dielectric" "X7R"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "b14fa650-569b-4171-9141-f614e46bba48")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Case" "0402"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "81e054e9-ec36-40d7-bde7-526e6d87050d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(path "/3875e4cc-63e7-4387-b67f-49f6a7b34a4e/b2bc8a77-43f4-5e24-82b7-6bc699131b94")
+		(sheetname "T1S")
+		(sheetfile "sheets/t1s.kicad_sch")
+		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_rect
+			(start -0.9 0.45)
+			(end 0.9 -0.45)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "B.CrtYd")
+			(uuid "8e26d7f9-00f3-40f1-8123-f6b6337d1a0a")
+		)
+		(fp_rect
+			(start -0.5 0.25)
+			(end 0.5 -0.25)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill no)
+			(layer "B.Fab")
+			(uuid "dbdb06dc-ea5e-49db-9f52-533ac090db00")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 90)
+			(layer "B.Fab")
+			(uuid "c70b4706-ea96-4e78-9430-14ef61694acd")
+			(effects
+				(font
+					(size 0.25 0.25)
+					(thickness 0.04)
+				)
+				(justify mirror)
+			)
+		)
+		(pad "1" smd roundrect
+			(at -0.46 0 90)
+			(size 0.58 0.6)
+			(layers "B.Cu" "B.Mask" "B.Paste")
+			(roundrect_rratio 0.25)
+			(net "3V3_MAIN")
+			(uuid "f23d7f76-7b8d-4949-809f-1d59688bdb08")
+		)
+		(pad "2" smd roundrect
+			(at 0.46 0 90)
+			(size 0.58 0.6)
+			(layers "B.Cu" "B.Mask" "B.Paste")
+			(roundrect_rratio 0.25)
+			(net "GND")
+			(uuid "58dd1186-b004-4ac7-a2f5-3ad15a929f90")
+		)
+		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
 	(footprint "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
 		(layer "B.Cu")
 		(uuid "38de2917-8506-4265-8338-4bcacc921684")
@@ -33984,7 +33051,7 @@
 	(footprint "DropOut_Resistor_SMD:R_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "3cff36d7-443d-4b55-a949-aba9f1df4bb8")
-		(at 151.25 34 -90)
+		(at 151.25 44 -90)
 		(descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Yageo AC0402 and Panasonic ERJ-2G/ERJ-2R datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Resistor_SMD.yaml)")
 		(tags "resistor")
 		(property "Reference" "R510"
@@ -34890,7 +33957,7 @@
 	(footprint "DropOut_Resistor_SMD:R_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "41b4d314-9da2-4f13-ac0a-d51605dab38e")
-		(at 164.25 35.75 90)
+		(at 164.25 45.75 90)
 		(descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Yageo AC0402 and Panasonic ERJ-2G/ERJ-2R datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Resistor_SMD.yaml)")
 		(tags "resistor")
 		(property "Reference" "R506"
@@ -35408,7 +34475,7 @@
 	(footprint "DropOut_Resistor_SMD:R_1206_3216Metric"
 		(layer "B.Cu")
 		(uuid "426be4f9-2b5a-4215-a2d2-eddb3cbae5c0")
-		(at 149 52 90)
+		(at 149 62 90)
 		(descr "Resistor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Yageo AC1206, Vishay CRCW1206/CRCW1206-HP, Panasonic ERJ-P08 and KOA SG73P2B datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Resistor_SMD.yaml)")
 		(tags "resistor")
 		(property "Reference" "R517"
@@ -35695,7 +34762,7 @@
 	(footprint "DropOut_Resistor_SMD:R_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "43caccff-824a-476a-9d0e-af461595588a")
-		(at 152.25 32.75 -90)
+		(at 152.25 42.75 -90)
 		(descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Yageo AC0402 and Panasonic ERJ-2G/ERJ-2R datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Resistor_SMD.yaml)")
 		(tags "resistor")
 		(property "Reference" "R505"
@@ -35938,7 +35005,7 @@
 	(footprint "DropOut_Package_DFN_QFN:Microchip_LMX_VQFN-32-1EP_5x5mm_P0.5mm_EP3.5x3.5mm"
 		(layer "B.Cu")
 		(uuid "44b93166-fb46-4a2d-8ea1-19dd6ead1372")
-		(at 156 33.549999)
+		(at 156 43.549999)
 		(descr "Microchip LMX VQFN, 32 Pin (https://ww1.microchip.com/downloads/aemDocuments/documents/AIS/ProductDocuments/DataSheets/LAN8670-1-2-Data-Sheet-60001573.pdf#page=267)")
 		(tags "Microchip VQFN NoLead")
 		(property "Reference" "U501"
@@ -36727,7 +35794,7 @@
 	(footprint "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
 		(layer "B.Cu")
 		(uuid "45704e68-7b46-49c4-91f4-8d1a3e5de226")
-		(at 148.75 32)
+		(at 148.75 42)
 		(descr "Exposed copper test pad, diameter 1.0mm, solder mask opening only (no paste, no part), https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/TestPoint.py")
 		(tags "test point pad exposed copper")
 		(property "Reference" "TP503"
@@ -37073,7 +36140,7 @@
 	(footprint "DropOut_Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "45d39e5d-80b5-4e4c-8b97-d750335ca0a6")
-		(at 158.25 37.25)
+		(at 158.25 47.25)
 		(descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Murata GCM155 and TDK CGA2 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Capacitor_SMD.yaml)")
 		(tags "capacitor")
 		(property "Reference" "C509"
@@ -37325,7 +36392,7 @@
 	(footprint "DropOut_Inductor_SMD:L_CommonModeChoke_TDK_ACT1210E_3.2x2.5mm"
 		(layer "B.Cu")
 		(uuid "4679b289-810e-47f4-b0bc-5b8a9b9b564e")
-		(at 155 39.924999 -90)
+		(at 155 49.924999 -90)
 		(descr "TDK ACT1210E common mode filter, 3.2x2.5mm (data sheet 20240325 p. 3, recommended land pattern), https://mm.digikey.com/Volume0/opasdata/d220001/medias/docus/6152/ACT1210E.pdf")
 		(tags "common mode choke filter automotive Ethernet 1210 3225")
 		(property "Reference" "FL501"
@@ -39972,7 +39039,7 @@
 	(footprint "DropOut_Resistor_SMD:R_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "4f793242-594c-497c-bae0-2ca7ac27cfe2")
-		(at 164.2116 63.3948 -90)
+		(at 162.75 62 -90)
 		(descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Yageo AC0402 and Panasonic ERJ-2G/ERJ-2R datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Resistor_SMD.yaml)")
 		(tags "resistor")
 		(property "Reference" "R521"
@@ -41800,11 +40867,11 @@
 	(footprint "DropOut_Capacitor_SMD:C_1206_3216Metric"
 		(layer "B.Cu")
 		(uuid "534b28e9-43c6-4310-9f47-3144fdc1b472")
-		(at 137.8453 58.4439 90)
+		(at 149.5 39.75 180)
 		(descr "Capacitor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Murata GCM31C, TDK CGA5 and KEMET 1206 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Capacitor_SMD.yaml)")
 		(tags "capacitor")
 		(property "Reference" "C505"
-			(at 0 1.85 270)
+			(at 0 1.85 0)
 			(layer "B.SilkS")
 			(uuid "87d70ce0-c1c5-46d8-ae0b-c4824512f01c")
 			(effects
@@ -41816,7 +40883,7 @@
 			)
 		)
 		(property "Value" "10uF"
-			(at 0 -1.85 270)
+			(at 0 -1.85 0)
 			(layer "B.Fab")
 			(uuid "0f4383f5-b5cb-4f89-bdb1-dc8518a08ad0")
 			(effects
@@ -41828,7 +40895,7 @@
 			)
 		)
 		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM31CR71C106KA64-01A-EN_PDF_CERAMICCAPACITORSMD"
-			(at 0 0 270)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "c4c26e22-0147-4aa7-ad45-0e08994f3ff4")
@@ -41840,7 +40907,7 @@
 			)
 		)
 		(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 10 µF ±10%, 16 V, X7R, AEC-Q200, -55 to +125 °C, 1206 (3216 metric)"
-			(at 0 0 270)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "054f96a8-8750-4943-9345-ab18c189e9c4")
@@ -41852,7 +40919,7 @@
 			)
 		)
 		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
-			(at 0 0 270)
+			(at 0 0 0)
 			(layer "B.SilkS")
 			(hide yes)
 			(uuid "ecf8c85a-0dbc-45ca-b111-04f69062c96f")
@@ -41865,7 +40932,7 @@
 			)
 		)
 		(property "Manufacturer" "Murata"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "28566831-d46f-413f-85a2-264c36f79060")
@@ -41877,7 +40944,7 @@
 			)
 		)
 		(property "MPN" "GCM31CR71C106KA64L"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "fa603986-1900-44bd-9050-e14c55fedff9")
@@ -41889,7 +40956,7 @@
 			)
 		)
 		(property "DigiKey_PN" "490-4793-1-ND"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "b3d38861-44bb-48f7-bd80-19f9c74f8e3a")
@@ -41901,7 +40968,7 @@
 			)
 		)
 		(property "Mouser_PN" "81-GCM31CR71C106KA4L"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "03295fed-1970-4544-badc-6bd9f92e94ec")
@@ -41913,7 +40980,7 @@
 			)
 		)
 		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "ca9da923-1258-4c7f-971a-275485605998")
@@ -41925,7 +40992,7 @@
 			)
 		)
 		(property "Voltage" "16V"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "fbf73a01-1651-4862-a88e-a9155feb7a19")
@@ -41937,7 +41004,7 @@
 			)
 		)
 		(property "Tolerance" "±10%"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "c0dbf0c8-52a8-4363-8d7a-04c3d72746e7")
@@ -41949,7 +41016,7 @@
 			)
 		)
 		(property "Dielectric" "X7R"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "d7c8e955-a809-4f16-98a9-dd4363fbde1d")
@@ -41961,7 +41028,7 @@
 			)
 		)
 		(property "Case" "1206"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "b344e061-ba6c-4ed0-8caf-f1eb06036a56")
@@ -41973,7 +41040,7 @@
 			)
 		)
 		(property "Notes" "No AEC-Q200 10 uF 16 V X7R part exists in the drawn 0805 package (DigiKey parametric search, 2026-10-22); built in the next larger package, 1206."
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "637e7832-ff7e-4ca4-8dcb-ae1f8d215e40")
@@ -41990,16 +41057,6 @@
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
-			(start -0.661252 -0.91)
-			(end 0.661252 -0.91)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "B.SilkS")
-			(uuid "6813011c-129d-4df4-bd17-3552e2ac608a")
-		)
-		(fp_line
 			(start -0.661252 0.91)
 			(end 0.661252 0.91)
 			(stroke
@@ -42008,6 +41065,16 @@
 			)
 			(layer "B.SilkS")
 			(uuid "7f4ecb8f-39a9-40a6-bcbb-e1fb13e9a650")
+		)
+		(fp_line
+			(start -0.661252 -0.91)
+			(end 0.661252 -0.91)
+			(stroke
+				(width 0.12)
+				(type solid)
+			)
+			(layer "B.SilkS")
+			(uuid "6813011c-129d-4df4-bd17-3552e2ac608a")
 		)
 		(fp_rect
 			(start -2.3 1.15)
@@ -42032,7 +41099,7 @@
 			(uuid "dd83d4db-b4bc-4219-98b7-9f0ce5ff6e43")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 270)
+			(at 0 0 0)
 			(layer "B.Fab")
 			(uuid "54f79cd1-cba7-4fd0-9148-843618a5d237")
 			(effects
@@ -42044,7 +41111,7 @@
 			)
 		)
 		(pad "1" smd roundrect
-			(at -1.45 0 90)
+			(at -1.45 0 180)
 			(size 1.2 1.8)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.208333)
@@ -42052,7 +41119,7 @@
 			(uuid "4c58e40d-102e-4401-8dcf-8413d30a4c2f")
 		)
 		(pad "2" smd roundrect
-			(at 1.45 0 90)
+			(at 1.45 0 180)
 			(size 1.2 1.8)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.208333)
@@ -42338,11 +41405,11 @@
 	(footprint "DropOut_Package_TO_SOT_SMD:Diodes_SOT-563"
 		(layer "B.Cu")
 		(uuid "5498e7d1-4aed-481e-93f6-5c5ff4dd0f4e")
-		(at 162.1 63.4 180)
+		(at 163.25 64.25 90)
 		(descr "Diodes Incorporated SOT563, 6 pin, 1.6x1.2mm body, 0.5mm pitch, flat leads (DMC2710UVQ data sheet DS43454 Rev. 3-2 p. 10, Suggested Pad Layout), https://www.diodes.com/assets/Datasheets/DMC2710UVQ.pdf")
 		(tags "SOT-563 SOT563 Diodes flat lead")
 		(property "Reference" "Q501"
-			(at 0 1.85 0)
+			(at 0 1.85 270)
 			(layer "B.SilkS")
 			(uuid "fc0cb79b-1eee-4423-90aa-a26b96f0401c")
 			(effects
@@ -42354,7 +41421,7 @@
 			)
 		)
 		(property "Value" "DMC2710UVQ-7"
-			(at 0 -1.85 0)
+			(at 0 -1.85 270)
 			(layer "B.Fab")
 			(uuid "7f07dcb8-7839-4940-9b32-610b306ae9ac")
 			(effects
@@ -42366,7 +41433,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.diodes.com/assets/Datasheets/DMC2710UVQ.pdf"
-			(at 0 0 0)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "47befa71-6772-4012-9946-ec73875d3ed9")
@@ -42378,7 +41445,7 @@
 			)
 		)
 		(property "Description" "Diodes DMC2710UVQ complementary N + P MOSFET pair, 20 V / -20 V, N 0.4 Ω max at VGS 4.5 V (1.1 A), P 0.7 Ω max at VGS -4.5 V (-0.8 A), ±6 V VGS, ESD-protected gates, AEC-Q101, SOT-563"
-			(at 0 0 0)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "11ce972e-9ed4-4412-a955-6e8dc902ea4c")
@@ -42390,7 +41457,7 @@
 			)
 		)
 		(property "Manufacturer" "Diodes Incorporated"
-			(at 0 0 0)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "a04049cc-8586-41a2-b487-370af1de2fc9")
@@ -42402,7 +41469,7 @@
 			)
 		)
 		(property "MPN" "DMC2710UVQ-7"
-			(at 0 0 0)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "9f349464-f81e-4e9e-adc7-7ca8d44464bd")
@@ -42414,7 +41481,7 @@
 			)
 		)
 		(property "DigiKey_PN" "31-DMC2710UVQ-7CT-ND"
-			(at 0 0 0)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "ce960ce2-b508-4f45-8d6b-ebd2df028c67")
@@ -42426,7 +41493,7 @@
 			)
 		)
 		(property "Mouser_PN" "621-DMC2710UVQ-7"
-			(at 0 0 0)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "daac51b6-bdc7-4473-9047-333d9e30cff9")
@@ -42438,7 +41505,7 @@
 			)
 		)
 		(property "Temperature_Grade" "AEC-Q101, Tj -55 to +150 °C"
-			(at 0 0 0)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "8c91616e-d850-479b-95c9-77c85ed664ca")
@@ -42450,7 +41517,7 @@
 			)
 		)
 		(property "Notes" "Unit A = N-channel (G1 2, D1 6, S1 1), unit B = P-channel (G2 5, D2 3, S2 4). VGS max ±6 V. Data sheet marked Advanced Information."
-			(at 0 0 0)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "6e454563-521d-4ebd-8af0-78f3e609bbdb")
@@ -42462,7 +41529,7 @@
 			)
 		)
 		(property "ki_keywords" "MOSFET complementary N-channel P-channel pair dual transistor half bridge"
-			(at 0 0 0)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "3054c1ac-afa9-4b33-9c79-8bacafec4e11")
@@ -42499,16 +41566,6 @@
 			(uuid "ed0e49af-b730-455f-9c55-027a9ff5e128")
 		)
 		(fp_line
-			(start 1.25 1.05)
-			(end 1.25 -1.05)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "B.CrtYd")
-			(uuid "a61b7140-dc32-4182-842b-976b7c9b2509")
-		)
-		(fp_line
 			(start 1.25 -1.05)
 			(end -1.25 -1.05)
 			(stroke
@@ -42517,16 +41574,6 @@
 			)
 			(layer "B.CrtYd")
 			(uuid "ec115132-7ff7-4737-b180-045c515dbbe0")
-		)
-		(fp_line
-			(start -1.25 1.05)
-			(end 1.25 1.05)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "B.CrtYd")
-			(uuid "c0f06c28-c257-46e4-a161-e61906ecc2e5")
 		)
 		(fp_line
 			(start -1.25 -1.05)
@@ -42539,14 +41586,24 @@
 			(uuid "2099ba02-a74c-46d1-9251-c7756cdfb987")
 		)
 		(fp_line
-			(start 0.6 0.8)
-			(end 0.6 -0.8)
+			(start 1.25 1.05)
+			(end 1.25 -1.05)
 			(stroke
-				(width 0.1)
+				(width 0.05)
 				(type solid)
 			)
-			(layer "B.Fab")
-			(uuid "69888039-39f2-4ed4-bfb3-814890dbf2b4")
+			(layer "B.CrtYd")
+			(uuid "a61b7140-dc32-4182-842b-976b7c9b2509")
+		)
+		(fp_line
+			(start -1.25 1.05)
+			(end 1.25 1.05)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "B.CrtYd")
+			(uuid "c0f06c28-c257-46e4-a161-e61906ecc2e5")
 		)
 		(fp_line
 			(start 0.6 -0.8)
@@ -42559,14 +41616,14 @@
 			(uuid "08045e81-16d1-410d-a696-19a6912a4cbb")
 		)
 		(fp_line
-			(start -0.3 0.8)
-			(end 0.6 0.8)
+			(start -0.6 -0.8)
+			(end -0.6 0.5)
 			(stroke
 				(width 0.1)
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "26afe7fd-58cc-420e-8baf-dfe81b69a942")
+			(uuid "2b6a8cff-efa3-4b73-a2d9-63aa5c8fe68a")
 		)
 		(fp_line
 			(start -0.6 0.5)
@@ -42579,17 +41636,27 @@
 			(uuid "c84a1d87-79c2-4981-b808-177771241f9a")
 		)
 		(fp_line
-			(start -0.6 -0.8)
-			(end -0.6 0.5)
+			(start 0.6 0.8)
+			(end 0.6 -0.8)
 			(stroke
 				(width 0.1)
 				(type solid)
 			)
 			(layer "B.Fab")
-			(uuid "2b6a8cff-efa3-4b73-a2d9-63aa5c8fe68a")
+			(uuid "69888039-39f2-4ed4-bfb3-814890dbf2b4")
+		)
+		(fp_line
+			(start -0.3 0.8)
+			(end 0.6 0.8)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "B.Fab")
+			(uuid "26afe7fd-58cc-420e-8baf-dfe81b69a942")
 		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 0)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(uuid "516964b9-301c-4b80-ab5a-7757f73f87a8")
 			(effects
@@ -42601,7 +41668,7 @@
 			)
 		)
 		(pad "1" smd roundrect
-			(at -0.635 0.5 180)
+			(at -0.635 0.5 90)
 			(size 0.67 0.3)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -42609,7 +41676,7 @@
 			(uuid "20e146ad-cc0f-4557-ae1c-8225b1481546")
 		)
 		(pad "2" smd roundrect
-			(at -0.635 0 180)
+			(at -0.635 0 90)
 			(size 0.67 0.3)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -42617,7 +41684,7 @@
 			(uuid "39f6fb39-82b5-4d87-a0ec-3d4205218283")
 		)
 		(pad "3" smd roundrect
-			(at -0.635 -0.5 180)
+			(at -0.635 -0.5 90)
 			(size 0.67 0.3)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -42625,7 +41692,7 @@
 			(uuid "55492315-318e-417d-822d-2cc16043b77f")
 		)
 		(pad "4" smd roundrect
-			(at 0.635 -0.5 180)
+			(at 0.635 -0.5 90)
 			(size 0.67 0.3)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -42633,7 +41700,7 @@
 			(uuid "700507f8-8d70-40ef-ba80-9139f5052151")
 		)
 		(pad "5" smd roundrect
-			(at 0.635 0 180)
+			(at 0.635 0 90)
 			(size 0.67 0.3)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -42641,7 +41708,7 @@
 			(uuid "34ac5f60-1f15-43f2-99da-1d797eac050e")
 		)
 		(pad "6" smd roundrect
-			(at 0.635 0.5 180)
+			(at 0.635 0.5 90)
 			(size 0.67 0.3)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -43080,7 +42147,7 @@
 	(footprint "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
 		(layer "B.Cu")
 		(uuid "5a5879ef-6755-4245-b7df-aad66110d829")
-		(at 149.75 36)
+		(at 149.75 46)
 		(descr "Exposed copper test pad, diameter 1.0mm, solder mask opening only (no paste, no part), https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/TestPoint.py")
 		(tags "test point pad exposed copper")
 		(property "Reference" "TP504"
@@ -45360,7 +44427,7 @@
 	(footprint "DropOut_Capacitor_SMD:C_0805_2012Metric"
 		(layer "B.Cu")
 		(uuid "67104d9f-a4cb-41a8-a0b1-06e5054d5204")
-		(at 158.5 47.25 90)
+		(at 158.5 57.25 90)
 		(descr "Capacitor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Murata GCM21B and TDK CGA4 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Capacitor_SMD.yaml)")
 		(tags "capacitor")
 		(property "Reference" "C514"
@@ -45647,7 +44714,7 @@
 	(footprint "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
 		(layer "B.Cu")
 		(uuid "67240d8c-3676-4950-a910-18ad0b4be954")
-		(at 166.75 36)
+		(at 166.75 33.5)
 		(descr "Exposed copper test pad, diameter 1.0mm, solder mask opening only (no paste, no part), https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/TestPoint.py")
 		(tags "test point pad exposed copper")
 		(property "Reference" "TP301"
@@ -47268,7 +46335,7 @@
 	(footprint "DropOut_Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "6da73894-12e8-429c-92c9-76c7bf433340")
-		(at 159.25 38.75 90)
+		(at 159.25 48.75 90)
 		(descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Murata GCM155 and TDK CGA2 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Capacitor_SMD.yaml)")
 		(tags "capacitor")
 		(property "Reference" "C510"
@@ -48853,7 +47920,7 @@
 	(footprint "DropOut_Resistor_SMD:R_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "761cc994-b786-449f-baa1-8a918d770b03")
-		(at 152.25 34.75 -90)
+		(at 152.25 44.75 -90)
 		(descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Yageo AC0402 and Panasonic ERJ-2G/ERJ-2R datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Resistor_SMD.yaml)")
 		(tags "resistor")
 		(property "Reference" "R509"
@@ -49096,7 +48163,7 @@
 	(footprint "DropOut_Resistor_SMD:R_1206_3216Metric"
 		(layer "B.Cu")
 		(uuid "780ef154-f2b9-4161-9668-57c4b4aa94ae")
-		(at 161 51.5 90)
+		(at 161 61.5 90)
 		(descr "Resistor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Yageo AC1206, Vishay CRCW1206/CRCW1206-HP, Panasonic ERJ-P08 and KOA SG73P2B datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Resistor_SMD.yaml)")
 		(tags "resistor")
 		(property "Reference" "R519"
@@ -52965,11 +52032,11 @@
 	(footprint "DropOut_Package_TO_SOT_SMD:Diodes_SOT-563"
 		(layer "B.Cu")
 		(uuid "8154f5eb-ac2c-4c1b-aa04-3466a800e15d")
-		(at 155.194 63.0505)
+		(at 163.25 67 90)
 		(descr "Diodes Incorporated SOT563, 6 pin, 1.6x1.2mm body, 0.5mm pitch, flat leads (DMC2710UVQ data sheet DS43454 Rev. 3-2 p. 10, Suggested Pad Layout), https://www.diodes.com/assets/Datasheets/DMC2710UVQ.pdf")
 		(tags "SOT-563 SOT563 Diodes flat lead")
 		(property "Reference" "Q502"
-			(at 0 1.85 180)
+			(at 0 1.85 270)
 			(layer "B.SilkS")
 			(uuid "89dfb47a-e867-4c20-93b3-ee2f782f0bbf")
 			(effects
@@ -52981,7 +52048,7 @@
 			)
 		)
 		(property "Value" "DMC2710UVQ-7"
-			(at 0 -1.85 180)
+			(at 0 -1.85 270)
 			(layer "B.Fab")
 			(uuid "b12f07d2-1bd2-48aa-bf72-1902ad7f4944")
 			(effects
@@ -52993,7 +52060,7 @@
 			)
 		)
 		(property "Datasheet" "https://www.diodes.com/assets/Datasheets/DMC2710UVQ.pdf"
-			(at 0 0 180)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "9d1913eb-2c7e-4246-9c4a-f85fe3a645b2")
@@ -53005,7 +52072,7 @@
 			)
 		)
 		(property "Description" "Diodes DMC2710UVQ complementary N + P MOSFET pair, 20 V / -20 V, N 0.4 Ω max at VGS 4.5 V (1.1 A), P 0.7 Ω max at VGS -4.5 V (-0.8 A), ±6 V VGS, ESD-protected gates, AEC-Q101, SOT-563"
-			(at 0 0 180)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "ec7e79e5-889e-4da5-a9eb-a53229702c38")
@@ -53017,7 +52084,7 @@
 			)
 		)
 		(property "Manufacturer" "Diodes Incorporated"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "92baa336-be28-417a-94c2-c384d5a9f85e")
@@ -53029,7 +52096,7 @@
 			)
 		)
 		(property "MPN" "DMC2710UVQ-7"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "c50b4fcd-192e-4811-b938-be66272ca873")
@@ -53041,7 +52108,7 @@
 			)
 		)
 		(property "DigiKey_PN" "31-DMC2710UVQ-7CT-ND"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "4a7fb20a-5a13-4e36-8f8e-0044d819b3a5")
@@ -53053,7 +52120,7 @@
 			)
 		)
 		(property "Mouser_PN" "621-DMC2710UVQ-7"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "35f242af-8a5a-4ea2-8497-3bce2d68ff94")
@@ -53065,7 +52132,7 @@
 			)
 		)
 		(property "Temperature_Grade" "AEC-Q101, Tj -55 to +150 °C"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "e11ba77d-3fcd-4228-9a7b-f88e47c12f2d")
@@ -53077,7 +52144,7 @@
 			)
 		)
 		(property "Notes" "Unit A = N-channel (G1 2, D1 6, S1 1), unit B = P-channel (G2 5, D2 3, S2 4). VGS max ±6 V. Data sheet marked Advanced Information."
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "7daab7bd-27cf-44c9-ad36-3b50bb849b8e")
@@ -53089,7 +52156,7 @@
 			)
 		)
 		(property "ki_keywords" "MOSFET complementary N-channel P-channel pair dual transistor half bridge"
-			(at 0 0 0)
+			(at 0 0 90)
 			(layer "B.Fab")
 			(hide yes)
 			(uuid "d421a68f-f08c-4549-87bf-c2a3e1a5f038")
@@ -53106,16 +52173,6 @@
 		(attr smd)
 		(duplicate_pad_numbers_are_jumpers no)
 		(fp_line
-			(start -0.97 0.91)
-			(end 0.6 0.91)
-			(stroke
-				(width 0.12)
-				(type solid)
-			)
-			(layer "B.SilkS")
-			(uuid "cc115eee-65be-4c6b-86ee-31c4119387a1")
-		)
-		(fp_line
 			(start -0.6 -0.91)
 			(end 0.6 -0.91)
 			(stroke
@@ -53126,24 +52183,14 @@
 			(uuid "e7cafd4b-ad6f-49d0-81de-263819a92163")
 		)
 		(fp_line
-			(start -1.25 -1.05)
-			(end -1.25 1.05)
+			(start -0.97 0.91)
+			(end 0.6 0.91)
 			(stroke
-				(width 0.05)
+				(width 0.12)
 				(type solid)
 			)
-			(layer "B.CrtYd")
-			(uuid "0676ae56-7706-4294-a856-82fb7fdcb1f3")
-		)
-		(fp_line
-			(start -1.25 1.05)
-			(end 1.25 1.05)
-			(stroke
-				(width 0.05)
-				(type solid)
-			)
-			(layer "B.CrtYd")
-			(uuid "477d1866-9acd-4f4b-8261-ee3116558523")
+			(layer "B.SilkS")
+			(uuid "cc115eee-65be-4c6b-86ee-31c4119387a1")
 		)
 		(fp_line
 			(start 1.25 -1.05)
@@ -53156,6 +52203,16 @@
 			(uuid "04c43bcc-6281-4c4e-87e3-8e4feefb75f1")
 		)
 		(fp_line
+			(start -1.25 -1.05)
+			(end -1.25 1.05)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "B.CrtYd")
+			(uuid "0676ae56-7706-4294-a856-82fb7fdcb1f3")
+		)
+		(fp_line
 			(start 1.25 1.05)
 			(end 1.25 -1.05)
 			(stroke
@@ -53164,6 +52221,26 @@
 			)
 			(layer "B.CrtYd")
 			(uuid "2b8f0630-3c5f-4feb-ad16-c47a30adbcbd")
+		)
+		(fp_line
+			(start -1.25 1.05)
+			(end 1.25 1.05)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(layer "B.CrtYd")
+			(uuid "477d1866-9acd-4f4b-8261-ee3116558523")
+		)
+		(fp_line
+			(start 0.6 -0.8)
+			(end -0.6 -0.8)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "B.Fab")
+			(uuid "ac213422-57d9-4a39-9463-895a2b8beca1")
 		)
 		(fp_line
 			(start -0.6 -0.8)
@@ -53186,26 +52263,6 @@
 			(uuid "e6e2f752-1d19-48e5-a746-07e98c29b22b")
 		)
 		(fp_line
-			(start -0.3 0.8)
-			(end 0.6 0.8)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "B.Fab")
-			(uuid "3ea6c7e7-ebf0-4826-85ec-1477c5a5c712")
-		)
-		(fp_line
-			(start 0.6 -0.8)
-			(end -0.6 -0.8)
-			(stroke
-				(width 0.1)
-				(type solid)
-			)
-			(layer "B.Fab")
-			(uuid "ac213422-57d9-4a39-9463-895a2b8beca1")
-		)
-		(fp_line
 			(start 0.6 0.8)
 			(end 0.6 -0.8)
 			(stroke
@@ -53215,8 +52272,18 @@
 			(layer "B.Fab")
 			(uuid "48c6e0e8-229d-4299-a536-4f61af98b49b")
 		)
+		(fp_line
+			(start -0.3 0.8)
+			(end 0.6 0.8)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(layer "B.Fab")
+			(uuid "3ea6c7e7-ebf0-4826-85ec-1477c5a5c712")
+		)
 		(fp_text user "${REFERENCE}"
-			(at 0 0 180)
+			(at 0 0 270)
 			(layer "B.Fab")
 			(uuid "c1e13a32-4ba7-4c43-b125-b2b30dc01413")
 			(effects
@@ -53228,7 +52295,7 @@
 			)
 		)
 		(pad "1" smd roundrect
-			(at -0.635 0.5)
+			(at -0.635 0.5 90)
 			(size 0.67 0.3)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -53236,7 +52303,7 @@
 			(uuid "e9817694-5efe-4651-8298-e2a50b7e30aa")
 		)
 		(pad "2" smd roundrect
-			(at -0.635 0)
+			(at -0.635 0 90)
 			(size 0.67 0.3)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -53244,7 +52311,7 @@
 			(uuid "e062dee6-efcc-4244-979f-9c7998587fc8")
 		)
 		(pad "3" smd roundrect
-			(at -0.635 -0.5)
+			(at -0.635 -0.5 90)
 			(size 0.67 0.3)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -53252,7 +52319,7 @@
 			(uuid "475a7a87-0b7f-42c0-81c0-56de2db1b912")
 		)
 		(pad "4" smd roundrect
-			(at 0.635 -0.5)
+			(at 0.635 -0.5 90)
 			(size 0.67 0.3)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -53260,7 +52327,7 @@
 			(uuid "346dfccd-c0e4-43e6-b52b-30f9ee898652")
 		)
 		(pad "5" smd roundrect
-			(at 0.635 0)
+			(at 0.635 0 90)
 			(size 0.67 0.3)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -53268,7 +52335,7 @@
 			(uuid "131a63d7-0df9-4f07-a4b1-31740001db18")
 		)
 		(pad "6" smd roundrect
-			(at 0.635 0.5)
+			(at 0.635 0.5 90)
 			(size 0.67 0.3)
 			(layers "B.Cu" "B.Mask" "B.Paste")
 			(roundrect_rratio 0.25)
@@ -58584,6 +57651,258 @@
 			)
 		)
 	)
+	(footprint "DropOut_Capacitor_SMD:C_0402_1005Metric"
+		(layer "B.Cu")
+		(uuid "a26b5e31-ae44-4e53-a8d3-e6f4092d0d0a")
+		(at 157.2 39.8 180)
+		(descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Murata GCM155 and TDK CGA2 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Capacitor_SMD.yaml)")
+		(tags "capacitor")
+		(property "Reference" "C506"
+			(at 0 1.15 180)
+			(layer "B.SilkS")
+			(uuid "4a965657-01aa-4737-ab72-768723097e2b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Value" "10nF"
+			(at 0 -1.15 180)
+			(layer "B.Fab")
+			(uuid "3172bb6c-f6b8-403c-9283-8da4c28443f8")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM155R71H103KA55-01A-EN_PDF_CERAMICCAPACITORSMD"
+			(at 0 0 180)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "4872c8f2-95a3-4284-ab26-b863daeecca9")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 10 nF ±10%, 50 V, X7R, AEC-Q200, -55 to +125 °C, 0402 (1005 metric)"
+			(at 0 0 180)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "72c1008c-90d3-4cc1-a883-24f46240ab72")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify mirror)
+			)
+		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 0 0 180)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "2d8f1fec-09b2-43c8-b141-f6204ce9fedb")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Manufacturer" "Murata"
+			(at 0 0 180)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "247fb1c4-826e-4b71-af23-da647cc837d8")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "MPN" "GCM155R71H103KA55D"
+			(at 0 0 180)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "f3216992-8e37-4c42-a231-66fa97ba2b78")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "DigiKey_PN" "490-4762-1-ND"
+			(at 0 0 180)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "070f284a-6219-4802-be4e-37977110df36")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Mouser_PN" "81-GCM155R71H103KA5D"
+			(at 0 0 180)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "bc5a6d9b-6fa2-40f1-bd35-8789dd0d1c76")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
+			(at 0 0 180)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "31cfc296-14e2-4fa7-8434-9ea921b6bd1b")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Voltage" "50V"
+			(at 0 0 180)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "c1b8d652-cbb5-4957-8935-720498efd0e1")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Tolerance" "±10%"
+			(at 0 0 180)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "de83380d-6a8c-4067-bf7d-da115e0a42ce")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Dielectric" "X7R"
+			(at 0 0 180)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "a0c3b364-d583-4884-aeac-b4a0479d1281")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Case" "0402"
+			(at 0 0 180)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "96c35fa1-4983-418a-a01d-83d1c3aeb413")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(path "/3875e4cc-63e7-4387-b67f-49f6a7b34a4e/2c155089-757b-5559-bd0c-d9d600e7ae5d")
+		(sheetname "T1S")
+		(sheetfile "sheets/t1s.kicad_sch")
+		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_rect
+			(start -0.9 0.45)
+			(end 0.9 -0.45)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "B.CrtYd")
+			(uuid "2d8e84ba-e410-4e75-85b0-7a27460af59e")
+		)
+		(fp_rect
+			(start -0.5 0.25)
+			(end 0.5 -0.25)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill no)
+			(layer "B.Fab")
+			(uuid "80729b5a-2101-43c5-8523-ebb6f3b96be1")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 180)
+			(layer "B.Fab")
+			(uuid "9ae30270-d27d-4931-8c08-128f5b678f31")
+			(effects
+				(font
+					(size 0.25 0.25)
+					(thickness 0.04)
+				)
+				(justify mirror)
+			)
+		)
+		(pad "1" smd roundrect
+			(at -0.46 0 180)
+			(size 0.58 0.6)
+			(layers "B.Cu" "B.Mask" "B.Paste")
+			(roundrect_rratio 0.25)
+			(net "3V3_MAIN")
+			(uuid "cc1c976e-6a37-4911-9ec4-ce2063229b2a")
+		)
+		(pad "2" smd roundrect
+			(at 0.46 0 180)
+			(size 0.58 0.6)
+			(layers "B.Cu" "B.Mask" "B.Paste")
+			(roundrect_rratio 0.25)
+			(net "GND")
+			(uuid "855e42df-1e5b-422e-bb61-154e4bc1e577")
+		)
+		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
 	(footprint "DropOut_TestPoint:TestPoint_Harwin_S1751"
 		(layer "B.Cu")
 		(uuid "a3aabe0e-d84f-44cf-8d23-baade6d92230")
@@ -58871,7 +58190,7 @@
 	(footprint "DropOut_Resistor_SMD:R_1206_3216Metric"
 		(layer "B.Cu")
 		(uuid "a4cc49d0-9d73-4e8b-abfb-8a82d822b4a8")
-		(at 161 56.5 90)
+		(at 161 66.5 90)
 		(descr "Resistor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Yageo AC1206, Vishay CRCW1206/CRCW1206-HP, Panasonic ERJ-P08 and KOA SG73P2B datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Resistor_SMD.yaml)")
 		(tags "resistor")
 		(property "Reference" "R518"
@@ -60358,6 +59677,258 @@
 			)
 		)
 	)
+	(footprint "DropOut_Capacitor_SMD:C_0402_1005Metric"
+		(layer "B.Cu")
+		(uuid "ac80c3e4-426c-45e7-b0af-1979f9ebe5d6")
+		(at 152.3 40.8 90)
+		(descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Murata GCM155 and TDK CGA2 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Capacitor_SMD.yaml)")
+		(tags "capacitor")
+		(property "Reference" "C501"
+			(at 0 1.15 270)
+			(layer "B.SilkS")
+			(uuid "ed0bc465-0f44-439c-8a14-797604f3d5a0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Value" "10nF"
+			(at 0 -1.15 270)
+			(layer "B.Fab")
+			(uuid "3b7823f9-1060-4fc9-ab71-68383868b392")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM155R71H103KA55-01A-EN_PDF_CERAMICCAPACITORSMD"
+			(at 0 0 270)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "b6fc5a79-7def-47cf-bfb9-d5c66e08f891")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 10 nF ±10%, 50 V, X7R, AEC-Q200, -55 to +125 °C, 0402 (1005 metric)"
+			(at 0 0 270)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "0b540e7b-7337-4bc2-89c5-450942cf5ade")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify mirror)
+			)
+		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 0 0 270)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "95a3a2d4-b53e-4ba2-ab70-807ee061087f")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Manufacturer" "Murata"
+			(at 0 0 270)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "9eb7ba21-41cd-41e1-a390-f1d4e9a66ac9")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "MPN" "GCM155R71H103KA55D"
+			(at 0 0 270)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "a7897833-5707-424c-bf58-b787ed8c98f6")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "DigiKey_PN" "490-4762-1-ND"
+			(at 0 0 270)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "a67178d3-1e8f-41c8-87e2-0b58b58f41db")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Mouser_PN" "81-GCM155R71H103KA5D"
+			(at 0 0 270)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "2a9c75aa-e165-4bc7-8aba-fc1d596a91dc")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
+			(at 0 0 270)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "e12e06b3-f277-4c37-8135-b19ab0bfb417")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Voltage" "50V"
+			(at 0 0 270)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "3213c704-a9af-47d5-a769-9d7420be8d94")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Tolerance" "±10%"
+			(at 0 0 270)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "8bab67f7-8844-4890-8f22-495c5250310a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Dielectric" "X7R"
+			(at 0 0 270)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "4afab202-13c0-42c5-b943-8476be43dae2")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Case" "0402"
+			(at 0 0 270)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "7d2cb0c4-4a8e-4e21-8266-4ff47ec6e071")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(path "/3875e4cc-63e7-4387-b67f-49f6a7b34a4e/7fc05156-a232-5833-9598-05782a206e5c")
+		(sheetname "T1S")
+		(sheetfile "sheets/t1s.kicad_sch")
+		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_rect
+			(start -0.9 0.45)
+			(end 0.9 -0.45)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "B.CrtYd")
+			(uuid "0562266b-d6f3-49c4-8891-8bb7374424a3")
+		)
+		(fp_rect
+			(start -0.5 0.25)
+			(end 0.5 -0.25)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill no)
+			(layer "B.Fab")
+			(uuid "a4b695a6-f129-450d-bcdd-3d1d7fb9b82b")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 270)
+			(layer "B.Fab")
+			(uuid "1c91bbe2-9614-4821-b2c6-ed40ede2f1cd")
+			(effects
+				(font
+					(size 0.25 0.25)
+					(thickness 0.04)
+				)
+				(justify mirror)
+			)
+		)
+		(pad "1" smd roundrect
+			(at -0.46 0 90)
+			(size 0.58 0.6)
+			(layers "B.Cu" "B.Mask" "B.Paste")
+			(roundrect_rratio 0.25)
+			(net "3V3_MAIN")
+			(uuid "4051022f-36fa-47b0-a2c2-5b2e893e0f32")
+		)
+		(pad "2" smd roundrect
+			(at 0.46 0 90)
+			(size 0.58 0.6)
+			(layers "B.Cu" "B.Mask" "B.Paste")
+			(roundrect_rratio 0.25)
+			(net "GND")
+			(uuid "61017a2e-aa57-43b2-8d17-06dec3ec4770")
+		)
+		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
 	(footprint "DropOut_Resistor_SMD:R_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "ad3a9aca-ad54-4a8e-9f47-35f70bc49f6d")
@@ -61151,7 +60722,7 @@
 	(footprint "DropOut_Relay_SMD:Relay_DPDT_Omron_G6K-2F-Y"
 		(layer "B.Cu")
 		(uuid "b04557ed-170e-46cb-acf5-b7ba0f72e080")
-		(at 155 54.33)
+		(at 155 64.33)
 		(descr "Omron G6K(U)-2F-Y(-T1) DPDT surface-mount signal relay, 10x6.5x5.2mm, outside-L terminals, land pattern from the datasheet Mounting Dimensions (TOP VIEW), Cat. No. K106-E1-16 p. 7, https://www.aratas.com/us-en/datasheet_pdf/K106-E1.pdf")
 		(tags "Omron ARATAS G6K G6KU G6K-2F-Y G6KU-2F-Y relay DPDT latching SMD")
 		(property "Reference" "K501"
@@ -63608,7 +63179,7 @@
 	(footprint "DropOut_Resistor_SMD:R_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "b97aec9a-dc6c-49d2-9f29-c0b2c2733c78")
-		(at 151.25 32 90)
+		(at 151.25 42 90)
 		(descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Yageo AC0402 and Panasonic ERJ-2G/ERJ-2R datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Resistor_SMD.yaml)")
 		(tags "resistor")
 		(property "Reference" "R507"
@@ -68974,7 +68545,7 @@
 	(footprint "DropOut_Oscillator:Oscillator_SMD_ECS_LGA-4_2.5x3.2mm_P2.3mm"
 		(layer "B.Cu")
 		(uuid "cf009422-10f5-40a1-8e1a-0bba7c6418a7")
-		(at 161 32.5 180)
+		(at 161 42.5 180)
 		(descr "ECS  LGA, 4 Pin (https://ecsxtal.com/store/pdf/ECS-3225SMVQ.pdf#page=1)")
 		(tags "ECS LGA NoLead")
 		(property "Reference" "Y501"
@@ -69327,7 +68898,7 @@
 	(footprint "DropOut_Capacitor_SMD:C_1206_3216Metric"
 		(layer "B.Cu")
 		(uuid "cfa9555b-503a-4953-a101-6d55ddffd033")
-		(at 156.25 44.65 -90)
+		(at 156.25 54.65 -90)
 		(descr "Capacitor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Murata GCM31C, TDK CGA5 and KEMET 1206 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Capacitor_SMD.yaml)")
 		(tags "capacitor")
 		(property "Reference" "C512"
@@ -70358,6 +69929,258 @@
 			)
 		)
 	)
+	(footprint "DropOut_Capacitor_SMD:C_0402_1005Metric"
+		(layer "B.Cu")
+		(uuid "d7359060-6e25-434a-9ef1-f4eed7047aba")
+		(at 153.3 39.8 90)
+		(descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Murata GCM155 and TDK CGA2 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Capacitor_SMD.yaml)")
+		(tags "capacitor")
+		(property "Reference" "C504"
+			(at 0 1.15 90)
+			(layer "B.SilkS")
+			(uuid "2d676f53-0ac2-43e3-aeae-8a1c49c9ae2b")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Value" "100nF"
+			(at 0 -1.15 90)
+			(layer "B.Fab")
+			(uuid "7079c058-99e6-448d-9467-3d8bddadda98")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM155R71C104KA55-01A-EN_PDF_CERAMICCAPACITORSMD"
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "f3e345bc-b178-44b0-8e13-fab7abf8758c")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 100 nF ±10%, 16 V, X7R, AEC-Q200, -55 to +125 °C, 0402 (1005 metric)"
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "d68feb60-5da2-4272-bc7e-761caa347aeb")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify mirror)
+			)
+		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 0 0 90)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "83dc7476-f4ec-44a4-b93a-10169ecee988")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Manufacturer" "Murata"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "a299ee53-d35f-4d15-8d86-3f6720861fec")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "MPN" "GCM155R71C104KA55D"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "694dde70-848d-4819-81fa-b60db68901cd")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "DigiKey_PN" "490-4759-1-ND"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "3ea03820-3fd0-414f-be84-282ba59b1028")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Mouser_PN" "81-GCM155R71C104KA5D"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "fd34eab3-2ca8-4e96-ac54-76175eb0e57c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "ffed6c67-7639-4749-afd7-08f9f6442ed2")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Voltage" "16V"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "6dbe85da-cd44-4c6c-8427-258880bdf2e8")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Tolerance" "±10%"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "b1c870b9-ad8f-4755-a8af-8856f2fe4770")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Dielectric" "X7R"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "d78a17ff-da83-45ba-8db1-2410a9440dfe")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Case" "0402"
+			(at 0 0 0)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "6520ec8e-92b4-4c28-a144-8e68f9fbb0d4")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(path "/3875e4cc-63e7-4387-b67f-49f6a7b34a4e/898481af-a1f3-54cd-b730-7d25c47807a5")
+		(sheetname "T1S")
+		(sheetfile "sheets/t1s.kicad_sch")
+		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_rect
+			(start -0.9 0.45)
+			(end 0.9 -0.45)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "B.CrtYd")
+			(uuid "24997e3f-db72-4e3e-b012-760728e82cfe")
+		)
+		(fp_rect
+			(start -0.5 0.25)
+			(end 0.5 -0.25)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill no)
+			(layer "B.Fab")
+			(uuid "f4eb722a-437c-4d66-b6ef-bf452c1a92c4")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 90)
+			(layer "B.Fab")
+			(uuid "5f77d93c-fdd3-45e9-beb8-bdd301ee75bf")
+			(effects
+				(font
+					(size 0.25 0.25)
+					(thickness 0.04)
+				)
+				(justify mirror)
+			)
+		)
+		(pad "1" smd roundrect
+			(at -0.46 0 90)
+			(size 0.58 0.6)
+			(layers "B.Cu" "B.Mask" "B.Paste")
+			(roundrect_rratio 0.25)
+			(net "3V3_MAIN")
+			(uuid "6e566a12-2abf-4999-8d04-6182865c7b7d")
+		)
+		(pad "2" smd roundrect
+			(at 0.46 0 90)
+			(size 0.58 0.6)
+			(layers "B.Cu" "B.Mask" "B.Paste")
+			(roundrect_rratio 0.25)
+			(net "GND")
+			(uuid "c750e46f-a4d6-4269-82cd-f81da87bb113")
+		)
+		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
 	(footprint "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
 		(layer "B.Cu")
 		(uuid "d7f4b09c-c0a2-4cf1-bae3-64ceb0502323")
@@ -70534,7 +70357,7 @@
 	(footprint "DropOut_Resistor_SMD:R_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "da5a01c2-0bdd-4e88-bedf-bf035c49d10b")
-		(at 165.25 35 -90)
+		(at 165.25 45 -90)
 		(descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Yageo AC0402 and Panasonic ERJ-2G/ERJ-2R datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Resistor_SMD.yaml)")
 		(tags "resistor")
 		(property "Reference" "R511"
@@ -72318,7 +72141,7 @@
 	(footprint "DropOut_Resistor_SMD:R_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "dd1488ff-5767-4bc2-9600-72085e7a0531")
-		(at 150.25 34 -90)
+		(at 150.25 44 -90)
 		(descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Yageo AC0402 and Panasonic ERJ-2G/ERJ-2R datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Resistor_SMD.yaml)")
 		(tags "resistor")
 		(property "Reference" "R514"
@@ -73322,7 +73145,7 @@
 	(footprint "DropOut_Capacitor_SMD:C_1206_3216Metric"
 		(layer "B.Cu")
 		(uuid "e17635ea-cd37-484f-a0ec-395a4f7c6339")
-		(at 153.75 44.65 -90)
+		(at 153.75 54.65 -90)
 		(descr "Capacitor SMD 1206 (3216 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Murata GCM31C, TDK CGA5 and KEMET 1206 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Capacitor_SMD.yaml)")
 		(tags "capacitor")
 		(property "Reference" "C511"
@@ -74218,6 +74041,258 @@
 	)
 	(footprint "DropOut_Capacitor_SMD:C_0402_1005Metric"
 		(layer "B.Cu")
+		(uuid "e5b81e49-7817-4341-a5f0-ba87182d462c")
+		(at 152.75 47)
+		(descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Murata GCM155 and TDK CGA2 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Capacitor_SMD.yaml)")
+		(tags "capacitor")
+		(property "Reference" "C507"
+			(at 0 1.15 180)
+			(layer "B.SilkS")
+			(uuid "7f811dc3-9751-4fbb-9da4-9adef69e1b09")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Value" "100nF"
+			(at 0 -1.15 180)
+			(layer "B.Fab")
+			(uuid "9376dbcc-9df6-4b32-ae42-2d4f05def5ed")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Datasheet" "https://pim.murata.com/asset/pim4/ceramicCapacitorSMD/GCM155R71C104KA55-01A-EN_PDF_CERAMICCAPACITORSMD"
+			(at 0 0 180)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "6de26227-db94-4bd5-a545-a5539abf5f27")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Description" "Murata GCM MLCC for automotive powertrain/safety, 100 nF ±10%, 16 V, X7R, AEC-Q200, -55 to +125 °C, 0402 (1005 metric)"
+			(at 0 0 180)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "1a024231-85fa-4822-858e-e6dc736572eb")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify mirror)
+			)
+		)
+		(property "KiLib_Generator" "SMD_2terminal_chip_molded"
+			(at 0 0 180)
+			(layer "B.SilkS")
+			(hide yes)
+			(uuid "3741fc1d-edf7-444d-bcb5-7da91f3193b0")
+			(effects
+				(font
+					(size 1 1)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Manufacturer" "Murata"
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "3395b3c1-901b-4046-a144-dcfe91f73455")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "MPN" "GCM155R71C104KA55D"
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "b6f12ed9-f7d8-4dd9-86e7-68c7d55f4f1d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "DigiKey_PN" "490-4759-1-ND"
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "32dd028a-0b74-49ea-84bc-e0d507253e8d")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Mouser_PN" "81-GCM155R71C104KA5D"
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "2fa3ca5e-e129-4d93-a58f-831e20e3a18a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +125 °C"
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "0dd211ac-58ca-42bb-bb9f-7f1bccafd81c")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Voltage" "16V"
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "b12eea82-ce65-42f8-80f0-66d89c5bec10")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Tolerance" "±10%"
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "8790feeb-2d07-4562-b4c7-6b0b7e89c4d9")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Dielectric" "X7R"
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "88db09c5-8c09-4e05-99f6-759977e216b1")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(property "Case" "0402"
+			(at 0 0 90)
+			(layer "B.Fab")
+			(hide yes)
+			(uuid "ada6ce9d-34e5-4cca-a1e1-93bd660af39a")
+			(effects
+				(font
+					(size 1.27 1.27)
+					(thickness 0.15)
+				)
+				(justify mirror)
+			)
+		)
+		(path "/3875e4cc-63e7-4387-b67f-49f6a7b34a4e/6c6207ff-9c08-58c9-b030-c3fb89e98b26")
+		(sheetname "T1S")
+		(sheetfile "sheets/t1s.kicad_sch")
+		(attr smd)
+		(duplicate_pad_numbers_are_jumpers no)
+		(fp_rect
+			(start -0.9 0.45)
+			(end 0.9 -0.45)
+			(stroke
+				(width 0.05)
+				(type solid)
+			)
+			(fill no)
+			(layer "B.CrtYd")
+			(uuid "f51a098e-58a8-4a56-bb81-39dfc32102a1")
+		)
+		(fp_rect
+			(start -0.5 0.25)
+			(end 0.5 -0.25)
+			(stroke
+				(width 0.1)
+				(type solid)
+			)
+			(fill no)
+			(layer "B.Fab")
+			(uuid "d805f6ce-0bf1-49e4-9889-57c570a1a384")
+		)
+		(fp_text user "${REFERENCE}"
+			(at 0 0 180)
+			(layer "B.Fab")
+			(uuid "4a534274-8236-4d5e-aa7b-f356235c2247")
+			(effects
+				(font
+					(size 0.25 0.25)
+					(thickness 0.04)
+				)
+				(justify mirror)
+			)
+		)
+		(pad "1" smd roundrect
+			(at -0.46 0)
+			(size 0.58 0.6)
+			(layers "B.Cu" "B.Mask" "B.Paste")
+			(roundrect_rratio 0.25)
+			(net "3V3_MAIN")
+			(uuid "80007128-8dfb-4560-85ee-d1a25656712e")
+		)
+		(pad "2" smd roundrect
+			(at 0.46 0)
+			(size 0.58 0.6)
+			(layers "B.Cu" "B.Mask" "B.Paste")
+			(roundrect_rratio 0.25)
+			(net "GND")
+			(uuid "9f1b96a1-799a-4bbe-b91f-d2378b40a962")
+		)
+		(embedded_fonts no)
+		(model "${KIPRJMOD}/lib/dropout-kicad-library/3dmodels/DropOut_Capacitor_SMD.3dshapes/C_0402_1005Metric.step"
+			(offset
+				(xyz 0 0 0)
+			)
+			(scale
+				(xyz 1 1 1)
+			)
+			(rotate
+				(xyz 0 0 0)
+			)
+		)
+	)
+	(footprint "DropOut_Capacitor_SMD:C_0402_1005Metric"
+		(layer "B.Cu")
 		(uuid "e633cb22-ecef-4f1a-91b3-0aa8e461cfba")
 		(at 212.3 38.2)
 		(descr "Capacitor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Murata GCM155 and TDK CGA2 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Capacitor_SMD.yaml)")
@@ -74460,7 +74535,7 @@
 	(footprint "DropOut_Resistor_SMD:R_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "e751e089-cad8-4d02-aa32-26a6411d465e")
-		(at 151.25 36 -90)
+		(at 151.25 46 -90)
 		(descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Yageo AC0402 and Panasonic ERJ-2G/ERJ-2R datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Resistor_SMD.yaml)")
 		(tags "resistor")
 		(property "Reference" "R513"
@@ -75241,7 +75316,7 @@
 	(footprint "DropOut_Resistor_SMD:R_0402_1005Metric"
 		(layer "B.Cu")
 		(uuid "e9a9050d-c722-4f23-b14f-5ae37665192d")
-		(at 150.25 32 -90)
+		(at 150.25 42 -90)
 		(descr "Resistor SMD 0402 (1005 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Yageo AC0402 and Panasonic ERJ-2G/ERJ-2R datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Resistor_SMD.yaml)")
 		(tags "resistor")
 		(property "Reference" "R512"
@@ -78330,7 +78405,7 @@
 	(footprint "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
 		(layer "B.Cu")
 		(uuid "f814db24-ac06-4c03-bbc2-039e7a20d67f")
-		(at 164.75 33)
+		(at 164.75 43)
 		(descr "Exposed copper test pad, diameter 1.0mm, solder mask opening only (no paste, no part), https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/TestPoint.py")
 		(tags "test point pad exposed copper")
 		(property "Reference" "TP505"
@@ -79458,7 +79533,7 @@
 	(footprint "DropOut_Resistor_SMD:R_0805_2012Metric"
 		(layer "B.Cu")
 		(uuid "fc4298cc-9d66-46f8-8dd5-491be4855215")
-		(at 161.25 48)
+		(at 161.25 58)
 		(descr "Resistor SMD 0805 (2012 Metric), square (rectangular) end terminal, IPC-7351 nominal, (Body size source: envelope of Yageo AC0805 and Vishay CRCW0805 e3 datasheets, https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/SMD_2terminal_chip_molded/DropOut_Resistor_SMD.yaml)")
 		(tags "resistor")
 		(property "Reference" "R520"
@@ -80577,7 +80652,7 @@
 	)
 	(zone
 		(layers "F.Cu" "B.Cu")
-		(uuid "0f49c48e-d4a8-414e-8708-da3ae2ef15a5")
+		(uuid "5c81eddf-f767-4794-b615-cac2b768545f")
 		(name "ESCAPE_U401")
 		(hatch edge 0.5)
 		(connect_pads
@@ -80608,7 +80683,7 @@
 	)
 	(zone
 		(layers "F.Cu" "B.Cu")
-		(uuid "ec3fc3f6-de31-4037-a500-07c883acdcf4")
+		(uuid "a82e9baa-a85a-418d-ac6e-f50152f9f090")
 		(name "ESCAPE_U501")
 		(hatch edge 0.5)
 		(connect_pads
@@ -80633,44 +80708,13 @@
 		)
 		(polygon
 			(pts
-				(xy 151.825 29.374999) (xy 160.175 29.374999) (xy 160.175 37.724999) (xy 151.825 37.724999)
+				(xy 151.825 39.374999) (xy 160.175 39.374999) (xy 160.175 47.724999) (xy 151.825 47.724999)
 			)
 		)
 	)
 	(zone
 		(layers "B.Cu" "In4.Cu")
-		(uuid "1fe13df2-52f9-4b7d-9512-8a5130decf32")
-		(name "UNDER_Y501")
-		(hatch edge 0.5)
-		(connect_pads
-			(clearance 0)
-		)
-		(min_thickness 0.25)
-		(keepout
-			(tracks allowed)
-			(vias allowed)
-			(pads allowed)
-			(copperpour allowed)
-			(footprints allowed)
-		)
-		(placement
-			(enabled no)
-			(sheetname "")
-		)
-		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
-			(island_removal_mode 0)
-		)
-		(polygon
-			(pts
-				(xy 158.705 29.905) (xy 163.295 29.905) (xy 163.295 35.095) (xy 158.705 35.095)
-			)
-		)
-	)
-	(zone
-		(layers "B.Cu" "In4.Cu")
-		(uuid "a6a1f1ef-74a9-4fd7-b686-4698516922d7")
+		(uuid "5769882f-1831-4c36-9f4d-4097fc7f0540")
 		(name "UNDER_Y401")
 		(hatch edge 0.5)
 		(connect_pads
@@ -80700,8 +80744,39 @@
 		)
 	)
 	(zone
+		(layers "B.Cu" "In4.Cu")
+		(uuid "d4af63f0-2727-4502-9af3-ec37a7fae14e")
+		(name "UNDER_Y501")
+		(hatch edge 0.5)
+		(connect_pads
+			(clearance 0)
+		)
+		(min_thickness 0.25)
+		(keepout
+			(tracks allowed)
+			(vias allowed)
+			(pads allowed)
+			(copperpour allowed)
+			(footprints allowed)
+		)
+		(placement
+			(enabled no)
+			(sheetname "")
+		)
+		(fill
+			(thermal_gap 0.5)
+			(thermal_bridge_width 0.5)
+			(island_removal_mode 0)
+		)
+		(polygon
+			(pts
+				(xy 158.705 39.905) (xy 163.295 39.905) (xy 163.295 45.095) (xy 158.705 45.095)
+			)
+		)
+	)
+	(zone
 		(layer "In1.Cu")
-		(uuid "1049b4dc-8841-4770-aa5b-f3375d50f26b")
+		(uuid "f156ceff-fcdd-4502-8fb2-1de396dbc4a1")
 		(name "POWER_ONLY_In1Cu_1")
 		(hatch edge 0.5)
 		(connect_pads
@@ -80732,38 +80807,7 @@
 	)
 	(zone
 		(layer "In2.Cu")
-		(uuid "c10aa718-2e71-4b9d-87da-c56f63949b09")
-		(name "SIGNAL_WINDOW_In2Cu_1")
-		(hatch edge 0.5)
-		(connect_pads
-			(clearance 0)
-		)
-		(min_thickness 0.25)
-		(keepout
-			(tracks allowed)
-			(vias allowed)
-			(pads allowed)
-			(copperpour not_allowed)
-			(footprints allowed)
-		)
-		(placement
-			(enabled no)
-			(sheetname "")
-		)
-		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
-			(island_removal_mode 0)
-		)
-		(polygon
-			(pts
-				(xy 39.95 29.95) (xy 270.05 29.95) (xy 270.05 70) (xy 39.95 70)
-			)
-		)
-	)
-	(zone
-		(layer "In2.Cu")
-		(uuid "ebfe2de0-21ba-4bb7-b4ee-135dba1ce8fd")
+		(uuid "9dbf207d-4728-4de0-897f-a8651f5372b2")
 		(name "POWER_ONLY_In2Cu_1")
 		(hatch edge 0.5)
 		(connect_pads
@@ -80793,8 +80837,39 @@
 		)
 	)
 	(zone
+		(layer "In2.Cu")
+		(uuid "fa088dd8-ba7e-4311-a124-925adf1e0093")
+		(name "SIGNAL_WINDOW_In2Cu_1")
+		(hatch edge 0.5)
+		(connect_pads
+			(clearance 0)
+		)
+		(min_thickness 0.25)
+		(keepout
+			(tracks allowed)
+			(vias allowed)
+			(pads allowed)
+			(copperpour not_allowed)
+			(footprints allowed)
+		)
+		(placement
+			(enabled no)
+			(sheetname "")
+		)
+		(fill
+			(thermal_gap 0.5)
+			(thermal_bridge_width 0.5)
+			(island_removal_mode 0)
+		)
+		(polygon
+			(pts
+				(xy 39.95 29.95) (xy 270.05 29.95) (xy 270.05 70) (xy 39.95 70)
+			)
+		)
+	)
+	(zone
 		(layer "In3.Cu")
-		(uuid "198c9a71-a0d3-4a03-926d-5ea30bfa704b")
+		(uuid "e8b36b46-7cb2-4e0f-97d2-7e7fb9ec08a8")
 		(name "POWER_ONLY_In3Cu_1")
 		(hatch edge 0.5)
 		(connect_pads
@@ -80825,7 +80900,7 @@
 	)
 	(zone
 		(layer "In4.Cu")
-		(uuid "161e1fce-2c45-4f51-866f-8128975e2d42")
+		(uuid "d8fa3880-f6d8-401c-b091-e5ddf947db24")
 		(name "POWER_ONLY_In4Cu_1")
 		(hatch edge 0.5)
 		(connect_pads
