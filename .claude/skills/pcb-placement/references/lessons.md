@@ -183,3 +183,10 @@ lines); the PR #21 `unconnected_items` override survived, but nothing else was m
 
 **What the skill does.** After writing the repo's board, `git checkout -- <project>.kicad_pro`
 unless the run meant to change it, then re-run CI's DRC.
+
+## KiCad 10 custom rules (2026-11-03, Node60 D12)
+- A rule area is a zone with no net: a `disallow zone` rule keyed on `intersectsArea` fires on any other rule area that overlaps it. Add `A.NetName != ''`.
+- `hole_clearance` with a condition on the hole's owner needs it both ways (`A.Pad_Type == 'Through-hole' || B.Pad_Type == 'Through-hole'`); keyed on A alone it never fired.
+- `skew ... (within_diff_pairs)` in the same rule as `diff_pair_gap` / `diff_pair_uncoupled` was never reported; in a rule of its own it is. Skew is measured only on tracks that reach the pads, so prove it pad to pad.
+- A through-hole pad keeps its copper on every inner layer unless its unused layers are removed, so its annular ring, not `hole_clearance`, sets the spacing there; to prove the hole rule, remove the pad's unused copper on the copy.
+- Prove each rule on a copy with one planted violation and a control (`rules/prove_rules.py` in the Node60 run).

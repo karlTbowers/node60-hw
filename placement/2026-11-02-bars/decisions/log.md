@@ -31,3 +31,5 @@ Published (https://claude.ai/artifact/ESfjfBiHEvP6z8EAyY6TFh): the re-ordered po
 D15 answered 2026-11-03: **A, as composed** (user). `blocks/power.poses.json` approved; it replaces D04's table. Board already matched to node60 #54 (R201 Kelvin nets, R208 0402, R210 383 Ω).
 
 D13 answered 2026-11-03: **A, as turned** (user). `blocks/out_6x`, `out_34`, `out_8x` approved; they replace D08's cells.
+
+D12 rules adopted 2026-11-03 (D12-1 A, D12-7 step 1): `node60.kicad_dru` routing rules, net classes PWR_BATT / PWR_RAIL / SW_NODE, T1S class extended to the K501 legs, mask web 0.10 mm, rule areas ESCAPE_U401/U501 and UNDER_Y401/Y501 (`scripts/draw_rule_areas.py`). `rules/prove_rules.py`: 24 of 24 cases pass (16 fire, 8 controls quiet). Real board: DRC 0 errors, parity 0, ERC 0.

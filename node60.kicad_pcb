@@ -116,6 +116,7 @@
 			(dielectric_constraints no)
 		)
 		(pad_to_mask_clearance 0.05)
+		(solder_mask_min_width 0.1)
 		(allow_soldermask_bridges_in_footprints no)
 		(tenting
 			(front yes)
@@ -79937,6 +79938,130 @@
 		(polygon
 			(pts
 				(xy 66.974999 61.074999) (xy 243.025 61.074999) (xy 243.025 80.125) (xy 66.974999 80.125)
+			)
+		)
+	)
+	(zone
+		(layers "F.Cu" "B.Cu")
+		(uuid "2f1fab15-fe09-43f1-a141-b11a73923368")
+		(name "ESCAPE_U501")
+		(hatch edge 0.5)
+		(connect_pads
+			(clearance 0)
+		)
+		(min_thickness 0.25)
+		(keepout
+			(tracks allowed)
+			(vias allowed)
+			(pads allowed)
+			(copperpour allowed)
+			(footprints allowed)
+		)
+		(placement
+			(enabled no)
+			(sheetname "")
+		)
+		(fill
+			(thermal_gap 0.5)
+			(thermal_bridge_width 0.5)
+			(island_removal_mode 0)
+		)
+		(polygon
+			(pts
+				(xy 170.0213 49.4829) (xy 178.3713 49.4829) (xy 178.3713 57.8329) (xy 170.0213 57.8329)
+			)
+		)
+	)
+	(zone
+		(layers "F.Cu" "B.Cu")
+		(uuid "ecdac15b-0949-4c88-8996-43887156146a")
+		(name "ESCAPE_U401")
+		(hatch edge 0.5)
+		(connect_pads
+			(clearance 0)
+		)
+		(min_thickness 0.25)
+		(keepout
+			(tracks allowed)
+			(vias allowed)
+			(pads allowed)
+			(copperpour allowed)
+			(footprints allowed)
+		)
+		(placement
+			(enabled no)
+			(sheetname "")
+		)
+		(fill
+			(thermal_gap 0.5)
+			(thermal_bridge_width 0.5)
+			(island_removal_mode 0)
+		)
+		(polygon
+			(pts
+				(xy 191.8841 42.4448) (xy 209.9741 42.4448) (xy 209.9741 60.5348) (xy 191.8841 60.5348)
+			)
+		)
+	)
+	(zone
+		(layers "B.Cu" "In4.Cu")
+		(uuid "226b8584-38e7-4389-bd71-b0cdd1ad2e8b")
+		(name "UNDER_Y501")
+		(hatch edge 0.5)
+		(connect_pads
+			(clearance 0)
+		)
+		(min_thickness 0.25)
+		(keepout
+			(tracks allowed)
+			(vias allowed)
+			(pads allowed)
+			(copperpour allowed)
+			(footprints allowed)
+		)
+		(placement
+			(enabled no)
+			(sheetname "")
+		)
+		(fill
+			(thermal_gap 0.5)
+			(thermal_bridge_width 0.5)
+			(island_removal_mode 0)
+		)
+		(polygon
+			(pts
+				(xy 178.205 54.905) (xy 182.795 54.905) (xy 182.795 60.095) (xy 178.205 60.095)
+			)
+		)
+	)
+	(zone
+		(layers "B.Cu" "In4.Cu")
+		(uuid "752d75c7-7ac5-4d19-a921-6ca7bcf66f65")
+		(name "UNDER_Y401")
+		(hatch edge 0.5)
+		(connect_pads
+			(clearance 0)
+		)
+		(min_thickness 0.25)
+		(keepout
+			(tracks allowed)
+			(vias allowed)
+			(pads allowed)
+			(copperpour allowed)
+			(footprints allowed)
+		)
+		(placement
+			(enabled no)
+			(sheetname "")
+		)
+		(fill
+			(thermal_gap 0.5)
+			(thermal_bridge_width 0.5)
+			(island_removal_mode 0)
+		)
+		(polygon
+			(pts
+				(xy 187.884 50.145) (xy 193.174 50.145) (xy 193.174 54.735) (xy 187.884 54.735)
 			)
 		)
 	)
