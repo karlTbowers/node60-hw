@@ -88,7 +88,7 @@
 - id: GATE-MON-01
   title: Input telemetry
   group: freeze
-  evidence: 0.6 V-threshold BATT_MON divider verification; INA228 I²C; SHUNT_CAL for 0.25 mΩ; shared-RSENSE thermal; 0–60 A accuracy; total-vs-sum cross-check
+  evidence: 0.6 V-threshold BATT_MON divider verification; INA228 I²C; SHUNT_CAL 4096 for 0.3 mΩ; shared-RSENSE thermal; 0–60 A accuracy; total-vs-sum cross-check
   blocks: Input telemetry
   status: open
   page: subsystems/power

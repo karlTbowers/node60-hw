@@ -35,7 +35,7 @@ network: "10BASE-T1S" {
 sensing: "Measurement inputs" {
   class: group
   lm: "LM74910H-Q1\ninput protection" {class: battery; link: "/subsystems/power/"}
-  rsense: "RSENSE 0.25 mΩ" {class: battery; link: "/subsystems/power/"}
+  rsense: "RSENSE 0.3 mΩ" {class: battery; link: "/subsystems/power/"}
   div: "SW-pin OV/UV divider\n1:12 · VBAT_RAW" {class: sense; link: "/subsystems/power/"}
   ina: "INA228A-Q1\n20-bit total I · V · P" {class: sense; link: "/subsystems/power/"}
   tmp: "TMP175-Q1\nNFET-bank temperature" {class: sense; link: "/subsystems/temperature/"}

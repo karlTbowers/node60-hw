@@ -12,7 +12,7 @@ rejected:
   - option: KSNS2 with 8× ADC scaling
     reason: TI recommends KSNS2 and 8× ADC scaling only with I²t disabled; altered scaling can lower the effective I²t trip threshold.
   - option: Per-output shunt or external monitor
-    reason: Not fitted; the shared 0.25 mΩ RSENSE and INA228A-Q1 independently monitor the total input rail.
+    reason: Not fitted; the shared 0.3 mΩ RSENSE and INA228A-Q1 independently monitor the total input rail.
 ---
 
 ## Context
