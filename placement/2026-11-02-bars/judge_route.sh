@@ -27,6 +27,45 @@ for m in reversed(list(re.finditer(r'\n\t\(zone\n[\s\S]*?\n\t\)', s))):         
     z = m.group(0)
     if '(name "BUSBAR_' in z:
         s = s[:m.start()] + z.replace("(tracks allowed)", "(tracks not_allowed)") + s[m.end():]
+# A custom pad whose only copper is one ring (gr_circle, fill no) -- the REDCUBE terminals' pad 1 --
+# becomes a round pad of the ring's outer diameter at the ring's centre. KRT turns each ring into a
+# ~190-vertex polygon and checks clearance to it edge by edge in Python, the route passes' hottest
+# code (2026-11-03 profile); a round pad is one distance. Equivalent for routing: the ring encloses
+# the terminal's own spigot hole and body, where nothing else can go. The real board is untouched
+# and KiCad grades it. Set JUDGE_KEEP_RINGS=1 to route with the rings as drawn.
+import math, os
+def fp_angle(body):
+    m = re.search(r'\n\t\t\(at [-\d.]+ [-\d.]+(?: ([-\d.]+))?\)', body)
+    return float(m.group(1) or 0) if m else 0.0
+def ring_to_circle(fp):
+    def one(m):
+        pad = m.group(0)
+        prim = re.search(r'\(primitives\s*\(gr_circle\s*\(center ([-\d.]+) ([-\d.]+)\)\s*\(end ([-\d.]+) ([-\d.]+)\)\s*\(width ([-\d.]+)\)\s*\(fill no\)\s*\)\s*\)', pad)
+        at = re.search(r'\(at ([-\d.]+) ([-\d.]+)(?: ([-\d.]+))?\)', pad)
+        if not prim or not at:
+            return pad
+        cx, cy, ex, ey, w = map(float, prim.groups())
+        x, y, a = float(at.group(1)), float(at.group(2)), float(at.group(3) or 0)
+        rel = math.radians(a - fp_angle(fp))          # the pad's turn within its footprint
+        ox, oy = cx * math.cos(rel) + cy * math.sin(rel), -cx * math.sin(rel) + cy * math.cos(rel)
+        d = 2 * (math.hypot(ex - cx, ey - cy) + w / 2)
+        new = pad.replace(at.group(0), f"(at {x + ox:.4f} {y + oy:.4f}{' ' + at.group(3) if at.group(3) else ''})", 1)
+        new = re.sub(r'\(size [-\d.]+ [-\d.]+\)', f"(size {d:.4f} {d:.4f})", new, count=1)
+        new = new.replace(" smd custom", " smd circle", 1)
+        new = re.sub(r'\s*\(options[\s\S]*?\n\t\t\t\)', "", new, count=1)
+        new = re.sub(r'\s*\(primitives[\s\S]*?\n\t\t\t\)', "", new, count=1)
+        return new
+    return re.sub(r'\(pad "[^"]*" smd custom[\s\S]*?\n\t\t\)', one, fp)
+if not os.environ.get("JUDGE_KEEP_RINGS"):
+    n = 0
+    out, last = [], 0
+    for m in re.finditer(r'\n\t\(footprint "[^"]*"[\s\S]*?\n\t\)', s):
+        fp = m.group(0)
+        if "gr_circle" in fp and " smd custom" in fp:
+            new = ring_to_circle(fp); n += new != fp
+            out.append(s[last:m.start()]); out.append(new); last = m.end()
+    out.append(s[last:]); s = "".join(out)
+    print(f"ring pads drawn as round pads for the router: {n} footprint(s)", file=sys.stderr)
 open(sys.argv[2], "w").write(s)
 PY
 # The router's copy of the project: the power classes (PWR_BATT, PWR_RAIL, SW_NODE) at the Default
