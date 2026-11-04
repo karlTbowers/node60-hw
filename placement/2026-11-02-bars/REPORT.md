@@ -51,14 +51,14 @@ their own decisions (D02, D03) and dropped the U401 scoped rule (the BGA escapes
 
 | Block | Anchor | Parts | Approved | Notes |
 |---|---|---|---|---|
-| Power entry | R201 | 12 | D04, 2026-11-02 | INA228 beside its shunt |
-| T1S line interface and PHY | K501 | 18 | D05, 2026-11-02 | as it stood on main (PR #35) |
+| Power entry | R201 | 35 | D15, 2026-11-03 (replaces D04) | Re-ordered to flow east; BVR4026 Kelvin shunt, INA228 beside it |
+| T1S line interface and PHY | K501 | 20 | D16, 2026-11-03 (replaces D05) | PHY chain north of the trunk midpoint, K501 on it; stub 12.5/12.5 mm |
 | Buck 1V5_CORE | U303 | 11 | D06, 2026-11-02 | divider on the SW side, 2.55 mm from the switch node |
 | Buck 3V3_MAIN | U302 | 8 | D06, 2026-11-02 | |
 | MCU crystal | Y401 | 5 | D07, 2026-11-02 | C424, C425 to their pins; TP407 7 mm away; no-via rule on the crystal nets |
-| Output cell 3-4 | U701 | 21 | D08, 2026-11-02 | the reviewed cell |
-| Output cell 1-2 | U601 | 21 | D08, 2026-11-02 | copy; U601 turned 180° → 90°, moved 4.3 mm |
-| Output cell 5-6 | U801 | 21 | D08, 2026-11-02 | copy; U801 to (224, 113) so FLT pin 12 routes; TP806 at (231, 107.75) |
+| Output cell 3-4 | U701 | 21 | D13, 2026-11-03 (D08 turned to 0°) | the reviewed cell, centred between J906/J907 pin 1 |
+| Output cell 1-2 | U601 | 21 | D13, 2026-11-03 | copy at 0°, centred between its headers |
+| Output cell 5-6 | U801 | 21 | D13, 2026-11-03 | copy at 0°, centred between its headers |
 
 Every block is on its table pose on `node60.kicad_pcb` (`block_poses.py check`).
 
@@ -117,14 +117,26 @@ See `decisions/log.md` (D01–D09, each with its page and answer).
   T1S_100R class).
 - **Crystal nets** on B.Cu with no via (`node60.kicad_dru` rule; NXP S32K3 HDG §3.2); route
   MDC (U401 ball N3, 2.3 mm from the oscillator) away from it.
-- **U501's south edge by hand**: pin 29 straight out to a via, then REFCLK and RBIAS.
-- **U303's feedback** routed round the north of the chip, away from SW.
+- **U501's south edge by hand**: pin 29 straight out to a via, then REFCLK and RBIAS; also IRQ_L,
+  and U401's 3V3_MAIN balls H6, H7, L8 and K11 (the final fast route left these open, all PASSABLE).
 - **BGA escape**: 4 signal layers (F.Cu, In2, In3, B.Cu), 0.1 mm track, 0.15 mm clearance,
   0.45/0.25 mm vias between balls.
 - **Via room** at all 9 high-current pads (`gate.md`).
 - **Rule areas**: `BUSBAR_VBAT_IN` and `BUSBAR_GND` (only the bar's nets in F.Cu tracks and
   pours, tented vias of any net).
-- **Checks still to run**: 1V5_CORE ripple; set `unconnected_items` back to `error` before
-  routing sign-off (PR #21).
-- **Docs**: the front-page hero renders (`npm run hero` in `docs/`) show the board and should be
-  re-run after this placement.
+- **Before routing sign-off**: set `unconnected_items` back to `error` (PR #21).
+
+## After D09 (2026-11-02/03)
+
+- **DEC-026**: the 1V5_CORE ripple check found U303 (LMQ66430 on the battery) folding back into
+  the AM band; U303 became a TPS628502-Q1 on 3V3_MAIN (node60-hw #48) and its cell was
+  recomposed to TI's Figure 9-61 and approved in D10. The ripple check is closed.
+- **C207, C217, L201** (node60-hw #49): added from the netlist with `scripts/add_missing_footprints.py`
+  and placed with `pose_search.py`: L201 on B.Cu by U302's input, C207/C217 (8.01 mm) on F.Cu
+  beside J912 under the 9.0 mm low lid, at least 8.5 mm from every lid boss. Every part on the
+  schematic is now on the board (280).
+- **Final gate** (`gate.md`, `judge_final`): 12 pass, 1 warning (parity: the 19 `ki_fp_filters`
+  fields), 3 fail (busbar tie pads, accepted in D09; the two fast-route rows: 3 nets, 10 items at
+  U501/U401, all PASSABLE). D11 puts full routing to the user.
+- The hero renders were re-run after the placement: no visible change (the moved parts are on the
+  bottom).

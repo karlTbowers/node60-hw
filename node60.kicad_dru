@@ -24,3 +24,88 @@
 (rule "No vias on the MCU crystal nets"
 	(condition "A.NetName == '/MCU and NVM/FXOSC_EXTAL' || A.NetName == '/MCU and NVM/FXOSC_XTAL' || A.NetName == '/MCU and NVM/FXOSC_XTAL_X'")
 	(constraint disallow via))
+
+# ---- Routing rules (placement decision D12, 2026-11-03; ee-layout-rules items 4-10, 14) ----
+# Stackup DEC-027: JLCPCB JLC062012-1080, 1 oz outer (0.09/0.09 mm possible), 2 oz inner
+# (0.15/0.15 mm). Layer roles D12-1 A: In1 GND, In2 + In3 VBAT_PROT, In4 GND. Later rules in this
+# file take precedence over earlier ones. scripts/draw_rule_areas.py draws the ESCAPE_* and
+# UNDER_* areas named here; a rule naming a missing area silently never matches. Each rule below
+# was shown to fire on a copy of the board with one deliberate violation
+# (placement/2026-11-02-bars/rules/prove_rules.py).
+
+(rule "Tracks under 0.15 mm only in the U401/U501 escape areas"
+	(condition "A.Type == 'Track' && !A.intersectsArea('ESCAPE_U401') && !A.intersectsArea('ESCAPE_U501')")
+	(constraint track_width (min 0.15mm)))
+
+(rule "Escape areas: 0.1 mm track and clearance on the outer layers"
+	(layer outer)
+	(condition "A.intersectsArea('ESCAPE_U401') || A.intersectsArea('ESCAPE_U501')")
+	(constraint track_width (min 0.1mm))
+	(constraint clearance (min 0.1mm)))
+
+(rule "Inner 2 oz layers: 0.15 mm track and clearance"
+	(layer inner)
+	(constraint track_width (min 0.15mm))
+	(constraint clearance (min 0.15mm)))
+
+# Buck switch nodes stay on their layer: pin to inductor on B.Cu, no via (ee-layout-rules).
+(rule "No vias on the buck switch nodes"
+	(condition "A.NetName == '/Regulators/3V3_MAIN_SW' || A.NetName == '/Regulators/1V5_CORE_SW'")
+	(constraint disallow via))
+
+# U303's own FB (pin 5) and SW (pin 7) pads are 0.7 mm apart, so the package itself is exempt.
+(rule "1V5_CORE_FB 1 mm from the switch nodes"
+	(condition "A.NetName == '/Regulators/1V5_CORE_FB' && (B.NetName == '/Regulators/1V5_CORE_SW' || B.NetName == '/Regulators/3V3_MAIN_SW') && !(A.Type == 'Pad' && A.memberOfFootprint('U303')) && !(B.Type == 'Pad' && B.memberOfFootprint('U303'))")
+	(constraint clearance (min 1mm)))
+
+# Crystal and oscillator: only their own nets and GND under them, on their layer (B.Cu) and the
+# GND plane next to it (In4). The VBAT_PROT planes on In2/In3 are not in the areas.
+(rule "Under Y401: FXOSC nets and GND only"
+	(condition "A.NetName != '' && A.intersectsArea('UNDER_Y401') && A.NetName != 'GND' && A.NetName != '/MCU and NVM/FXOSC_EXTAL' && A.NetName != '/MCU and NVM/FXOSC_XTAL' && A.NetName != '/MCU and NVM/FXOSC_XTAL_X'")
+	(constraint disallow track via zone))
+
+(rule "Under Y501: its own nets and GND only"
+	(condition "A.NetName != '' && A.intersectsArea('UNDER_Y501') && A.NetName != 'GND' && A.NetName != '3V3_MAIN' && A.NetName != '/T1S/T1S_OSC_OUT'")
+	(constraint disallow track via zone))
+
+(rule "Plated holes 0.3 mm from other copper"
+	(condition "A.Pad_Type == 'Through-hole' || B.Pad_Type == 'Through-hole'")
+	(constraint hole_clearance (min 0.3mm)))
+
+# High-current pads join their pours solid, not through thermal spokes. Scoped by footprint and
+# net so small parts' pads (0402 decaps, U201/U202 pins on VBAT_PROT) keep their reliefs.
+(rule "High-current pads solid to their pours"
+	(condition "A.Type == 'Pad' && (A.memberOfFootprint('Q201') || A.memberOfFootprint('Q202') || A.memberOfFootprint('Q203') || A.memberOfFootprint('Q204') || A.memberOfFootprint('R201') || A.memberOfFootprint('U601') || A.memberOfFootprint('U701') || A.memberOfFootprint('U801') || A.memberOfFootprint('J901') || A.memberOfFootprint('J902') || A.memberOfFootprint('J910') || A.memberOfFootprint('J911') || A.memberOfFootprint('BB901') || A.memberOfFootprint('BB902')) && (A.NetClass == 'PWR_BATT' || A.NetName == 'GND')")
+	(constraint zone_connection solid))
+
+(rule "Silk text 1.0 mm high, 0.15 mm stroke"
+	(condition "A.Layer == 'F.Silkscreen' || A.Layer == 'B.Silkscreen'")
+	(constraint text_height (min 1mm))
+	(constraint text_thickness (min 0.15mm)))
+
+# T1S last, so it wins over the escape relaxation at U501. The line nets are the T1S_100R class
+# (node60.kicad_pro), the K501 legs (T1S_*_DROP, T1S_*_END) included.
+(rule "T1S pairs coupled"
+	(condition "A.inDiffPair('/T1S*')")
+	(constraint diff_pair_gap (min 0.14mm) (opt 0.15mm) (max 0.16mm)))
+
+# Uncoupled length and skew only on the PHY side's two-pin pairs (cap to choke, choke to PHY). The
+# trunk (/T1S_P, /T1S_N) is a branching net: its total length is no skew, and the AT13 pins (P and N
+# 4.2 mm apart at both connectors) alone need about 2.8 mm uncoupled at each end. The trunk's taps
+# are measured by placement/2026-11-02-bars/rules/t1s_stubs.py instead (D16).
+(rule "T1S PHY-side pairs: 2 mm uncoupled at most"
+	(condition "A.inDiffPair('/T1S/T1S_CMC') || A.inDiffPair('/T1S/T1S_PHY')")
+	(constraint diff_pair_uncoupled (max 2mm)))
+
+# Skew in a rule of its own: in the same rule as the gap constraints KiCad 10 never reported it.
+(rule "T1S pairs matched within 0.5 mm"
+	(condition "A.inDiffPair('/T1S/T1S_CMC') || A.inDiffPair('/T1S/T1S_PHY')")
+	(constraint skew (max 0.5mm) (within_diff_pairs)))
+
+(rule "T1S 0.75 mm from other nets"
+	(condition "A.NetClass == 'T1S_100R' && A.Type != 'Pad' && B.NetClass != 'T1S_100R' && B.Type != 'Pad'")
+	(constraint clearance (min 0.75mm)))
+
+(rule "Buck switch nodes 10 mm from the T1S line"
+	(condition "(A.NetName == '/Regulators/3V3_MAIN_SW' || A.NetName == '/Regulators/1V5_CORE_SW') && B.NetClass == 'T1S_100R'")
+	(constraint clearance (min 10mm)))

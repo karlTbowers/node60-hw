@@ -1,0 +1,163 @@
+{
+  "id": "D15",
+  "name": "Power entry block",
+  "question": "Approve the power entry re-ordered to flow east?",
+  "board": "node60",
+  "phase": "Placement",
+  "stage": "3 Blocks",
+  "date": "2026-11-03",
+  "why_now": "D14 (answered 1A, 2B): the shunt becomes BVR-Z-R0003-1.0 (0.3 mΩ, 4-terminal) and the power entry is laid out in the current's order, so the VBAT_PROT planes are fed nearer mid-board and the 60 A path gets shorter. This page is the resulting block. It replaces D04's block; the pose table is `blocks/power.poses.json`, with a reason for each of its 35 parts.\n\nThe chain now runs west to east: J910 → Q201/Q202 (ideal diode) → R201 (shunt) → Q203/Q204 (load disconnect) → VBAT_PROT from x 161.4 mm. Each power net keeps a via corridor clear of small parts on the bottom side: VBAT_D at x 122.6–130.7 mm, VBAT_Q2D at x 141.3–149.35 mm, VBAT_PROT from x 162.65 mm. The small parts sit north of the shunt, between the corridors, as you asked in D12-4 (spread for the vias).",
+  "facts": [
+    {
+      "label": "Shunt footprint",
+      "value": "R201 is on `R_Shunt_Isabellenhuette_BVR4026` at (136, 86.5). Since node60 #54 (merged 2026-11-03) its sense pads carry RS_SENSE_P (S1: R209, R210, INA228 IN+) and RS_SENSE_N (S2: U201 CS-, INA228 IN-, C212, C213); R208 is 26.7 kΩ in 0402 at the same pose and R210 383 Ω. The board matches the schematic (DRC 0 errors, parity 0 errors)",
+      "source": "board; D14-1 A"
+    },
+    {
+      "label": "Supply model",
+      "value": "`power/plane_model.py`, two 2 oz VBAT_PROT planes (In2 + In3), 85 °C, all three switches on at 20 A, from the new Q203/Q204 source edge",
+      "source": "D12-1 A, DEC-027"
+    },
+    {
+      "label": "Checks",
+      "value": "KiCad DRC 0 errors, 0 parity; floorplan 0 errors; assembly only the busbar tie pads accepted in D09; the other approved blocks (T1S, bucks, crystal, output cells) on their table poses",
+      "source": "kicad-cli, check_floorplan, check_assembly, block_poses.py"
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "name": "As composed",
+      "summary": "Q201/Q202 at (116, 80 / 93), R201 at (136, 86.5), Q203/Q204 at (156, 80 / 93) turned 180°. U201 north of the shunt at (135, 79.5), U202 beside it at (139.5, 79). C214 (U202's bypass) moved to the top side over its pin, the only part that left the bottom.",
+      "images": [
+        {
+          "path": "img/power_reordered_B.png",
+          "caption": "Bottom side seen from above, new block; dashed outlines and lines show where each part was in D04"
+        },
+        {
+          "path": "img/power_reordered_F.png",
+          "caption": "Top side: C201, C203, C204, C208 and now C214 over the pins they decouple"
+        }
+      ],
+      "measures": [
+        {
+          "label": "60 A copper path, J910 to VBAT_PROT",
+          "value": "45.6 mm (17.2 + 14.2 + 14.2)",
+          "limit": "short",
+          "status": "pass"
+        },
+        {
+          "label": "Loss in that path at 60 A (0.007 mΩ/mm estimate)",
+          "value": "about 1.2 W",
+          "limit": "lowest",
+          "status": "pass"
+        },
+        {
+          "label": "Supply to U601 / U701 / U801",
+          "value": "0.28 / 0.17 / 0.24 mΩ (spread 0.12)",
+          "limit": "even",
+          "status": "pass"
+        },
+        {
+          "label": "Kelvin lines (S1→R209→CS+, S2→CS-, INA228 IN+ / IN-)",
+          "value": "6.3 + 4.6, 2.6, 5.2 / 0.9 mm",
+          "limit": "short",
+          "status": "pass"
+        },
+        {
+          "label": "Gate drive: DGATE to Q201 / Q202, HGATE to R202",
+          "value": "21.2 / 26.3 mm, 23 mm",
+          "limit": "D04: 6–9 mm",
+          "status": "warn"
+        },
+        {
+          "label": "Charge-pump cap C209 to CAP (pin 23)",
+          "value": "7.5 mm",
+          "limit": "D04: 4.5 mm",
+          "status": "warn"
+        },
+        {
+          "label": "CS filter cap C212 to CS+ (pin 20)",
+          "value": "5.3 mm",
+          "limit": "D04: at the pin",
+          "status": "warn"
+        },
+        {
+          "label": "DRC / floorplan",
+          "value": "0 / 0 errors",
+          "limit": "0",
+          "status": "pass"
+        }
+      ],
+      "gains": [
+        "The 60 A path is 38 mm shorter, about 0.9 W less loss at 60 A",
+        "The worst output's supply drops from 0.43 to 0.28 mΩ and the spread halves",
+        "Kelvin lines a few mm long, U202 on the shunt instead of 68 mm away"
+      ],
+      "costs": [
+        "U201 sits by the shunt, so its gate lines are 3–4 times D04's. They carry the gates' charge only, not load current; routed as 0.3 mm tracks they add roughly 1 nH per mm (about 25 nH), small against the FETs' turn-off",
+        "C209 and C212 are a few mm further from their pins than in D04: the shunt and the corridors take the room beside U201's south edge"
+      ]
+    },
+    {
+      "key": "B",
+      "name": "Keep D04's block",
+      "summary": "Today's block: J910 east to Q201/Q202, back west through R201, Q203/Q204 at x 95–106, the planes fed at the west end.",
+      "images": [
+        {
+          "path": "img/power_before_B.png",
+          "caption": "D04's block, bottom side"
+        }
+      ],
+      "measures": [
+        {
+          "label": "60 A copper path, J910 to VBAT_PROT",
+          "value": "84.0 mm (45.6 + 22.3 + 16.1)",
+          "limit": "short",
+          "status": "fail"
+        },
+        {
+          "label": "Loss in that path at 60 A (0.007 mΩ/mm estimate)",
+          "value": "about 2.1 W",
+          "limit": "lowest",
+          "status": "fail"
+        },
+        {
+          "label": "Supply to U601 / U701 / U801",
+          "value": "0.19 / 0.31 / 0.43 mΩ (spread 0.24)",
+          "limit": "even",
+          "status": "warn"
+        },
+        {
+          "label": "Gate drive: DGATE to Q201 / Q202, HGATE to R202",
+          "value": "6–9 mm",
+          "limit": "D04: 6–9 mm",
+          "status": "pass"
+        },
+        {
+          "label": "DRC / floorplan",
+          "value": "0 / 0 errors",
+          "limit": "0",
+          "status": "pass"
+        }
+      ],
+      "gains": [
+        "Short gate lines"
+      ],
+      "costs": [
+        "Goes back on D14-2 B: longer path, higher loss, the outputs' supply uneven"
+      ]
+    }
+  ],
+  "recommendation": {
+    "option": "A",
+    "why": "It is what D14-2 B asked for, and the numbers moved the right way: the 60 A path nearly halves and the six outputs' supply evens out. The price is longer gate-drive lines and two small caps a few mm further out, none of which carries load current."
+  },
+  "answer": "Reply with A or B, or a change. D13 (output cells turned) is still open too.",
+  "sources": [
+    "blocks/power.poses.json",
+    "power/plane_model.py, geom from the board",
+    "TI LM74910H-Q1 SNOSDE6C 9.5.1, INA228-Q1 10.1",
+    "D04, D12, D14"
+  ]
+}

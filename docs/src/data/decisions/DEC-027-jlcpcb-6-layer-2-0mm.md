@@ -25,7 +25,7 @@ DEC-023 made the board 2.0 mm thick, partly because JLCPCB builds 6 and 8 layers
 
 - **6 layers, 2.0 mm, made by JLCPCB** (user, 2026-11-03).
 - **Stackup JLC062012-1080**, as quoted: 1 oz outer, 2 oz inner copper; F.Cu / 1080 × 2 / In1.Cu / 0.55 mm core / In2.Cu / 2116 × 3 / In3.Cu / 0.55 mm core / In4.Cu / 1080 × 2 / B.Cu, 2.000 mm in all. `node60.kicad_pcb` already carries it, so the board file doesn't change.
-- **Layer roles** are not part of this decision. The board file names In1.Cu and In4.Cu GND and In2.Cu and In3.Cu power; the placement plan (2026-11-02) proposes GND and VBAT_PROT planes with four signal layers. Routing settles it.
+- **Layer roles** are not part of this decision; placement decision D12-1 (user, 2026-11-03) set them: In1.Cu GND, In2.Cu and In3.Cu VBAT_PROT in parallel, In4.Cu GND, signals on F.Cu and B.Cu.
 - **Reference price:** $263.21 for five boards before shipping (2026-11-01, without Gerbers). Re-quote with the real files before ordering.
 
 ## Consequences

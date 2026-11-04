@@ -29,9 +29,8 @@ them as stale.
 
 ## Known open items a Node60 run will meet
 
-- The stackup is chosen (DEC-027: 6 layers, 2.0 mm, JLC062012-1080), but the layer roles are
-  not: the escape budget's 4 signal layers fit it with two planes (GND, VBAT_PROT), so the
-  layer plan can be proposed, but the choice is the user's.
+- The stackup is chosen (DEC-027: 6 layers, 2.0 mm, JLC062012-1080) and the layer roles are
+  set (D12-1, 2026-11-03: In1 GND, In2 + In3 VBAT_PROT, In4 GND, signals on F.Cu and B.Cu).
 - Whether any bottom-side part may stand under a busbar.
 - Fiducials, and how heavy bottom parts are held in reflow.
 - Power net classes and widths for the 10 A outputs and the 40 A path (handbook chapter 05:

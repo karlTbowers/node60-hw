@@ -1,175 +1,211 @@
 {
- "block": "t1s",
+ "block": "k501",
  "anchor": "K501",
- "approved": "2026-11-02 (D05)",
+ "approved": "2026-11-03 (D16-1 A; D503/D504 added as D16-2 A, mirrors of D501/D502)",
  "anchor_pose": {
-  "x": 157.814,
-  "y": 54.3316,
+  "x": 155.0,
+  "y": 54.33,
   "rot": 0.0,
   "side": "B"
  },
  "parts": {
-  "R516": {
-   "dx": -7.101,
-   "dy": 0.6,
+  "U501": {
+   "dx": 1.0,
+   "dy": -20.78,
    "rot": 0.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "1.5 k\u03a9 drop-node leg, at K501's drop contact (pin 2), next to its partner R518, so both legs meet the centre tap with equal length (DEC-017, OA \u00a75.3)."
-  },
-  "R517": {
-   "dx": -4.9702,
-   "dy": -6.5642,
-   "rot": 0.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "49.9 \u03a9 end-node leg at K501's end contact (pin 4), beside R519 (DEC-017, OA \u00a76.4.1)."
-  },
-  "R518": {
-   "dx": -12.6476,
-   "dy": 4.7829,
-   "rot": 270.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "1.5 k\u03a9 drop-node leg on the N side, mirror of R516 (DEC-017)."
-  },
-  "R519": {
-   "dx": 5.4932,
-   "dy": -6.6845,
-   "rot": 0.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "49.9 \u03a9 end-node leg on the N side, mirror of R517 (DEC-017)."
-  },
-  "R520": {
-   "dx": 2.0806,
-   "dy": -7.7962,
-   "rot": 90.0,
-   "side": "B",
-   "role": "flex",
-   "flex_mm": 2,
-   "why": "Centre-tap 100 k\u03a9 bleed; DC only, may move 2 mm (DEC-017)."
-  },
-  "C514": {
-   "dx": -0.2711,
-   "dy": -7.5876,
-   "rot": 90.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "Centre-tap 100 nF to ground, between the four legs (DEC-017)."
-  },
-  "D501": {
-   "dx": 12.716,
-   "dy": -7.278,
-   "rot": 90.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "ESD on T1S_P at J903's pins, in line on the pair at the connector (Microchip AN1718 rev. D \u00a72.0)."
-  },
-  "D502": {
-   "dx": 12.3246,
-   "dy": -9.3304,
-   "rot": 270.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "ESD on T1S_N, beside D501 (Microchip AN1718 rev. D \u00a72.0)."
-  },
-  "C511": {
-   "dx": 8.4731,
-   "dy": 1.5471,
-   "rot": 180.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "DC-block on T1S_P at the choke's line side (DEC-012 rev. B: DC block on the connector side of the choke); pad within 3 mm of FL501 (intent)."
-  },
-  "C512": {
-   "dx": 4.95,
-   "dy": 6.551,
-   "rot": 180.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "DC-block on T1S_N, mirror of C511 (DEC-012 rev. B)."
+   "why": "LAN8670 PHY moved north of the trunk (D16, user 2026-11-03: short, matched stubs; either port may be the used one): line pins 30/31 on its south edge centred on the trunk's midpoint x 155.0, 9 mm north of it; RMII leaves its west, north and east edges toward U401 (36 mm body to body, plan's 25 mm intent exceeded, on D16)."
   },
   "FL501": {
-   "dx": 11.3495,
-   "dy": 5.76,
-   "rot": 180.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "Common-mode choke between the DC block and the PHY; nothing on any layer under it (Microchip AN1718 rev. D \u00a72.0); PHY line pins within 12 mm (intent)."
-  },
-  "U501": {
-   "dx": 16.3823,
-   "dy": -0.6737,
-   "rot": 0.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "LAN8670 PHY north of both busbars, between the T1S zone and the MCU: line stub from the trunk short, RMII to U401 within 25 mm (plan v1)."
-  },
-  "Y501": {
-   "dx": 22.686,
-   "dy": 3.1684,
-   "rot": 0.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "50 MHz oscillator south-east of U501, its output to R503 within 5 mm; 35 mm from the nearest switch node (plan: quiet zone)."
-  },
-  "R503": {
-   "dx": 21.936,
-   "dy": 0.4184,
-   "rot": 180.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "REFCLK series resistor beside Y501, 4.6 mm from U501's pin 27 (as placed). A swap into U501's corner was tried and routed worse; reachability on pin 27 reads PASSABLE (0.3 mm margin), so the pose stays."
-  },
-  "R504": {
-   "dx": 23.436,
-   "dy": 0.1684,
+   "dx": 0.0,
+   "dy": -14.405,
    "rot": 270.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "RMII REF_CLK series resistor at the oscillator, its far side toward U401's U6 ball."
+   "why": "Common-mode choke straight under U501's line pins (rot 270: PHY side 1/2 north, line side 4/3 south). Its P winding is on the west and U501's P pin on the east, so the pair crosses once between FL501 and U501 (pinouts; one line hops to F.Cu). Nothing else under it (AN1718 2.0)."
   },
-  "R501": {
-   "dx": 16.5608,
-   "dy": 3.0572,
+  "C511": {
+   "dx": -1.25,
+   "dy": -9.68,
+   "rot": 270.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "DC block on T1S_P under the trunk: pad 2 directly below the F.Cu trunk (one via is the whole tap), pad 1 1.9 mm from FL501 pin 4; mirror of C512 about x 155 (DEC-012 rev. B)."
+  },
+  "C512": {
+   "dx": 1.25,
+   "dy": -9.68,
+   "rot": 270.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "DC block on T1S_N, mirror of C511 about x 155: PHY stub P and N 12.5 mm each by construction (t1s_stubs.py)."
+  },
+  "C514": {
+   "dx": 3.5,
+   "dy": -7.08,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "Termination centre-tap capacitor to GND between the trunk and K501, at the centre tap's two resistors."
+  },
+  "D501": {
+   "dx": 15.53,
+   "dy": -7.2764,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "ESD on T1S_P at J903, on the trunk just inside J903's inner pin (AN1718 2.0). Mirrored at J912 by D503 (D16-2 A)."
+  },
+  "D502": {
+   "dx": 15.1386,
+   "dy": -9.3288,
+   "rot": 270.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "ESD on T1S_N at J903, beside D501. Mirrored at J912 by D504."
+  },
+  "D503": {
+   "dx": -15.53,
+   "dy": -7.276,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "ESD on T1S_P at J912 (D16-2 A, DEC-012 rev. C): D501 mirrored about the trunk's midpoint x 155, so both connectors are protected alike; 1.9 mm from J912 pin 1."
+  },
+  "D504": {
+   "dx": -15.139,
+   "dy": -9.329,
+   "rot": 270.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "ESD on T1S_N at J912: D502 mirrored about x 155."
+  },
+  "Q501": {
+   "dx": 7.1,
+   "dy": 9.07,
    "rot": 180.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "RBIAS 12.4 k\u03a9 directly under U501's RBIAS pin 26, as placed."
-  },
-  "Q501": {
-   "dx": 8.2491,
-   "dy": 9.3499,
-   "rot": 180.0,
-   "side": "B",
-   "role": "flex",
-   "flex_mm": 2,
-   "why": "Relay coil driver (set), within 8 mm of K501 (intent); slow pulse drive, may move 2 mm."
+   "why": "Relay coil driver (reset coil), south of K501 outside the line zone, within 8 mm of it."
   },
   "Q502": {
-   "dx": -2.62,
-   "dy": 8.7189,
+   "dx": 0.194,
+   "dy": 8.7205,
    "rot": 0.0,
    "side": "B",
-   "role": "flex",
-   "flex_mm": 2,
-   "why": "Relay coil driver (reset), within 8 mm of K501 (intent)."
+   "role": "core",
+   "flex_mm": 0,
+   "why": "Relay coil driver (set coil), south of K501."
+  },
+  "R501": {
+   "dx": 2.75,
+   "dy": -16.08,
+   "rot": 180.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "RBIAS (12.4 kΩ) at U501 pin 26, in the line zone's north-east corner, clear of the choke."
+  },
+  "R503": {
+   "dx": 4.7,
+   "dy": -18.83,
+   "rot": 270.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "REFCLK series resistor (33 Ω) between Y501 and U501 pin 27."
+  },
+  "R504": {
+   "dx": 5.75,
+   "dy": -18.83,
+   "rot": 270.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "RMII REF_CLK series resistor at Y501's output, toward U401."
+  },
+  "R516": {
+   "dx": -6.0,
+   "dy": 2.42,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "1.5 kΩ P drop leg, west of K501 beside pin 2."
+  },
+  "R517": {
+   "dx": -6.0,
+   "dy": -2.33,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "49.9 Ω P termination leg, west of K501 beside pin 4 (P_END)."
+  },
+  "R518": {
+   "dx": 6.0,
+   "dy": 2.17,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "1.5 kΩ N drop leg, east of K501 beside pin 7, mirroring R516."
+  },
+  "R519": {
+   "dx": 6.0,
+   "dy": -2.83,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "49.9 Ω N termination leg, east of K501 beside pin 5 (N_END), mirroring R517."
+  },
+  "R520": {
+   "dx": 6.25,
+   "dy": -6.33,
+   "rot": 0.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "Centre-tap bleed resistor beside C514."
+  },
+  "Y501": {
+   "dx": 6.0,
+   "dy": -21.83,
+   "rot": 180.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "50 MHz oscillator east of U501, outside the line zone so its clock stays off the T1S chain; UNDER_Y501 keeps foreign nets out from under it."
+  },
+  "C509": {
+   "dx": 3.25,
+   "dy": -17.08,
+   "rot": 0.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "VDDAU 10 nF at U501 pin 25, B.Cu: the top side there is under both connectors' housings."
+  },
+  "C510": {
+   "dx": 4.25,
+   "dy": -15.58,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "VDDAU 100 nF beside C509."
   }
  }
 }
