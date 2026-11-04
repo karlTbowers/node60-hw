@@ -88,6 +88,15 @@ The plan covers, each item with its source:
 - **Stackup and layer plan**: layer count, thickness, which layers are planes and which carry
   signals, and whether the stackup is decided or open (an open stackup is a decision page
   once the escape budget is known).
+- **Plane layers and signal windows**: for every plane layer, whether signals may use it and
+  where. Each plane layer is power-only (no tracks; through vias still pass) or has a signal
+  window: a rectangle where the plane is not poured and signal tracks may run, placed where the
+  plane carries little current (away from the source-to-load paths), with its cost from the
+  plane model (supply resistance to each load with and without the window) on the plan's
+  decision page. Recorded as `plane_windows` in `plan.json` (`references/plan.md`), drawn on the
+  board by `scripts/draw_rule_areas.py`, used by the fast route, and checked by the gate. Never
+  leave it implicit: a router that may use a plane layer anywhere will cut the plane where the
+  current flows (Node60, 2026-11-03: user, D17).
 - **Fixed parts**: connectors, mounting parts, the debug header, with pose and source; how
   they get onto the board (Node60: `place_connectors.py`).
 - **Enclosure keep-outs and height limits**: per side and area, with what may stand in each

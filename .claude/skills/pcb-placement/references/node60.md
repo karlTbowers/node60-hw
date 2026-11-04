@@ -7,7 +7,7 @@ them as stale.
 | Plan item | Node60 | Source |
 |---|---|---|
 | Outline | 230 × 110 mm, 2.0 mm, drawn by `place_connectors.py` | `CLAUDE.md` (DEC-024, DEC-025) |
-| Stackup | 6 layers at 2.0 mm assumed by every quote; **open** (stackup and fab house not chosen; 2 oz outer copper for high current not decided) | `CLAUDE.md`, site page "PCB stackup & fab quotes" |
+| Stackup | 6 layers, 2.0 mm, JLCPCB stackup JLC062012-1080 (1 oz outer, 2 oz inner; DEC-027, 2026-11-03); JLCPCB's rules apply (0.15 mm track and space on the 2 oz inner layers); 2 oz outer copper for high current and the 0.20 mm via option still open | `CLAUDE.md`, DEC-027, site page "PCB stackup & fab quotes" |
 | Fixed parts | J901–J912 and the busbar footprints BB901/BB902, from `scripts/place_connectors.py` (version `CURRENT`, v15); J401 debug header and D201 on F.Cu | `CLAUDE.md`, memory "debug header on top" |
 | Sides | nearly every part on B.Cu; on F.Cu only 0402/0603 decoupling, D201 and J401 | `CLAUDE.md` (DEC-024) |
 | Busbars | 1/8" × 3/4" C110 bars resting on the REDCUBE spigots 0.6 mm above the top face; rule areas `BUSBAR_VBAT_IN`, `BUSBAR_GND`: F.Cu under each takes only the bar's own net | `node60.kicad_dru`, `CLAUDE.md` (DEC-023, DEC-025) |
@@ -29,8 +29,8 @@ them as stale.
 
 ## Known open items a Node60 run will meet
 
-- The stackup is open: the escape budget's 4 signal layers fit the 6-layer plan with two
-  planes (GND, VBAT_PROT), so the layer plan can be proposed, but the choice is the user's.
+- The stackup is chosen (DEC-027: 6 layers, 2.0 mm, JLC062012-1080) and the layer roles are
+  set (D12-1, 2026-11-03: In1 GND, In2 + In3 VBAT_PROT, In4 GND, signals on F.Cu and B.Cu).
 - Whether any bottom-side part may stand under a busbar.
 - Fiducials, and how heavy bottom parts are held in reflow.
 - Power net classes and widths for the 10 A outputs and the 40 A path (handbook chapter 05:

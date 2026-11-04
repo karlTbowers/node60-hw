@@ -22548,6 +22548,7 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -22559,6 +22560,7 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -22570,6 +22572,7 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -22581,6 +22584,7 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -22592,6 +22596,7 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -79799,6 +79804,7 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -79810,6 +79816,7 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -79821,6 +79828,7 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -79832,6 +79840,7 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -79843,6 +79852,7 @@
 			(effects
 				(font
 					(size 1.27 1.27)
+					(thickness 0.15)
 				)
 			)
 		)
@@ -80567,38 +80577,7 @@
 	)
 	(zone
 		(layers "F.Cu" "B.Cu")
-		(uuid "6edaa003-9e0d-47c5-90b4-f91411b15234")
-		(name "ESCAPE_U501")
-		(hatch edge 0.5)
-		(connect_pads
-			(clearance 0)
-		)
-		(min_thickness 0.25)
-		(keepout
-			(tracks allowed)
-			(vias allowed)
-			(pads allowed)
-			(copperpour allowed)
-			(footprints allowed)
-		)
-		(placement
-			(enabled no)
-			(sheetname "")
-		)
-		(fill
-			(thermal_gap 0.5)
-			(thermal_bridge_width 0.5)
-			(island_removal_mode 0)
-		)
-		(polygon
-			(pts
-				(xy 151.825 29.374999) (xy 160.175 29.374999) (xy 160.175 37.724999) (xy 151.825 37.724999)
-			)
-		)
-	)
-	(zone
-		(layers "F.Cu" "B.Cu")
-		(uuid "e7eb25b6-8315-465a-af34-8691b3cfc45a")
+		(uuid "0f49c48e-d4a8-414e-8708-da3ae2ef15a5")
 		(name "ESCAPE_U401")
 		(hatch edge 0.5)
 		(connect_pads
@@ -80628,8 +80607,39 @@
 		)
 	)
 	(zone
+		(layers "F.Cu" "B.Cu")
+		(uuid "ec3fc3f6-de31-4037-a500-07c883acdcf4")
+		(name "ESCAPE_U501")
+		(hatch edge 0.5)
+		(connect_pads
+			(clearance 0)
+		)
+		(min_thickness 0.25)
+		(keepout
+			(tracks allowed)
+			(vias allowed)
+			(pads allowed)
+			(copperpour allowed)
+			(footprints allowed)
+		)
+		(placement
+			(enabled no)
+			(sheetname "")
+		)
+		(fill
+			(thermal_gap 0.5)
+			(thermal_bridge_width 0.5)
+			(island_removal_mode 0)
+		)
+		(polygon
+			(pts
+				(xy 151.825 29.374999) (xy 160.175 29.374999) (xy 160.175 37.724999) (xy 151.825 37.724999)
+			)
+		)
+	)
+	(zone
 		(layers "B.Cu" "In4.Cu")
-		(uuid "5cec9001-1ec4-4980-afe1-f4fa2b396069")
+		(uuid "1fe13df2-52f9-4b7d-9512-8a5130decf32")
 		(name "UNDER_Y501")
 		(hatch edge 0.5)
 		(connect_pads
@@ -80660,7 +80670,7 @@
 	)
 	(zone
 		(layers "B.Cu" "In4.Cu")
-		(uuid "bb36cb0b-ca70-4f10-b762-7bbdffbf48e7")
+		(uuid "a6a1f1ef-74a9-4fd7-b686-4698516922d7")
 		(name "UNDER_Y401")
 		(hatch edge 0.5)
 		(connect_pads
@@ -80686,6 +80696,161 @@
 		(polygon
 			(pts
 				(xy 187.884 50.145) (xy 193.174 50.145) (xy 193.174 54.735) (xy 187.884 54.735)
+			)
+		)
+	)
+	(zone
+		(layer "In1.Cu")
+		(uuid "1049b4dc-8841-4770-aa5b-f3375d50f26b")
+		(name "POWER_ONLY_In1Cu_1")
+		(hatch edge 0.5)
+		(connect_pads
+			(clearance 0)
+		)
+		(min_thickness 0.25)
+		(keepout
+			(tracks not_allowed)
+			(vias allowed)
+			(pads allowed)
+			(copperpour allowed)
+			(footprints allowed)
+		)
+		(placement
+			(enabled no)
+			(sheetname "")
+		)
+		(fill
+			(thermal_gap 0.5)
+			(thermal_bridge_width 0.5)
+			(island_removal_mode 0)
+		)
+		(polygon
+			(pts
+				(xy 39.95 29.95) (xy 270.05 29.95) (xy 270.05 140.05) (xy 39.95 140.05)
+			)
+		)
+	)
+	(zone
+		(layer "In2.Cu")
+		(uuid "c10aa718-2e71-4b9d-87da-c56f63949b09")
+		(name "SIGNAL_WINDOW_In2Cu_1")
+		(hatch edge 0.5)
+		(connect_pads
+			(clearance 0)
+		)
+		(min_thickness 0.25)
+		(keepout
+			(tracks allowed)
+			(vias allowed)
+			(pads allowed)
+			(copperpour not_allowed)
+			(footprints allowed)
+		)
+		(placement
+			(enabled no)
+			(sheetname "")
+		)
+		(fill
+			(thermal_gap 0.5)
+			(thermal_bridge_width 0.5)
+			(island_removal_mode 0)
+		)
+		(polygon
+			(pts
+				(xy 39.95 29.95) (xy 270.05 29.95) (xy 270.05 70) (xy 39.95 70)
+			)
+		)
+	)
+	(zone
+		(layer "In2.Cu")
+		(uuid "ebfe2de0-21ba-4bb7-b4ee-135dba1ce8fd")
+		(name "POWER_ONLY_In2Cu_1")
+		(hatch edge 0.5)
+		(connect_pads
+			(clearance 0)
+		)
+		(min_thickness 0.25)
+		(keepout
+			(tracks not_allowed)
+			(vias allowed)
+			(pads allowed)
+			(copperpour allowed)
+			(footprints allowed)
+		)
+		(placement
+			(enabled no)
+			(sheetname "")
+		)
+		(fill
+			(thermal_gap 0.5)
+			(thermal_bridge_width 0.5)
+			(island_removal_mode 0)
+		)
+		(polygon
+			(pts
+				(xy 39.95 70) (xy 270.05 70) (xy 270.05 140.05) (xy 39.95 140.05)
+			)
+		)
+	)
+	(zone
+		(layer "In3.Cu")
+		(uuid "198c9a71-a0d3-4a03-926d-5ea30bfa704b")
+		(name "POWER_ONLY_In3Cu_1")
+		(hatch edge 0.5)
+		(connect_pads
+			(clearance 0)
+		)
+		(min_thickness 0.25)
+		(keepout
+			(tracks not_allowed)
+			(vias allowed)
+			(pads allowed)
+			(copperpour allowed)
+			(footprints allowed)
+		)
+		(placement
+			(enabled no)
+			(sheetname "")
+		)
+		(fill
+			(thermal_gap 0.5)
+			(thermal_bridge_width 0.5)
+			(island_removal_mode 0)
+		)
+		(polygon
+			(pts
+				(xy 39.95 29.95) (xy 270.05 29.95) (xy 270.05 140.05) (xy 39.95 140.05)
+			)
+		)
+	)
+	(zone
+		(layer "In4.Cu")
+		(uuid "161e1fce-2c45-4f51-866f-8128975e2d42")
+		(name "POWER_ONLY_In4Cu_1")
+		(hatch edge 0.5)
+		(connect_pads
+			(clearance 0)
+		)
+		(min_thickness 0.25)
+		(keepout
+			(tracks not_allowed)
+			(vias allowed)
+			(pads allowed)
+			(copperpour allowed)
+			(footprints allowed)
+		)
+		(placement
+			(enabled no)
+			(sheetname "")
+		)
+		(fill
+			(thermal_gap 0.5)
+			(thermal_bridge_width 0.5)
+			(island_removal_mode 0)
+		)
+		(polygon
+			(pts
+				(xy 39.95 29.95) (xy 270.05 29.95) (xy 270.05 140.05) (xy 39.95 140.05)
 			)
 		)
 	)

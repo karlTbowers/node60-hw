@@ -15,6 +15,11 @@ from scipy.sparse.linalg import spsolve
 ap = argparse.ArgumentParser()
 ap.add_argument('geom'); ap.add_argument('--oz', type=float, default=1.0)
 ap.add_argument('--temp', type=float, default=20.0); ap.add_argument('--cell', type=float, default=0.5)
+ap.add_argument('--window', action='append', default=[], metavar='X0,Y0,X1,Y1',
+                help='a signal window cut out of the VBAT_PROT plane (mm, repeatable); the GND plane is whole')
+ap.add_argument('--window-keep', type=float, default=0.0, metavar='F',
+                help='fraction of the copper left inside the windows: 0 = cut on every plane layer, 0.5 = cut on '
+                     'one of two equal layers (In2 windowed, In3 whole)')
 a = ap.parse_args()
 g = json.load(open(a.geom))
 x0, y0, x1, y1 = g['outline']; h = a.cell
@@ -34,6 +39,12 @@ def cells_in(box):
 def solve(net, source, loads):
     """source: list of (ref, pins); loads: {name: ([(ref, pins)], amps)} -> {name: volts}"""
     ok = np.ones((nx, ny), bool)
+    wt = np.ones((nx, ny))                      # conductance weight per cell (thinned copper in a window)
+    if net != 'GND':
+        for w in a.window:
+            for c in cells_in(tuple(float(v) for v in w.split(','))):
+                if a.window_keep > 0: wt[c] = a.window_keep
+                else: ok[c] = False
     for hx, hy, d, hn in g['holes']:
         if hn == net: continue
         r = d / 2 + 0.3
@@ -59,7 +70,7 @@ def solve(net, source, loads):
             for di, dj in ((1, 0), (0, 1)):
                 ii, jj = i + di, j + dj
                 if ii < nx and jj < ny and ok[ii, jj]:
-                    m = idx[ii, jj]; c = 1 / Rs
+                    m = idx[ii, jj]; c = 2 / (Rs / wt[i, j] + Rs / wt[ii, jj])   # series of two half cells
                     G[k, k] += c; G[m, m] += c; G[k, m] -= c; G[m, k] -= c
     for c in src:                               # source pads held at 0 V
         k = idx[c]; G[k, :] = 0; G[k, k] = 1; I[k] = 0
