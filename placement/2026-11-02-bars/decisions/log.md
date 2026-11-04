@@ -23,3 +23,7 @@
 - `gate.py`'s via-site row counts no via inside the pad itself, so a large tab (Q201–Q204's 8 × 10 mm drain pad) gets no credit for via-in-pad, which JLCPCB's filled and capped vias allow.
 - Plan v1's busbar net tie (BB901/BB902 with a pad in each terminal, tied as a net tie) does not work: KiCad's net tie only lets copper of different nets touch without a DRC error; it joins nothing, and VBAT_IN still had 17 unconnected items with it. The fix is a schematic net-tie part between two nets (to be decided, D02). Reverted; J901 and J902 stay reported unconnected until then.
 - `escape_budget.blocking_areas` fixed in this run: it takes `blocks=("via",)` or `("via", "track")`, and the via checks (`escape_budget.py`, `gate.py` via sites) ask only about vias.
+
+## D15 Power entry block (2026-11-03)
+
+Published: the re-ordered power entry (D14-2 B) as a block page; `blocks/power.poses.json` replaces D04's table (approved: null). Recommendation A. C214 moved to F.Cu over U202 pin 6. Awaiting the user's answer.
