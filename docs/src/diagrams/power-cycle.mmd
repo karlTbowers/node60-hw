@@ -10,7 +10,8 @@ stateDiagram-v2
 
     Wake: WAKE
     Wake: PHY detects wake-up tone → INH high
-    Wake: bucks ramp within 1 ms → S32K344 cold boot
+    Wake: 3V3_MAIN, then 1V5_CORE ramp (EN chain) → S32K344 cold boot
+    Wake: ramp + PHY init ≤ 15 ms (≈10 ms estimated, GATE-NET-01)
     Wake: T1S_IRQ_L ready → PHY re-init → link up
 
     Run: RUN

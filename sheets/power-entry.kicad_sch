@@ -4023,7 +4023,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "DropOut_Resistor:AC0402JR-070RL"
+		(symbol "DropOut_Resistor:AC0402FR-0726K7L"
 			(pin_names
 				(offset 1.016)
 				(hide yes)
@@ -4044,7 +4044,7 @@
 					(justify left)
 				)
 			)
-			(property "Value" "0R"
+			(property "Value" "26.7k"
 				(at 2.54 0.953 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -4077,7 +4077,7 @@
 					)
 				)
 			)
-			(property "Description" "Yageo AC thick film chip jumper, 0 Ω, 1 A rated, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+			(property "Description" "Yageo AC thick film chip resistor, 26.7 kΩ ±1%, 1/16 W, 50 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -4099,7 +4099,7 @@
 					)
 				)
 			)
-			(property "MPN" "AC0402JR-070RL"
+			(property "MPN" "AC0402FR-0726K7L"
 				(at 2.54 -2.794 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -4110,7 +4110,7 @@
 					(justify left)
 				)
 			)
-			(property "DigiKey_PN" "311-0.0LBCT-ND"
+			(property "DigiKey_PN" "YAG5658CT-ND"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -4121,7 +4121,7 @@
 					)
 				)
 			)
-			(property "Mouser_PN" "603-AC0402JR-070RL"
+			(property "Mouser_PN" "603-AC0402FR-0726K7L"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -4143,7 +4143,7 @@
 					)
 				)
 			)
-			(property "Case" "0402"
+			(property "Tolerance" "±1%"
 				(at 2.54 -0.953 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -4152,6 +4152,50 @@
 						(size 1.27 1.27)
 					)
 					(justify left)
+				)
+			)
+			(property "Power" "1/16W"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "50V"
+				(at 7.62 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "0402"
+				(at 12.7 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Notes" "Node60 LM74910H R(ILIM) for the 0.3 mΩ BVR-Z-R0003-1.0 shunt (74.8 A breaker), decision D14-1, 2026-11-03."
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
 				)
 			)
 			(property "ki_keywords" "resistor thick film automotive"
@@ -4176,7 +4220,255 @@
 					)
 				)
 			)
-			(symbol "AC0402JR-070RL_1_1"
+			(symbol "AC0402FR-0726K7L_1_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "DropOut_Resistor:AC0402FR-07383RL"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.54 2.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "383R"
+				(at 2.54 0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Yageo AC thick film chip resistor, 383 Ω ±1%, 1/16 W, 50 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Yageo"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "AC0402FR-07383RL"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "AC0402FR-07383RL-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "603-AC0402FR-07383RL"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Tolerance" "±1%"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Power" "1/16W"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "50V"
+				(at 7.62 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "0402"
+				(at 12.7 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Notes" "Node60 LM74910H RISCP for the 0.3 mΩ BVR-Z-R0003-1.0 shunt (24.0 mV fast trip = 80 A), decision D14-1, 2026-11-03. No stock seen on 2026-11-03 (DigiKey lists full reels only)."
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "resistor thick film automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R?0402?1005Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "AC0402FR-07383RL_1_1"
 				(rectangle
 					(start -1.016 -2.54)
 					(end 1.016 2.54)
@@ -5886,7 +6178,7 @@
 			)
 			(embedded_fonts no)
 		)
-		(symbol "DropOut_Resistor:CSS2725FTL250"
+		(symbol "DropOut_Resistor:BVR-Z-R0003-1.0"
 			(pin_names
 				(offset 1.016)
 				(hide yes)
@@ -5897,7 +6189,7 @@
 			(in_pos_files yes)
 			(duplicate_pin_numbers_are_jumpers no)
 			(property "Reference" "R"
-				(at 0 6.35 0)
+				(at 0 7.62 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -5906,8 +6198,8 @@
 					)
 				)
 			)
-			(property "Value" "CSS2725FTL250"
-				(at 0 -6.35 0)
+			(property "Value" "BVR-Z-R0003-1.0"
+				(at 0 -7.62 0)
 				(show_name no)
 				(do_not_autoplace no)
 				(effects
@@ -5916,7 +6208,7 @@
 					)
 				)
 			)
-			(property "Footprint" "DropOut_Resistor_SMD:R_Shunt_Stackpole_CSS2725"
+			(property "Footprint" "DropOut_Resistor_SMD:R_Shunt_Isabellenhuette_BVR4026"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -5927,7 +6219,7 @@
 					)
 				)
 			)
-			(property "Datasheet" "https://www.seielect.com/catalog/SEI-CSS_CSSH.PDF"
+			(property "Datasheet" "https://www.isabellenhuette.com/hubfs/Files/Data-sheets/BVR.pdf"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -5938,7 +6230,7 @@
 					)
 				)
 			)
-			(property "Description" "Stackpole CSS2725 metal alloy current sense resistor, 0.25 mΩ ±1 %, 4 W (to 100 °C, 3.2 W at 125 °C), ±50 ppm/°C, AEC-Q200, -55 to +225 °C, 2725 (6.81 x 6.45 mm)"
+			(property "Description" "Isabellenhuette BVR ISA-WELD 4-terminal (Kelvin) current sense resistor, 0.3 mΩ ±1 %, 11 W at 70 °C / 5 W above 100 °C terminal temperature, TCR 0 ±20 ppm/K, AEC-Q200, -65 to +170 °C, 4026 (10.1 x 6.6 mm)"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -5949,7 +6241,7 @@
 					)
 				)
 			)
-			(property "Manufacturer" "Stackpole Electronics"
+			(property "Manufacturer" "Isabellenhuette"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -5960,7 +6252,7 @@
 					)
 				)
 			)
-			(property "MPN" "CSS2725FTL250"
+			(property "MPN" "BVR-Z-R0003-1.0"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -5971,7 +6263,7 @@
 					)
 				)
 			)
-			(property "DigiKey_PN" "CSS2725FTL250CT-ND"
+			(property "DigiKey_PN" "4423-BVR-Z-R0003-1.0CT-ND"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -5982,7 +6274,7 @@
 					)
 				)
 			)
-			(property "Mouser_PN" "708-CSS2725FTL250"
+			(property "Mouser_PN" "-"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -5993,7 +6285,7 @@
 					)
 				)
 			)
-			(property "Temperature_Grade" "AEC-Q200, -55 to +225 °C"
+			(property "Temperature_Grade" "AEC-Q200, -65 to +170 °C"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6004,7 +6296,7 @@
 					)
 				)
 			)
-			(property "ki_keywords" "resistor shunt current sense metal alloy automotive low ohm"
+			(property "ki_keywords" "resistor shunt current sense Kelvin 4-terminal metal automotive low ohm ISA-WELD"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6015,7 +6307,7 @@
 					)
 				)
 			)
-			(property "ki_fp_filters" "R*Shunt*Stackpole*CSS2725*"
+			(property "ki_fp_filters" "R*Shunt*Isabellenhuette*BVR4026*"
 				(at 0 0 0)
 				(show_name no)
 				(do_not_autoplace no)
@@ -6026,7 +6318,7 @@
 					)
 				)
 			)
-			(symbol "CSS2725FTL250_1_1"
+			(symbol "BVR-Z-R0003-1.0_1_1"
 				(rectangle
 					(start -1.016 -2.54)
 					(end 1.016 2.54)
@@ -6038,10 +6330,34 @@
 						(type background)
 					)
 				)
+				(polyline
+					(pts
+						(xy 0 -2.54) (xy 1.27 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 2.54) (xy 0 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
 				(pin passive line
-					(at 0 3.81 270)
-					(length 1.27)
-					(name "1"
+					(at 0 5.08 270)
+					(length 2.54)
+					(name "F1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -6057,9 +6373,9 @@
 					)
 				)
 				(pin passive line
-					(at 0 -3.81 90)
+					(at 2.54 2.54 180)
 					(length 1.27)
-					(name "2"
+					(name "S1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -6067,6 +6383,42 @@
 						)
 					)
 					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -2.54 180)
+					(length 1.27)
+					(name "S2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -5.08 90)
+					(length 2.54)
+					(name "F2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -6275,254 +6627,6 @@
 				)
 			)
 			(symbol "ERA-3AEB103V_1_1"
-				(rectangle
-					(start -1.016 -2.54)
-					(end 1.016 2.54)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-				(pin passive line
-					(at 0 3.81 270)
-					(length 1.27)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 0 -3.81 90)
-					(length 1.27)
-					(name "~"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "DropOut_Resistor:TNPW060332K0BEEA"
-			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(in_pos_files yes)
-			(duplicate_pin_numbers_are_jumpers no)
-			(property "Reference" "R"
-				(at 2.54 2.858 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "32k"
-				(at 2.54 0.953 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" "DropOut_Resistor_SMD:R_0603_1608Metric"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Datasheet" "https://www.vishay.com/docs/28758/tnpw_e3.pdf"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Description" "Vishay TNPW e3 thin film chip resistor, 32 kΩ ±0.1%, 0.11 W, 100 V, ±25 ppm/K, AEC-Q200, -55 to +175 °C, 0603 (1608 metric)"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Manufacturer" "Vishay"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "MPN" "TNPW060332K0BEEA"
-				(at 2.54 -2.794 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1 1)
-					)
-					(justify left)
-				)
-			)
-			(property "DigiKey_PN" "541-TNPW060332K0BEEACT-ND"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Mouser_PN" "71-TNPW060332K0BEEA"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Temperature_Grade" "AEC-Q200, -55 to +175 °C"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Tolerance" "±0.1%"
-				(at 2.54 -0.953 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Power" "0.11W"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Voltage" "100V"
-				(at 10.16 -0.953 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Case" "0603"
-				(at 16.51 -0.953 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Notes" "32 kΩ is an E192 value: no AEC-Q200 1 % thick film part offers it (Yageo AC and Panasonic ERJ-3EKF are E24/E96 only), so this 0.1 % thin film part serves the 1 % line."
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_keywords" "resistor thin film precision automotive"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "ki_fp_filters" "R?0603?1608Metric*"
-				(at 0 0 0)
-				(show_name no)
-				(do_not_autoplace no)
-				(hide yes)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(symbol "TNPW060332K0BEEA_1_1"
 				(rectangle
 					(start -1.016 -2.54)
 					(end 1.016 2.54)
@@ -9664,7 +9768,7 @@
 		(uuid "b1dbc964-0a28-5a49-aea2-be66a226cf1b")
 	)
 	(symbol
-		(lib_id "DropOut_Resistor:CSS2725FTL250")
+		(lib_id "DropOut_Resistor:BVR-Z-R0003-1.0")
 		(at 160.02 63.5 90)
 		(unit 1)
 		(body_style 1)
@@ -9676,22 +9780,22 @@
 		(fields_autoplaced no)
 		(uuid "6b11c373-00e9-5ee9-b675-7b1a093a9298")
 		(property "Reference" "R"
-			(at 160.02 58.547 90)
+			(at 160.02 67.31 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property "Value" "CSS2725FTL250"
-			(at 160.02 60.325 90)
+		(property "Value" "BVR-Z-R0003-1.0"
+			(at 160.02 74.422 90)
 			(effects
 				(font
-					(size 1.27 1.27)
+					(size 0.8 0.8)
 				)
 			)
 		)
-		(property "Footprint" "DropOut_Resistor_SMD:R_Shunt_Stackpole_CSS2725"
+		(property "Footprint" "DropOut_Resistor_SMD:R_Shunt_Isabellenhuette_BVR4026"
 			(at 160.02 63.5 0)
 			(effects
 				(font
@@ -9700,7 +9804,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.seielect.com/catalog/SEI-CSS_CSSH.PDF"
+		(property "Datasheet" "https://www.isabellenhuette.com/hubfs/Files/Data-sheets/BVR.pdf"
 			(at 160.02 63.5 0)
 			(effects
 				(font
@@ -9709,7 +9813,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Stackpole CSS2725 metal alloy current sense resistor, 0.25 mΩ ±1 %, 4 W (to 100 °C, 3.2 W at 125 °C), ±50 ppm/°C, AEC-Q200, -55 to +225 °C, 2725 (6.81 x 6.45 mm)"
+		(property "Description" "Isabellenhuette BVR ISA-WELD 4-terminal (Kelvin) current sense resistor, 0.3 mΩ ±1 %, 11 W at 70 °C / 5 W above 100 °C terminal temperature, TCR 0 ±20 ppm/K, AEC-Q200, -65 to +170 °C, 4026 (10.1 x 6.6 mm)"
 			(at 160.02 63.5 0)
 			(effects
 				(font
@@ -9718,7 +9822,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "Stackpole Electronics"
+		(property "Manufacturer" "Isabellenhuette"
 			(at 160.02 63.5 0)
 			(effects
 				(font
@@ -9727,7 +9831,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "CSS2725FTL250"
+		(property "MPN" "BVR-Z-R0003-1.0"
 			(at 160.02 63.5 0)
 			(effects
 				(font
@@ -9736,7 +9840,7 @@
 				(hide yes)
 			)
 		)
-		(property "DigiKey_PN" "CSS2725FTL250CT-ND"
+		(property "DigiKey_PN" "4423-BVR-Z-R0003-1.0CT-ND"
 			(at 160.02 63.5 0)
 			(effects
 				(font
@@ -9745,7 +9849,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" "708-CSS2725FTL250"
+		(property "Mouser_PN" "-"
 			(at 160.02 63.5 0)
 			(effects
 				(font
@@ -9754,20 +9858,58 @@
 				(hide yes)
 			)
 		)
-		(property "Temperature_Grade" "AEC-Q200, -55 to +225 °C"
+		(property "Temperature_Grade" "AEC-Q200, -65 to +170 °C"
 			(at 160.02 63.5 0)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 				(hide yes)
+			)
+		)
+		(property "Resistance" "0.3mR"
+			(at 160.02 69.088 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Tolerance" "±1%"
+			(at 157.607 70.866 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Power" "5W"
+			(at 162.433 70.866 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Case" "4026"
+			(at 160.02 72.644 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
 			)
 		)
 		(pin "1"
-			(uuid "39c95733-333b-5ed0-8a79-c5b9206ff34d")
+			(uuid "b9c63096-77c9-4954-b104-818ab600cfad")
 		)
 		(pin "2"
-			(uuid "bfc4fc3f-6a86-5bc2-b94b-0fdbe8388448")
+			(uuid "48a3d5e1-55f8-4802-98a7-0759504a081f")
+		)
+		(pin "3"
+			(uuid "6fe99427-3905-4702-9d0b-15e4d28911be")
+		)
+		(pin "4"
+			(uuid "9fd3c085-9349-4ea6-ad34-5f011bad0948")
 		)
 		(instances
 			(project "node60"
@@ -9781,7 +9923,7 @@
 	(wire
 		(pts
 			(xy 127 63.5)
-			(xy 156.21 63.5)
+			(xy 154.94 63.5)
 		)
 		(stroke
 			(width 0)
@@ -10403,7 +10545,7 @@
 	)
 	(wire
 		(pts
-			(xy 163.83 63.5)
+			(xy 165.1 63.5)
 			(xy 190.5 63.5)
 		)
 		(stroke
@@ -10411,6 +10553,70 @@
 			(type default)
 		)
 		(uuid "b77e7c39-6b7d-542c-9072-022b3148a0dd")
+	)
+	(wire
+		(pts
+			(xy 157.48 60.96)
+			(xy 157.48 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e5ca0a28-cc0f-44e5-bd57-c653a6bc5202")
+	)
+	(wire
+		(pts
+			(xy 157.48 57.15)
+			(xy 152.4 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "72efa48a-e2fa-48aa-81c2-e5b3d9e0e957")
+	)
+	(label "RS_SENSE_P"
+		(at 152.4 57.15 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "38b7d21a-f9b4-412d-b2f2-74cb8de75aea")
+	)
+	(wire
+		(pts
+			(xy 162.56 60.96)
+			(xy 162.56 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7110bc27-43df-49fb-97cf-5e1ee2abd034")
+	)
+	(wire
+		(pts
+			(xy 162.56 57.15)
+			(xy 167.64 57.15)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4e415be5-d11b-4d08-9921-b1f16727ce50")
+	)
+	(label "RS_SENSE_N"
+		(at 167.64 57.15 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "58674a3f-be73-4fd3-b0bd-ea767918a35a")
 	)
 	(label "VBAT_Q2D"
 		(at 167.64 63.5 0)
@@ -12620,7 +12826,7 @@
 		)
 		(uuid "7fa73009-7eb4-58c5-bbe5-003c1c01ad2d")
 	)
-	(label "VBAT_Q2D"
+	(label "RS_SENSE_N"
 		(at 193.04 195.58 180)
 		(effects
 			(font
@@ -15124,7 +15330,7 @@
 		)
 	)
 	(symbol
-		(lib_id "DropOut_Resistor:TNPW060332K0BEEA")
+		(lib_id "DropOut_Resistor:AC0402FR-0726K7L")
 		(at 190.5 234.95 0)
 		(unit 1)
 		(body_style 1)
@@ -15144,7 +15350,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "32k"
+		(property "Value" "26.7k"
 			(at 193.04 233.501 0)
 			(effects
 				(font
@@ -15153,7 +15359,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "DropOut_Resistor_SMD:R_0603_1608Metric"
+		(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
 			(at 190.5 234.95 0)
 			(effects
 				(font
@@ -15162,7 +15368,7 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "https://www.vishay.com/docs/28758/tnpw_e3.pdf"
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
 			(at 190.5 234.95 0)
 			(effects
 				(font
@@ -15171,7 +15377,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Vishay TNPW e3 thin film chip resistor, 32 kΩ ±0.1%, 0.11 W, 100 V, ±25 ppm/K, AEC-Q200, -55 to +175 °C, 0603 (1608 metric)"
+		(property "Description" "Yageo AC thick film chip resistor, 26.7 kΩ ±1%, 1/16 W, 50 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
 			(at 190.5 234.95 0)
 			(effects
 				(font
@@ -15180,7 +15386,7 @@
 				(hide yes)
 			)
 		)
-		(property "Manufacturer" "Vishay"
+		(property "Manufacturer" "Yageo"
 			(at 190.5 234.95 0)
 			(effects
 				(font
@@ -15189,7 +15395,7 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "TNPW060332K0BEEA"
+		(property "MPN" "AC0402FR-0726K7L"
 			(at 193.04 238.835 0)
 			(effects
 				(font
@@ -15198,7 +15404,7 @@
 				(justify left)
 			)
 		)
-		(property "DigiKey_PN" "541-TNPW060332K0BEEACT-ND"
+		(property "DigiKey_PN" "YAG5658CT-ND"
 			(at 190.5 234.95 0)
 			(effects
 				(font
@@ -15207,7 +15413,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" "71-TNPW060332K0BEEA"
+		(property "Mouser_PN" "603-AC0402FR-0726K7L"
 			(at 190.5 234.95 0)
 			(effects
 				(font
@@ -15216,7 +15422,7 @@
 				(hide yes)
 			)
 		)
-		(property "Temperature_Grade" "AEC-Q200, -55 to +175 °C"
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
 			(at 190.5 234.95 0)
 			(effects
 				(font
@@ -15225,7 +15431,7 @@
 				(hide yes)
 			)
 		)
-		(property "Tolerance" "±0.1%"
+		(property "Tolerance" "±1%"
 			(at 193.04 235.279 0)
 			(effects
 				(font
@@ -15234,7 +15440,7 @@
 				(justify left)
 			)
 		)
-		(property "Power" "0.11W"
+		(property "Power" "1/16W"
 			(at 190.5 234.95 0)
 			(effects
 				(font
@@ -15243,8 +15449,8 @@
 				(hide yes)
 			)
 		)
-		(property "Voltage" "100V"
-			(at 200.279 235.279 0)
+		(property "Voltage" "50V"
+			(at 197.866 235.279 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -15252,7 +15458,7 @@
 				(justify left)
 			)
 		)
-		(property "Case" "0603"
+		(property "Case" "0402"
 			(at 193.04 237.057 0)
 			(effects
 				(font
@@ -15261,7 +15467,7 @@
 				(justify left)
 			)
 		)
-		(property "Notes" "32 kΩ is an E192 value: no AEC-Q200 1 % thick film part offers it (Yageo AC and Panasonic ERJ-3EKF are E24/E96 only), so this 0.1 % thin film part serves the 1 % line."
+		(property "Notes" "Node60 LM74910H R(ILIM) for the 0.3 mΩ BVR-Z-R0003-1.0 shunt (74.8 A breaker), decision D14-1, 2026-11-03."
 			(at 190.5 234.95 0)
 			(effects
 				(font
@@ -15318,7 +15524,7 @@
 		)
 		(uuid "21f88a83-445a-5c78-9e1d-bbafa1daa72b")
 	)
-	(text "LM74910H sense inputs (R203, R204, C211, C212)"
+	(text "LM74910H sense inputs (R209, R210, C212, C213)"
 		(exclude_from_sim no)
 		(at 22.86 140.97 0)
 		(effects
@@ -15331,8 +15537,8 @@
 		)
 		(uuid "3c34151c-8dd6-5acc-a141-85c787d26313")
 	)
-	(label "VBAT_D"
-		(at 30.48 162.56 180)
+	(label "RS_SENSE_P"
+		(at 35.56 162.56 180)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -15343,7 +15549,7 @@
 	)
 	(wire
 		(pts
-			(xy 30.48 162.56)
+			(xy 35.56 162.56)
 			(xy 40.64 162.56)
 		)
 		(stroke
@@ -15543,7 +15749,7 @@
 		(uuid "f9772cc7-f92a-58a5-963a-dd1feff65f9a")
 	)
 	(symbol
-		(lib_id "DropOut_Resistor:AC0402JR-070RL")
+		(lib_id "DropOut_Resistor:AC0402FR-07383RL")
 		(at 44.45 182.88 90)
 		(unit 1)
 		(body_style 1)
@@ -15562,7 +15768,7 @@
 				)
 			)
 		)
-		(property "Value" "0R"
+		(property "Value" "383R"
 			(at 44.45 179.705 90)
 			(effects
 				(font
@@ -15588,7 +15794,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Yageo AC thick film chip jumper, 0 Ω, 1 A rated, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+		(property "Description" "Yageo AC thick film chip resistor, 383 Ω ±1%, 1/16 W, 50 V, ±100 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
 			(at 44.45 182.88 0)
 			(effects
 				(font
@@ -15606,15 +15812,15 @@
 				(hide yes)
 			)
 		)
-		(property "MPN" "AC0402JR-070RL"
-			(at 44.45 188.087 90)
+		(property "MPN" "AC0402FR-07383RL"
+			(at 44.45 189.865 90)
 			(effects
 				(font
 					(size 0.8 0.8)
 				)
 			)
 		)
-		(property "DigiKey_PN" "311-0.0LBCT-ND"
+		(property "DigiKey_PN" "AC0402FR-07383RL-ND"
 			(at 44.45 182.88 0)
 			(effects
 				(font
@@ -15623,7 +15829,7 @@
 				(hide yes)
 			)
 		)
-		(property "Mouser_PN" "603-AC0402JR-070RL"
+		(property "Mouser_PN" "603-AC0402FR-07383RL"
 			(at 44.45 182.88 0)
 			(effects
 				(font
@@ -15641,12 +15847,46 @@
 				(hide yes)
 			)
 		)
-		(property "Case" "0402"
-			(at 44.45 186.309 90)
+		(property "Tolerance" "±1%"
+			(at 42.037 186.309 90)
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
+			)
+		)
+		(property "Power" "1/16W"
+			(at 44.45 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "50V"
+			(at 46.863 186.309 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Case" "0402"
+			(at 44.45 188.087 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Notes" "Node60 LM74910H RISCP for the 0.3 mΩ BVR-Z-R0003-1.0 shunt (24.0 mV fast trip = 80 A), decision D14-1, 2026-11-03. No stock seen on 2026-11-03 (DigiKey lists full reels only)."
+			(at 44.45 182.88 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
 			)
 		)
 		(pin "1"
@@ -15869,7 +16109,7 @@
 		)
 		(uuid "de4d3a19-6e81-5b06-bc6b-48ed1939ccf8")
 	)
-	(label "VBAT_Q2D"
+	(label "RS_SENSE_N"
 		(at 55.88 152.4 180)
 		(effects
 			(font
@@ -16074,7 +16314,7 @@
 		)
 		(uuid "a5aa28c8-3682-5973-ad00-427ed0ffd044")
 	)
-	(label "VBAT_Q2D"
+	(label "RS_SENSE_N"
 		(at 55.88 195.58 180)
 		(effects
 			(font
@@ -16121,7 +16361,7 @@
 		)
 		(uuid "6348e90f-c0f7-5a7e-896e-f708bbde80bb")
 	)
-	(label "VBAT_D"
+	(label "RS_SENSE_P"
 		(at 314.96 203.2 180)
 		(effects
 			(font
@@ -16142,7 +16382,7 @@
 		)
 		(uuid "ad0f015e-6eee-5840-a791-ef681396aa95")
 	)
-	(label "VBAT_Q2D"
+	(label "RS_SENSE_N"
 		(at 314.96 205.74 180)
 		(effects
 			(font
@@ -20276,7 +20516,7 @@
 			)
 		)
 	)
-	(text "DESIGN VALUES (LM74910H-Q1 SNOSDE6C sec. 9.2; Node60 DEC-001). Values per DropOut D-45.\nR(ILIM) = 12 x RSET / (RSENSE x ILIM) = 12 x 49.9 / (0.25m x 32k) = 74.9 A breaker (Rev A: 75 A).\n  RSET 49.9R: E96 value nearest the 50R in Rev A (50-100R allowed). R(ILIM) 32k: E192, 1 %.\nFast SCP: ISCP to the R201 VBAT_D pad through R204 0R (no RISCP shift) -> 20 mV default = 80 A.\n  R204 keeps the RISCP option (VSNS_SCP = 10.5 uA x RISCP + 20 mV); C212 is the DNP deglitch option (D-48).\nCTMR 68nF C0G: T(OC) = 1.2 x 68n / 82.3u = 0.99 ms; retry = 22.7e6 x 68n = 1.5 s. Tune vs inrush (GATE-PWR-01).\nCCAP 1uF 50V: >= 10 x sum(Ciss) = 10 x 4 x 15.3 nF = 0.61 uF for 4 x IAUTN08S5N012L. CVS 100nF 100V.\nRG 10R + Cdvdt 10nF on HGATE: inrush slew = 55 uA / 10 nF = 5.5 V/ms.\nOV/UV/BATT_MON ladder, 118.97k total (< 120k leakage rule), 1 %:\n  OV rising = 0.60 V x 118.97k / 2.1k  = 34.0 V   (disconnects above 34 V; passes 24 V jump start)\n  UVLO fall = 0.55 V x 118.97k / 11.97k = 5.47 V  (rising 0.60 V -> 5.96 V)\n  BATT_MON = SW x 9.97k / 118.97k = SW / 11.93 (1:12 concept); 3.3 V full scale = 39.4 V\n  BATT_MON source 9.1 k with 10nF C0G (tau 91 us): set the ADC sample time from this.\n  The SW switch opens in SLEEP, so the ladder draws nothing while parked.\nEN tied to VS (always on). SLEEP = INH: parked = SLEEP mode (6 uA; OUT fed by the 7R bypass, 100 mA peak).\nSLEEP_OV = OUT: overvoltage CLAMP mode while parked (~21 V), so VDDAU stays up through a jump start.\nIMON floating (INA228 fitted). RTN pad floating per datasheet. FLT 10k pull-up to 3V3_MAIN (low when off).\nINA228 A1 = A0 = GND -> 0x40; ALERT unused. ADCRANGE = 1 (+/-40.96 mV); SHUNT_CAL in firmware.\nTMP175 A2..A0 = GND -> 0x48. Place beside the FET bank. NTC tight to the RSENSE body (GATE-TMP-01).\nNTC_RSENSE: 10k 0.1 % over NTC, ratiometric to VREFH = 3V3_MAIN; 5 k source, 100nF C0G (tau 0.5 ms).\nRSENSE R201 is 2-terminal: the sense nets are VBAT_D / VBAT_Q2D. LAYOUT: Kelvin taps from the R201 pads,\n  two separate star pairs, one to U201 (R203/R204, CS-), one to U202 (IN+/IN-); never from the 60 A copper.\nCapacitors on battery nets are 100 V (>= 2x the 34 V OV cut-off, derating rule).\nMOSFETs: IAUTN08S5N012L dual-gate (LINFET + ONFET); G_ON and G_LIN both driven, so RDS(on) 1.15 mOhm and\n  Ciss 15.3 nF are the combined ratings. Separate LINFET-only inrush control is a later option. 2 per bank: ~0.6 mOhm, ~2 W per bank at 60 A. Confirm with the\n  surge/thermal calculation (DEC-001). RSENSE CSS2725FTL250: 0.9 W at 60 A, 4 W rated.\nEMI filter on the regulator branch only; L201 and C208 TBD (finalize after emissions test).\nCURRENT (layout): the 60 A path (VBAT_IN, VBAT_D, VBAT_Q2D, VBAT_PROT and GND) needs about 27 mm of 2 oz\n  outer copper for a 20 C rise (IPC-2221 estimate, 3030 mil2): use multilayer pours and via arrays, confirm with\n  IPC-2152 at +125 C ambient (handbook ch. 05 high-current rule).\nUNVERIFIED (release-blocking): FET count (thermal), EMI filter values, parked leakage of U202 inputs.\n"
+	(text "DESIGN VALUES (LM74910H-Q1 SNOSDE6C sec. 9.2; Node60 DEC-001). Values per DropOut D-45.\nRSENSE R201 = 0.3 mOhm BVR-Z-R0003-1.0 (decision D14-1, 2026-11-03; 0.25 mOhm CSS2725FTL250 before).\nR(ILIM) = 12 x RSET / (RSENSE x ILIM) = 12 x 49.9 / (0.3m x 26.7k) = 74.8 A breaker (Rev A: 75 A).\n  RSET 49.9R: E96 value nearest the 50R in Rev A (50-100R allowed). R(ILIM) 26.7k: E96, 1 %.\nFast SCP: R210 = RISCP 383R from ISCP to RS_SENSE_P: VSNS_SCP = 10.5 uA x 383 + 20 mV = 24.0 mV = 80 A typ.\n  Limits (17.86-23 mV, 9.3-12 uA): 21.4-27.6 mV = 71.4-92 A, the same window as 0R on 0.25 mOhm.\n  C212 10nF is CSET (CS+ to CS-); C213 (DNP) the ISCP deglitch option to CS- (D-48). Both return to RS_SENSE_N.\nCTMR 68nF C0G: T(OC) = 1.2 x 68n / 82.3u = 0.99 ms; retry = 22.7e6 x 68n = 1.5 s. Tune vs inrush (GATE-PWR-01).\nCCAP 1uF 50V: >= 10 x sum(Ciss) = 10 x 4 x 15.3 nF = 0.61 uF for 4 x IAUTN08S5N012L. CVS 100nF 100V.\nRG 10R + Cdvdt 10nF on HGATE: inrush slew = 55 uA / 10 nF = 5.5 V/ms.\nOV/UV/BATT_MON ladder, 118.97k total (< 120k leakage rule), 1 %:\n  OV rising = 0.60 V x 118.97k / 2.1k  = 34.0 V   (disconnects above 34 V; passes 24 V jump start)\n  UVLO fall = 0.55 V x 118.97k / 11.97k = 5.47 V  (rising 0.60 V -> 5.96 V)\n  BATT_MON = SW x 9.97k / 118.97k = SW / 11.93 (1:12 concept); 3.3 V full scale = 39.4 V\n  BATT_MON source 9.1 k with 10nF C0G (tau 91 us): set the ADC sample time from this.\n  The SW switch opens in SLEEP, so the ladder draws nothing while parked.\nEN tied to VS (always on). SLEEP = INH: parked = SLEEP mode (6 uA; OUT fed by the 7R bypass, 100 mA peak).\nSLEEP_OV = OUT: overvoltage CLAMP mode while parked (~21 V), so VDDAU stays up through a jump start.\nIMON floating (INA228 fitted). RTN pad floating per datasheet. FLT 10k pull-up to 3V3_MAIN (low when off).\nINA228 A1 = A0 = GND -> 0x40; ALERT unused. ADCRANGE = 1 (+/-40.96 mV = 136.5 A at 0.3 mOhm; 18 mV at 60 A).\n  Firmware: CURRENT_LSB = 136.53 A / 2^19 = 260.4167 uA, SHUNT_CAL = 13107.2e6 x LSB x 0.3m x 4 = 4096 (DEC-002).\nTMP175 A2..A0 = GND -> 0x48. Place beside the FET bank. NTC tight to the RSENSE body (GATE-TMP-01).\nNTC_RSENSE: 10k 0.1 % over NTC, ratiometric to VREFH = 3V3_MAIN; 5 k source, 100nF C0G (tau 0.5 ms).\nRSENSE R201 is 4-terminal: force pads 1 (F1, VBAT_D) and 4 (F2, VBAT_Q2D), sense pads 2 (S1, RS_SENSE_P) and\n  3 (S2, RS_SENSE_N). U201 VS and C stay on VBAT_D. LAYOUT: from the sense pads run two separate pairs, one to\n  U201 (R209/R210 and CS-, C212/C213), one to U202 (IN+/IN-); never tap the 60 A copper.\nCapacitors on battery nets are 100 V (>= 2x the 34 V OV cut-off, derating rule).\nMOSFETs: IAUTN08S5N012L dual-gate (LINFET + ONFET); G_ON and G_LIN both driven, so RDS(on) 1.15 mOhm and\n  Ciss 15.3 nF are the combined ratings. Separate LINFET-only inrush control is a later option. 2 per bank: ~0.6 mOhm, ~2 W per bank at 60 A. Confirm with the\n  surge/thermal calculation (DEC-001). RSENSE BVR-Z-R0003-1.0: 1.08 W at 60 A; 5 W rated above 100 C terminal temperature (11 W at 70 C).\nEMI filter on the regulator branch only; L201 and C208 TBD (finalize after emissions test).\nCURRENT (layout): the 60 A path (VBAT_IN, VBAT_D, VBAT_Q2D, VBAT_PROT and GND) needs about 27 mm of 2 oz\n  outer copper for a 20 C rise (IPC-2221 estimate, 3030 mil2): use multilayer pours and via arrays, confirm with\n  IPC-2152 at +125 C ambient (handbook ch. 05 high-current rule).\nUNVERIFIED (release-blocking): FET count (thermal), EMI filter values, parked leakage of U202 inputs.\n"
 		(exclude_from_sim no)
 		(at 358.14 266.7 0)
 		(effects
@@ -20286,12 +20526,6 @@
 			(justify left top)
 		)
 		(uuid "f29b5cf3-865b-5b54-99f0-99a09ae81952")
-	)
-	(junction
-		(at 35.56 162.56)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "a231d4f4-d866-598e-9029-cbbca8f3fe4b")
 	)
 	(junction
 		(at 38.1 88.9)

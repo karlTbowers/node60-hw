@@ -1,5 +1,6 @@
-# Node60 · Power architecture (Architecture Rev A)
-# Line weight = current: thick = battery path (up to 60 A), medium = VBAT_PROT branches, thin = regulated rails.
+# Node60 · Power architecture (Architecture Rev B in progress: DEC-026's 1.5 V buck on 3V3_MAIN, the chosen L201/C207 filter)
+# Line weight = current: thick = battery path (up to 60 A), medium = VBAT_PROT branches, thin = regulated rails;
+# dashed purple = supervision, dotted teal = enable (INH and the EN chain).
 # Every block links to its subsystem page (site-relative; the D2Diagram component adds the base path).
 
 direction: right
@@ -24,6 +25,7 @@ classes: {
   r_aon: {style: {stroke: "#087c77"; stroke-width: 2; font-color: "#087c77"}}
   r_main: {style: {stroke: "#176a96"; stroke-width: 2; font-color: "#176a96"}}
   monitor: {style: {stroke: "#735590"; stroke-width: 2; stroke-dash: 5; font-color: "#735590"}}
+  enable: {style: {stroke: "#087c77"; stroke-width: 2; stroke-dash: 2; font-color: "#087c77"}}
 }
 
 vehicle: "Vehicle harness" {
@@ -35,13 +37,14 @@ entry: "Power entry · always connected" {
   class: group
   term: "Power terminals\n2 × REDCUBE 74660016R + SurLok Plus\nbusbar to the second pair" {class: battery; link: "/subsystems/harness/"}
   tvs: "Primary TVS\nXLD8A24CA\n24 V · 7 kW" {class: battery; link: "/subsystems/power/"}
-  lm: "LM74910H-Q1 ideal diode + breaker\nQ1 (DGATE) → RSENSE 0.25 mΩ → Q2 (HGATE)\nreverse · OV · 75 A breaker · 80 A SCP" {class: battery; link: "/subsystems/power/"}
-  emi: "Damped π\nEMI filter" {class: battery; link: "/subsystems/power/"}
+  lm: "LM74910H-Q1 ideal diode + breaker\nQ1 (DGATE) → RSENSE 0.3 mΩ → Q2 (HGATE)\nreverse · OV · 75 A breaker · 80 A SCP" {class: battery; link: "/subsystems/power/"}
 }
 
 downstream: "Downstream node\nlower current · own protection" {class: external; link: "/subsystems/harness/"}
 
 bus: "VBAT_PROT" {class: bus; link: "/subsystems/power/"; width: 120}
+
+emi: "EMI filter · regulator branch\nL201 2.2 µH · C207 47 µF\n(C217 not fitted)" {class: battery; link: "/subsystems/power/"}
 
 aon: "Always on · ≈52 µA parked" {
   class: group
@@ -51,8 +54,8 @@ aon: "Always on · ≈52 µA parked" {
 
 rails: "Switched rails · enabled by LAN8670 INH" {
   class: group
-  buck1: "LMQ66430-Q1 #1\nEN ← LAN8670 INH" {class: rail; link: "/subsystems/power/"}
-  buck2: "LMQ66430-Q1 #2\nEN ← 3V3 (EN chain)" {class: rail; link: "/subsystems/power/"}
+  buck1: "U302 LMQ66430-Q1\n3.3 V · 2.2 MHz\nEN ← LAN8670 INH" {class: rail; link: "/subsystems/power/"}
+  buck2: "U303 TPS628502-Q1\n1.5 V · 2.25 MHz spread\nEN ← 3V3_MAIN" {class: rail; link: "/subsystems/power/"}
   c3v3: "S32K344 I/O + analog · LAN8670 VDDA/VDDP\nswitch VDD · SPI NOR · 50 MHz osc\nINA228 · TMP175" {class: consumer; link: "/subsystems/compute/"}
   c1v5: "S32K344 VDD_LV (core)" {class: consumer; link: "/subsystems/compute/"}
   sup: "TPS3702-Q1\nOV/UV window → RESET_L" {class: rail; link: "/subsystems/supervision/"}
@@ -68,16 +71,17 @@ vehicle.bat -> entry.term: "battery + ground" {class: hi}
 entry.term -> entry.tvs: "VBAT_RAW · 60 A" {class: hi}
 entry.term -> downstream: "pass-through · raw battery" {class: branch}
 entry.tvs -> entry.lm {class: hi}
-entry.lm -> entry.emi {class: hi}
-entry.emi -> bus {class: hi}
+entry.lm -> bus {class: hi}
 
 bus -> loads.sw: "60 A" {class: hi}
 loads.sw -> loads.out: "6 × 10 A" {class: hi}
 bus -> aon.ldo {class: branch}
-bus -> rails.buck1 {class: branch}
-bus -> rails.buck2 {class: branch}
+bus -> emi {class: branch}
+emi -> rails.buck1: "VBAT_FILT" {class: branch}
 
 aon.ldo -> aon.vddau: "VDDAU_AON" {class: r_aon}
 rails.buck1 -> rails.c3v3: "3V3_MAIN" {class: r_main}
+rails.buck1 -> rails.buck2: "3V3_MAIN" {class: r_main}
+aon.vddau -> rails.buck1: "INH → EN" {class: enable}
 rails.buck2 -> rails.c1v5: "1V5_CORE" {class: r_main}
 rails.buck1 -> rails.sup: "monitors 3V3_MAIN" {class: monitor}

@@ -125,6 +125,18 @@
   title: JLCPCB PCB manufacturing capabilities (drilling, traces, thickness, copper weights)
   url: https://jlcpcb.com/capabilities/pcb-capabilities
   verified: 2026-11-01
+- id: S36
+  title: TI LMQ66430-Q1 data sheet, SNVSBV1F (U302; minimum on-time and fold-back behind DEC-026)
+  url: https://www.ti.com/lit/gpn/LMQ66430-Q1
+  verified: 2026-11-03
+- id: S37
+  title: TI TPS62850x-Q1 data sheet, SLUSDM0N (U303, DEC-026)
+  url: https://www.ti.com/lit/gpn/TPS628502-Q1
+  verified: 2026-11-03
+- id: S38
+  title: TI AN-2162 Simple Success With Conducted EMI From DC-DC Converters, SNVA489 (L201/C207 damped input filter)
+  url: https://www.ti.com/lit/pdf/snva489
+  verified: 2026-11-03
 - id: Z1
   title: Upstream Zephyr S32 SoC tree
   url: https://github.com/zephyrproject-rtos/zephyr/tree/main/soc/nxp/s32

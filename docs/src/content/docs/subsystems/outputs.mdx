@@ -46,7 +46,7 @@ Each switch's SPI watchdog is on (WD_EN = 1, WD_TO = 400 ms), with CHx_LH_IN set
 
 ## SNS path and 100 mA resolution
 
-Each device’s shared SNS output feeds one MCU ADC channel through a 698 Ω resistor and a low-leakage filter. SPI selects the observed output. The selection state is stored with every sample. No per-output shunt or external monitor is fitted; the shared 0.25 mΩ LM74910H RSENSE and INA228A-Q1 independently monitor the total input rail.
+Each device’s shared SNS output feeds one MCU ADC channel through a 698 Ω resistor and a low-leakage filter. SPI selects the observed output. The selection state is stored with every sample. No per-output shunt or external monitor is fitted; the shared 0.3 mΩ LM74910H RSENSE and INA228A-Q1 independently monitor the total input rail.
 
 | Quantity | Calculation | Result |
 |---|---|---|
