@@ -47,3 +47,5 @@ D16-2 A done 2026-11-03: PR #55 merged (D503/D504 on p5, DEC-012 rev. C, capacit
 ## D17 Inner layer roles (2026-11-04) — https://claude.ai/artifact/CTqnFVautEjPcK5j1MXTmk
 
 Options: A In2 north-band window (23 failed, +4–8 % supply resistance), B north band plus channels (15 failed, +9–15 %), C one VBAT_PROT plane (9 failed, 2×), D 8 layers (planes whole, $387 vs $263). Recommendation D; A as the 6-layer fallback. The PHY's RMII/MDIO nets fail in every variant: a local placement fix follows. Awaiting the user's answer.
+
+D17 answered 2026-11-04: **A, north window** (user: "let's try with 6 layers. i can hand route some the failing nets. if that doesnt work we will go to 8 layers."). In2 is signal copper north of y 70 mm (SIGNAL_WINDOW_In2Cu_1) and VBAT_PROT south of it; In3 whole VBAT_PROT; In1 and In4 whole GND; all four plane layers carry no tracks outside the window, vias pass. `plan.json` plane_windows set. The leftover nets route by hand; the PHY's RMII/MDIO placement fix comes next.

@@ -559,5 +559,21 @@
   "In3.Cu": "VBAT_PROT",
   "In4.Cu": "GND"
  },
- "via_amps_source": "IPC-2221 internal-conductor curve, 18 um plating (JLCPCB), 10 C rise: 0.65 A per 0.45/0.25 mm via (D12-6 A, user 2026-11-03)"
+ "via_amps_source": "IPC-2221 internal-conductor curve, 18 um plating (JLCPCB), 10 C rise: 0.65 A per 0.45/0.25 mm via (D12-6 A, user 2026-11-03)",
+ "plane_windows": {
+  "In1.Cu": "power_only",
+  "In2.Cu": {
+   "window": [
+    39.95,
+    29.95,
+    270.05,
+    70.0
+   ],
+   "keep": 0.5,
+   "cost": "U601/U701/U801 supply resistance 0.306/0.171/0.256 mOhm against 0.284/0.165/0.243 with In2 whole (+8/+4/+5 %), plane model at 85 C",
+   "decision": "D17 A (user, 2026-11-04)"
+  },
+  "In3.Cu": "power_only",
+  "In4.Cu": "power_only"
+ }
 }

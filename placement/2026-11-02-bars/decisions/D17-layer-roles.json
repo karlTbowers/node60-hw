@@ -192,5 +192,6 @@
     "judge runs: judge_d16_c, judge_d17e, judge_d17w1, judge_d17w2, judge_d17w2rp, judge_d17wd",
     "power/plane_model.py --window --window-keep",
     "DEC-027, D12-1, PCB stackup & fab quotes page"
-  ]
+  ],
+  "answered": "A (user, 2026-11-04)"
 }

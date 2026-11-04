@@ -94,12 +94,14 @@ for n in ['Buck switch nodes 10 mm from the T1S line', 'T1S 0.75 mm from other n
 open(sys.argv[2], 'w').write(s)
 PY
 cd $KRT
-# Layer roles (defaults: D12-1 A, In1/In4 GND, In2/In3 VBAT_PROT, signals on F.Cu and B.Cu). Override
-# for variants, e.g. PLANE_NETS="GND VBAT_PROT GND" PLANE_LAYERS="In1.Cu In3.Cu In4.Cu"
-# LAYER_COSTS="1.0 -1.0 1.0 -1.0 -1.0 1.0" (a negative cost = no tracks on that layer).
-PLANE_NETS=${PLANE_NETS:-"GND VBAT_PROT VBAT_PROT GND"}
-PLANE_LAYERS=${PLANE_LAYERS:-"In1.Cu In2.Cu In3.Cu In4.Cu"}
-LAYER_COSTS=${LAYER_COSTS:-"1.0 -1.0 -1.0 -1.0 -1.0 1.0"}
+# Layer roles. Defaults: D17 A (user, 2026-11-04): In1/In4 GND and In3 VBAT_PROT poured whole; In2
+# open to tracks, which its rule areas on the board confine to the window north of y 70 mm (the
+# VBAT_PROT pour south of it is left out here: tracks may not go there anyway). Override for
+# variants, e.g. PLANE_NETS="GND VBAT_PROT VBAT_PROT GND" PLANE_LAYERS="In1.Cu In2.Cu In3.Cu In4.Cu"
+# LAYER_COSTS="1.0 -1.0 -1.0 -1.0 -1.0 1.0" (D12-1 A; a negative cost = no tracks on that layer).
+PLANE_NETS=${PLANE_NETS:-"GND VBAT_PROT GND"}
+PLANE_LAYERS=${PLANE_LAYERS:-"In1.Cu In3.Cu In4.Cu"}
+LAYER_COSTS=${LAYER_COSTS:-"1.0 -1.0 1.0 -1.0 -1.0 1.0"}
 echo "layers: planes ${PLANE_NETS} on ${PLANE_LAYERS}; track costs F In1 In2 In3 In4 B = ${LAYER_COSTS}" >> $OUT/chain.log
 L=(--layers F.Cu In1.Cu In2.Cu In3.Cu In4.Cu B.Cu --layer-costs ${=LAYER_COSTS})
 SZ=(--clearance 0.15 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off $FAB)

@@ -15,7 +15,7 @@ stackup and fab house still **open**.
 |---|---|---|
 | F.Cu | signal; decoupling caps, J401, D201; under each busbar only the bar's net | DEC-024, `node60.kicad_dru` |
 | In1.Cu | GND plane | D12-1 A (user, 2026-11-03) |
-| In2.Cu | VBAT_PROT plane (short signal windows away from the power path if routing needs them) | D12-1 A (user, 2026-11-03) |
+| In2.Cu | Signals north of y 70 mm (the window), VBAT_PROT plane south of it | D17 A (user, 2026-11-04); was D12-1 A |
 | In3.Cu | VBAT_PROT plane, in parallel with In2 | D12-1 A (user, 2026-11-03) |
 | In4.Cu | GND plane, under B.Cu | D12-1 A (user, 2026-11-03); was VBAT_PROT |
 | B.Cu | signal; nearly every part | DEC-024 |
