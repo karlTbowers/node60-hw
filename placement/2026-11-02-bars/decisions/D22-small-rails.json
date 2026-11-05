@@ -25,8 +25,8 @@
     },
     {
       "label": "Routing load",
-      "value": "Joining 3V3_MAIN by tracks takes 73 of the board's 333 pad-to-pad connections (spanning tree); on a plane those 73 go away",
-      "source": "layer_capacity.py, B.Cu, 0.15/0.15 mm"
+      "value": "Joining 3V3_MAIN by tracks takes 73 of the board's 333 pad-to-pad connections (spanning tree). With A, DRC on the copy leaves 27 of them open (the hand-fed pads)",
+      "source": "layer_capacity.py (B.Cu, 0.15/0.15 mm); kicad-cli DRC on the copy"
     },
     {
       "label": "Vias",
@@ -67,13 +67,13 @@
         },
         {
           "label": "1V5_CORE drop, R303 to the core balls",
-          "value": "26 mV at 2 A (52 mW); about 4 mV at a likely 0.3 A",
+          "value": "26 mV at 2 A into three of the four core balls (52 mW; H10 has no dogbone until R3); about 4 mV at a likely 0.3 A",
           "limit": "small",
           "status": "pass"
         },
         {
           "label": "Pad-to-pad connections left to route",
-          "value": "260 (73 fewer)",
+          "value": "287 (46 fewer): of 3V3_MAIN's 73 connections, 27 stay as tracks to the hand-fed pads below",
           "limit": "fewer",
           "status": "pass"
         },
@@ -85,9 +85,9 @@
         },
         {
           "label": "Reference for In2's signals",
-          "value": "Solid 3V3_MAIN under the whole signal window, except the 1V5 strip at U401 (1.2 mm, x 208–209)",
+          "value": "3V3_MAIN under the whole signal window, broken in three places: the 1V5 strip at U401 (1.2 mm, x 208–209, y 31–52), the VBAT_PROT finger to L201 (3.2 mm, x 109–113, y 43–71) and the finger to U301 (1.2 mm, x 163–164, y 47–71, just south of where RMII leaves U501). Route In2 signals across them as little as you can",
           "limit": "unbroken",
-          "status": "pass"
+          "status": "warn"
         },
         {
           "label": "DRC on the copy",
@@ -97,19 +97,20 @@
         },
         {
           "label": "Vias added",
-          "value": "30 dogbones (H10 and J6 have no free cell, repair R3), 36 pad vias, 9 VBAT_PROT and 2 VBAT_FILT in fields",
+          "value": "30 dogbones (H10 and J6 have no free cell: R3), 36 pad vias, 7 VBAT_PROT and 2 VBAT_FILT in fields",
           "limit": "",
           "status": "info"
         }
       ],
       "gains": [
         "Uses copper that is empty today; no outer-layer room taken",
-        "73 fewer connections for you to route",
+        "46 fewer connections for you to route",
         "In2's signal window keeps a solid plane under it"
       ],
       "costs": [
         "In3 north is committed to 3V3_MAIN, so it can't become a signal window later without a re-draw",
-        "The 1V5 strip makes the 3V3 current to U303 go around it, south of U401 (included in the 5.3 mV)"
+        "The 1V5 strip makes the 3V3 current to U303 go around it, south of U401 (included in the 5.3 mV)",
+        "The 1V5 strip is 1.2 mm: under U401's ball field every signal via takes about 0.7 mm out of it, so two side by side cut it. In the final draw it widens to 2 mm east of the ball field (x > 207.3), and signal vias keep off it"
       ]
     },
     {
@@ -185,7 +186,7 @@
   ],
   "recommendation": {
     "option": "A",
-    "why": "A puts the small rails on copper that does nothing today. It takes 73 connections off your routing and leaves B and F to you. The drops are a few millivolts at loads I've likely overstated. B spends the layer you route on, and C undoes D17 A.\n\nWhichever you pick, the trial found three placement problems. I recommend fixing all of them; each is a small pose change, and I'd show you the result before it lands:\n\n**R1.** C206 is the EMI filter's output cap (4.7 µF, 100 V, on VBAT_FILT). It sits at (146, 32.5), 34 mm from L201 and U302, so it does little as a filter cap and drags VBAT_FILT across the board. Move it beside L201's pad 2 and C305, and bring TP205 (VBAT_FILT's second test point, at 132.6, 73.3) next to it.\n\n**R2.** C405 (4.7 µF on 1V5_CORE) sits at (211.9, 65.6), 14 mm south of U401's core and off the 1V5 island. Move it beside the island's strip at U401's east edge.\n\n**R3.** The top-side caps under U401 (C401–C404, C406–C415, C417–C423) were placed without the via grid. Two balls (H10 on 1V5_CORE, J6 on GND) have no free diagonal cell, and C410's GND pad is too close to a 3V3_MAIN dogbone. Re-pose them so each cap's pads sit on its own rail's dogbone vias. That becomes a pose table for U401's decoupling, which comes back to you as a block.\n\nLeft to your hand routing in every option: the 3V3 feeds into the power band (R601/R607, R701/R707, R801/R807, U202, C214, C215, R211, U203), U501's three 3V3 pins and VDDAU_AON, U302's and U303's pins to their own caps (the hot loops), the caps under U401 to their via tops, and Q501, Q502 and C513, which found no via site."
+    "why": "A puts the small rails on copper that does nothing today. It takes 46 connections off your routing and leaves B and F to you. The drops are a few millivolts at loads I've likely overstated. B spends the layer you route on, and C undoes D17 A.\n\nWhichever you pick, the trial found three placement problems. I recommend fixing all of them; each is a small pose change, and I'd show you the result before it lands:\n\n**R1.** C206 is the EMI filter's output cap (4.7 µF, 100 V, on VBAT_FILT). It sits at (146, 32.5), 34 mm from L201 and U302, so it does little as a filter cap and drags VBAT_FILT across the board. Move it beside L201's pad 2 and C305, and bring TP205 (VBAT_FILT's second test point, at 132.6, 73.3) next to it.\n\n**R2.** C405 (4.7 µF on 1V5_CORE) sits at (211.9, 65.6), 14 mm south of U401's core and off the 1V5 island. Move it beside the island's strip at U401's east edge.\n\n**R3.** The top-side caps under U401 (C401–C404, C406–C415, C417–C423) were placed without the via grid. Two balls (H10 on 1V5_CORE, J6 on GND) have no free diagonal cell, and C410's GND pad is too close to a 3V3_MAIN dogbone. Re-pose them so each cap's pads sit on its own rail's dogbone vias. That becomes a pose table for U401's decoupling, which comes back to you as a block.\n\nLeft to your hand routing in every option: the 3V3 feeds into the power band (R601/R607, R701/R707, R801/R807, U202, C214, C215, R211, U203), U501's three 3V3 pins and VDDAU_AON, U302's and U303's pins to their own caps (the hot loops), the caps under U401 to their via tops, and Q501, Q502 and C513, which found no via site."
   },
   "answer": "Reply with A, B or C, and which of R1–R3 to make (for example \"A, all three\"). On A, I draw it on main's board in a PR: the In3 3V3_MAIN plane, the 1V5_CORE island, the VBAT_PROT fingers, the VBAT_FILT pours and the vias, through power_shapes.json. CLAUDE.md's layer-role line and the log get updated in the same PR. The repairs come first, as poses you see before they land.",
   "sources": [
