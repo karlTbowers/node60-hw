@@ -30,7 +30,7 @@ SPEC.json:
 }
 
 Also "pad_vias" (one via per pad of a net), "dogbones" (a BGA's balls, "prefer": {ball: [dx, dy]}),
-"points" ({"name", "points": [[x, y, net], ...]}: vias at given points), "via_overrides" ([{"rect",
+"points" ({"name", "points": [[x, y, net], ...]}: vias at given points), "clear" ([{"net", "rect"}]: a retired field's locked vias and tracks to remove), "via_overrides" ([{"rect",
 "size", "drill"}]: any via drawn inside rect takes that size) and "stubs" ({"name", "layer",
 "width", "stubs": [[x1, y1, x2, y2, net], ...]}); see place_pad_vias and place_dogbones.
 
@@ -337,6 +337,14 @@ def main():
     # pad vias and dogbones: a previous run's locked vias and stub tracks of those nets (inside the
     # field's rect, or the BGA's outline for dogbones) go; unlocked copper (hand routing) stays
     sweeps = [(v["net"], v.get("rect") or [-1e9, -1e9, 1e9, 1e9]) for v in spec.get("pad_vias", [])]
+    # retired fields: their locked vias and tracks go too ("clear": [{"net", "rect"}])
+    for c in spec.get("clear", []):
+        for t in list(board.GetTracks()):
+            if t.IsLocked() and t.GetNetname() == c["net"]:
+                x, y = M(t.GetPosition().x), M(t.GetPosition().y)
+                r_ = c["rect"]
+                if r_[0] <= x <= r_[2] and r_[1] <= y <= r_[3]:
+                    board.Delete(t)
     for v in spec.get("points", []) + spec.get("stubs", []):
         for q in v.get("points", []) + v.get("stubs", []):
             sweeps.append((q[-1], [q[0] - 0.05, q[1] - 0.05, q[0] + 0.05, q[1] + 0.05]))
