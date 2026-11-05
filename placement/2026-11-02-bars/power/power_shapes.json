@@ -1,5 +1,5 @@
 {
- "about": "Node60 power shapes, stage 1 (2026-11-04): inner planes (D12-1/D17 A), the 60 A entry path on B, In2, In3 and the F band (D18 A), VBAT_PROT at the disconnect FETs' sources, GND pours, and via fields at 0.65 A per 0.45/0.25 mm via (D12-6). Stage 2: each switch's VBB pad gets in-pad vias (filled and capped, DEC-027); each output a pour on B and F from its pins to its header's pin 1, OUTb the mirror image of OUTa, with mirrored via fields so both outputs of a switch get the same copper. D19 A (2026-11-04): the cells' small parts moved clear of the OUT exits; the B output pours reach north to y 104.5 beside the pins (F stays south of the VBAT_IN bar area). D20 A (2026-11-04): both battery terminals VBAT_IN, the entry mirrored about x 155. D21 C (2026-11-04): rows swapped so the ideal-diode FETs sit beside U201 (short DGATE): VBAT_IN an L from each ring to its north-row FET on B and In2 (In3 stays VBAT_PROT under it, toward U601/U801), VBAT_D the north band around the U201/U202 column, VBAT_Q2D the south band, VBAT_PROT from the south-row sources; vias in all four FET tabs. In3 VBAT_PROT (2026-11-04): the user cut it from the whole board to the power band; in3_sweep.py found the knee at x 72-238, y 71-122 (south of the switches carries current; the north and the far ends little). Small rails (D22 A and D23, 2026-11-04): 3V3_MAIN on In3 north of y 70.8, a 1V5_CORE island on In3 from U401's core to R303, VBAT_PROT fingers on In3 to L201 and U301, VBAT_FILT on B from L201 to U302; one via per small-rail pad (in the pad where it fits), U401's power and ground balls dogboned. Under U401 every via is 0.35/0.20 mm (via_overrides) so In3 keeps 0.15 mm webs; the caps under it sit on via pairs posed by power/bga_decaps.py (blocks/u401_decaps.poses.json), its power and ground balls dogboned at the cells that script chose (prefer, strict); H7 joins H6 on B, and C403, C404 and C419 reach their vias by short F tracks.",
+ "about": "Node60 power shapes, stage 1 (2026-11-04): inner planes (D12-1/D17 A), the 60 A entry path on B, In2, In3 and the F band (D18 A), VBAT_PROT at the disconnect FETs' sources, GND pours, and via fields at 0.65 A per 0.45/0.25 mm via (D12-6). Stage 2: each switch's VBB pad gets in-pad vias (filled and capped, DEC-027); each output a pour on B and F from its pins to its header's pin 1, OUTb the mirror image of OUTa, with mirrored via fields so both outputs of a switch get the same copper. D19 A (2026-11-04): the cells' small parts moved clear of the OUT exits; the B output pours reach north to y 104.5 beside the pins (F stays south of the VBAT_IN bar area). D20 A (2026-11-04): both battery terminals VBAT_IN, the entry mirrored about x 155. D21 C (2026-11-04): rows swapped so the ideal-diode FETs sit beside U201 (short DGATE): VBAT_IN an L from each ring to its north-row FET on B and In2 (In3 stays VBAT_PROT under it, toward U601/U801), VBAT_D the north band around the U201/U202 column, VBAT_Q2D the south band, VBAT_PROT from the south-row sources; vias in all four FET tabs. In3 VBAT_PROT (2026-11-04): the user cut it from the whole board to the power band; in3_sweep.py found the knee at x 72-238, y 71-122 (south of the switches carries current; the north and the far ends little). Small rails (D22 A and D23, 2026-11-04): 3V3_MAIN on In3 north of y 70.8, a 1V5_CORE island on In3 from U401's core to R303, VBAT_PROT fingers on In3 to L201 and U301, VBAT_FILT on B from L201 to U302; one via per small-rail pad (in the pad where it fits), U401's power and ground balls dogboned. Under U401 every via is 0.35/0.20 mm (via_overrides) so In3 keeps 0.15 mm webs; the caps under it sit on via pairs posed by power/bga_decaps.py (blocks/u401_decaps.poses.json), its power and ground balls dogboned at the cells that script chose (prefer, strict); H7 joins H6 on B, and C403, C404 and C419 reach their vias by short F tracks. D24 (2026-11-05): U302's cell re-composed (U302 turned 180 degrees, its passives mirrored about the chip's east-west axis: on B the cell had been seated as TI's top-view figure, so SW pin 7 faced away from L301); L201, C206, C207, C217 and the VBAT_FILT test points follow the input caps south, the L201 finger on In3 moves to x 115-119, y 59-71; both bucks' hot-loop copper on B (VBAT_FILT, SW, the REG output node, 3V3 at U303) and GND vias in every buck cap's GND pad and U302's exposed pad.",
  "via": {
   "size": 0.45,
   "drill": 0.25,
@@ -48,19 +48,19 @@
      71.0
     ],
     [
-     109.4,
+     115.2,
      71.0
     ],
     [
-     109.4,
-     43.0
+     115.2,
+     59.2
     ],
     [
-     112.6,
-     43.0
+     119.3,
+     59.2
     ],
     [
-     112.6,
+     119.3,
      71.0
     ],
     [
@@ -959,123 +959,6 @@
    ]
   },
   {
-   "name": "PWR_VBAT_FILT_B",
-   "solid": true,
-   "net": "VBAT_FILT",
-   "layers": [
-    "B.Cu"
-   ],
-   "priority": 10,
-   "poly": [
-    [
-     113.3,
-     43.2
-    ],
-    [
-     114.6,
-     43.2
-    ],
-    [
-     114.6,
-     44.4
-    ],
-    [
-     117.5,
-     44.4
-    ],
-    [
-     117.5,
-     42.0
-    ],
-    [
-     123.5,
-     42.0
-    ],
-    [
-     123.5,
-     46.1
-    ],
-    [
-     122.5,
-     46.1
-    ],
-    [
-     122.5,
-     48.95
-    ],
-    [
-     121.0,
-     48.95
-    ],
-    [
-     121.0,
-     46.45
-    ],
-    [
-     121.9,
-     46.45
-    ],
-    [
-     121.9,
-     42.95
-    ],
-    [
-     118.6,
-     42.95
-    ],
-    [
-     118.6,
-     45.95
-    ],
-    [
-     114.6,
-     45.95
-    ],
-    [
-     114.6,
-     47.3
-    ],
-    [
-     113.3,
-     47.3
-    ]
-   ]
-  },
-  {
-   "name": "PWR_VBAT_PROT_L201_B",
-   "solid": true,
-   "net": "VBAT_PROT",
-   "layers": [
-    "B.Cu"
-   ],
-   "priority": 10,
-   "rects": [
-    [
-     109.4,
-     43.2,
-     112.1,
-     47.3
-    ]
-   ]
-  },
-  {
-   "name": "PWR_VBAT_FILT_F",
-   "solid": true,
-   "net": "VBAT_FILT",
-   "layers": [
-    "F.Cu"
-   ],
-   "priority": 10,
-   "rects": [
-    [
-     108.9,
-     43.2,
-     114.8,
-     49.05
-    ]
-   ]
-  },
-  {
    "name": "PWR_VBAT_PROT_U301_B",
    "solid": true,
    "net": "VBAT_PROT",
@@ -1107,6 +990,441 @@
     [
      161.9,
      48.05
+    ]
+   ]
+  },
+  {
+   "name": "PWR_VBAT_FILT_B",
+   "net": "VBAT_FILT",
+   "layers": [
+    "B.Cu"
+   ],
+   "priority": 10,
+   "solid": true,
+   "poly": [
+    [
+     112.9,
+     54.5
+    ],
+    [
+     118.2,
+     54.5
+    ],
+    [
+     118.2,
+     56.3
+    ],
+    [
+     121.2,
+     56.3
+    ],
+    [
+     121.2,
+     52.9
+    ],
+    [
+     120.7,
+     52.9
+    ],
+    [
+     120.7,
+     50.4
+    ],
+    [
+     122.0,
+     50.4
+    ],
+    [
+     122.0,
+     51.5
+    ],
+    [
+     122.8,
+     51.5
+    ],
+    [
+     122.8,
+     58.2
+    ],
+    [
+     114.8,
+     58.2
+    ],
+    [
+     114.8,
+     61.4
+    ],
+    [
+     113.2,
+     61.4
+    ],
+    [
+     113.2,
+     58.2
+    ],
+    [
+     112.9,
+     58.2
+    ]
+   ]
+  },
+  {
+   "name": "PWR_VBAT_FILT_F",
+   "net": "VBAT_FILT",
+   "layers": [
+    "F.Cu"
+   ],
+   "priority": 10,
+   "solid": true,
+   "poly": [
+    [
+     115.3,
+     49.8
+    ],
+    [
+     117.2,
+     49.8
+    ],
+    [
+     117.2,
+     56.5
+    ],
+    [
+     119.1,
+     56.5
+    ],
+    [
+     119.1,
+     58.45
+    ],
+    [
+     115.3,
+     58.45
+    ]
+   ]
+  },
+  {
+   "name": "PWR_3V3_MAIN_SW_B",
+   "net": "/Regulators/3V3_MAIN_SW",
+   "layers": [
+    "B.Cu"
+   ],
+   "priority": 10,
+   "solid": true,
+   "poly": [
+    [
+     117.7,
+     47.15
+    ],
+    [
+     118.9,
+     47.15
+    ],
+    [
+     118.9,
+     49.25
+    ],
+    [
+     120.4,
+     49.25
+    ],
+    [
+     120.4,
+     49.66
+    ],
+    [
+     118.9,
+     49.66
+    ],
+    [
+     118.9,
+     51.05
+    ],
+    [
+     117.7,
+     51.05
+    ]
+   ]
+  },
+  {
+   "name": "PWR_3V3_MAIN_REG_B",
+   "net": "/Regulators/3V3_MAIN_REG",
+   "layers": [
+    "B.Cu"
+   ],
+   "priority": 10,
+   "solid": true,
+   "poly": [
+    [
+     116.1,
+     41.7
+    ],
+    [
+     117.85,
+     41.7
+    ],
+    [
+     117.85,
+     46.4
+    ],
+    [
+     116.6,
+     46.4
+    ],
+    [
+     116.6,
+     51.1
+    ],
+    [
+     114.75,
+     51.1
+    ],
+    [
+     114.75,
+     49.45
+    ],
+    [
+     113.9,
+     49.45
+    ],
+    [
+     113.9,
+     48.5
+    ],
+    [
+     111.5,
+     48.5
+    ],
+    [
+     111.5,
+     46.9
+    ],
+    [
+     116.1,
+     46.9
+    ]
+   ]
+  },
+  {
+   "name": "PWR_3V3_MAIN_R302_B",
+   "net": "3V3_MAIN",
+   "layers": [
+    "B.Cu"
+   ],
+   "priority": 10,
+   "solid": true,
+   "poly": [
+    [
+     116.5,
+     38.7
+    ],
+    [
+     119.65,
+     38.7
+    ],
+    [
+     119.65,
+     41.3
+    ],
+    [
+     116.5,
+     41.3
+    ]
+   ]
+  },
+  {
+   "name": "PWR_1V5_CORE_SW_B",
+   "net": "/Regulators/1V5_CORE_SW",
+   "layers": [
+    "B.Cu"
+   ],
+   "priority": 10,
+   "solid": true,
+   "poly": [
+    [
+     214.62,
+     36.95
+    ],
+    [
+     214.98,
+     36.95
+    ],
+    [
+     214.98,
+     35.8
+    ],
+    [
+     216.2,
+     35.8
+    ],
+    [
+     216.2,
+     35.0
+    ],
+    [
+     219.3,
+     35.0
+    ],
+    [
+     219.3,
+     33.9
+    ],
+    [
+     215.5,
+     33.9
+    ],
+    [
+     215.5,
+     35.32
+    ],
+    [
+     214.62,
+     35.32
+    ]
+   ]
+  },
+  {
+   "name": "PWR_1V5_CORE_REG_B",
+   "net": "/Regulators/1V5_CORE_REG",
+   "layers": [
+    "B.Cu"
+   ],
+   "priority": 10,
+   "solid": true,
+   "poly": [
+    [
+     213.8,
+     31.3
+    ],
+    [
+     226.5,
+     31.3
+    ],
+    [
+     226.5,
+     33.75
+    ],
+    [
+     223.35,
+     33.75
+    ],
+    [
+     223.35,
+     37.1
+    ],
+    [
+     224.35,
+     37.1
+    ],
+    [
+     224.35,
+     40.25
+    ],
+    [
+     222.85,
+     40.25
+    ],
+    [
+     222.85,
+     37.1
+    ],
+    [
+     223.05,
+     37.1
+    ],
+    [
+     223.05,
+     33.75
+    ],
+    [
+     215.0,
+     33.75
+    ],
+    [
+     215.0,
+     34.35
+    ],
+    [
+     214.2,
+     34.35
+    ],
+    [
+     214.2,
+     33.75
+    ],
+    [
+     213.8,
+     33.75
+    ]
+   ]
+  },
+  {
+   "name": "PWR_3V3_MAIN_U303_W_B",
+   "net": "3V3_MAIN",
+   "layers": [
+    "B.Cu"
+   ],
+   "priority": 10,
+   "solid": true,
+   "poly": [
+    [
+     213.5,
+     38.25
+    ],
+    [
+     214.5,
+     38.25
+    ],
+    [
+     214.5,
+     40.7
+    ],
+    [
+     213.5,
+     40.7
+    ]
+   ]
+  },
+  {
+   "name": "PWR_3V3_MAIN_U303_E_B",
+   "net": "3V3_MAIN",
+   "layers": [
+    "B.Cu"
+   ],
+   "priority": 10,
+   "solid": true,
+   "poly": [
+    [
+     215.05,
+     38.1
+    ],
+    [
+     217.2,
+     38.1
+    ],
+    [
+     217.2,
+     38.65
+    ],
+    [
+     219.5,
+     38.65
+    ],
+    [
+     219.5,
+     40.1
+    ],
+    [
+     216.9,
+     40.1
+    ],
+    [
+     216.9,
+     39.3
+    ],
+    [
+     215.05,
+     39.3
     ]
    ]
   }
@@ -1446,56 +1764,6 @@
    ]
   },
   {
-   "name": "VBAT_PROT in L201's pad 1",
-   "net": "VBAT_PROT",
-   "in_pad": [
-    "L201",
-    "1"
-   ],
-   "pitch": 0.9,
-   "min": 2,
-   "max": 4
-  },
-  {
-   "name": "VBAT_PROT beside L201's pad 1",
-   "net": "VBAT_PROT",
-   "rect": [
-    109.6,
-    45.2,
-    110.9,
-    47.1
-   ],
-   "toward": [
-    [
-     111.5,
-     46.0
-    ]
-   ],
-   "min": 3,
-   "max": 4,
-   "allow_under": [
-    "C207"
-   ]
-  },
-  {
-   "name": "VBAT_FILT in L201's pad 2 under C217's pad 1",
-   "net": "VBAT_FILT",
-   "rect": [
-    113.93,
-    45.85,
-    113.93,
-    46.85
-   ],
-   "pitch": 0.9,
-   "min": 2,
-   "max": 2,
-   "allow_under": [
-    "L201",
-    "C217"
-   ],
-   "same_net_pads_ok": true
-  },
-  {
    "name": "VBAT_PROT in C301's pad 1",
    "net": "VBAT_PROT",
    "in_pad": [
@@ -1505,6 +1773,75 @@
    "pitch": 0.9,
    "min": 2,
    "max": 2
+  },
+  {
+   "name": "VBAT_PROT in L201's pad 1",
+   "net": "VBAT_PROT",
+   "in_pad": [
+    "L201",
+    "1"
+   ],
+   "pitch": 0.9,
+   "min": 4,
+   "max": 4
+  },
+  {
+   "name": "VBAT_FILT in L201's pad 2 under C207's pad 1",
+   "net": "VBAT_FILT",
+   "rect": [
+    115.85,
+    57.57,
+    118.65,
+    57.57
+   ],
+   "pitch": 0.9,
+   "min": 3,
+   "max": 4,
+   "allow_under": [
+    "L201",
+    "C207"
+   ],
+   "same_net_pads_ok": true
+  },
+  {
+   "name": "GND in U302's exposed pad",
+   "net": "GND",
+   "in_pad": [
+    "U302",
+    "15"
+   ],
+   "pitch": 0.55,
+   "min": 1,
+   "max": 4
+  },
+  {
+   "name": "3V3_MAIN out of R302 to the In3 plane",
+   "net": "3V3_MAIN",
+   "rect": [
+    116.75,
+    38.95,
+    119.4,
+    39.75
+   ],
+   "pitch": 0.9,
+   "min": 3,
+   "max": 4,
+   "allow_under": [
+    "J912",
+    "TP302"
+   ]
+  },
+  {
+   "name": "3V3_MAIN at U303's pins 3 and 4",
+   "net": "3V3_MAIN",
+   "rect": [
+    214.0,
+    40.2,
+    214.0,
+    40.2
+   ],
+   "min": 1,
+   "max": 1
   }
  ],
  "dogbones": [
@@ -1842,6 +2179,69 @@
      "1V5_CORE"
     ]
    ]
+  },
+  {
+   "name": "U302 VCC pin 10 to C306",
+   "layer": "B.Cu",
+   "width": 0.25,
+   "stubs": [
+    [
+     121.18,
+     48.55,
+     121.05,
+     47.2,
+     "/Regulators/3V3_MAIN_VCC"
+    ]
+   ]
+  },
+  {
+   "name": "Bucks: thin QFN pins into their pours, and the 1V5 output neck to C315",
+   "layer": "B.Cu",
+   "width": 0.25,
+   "stubs": [
+    [
+     121.18,
+     50.85,
+     121.3,
+     52.2,
+     "VBAT_FILT"
+    ],
+    [
+     120.03,
+     49.45,
+     118.5,
+     49.45,
+     "/Regulators/3V3_MAIN_SW"
+    ],
+    [
+     223.2,
+     33.3,
+     223.2,
+     37.6,
+     "/Regulators/1V5_CORE_REG"
+    ],
+    [
+     214.8,
+     37.19,
+     214.8,
+     35.75,
+     "/Regulators/1V5_CORE_SW"
+    ],
+    [
+     214.8,
+     35.75,
+     215.75,
+     35.75,
+     "/Regulators/1V5_CORE_SW"
+    ],
+    [
+     215.75,
+     35.75,
+     215.75,
+     34.6,
+     "/Regulators/1V5_CORE_SW"
+    ]
+   ]
   }
  ],
  "via_overrides": [
@@ -1900,6 +2300,78 @@
     216,
     53
    ]
+  },
+  {
+   "size": 0.4,
+   "drill": 0.2,
+   "reach": 1.2,
+   "stub": 0.3,
+   "gnd": false,
+   "name": "GND pads of the two bucks' caps",
+   "net": "GND",
+   "rect": [
+    110,
+    30,
+    227,
+    62
+   ],
+   "except": [
+    "U401",
+    "U501",
+    "U302",
+    "U303",
+    "U304",
+    "J911",
+    "J912",
+    "J903",
+    "J401",
+    "BB902",
+    "U201",
+    "U202",
+    "Q201",
+    "Q202",
+    "Q203",
+    "Q204",
+    "K501",
+    "Y501",
+    "U301"
+   ],
+   "except_rects": [
+    [
+     194.3,
+     44.9,
+     207.6,
+     58.1
+    ],
+    [
+     130,
+     30,
+     200,
+     70
+    ]
+   ]
+  }
+ ],
+ "clear": [
+  {
+   "net": "VBAT_PROT",
+   "rect": [
+    109.3,
+    43.0,
+    112.3,
+    47.3
+   ],
+   "why": "L201's old pad-1 fields (before D24)"
+  },
+  {
+   "net": "VBAT_FILT",
+   "rect": [
+    113.5,
+    45.4,
+    114.4,
+    47.2
+   ],
+   "why": "L201's old pad-2 field (before D24)"
   }
  ]
 }

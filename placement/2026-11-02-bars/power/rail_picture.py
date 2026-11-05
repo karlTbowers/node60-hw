@@ -15,7 +15,10 @@ from PIL import Image, ImageDraw, ImageFont
 
 M = pcbnew.ToMM
 COL = {"3V3_MAIN": (200, 60, 50), "1V5_CORE": (40, 140, 70), "VBAT_PROT": (40, 110, 190), "VBAT_FILT": (130, 80, 170),
-       "VDDAU_AON": (220, 150, 30), "GND": (120, 120, 120), "1V1_MCU_V11": (20, 160, 160)}
+       "VDDAU_AON": (220, 150, 30), "GND": (120, 120, 120), "1V1_MCU_V11": (20, 160, 160),
+       "3V3_MAIN_SW": (230, 60, 200), "1V5_CORE_SW": (230, 60, 200), "3V3_MAIN_REG": (240, 140, 120),
+       "1V5_CORE_REG": (120, 200, 120), "3V3_MAIN_VCC": (250, 200, 60), "1V5_CORE_FB": (60, 60, 220), "INH": (180, 180, 60),
+       "1V5_EN": (180, 180, 60)}
 
 
 def short(n):
@@ -29,6 +32,7 @@ def main():
     ap.add_argument("--scale", type=float, default=8.0); ap.add_argument("--title", default="")
     ap.add_argument("--nets", default=",".join(COL))
     ap.add_argument("--labels", default="", help="refs to label")
+    ap.add_argument("--pins", default="", help="refs whose pad numbers to print")
     a = ap.parse_args()
     X0, Y0, X1, Y1 = map(float, a.region.split(","))
     S, PAD, HEAD = a.scale, 20, 46
@@ -77,6 +81,10 @@ def main():
         if fp.GetReference() in a.labels.split(","):
             x, y = M(fp.GetPosition().x), M(fp.GetPosition().y)
             d.text(P(x + 0.6, y - 1.6), fp.GetReference(), fill=(20, 20, 20), font=f)
+        if a.pins and fp.GetReference() in a.pins.split(","):
+            for p in fp.Pads():
+                q = p.GetPosition()
+                d.text(P(M(q.x) - 0.15, M(q.y) - 0.2), p.GetNumber(), fill=(0, 0, 0), font=f)
     for t in b.GetTracks():
         n = short(t.GetNetname())
         if n not in nets:

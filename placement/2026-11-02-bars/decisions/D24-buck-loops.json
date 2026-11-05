@@ -1,0 +1,139 @@
+{
+  "id": "D24",
+  "name": "Buck hot loops",
+  "question": "Re-compose the 3V3 buck (U302) so its switch pin faces its inductor, and land both bucks' hot-loop copper?",
+  "board": "node60",
+  "phase": "Routing",
+  "stage": "Power shapes",
+  "date": "2026-11-05",
+  "why_now": "The two bucks' own copper (input loop, switch node, output node) was the last power-shape item left for me in D12's plan. Drawing it found a fault in the approved 3V3 buck cell (D06).\n\n**U302's cell is a mirror image of TI's figure.** U302 is on the bottom side, so seen from above it is the mirror of TI's top-view Figure 8-34. The cell was seated from the figure without mirroring the passives. As placed, the SW pin (7) and PGND (6) face east, but L301 is west of the chip, and the HF input cap C303 has its GND pad on the west too. The switch-node copper would have to run about 7 mm round the package, through the input or the output loop. The D06 check measured 3.16 mm, pad edge to pin in a straight line through the chip, so it missed this.\n\nMirroring the passives east would put the SW node about 6 mm from J912's T1S pin, under the 10 mm rule. Instead U302 turns 180° and its passives are mirrored about the chip's east–west axis. The cell stays where it was, SW and PGND face west to L301 and C303, and the filter (L201, C206, C207, C217) follows the input caps south. U303 (the 1V5 buck, re-done in D10) needed copper only.",
+  "facts": [
+    {
+      "label": "TI rules",
+      "value": "Input caps as close as possible to VIN and GND; VCC cap close to VCC; SW copper short and wide, total area small; wide VIN, VOUT and GND; thermal vias to an inner GND plane; feedback close to VOUT/FB, away from SW. No numbers given",
+      "source": "LMQ66430-Q1 SNVSBV1F 8.5.1; TPS62850x-Q1 SLUSDM0N 9.5.1"
+    },
+    {
+      "label": "LMQ66430 pins",
+      "value": "3 VIN, 6 PGND, 7 SW (6 and 7 on the same side), 10 VCC, 11 VOUT/FB, 13 MODE/SYNC (tied to GND here), exposed pad GND",
+      "source": "SNVSBV1F Table 5-1"
+    },
+    {
+      "label": "T1S keep-away",
+      "value": "Switch nodes 10 mm from the T1S line (D12 rule, in node60.kicad_dru)",
+      "source": "node60.kicad_dru"
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "name": "Re-compose U302 and land both bucks' copper",
+      "summary": "U302 turns from 270° to 90°. Its 17 neighbours are pose-searched into the mirrored cell: C303 across VIN and PGND, L301 beside SW, C306 at VCC, C304 and C305 south, the output caps C307–C309 and R302 north, and L201, C206, C207, C217, TP205, TP304, TP305 and TP302 near what they serve. Copper on B:\n\n- **U302:** VBAT_FILT from L201's pad 2 round C304's GND pad to C303 and pin 3. A 4.8 mm² SW pour from pin 7 to L301. The output node from L301 to C307–C309 and R302. 3V3_MAIN at R302 with three vias to the In3 plane. A short track from VCC to C306. VBAT_FILT also on F, joining C207 and C217.\n- **U303:** a 5.2 mm² SW pour from pin 7 to L302. The output node from L302 through C314 and C316 to R303 and C317, and down to C315. 3V3 from C310 and C311 to pins 1, 3 and 4, with a gap left for the EN trace.\n- **Both:** a GND via in every cap's GND pad, and two in U302's exposed pad. The thinnest QFN pins reach their pours by 0.25 mm tracks. No vias on either switch node. L201's VBAT_PROT finger on In3 moves to x 115–119, y 59–71.",
+      "images": [
+        {
+          "path": "img/d24_u302_before.png",
+          "caption": "Today: U302's SW pin 7 (magenta) faces east, L301 (magenta pad) is west of the chip"
+        },
+        {
+          "path": "img/d24_u302_after.png",
+          "caption": "Re-composed: SW pin beside L301, C303 across VIN and PGND, VBAT_FILT (purple) from L201 to the input caps, the output node (salmon) north"
+        },
+        {
+          "path": "img/d24_u303.png",
+          "caption": "U303: SW (magenta) from pin 7 to L302, the output node (green) to the output caps, 3V3 (red) at the input"
+        }
+      ],
+      "measures": [
+        {
+          "label": "U302 SW pin 7 to L301's SW pad (centres)",
+          "value": "1.8 mm (today 5.4 mm, with the chip in between)",
+          "limit": "short",
+          "status": "pass"
+        },
+        {
+          "label": "U302 HF cap C303",
+          "value": "VIN pad 0.52 mm from pin 3, GND pad beside PGND; loop 1.8 mm² (pad centres)",
+          "limit": "as close as possible",
+          "status": "pass"
+        },
+        {
+          "label": "Switch-node copper",
+          "value": "U302 4.8 mm², U303 5.2 mm²; no vias",
+          "limit": "small",
+          "status": "pass"
+        },
+        {
+          "label": "U302 switch node to the T1S line",
+          "value": "13.8 mm (today 11.8)",
+          "limit": "≥ 10 mm",
+          "status": "pass"
+        },
+        {
+          "label": "DRC on the copy",
+          "value": "0 errors, parity 0",
+          "limit": "0",
+          "status": "pass"
+        },
+        {
+          "label": "Bucks' power nets left open",
+          "value": "none (VBAT_FILT, both SW nodes, both outputs, VCC and the GND returns joined)",
+          "limit": "0",
+          "status": "pass"
+        },
+        {
+          "label": "L201's VBAT_PROT finger on In3",
+          "value": "12 mm long (was 28)",
+          "limit": "",
+          "status": "info"
+        }
+      ],
+      "gains": [
+        "U302's switch node and input loop as TI draws them",
+        "The switch node further from T1S",
+        "The bucks' copper done, with no vias on the switch nodes"
+      ],
+      "costs": [
+        "The approved 3V3 buck block (D06) changes: its pose table is rewritten",
+        "Left for your hand routing: U302's VOUT sense (pin 11, from the output node, away from SW), U303's feedback divider and EN, U302's INH"
+      ]
+    },
+    {
+      "key": "B",
+      "name": "Keep U302 as placed",
+      "summary": "Draw U303's copper only, and take U302's switch node round the chip by hand.",
+      "images": [],
+      "measures": [
+        {
+          "label": "U302 SW pin 7 to L301's SW pad (centres)",
+          "value": "about 7 mm of copper round the chip",
+          "limit": "short",
+          "status": "fail"
+        },
+        {
+          "label": "U302 switch node to the T1S line",
+          "value": "11.8 mm",
+          "limit": "≥ 10 mm",
+          "status": "pass"
+        }
+      ],
+      "gains": [
+        "No block change"
+      ],
+      "costs": [
+        "A long switch node through the input or output loop: EMI and ringing TI's rules warn against"
+      ]
+    }
+  ],
+  "recommendation": {
+    "option": "A",
+    "why": "U302's cell is wrong as placed. A puts it right without moving it to a new area: the switch node gets short, the input loop small, and the SW node ends up further from T1S. U303 needed copper only. On a yes I land it on main in one PR: the 3V3 buck's new pose table, the copper through `power_shapes.json`, DRC on the real board, and the records. It also fixes `hot_loop.py`, which measured the inductor distance straight through the chip."
+  },
+  "answer": "Reply A to land it, or B to keep U302 and draw U303 only.",
+  "sources": [
+    "TI LMQ66430-Q1 SNVSBV1F rev. F, 8.5.1, Figure 8-34, Table 5-1",
+    "TI TPS62850x-Q1 SLUSDM0N, 9.5.1",
+    "pose_search.py, scripts/draw_power.py, kicad-cli DRC on a copy of main",
+    "D06, D10, D12"
+  ],
+  "answered": "A, land it (user, 2026-11-05)"
+}
