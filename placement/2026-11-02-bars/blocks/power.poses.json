@@ -1,252 +1,252 @@
 {
  "block": "r201",
  "anchor": "R201",
- "approved": "2026-11-04 (D20 A: mirrored about x 155)",
+ "approved": "2026-11-04 (D21 C: rows swapped; D20 A mirrored about x 155)",
  "anchor_pose": {
-  "x": 154.2,
+  "x": 155.8,
   "y": 86.5,
-  "rot": 90.0,
+  "rot": 270.0,
   "side": "B"
  },
  "parts": {
   "Q201": {
    "dx": -6.5,
-   "dy": -27.2,
-   "rot": 270.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "Ideal-diode FET fed by J910: sources (VBAT_IN) face west to the boss, tab (VBAT_D) faces the shunt. The mirror image of Q202 about x 155 (D20 A)."
-  },
-  "Q202": {
-   "dx": -6.5,
-   "dy": 28.8,
+   "dy": 14.8,
    "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "Ideal-diode FET fed by J901, Q201 turned 180° about x 155: sources face east to J901, tab faces the shunt; its tab pad is Q201's mirrored exactly (D20 A)."
+   "why": "Ideal-diode FET in the north row beside U201 (D21 C: DGATE 23 mm): sources (VBAT_IN) face west to the L of VBAT_IN from J910, tab (VBAT_D) faces the shunt's F1. Mirror image of Q202 about x 155."
   },
-  "Q203": {
-   "dx": 6.5,
+  "Q202": {
+   "dx": -6.5,
    "dy": -13.2,
    "rot": 270.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "Load-disconnect FET, west of the shunt: tab (VBAT_Q2D) faces F2, sources (VBAT_PROT) face west to the plane vias and the In3 corridor south to U601/U701 (D20 A)."
+   "why": "Ideal-diode FET fed by J901, Q201 turned 180° about x 155: sources east to J901's L of VBAT_IN, tab faces F1; DGATE 24 mm (D21 C)."
   },
-  "Q204": {
+  "Q203": {
    "dx": 6.5,
    "dy": 14.8,
    "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "Load-disconnect FET, Q203 turned 180° about x 155; sources (VBAT_PROT) east toward U801 (D20 A)."
+   "why": "Load-disconnect FET in the south row: tab (VBAT_Q2D) faces the shunt's F2, sources (VBAT_PROT) face west; VBAT_PROT leaves south toward U701 and on In3 toward U601 (D21 C)."
   },
-  "U201": {
-   "dx": 11.0,
-   "dy": -1.2,
+  "Q204": {
+   "dx": 6.5,
+   "dy": -13.2,
    "rot": 270.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "LM74910H in the column between the disconnect FETs, north of the shunt: CS pins (19/20) face R201 2–6 mm away; DGATE west, HGATE east; its signals escape north to the In2 signal window. DGATE is about 50 mm routed to each ideal-diode FET (TI asks for short; D20 notes it)."
+   "why": "Load-disconnect FET, Q203 turned 180° about x 155; sources (VBAT_PROT) east, toward U801."
   },
-  "U202": {
-   "dx": 9.9,
-   "dy": 5.3,
-   "rot": 180.0,
+  "U201": {
+   "dx": -11.0,
+   "dy": 2.8,
+   "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "INA228 in the same column, east of U201: IN+/IN- (pins 10/9) face R201's sense pads, SDA/SCL face north to escape."
+   "why": "LM74910H in the column between the ideal-diode FETs, north of the shunt: DGATE (pin 1) 23 / 24 mm to Q201/Q202's gates and the A pin 16 mm from Q201's sources (TI 9.5.1: short DGATE, A and C close; D21 C); CS pins face R201; signals escape north to the In2 window. HGATE runs 49 / 37 mm to the disconnect FETs."
+  },
+  "U202": {
+   "dx": -9.9,
+   "dy": -3.7,
+   "rot": 0.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "INA228 in the same column, east of U201: IN+/IN- face R201's sense pads on its east side, about 4 mm; SDA/SCL face north to escape."
   },
   "C214": {
-   "dx": 5.8,
-   "dy": 6.8,
-   "rot": 0.0,
+   "dx": -5.8,
+   "dy": -5.2,
+   "rot": 180.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
    "why": "U202's VS bypass on B.Cu beside pin 6 (F.Cu there is the GND busbar area)."
   },
   "R209": {
-   "dx": 0.5,
-   "dy": -5.0,
-   "rot": 0.0,
+   "dx": -7.1,
+   "dy": -0.8,
+   "rot": 180.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "CS+ series resistor beside the shunt's S1 pad on its west side."
+   "why": "CS+ series resistor in the column, between the shunt's S1 pad and U201's CS+ pin."
   },
   "C212": {
-   "dx": 7.0,
-   "dy": -0.2,
-   "rot": 270.0,
+   "dx": -7.0,
+   "dy": 1.8,
+   "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
    "why": "CSET between CS+ and CS-, under U201's CS pins."
   },
   "C213": {
-   "dx": 9.0,
-   "dy": 2.4,
-   "rot": 0.0,
+   "dx": -11.25,
+   "dy": -0.7,
+   "rot": 180.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
    "why": "ISCP filter capacitor beside U201 pin 18."
   },
   "R202": {
-   "dx": 14.0,
-   "dy": 2.3,
-   "rot": 90.0,
+   "dx": -14.0,
+   "dy": -0.7,
+   "rot": 270.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
    "why": "HGATE series resistor at U201's HGATE pin, so HGATE_G fans out to Q203 and Q204 about equally."
   },
   "C209": {
-   "dx": 7.9,
-   "dy": -4.95,
-   "rot": 180.0,
+   "dx": -6.15,
+   "dy": 5.3,
+   "rot": 0.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
    "why": "Charge-pump capacitor at U201's CAP pin (23), off the FET bodies (TI: keep CVCAP away from the MOSFETs)."
   },
   "R210": {
-   "dx": -3.0,
-   "dy": -5.0,
-   "rot": 0.0,
+   "dx": -9.15,
+   "dy": -0.8,
+   "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "RISCP from the shunt's S1 pad to ISCP, on the shunt's sense side."
+   "why": "RISCP from the shunt's S1 pad to U201's ISCP pin, in the column."
   },
   "R208": {
-   "dx": 14.9,
-   "dy": -0.4,
-   "rot": 270.0,
+   "dx": -14.9,
+   "dy": 2.0,
+   "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
    "why": "ILIM resistor north of U201, beside pin 11."
   },
   "C211": {
-   "dx": 14.9,
-   "dy": -3.65,
-   "rot": 270.0,
+   "dx": -14.9,
+   "dy": 5.25,
+   "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
    "why": "TMR timing capacitor north of U201, beside pin 9; slow node."
   },
   "R204": {
-   "dx": 12.75,
-   "dy": -5.2,
-   "rot": 270.0,
+   "dx": -12.75,
+   "dy": 6.8,
+   "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
    "why": "UVLO divider north-west of U201, beside pins 4/5."
   },
   "R205": {
-   "dx": 13.5,
-   "dy": -7.7,
-   "rot": 0.0,
+   "dx": -13.5,
+   "dy": 9.3,
+   "rot": 180.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
    "why": "UVLO divider, with R204."
   },
   "R206": {
-   "dx": 13.5,
-   "dy": -9.45,
-   "rot": 180.0,
+   "dx": -13.5,
+   "dy": 11.05,
+   "rot": 0.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
    "why": "OV divider, in the divider string north-west of U201."
   },
   "R207": {
-   "dx": 13.5,
-   "dy": -11.2,
-   "rot": 0.0,
+   "dx": -13.5,
+   "dy": 12.8,
+   "rot": 180.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
    "why": "OV divider bottom resistor, end of the string."
   },
   "C210": {
-   "dx": 13.5,
-   "dy": -12.9,
-   "rot": 0.0,
+   "dx": -13.5,
+   "dy": 14.5,
+   "rot": 180.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
    "why": "BATT_MON filter capacitor at the divider string."
   },
   "R203": {
-   "dx": 15.5,
-   "dy": 1.05,
-   "rot": 180.0,
+   "dx": -15.5,
+   "dy": 0.55,
+   "rot": 0.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
    "why": "FLT_L pull-up north of U201 pin 12."
   },
   "C202": {
-   "dx": 15.25,
-   "dy": 3.3,
-   "rot": 270.0,
+   "dx": -15.2,
+   "dy": -1.7,
+   "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
    "why": "HGATE gate capacitor beside R202."
   },
   "C201": {
-   "dx": -0.9,
-   "dy": -32.6,
-   "rot": 180.0,
+   "dx": -4.5,
+   "dy": 21.8,
+   "rot": 0.0,
    "side": "F",
    "role": "core",
    "flex_mm": 0,
    "why": "VBAT_IN decoupling on F.Cu in the band between the busbars, over Q201's sources."
   },
   "C208": {
-   "dx": 4.9,
-   "dy": -2.0,
-   "rot": 90.0,
+   "dx": -4.9,
+   "dy": 3.6,
+   "rot": 270.0,
    "side": "F",
    "role": "core",
    "flex_mm": 0,
-   "why": "VBAT_D decoupling on F.Cu in the band, over U201's south side (VS pins)."
+   "why": "VBAT_D decoupling on F.Cu in the band, over U201's VS pins and the shunt's F1."
   },
   "C203": {
-   "dx": 4.9,
-   "dy": 3.1,
-   "rot": 270.0,
+   "dx": -4.9,
+   "dy": -1.5,
+   "rot": 90.0,
    "side": "F",
    "role": "core",
    "flex_mm": 0,
    "why": "VBAT_PROT decoupling on F.Cu in the band, near U201's OUT pins."
   },
   "C204": {
-   "dx": 4.65,
-   "dy": 5.4,
-   "rot": 0.0,
+   "dx": -4.65,
+   "dy": -3.8,
+   "rot": 180.0,
    "side": "F",
    "role": "core",
    "flex_mm": 0,
    "why": "VBAT_PROT decoupling on F.Cu in the band, near U202 pin 8."
   },
   "C205": {
-   "dx": 7.0,
-   "dy": 23.55,
-   "rot": 0.0,
+   "dx": 7.5,
+   "dy": -21.95,
+   "rot": 180.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
@@ -254,102 +254,102 @@
   },
   "RT201": {
    "dx": 0.0,
-   "dy": 5.2,
-   "rot": 0.0,
+   "dy": 4.85,
+   "rot": 180.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "Shunt NTC against the shunt's east (non-sense) side."
+   "why": "Shunt NTC against the shunt's west (non-sense) side."
   },
   "TP201": {
-   "dx": -0.0,
-   "dy": -35.7,
-   "rot": 270.0,
+   "dx": -6.5,
+   "dy": 29.8,
+   "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "VBAT_IN test point north of Q201's sources."
+   "why": "VBAT_IN test point in the west VBAT_IN L, near Q201's sources."
   },
   "TP202": {
-   "dx": -6.5,
-   "dy": 4.8,
-   "rot": 270.0,
+   "dx": -2.75,
+   "dy": 5.3,
+   "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "VBAT_D test point at the shunt's F1 end."
+   "why": "VBAT_D test point at the shunt's F1 (north) end."
   },
   "TP203": {
-   "dx": 3.75,
-   "dy": 6.3,
-   "rot": 270.0,
+   "dx": 6.5,
+   "dy": 4.55,
+   "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "VBAT_Q2D test point at the shunt's F2 end, east side."
+   "why": "VBAT_Q2D test point at the shunt's F2 (south) end."
   },
   "TP204": {
-   "dx": 2.0,
-   "dy": 23.3,
-   "rot": 270.0,
+   "dx": 3.0,
+   "dy": -21.7,
+   "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
    "why": "VBAT_PROT test point at Q204's sources."
   },
   "TP206": {
-   "dx": 14.0,
-   "dy": -14.7,
-   "rot": 270.0,
+   "dx": -14.0,
+   "dy": 16.3,
+   "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
    "why": "BATT_MON test point at the divider string."
   },
   "TP207": {
-   "dx": 12.5,
-   "dy": 2.3,
-   "rot": 270.0,
+   "dx": -14.25,
+   "dy": -4.2,
+   "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
    "why": "FLT_L test point beside U201's north-east corner."
   },
   "TP208": {
-   "dx": 19.25,
-   "dy": -7.4,
-   "rot": 270.0,
+   "dx": -19.25,
+   "dy": 9.0,
+   "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
    "why": "INH test point; nearest legal spot is 7 mm north-west of pin 7, by the T1S test points."
   },
   "C216": {
-   "dx": 4.5,
-   "dy": 35.8,
-   "rot": 270.0,
+   "dx": -16.5,
+   "dy": -26.2,
+   "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "NTC_RSENSE filter capacitor, moved east of the VBAT_PROT pour so it doesn't cut it on one side only."
+   "why": "NTC_RSENSE filter capacitor, north-east of the VBAT_IN L, out of the power pours."
   },
   "R212": {
-   "dx": 7.5,
-   "dy": 35.8,
-   "rot": 0.0,
+   "dx": -16.5,
+   "dy": -29.45,
+   "rot": 180.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
    "why": "NTC_RSENSE pull-up to 3V3_MAIN, with C216."
   },
   "TP209": {
-   "dx": 5.5,
-   "dy": 39.55,
-   "rot": 0.0,
+   "dx": -16.5,
+   "dy": -31.45,
+   "rot": 180.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "GND test loop, moved east with the NTC parts."
+   "why": "GND test loop with the NTC parts, out of the power pours."
   }
  }
 }
