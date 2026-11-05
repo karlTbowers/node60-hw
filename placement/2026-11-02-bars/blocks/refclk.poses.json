@@ -1,0 +1,41 @@
+{
+  "block": "refclk",
+  "anchor": "Y501",
+  "approved": "2026-11-05 (D27 A: Y501 between J903 and U401 so the RMII clock reaches U501 and U401 together)",
+  "anchor_pose": {
+    "x": 182.0,
+    "y": 41.0,
+    "rot": 90.0,
+    "side": "B"
+  },
+  "parts": {
+    "R503": {
+      "dx": 0.95,
+      "dy": -3.05,
+      "rot": 90.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "33 ohm series resistor for U501 pin 27 (REFCLKIN), pad 1 at Y501 pin 3: source termination at the oscillator, its branch leaves west on In2"
+    },
+    "R504": {
+      "dx": 2.6,
+      "dy": -0.7,
+      "rot": 270.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "33 ohm series resistor for U401 ball U6 (RMII REF_CLK), pad 1 north of Y501 pin 3: source termination at the oscillator, its branch leaves east on B.Cu, outside UNDER_Y501"
+    },
+    "C513": {
+      "dx": 0.0,
+      "dy": 2.7,
+      "rot": 0.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "Y501's 100 nF bypass (schematic p5) beside its supply pins 1 and 4, both on in-pad 3V3 vias; had sat 8 mm away on the top side"
+    }
+  },
+  "why": "50 MHz RMII oscillator and its two series resistors at its output, with its bypass cap. Placed so the clock to U501 pin 27 (32 mm, In2) and to U401 ball U6 (22 mm, B) are within Microchip's 13 mm, the PHY's the longer (it helps TX setup); the bucks' switch nodes 17.9 mm away or more."
+}

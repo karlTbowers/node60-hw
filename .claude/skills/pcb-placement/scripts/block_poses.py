@@ -8,7 +8,7 @@ up to `flex_mm`) and the reason it sits there. The table, not a board, is the re
 
     $KPY block_poses.py extract BOARD --anchor K501 --refs K501,R501,... -o blocks/t1s.poses.json
     $KPY block_poses.py apply   BOARD blocks/t1s.poses.json -o OUT.kicad_pcb [--at X Y --rot R]
-    $KPY block_poses.py check   BOARD blocks/t1s.poses.json [blocks/*.poses.json ...]
+    $KPY block_poses.py check   BOARD blocks/t1s.poses.json [blocks/*.poses.json ...] [--parked PARKED.json]
     $KPY block_poses.py copy    BOARD blocks/out12.poses.json --map 'U601=U701,C601=C701,...' -o blocks/out34.poses.json
 
 `extract` writes the table with empty `why` and every part `core`; fill in each reason and
@@ -82,7 +82,7 @@ def cmd_extract(a):
     print(f"wrote {a.out}: {len(parts)} parts round {a.anchor}; fill in every 'why' and mark the flex parts")
 
 
-def check_table(board, table):
+def check_table(board, table, parked=()):
     anc_fp = board.FindFootprintByReference(table["anchor"])
     if anc_fp is None:
         return [{"ref": table["anchor"], "status": "FAIL", "note": "anchor not on the board"}]
@@ -94,6 +94,9 @@ def check_table(board, table):
         if ref == table["anchor"]:
             continue   # the anchor's own row carries its reason, not a pose: it is checked above
         fp = board.FindFootprintByReference(ref)
+        if ref in parked:
+            rows.append({"ref": ref, "status": "parked", "note": "parked off the board while routing"})
+            continue
         if fp is None:
             rows.append({"ref": ref, "status": "FAIL", "note": "not on the board"})
             continue
@@ -114,7 +117,7 @@ def cmd_check(a):
     fails = 0
     for path in a.tables:
         t = json.load(open(path))
-        rows = check_table(board, t)
+        rows = check_table(board, t, json.load(open(a.parked)) if a.parked else {})
         bad = [r for r in rows if r["status"] == "FAIL"]
         fails += len(bad)
         unreasoned = [r for r, v in t["parts"].items() if not v.get("why")]
@@ -171,6 +174,7 @@ def main():
     p = sub.add_parser("apply"); p.add_argument("board"); p.add_argument("table"); p.add_argument("-o", "--out", required=True)
     p.add_argument("--at", type=float, nargs=2); p.add_argument("--rot", type=float)
     c = sub.add_parser("check"); c.add_argument("board"); c.add_argument("tables", nargs="+")
+    c.add_argument("--parked", help="JSON of parts parked off the board while routing (park_test_points.py); reported, not failed")
     k = sub.add_parser("copy"); k.add_argument("board"); k.add_argument("table"); k.add_argument("--map", required=True)
     k.add_argument("--block"); k.add_argument("-o", "--out", required=True)
     a = ap.parse_args()

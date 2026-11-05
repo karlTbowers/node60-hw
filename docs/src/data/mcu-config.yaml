@@ -19,26 +19,28 @@ RMII0_T1S_REF_CLK:
   group: t1s
   dir: in
   pull: none
-  note: 50 MHz RMII reference from the PHY oscillator output, through R504 33 Ω
+  note: 50 MHz RMII reference from Y501 (between J903 and U401, D27), through R504 33 Ω
 RMII0_T1S_TXD0:
   function: EMAC_MII_RMII_TXD[0]
   group: t1s
   dir: out
   pull: none
   init: low
+  note: pad DSE = 1, SRE = 0, the only setting at which NXP gives the RMII output timing (15 ns valid, 2 ns invalid; S32K3xx data sheet §12.8.3); the TX margins (D27) assume it
 RMII0_T1S_TXD1:
   function: EMAC_MII_RMII_TXD[1]
   group: t1s
   dir: out
   pull: none
   init: low
+  note: pad DSE = 1, SRE = 0, the only setting at which NXP gives the RMII output timing (15 ns valid, 2 ns invalid; S32K3xx data sheet §12.8.3); the TX margins (D27) assume it
 RMII0_T1S_TX_EN:
   function: EMAC_MII_RMII_TX_EN
   group: t1s
   dir: out
   pull: none
   init: low
-  note: R514 holds it low through reset so the PHY does not transmit
+  note: R514 holds it low through reset so the PHY does not transmit; pad DSE = 1, SRE = 0, the only setting at which NXP gives the RMII output timing (15 ns valid, 2 ns invalid; S32K3xx data sheet §12.8.3); the TX margins (D27) assume it
 RMII0_T1S_RXD0:
   function: EMAC_MII_RMII_RXD[0]
   group: t1s

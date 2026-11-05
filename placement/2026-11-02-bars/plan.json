@@ -546,7 +546,8 @@
   "blocks/crystal.poses.json",
   "blocks/out_34.poses.json",
   "blocks/out_6x.poses.json",
-  "blocks/out_8x.poses.json"
+  "blocks/out_8x.poses.json",
+  "blocks/refclk.poses.json"
  ],
  "accepted": [],
  "assumed": [
