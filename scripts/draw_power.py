@@ -30,7 +30,9 @@ SPEC.json:
             e.g. a B pad under an F pad of the same net)}]
 }
 
-Also "pad_vias" (one via per pad of a net), "dogbones" (a BGA's balls, "prefer": {ball: [dx, dy]}),
+Also "keep_clear" ([{"name", "rect": [x0, y0, x1, y1]}]: no via of any field in these rects, e.g. the T1S
+trunk's corridor on F.Cu, which every via passes), "class_clearance" ({"T1S_100R": 0.75}: a via site keeps
+this far from routed tracks and vias of that net class), "pad_vias" (one via per pad of a net), "dogbones" (a BGA's balls, "prefer": {ball: [dx, dy]}),
 "points" ({"name", "points": [[x, y, net], ...]}: vias at given points), "clear" ([{"net", "rect"}]: a retired field's locked vias and tracks to remove), "via_overrides" ([{"rect",
 "size", "drill"}]: any via drawn inside rect takes that size) and "stubs" ({"name", "layer",
 "width", "stubs": [[x1, y1, x2, y2, net], ...]}); see place_pad_vias and place_dogbones.
@@ -414,10 +416,16 @@ def main():
     total = 0
     short = []
 
+    keep_clear = spec.get("keep_clear", [])
+    class_clr = spec.get("class_clearance", {})
+
     def free(x, y, allow, own_pad=None, netname=None, same_ok=False):
-        """a via site clear of the edge, pads (but own_pad, the pad a via-in-pad field fills), holes, and the
-        courtyards of parts with no pad on the via's own net (a via in a pad skips courtyards: only pads matter)"""
+        """a via site clear of the edge, the spec's keep_clear rects, pads (but own_pad, the pad a via-in-pad
+        field fills), holes, routed copper (by class_clearance for their net class, else the clearance), and
+        the courtyards of parts with no pad on the via's own net (a via in a pad skips courtyards: only pads matter)"""
         if not (outer[0] + M(edge) + r <= x <= outer[2] - M(edge) - r and outer[1] + M(edge) + r <= y <= outer[3] - M(edge) - r):
+            return False
+        if any(k[0] - r <= x <= k[2] + r and k[1] - r <= y <= k[3] + r for k in (kc["rect"] for kc in keep_clear)):
             return False
         pt = pcbnew.VECTOR2I(F(x), F(y))
         near = {id(q): q for di in (-1, 0, 1) for dj in (-1, 0, 1) for q in bucket.get((int(x // 5) + di, int(y // 5) + dj), [])}
@@ -437,10 +445,11 @@ def main():
                   for q in tbucket.get((int(x // 5) + di, int(y // 5) + dj), [])}.values():
             if netname and t.GetNetname() == netname:
                 continue
+            c_t = class_clr.get(t.GetNetClassName(), clr) if class_clr else clr
             if t.Type() == pcbnew.PCB_VIA_T:
-                if math.hypot(x - M(t.GetPosition().x), y - M(t.GetPosition().y)) < r + M(t.GetWidth()) / 2 + clr:
+                if math.hypot(x - M(t.GetPosition().x), y - M(t.GetPosition().y)) < r + M(t.GetWidth(pcbnew.F_Cu)) / 2 + c_t:
                     return False
-            elif t.GetEffectiveShape(t.GetLayer()).Collide(circle, F(clr)):
+            elif t.GetEffectiveShape(t.GetLayer()).Collide(circle, F(c_t)):
                 return False
         if own_pad is not None:
             return True
