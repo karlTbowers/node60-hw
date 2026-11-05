@@ -556,7 +556,7 @@
  "plane_layers": {
   "In1.Cu": "GND",
   "In2.Cu": "VBAT_PROT",
-  "In3.Cu": "VBAT_PROT",
+  "In3.Cu": "VBAT_PROT in the power band and two fingers; 3V3_MAIN north of y 70.8 with a 1V5_CORE island (D22 A, 2026-11-04)",
   "In4.Cu": "GND"
  },
  "via_amps_source": "IPC-2221 internal-conductor curve, 18 um plating (JLCPCB), 10 C rise: 0.65 A per 0.45/0.25 mm via (D12-6 A, user 2026-11-03)",

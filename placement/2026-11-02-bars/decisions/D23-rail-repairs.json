@@ -1,0 +1,134 @@
+{
+  "id": "D23",
+  "name": "Rail repair poses",
+  "question": "Do these poses for R1–R3 land, with the small-rail copper of D22 A drawn on them?",
+  "board": "node60",
+  "phase": "Routing",
+  "stage": "Power shapes",
+  "date": "2026-11-04",
+  "why_now": "You answered D22 with **A, all three**. I said the repairs would come first, as poses you see before they land, and here they are. Everything is built on a copy of main's board, with D22 A's copper drawn on top and checked: DRC, every via joined, the drops measured, and every signal ball of U401 still with a free cell for its own escape.\n\nOne thing changed from D22's trial. **Every via under U401 is now 0.35/0.20 mm** (a preset), not 0.40/0.20. At 0.8 mm pitch, 0.40 mm vias leave 0.10 mm webs of In3 copper between them. That is under the 0.15 mm inner minimum, so the fill dropped the webs and both the 1V5 island and the 3V3 plane fell apart round the core: H8 and K8 were split from each other and L8 from the plane. At 0.35 mm the webs are 0.15 mm and both hold. That puts U401 under the question already open with JLCPCB, their OK for a 0.075 mm via ring on 2 oz inner layers. A 0.8 mm BGA needs that answer anyway.",
+  "facts": [
+    {
+      "label": "Method",
+      "value": "R1 and R2 by pose_search.py (nearest legal pose to the target). R3 by power/bga_decaps.py: each cap's rail pad on a via of its net and its GND pad on a GND via in the next cell (0603: two cells over), most constrained cap first. The poses are greedy, not proven best",
+      "source": "pcb-placement skill scripts"
+    },
+    {
+      "label": "Escape kept",
+      "value": "Each of U401's 54 signal balls keeps a free diagonal cell (checked at 0.35 mm via size on the result); no cap or cap via may take one",
+      "source": "bga_decaps.py, check on the copy"
+    },
+    {
+      "label": "Core",
+      "value": "U401's core 3 × 3 is 1V5 at the corners, V11 on the edges and GND in the middle, so eight power balls share 2.4 × 2.4 mm. Not every cap fits there on its own vias",
+      "source": "U401 footprint (S32K344 257 MAPBGA)"
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "name": "Land R1–R3 as shown",
+      "summary": "**R1:** C206 moves from (146, 32.5) to (118, 40.5, 90°), north of C305 and C304, on the VBAT_FILT pour, 5.2 mm from L201's pad 2. TP205 moves from (132.6, 73.3) to (120.75, 41.75), beside it. **R2:** C405 moves from (211.9, 65.6) to (210.75, 52.25, 0°), on the 1V5 island's east end beside U401, with a via in its pad. **R3:** 15 of the 18 top-side caps under U401 sit on their own via pairs: C401, C402, C406–C408, C410, C412–C415, C417, C418, C421, C422 and C423. Three don't fit in the core: C403 and C404 (1V5) and C419 (V11). They sit just outside it, each with a 1.0–1.4 mm top-side track to a via of its net. C420 stays where it is. The table becomes a pose table for U401's decoupling block (`blocks/u401_decaps.poses.json`).",
+      "images": [
+        {
+          "path": "img/d23_core_before.png",
+          "caption": "Before: U401's top-side caps as placed today, with no vias yet"
+        },
+        {
+          "path": "img/d23_core_after.png",
+          "caption": "After: each cap on its rail and GND vias (dots), dogbones on the balls, the three off-grid caps with short tracks; In3's 1V5 island (green) and 3V3 plane (red)"
+        },
+        {
+          "path": "img/d23_r1.png",
+          "caption": "R1: C206 and TP205 beside L201 and U302's input caps, on the VBAT_FILT pour"
+        },
+        {
+          "path": "img/d23_r2.png",
+          "caption": "R2: C405 at the 1V5 island's east end"
+        },
+        {
+          "path": "img/d22_in3_final.png",
+          "caption": "In3 with the repairs"
+        }
+      ],
+      "measures": [
+        {
+          "label": "DRC on the copy",
+          "value": "0 errors, parity 0 (2 warnings: V11 vias with nothing on top until you join V11)",
+          "limit": "0",
+          "status": "pass"
+        },
+        {
+          "label": "Open connections, small rails (main → copy)",
+          "value": "1V5_CORE 10 → 0, 3V3_MAIN 73 → 20, VBAT_FILT 9 → 2, V11 9 → 5, V25 1 → 0",
+          "limit": "fewer",
+          "status": "pass"
+        },
+        {
+          "label": "1V5_CORE drop, R303 to all four core balls",
+          "value": "21 mV at 2 A (43 mW); about 3 mV at 0.3 A",
+          "limit": "small",
+          "status": "pass"
+        },
+        {
+          "label": "3V3_MAIN drop, R302 to each load (1.33 A in all)",
+          "value": "U303 input 5.4 mV, U401 3.8 mV, U501 3.0 mV; 7 mW",
+          "limit": "small against 3.10–3.50 V",
+          "status": "pass"
+        },
+        {
+          "label": "U401 signal balls with a free escape cell",
+          "value": "54 of 54",
+          "limit": "all",
+          "status": "pass"
+        },
+        {
+          "label": "Vias under U401",
+          "value": "0.35/0.20 mm: 0.075 mm ring, waiting on JLCPCB's OK for 2 oz inner layers",
+          "limit": "fab OK",
+          "status": "warn"
+        },
+        {
+          "label": "Caps on their own vias",
+          "value": "15 of 18; C403, C404 and C419 by 1.0–1.4 mm top-side tracks",
+          "limit": "all",
+          "status": "warn"
+        }
+      ],
+      "gains": [
+        "The filter cap and the 1V5 bulk cap work where they are meant to",
+        "U401's decoupling sits on its vias, with no hand routing for 15 caps",
+        "1V5_CORE fully joined"
+      ],
+      "costs": [
+        "U401's vias wait on the open JLCPCB question",
+        "V11 still needs joining on top: its four balls each have their own cap but no copper between them (V11 has no plane), plus C420 and TP411"
+      ]
+    },
+    {
+      "key": "B",
+      "name": "Change something first",
+      "summary": "Tell me which pose to change (a cap, C206's spot, or 0.40 mm vias with the island and plane joined some other way), and I'll redo the copy and show it again.",
+      "images": [],
+      "measures": [],
+      "gains": [],
+      "costs": [
+        "Another round before the copper lands"
+      ]
+    }
+  ],
+  "recommendation": {
+    "option": "A",
+    "why": "Every check passes on the copy, and the one open item, the via ring, is a question the board already has open with JLCPCB. Once you say yes, I put it on main's board in one PR: the poses with a new pose table for U401's decoupling, D22 A's copper through `power_shapes.json`, DRC and the drops measured again on the real board, and updates to CLAUDE.md's layer roles, the log and `judge_route.sh` (its In3 plane is still VBAT_PROT across the whole board)."
+  },
+  "answer": "Reply A to land it, or tell me what to change.",
+  "sources": [
+    "pose_search.py (R1, R2)",
+    "power/bga_decaps.py (R3, new)",
+    "scripts/draw_power.py (dogbones, cap vias, stubs, via size under U401)",
+    "power/copper_r.py, 85 °C",
+    "kicad-cli DRC on the copy",
+    "D22"
+  ],
+  "answered": "A, land it (user, 2026-11-04)"
+}

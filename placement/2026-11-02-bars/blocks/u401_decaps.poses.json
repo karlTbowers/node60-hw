@@ -1,0 +1,184 @@
+{
+  "block": "u401_decaps",
+  "anchor": "U401",
+  "approved": "2026-11-04 (D23 A: caps on via pairs at U401's cell centres; D22 R3)",
+  "anchor_pose": {
+    "x": 200.9291,
+    "y": 51.4898,
+    "rot": 0.0,
+    "side": "B"
+  },
+  "parts": {
+    "C401": {
+      "dx": 1.6,
+      "dy": 1.2,
+      "rot": 0.0,
+      "side": "F",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "1V5_CORE decoupling under U401: rail pad on a new 1V5_CORE via inside the 1V5 island at (202.13, 52.69), GND pad on the GND via in the next cell; no track (D23 A, bga_decaps.py)."
+    },
+    "C402": {
+      "dx": -2.4,
+      "dy": 1.2,
+      "rot": 180.0,
+      "side": "F",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "1V5_CORE decoupling under U401: rail pad on a new 1V5_CORE via inside the 1V5 island at (198.93, 52.69), GND pad on the GND via in the next cell; no track (D23 A, bga_decaps.py)."
+    },
+    "C403": {
+      "dx": -2.7991,
+      "dy": -1.3998,
+      "rot": 180.0,
+      "side": "F",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "1V5_CORE decoupling under U401: no pose on its own vias fits in the core, so it sits just outside, with a 1.0-1.4 mm top-side track to its net's nearest via, clear of every via and of the signal balls' escape cells (D23 A)."
+    },
+    "C404": {
+      "dx": 2.0009,
+      "dy": -2.5998,
+      "rot": 0.0,
+      "side": "F",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "1V5_CORE decoupling under U401: no pose on its own vias fits in the core, so it sits just outside, with a 1.0-1.4 mm top-side track to its net's nearest via, clear of every via and of the signal balls' escape cells (D23 A)."
+    },
+    "C405": {
+      "dx": 9.8209,
+      "dy": 0.7602,
+      "rot": 0.0,
+      "side": "B",
+      "role": "flex",
+      "flex_mm": 0.5,
+      "why": "1V5_CORE bulk (4.7 uF) at the In3 1V5 island's east end beside U401, a via in its pad (D22 repair R2; was 14 mm south, off the island)."
+    },
+    "C406": {
+      "dx": 4.0,
+      "dy": 4.4,
+      "rot": 180.0,
+      "side": "F",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "3V3_MAIN decoupling under U401: rail pad on the dogbone of ball D14 at (205.33, 55.89), GND pad on the GND via in the next cell; no track (D23 A, bga_decaps.py)."
+    },
+    "C407": {
+      "dx": -3.2,
+      "dy": -2.8,
+      "rot": 0.0,
+      "side": "F",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "3V3_MAIN decoupling under U401: rail pad on the dogbone of ball N4 at (197.33, 48.69), GND pad on the GND via in the next cell; no track (D23 A, bga_decaps.py)."
+    },
+    "C408": {
+      "dx": -1.6,
+      "dy": -4.4,
+      "rot": 0.0,
+      "side": "F",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "3V3_MAIN decoupling under U401: rail pad on the dogbone of ball R7 at (198.93, 47.09), GND pad on the GND via in the next cell; no track (D23 A, bga_decaps.py)."
+    },
+    "C410": {
+      "dx": -5.6,
+      "dy": -2.8,
+      "rot": 180.0,
+      "side": "F",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "3V3_MAIN decoupling under U401: rail pad on a new 3V3_MAIN via on the In3 plane at (195.73, 48.69), GND pad on the GND via in the next cell; no track (D23 A, bga_decaps.py)."
+    },
+    "C412": {
+      "dx": 0.8,
+      "dy": -6.0,
+      "rot": 0.0,
+      "side": "F",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "3V3_MAIN decoupling under U401: rail pad on a new 3V3_MAIN via on the In3 plane at (201.33, 45.49), GND pad on the GND via in the next cell; no track (D23 A, bga_decaps.py)."
+    },
+    "C413": {
+      "dx": 0.8,
+      "dy": 2.8,
+      "rot": 0.0,
+      "side": "F",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "3V3_MAIN decoupling under U401: rail pad on a new 3V3_MAIN via on the In3 plane at (201.33, 54.29), GND pad on the GND via in the next cell; no track (D23 A, bga_decaps.py)."
+    },
+    "C414": {
+      "dx": -4.8,
+      "dy": -4.4,
+      "rot": 180.0,
+      "side": "F",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "3V3_MAIN decoupling under U401: rail pad on a new 3V3_MAIN via on the In3 plane at (196.53, 47.09), GND pad on the GND via in the next cell; no track (D23 A, bga_decaps.py)."
+    },
+    "C415": {
+      "dx": 1.2,
+      "dy": -4.4,
+      "rot": 0.0,
+      "side": "F",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "3V3_MAIN decoupling under U401: rail pad on the dogbone of ball R10 at (201.33, 47.09), GND pad on the GND via in the next cell; no track (D23 A, bga_decaps.py)."
+    },
+    "C417": {
+      "dx": 1.6,
+      "dy": -0.4,
+      "rot": 0.0,
+      "side": "F",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "V11 decoupling under U401: rail pad on a new V11 via on the In3 plane at (202.13, 51.09), GND pad on the GND via in the next cell; no track (D23 A, bga_decaps.py)."
+    },
+    "C418": {
+      "dx": 0.0,
+      "dy": -2.0,
+      "rot": 0.0,
+      "side": "F",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "V11 decoupling under U401: rail pad on a new V11 via linked to its ball's via on B at (200.53, 49.49), GND pad on the GND via in the next cell; no track (D23 A, bga_decaps.py)."
+    },
+    "C419": {
+      "dx": 0.0009,
+      "dy": -2.9998,
+      "rot": 0.0,
+      "side": "F",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "V11 decoupling under U401: no pose on its own vias fits in the core, so it sits just outside, with a 1.0-1.4 mm top-side track to its net's nearest via, clear of every via and of the signal balls' escape cells (D23 A)."
+    },
+    "C421": {
+      "dx": -0.4,
+      "dy": 0.4,
+      "rot": 90.0,
+      "side": "F",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "V11 decoupling under U401: rail pad on a new V11 via on the In3 plane at (200.53, 52.69), GND pad on the GND via in the next cell; no track (D23 A, bga_decaps.py)."
+    },
+    "C422": {
+      "dx": -2.4,
+      "dy": -0.4,
+      "rot": 180.0,
+      "side": "F",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "V25 decoupling under U401: rail pad on a new V25 via on the In3 plane at (198.93, 51.09), GND pad on the GND via in the next cell; no track (D23 A, bga_decaps.py)."
+    },
+    "C423": {
+      "dx": -2.4,
+      "dy": -6.0,
+      "rot": 180.0,
+      "side": "F",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "3V3_MAIN decoupling under U401: rail pad on a new 3V3_MAIN via on the In3 plane at (198.93, 45.49), GND pad on the GND via in the next cell; no track (D23 A, bga_decaps.py)."
+    }
+  }
+}
