@@ -1,11 +1,11 @@
 {
- "about": "Node60 power shapes, stage 1 (2026-11-04): inner planes (D12-1/D17 A), the 60 A entry path on B, In2, In3 and the F band (D18 A), VBAT_PROT at the disconnect FETs' sources, GND pours, and via fields at 0.65 A per 0.45/0.25 mm via (D12-6). Stage 2: each switch's VBB pad gets in-pad vias (filled and capped, DEC-027); each output a pour on B and F from its pins to its header's pin 1, OUTb the mirror image of OUTa, with mirrored via fields so both outputs of a switch get the same copper. D19 A (2026-11-04): the cells' small parts moved clear of the OUT exits; the B output pours reach north to y 104.5 beside the pins (F stays south of the VBAT_IN bar area).",
+ "about": "Node60 power shapes, stage 1 (2026-11-04): inner planes (D12-1/D17 A), the 60 A entry path on B, In2, In3 and the F band (D18 A), VBAT_PROT at the disconnect FETs' sources, GND pours, and via fields at 0.65 A per 0.45/0.25 mm via (D12-6). Stage 2: each switch's VBB pad gets in-pad vias (filled and capped, DEC-027); each output a pour on B and F from its pins to its header's pin 1, OUTb the mirror image of OUTa, with mirrored via fields so both outputs of a switch get the same copper. D19 A (2026-11-04): the cells' small parts moved clear of the OUT exits; the B output pours reach north to y 104.5 beside the pins (F stays south of the VBAT_IN bar area). D20 A (2026-11-04): both battery terminals VBAT_IN, the entry mirrored about x 155. D21 C (2026-11-04): rows swapped so the ideal-diode FETs sit beside U201 (short DGATE): VBAT_IN an L from each ring to its north-row FET on B and In2 (In3 stays VBAT_PROT under it, toward U601/U801), VBAT_D the north band around the U201/U202 column, VBAT_Q2D the south band, VBAT_PROT from the south-row sources; vias in all four FET tabs.",
  "via": {
   "size": 0.45,
   "drill": 0.25,
   "pitch": 0.9,
   "clearance": 0.15,
-  "hole_clearance": 0.3
+  "hole_clearance": 0.35
  },
  "zones": [
   {
@@ -81,14 +81,191 @@
     [
      92.6,
      90.2,
-     200.0,
+     217.4,
      109.0
     ]
    ]
   },
   {
-   "name": "PWR_VBAT_IN_entry",
+   "name": "PWR_VBAT_IN_W",
    "net": "/VBAT_IN",
+   "layers": [
+    "B.Cu",
+    "In2.Cu"
+   ],
+   "priority": 10,
+   "poly": [
+    [
+     93.5,
+     72.5
+    ],
+    [
+     136.4,
+     72.5
+    ],
+    [
+     136.4,
+     86.0
+    ],
+    [
+     123.6,
+     86.0
+    ],
+    [
+     123.6,
+     107.5
+    ],
+    [
+     93.5,
+     107.5
+    ]
+   ]
+  },
+  {
+   "name": "PWR_VBAT_IN_E",
+   "net": "/VBAT_IN",
+   "layers": [
+    "B.Cu",
+    "In2.Cu"
+   ],
+   "priority": 10,
+   "poly": [
+    [
+     216.5,
+     72.5
+    ],
+    [
+     173.6,
+     72.5
+    ],
+    [
+     173.6,
+     86.0
+    ],
+    [
+     186.4,
+     86.0
+    ],
+    [
+     186.4,
+     107.5
+    ],
+    [
+     216.5,
+     107.5
+    ]
+   ]
+  },
+  {
+   "name": "PWR_VBAT_IN_band_F_W",
+   "net": "/VBAT_IN",
+   "layers": [
+    "F.Cu"
+   ],
+   "priority": 10,
+   "rects": [
+    [
+     93.5,
+     80.6,
+     136.4,
+     85.8
+    ]
+   ]
+  },
+  {
+   "name": "PWR_VBAT_IN_band_F_E",
+   "net": "/VBAT_IN",
+   "layers": [
+    "F.Cu"
+   ],
+   "priority": 10,
+   "rects": [
+    [
+     173.6,
+     80.6,
+     216.5,
+     85.8
+    ]
+   ]
+  },
+  {
+   "name": "PWR_VBAT_D_in",
+   "net": "/Power entry/VBAT_D",
+   "layers": [
+    "In2.Cu",
+    "In3.Cu"
+   ],
+   "priority": 10,
+   "rects": [
+    [
+     137.6,
+     73.0,
+     172.4,
+     85.8
+    ]
+   ]
+  },
+  {
+   "name": "PWR_VBAT_D_B",
+   "net": "/Power entry/VBAT_D",
+   "layers": [
+    "B.Cu"
+   ],
+   "priority": 10,
+   "poly": [
+    [
+     137.6,
+     73.0
+    ],
+    [
+     148.6,
+     73.0
+    ],
+    [
+     148.6,
+     80.6
+    ],
+    [
+     162.0,
+     80.6
+    ],
+    [
+     162.0,
+     73.0
+    ],
+    [
+     172.4,
+     73.0
+    ],
+    [
+     172.4,
+     85.8
+    ],
+    [
+     137.6,
+     85.8
+    ]
+   ]
+  },
+  {
+   "name": "PWR_VBAT_D_F",
+   "net": "/Power entry/VBAT_D",
+   "layers": [
+    "F.Cu"
+   ],
+   "priority": 10,
+   "rects": [
+    [
+     137.6,
+     80.6,
+     172.4,
+     85.8
+    ]
+   ]
+  },
+  {
+   "name": "PWR_VBAT_Q2D_B_in",
+   "net": "/Power entry/VBAT_Q2D",
    "layers": [
     "B.Cu",
     "In2.Cu",
@@ -97,149 +274,15 @@
    "priority": 10,
    "rects": [
     [
-     93.5,
-     72.5,
-     112.6,
-     107.5
-    ]
-   ]
-  },
-  {
-   "name": "PWR_VBAT_D_entry_in",
-   "net": "/Power entry/VBAT_D",
-   "layers": [
-    "In2.Cu",
-    "In3.Cu"
-   ],
-   "priority": 10,
-   "rects": [
-    [
-     113.4,
-     73.0,
-     133.6,
+     137.6,
+     86.6,
+     172.4,
      99.5
     ]
    ]
   },
   {
-   "name": "PWR_VBAT_D_entry_B",
-   "net": "/Power entry/VBAT_D",
-   "layers": [
-    "B.Cu"
-   ],
-   "priority": 10,
-   "poly": [
-    [
-     113.4,
-     73.0
-    ],
-    [
-     130.9,
-     73.0
-    ],
-    [
-     130.9,
-     83.8
-    ],
-    [
-     133.6,
-     83.8
-    ],
-    [
-     133.6,
-     90.8
-    ],
-    [
-     130.9,
-     90.8
-    ],
-    [
-     130.9,
-     99.5
-    ],
-    [
-     113.4,
-     99.5
-    ]
-   ]
-  },
-  {
-   "name": "PWR_VBAT_D_entry_F",
-   "net": "/Power entry/VBAT_D",
-   "layers": [
-    "F.Cu"
-   ],
-   "priority": 10,
-   "rects": [
-    [
-     113.4,
-     80.6,
-     130.9,
-     89.6
-    ]
-   ]
-  },
-  {
-   "name": "PWR_VBAT_Q2D_entry_in",
-   "net": "/Power entry/VBAT_Q2D",
-   "layers": [
-    "In2.Cu",
-    "In3.Cu"
-   ],
-   "priority": 10,
-   "rects": [
-    [
-     138.4,
-     73.0,
-     158.0,
-     99.5
-    ]
-   ]
-  },
-  {
-   "name": "PWR_VBAT_Q2D_entry_B",
-   "net": "/Power entry/VBAT_Q2D",
-   "layers": [
-    "B.Cu"
-   ],
-   "priority": 10,
-   "poly": [
-    [
-     141.2,
-     73.0
-    ],
-    [
-     158.0,
-     73.0
-    ],
-    [
-     158.0,
-     99.5
-    ],
-    [
-     141.2,
-     99.5
-    ],
-    [
-     141.2,
-     90.8
-    ],
-    [
-     138.4,
-     90.8
-    ],
-    [
-     138.4,
-     83.8
-    ],
-    [
-     141.2,
-     83.8
-    ]
-   ]
-  },
-  {
-   "name": "PWR_VBAT_Q2D_entry_F",
+   "name": "PWR_VBAT_Q2D_F",
    "net": "/Power entry/VBAT_Q2D",
    "layers": [
     "F.Cu"
@@ -247,15 +290,15 @@
    "priority": 10,
    "rects": [
     [
-     141.2,
-     80.6,
-     158.0,
+     137.6,
+     86.6,
+     172.4,
      89.6
     ]
    ]
   },
   {
-   "name": "PWR_VBAT_PROT_source_B",
+   "name": "PWR_VBAT_PROT_sources_B_W",
    "net": "VBAT_PROT",
    "layers": [
     "B.Cu"
@@ -263,15 +306,31 @@
    "priority": 10,
    "rects": [
     [
-     159.9,
-     74.9,
-     176.0,
+     124.4,
+     86.6,
+     136.4,
      99.5
     ]
    ]
   },
   {
-   "name": "PWR_VBAT_PROT_source_F",
+   "name": "PWR_VBAT_PROT_sources_B_E",
+   "net": "VBAT_PROT",
+   "layers": [
+    "B.Cu"
+   ],
+   "priority": 10,
+   "rects": [
+    [
+     173.6,
+     86.6,
+     185.6,
+     99.5
+    ]
+   ]
+  },
+  {
+   "name": "PWR_VBAT_PROT_sources_F_W",
    "net": "VBAT_PROT",
    "layers": [
     "F.Cu"
@@ -279,9 +338,25 @@
    "priority": 10,
    "rects": [
     [
-     159.9,
-     80.6,
-     176.0,
+     124.4,
+     86.6,
+     136.4,
+     89.6
+    ]
+   ]
+  },
+  {
+   "name": "PWR_VBAT_PROT_sources_F_E",
+   "net": "VBAT_PROT",
+   "layers": [
+    "F.Cu"
+   ],
+   "priority": 10,
+   "rects": [
+    [
+     173.6,
+     86.6,
+     185.6,
      89.6
     ]
    ]
@@ -759,85 +834,172 @@
      99.6
     ]
    ],
-   "min": 93,
+   "min": 47,
    "max": 150,
    "allow_under": [
     "J910"
    ],
    "clip": [
     93.5,
-    72.5,
-    112.6,
+    86.6,
+    123.6,
     107.5
    ]
   },
   {
-   "name": "VBAT_IN at Q201/Q202 sources",
+   "name": "VBAT_IN at J901's ring",
    "net": "/VBAT_IN",
-   "rect": [
-    102.6,
-    74.0,
-    108.7,
-    92.4
+   "annulus": [
+    208.0,
+    99.6,
+    7.4,
+    11.0
    ],
    "toward": [
     [
-     109.35,
-     78.8
-    ],
+     208.0,
+     99.6
+    ]
+   ],
+   "min": 47,
+   "max": 150,
+   "allow_under": [
+    "J901"
+   ],
+   "clip": [
+    186.4,
+    86.6,
+    216.5,
+    107.5
+   ]
+  },
+  {
+   "name": "VBAT_IN at Q201's sources (mirrored to Q202)",
+   "net": "/VBAT_IN",
+   "rect": [
+    124.6,
+    73.0,
+    134.6,
+    85.6
+   ],
+   "toward": [
     [
-     109.35,
+     135.6,
+     78.8
+    ]
+   ],
+   "min": 47,
+   "max": 130,
+   "mirror": {
+    "axis_x": 155.0,
+    "net": "/VBAT_IN"
+   }
+  },
+  {
+   "name": "VBAT_D in Q201's tab",
+   "net": "/Power entry/VBAT_D",
+   "in_pad": [
+    "Q201",
+    "9"
+   ],
+   "pitch": 0.9,
+   "min": 20,
+   "max": 120
+  },
+  {
+   "name": "VBAT_D in Q202's tab",
+   "net": "/Power entry/VBAT_D",
+   "in_pad": [
+    "Q202",
+    "9"
+   ],
+   "pitch": 0.9,
+   "min": 20,
+   "max": 120
+  },
+  {
+   "name": "VBAT_D at R201's F1",
+   "net": "/Power entry/VBAT_D",
+   "rect": [
+    148.8,
+    80.9,
+    161.4,
+    85.6
+   ],
+   "min": 10,
+   "max": 60
+  },
+  {
+   "name": "VBAT_Q2D in Q203's tab",
+   "net": "/Power entry/VBAT_Q2D",
+   "in_pad": [
+    "Q203",
+    "9"
+   ],
+   "pitch": 0.9,
+   "min": 20,
+   "max": 120
+  },
+  {
+   "name": "VBAT_Q2D in Q204's tab",
+   "net": "/Power entry/VBAT_Q2D",
+   "in_pad": [
+    "Q204",
+    "9"
+   ],
+   "pitch": 0.9,
+   "min": 20,
+   "max": 120
+  },
+  {
+   "name": "VBAT_Q2D corridor (west, mirrored east)",
+   "net": "/Power entry/VBAT_Q2D",
+   "rect": [
+    148.0,
+    87.2,
+    151.4,
+    99.0
+   ],
+   "min": 10,
+   "max": 80,
+   "mirror": {
+    "axis_x": 155.0,
+    "net": "/Power entry/VBAT_Q2D"
+   }
+  },
+  {
+   "name": "VBAT_Q2D at R201's F2",
+   "net": "/Power entry/VBAT_Q2D",
+   "rect": [
+    151.6,
+    92.3,
+    158.4,
+    99.0
+   ],
+   "min": 10,
+   "max": 60
+  },
+  {
+   "name": "VBAT_PROT at Q203's sources (mirrored to Q204)",
+   "net": "VBAT_PROT",
+   "rect": [
+    124.6,
+    87.0,
+    134.6,
+    99.0
+   ],
+   "toward": [
+    [
+     135.6,
      91.8
     ]
    ],
-   "min": 93,
-   "max": 130
-  },
-  {
-   "name": "VBAT_D corridor",
-   "net": "/Power entry/VBAT_D",
-   "rect": [
-    123.1,
-    73.6,
-    130.2,
-    99.0
-   ],
-   "min": 93,
-   "max": 220
-  },
-  {
-   "name": "VBAT_Q2D corridor",
-   "net": "/Power entry/VBAT_Q2D",
-   "rect": [
-    141.8,
-    73.6,
-    148.9,
-    99.0
-   ],
-   "min": 93,
-   "max": 220
-  },
-  {
-   "name": "VBAT_PROT at Q203/Q204 sources",
-   "net": "VBAT_PROT",
-   "rect": [
-    163.0,
-    75.4,
-    175.5,
-    99.0
-   ],
-   "toward": [
-    [
-     162.65,
-     81.0
-    ],
-    [
-     162.65,
-     94.0
-    ]
-   ],
-   "min": 93,
-   "max": 180
+   "min": 47,
+   "max": 140,
+   "mirror": {
+    "axis_x": 155.0,
+    "net": "VBAT_PROT"
+   }
   },
   {
    "name": "GND at J911's ring",

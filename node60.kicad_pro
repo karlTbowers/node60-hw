@@ -288,10 +288,6 @@
       },
       {
         "netclass": "PWR_BATT",
-        "pattern": "/Connectors/VBAT_IN_DOWNSTREAM"
-      },
-      {
-        "netclass": "PWR_BATT",
         "pattern": "/Power entry/VBAT_D"
       },
       {

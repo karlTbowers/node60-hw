@@ -599,7 +599,7 @@
   manufacturer: DropOut
   qty: 1
   label: BB901 VBAT_IN busbar (1/8" × 3/4" C110, 125.05 mm)
-  function: "Battery busbar BB901: joins J910 (VBAT_IN, source) and J901 (VBAT_IN_DOWNSTREAM, downstream feed) on the REDCUBE spigots; 19.05 × 3.175 mm C110 copper, 125.05 mm long, 2 × Ø6.5 mm M6 clearance holes at 106 mm; a two-pin net tie on the schematic (p9), the only join between the two terminals"
+  function: "Battery busbar BB901: joins J910 and J901 (both VBAT_IN; either may be the source, DEC-016 rev. C) on the REDCUBE spigots; 19.05 × 3.175 mm C110 copper, 125.05 mm long, 2 × Ø6.5 mm M6 clearance holes at 106 mm; a two-pin net tie on the schematic (p9), in parallel with the F.Cu pour under it (5.4 mΩ terminal to terminal, against about 0.04 mΩ for the bar)"
   subsystem: harness
   status: selected
   decision_note: "Made in house (user's decision 2026-11-02, placement decision D02): cut from bar stock, drilled, deburred, fitted by hand at assembly; on the BOM, out of the placement files. Bar size from DEC-025. The return bar BB902 is a BOM line the same way (DEC-016 rev. B)"
@@ -612,7 +612,7 @@
   manufacturer: DropOut
   qty: 1
   label: BB902 GND busbar (1/8" × 3/4" C110, 176.05 mm)
-  function: "Return busbar BB902: joins J911 (source side) and J902 (downstream feed) on the REDCUBE spigots, both pins on GND; 19.05 × 3.175 mm C110 copper, 176.05 mm long, 2 × Ø6.5 mm M6 clearance holes at 157 mm; a two-pin net tie on the schematic (p9), in parallel with the GND plane"
+  function: "Return busbar BB902: joins J911 and J902 (either may be the source side) on the REDCUBE spigots, both pins on GND; 19.05 × 3.175 mm C110 copper, 176.05 mm long, 2 × Ø6.5 mm M6 clearance holes at 157 mm; a two-pin net tie on the schematic (p9), in parallel with the GND plane"
   subsystem: harness
   status: selected
   decision_note: "Made in house (user's decision 2026-11-02: both busbars on the schematic, the same way): cut from bar stock, drilled, deburred, fitted by hand at assembly; on the BOM, out of the placement files. Bar size from DEC-025"

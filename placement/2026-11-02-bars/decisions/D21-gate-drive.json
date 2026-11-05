@@ -1,0 +1,260 @@
+{
+  "id": "D21",
+  "name": "Entry gate drive",
+  "question": "Swap the power entry's rows so the ideal-diode FETs sit beside the LM74910, shortening DGATE?",
+  "board": "node60",
+  "phase": "Routing",
+  "stage": "Power shapes",
+  "date": "2026-11-04",
+  "why_now": "D20 A mirrored the power entry about x 155 (PR #63). With the ideal-diode FETs Q201/Q202 56 mm apart in the south row and U201 (LM74910H) in the column north of the shunt, DGATE is about 50 mm to each FET. TI's layout guidelines say the DGATE pin **must** be connected to the MOSFET gate with a short trace, and that A and C connect close to the MOSFET's source and drain. Swapping the rows puts the ideal-diode FETs in the north row, beside U201, and the load-disconnect FETs in the south row. I built the swap on a copy of PR #63's board, drew its power shapes, ran DRC and measured both from the copper with the same tool.",
+  "facts": [
+    {
+      "label": "TI guidance",
+      "value": "\"The DGATE pin of the LM749x0-Q1 must be connected to the MOSFET GATE with short trace\"; A, DGATE and C close to the ideal-diode MOSFET's source, gate and drain; HGATE and OUT close to the load-disconnect MOSFET's gate and source",
+      "source": "LM74910H-Q1 data sheet SNOSDE6C §9.5.1"
+    },
+    {
+      "label": "Lengths",
+      "value": "Pin to pin, along x then y (a routed trace is a few mm longer). Main before D20: DGATE 25 / 38 mm, HGATE 25 / 38 mm",
+      "source": "boards"
+    },
+    {
+      "label": "Copper",
+      "value": "copper_r.py at 85 °C, B, In2, In3 and F; vias join layers only where they are. The same tool and settings for every option",
+      "source": "run folder"
+    },
+    {
+      "label": "Scale",
+      "value": "Each switch's on-resistance is 8.9 mΩ typical and channels differ by up to 7 % (0.6 mΩ); 0.2 mΩ of VBAT_PROT spread is 4 mV at 20 A",
+      "source": "TPS2HCS08A-Q1 data sheet"
+    },
+    {
+      "label": "Both",
+      "value": "Both layouts are mirror images about x 155 with both terminals on VBAT_IN; the bar carries about 99 % of a pass-through in each",
+      "source": "D20"
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "name": "Keep PR #63's rows",
+      "summary": "Ideal-diode FETs in the south row, each beside its battery terminal; load-disconnect FETs in the north row; U201/U202 in the column north of the shunt. As in PR #63.",
+      "images": [
+        {
+          "path": "img/d20_built.png",
+          "caption": "PR #63: ideal-diode FETs (red tabs) south, 56 mm apart, U201 north of the shunt"
+        }
+      ],
+      "measures": [
+        {
+          "label": "DGATE to each ideal-diode FET",
+          "value": "50 / 49 mm",
+          "limit": "short (TI: must)",
+          "status": "fail"
+        },
+        {
+          "label": "HGATE (via R202) to each disconnect FET",
+          "value": "36 / 24 mm",
+          "limit": "close (TI)",
+          "status": "warn"
+        },
+        {
+          "label": "LM74910 A pin to an ideal-diode source",
+          "value": "42 mm",
+          "limit": "close (TI)",
+          "status": "warn"
+        },
+        {
+          "label": "LM74910 OUT pin to a disconnect source",
+          "value": "20 mm",
+          "limit": "close (TI)",
+          "status": "warn"
+        },
+        {
+          "label": "60 A chain, both terminals",
+          "value": "0.65 mΩ (2.3 W at 60 A)",
+          "limit": "low",
+          "status": "pass"
+        },
+        {
+          "label": "West / east, sum of the three segments",
+          "value": "1.046 / 0.967 mΩ (8 %)",
+          "limit": "equal",
+          "status": "warn"
+        },
+        {
+          "label": "VBAT_PROT to U601 / U701 / U801",
+          "value": "0.509 / 0.520 / 0.522 mΩ (spread 0.013)",
+          "limit": "even",
+          "status": "pass"
+        },
+        {
+          "label": "DRC",
+          "value": "0 errors, parity 0",
+          "limit": "0",
+          "status": "pass"
+        }
+      ],
+      "gains": [
+        "Six outputs fed within 0.013 mΩ",
+        "Lowest entry resistance",
+        "Already in PR #63"
+      ],
+      "costs": [
+        "DGATE twice main's length and far from TI's 'short'; reverse-current turn-off through about 50 mm of trace"
+      ]
+    },
+    {
+      "key": "B",
+      "name": "Swap the rows",
+      "summary": "Q201/Q202 move to the north row beside the U201/U202 column (sources facing out to an L of VBAT_IN that comes up from each terminal, tabs facing the shunt's F1, now its north end); R201 turns so F1 is north and its sense pads face U202; Q203/Q204 take the south row, sources facing out, so VBAT_PROT leaves straight south toward U701. VBAT_IN on B, In2 and In3. TP507 (a T1S ground loop) moves north by K501.",
+      "images": [
+        {
+          "path": "img/d21_swapped.png",
+          "caption": "Rows swapped: ideal-diode FETs (red tabs) north, beside U201 and U202"
+        }
+      ],
+      "measures": [
+        {
+          "label": "DGATE to each ideal-diode FET",
+          "value": "23 / 24 mm",
+          "limit": "short (TI: must)",
+          "status": "warn"
+        },
+        {
+          "label": "HGATE (via R202) to each disconnect FET",
+          "value": "49 / 37 mm",
+          "limit": "close (TI)",
+          "status": "warn"
+        },
+        {
+          "label": "LM74910 A pin to an ideal-diode source",
+          "value": "16 mm",
+          "limit": "close (TI)",
+          "status": "pass"
+        },
+        {
+          "label": "LM74910 OUT pin to a disconnect source",
+          "value": "33 mm",
+          "limit": "close (TI)",
+          "status": "warn"
+        },
+        {
+          "label": "60 A chain, both terminals",
+          "value": "0.69 mΩ (2.5 W at 60 A)",
+          "limit": "low",
+          "status": "pass"
+        },
+        {
+          "label": "West / east, sum of the three segments",
+          "value": "1.029 / 1.062 mΩ (3 %)",
+          "limit": "equal",
+          "status": "pass"
+        },
+        {
+          "label": "VBAT_PROT to U601 / U701 / U801",
+          "value": "0.729 / 0.353 / 0.733 mΩ (spread 0.38): the VBAT_IN L-shapes wall U601 and U801 off on all three layers",
+          "limit": "even",
+          "status": "fail"
+        },
+        {
+          "label": "DRC",
+          "value": "0 errors, parity 0 (on the copy)",
+          "limit": "0",
+          "status": "pass"
+        }
+      ],
+      "gains": [
+        "DGATE halved, shorter than main's",
+        "A pin close to the ideal-diode sources",
+        "West and east within 3 %"
+      ],
+      "costs": [
+        "VBAT_PROT uneven: U601 and U801 0.38 mΩ above U701, worse than main's 0.28",
+        "HGATE longer"
+      ]
+    },
+    {
+      "key": "C",
+      "name": "Swap the rows, VBAT_IN off In3",
+      "summary": "B, with the VBAT_IN L-shapes on B and In2 only, so In3 stays VBAT_PROT under them and reaches U601 and U801 more directly.",
+      "images": [
+        {
+          "path": "img/d21_swapped.png",
+          "caption": "Placement as B; only the inner-layer use differs"
+        }
+      ],
+      "measures": [
+        {
+          "label": "DGATE to each ideal-diode FET",
+          "value": "23 / 24 mm",
+          "limit": "short (TI: must)",
+          "status": "warn"
+        },
+        {
+          "label": "HGATE (via R202) to each disconnect FET",
+          "value": "49 / 37 mm",
+          "limit": "close (TI)",
+          "status": "warn"
+        },
+        {
+          "label": "LM74910 A pin to an ideal-diode source",
+          "value": "16 mm",
+          "limit": "close (TI)",
+          "status": "pass"
+        },
+        {
+          "label": "LM74910 OUT pin to a disconnect source",
+          "value": "33 mm",
+          "limit": "close (TI)",
+          "status": "warn"
+        },
+        {
+          "label": "60 A chain, both terminals",
+          "value": "0.76 mΩ (2.7 W at 60 A): VBAT_IN 0.308 instead of 0.237",
+          "limit": "low",
+          "status": "pass"
+        },
+        {
+          "label": "West / east, sum of the three segments",
+          "value": "about 3 % (VBAT_IN 0.614 / 0.617 mΩ)",
+          "limit": "equal",
+          "status": "pass"
+        },
+        {
+          "label": "VBAT_PROT to U601 / U701 / U801",
+          "value": "0.542 / 0.342 / 0.560 mΩ (spread 0.22, main's was 0.28)",
+          "limit": "even",
+          "status": "warn"
+        },
+        {
+          "label": "DRC",
+          "value": "24 hole-clearance errors on the trial: OUT5 band vias redrawn too near J908's GND pin, in the output cells, not the entry; to fix before it lands",
+          "limit": "0",
+          "status": "warn"
+        }
+      ],
+      "gains": [
+        "DGATE halved, A pin close",
+        "VBAT_PROT more even than B and than main"
+      ],
+      "costs": [
+        "VBAT_PROT still 0.2 mΩ apart between U701 and the outer switches",
+        "0.11 mΩ more in the 60 A chain than A (0.4 W at 60 A)",
+        "HGATE longer"
+      ]
+    }
+  ],
+  "recommendation": {
+    "option": "C",
+    "why": "TI states the short DGATE as a must: the LM74910H blocks reverse current by pulling DGATE down fast, and 50 mm of trace to each FET works against that. C halves DGATE and puts the A pin near the sources. It keeps the outputs closer together than main did, and costs 0.4 W at 60 A against A. A is the better choice if equal outputs matter more to you than TI's DGATE rule: its 0.013 mΩ spread is something C can't match. B is shown for completeness; its VBAT_PROT spread is worse than main's."
+  },
+  "answer": "Reply with A, B or C. A keeps PR #63 as it is; B or C goes onto PR #63's branch, with the power-block pose table, shapes and records updated.",
+  "sources": [
+    "LM74910H-Q1 data sheet SNOSDE6C §9.5.1",
+    "power/copper_r.py",
+    "D20, PR #63",
+    "pose_search.py, draw_power.py on copies of PR #63's board"
+  ],
+  "answered": "C (user, 2026-11-04)"
+}

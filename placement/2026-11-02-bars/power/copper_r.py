@@ -5,7 +5,7 @@ its pads and its vias (D12-7's last step: the outputs' DCR from the copper; 2026
 Run with KiCad's Python (needs numpy and scipy; it imports them from the KRT environment if KiCad's
 Python lacks them):
 
-    $KPY copper_r.py BOARD NET FROM_REF:PADS TO_REF:PADS [--layers F.Cu,B.Cu] [--cell 0.2] [--temp 85]
+    $KPY copper_r.py BOARD NET FROM_REF:PADS[+REF:PADS] TO_REF:PADS[+...] [--layers F.Cu,B.Cu] [--cell 0.2] [--temp 85]
 
 e.g. copper_r.py node60.kicad_pcb /OUT1 U601:6,7,8 J904:1
 
@@ -62,10 +62,14 @@ def main():
     netcode = b.FindNet(a.net).GetNetCode()
 
     def pads(spec):
-        ref, nums = spec.split(":")
-        nums = nums.split(",")
-        fp = b.FindFootprintByReference(ref)
-        return [p for p in fp.Pads() if p.GetNumber() in nums]
+        """REF:1,2,3 or several joined by '+' (Q203:1,2+Q204:1,2), held at one potential"""
+        out = []
+        for part in spec.split("+"):
+            ref, nums = part.split(":")
+            nums = nums.split(",")
+            fp = b.FindFootprintByReference(ref)
+            out += [p for p in fp.Pads() if p.GetNumber() in nums]
+        return out
     src, snk = pads(a.src), pads(a.snk)
 
     # copper of the net per layer: filled zone polygons and pads
@@ -132,6 +136,8 @@ def main():
     cs, ck = cells(src), cells(snk)
     if not cs or not ck:
         sys.exit(f"pads not on the copper grid: {len(cs)} source cells, {len(ck)} sink cells; grid x {x0:.1f}..{x1:.1f} y {y0:.1f}..{y1:.1f}")
+    for k in range(n):                             # 1 MΩ to 0 V per cell: islands not joined to the
+        G[k, k] += 1e-6                            # source stay solvable (error < 1e-4 on a mΩ net)
     for k in cs:                                   # source held at 0 V
         G[k, :] = 0; G[k, k] = 1; I[k] = 0
     for k in ck:
