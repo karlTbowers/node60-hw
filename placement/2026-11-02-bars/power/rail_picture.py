@@ -33,6 +33,7 @@ def main():
     ap.add_argument("--nets", default=",".join(COL))
     ap.add_argument("--labels", default="", help="refs to label")
     ap.add_argument("--pins", default="", help="refs whose pad numbers to print")
+    ap.add_argument("--only-vias-in", default="", help="X0,Y0,X1,Y1: draw only the vias outside this rectangle (an edge ring)")
     a = ap.parse_args()
     X0, Y0, X1, Y1 = map(float, a.region.split(","))
     S, PAD, HEAD = a.scale, 20, 46
@@ -92,8 +93,13 @@ def main():
         c = COL.get(n, (150, 150, 150))
         if t.Type() == pcbnew.PCB_VIA_T:
             x, y, r = M(t.GetPosition().x), M(t.GetPosition().y), M(t.GetWidth()) / 2
+            if a.only_vias_in:
+                q0, q1, q2, q3 = map(float, a.only_vias_in.split(","))
+                if q0 < x < q2 and q1 < y < q3:
+                    continue
             if X0 <= x <= X1 and Y0 <= y <= Y1:
-                d.ellipse([P(x - r, y - r), P(x + r, y + r)], fill=c + (255,), outline=(255, 255, 255))
+                rr = max(r, 3.5 / S)                         # at least a few pixels across at small scales
+                d.ellipse([P(x - rr, y - rr), P(x + rr, y + rr)], fill=c + (255,), outline=(255, 255, 255))
         else:
             d.line([P(M(t.GetStart().x), M(t.GetStart().y)), P(M(t.GetEnd().x), M(t.GetEnd().y))], fill=c + (255,),
                    width=max(1, int(M(t.GetWidth()) * S)))
