@@ -6,6 +6,7 @@ Run with KiCad's Python (needs numpy and scipy; it imports them from the KRT env
 Python lacks them):
 
     $KPY copper_r.py BOARD NET FROM_REF:PADS[+REF:PADS] TO_REF:PADS[+...] [--layers F.Cu,B.Cu] [--cell 0.2] [--temp 85]
+    $KPY copper_r.py BOARD NET FROM TO_REF:PADS@AMPS+REF:PADS@AMPS ...   (several loads drawing at once: drop at each, total loss)
 
 e.g. copper_r.py node60.kicad_pcb /OUT1 U601:6,7,8 J904:1
 
@@ -47,11 +48,50 @@ def copper_thickness(path):
     return out
 
 
+def current_map(a, layers, idx, V, tk, rho, h, nx, ny, x0, y0):
+    """PNG of |J| (A/mm of width) on one layer, from the solved potentials; log scale, 4 px per cell"""
+    from PIL import Image, ImageDraw
+    li = layers.index(a.map_layer)
+    g = tk[a.map_layer] / rho
+    J = np.zeros((ny, nx))
+    for i in range(nx):
+        for j in range(ny):
+            k = idx.get((li, i, j))
+            if k is None:
+                continue
+            jx = jy = 0.0
+            for di, dj in ((1, 0), (-1, 0)):
+                m = idx.get((li, i + di, j + dj))
+                if m is not None:
+                    jx = max(jx, abs(V[k] - V[m]) * g)
+            for di, dj in ((0, 1), (0, -1)):
+                m = idx.get((li, i, j + dj))
+                if m is not None:
+                    jy = max(jy, abs(V[k] - V[m]) * g)
+            J[j, i] = math.hypot(jx, jy) / (h * 1e-3) / 1e3      # A per mm of width
+    s = 4
+    im = Image.new("RGB", (nx * s, ny * s + 30), (250, 248, 243)); d = ImageDraw.Draw(im)
+    top = max(J.max(), 1e-9)
+    for i in range(nx):
+        for j in range(ny):
+            if idx.get((li, i, j)) is None:
+                continue
+            t = 0.0 if J[j, i] <= top * 1e-3 else (math.log10(J[j, i] / top) + 3) / 3
+            c = (int(40 + 215 * t), int(60 + 120 * (1 - abs(t - 0.5) * 2)), int(200 * (1 - t)))
+            d.rectangle([i * s, j * s + 30, i * s + s - 1, j * s + s + 29], fill=c)
+    d.text((6, 6), f"{a.net} on {a.map_layer}: current density, log scale, blue = 1/1000 of peak ({top:.2f} A/mm), red = peak;"
+                   f" x {x0:.0f}-{x0 + nx * h:.0f}, y {y0:.0f}-{y0 + ny * h:.0f} mm", fill=(30, 30, 30))
+    im.save(a.map)
+    print(f"map written: {a.map}")
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("board"); ap.add_argument("net"); ap.add_argument("src"); ap.add_argument("snk")
     ap.add_argument("--layers", default="F.Cu,B.Cu"); ap.add_argument("--cell", type=float, default=0.2)
     ap.add_argument("--temp", type=float, default=85.0)
+    ap.add_argument("--map", help="with loads: write a PNG of the current density on --map-layer")
+    ap.add_argument("--map-layer", default="In3.Cu")
     a = ap.parse_args()
     b = pcbnew.LoadBoard(a.board)
     layers = a.layers.split(",")
@@ -70,7 +110,8 @@ def main():
             fp = b.FindFootprintByReference(ref)
             out += [p for p in fp.Pads() if p.GetNumber() in nums]
         return out
-    src, snk = pads(a.src), pads(a.snk)
+    src = pads(a.src)
+    snk = [] if "@" in a.snk else pads(a.snk)
 
     # copper of the net per layer: filled zone polygons and pads
     polys = {L: [] for L in layers}
@@ -133,13 +174,32 @@ def main():
                 if p.IsOnLayer(lid[layers[li]]) and p.HitTest(pcbnew.VECTOR2I(F(x0 + (i + .5) * h), F(y0 + (j + .5) * h))):
                     out.add(k)
         return sorted(out)
-    cs, ck = cells(src), cells(snk)
+    cs = cells(src)
+    if "@" in a.snk:                               # loads: REF:PADS@AMPS+REF:PADS@AMPS, all drawing at once
+        groups = [(g.rsplit("@", 1)[0], float(g.rsplit("@", 1)[1])) for g in a.snk.split("+")]
+        gcells = [(spec, amps, cells(pads(spec))) for spec, amps in groups]
+        ck = [k for _, _, c in gcells for k in c]
+    else:
+        gcells = None
+        ck = cells(snk)
     if not cs or not ck:
         sys.exit(f"pads not on the copper grid: {len(cs)} source cells, {len(ck)} sink cells; grid x {x0:.1f}..{x1:.1f} y {y0:.1f}..{y1:.1f}")
     for k in range(n):                             # 1 MΩ to 0 V per cell: islands not joined to the
         G[k, k] += 1e-6                            # source stay solvable (error < 1e-4 on a mΩ net)
     for k in cs:                                   # source held at 0 V
         G[k, :] = 0; G[k, k] = 1; I[k] = 0
+    if gcells:
+        for _, amps, c in gcells:
+            for k in c:
+                I[k] -= amps / len(c)
+        V = spsolve(G.tocsr(), I)
+        loss = sum(-V[k] * amps / len(c) for _, amps, c in gcells for k in c)
+        for spec, amps, c in gcells:
+            print(f"{a.net:8s} {a.src} -> {spec} at {amps:g} A: drop {-np.mean([V[k] for k in c]) * 1e3:6.2f} mV")
+        print(f"{a.net:8s} all loads at once: {loss:.3f} W in the copper  ({nv} vias joining layers, {len(idx)} cells, {a.temp:g} C)")
+        if a.map:
+            current_map(a, layers, idx, V, tk, rho, h, nx, ny, x0, y0)
+        return
     for k in ck:
         I[k] -= 1.0 / len(ck)
     V = spsolve(G.tocsr(), I)

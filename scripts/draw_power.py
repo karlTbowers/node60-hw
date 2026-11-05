@@ -143,6 +143,14 @@ def main():
         if "mirror" in v and rect:
             ax = v["mirror"]["axis_x"]
             regions.append((v["mirror"]["net"], [2 * ax - rect[2], rect[1], 2 * ax - rect[0], rect[3]], None))
+        # every copy's region too (and its mirror): until 2026-11-04 only the first copy was cleared,
+        # so each rerun stacked another set of vias on the other copies (OUT2-OUT6 reached 198 each)
+        for c in (v.get("copies", []) if rect else []):
+            dx = c["dx"]
+            regions.append((c["net"], [rect[0] + dx, rect[1], rect[2] + dx, rect[3]], None))
+            if "mirror_net" in c:
+                ax = c["axis_x"]
+                regions.append((c["mirror_net"], [2 * ax - (rect[2] + dx), rect[1], 2 * ax - (rect[0] + dx), rect[3]], None))
     for t in list(board.GetTracks()):
         if t.Type() == pcbnew.PCB_VIA_T and t.IsLocked():
             x, y = M(t.GetPosition().x), M(t.GetPosition().y)
