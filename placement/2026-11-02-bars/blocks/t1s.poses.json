@@ -1,7 +1,7 @@
 {
   "block": "k501",
   "anchor": "K501",
-  "approved": "2026-11-04 (user: shift U501 and its parts south; D16-1 A otherwise); U301 group added 2026-11-04 (user); Y501, R503, R504 moved for RMII 2026-11-05 (D26 A)",
+  "approved": "2026-11-04 (user: shift U501 and its parts south; D16-1 A otherwise); U301 group added 2026-11-04 (user); Y501, R503, R504 moved for RMII 2026-11-05 (D26 A); Y501, R503, R504 moved to blocks/refclk.poses.json 2026-11-05 (D27 A)",
   "anchor_pose": {
     "x": 155.0,
     "y": 64.33,
@@ -189,24 +189,6 @@
       "flex_mm": 0,
       "why": "RBIAS (12.4 kΩ) at U501 pin 26, in the line zone's north-east corner, clear of the choke. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
     },
-    "R503": {
-      "dx": 8.0,
-      "dy": -21.43,
-      "rot": 270.0,
-      "side": "B",
-      "role": "core",
-      "flex_mm": 0,
-      "why": "REFCLK series resistor (33 ohm) for U501 pin 27, about 3.5 mm from Y501's output (D26 A, 2026-11-05; was south of the oscillator, in the RX pins' way once Y501 moved)."
-    },
-    "R504": {
-      "dx": 7.05,
-      "dy": -21.03,
-      "rot": 270.0,
-      "side": "B",
-      "role": "core",
-      "flex_mm": 0,
-      "why": "RMII REF_CLK series resistor at Y501's output, toward U401, about 3.5 mm from it (D26 A, 2026-11-05)."
-    },
     "R516": {
       "dx": -6.0,
       "dy": 2.42,
@@ -269,15 +251,6 @@
       "role": "core",
       "flex_mm": 0,
       "why": "LAN8670 PHY moved north of the trunk (D16, user 2026-11-03: short, matched stubs; either port may be the used one): line pins 30/31 on its south edge centred on the trunk's midpoint x 155.0, 9 mm north of it; RMII leaves its west, north and east edges toward U401 (36 mm body to body, plan's 25 mm intent exceeded, on D16). Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
-    },
-    "Y501": {
-      "dx": 8.0,
-      "dy": -24.18,
-      "rot": 90.0,
-      "side": "B",
-      "role": "core",
-      "flex_mm": 0,
-      "why": "50 MHz oscillator east of U501, outside the line zone so its clock stays off the T1S chain; UNDER_Y501 keeps foreign nets off B.Cu and In4 under it. Moved 2 mm east and turned 90 degrees in D26 A (2026-11-05): its courtyard had sat 0.33 mm from U501's east pads, so RX pins 19-21 could not escape."
     },
     "U301": {
       "dx": 6.25,

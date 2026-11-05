@@ -320,5 +320,6 @@
     "placement/2026-11-02-bars/rmii/: rmii_timing.py, route_clock.sh, prep_trial.py, transplant_nets.py, trunk_check.py, rmii_picture.py; trials in rmii/c/",
     "KiCadRoutingTools 01e0476f (route.py, --length-match-group for B)",
     "kicad-cli DRC with node60.kicad_dru on real copies a1 and b1"
-  ]
+  ],
+  "answered": "A (user, 2026-11-05)"
 }

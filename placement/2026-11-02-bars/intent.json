@@ -309,8 +309,6 @@
     "C506",
     "C507",
     "C508",
-    "R503",
-    "R504",
     "R505",
     "R506",
     "R507",
@@ -323,7 +321,6 @@
     "TP503",
     "TP504",
     "TP505",
-    "Y501",
     "Q501",
     "Q502",
     "R521",
@@ -343,6 +340,23 @@
    ],
    "why": "T1S line and PHY, shifted 10 mm south as a group (user, 2026-11-04: U501 was too close to the board's north edge to route to): the trunk on F.Cu between J912 and J903 at y 46 with the ESD pairs at the connectors; south of it U501, FL501, C511/C512, then K501 and its termination; U501's own decaps, straps and oscillator beside it. Nothing else in the zone (user 2026-11-01: T1S first). U301 (the VDDAU_AON regulator, whose only load is U501) with R301, C301 and C302 sits beside U501's pin 25 (user, 2026-11-04).",
    "exclusive": true
+  },
+  {
+   "name": "refclk",
+   "refs": [
+    "Y501",
+    "R503",
+    "R504",
+    "C513"
+   ],
+   "side": "B",
+   "zone": [
+    177.0,
+    36.0,
+    190.0,
+    44.0
+   ],
+   "why": "50 MHz RMII oscillator between J903 and U401 so its two clock branches match (D27 A, 2026-11-05: Microchip asks within 13 mm; the PHY's branch not shorter than the MCU's)"
   },
   {
    "name": "t1s_term_drive",
@@ -1285,21 +1299,22 @@
    }
   },
   {
-   "ref": "R503",
-   "near": "U501",
-   "max_mm": 6.0,
+   "ref": "C513",
+   "near": "Y501",
+   "max_mm": 2.0,
    "basis": "pad_edge",
    "pads": {
-    "R503": [
-     "2"
+    "C513": [
+     "1"
     ],
-    "U501": [
-     "27"
+    "Y501": [
+     "1",
+     "4"
     ]
    },
-   "source": "brief",
+   "source": "D27 A",
    "context": {
-    "why": "50 MHz reference clock to the PHY kept short (T1S first)"
+    "why": "Y501's 100 nF bypass beside its supply pins (it had sat 8 mm away on the top side)"
    }
   }
  ],
