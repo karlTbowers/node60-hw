@@ -161,6 +161,17 @@ def main():
             lp = next(p for p in L.Pads() if p.GetNetname() in nets["sw"])
             spin = min(pins["sw"], key=lambda p: gap(lp, p))
             row(f"{L.GetReference()} SW pad to SW pin {spin.GetNumber()}", gap(lp, spin), lim.get("l_gap_mm"))
+            # the gap above is a straight line and can pass through the chip (Node60 D24: U302's SW pin
+            # faced away from L301, 3.16 mm read as fine). The pin's side of the package must face the pad.
+            icx, icy = centre(ic)
+            px, py = centre(spin)
+            lx, ly = centre(lp)
+            ox, oy = px - icx, py - icy
+            nx, ny = (math.copysign(1, ox), 0) if abs(ox) >= abs(oy) else (0, math.copysign(1, oy))
+            faces = (lx - px) * nx + (ly - py) * ny > 0
+            row(f"{L.GetReference()} on SW pin {spin.GetNumber()}'s side of the chip", None, None, "",
+                "yes" if faces else "NO: the SW copper would run round the package")
+            rows[-1]["grade"] = "PASS" if faces else "FAIL"
             if L.GetLayer() != ic.GetLayer():
                 row(f"{L.GetReference()} on the IC's side", None, None, "", "NO: the SW node needs vias")
                 rows[-1]["grade"] = "FAIL"

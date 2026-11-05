@@ -134,5 +134,6 @@
     "TI TPS62850x-Q1 SLUSDM0N, 9.5.1",
     "pose_search.py, scripts/draw_power.py, kicad-cli DRC on a copy of main",
     "D06, D10, D12"
-  ]
+  ],
+  "answered": "A, land it (user, 2026-11-05)"
 }

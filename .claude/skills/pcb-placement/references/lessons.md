@@ -217,3 +217,8 @@ unless the run meant to change it, then re-run CI's DRC.
 - KiCad's `GetPrincipalLayer()` reports F.Cu for a flipped footprint's SMD pads: take the layer the pad is on (`IsOnLayer(B_Cu)`), or stubs land on the other side and short to whatever is there.
 - `copper_r.py` joins grid cells by side neighbours only, so a diagonal track rasterised as corner-touching cells joined nothing; it now fills the corner cell at each diagonal step.
 - A filter cap (C206) and a core bulk cap (C405) were tens of millimetres from what they serve, which only showed when their rail got copper. Draw each rail on a copy and read the DRC opens before trusting the placement.
+
+## A bottom-side switcher seated from a top-view figure (2026-11-05, Node60 D24)
+- A datasheet's layout figure is drawn from the top. A part on B, seen from above, is its mirror image, so a cell copied from the figure must be mirrored too. U302's wasn't: its SW and PGND pins faced away from the inductor and the input cap's GND pad. A pure rotation can't undo a mirror; turning the chip 180 degrees and mirroring the passives about the other axis does, and keeps the cell where it was.
+- A straight-line gap from a pad to a pin can pass through the chip. `hot_loop.py` now checks that the inductor sits on its SW pin's side of the package.
+- Small pours don't reliably reach 0.25 mm QFN pins between neighbouring pins (the fill thins out); a 0.25 mm track from the pin into the pour does.
