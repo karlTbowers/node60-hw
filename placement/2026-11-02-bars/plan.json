@@ -550,7 +550,8 @@
  ],
  "accepted": [],
  "assumed": [
-  "1 A per 0.45/0.25 mm via (to be checked against the stackup's plating and the 10 A thermal test)"
+  "1 A per 0.45/0.25 mm via (to be checked against the stackup's plating and the 10 A thermal test)",
+  "JLCPCB accepts the 0.075 mm via ring (0.35/0.20 mm vias, every via under U401) on the 2 oz inner layers: assumed so layout can go on (user, 2026-11-04); checked before ordering"
  ],
  "krt_python": "/Users/karl/.cache/dropout/krt-venv/bin/python",
  "plane_layers": {
