@@ -2144,6 +2144,23 @@
      "GND"
     ]
    ]
+  },
+  {
+   "name": "VDDA (U501 pin 29 and C502 pad 1) and R506's 3V3 pad, each on a via outside the T1S trunk's corridor (D28)",
+   "points": [
+    [
+     156.3,
+     47.3,
+     "3V3_MAIN"
+    ],
+    [
+     165.1,
+     47.45,
+     "3V3_MAIN"
+    ]
+   ],
+   "size": 0.4,
+   "drill": 0.2
   }
  ],
  "stubs": [
@@ -2258,6 +2275,20 @@
      "/Regulators/1V5_CORE_SW"
     ]
    ]
+  },
+  {
+   "name": "R506 pad 1 to its 3V3 via south of the T1S corridor (D28)",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     164.25,
+     46.205,
+     165.1,
+     47.45,
+     "3V3_MAIN"
+    ]
+   ]
   }
  ],
  "via_overrides": [
@@ -2291,7 +2322,9 @@
     "U401",
     "U501",
     "U302",
-    "U303"
+    "U303",
+    "C502",
+    "R506"
    ],
    "except_rects": [
     [
@@ -2389,5 +2422,19 @@
    ],
    "why": "L201's old pad-2 field (before D24)"
   }
- ]
+ ],
+ "keep_clear": [
+  {
+   "name": "T1S trunk corridor on F.Cu (every via passes it; D28)",
+   "rect": [
+    133.4,
+    44.8,
+    176.6,
+    47.2
+   ]
+  }
+ ],
+ "class_clearance": {
+  "T1S_100R": 0.75
+ }
 }
