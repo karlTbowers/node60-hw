@@ -1,0 +1,5 @@
+# RMII trial: the board's 0.35/0.20 via preset (assumed OK with JLCPCB, 2026-11-04) so a via fits a BGA cell
+track_width = 0.15
+clearance = 0.15
+via_diameter = 0.35
+via_drill = 0.2

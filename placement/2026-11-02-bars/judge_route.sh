@@ -126,6 +126,9 @@ step() {
   else
     timed $n $KRT_PY -X utf8 "$@" >> $OUT/chain.log 2>&1
   fi
+  # STOP_AFTER=phy_first stops the chain after that step (a prepared, fanned-out board to route a
+  # few nets on by hand, e.g. RMII alone; 2026-11-05)
+  if [[ "${STOP_AFTER:-}" == "$n" ]]; then echo "== stopped after $n" >> $OUT/chain.log; exit 0; fi
 }
 # The board's own power zones (scripts/draw_power.py, 2026-11-04) replace this step once drawn.
 if grep -q '(name "PWR_' $OUT/s0.kicad_pcb; then

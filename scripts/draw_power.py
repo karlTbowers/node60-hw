@@ -401,6 +401,15 @@ def main():
             if c.OutlineCount():
                 cyards.append((fp.GetReference(), c, c.BBox(), nets))
     placed = [(M(t.GetPosition().x), M(t.GetPosition().y)) for t in board.GetTracks() if t.Type() == pcbnew.PCB_VIA_T]
+    # routed copper of other nets (tracks and vias), bucketed: a via site must clear it too, so via
+    # fields and stitching can be drawn after routing (2026-11-05)
+    tbucket = {}
+    for t in board.GetTracks():
+        bb = t.GetBoundingBox()
+        for i in range(int(M(bb.GetLeft()) // 5), int(M(bb.GetRight()) // 5) + 1):
+            for j in range(int(M(bb.GetTop()) // 5), int(M(bb.GetBottom()) // 5) + 1):
+                tbucket.setdefault((i, j), []).append(t)
+    copper_layers = [l for l in board.GetEnabledLayers().CuStack()]
     r = vsize / 2
     total = 0
     short = []
@@ -411,7 +420,8 @@ def main():
         if not (outer[0] + M(edge) + r <= x <= outer[2] - M(edge) - r and outer[1] + M(edge) + r <= y <= outer[3] - M(edge) - r):
             return False
         pt = pcbnew.VECTOR2I(F(x), F(y))
-        for p in bucket.get((int(x // 5), int(y // 5)), []):
+        near = {id(q): q for di in (-1, 0, 1) for dj in (-1, 0, 1) for q in bucket.get((int(x // 5) + di, int(y // 5) + dj), [])}
+        for p in near.values():                          # the 3 x 3 buckets: a part just over a bucket edge counts
             if own_pad is not None and p.GetParentFootprint().GetReference() == own_pad[0] and p.GetNumber() == own_pad[1]:
                 continue
             if same_ok and netname and p.GetNetname() == netname and not p.HasHole():
@@ -422,6 +432,16 @@ def main():
                 d = p.GetDrillSize()
                 if math.hypot(x - M(p.GetPosition().x), y - M(p.GetPosition().y)) < M(max(d.x, d.y)) / 2 + r + hclr:
                     return False
+        circle = pcbnew.SHAPE_CIRCLE(pt, F(r))
+        for t in {id(q): q for di in (-1, 0, 1) for dj in (-1, 0, 1)
+                  for q in tbucket.get((int(x // 5) + di, int(y // 5) + dj), [])}.values():
+            if netname and t.GetNetname() == netname:
+                continue
+            if t.Type() == pcbnew.PCB_VIA_T:
+                if math.hypot(x - M(t.GetPosition().x), y - M(t.GetPosition().y)) < r + M(t.GetWidth()) / 2 + clr:
+                    return False
+            elif t.GetEffectiveShape(t.GetLayer()).Collide(circle, F(clr)):
+                return False
         if own_pad is not None:
             return True
         for ref, c, bb, nets in cyards:
