@@ -147,5 +147,6 @@
     "KRT py_router/route.py, route_diff.py, py_tools/check_reachability.py",
     "pose_search.py, scripts/draw_rule_areas.py",
     "kicad-cli DRC on a copy of main"
-  ]
+  ],
+  "answered": "A (user, 2026-11-05)"
 }

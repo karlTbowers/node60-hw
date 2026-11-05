@@ -222,3 +222,10 @@ unless the run meant to change it, then re-run CI's DRC.
 - A datasheet's layout figure is drawn from the top. A part on B, seen from above, is its mirror image, so a cell copied from the figure must be mirrored too. U302's wasn't: its SW and PGND pins faced away from the inductor and the input cap's GND pad. A pure rotation can't undo a mirror; turning the chip 180 degrees and mirroring the passives about the other axis does, and keeps the cell where it was.
 - A straight-line gap from a pad to a pin can pass through the chip. `hot_loop.py` now checks that the inductor sits on its SW pin's side of the package.
 - Small pours don't reliably reach 0.25 mm QFN pins between neighbouring pins (the fill thins out); a 0.25 mm track from the pin into the pour does.
+
+## Routing one hard link alone (2026-11-05, Node60 D26)
+- When every run fails a different net and every pad checks reachable, the geometry is tight, not the router: look at which side of each chip each net's pads sit on. Strap resistors and test points placed by the annealer away from their pins turned three RX lines into detours through the TX lines' escape.
+- Check a keep-out against its neighbour's pins: Y501's courtyard sat 0.33 mm from U501's east pads, so three pins could not leave on that layer whatever the router did.
+- KRT honours a crystal's foreign-net rule for tracks, not vias: make the area a via keep-out on the router's copy. It also graded a 1.25 mm gap (fan-out stub to a pull-up pad, blocked by a decap) as joined; KiCad DRC on the real board found it.
+- Route on the judge's prepared board (STOP_AFTER=phy_first), then transplant only the routed nets' copper onto a real copy for DRC.
+- A zone whose minimum width equals the webs it must keep (0.15 mm between 0.35 mm vias at 0.8 mm) keeps or drops them by rounding from one refill to the next; set the minimum below the web.
