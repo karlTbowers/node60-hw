@@ -13,7 +13,7 @@ board. Signals are not touched.
 SPEC.json:
 {
   "via": {"size": 0.45, "drill": 0.25, "pitch": 0.9, "clearance": 0.15, "hole_clearance": 0.3},
-  "zones": [{"name": "PWR_GND_In1", "net": "GND", "layers": ["In1.Cu"], "priority": 0,
+  "zones": [{"name": "PWR_GND_In1", "net": "GND", "layers": ["In1.Cu"], "priority": 0, "solid": false,
              "rects": [[x0, y0, x1, y1], ...] | "board", "poly": [[x, y], ...],    # rects or one polygon
              "holes": [[x0, y0, x1, y1], ...]}],                                    # with "board" only
   "vias": [{"name": "VBAT_D corridor", "net": "/Power entry/VBAT_D",
@@ -25,7 +25,8 @@ SPEC.json:
             x = axis_x on another net; a site is kept only if both are free: identical outputs),
             "copies": [{"dx": 0, "net": "/OUT1", "mirror_net": "/OUT2", "axis_x": 77.65}, ...] (the field
             repeated at each dx, with its mirror; a site is kept only if free at every copy),
-            "allow_under": ["REF", ...]}]
+            "allow_under": ["REF", ...], "same_net_pads_ok": true (a site may sit in a pad of its own net,
+            e.g. a B pad under an F pad of the same net)}]
 }
 
 A via site is kept when, at the spec's via size: it is inside the board by the edge clearance; it
@@ -69,6 +70,8 @@ def add_zone(board, z, outer):
     zone.SetThermalReliefGap(F(0.3))
     zone.SetThermalReliefSpokeWidth(F(0.5))
     zone.SetIslandRemovalMode(pcbnew.ISLAND_REMOVAL_MODE_ALWAYS)
+    if z.get("solid"):                                  # small parts' pads too narrow for 0.5 mm spokes
+        zone.SetPadConnection(pcbnew.ZONE_CONNECTION_FULL)
     o = zone.Outline()
     o.RemoveAllContours()
     if "poly" in z:
@@ -108,6 +111,159 @@ def sites(v, pitch):
         out += [(cx + r * math.cos(2 * math.pi * k / n), cy + r * math.sin(2 * math.pi * k / n)) for k in range(n)]
         r += pitch
     return out
+
+
+def pad_layer(p):
+    """the copper layer an SMD pad is on (GetPrincipalLayer says F.Cu for a flipped part's pads)"""
+    return pcbnew.B_Cu if p.IsOnLayer(pcbnew.B_Cu) and not p.IsOnLayer(pcbnew.F_Cu) else pcbnew.F_Cu
+
+
+def add_via(board, x, y, netname, size, drill):
+    via = pcbnew.PCB_VIA(board)
+    via.SetPosition(pcbnew.VECTOR2I(F(x), F(y)))
+    via.SetWidth(F(size)); via.SetDrill(F(drill))
+    via.SetNet(net(board, netname)); via.SetLocked(True)
+    board.Add(via)
+
+
+def add_stub(board, a, b_, layer, width, netname):
+    t = pcbnew.PCB_TRACK(board)
+    t.SetStart(pcbnew.VECTOR2I(F(a[0]), F(a[1]))); t.SetEnd(pcbnew.VECTOR2I(F(b_[0]), F(b_[1])))
+    t.SetWidth(F(width)); t.SetLayer(layer)
+    t.SetNet(net(board, netname)); t.SetLocked(True)
+    board.Add(t)
+
+
+def seg_clear(board, a, b_, layer, width, netname, clr, skip):
+    """a stub from a to b on layer clears every other-net pad, track and via by clr"""
+    seg = pcbnew.SHAPE_SEGMENT(pcbnew.VECTOR2I(F(a[0]), F(a[1])), pcbnew.VECTOR2I(F(b_[0]), F(b_[1])), F(width))
+    for fp in board.GetFootprints():
+        q = fp.GetPosition()
+        if abs(M(q.x) - a[0]) > 20 or abs(M(q.y) - a[1]) > 20:
+            continue
+        for p in fp.Pads():
+            if any(p is s for s in skip) or p.GetNetname() == netname or not p.IsOnLayer(layer):
+                continue
+            if p.GetEffectiveShape(layer).Collide(seg, F(clr)):
+                return False
+    for t in board.GetTracks():
+        if t.GetNetname() == netname or abs(M(t.GetPosition().x) - a[0]) > 5 or abs(M(t.GetPosition().y) - a[1]) > 5:
+            continue
+        if t.Type() == pcbnew.PCB_VIA_T or t.IsOnLayer(layer):
+            if t.GetEffectiveShape(layer).Collide(seg, F(clr)):
+                return False
+    return True
+
+
+def place_pad_vias(board, v, free, placed, vsize, vdrill, clr):
+    """{"name", "net", "rect": [x0, y0, x1, y1] (pads whose centre is inside), "except": [REF, ...],
+        "except_rects": [[x0, y0, x1, y1], ...], "size", "drill", "reach" (mm beyond the pad edge for a
+        stub via), "stub" (track width),
+        "gnd": true (also the GND pad of each two-pad part given a via)}
+    Each pad gets one via: in the pad when the pad holds the whole ring with 0.05 mm to spare (filled
+    and capped, DEC-027), else on rings outward from its edge, nearest first, with a stub track."""
+    size, drill = v.get("size", vsize), v.get("drill", vdrill)
+    r = size / 2
+    rect, exc = v.get("rect"), set(v.get("except", []))
+    jobs = []
+    for fp in board.GetFootprints():
+        if fp.GetReference() in exc:
+            continue
+        for p in fp.Pads():
+            if p.GetNetname() != v["net"] or p.HasHole():
+                continue
+            x, y = M(p.GetPosition().x), M(p.GetPosition().y)
+            if rect and not (rect[0] <= x <= rect[2] and rect[1] <= y <= rect[3]):
+                continue
+            if any(e[0] <= x <= e[2] and e[1] <= y <= e[3] for e in v.get("except_rects", [])):
+                continue
+            jobs.append(p)
+            if v.get("gnd") and len(fp.Pads()) == 2:
+                other = [q for q in fp.Pads() if q is not p][0]
+                if other.GetNetname() == "GND":
+                    jobs.append(other)
+    n_place = n_stub = 0
+    missing = []
+    for p in jobs:
+        fp = p.GetParentFootprint()
+        ref, num, netname = fp.GetReference(), p.GetNumber(), p.GetNetname()
+        layer = pad_layer(p)
+        x, y = M(p.GetPosition().x), M(p.GetPosition().y)
+        sz = p.GetSize()
+        w_min = min(M(sz.x), M(sz.y))
+        apart = lambda sx, sy: all(math.hypot(sx - px, sy - py) >= size + 0.2 for px, py in placed)
+        if w_min >= size + 0.1 and apart(x, y) and free(x, y, {ref}, (ref, num), netname):
+            add_via(board, x, y, netname, size, drill); placed.append((x, y)); n_place += 1
+            continue
+        bb = p.GetBoundingBox()
+        half = max(M(bb.GetWidth()), M(bb.GetHeight())) / 2
+        best = None
+        d = min(M(bb.GetWidth()), M(bb.GetHeight())) / 2 + clr + r
+        while d <= half + v.get("reach", 1.5) + r and best is None:
+            for k in range(24):
+                ang = 2 * math.pi * k / 24
+                sx, sy = x + d * math.cos(ang), y + d * math.sin(ang)
+                if not apart(sx, sy) or not free(sx, sy, {ref}, None, netname):
+                    continue
+                if not seg_clear(board, (x, y), (sx, sy), layer, v.get("stub", 0.3), netname, clr, [p]):
+                    continue
+                best = (sx, sy); break
+            d += 0.1
+        if best is None:
+            missing.append(f"{ref}.{num}")
+            continue
+        add_via(board, best[0], best[1], netname, size, drill)
+        add_stub(board, (x, y), best, layer, v.get("stub", 0.3), netname)
+        placed.append(best); n_place += 1; n_stub += 1
+    return n_place, n_stub, missing
+
+
+def place_dogbones(board, v, placed):
+    """{"name", "ref": "U401", "nets": [...], "size", "drill", "track", "pitch"}: each ball of those nets
+    gets a via at one of its four diagonal cell centres, the one pointing away from the BGA's centre
+    first (the usual quadrant fan-out), with a short track; a cell already holding a via is skipped"""
+    fp = board.FindFootprintByReference(v["ref"])
+    size, drill, w = v["size"], v["drill"], v.get("track", 0.2)
+    balls = [p for p in fp.Pads() if p.GetNetname() in v["nets"]]
+    xs = [M(p.GetPosition().x) for p in fp.Pads()]; ys = [M(p.GetPosition().y) for p in fp.Pads()]
+    cx, cy = (min(xs) + max(xs)) / 2, (min(ys) + max(ys)) / 2
+    off = v.get("pitch", 0.8) / 2
+    clr, hclr = v.get("clearance", 0.1), v.get("hole_clearance", 0.2)     # ESCAPE_U401's 0.1 mm; board hole clearance
+    near = [q for f2 in board.GetFootprints() for q in f2.Pads()
+            if abs(M(q.GetPosition().x) - M(fp.GetPosition().x)) < 12 and abs(M(q.GetPosition().y) - M(fp.GetPosition().y)) < 12]
+
+    def site_ok(vx, vy, netname):
+        """clear of every other-net pad on either side (copper and hole clearance); a same-net pad over
+        the via is welcome (a decap on its own via)"""
+        pt = pcbnew.VECTOR2I(F(vx), F(vy))
+        for q in near:
+            if q.GetNetname() == netname:
+                continue
+            if q.HitTest(pt, F(size / 2 + clr)) or q.HitTest(pt, F(drill / 2 + hclr)):
+                return False
+        return True
+    n, missing = 0, []
+    for p in sorted(balls, key=lambda q: -math.hypot(M(q.GetPosition().x) - cx, M(q.GetPosition().y) - cy)):
+        x, y = M(p.GetPosition().x), M(p.GetPosition().y)
+        sx_ = 1 if x > cx + 1e-3 else -1 if x < cx - 1e-3 else 0
+        sy_ = 1 if y > cy + 1e-3 else -1 if y < cy - 1e-3 else 0
+        order = [(a_, b_) for a_ in ((sx_, -sx_) if sx_ else (1, -1)) for b_ in ((sy_, -sy_) if sy_ else (1, -1))]
+        pref = v.get("prefer", {}).get(p.GetNumber())        # a ball's cell by hand: [dx, dy] in (-1, 1)
+        if pref:
+            order = [tuple(pref)] + [o for o in order if o != tuple(pref)]
+        for dx, dy in order:
+            vx, vy = x + dx * off, y + dy * off
+            if any(math.hypot(vx - px, vy - py) < size + 0.15 for px, py in placed):
+                continue
+            if not site_ok(vx, vy, p.GetNetname()):
+                continue
+            add_via(board, vx, vy, p.GetNetname(), size, drill)
+            add_stub(board, (x, y), (vx, vy), pad_layer(p), w, p.GetNetname())
+            placed.append((vx, vy)); n += 1
+            break
+        else:
+            missing.append(p.GetNumber())
+    return n, missing
 
 
 def main():
@@ -161,6 +317,21 @@ def main():
                     else math.hypot(x - ann[0], y - ann[1]) <= ann[3] + 0.01
                 if inside:
                     board.Delete(t); break
+    # pad vias and dogbones: a previous run's locked vias and stub tracks of those nets (inside the
+    # field's rect, or the BGA's outline for dogbones) go; unlocked copper (hand routing) stays
+    sweeps = [(v["net"], v.get("rect") or [-1e9, -1e9, 1e9, 1e9]) for v in spec.get("pad_vias", [])]
+    for v in spec.get("dogbones", []):
+        bb = board.FindFootprintByReference(v["ref"]).GetBoundingBox(False)
+        for n_ in v["nets"]:
+            sweeps.append((n_, [M(bb.GetLeft()), M(bb.GetTop()), M(bb.GetRight()), M(bb.GetBottom())]))
+    for t in list(board.GetTracks()):
+        if not t.IsLocked():
+            continue
+        x, y = M(t.GetPosition().x if t.Type() == pcbnew.PCB_VIA_T else t.GetEnd().x), \
+            M(t.GetPosition().y if t.Type() == pcbnew.PCB_VIA_T else t.GetEnd().y)
+        for n_, r_ in sweeps:
+            if t.GetNetname() == n_ and r_[0] - 2 <= x <= r_[2] + 2 and r_[1] - 2 <= y <= r_[3] + 2:
+                board.Delete(t); break
 
     for z in spec.get("zones", []):
         add_zone(board, z, outer)
@@ -186,7 +357,7 @@ def main():
     total = 0
     short = []
 
-    def free(x, y, allow, own_pad=None, netname=None):
+    def free(x, y, allow, own_pad=None, netname=None, same_ok=False):
         """a via site clear of the edge, pads (but own_pad, the pad a via-in-pad field fills), holes, and the
         courtyards of parts with no pad on the via's own net (a via in a pad skips courtyards: only pads matter)"""
         if not (outer[0] + M(edge) + r <= x <= outer[2] - M(edge) - r and outer[1] + M(edge) + r <= y <= outer[3] - M(edge) - r):
@@ -195,6 +366,8 @@ def main():
         for p in bucket.get((int(x // 5), int(y // 5)), []):
             if own_pad is not None and p.GetParentFootprint().GetReference() == own_pad[0] and p.GetNumber() == own_pad[1]:
                 continue
+            if same_ok and netname and p.GetNetname() == netname and not p.HasHole():
+                continue                                    # a same-net pad on the other side joins the via
             if p.HitTest(pt, F(r + clr)):
                 return False
             if p.HasHole():
@@ -242,7 +415,7 @@ def main():
             ok = True
             for k, (f_, n_) in enumerate(images):            # kept only if every image is free (identical outputs)
                 xi, yi = f_(x, y)
-                if not free(xi, yi, allow, own if k == 0 else None, n_):
+                if not free(xi, yi, allow, own if k == 0 else None, n_, v.get("same_net_pads_ok", False)):
                     ok = False; break
             if ok:
                 cand.append((x, y))
@@ -272,6 +445,21 @@ def main():
         if flag:
             short.append(v["name"])
         print(f"vias {v['name']:40s} {len(keep):4d} of {len(cand):4d} free sites (min {v.get('min', 0)}){flag}")
+    # pad vias: one via per pad of a small rail, in the pad (filled and capped, DEC-027) when the pad
+    # takes it, else just outside it with a stub track; and BGA dogbones (2026-11-04, small rails)
+    for v in spec.get("dogbones", []):
+        n_place, missing = place_dogbones(board, v, placed)
+        total += n_place
+        if missing:
+            short.append(v["name"])
+        print(f"dogbones {v['name']:36s} {n_place:4d} placed{'  NO SITE: ' + ', '.join(missing) if missing else ''}")
+    for v in spec.get("pad_vias", []):
+        n_place, n_stub, missing = place_pad_vias(board, v, free, placed, vsize, vdrill, clr)
+        total += n_place
+        if missing:
+            short.append(v["name"])
+        print(f"pad vias {v['name']:36s} {n_place:4d} placed ({n_stub} with a stub)"
+              f"{'  NO SITE: ' + ', '.join(missing) if missing else ''}")
     print(f"{total} via(s)")
     if not a.no_fill:
         pcbnew.ZONE_FILLER(board).Fill(board.Zones())

@@ -14,7 +14,8 @@ Each layer's copper of the net (filled zone polygons and pads on that layer) is 
 of --cell mm; neighbouring cells join through the sheet resistance of that layer's copper (from the
 board's stackup), and a via joins the cells under it on each layer it reaches through its barrel
 (18 um plating, as JLCPCB plates). The FROM pads are held at one potential and 1 A is drawn at the
-TO pads; the result is the mean potential difference. Tracks are ignored (none on the power nets).
+TO pads; the result is the mean potential difference. Tracks (stubs, dogbones) count as cells along each
+segment, a cell wide: right for joining, generous on resistance for a thin track.
 """
 import argparse
 import math
@@ -129,6 +130,24 @@ def main():
     x1, y1 = max(M(r.GetRight()) for r in boxes), max(M(r.GetBottom()) for r in boxes)
     h = a.cell
     nx, ny = int((x1 - x0) / h) + 1, int((y1 - y0) / h) + 1
+    # the net's tracks (stubs to pad vias, dogbones: 2026-11-04), as cells along each segment
+    tcells = set()
+    for t in b.GetTracks():
+        if t.Type() == pcbnew.PCB_VIA_T or t.GetNetCode() != netcode:
+            continue
+        for li, L in enumerate(layers):
+            if not t.IsOnLayer(lid[L]):
+                continue
+            ax, ay, bx, by = M(t.GetStart().x), M(t.GetStart().y), M(t.GetEnd().x), M(t.GetEnd().y)
+            k = max(1, int(math.hypot(bx - ax, by - ay) / (h / 3)))
+            last = None
+            for s_ in range(k + 1):
+                x_, y_ = ax + (bx - ax) * s_ / k, ay + (by - ay) * s_ / k
+                c = (int((x_ - x0) / h), int((y_ - y0) / h))
+                if last and c[0] != last[0] and c[1] != last[1]:
+                    tcells.add((li, c[0], last[1]))      # a diagonal step: the grid joins side neighbours only
+                tcells.add((li,) + c)
+                last = c
     idx = {}
     for li, L in enumerate(layers):
         for i in range(nx):
@@ -136,7 +155,7 @@ def main():
                 pt = pcbnew.VECTOR2I(F(x0 + (i + .5) * h), F(y0 + (j + .5) * h))
                 on = any(ps.Contains(pt) for ps in polys[L]) or any(p.IsOnLayer(lid[L]) and p.HitTest(pt) for p in npads
                                                                      if abs(M(p.GetPosition().x) - M(pt.x)) < 8 and abs(M(p.GetPosition().y) - M(pt.y)) < 8)
-                if on:
+                if on or (li, i, j) in tcells:
                     idx[(li, i, j)] = len(idx)
     n = len(idx)
     G = lil_matrix((n, n)); I = np.zeros(n)

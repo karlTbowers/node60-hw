@@ -1,0 +1,199 @@
+{
+  "id": "D22",
+  "name": "Small rail planes",
+  "question": "Where should the small rails' copper go: 3V3_MAIN on the empty part of In3, on the bottom layer, or in In2's signal window?",
+  "board": "node60",
+  "phase": "Routing",
+  "stage": "Power shapes",
+  "date": "2026-11-04",
+  "why_now": "The 60 A path and the six outputs have their copper (D18–D21, PR #64). The four small rails have none yet: **3V3_MAIN** (74 pads, every corner of the board), **1V5_CORE** (U303 to U401's four core balls), **VBAT_FILT** (L201 to U302's input) and **VDDAU_AON** (U301 to U501). Also **VBAT_PROT** has no copper north of y 71 since In3 was cut to the power band, so L201 and U301, which take their input from it, are not joined at all.\n\nSince PR #64, In3 is VBAT_PROT only in the band x 72–238, y 71–122. The rest of In3 is empty, and tracks are not allowed on it (POWER_ONLY_In3). That empty copper is the natural home for 3V3_MAIN, but you cut In3 for your own reasons, so I'm not assuming it's free. That is the question.\n\nI drew option A on a copy of main's board (`power_shapes.json` + `draw_power.py`, which now also places one via per small-rail pad and U401's dogbones), filled it, ran DRC and measured it with `copper_r.py`. B and C are judged from the routing numbers, not drawn.",
+  "facts": [
+    {
+      "label": "Rails",
+      "value": "3V3_MAIN from U302 (LMQ66430, 3 A rating) through R302; 1V5_CORE from U303 (TPS628502, 2 A) through R303; VDDAU_AON from U301 (TPS7B8133) through R301; VBAT_FILT from L201 (sized for 2.1 A worst case). There is no 3V3 load budget yet",
+      "source": "parts.yaml, schematic"
+    },
+    {
+      "label": "Design loads used",
+      "value": "3V3_MAIN 1.33 A in all: U303's input 1.0 A (2 A × 1.5 V ÷ 3.3 V ÷ 0.9), U401 0.2 A, U501 0.1 A, the rest small. 1V5_CORE at U303's full 2 A. Assumed, so you can read the drops off proportionally",
+      "source": "assumption"
+    },
+    {
+      "label": "Stackup",
+      "value": "In2 is 0.311 mm from In3 and 0.55 mm from In1, so In3 is the nearer reference plane for In2's signals. B.Cu signals reference In4 (GND), F.Cu signals In1 (GND)",
+      "source": "node60.kicad_pcb stackup (JLC062012-1080)"
+    },
+    {
+      "label": "Routing load",
+      "value": "Joining 3V3_MAIN by tracks takes 73 of the board's 333 pad-to-pad connections (spanning tree); on a plane those 73 go away",
+      "source": "layer_capacity.py, B.Cu, 0.15/0.15 mm"
+    },
+    {
+      "label": "Vias",
+      "value": "Filled and capped (DEC-027), so a via may sit in a pad: 0.40/0.20 mm (a preset) in every small-rail pad that holds it, else beside the pad with a 0.3 mm stub. U401's power and ground balls get dogbones at the diagonal cell centres (0.8 mm pitch, 0.10 mm escape clearance)",
+      "source": "node60.kicad_pro, node60.kicad_dru"
+    },
+    {
+      "label": "Handbook",
+      "value": "Says nothing on plane splits or via-in-pad, so nothing here disagrees with it",
+      "source": "DropOut Hardware Handbook v0.10.0"
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "name": "3V3_MAIN on In3, north of the band",
+      "summary": "In3 north of y 70.8, across the whole width, becomes one 3V3_MAIN plane. Inside it sit a 1V5_CORE island (U401's core box, then a 1.2 mm strip east and north to R303 and TP303) and two VBAT_PROT fingers from the band north to L201 (3.2 mm wide) and U301/C301 (1.2 mm). VBAT_FILT is a small pour on B from L201's pad 2 to C305, C304, C303 and U302, plus one on F joining C207 and C217 over L201. VDDAU_AON stays a track: four pads within 4 mm, a few mA, inside U501's escape area. Below y 71, R601, R701 and R801 are all fed 3V3 by track, the same way, so the six outputs stay alike.",
+      "images": [
+        {
+          "path": "img/d22_in3_a.png",
+          "caption": "In3 from above: 3V3_MAIN (red) north of the band, the 1V5_CORE island (green) at U401, the VBAT_PROT band and its two fingers (blue)"
+        },
+        {
+          "path": "img/d22_bga.png",
+          "caption": "U401: dogbones (dots) and the 1V5_CORE island running to R303. The top-side caps under the BGA don't line up with the via grid, which is repair R3"
+        },
+        {
+          "path": "img/d22_west.png",
+          "caption": "L201 and U302: the VBAT_PROT finger and its five vias (two in L201's pad 1, three under C207's body); VBAT_FILT on B and F, joined through two vias in L201's pad 2 under C217's pad"
+        }
+      ],
+      "measures": [
+        {
+          "label": "3V3_MAIN drop, R302 to each load",
+          "value": "U303 input 5.3 mV, U401 balls 3.8 mV, U501 decaps 3.0 mV, others ≤ 4.2 mV; 6 mW in all. About half is R302's one via, and more vias there would cut it",
+          "limit": "small against 3.10–3.50 V (TPS3702 window)",
+          "status": "pass"
+        },
+        {
+          "label": "1V5_CORE drop, R303 to the core balls",
+          "value": "26 mV at 2 A (52 mW); about 4 mV at a likely 0.3 A",
+          "limit": "small",
+          "status": "pass"
+        },
+        {
+          "label": "Pad-to-pad connections left to route",
+          "value": "260 (73 fewer)",
+          "limit": "fewer",
+          "status": "pass"
+        },
+        {
+          "label": "In3 copper",
+          "value": "3V3_MAIN 8,732 mm²; VBAT_PROT 6,653 mm² (6,537 + 116 of fingers); band loss unchanged",
+          "limit": "inner copper only",
+          "status": "info"
+        },
+        {
+          "label": "Reference for In2's signals",
+          "value": "Solid 3V3_MAIN under the whole signal window, except the 1V5 strip at U401 (1.2 mm, x 208–209)",
+          "limit": "unbroken",
+          "status": "pass"
+        },
+        {
+          "label": "DRC on the copy",
+          "value": "1 clearance and 1 hole-clearance error, both at C410 under U401 (repair R3); parity 0",
+          "limit": "0",
+          "status": "warn"
+        },
+        {
+          "label": "Vias added",
+          "value": "30 dogbones (H10 and J6 have no free cell, repair R3), 36 pad vias, 9 VBAT_PROT and 2 VBAT_FILT in fields",
+          "limit": "",
+          "status": "info"
+        }
+      ],
+      "gains": [
+        "Uses copper that is empty today; no outer-layer room taken",
+        "73 fewer connections for you to route",
+        "In2's signal window keeps a solid plane under it"
+      ],
+      "costs": [
+        "In3 north is committed to 3V3_MAIN, so it can't become a signal window later without a re-draw",
+        "The 1V5 strip makes the 3V3 current to U303 go around it, south of U401 (included in the 5.3 mV)"
+      ]
+    },
+    {
+      "key": "B",
+      "name": "Small rails on B.Cu, In3 north left empty",
+      "summary": "3V3_MAIN, 1V5_CORE and VBAT_FILT as pours and wide tracks on B (and F where the parts are on top). In3 north stays empty. Not drawn: nearly every part is on B, so a B pour is cut by every track you route, and its shape only settles after your routing.",
+      "images": [
+        {
+          "path": "img/d22_b_pads.png",
+          "caption": "B.Cu: the 74 3V3_MAIN pads (red) a bottom-layer rail would have to reach, among the bottom-side parts"
+        }
+      ],
+      "measures": [
+        {
+          "label": "3V3_MAIN drop, R302 to each load",
+          "value": "Not measurable until routed; a 0.4 mm PWR_RAIL track across 100 mm is about 0.15 Ω at 85 °C, so 0.15 V at 1 A",
+          "limit": "small against 3.10–3.50 V (TPS3702 window)",
+          "status": "warn"
+        },
+        {
+          "label": "1V5_CORE drop, R303 to the core balls",
+          "value": "U401's core balls are inside the ball field on B; the strip would have to go on F, round J401 and the top-side caps",
+          "limit": "small",
+          "status": "warn"
+        },
+        {
+          "label": "Pad-to-pad connections left to route",
+          "value": "333",
+          "limit": "fewer",
+          "status": "warn"
+        },
+        {
+          "label": "Reference for In2's signals",
+          "value": "No plane on In3 north (In1 GND is 0.55 mm away)",
+          "limit": "unbroken",
+          "status": "warn"
+        }
+      ],
+      "gains": [
+        "In3 north stays free for something else"
+      ],
+      "costs": [
+        "Takes the bottom layer's room, where you route",
+        "3V3_MAIN's 73 connections come back to you"
+      ]
+    },
+    {
+      "key": "C",
+      "name": "3V3_MAIN in In2's signal window",
+      "summary": "Pour 3V3_MAIN on In2 north of y 70, where D17 A opened In2 to signals, and keep In3 north empty or GND.",
+      "images": [],
+      "measures": [
+        {
+          "label": "3V3_MAIN drop, R302 to each load",
+          "value": "about as A (same area, same thickness)",
+          "limit": "small against 3.10–3.50 V (TPS3702 window)",
+          "status": "pass"
+        },
+        {
+          "label": "Pad-to-pad connections left to route",
+          "value": "260, but with In2 north gone. Without that window about 35 nets did not route (D17)",
+          "limit": "fewer",
+          "status": "fail"
+        }
+      ],
+      "gains": [
+        "In3 north could become GND under In2"
+      ],
+      "costs": [
+        "Reverses D17 A and gives back the routing failures it fixed"
+      ]
+    }
+  ],
+  "recommendation": {
+    "option": "A",
+    "why": "A puts the small rails on copper that does nothing today. It takes 73 connections off your routing and leaves B and F to you. The drops are a few millivolts at loads I've likely overstated. B spends the layer you route on, and C undoes D17 A.\n\nWhichever you pick, the trial found three placement problems. I recommend fixing all of them; each is a small pose change, and I'd show you the result before it lands:\n\n**R1.** C206 is the EMI filter's output cap (4.7 µF, 100 V, on VBAT_FILT). It sits at (146, 32.5), 34 mm from L201 and U302, so it does little as a filter cap and drags VBAT_FILT across the board. Move it beside L201's pad 2 and C305, and bring TP205 (VBAT_FILT's second test point, at 132.6, 73.3) next to it.\n\n**R2.** C405 (4.7 µF on 1V5_CORE) sits at (211.9, 65.6), 14 mm south of U401's core and off the 1V5 island. Move it beside the island's strip at U401's east edge.\n\n**R3.** The top-side caps under U401 (C401–C404, C406–C415, C417–C423) were placed without the via grid. Two balls (H10 on 1V5_CORE, J6 on GND) have no free diagonal cell, and C410's GND pad is too close to a 3V3_MAIN dogbone. Re-pose them so each cap's pads sit on its own rail's dogbone vias. That becomes a pose table for U401's decoupling, which comes back to you as a block.\n\nLeft to your hand routing in every option: the 3V3 feeds into the power band (R601/R607, R701/R707, R801/R807, U202, C214, C215, R211, U203), U501's three 3V3 pins and VDDAU_AON, U302's and U303's pins to their own caps (the hot loops), the caps under U401 to their via tops, and Q501, Q502 and C513, which found no via site."
+  },
+  "answer": "Reply with A, B or C, and which of R1–R3 to make (for example \"A, all three\"). On A, I draw it on main's board in a PR: the In3 3V3_MAIN plane, the 1V5_CORE island, the VBAT_PROT fingers, the VBAT_FILT pours and the vias, through power_shapes.json. CLAUDE.md's layer-role line and the log get updated in the same PR. The repairs come first, as poses you see before they land.",
+  "sources": [
+    "power/power_shapes.json, scripts/draw_power.py (pad vias and dogbones added 2026-11-04)",
+    "power/copper_r.py (now counts stub tracks), 85 °C, F + In3 + B",
+    "power/rail_picture.py",
+    "layer_capacity.py",
+    "kicad-cli DRC on the copy with node60.kicad_pro and .kicad_dru",
+    "D17, D21, PR #64"
+  ]
+}
