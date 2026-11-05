@@ -1,0 +1,151 @@
+{
+  "id": "D26",
+  "name": "RMII routing",
+  "question": "Land the RMII link as routed, with the two placement changes it needs at the PHY?",
+  "board": "node60",
+  "phase": "Routing",
+  "stage": "Signals",
+  "date": "2026-11-05",
+  "why_now": "You asked me to route just the RMII link from the PHY (U501) to the MCU (U401), the board's hardest routing. Every fast route so far has failed some of it.\n\nI routed the ten nets alone with KiCadRoutingTools at the board's own sizes: TXD0/1, TX_EN, RXD0/1, CRS_DV, RX_ER, REF_CLK, MDC and MDIO. The first five runs each failed a different net, and KRT's reachability check said every pad was reachable, so the cause is the geometry at the PHY, not the router. **U401 is not the problem:** every run reached all ten of its balls, which sit in its north-west corner in the outer four rows. Turning the MCU isn't needed.\n\nTwo things wall U501 in:\n\n1. **Six parts on the wrong side.** R505, R509, R510 (strap resistors), R507 (MDIO pull-up), TP503 and TP504 (MDC/MDIO test points) sit west of U501. Their pins (RX_ER, CRS_DV and RXD0 on the east and north sides, MDC and MDIO on the north) are elsewhere. Three RX lines detoured west through the strip where the three TX lines start, and whichever line routed last was boxed in. No block holds these parts; the annealer placed them.\n2. **Y501 is 0.33 mm from the PHY's RX pins.** The 50 MHz oscillator's courtyard starts 0.33 mm past the end of U501's east pads (pins 18–24), and its keep-out (only its own nets and GND on B and In4) starts inside them. RX pins 19–21 have no way out on the bottom side. Y501 is in the T1S block (k501, D16), so this is a block change.",
+  "facts": [
+    {
+      "label": "Router settings",
+      "value": "KRT at its latest commit; 0.15 mm track and clearance; 0.35/0.20 mm vias; F.Cu, In2 (signal window north of y 70) and B.Cu; the judge's preparation and fan-outs of U401 and U501 first; Y401/Y501 keep-outs made via-free for the router (the board's rule forbids other nets' vias there, which KRT doesn't model); MDIO and MDC first, then the eight RMII lines",
+      "source": "rmii/route_rmii.sh"
+    },
+    {
+      "label": "Judged on",
+      "value": "Only the ten nets' copper copied onto a real copy of main with the moves, zones refilled, KiCad DRC with node60.kicad_dru",
+      "source": "rmii/transplant_nets.py"
+    },
+    {
+      "label": "RMII timing",
+      "value": "50 MHz reference clock; data set up 4 ns before and held 2 ns after its edge. 36 mm of length spread is about 0.25 ns",
+      "source": "RMII specification; ~7 ps/mm"
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "name": "Move the six parts and Y501, land the routing",
+      "summary": "**Six free parts** move next to their own PHY pins: R510 to (159.75, 39.5), R507 to (157.25, 38.75), TP503 to (157.25, 37.25) and TP504 to (159.25, 37.5), north; R505 to (158.0, 50.25) and R509 to (160.0, 51.0), south (just under Y501 they blocked RX_ER and CRS_DV). R514 (TX_EN's strap) stays west with the TX pins. **Y501 moves 2 mm east** to (163.0, 40.15), turned 90°. Its series resistors R503 (to U501's REFCLK) and R504 (REF_CLK to U401) follow, both about 3.5 mm from its output. Its keep-out is redrawn and the k501 table updated. **Then the ten nets' copper lands, locked.** It also brings the fixes the work needed:\n- the In3 3V3 plane and 1V5 island get a 0.12 mm minimum width, so their 0.15 mm webs between U401's vias survive every refill (one refill dropped ball H6 off the plane);\n- draw_power.py's via sites now clear routed copper and look across bucket edges.",
+      "images": [
+        {
+          "path": "img/d26_phy_before.png",
+          "caption": "Today: straps and test points west of U501; Y501 against its east pins"
+        },
+        {
+          "path": "img/d26_phy_after.png",
+          "caption": "Moved, and routed: straps by their pins, Y501 2 mm east"
+        },
+        {
+          "path": "img/d26_rmii_route.png",
+          "caption": "The ten nets from U501 to U401; dots are vias"
+        }
+      ],
+      "measures": [
+        {
+          "label": "Nets routed",
+          "value": "10 of 10 (TX, RX, CRS_DV, RX_ER, REF_CLK, MDC, MDIO)",
+          "limit": "all",
+          "status": "pass"
+        },
+        {
+          "label": "DRC on the real copy",
+          "value": "0 errors, parity 0; no RMII or MDIO connection open",
+          "limit": "0",
+          "status": "pass"
+        },
+        {
+          "label": "Lengths",
+          "value": "REF_CLK 44 mm; data 43–80 mm (CRS_DV and RX_ER longest, through their straps to the south); MDC 50, MDIO 47",
+          "limit": "spread ≪ 4 ns",
+          "status": "pass"
+        },
+        {
+          "label": "Vias",
+          "value": "36, two to five per net",
+          "limit": "",
+          "status": "info"
+        },
+        {
+          "label": "Layers",
+          "value": "In2 carries most of it (about 250 mm); B about 210 mm; F about 110 mm. On F nothing crosses the T1S trunk's line (y 46 between J912 and J903)",
+          "limit": "",
+          "status": "info"
+        },
+        {
+          "label": "T1S PHY pair (U501 pins 30/31)",
+          "value": "The router fails it on main and with RMII in place alike: RMII takes nothing it needs. It stays your hand route (pin 30's margin is 1.2 µm)",
+          "limit": "unchanged",
+          "status": "info"
+        },
+        {
+          "label": "GND pour under the routes",
+          "value": "Cut into islands (GND opens 3 → 34); the interior stitching rejoins them (→ 4 on a trial). That is D25's after-routing grid",
+          "limit": "stitched",
+          "status": "warn"
+        }
+      ],
+      "gains": [
+        "The hardest link routed, with no MCU turn",
+        "Strap stubs off the 50 MHz lines' way",
+        "The In3 webs at U401 made robust"
+      ],
+      "costs": [
+        "The k501 block changes (Y501, R503, R504)",
+        "The routes are the router's: CRS_DV and RX_ER take a long way south; tidy them by hand if you like",
+        "Needs the interior GND stitching once routing is done"
+      ]
+    },
+    {
+      "key": "B",
+      "name": "Moves only, route RMII yourself",
+      "summary": "Land the placement changes (six parts, Y501) and the In3 width fix, and leave the RMII copper to you, using these routes as a guide.",
+      "images": [],
+      "measures": [
+        {
+          "label": "Nets routed",
+          "value": "0 (shown as feasible)",
+          "limit": "all",
+          "status": "info"
+        }
+      ],
+      "gains": [
+        "Your own routes"
+      ],
+      "costs": [
+        "The work done here isn't used"
+      ]
+    },
+    {
+      "key": "C",
+      "name": "Turn U401 instead",
+      "summary": "Rotate the MCU so its RMII balls face the PHY. Not tested: it isn't where the routing fails. It would reopen D23's decap block, the In3 1V5 island, the crystal block Y401 and which side every peripheral faces.",
+      "images": [],
+      "measures": [
+        {
+          "label": "Nets routed",
+          "value": "not tested",
+          "limit": "all",
+          "status": "warn"
+        }
+      ],
+      "gains": [],
+      "costs": [
+        "Large rework for a problem at the PHY, which it doesn't fix"
+      ]
+    }
+  ],
+  "recommendation": {
+    "option": "A",
+    "why": "The RMII link fails because of placement at the PHY, not at the MCU. Two small moves fix it and all ten nets route with DRC clean on a real copy. A lands that work. B keeps the moves and leaves the copper to you. C answers a question the evidence doesn't ask. On A I land it in one PR: the moves (k501 table updated), the rule areas redrawn, the routed copper locked, the In3 width fix, DRC and the records."
+  },
+  "answer": "Reply with A, B or C. (D25, the GND stitching, is still open too.)",
+  "sources": [
+    "placement/2026-11-02-bars/rmii/ (route_rmii.sh, transplant_nets.py, logs)",
+    "KRT py_router/route.py, route_diff.py, py_tools/check_reachability.py",
+    "pose_search.py, scripts/draw_rule_areas.py",
+    "kicad-cli DRC on a copy of main"
+  ]
+}
