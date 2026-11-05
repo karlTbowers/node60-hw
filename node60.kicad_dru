@@ -87,7 +87,7 @@
 # T1S last, so it wins over the escape relaxation at U501. The line nets are the T1S_100R class
 # (node60.kicad_pro), the K501 legs (T1S_*_DROP, T1S_*_END) included.
 (rule "T1S pairs coupled"
-	(condition "A.inDiffPair('/T1S*')")
+	(condition "A.inDiffPair('/T1S*') && (A.intersectsArea('T1S_COUPLED_F') || A.intersectsArea('T1S_COUPLED_IN2'))")
 	(constraint diff_pair_gap (min 0.14mm) (opt 0.15mm) (max 0.16mm)))
 
 # Uncoupled length and skew only on the PHY side's two-pin pairs (cap to choke, choke to PHY). The
@@ -100,11 +100,25 @@
 
 # Skew in a rule of its own: in the same rule as the gap constraints KiCad 10 never reported it.
 (rule "T1S pairs matched within 0.5 mm"
-	(condition "A.inDiffPair('/T1S/T1S_CMC') || A.inDiffPair('/T1S/T1S_PHY')")
+	(condition "A.inDiffPair('/T1S/T1S_CMC')")
 	(constraint skew (max 0.5mm) (within_diff_pairs)))
 
+# The PHY pair crosses once (FL501's P winding west, U501's P pin east): P hops over N through two
+# through-board vias, 2 mm each in KiCad's length, about 27 ps against a T1S bit of 80 ns (D28).
+(rule "T1S PHY pair matched within 0.5 mm plus its crossing's two vias"
+	(condition "A.inDiffPair('/T1S/T1S_PHY')")
+	(constraint skew (max 4.5mm) (within_diff_pairs)))
+
+# Not at U501's line pins (T1S_PINS_U501: pin 29, VDDA, is 0.5 mm from pin 30, TRXP); other nets'
+# pours only on the outer layers, so the inner planes keep ordinary clearances round T1S vias and the
+# GND under the trunk stays whole (D28 A with the fourth change).
 (rule "T1S 0.75 mm from other nets"
-	(condition "A.NetClass == 'T1S_100R' && A.Type != 'Pad' && B.NetClass != 'T1S_100R' && B.Type != 'Pad'")
+	(condition "A.NetClass == 'T1S_100R' && A.Type != 'Pad' && B.NetClass != 'T1S_100R' && B.Type != 'Pad' && B.Type != 'Zone' && !A.intersectsArea('T1S_PINS_U501')")
+	(constraint clearance (min 0.75mm)))
+
+(rule "T1S 0.75 mm from other nets' pours on the outer layers"
+	(layer outer)
+	(condition "A.NetClass == 'T1S_100R' && A.Type != 'Pad' && B.NetClass != 'T1S_100R' && B.Type != 'Pad' && B.Type == 'Zone' && !A.intersectsArea('T1S_PINS_U501')")
 	(constraint clearance (min 0.75mm)))
 
 (rule "Buck switch nodes 10 mm from the T1S line"

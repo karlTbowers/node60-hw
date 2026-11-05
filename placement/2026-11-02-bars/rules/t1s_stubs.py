@@ -28,6 +28,8 @@ import pcbnew
 
 M = pcbnew.ToMM
 VIA_MM = 2.0
+# copper depth from F.Cu (JLC062012-1080, 2.0 mm): a via between two layers counts their distance
+Z = {pcbnew.F_Cu: 0.0, pcbnew.In1_Cu: 0.17, pcbnew.In2_Cu: 0.79, pcbnew.In3_Cu: 1.17, pcbnew.In4_Cu: 1.79, pcbnew.B_Cu: 2.0}
 NETS = {"P": ("/T1S_P", "/T1S/T1S_CMC_P", "/T1S/T1S_PHY_P", "1", "C511", "4", "1", "30", "3"),
         "N": ("/T1S_N", "/T1S/T1S_CMC_N", "/T1S/T1S_PHY_N", "2", "C512", "3", "2", "31", "6")}
 # per line: trunk net, CMC net, PHY net, connector pin, DC-block cap, FL501 line pin, FL501 PHY pin,
@@ -53,10 +55,14 @@ def graph(b, net):
             continue
         if t.Type() == pcbnew.PCB_VIA_T:
             x, y = xy(t)
-            layers = [l for l in (pcbnew.F_Cu, pcbnew.B_Cu)]
-            a, c = key(layers[0], x, y), key(layers[1], x, y)
-            g[a].append((c, VIA_MM)); g[c].append((a, VIA_MM))
-            ends += [(a, t), (c, t)]
+            # every copper layer the via joins, each step weighted by its depth (F to B = VIA_MM, the
+            # board's thickness): a tap that runs on In2 enters and leaves through part of the barrel
+            stack = [l for l in b.GetEnabledLayers().CuStack() if t.IsOnLayer(l)]
+            nodes = [key(l, x, y) for l in stack]
+            for (l1, n1), (l2, n2) in zip(zip(stack, nodes), zip(stack[1:], nodes[1:])):
+                w = abs(Z.get(l1, 0) - Z.get(l2, 0))
+                g[n1].append((n2, w)); g[n2].append((n1, w))
+            ends += [(n_, t) for n_ in nodes]
         else:
             s, e = t.GetStart(), t.GetEnd()
             a, c = key(t.GetLayer(), M(s.x), M(s.y)), key(t.GetLayer(), M(e.x), M(e.y))

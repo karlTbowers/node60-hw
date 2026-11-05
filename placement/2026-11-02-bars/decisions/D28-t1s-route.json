@@ -1,0 +1,204 @@
+{
+  "id": "D28",
+  "name": "T1S line routing",
+  "question": "Land the T1S trunk, its taps and the PHY pair as routed, with C502 moved and three T1S rules adjusted?",
+  "board": "node60",
+  "phase": "Routing",
+  "stage": "Signals",
+  "date": "2026-11-05",
+  "why_now": "You asked me to route the T1S trunk with the PHY pair. The line had no copper yet, and KiCadRoutingTools' diff-pair router wanders (it ran the trunk south across the middle and the taps the long way round). So this is drawn by hand from a script (`t1s/spec_t1s.py`): every coordinate is computed there, drawn onto a copy of the board and judged by KiCad DRC with the board's own rules.\n\nThree things on the board stood in the way, and three of the board's T1S rules can't be met as written:\n\n1. **C502 sat on the trunk's line.** It is U501's VDDA decap, on the top side at (155.0, 45.5), with its 3V3 via at (155.0, 46.8). Two pad vias (C507's and R506's) also sat in the trunk's corridor.\n2. **The PHY taps can't drop straight down.** Since U501's group moved 10 mm south (your call, 2026-11-04), its line pins are at y 46, right under the trunk, so the bottom side under the trunk's midpoint is U501's pin row. The taps leave the trunk just west of U501 instead.\n3. **Pin 29 (VDDA) sits 0.5 mm from pin 30 (TRXP).** That is Microchip's pinout. The rule \"T1S 0.75 mm from other nets\" can't hold there: no 3V3 track can leave pin 29 next to the PHY pair's track leaving pin 30. Inward is closed too: U501's exposed pad leaves only 0.275 mm inside its pin ring.\n4. **The PHY pair crosses once** (FL501's P winding is west, U501's P pin east; D16 noted it). P hops over N on F.Cu through two vias. KiCad counts each via as 2 mm, so the pair's 0.5 mm skew rule can't hold.\n5. **KiCad checks the 0.14–0.16 mm pair gap on every parallel stretch of P and N, however far apart they are.** That covers the relay legs 2.5 mm apart, the fan-outs at the AT13 pins and the tap split at the caps. D16 already expected about 2.8 mm uncoupled at each connector.",
+  "facts": [
+    {
+      "label": "Polarity",
+      "value": "Swapping TRXP and TRXN at U501 would remove the crossing, but the LAN8670's topology discovery checks the polarity of each pulse it receives (data sheet section 4.15, Topology Discovery; an OPEN Alliance 10BASE-T1S function), so a node wired inverted would break it for the bus. Not proposed",
+      "source": "LAN8670 DS60001573K"
+    },
+    {
+      "label": "Drawn by",
+      "value": "t1s/spec_t1s.py (geometry), draw_t1s.py (onto a copy), route_txd0.sh (KRT re-routes TXD0 alone round the line), draw_power.py (power vias, now keeping out of the trunk's corridor and 0.75 mm from T1S copper), build_trial.sh (all of it)",
+      "source": "placement/2026-11-02-bars/t1s/"
+    },
+    {
+      "label": "Judged on",
+      "value": "A real copy of main, zones refilled by kicad-cli, KiCad DRC with node60.kicad_dru plus the three rule changes (rules_t1s.py)",
+      "source": "t1s/c/t4"
+    },
+    {
+      "label": "Measured by",
+      "value": "rules/t1s_stubs.py on the routed copper (vias now counted by depth, so the In2 taps count); rmii/rmii_timing.py; rmii/trunk_check.py --all",
+      "source": "D16, D27 tools"
+    },
+    {
+      "label": "C502 and the housings",
+      "value": "J903's top-side courtyard is T-shaped: north of y 43.9 it spans x 155.59–193.41, south of it only x 161.06–187.94. C502's new courtyard (x 155.81–156.79, y 46.81–48.70) clears it by 2.9 mm north and 4.3 mm east; J912's is the mirror image",
+      "source": "J903 footprint F.CrtYd polygon"
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "name": "Land it as routed",
+      "summary": "**Trunk** on F.Cu, 0.165/0.15 mm, coupled for 29.3 mm about y 46. At J912, N passes north of P's pin; at J903, P passes south of N's pin (the AT13 pins put N west of P at both ends). **ESD:** D504 (N) and D501 (P) each on a via in its pad; D503 (P) and D502 (N) straight from their connector pin on B.Cu.\n\n**Taps:** P and N each leave the trunk on a 0.45 mm stub to a via, at x 149.0 and 149.8, west of U501. They run as a coupled pair on In2 (between the GND and 3V3 planes) to C511/C512, with a via in each cap's pad 2. From the caps, B.Cu continues to K501 pins 3 and 6.\n\n**CMC pair:** cap pad 1 to FL501. **PHY pair:** N goes straight on B.Cu; P hops over it on F.Cu (two 0.35 mm vias, one in FL501's pad 1).\n\n**Moves:**\n- C502 stays on top, turned upright at (156.3, 47.76), off the trunk's line. Its pad 1 sits on a 3V3 via that also takes U501 pin 29 (VDDA) from the bottom, 1.2 mm away.\n- D27's REFCLK via moves 0.25 mm east, to (157.0, 47.35).\n- TXD0 is re-routed by KRT round the line.\n- The pad vias of C507 and R506 leave the trunk's corridor.\n\n**Rules (node60.kicad_dru):**\n- The 0.75 mm rule doesn't apply inside T1S_PINS_U501: a 2.55 × 2.05 mm area on B.Cu at pins 28–32 and just south of them.\n- The pair-gap rule applies inside T1S_COUPLED_F (the trunk's middle) and T1S_COUPLED_IN2 (the taps' pair).\n- The PHY pair's skew limit becomes 4.5 mm: 0.5 mm plus the crossing's two vias. That is about 27 ps, against an 80 ns bit. The CMC pair keeps 0.5 mm.\n\n**Optional fourth change:** apply the rule's pour clause only on F.Cu and B.Cu. The inner planes would then keep ordinary via clearances, and the GND under the trunk would be whole. AN1718's \"no pour round the line interface\" is about the outer layers.",
+      "images": [
+        {
+          "path": "img/d28_trunk_F.png",
+          "caption": "The trunk on F.Cu, J912 to J903; the dots on the lines are the ESD and tap vias, the short red line in the middle is the PHY pair's hop"
+        },
+        {
+          "path": "img/d28_taps.png",
+          "caption": "The taps: stub and via off each line west of U501, the pair on In2 to C511/C512, the relay legs on B.Cu to K501"
+        },
+        {
+          "path": "img/d28_pins.png",
+          "caption": "At U501's line pins: P (pin 30) hops over N on F.Cu into FL501's pad 1; VDDA (pin 29) runs to C502's via"
+        },
+        {
+          "path": "img/d28_before.png",
+          "caption": "Today, for comparison: C502 and three 3V3 vias on the trunk's line"
+        }
+      ],
+      "measures": [
+        {
+          "label": "DRC on a real copy",
+          "value": "0 errors, with the three rule changes",
+          "limit": "0",
+          "status": "pass"
+        },
+        {
+          "label": "T1S open items",
+          "value": "14 → 0 (trunk, taps, legs, CMC, PHY pair); VDDA connected; every other net as on main",
+          "limit": "0",
+          "status": "pass"
+        },
+        {
+          "label": "Trunk J912 to J903 (P / N)",
+          "value": "38.9 / 38.9 mm, coupled 29.3 mm",
+          "limit": "≤ 45 mm (plan)",
+          "status": "pass"
+        },
+        {
+          "label": "Tap, trunk to cap (P / N)",
+          "value": "14.8 / 15.8 mm",
+          "limit": "",
+          "status": "info"
+        },
+        {
+          "label": "PHY stub, trunk to U501 (P / N)",
+          "value": "28.6 / 25.6 mm (P carries the crossing's two vias)",
+          "limit": "≤ 25 mm (plan)",
+          "status": "warn"
+        },
+        {
+          "label": "Relay leg, trunk to K501 (P / N)",
+          "value": "23.7 / 24.7 mm",
+          "limit": "",
+          "status": "info"
+        },
+        {
+          "label": "End node: dangling past the relay (P / N)",
+          "value": "J912 used 28.5 / 21.6 mm; J903 used 10.4 / 17.3 mm (D16 had 21.6 / 17.4 either way: the taps now branch 6 mm west of the midpoint, where U501 isn't)",
+          "limit": "≤ 100 mm (10BASE-T1S drop)",
+          "status": "warn"
+        },
+        {
+          "label": "PHY pair skew",
+          "value": "4.0 mm, all of it the crossing's two vias",
+          "limit": "≤ 4.5 mm (new rule)",
+          "status": "pass"
+        },
+        {
+          "label": "Other copper in the trunk's corridor on F.Cu",
+          "value": "0 tracks, 0 vias, 0 pads",
+          "limit": "0",
+          "status": "pass"
+        },
+        {
+          "label": "RMII after TXD0's re-route",
+          "value": "TXD0 61.7 → 63.4 mm; TX setup 0.59, TX hold 0.69, RX 3.32 / 1.37 ns; clock branches 12.6 mm apart",
+          "limit": "> 0; ≤ 13 mm",
+          "status": "pass"
+        },
+        {
+          "label": "0.75 mm rule relaxed",
+          "value": "only in T1S_PINS_U501, 2.55 × 2.05 mm on B.Cu at U501's line pins",
+          "limit": "",
+          "status": "warn"
+        },
+        {
+          "label": "Plane holes round the T1S vias",
+          "value": "The 0.75 mm rule also applies to pours on every layer, so In1/In4 GND and In3 3V3 clear each T1S via by 0.75 mm (holes of 0.925 mm radius). Four vias sit on or beside the coupled trunk (D504's, D501's and the two tap vias), so the GND under the pair has four gaps of about 1.9 mm. Harmless at 10BASE-T1S frequencies",
+          "limit": "",
+          "status": "warn"
+        }
+      ],
+      "gains": [
+        "The board's one critical link routed, short and coupled, with nothing foreign in its corridor",
+        "VDDA gets its decap 1.2 mm from the pin (it was on the trunk's line, its pin unrouted)",
+        "The tools keep it that way: draw_power.py's vias stay out of the corridor and 0.75 mm from T1S copper"
+      ],
+      "costs": [
+        "Three T1S rules change (pins area, where the gap rule applies, PHY skew)",
+        "The PHY stub is 3.6 mm over the plan's 25 mm (P side), and the end-node dangle is no longer the same from either port",
+        "TXD0 and D27's REFCLK via move a little; the relay's termination legs (DROP/END, TERM_CT, coil) are still to route"
+      ]
+    },
+    {
+      "key": "B",
+      "name": "Land the trunk and taps; leave U501's pins to you",
+      "summary": "Land A's trunk, ESD taps, taps, relay legs and CMC pair, the corridor clean-up and the gap and skew rule changes. Leave the PHY pair, VDDA and C502 for your hand route, with the 0.75 mm rule unchanged at the pins. You would then face the same pin 29 / pin 30 spacing at U501.",
+      "images": [],
+      "measures": [
+        {
+          "label": "DRC on a real copy",
+          "value": "not run separately (A's copper minus the PHY pair and VDDA)",
+          "limit": "0",
+          "status": "info"
+        },
+        {
+          "label": "T1S open items",
+          "value": "the PHY pair stays open; VDDA stays unrouted",
+          "limit": "0",
+          "status": "warn"
+        }
+      ],
+      "gains": [
+        "The pin area stays yours, under the full 0.75 mm rule"
+      ],
+      "costs": [
+        "The rule can't be met there by anyone (pins 0.5 mm apart), so it only moves the question"
+      ]
+    },
+    {
+      "key": "C",
+      "name": "Mirror the taps about x 155 (not tried)",
+      "summary": "Take P's tap off the trunk west of U501 and N's east of it, mirrored, so an end node's dangle is the same from either port again, as D16 had it. East of U501, In2 carries CRS_DV and RX_ER straight down at x 159.6 and 161.2, so those two would be re-routed first. The taps would no longer run as a pair.",
+      "images": [],
+      "measures": [
+        {
+          "label": "Routed",
+          "value": "not tried",
+          "limit": "",
+          "status": "info"
+        }
+      ],
+      "gains": [
+        "The same dangle from either connector"
+      ],
+      "costs": [
+        "CRS_DV and RX_ER re-routed again; the taps uncoupled; more work for a stub well inside the 10 cm allowance"
+      ]
+    }
+  ],
+  "recommendation": {
+    "option": "A",
+    "why": "A routes the whole line, from the connectors through to U501, with DRC clean on a real copy. Nothing foreign sits on the top side along the trunk. The three rule changes each fix a rule that no layout could meet, and each is scoped as tightly as the geometry allows: 2.55 × 2.05 mm at the pins, the gap rule where the pair is meant to be coupled, and the skew of two crossing vias. B hands you the one spot where the rule can't be met. C buys symmetry the 10BASE-T1S drop allowance doesn't need, at the cost of re-routing two RX lines.\n\nReply **A** for A as described, or **A with the fourth** to also keep the inner planes whole round the T1S vias (my preference, but your call: it relaxes the rule further).\n\nOn A, I land it in one PR: the copper (locked; the VDDA track left unlocked so draw_power.py keeps it), C502's move, the three rule areas and rule changes, draw_power.py's keep_clear and class clearance, TXD0's re-route, power_shapes.json's corridor keep_clear, class clearance and the VDDA and R506 vias; prove_rules.py extended to the new rules; the plan's T1S row (stub ≤ 25 mm, now 28.6 on P: recorded as accepted, the crossing's vias); CLAUDE.md and the KiCad settings page; every check re-run on the landed board (DRC, t1s_stubs, rmii_timing, trunk_check, the block tables, top-side heights). The relay's termination legs and coil come next."
+  },
+  "answer": "Reply with A, A with the fourth, B or C.",
+  "sources": [
+    "Microchip LAN8670/1/2 data sheet DS60001573K (pinout; Topology Discovery)",
+    "placement/2026-11-02-bars/t1s/ (spec_t1s.py, draw_t1s.py, rules_t1s.py, route_txd0.sh, build_trial.sh, area_picture.py)",
+    "rules/t1s_stubs.py, rmii/rmii_timing.py, rmii/trunk_check.py",
+    "KiCadRoutingTools at 01e0476f; kicad-cli DRC with node60.kicad_dru and rules_t1s.py"
+  ],
+  "answered": "A with the fourth change (user, 2026-11-05)"
+}
