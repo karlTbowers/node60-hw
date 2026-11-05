@@ -129,5 +129,6 @@
     "power/copper_r.py, 85 °C",
     "kicad-cli DRC on the copy",
     "D22"
-  ]
+  ],
+  "answered": "A, land it (user, 2026-11-04)"
 }

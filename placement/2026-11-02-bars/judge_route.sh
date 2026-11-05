@@ -99,8 +99,12 @@ cd $KRT
 # VBAT_PROT pour south of it is left out here: tracks may not go there anyway). Override for
 # variants, e.g. PLANE_NETS="GND VBAT_PROT VBAT_PROT GND" PLANE_LAYERS="In1.Cu In2.Cu In3.Cu In4.Cu"
 # LAYER_COSTS="1.0 -1.0 -1.0 -1.0 -1.0 1.0" (D12-1 A; a negative cost = no tracks on that layer).
-PLANE_NETS=${PLANE_NETS:-"GND VBAT_PROT GND"}
-PLANE_LAYERS=${PLANE_LAYERS:-"In1.Cu In3.Cu In4.Cu"}
+# Since D22 A (2026-11-04) In3 is split: VBAT_PROT in the power band, 3V3_MAIN north of y 70.8 and
+# a 1V5_CORE island, drawn with their vias by scripts/draw_power.py from power_shapes.json. route_planes
+# pours one net per layer, so In3 is left out of it and the board's own In3 zones and vias stay on
+# the copy (judge a board that has them drawn). Not yet run in this form.
+PLANE_NETS=${PLANE_NETS:-"GND GND"}
+PLANE_LAYERS=${PLANE_LAYERS:-"In1.Cu In4.Cu"}
 LAYER_COSTS=${LAYER_COSTS:-"1.0 -1.0 1.0 -1.0 -1.0 1.0"}
 echo "layers: planes ${PLANE_NETS} on ${PLANE_LAYERS}; track costs F In1 In2 In3 In4 B = ${LAYER_COSTS}" >> $OUT/chain.log
 L=(--layers F.Cu In1.Cu In2.Cu In3.Cu In4.Cu B.Cu --layer-costs ${=LAYER_COSTS})

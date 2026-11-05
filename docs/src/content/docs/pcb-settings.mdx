@@ -35,7 +35,7 @@ Six copper layers: F.Cu, In1.Cu–In4.Cu, B.Cu. The inner layers carry user name
 | F.Cu | Top. Decoupling caps, D201, J401, the busbars' copper and the T1S trunk |
 | In1.Cu | GND plane |
 | In2.Cu | Signals north of y 70 mm (rule area `SIGNAL_WINDOW_In2Cu_1`), VBAT_PROT south of it |
-| In3.Cu | VBAT_PROT in the power band only (x 72–238, y 71–122; 2026-11-04), nothing elsewhere |
+| In3.Cu | VBAT_PROT in the power band (x 72–238, y 71–122; 2026-11-04) with fingers north to L201 and U301; 3V3_MAIN north of y 70.8 with a 1V5_CORE island from U401's core to R303 (D22 A, 2026-11-04); no tracks |
 | In4.Cu | GND plane |
 | B.Cu | Bottom, where nearly every part sits |
 
@@ -170,7 +170,7 @@ These sizes appear in the track and via drop-downs on the PCB editor's toolbar. 
 
 | Via | Annular ring | Use |
 |---|---:|---|
-| 0.35 / 0.20 mm | 0.075 mm | BGA fan-out between 0.8 mm-pitch balls: leaves room for a 0.10 mm track between neighbouring vias |
+| 0.35 / 0.20 mm | 0.075 mm | BGA fan-out between 0.8 mm-pitch balls: leaves room for a 0.10 mm track between neighbouring vias, and 0.15 mm of In3 copper between neighbouring vias (0.40 mm leaves 0.10, under the inner minimum, and the In3 planes under U401 fall apart). Every via under U401 is this size (D23) |
 | 0.40 / 0.20 mm | 0.10 mm | Dense areas outside the BGA |
 | 0.45 / 0.25 mm | 0.10 mm | Default class: routine signals |
 | 0.60 / 0.30 mm | 0.15 mm | Power, stitching |
