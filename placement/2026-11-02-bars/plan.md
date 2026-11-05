@@ -61,7 +61,7 @@ Placed by `scripts/place_connectors.py` and locked.
 
 | Id | Nets | Parts | Layers | Lane | Budget | Rule |
 |---|---|---|---|---|---|---|
-| T1S | `/T1S_P`, `/T1S_N`, `/T1S/T1S_*` | J912, J903, K501, FL501, C511, C512, D501, D502, U501 | B.Cu, In2/In3 | J912 to J903 trunk; trunk midpoint to FL501 to U501 | trunk ≤ 45 mm, stub ≤ 25 mm | class T1S_100R, AN1718 §2: no pour round the line interface, no copper under FL501 |
+| T1S | `/T1S_P`, `/T1S_N`, `/T1S/T1S_*` | J912, J903, K501, FL501, C511, C512, D501, D502, U501 | B.Cu, In2/In3 | J912 to J903 trunk; trunk midpoint to FL501 to U501 | trunk ≤ 45 mm, stub ≤ 25 mm (D28: trunk 38.9; PHY stub 28.6 P / 25.6 N, accepted: the crossing's two vias) | class T1S_100R, AN1718 §2: no pour round the line interface, no copper under FL501 |
 | RMII | `/RMII0_T1S_*` | U501, U401 | B.Cu, In2/In3 | U501 to U401 | every RMII window > 0 at the data sheets' worst case (`rmii/rmii_timing.py`; D27: 0.61 / 0.69 / 3.32 / 1.37 ns); nothing on F.Cu in the T1S trunk's corridor (`rmii/trunk_check.py`). Was "≤ 40 mm", unattainable: the pins are 43 mm apart | Default |
 | REFCLK | `T1S_OSC_OUT`, `T1S_REFCLK`, `RMII0_T1S_REF_CLK` | Y501, R503, R504, C513, U501, U401 | B.Cu, In2 | Y501 between J903 and U401 (D27 A) | the two branches within 13 mm, the PHY's not shorter (Microchip DS60001573K §3); R503/R504 at Y501's output | intent rows, `blocks/refclk.poses.json` |
 | FXOSC | `FXOSC_EXTAL`, `FXOSC_XTAL` | Y401, C424, C425, R408, U401 | B.Cu | at U401's K1/L1 balls | ≤ 3.5 mm | intent rows |

@@ -3,6 +3,8 @@
 
 - "T1S 0.75 mm from other nets" no longer applies inside T1S_PINS_U501 (B.Cu at U501 pins 28-32 and just
   south): pin 29 (VDDA, 3V3_MAIN) sits 0.5 mm from pin 30 (TRXP), so the rule cannot hold at the pins.
+  Its pour clause becomes a rule of its own on the outer layers (user, D28 A with the fourth change): the
+  inner GND and 3V3 planes keep ordinary clearances round T1S vias.
 - "T1S pairs coupled" (gap 0.14-0.16 mm) applies where the line is meant to be coupled: inside
   T1S_COUPLED_F (the trunk's middle on F.Cu) and T1S_COUPLED_IN2 (the taps' pair on In2). KiCad checks it on
   every parallel stretch of P and N however far apart (relay legs 2.5 mm apart, pin fan-outs).
@@ -12,8 +14,20 @@
 import sys
 
 s = open(sys.argv[1]).read()
-rep = [('''(condition "A.NetClass == 'T1S_100R' && A.Type != 'Pad' && B.NetClass != 'T1S_100R' && B.Type != 'Pad'")''',
-        '''(condition "A.NetClass == 'T1S_100R' && A.Type != 'Pad' && B.NetClass != 'T1S_100R' && B.Type != 'Pad' && !A.intersectsArea('T1S_PINS_U501')")'''),
+CLR = "A.NetClass == 'T1S_100R' && A.Type != 'Pad' && B.NetClass != 'T1S_100R' && B.Type != 'Pad'"
+rep = [('''(rule "T1S 0.75 mm from other nets"
+	(condition "''' + CLR + '''")
+	(constraint clearance (min 0.75mm)))''', '''# Not at U501's line pins (T1S_PINS_U501: pin 29, VDDA, is 0.5 mm from pin 30, TRXP); other nets'
+# pours only on the outer layers, so the inner planes keep ordinary clearances round T1S vias and the
+# GND under the trunk stays whole (D28 A with the fourth change).
+(rule "T1S 0.75 mm from other nets"
+	(condition "''' + CLR + ''' && B.Type != 'Zone' && !A.intersectsArea('T1S_PINS_U501')")
+	(constraint clearance (min 0.75mm)))
+
+(rule "T1S 0.75 mm from other nets' pours on the outer layers"
+	(layer outer)
+	(condition "''' + CLR + ''' && B.Type == 'Zone' && !A.intersectsArea('T1S_PINS_U501')")
+	(constraint clearance (min 0.75mm)))'''),
        ('''(rule "T1S pairs coupled"
 	(condition "A.inDiffPair('/T1S*')")''', '''(rule "T1S pairs coupled"
 	(condition "A.inDiffPair('/T1S*') && (A.intersectsArea('T1S_COUPLED_F') || A.intersectsArea('T1S_COUPLED_IN2'))")'''),

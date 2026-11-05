@@ -81,7 +81,8 @@ def main(out):
     centre = [(cx, 47.6), (cx, y1), (155.0, y2), (155.0, y3)]
     pl, nl = offset_path(centre, H), offset_path(centre, -H)   # P west / south-west, N east / north-east
     p_tap = [(XP, YP + S), (XP, YP + S + 0.5), (pl[0][0], YP + S + 0.5 + (pl[0][0] - XP))] + pl[1:] + [(153.75, y3 + (155.0 - H - 153.75)), (153.75, 56.1)]
-    n_tap = [(XN, YN - S)] + nl[1:] + [(156.25, y3 + (156.25 - 155.0 - H)), (156.25, 56.1)]
+    # N's lead-in split above T1S_COUPLED_IN2, which starts at y 48.0, so only the coupled part is checked
+    n_tap = [(XN, YN - S), (XN, 47.8)] + nl[1:] + [(156.25, y3 + (156.25 - 155.0 - H)), (156.25, 56.1)]
     tracks += [trk("/T1S_P", "In2.Cu", p_tap), trk("/T1S_N", "In2.Cu", n_tap)]
     vias += [via("/T1S_P", 153.75, 56.1), via("/T1S_N", 156.25, 56.1)]              # C511/C512 pad 2
     tracks += [trk("/T1S_P", "B.Cu", [(153.75, 56.1), (153.75, 62.73), (151.5, 62.73)]),   # K501 pin 3
@@ -109,7 +110,7 @@ def main(out):
         "tracks": tracks, "vias": vias,
         "areas": [{"name": "T1S_PINS_U501", "layers": ["B.Cu"], "rect": [154.0, 45.5, 156.55, 47.55]},
                   {"name": "T1S_COUPLED_F", "layers": ["F.Cu"], "rect": [140.6, 45.6, 169.4, 46.4]},
-                  {"name": "T1S_COUPLED_IN2", "layers": ["In2.Cu"], "rect": [cx - 0.4, 47.9, 155.4, y2 + 0.1]}],
+                  {"name": "T1S_COUPLED_IN2", "layers": ["In2.Cu"], "rect": [cx - 0.4, 48.0, 155.4, y2 + 0.1]}],
     }
     json.dump(spec, open(out, "w"), indent=1)
     lp, ln = length(p_tap) + S, length(n_tap) + S

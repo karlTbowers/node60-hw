@@ -198,9 +198,9 @@ Every class has 0.3 / 0.1 mm microvia values (KiCad's defaults, unused) and no t
 
 ![Board Setup, Custom Rules: the start of node60.kicad_dru, with KiCad's syntax check](../../assets/kicad-settings/08-custom-rules.jpg)
 
-KiCad's syntax check reports no errors. It notes that "T1S pairs matched within 0.5 mm" and "T1S PHY-side pairs: 2 mm uncoupled at most" share a condition; that is deliberate (KiCad 10 never reported skew from the same rule as the coupling constraints).
+KiCad's syntax check reports no errors. Until D28 it noted that "T1S pairs matched within 0.5 mm" and "T1S PHY-side pairs: 2 mm uncoupled at most" shared a condition; that was deliberate (KiCad 10 never reported skew from the same rule as the coupling constraints). The screenshot is from before D28.
 
-`node60.kicad_dru`, in file order; later rules win. Each one was shown to fire on a copy of the board carrying one deliberate violation (`placement/2026-11-02-bars/rules/prove_rules.py`, 26 of 26 cases on 2026-11-04).
+`node60.kicad_dru`, in file order; later rules win. Each one was shown to fire on a copy of the board carrying one deliberate violation (`placement/2026-11-02-bars/rules/prove_rules.py`, 32 of 32 cases on 2026-11-05; each scoped T1S rule is also shown quiet outside its area, and a fill check shows the pour rule holding 0.75 mm on B.Cu but not on In1).
 
 | Rule | What it does | Why |
 |---|---|---|
@@ -215,10 +215,12 @@ KiCad's syntax check reports no errors. It notes that "T1S pairs matched within 
 | Plated holes 0.35 mm from other copper | Through-hole pads 0.35 mm from other nets on every layer | JLCPCB: PTH to track 0.28 mm minimum, **0.35 mm recommended** (raised from 0.30 mm on 2026-11-04) |
 | High-current pads solid to their pours | No thermal spokes on the power stage's pads | Spokes would add resistance at 10–60 A |
 | Silk text 1.0 mm high, 0.15 mm stroke | JLCPCB's silk minimum | Legible silk |
-| T1S pairs coupled | Gap 0.14–0.16 mm | D16 |
+| T1S pairs coupled | Gap 0.14–0.16 mm, inside T1S_COUPLED_F (the trunk's middle) and T1S_COUPLED_IN2 (the taps' pair) only: KiCad checks every parallel stretch of P and N however far apart | D16, D28 |
 | T1S PHY-side pairs: 2 mm uncoupled at most | | D16 |
-| T1S pairs matched within 0.5 mm | Skew rule of its own (KiCad 10 never reported skew in the coupling rule) | D16 |
-| T1S 0.75 mm from other nets | | Crosstalk |
+| T1S pairs matched within 0.5 mm | The CMC pair; skew rule of its own (KiCad 10 never reported skew in the coupling rule) | D16, D28 |
+| T1S PHY pair matched within 0.5 mm plus its crossing's two vias | 4.5 mm: the pair crosses once, P through two through-board vias (2 mm each in KiCad's length, about 27 ps) | D28 |
+| T1S 0.75 mm from other nets | Tracks and vias, every layer; not inside T1S_PINS_U501 (B.Cu at U501 pins 28–32: VDDA pin 29 is 0.5 mm from TRXP pin 30) | Crosstalk; D28 |
+| T1S 0.75 mm from other nets' pours on the outer layers | Pours on F.Cu and B.Cu only: the inner planes keep ordinary clearances round T1S vias | AN1718 (no pour round the line interface); D28 |
 | Buck switch nodes 10 mm from the T1S line | | Keeps switching noise off the bus |
 | Thermal reliefs: one spoke is enough | Small parts' pads may join a pour through one spoke | Crowded power pours |
 
