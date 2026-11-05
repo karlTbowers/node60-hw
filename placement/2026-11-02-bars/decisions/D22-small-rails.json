@@ -196,5 +196,6 @@
     "layer_capacity.py",
     "kicad-cli DRC on the copy with node60.kicad_pro and .kicad_dru",
     "D17, D21, PR #64"
-  ]
+  ],
+  "answered": "A, with R1, R2 and R3 (user, 2026-11-04)"
 }

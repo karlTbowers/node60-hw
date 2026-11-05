@@ -29,6 +29,11 @@ SPEC.json:
             e.g. a B pad under an F pad of the same net)}]
 }
 
+Also "pad_vias" (one via per pad of a net), "dogbones" (a BGA's balls, "prefer": {ball: [dx, dy]}),
+"points" ({"name", "points": [[x, y, net], ...]}: vias at given points), "via_overrides" ([{"rect",
+"size", "drill"}]: any via drawn inside rect takes that size) and "stubs" ({"name", "layer",
+"width", "stubs": [[x1, y1, x2, y2, net], ...]}); see place_pad_vias and place_dogbones.
+
 A via site is kept when, at the spec's via size: it is inside the board by the edge clearance; it
 clears every pad on any copper layer by the clearance (including its own net's pads: no vias in
 pads, except an in_pad field's own pad), and every drilled hole by the hole clearance; it is not inside the courtyard of any part
@@ -118,7 +123,14 @@ def pad_layer(p):
     return pcbnew.B_Cu if p.IsOnLayer(pcbnew.B_Cu) and not p.IsOnLayer(pcbnew.F_Cu) else pcbnew.F_Cu
 
 
+VIA_OVERRIDES = []     # [{"rect": [x0, y0, x1, y1], "size", "drill"}]: smaller vias where the spec asks
+
+
 def add_via(board, x, y, netname, size, drill):
+    for o in VIA_OVERRIDES:
+        r_ = o["rect"]
+        if r_[0] <= x <= r_[2] and r_[1] <= y <= r_[3]:
+            size, drill = o["size"], o["drill"]
     via = pcbnew.PCB_VIA(board)
     via.SetPosition(pcbnew.VECTOR2I(F(x), F(y)))
     via.SetWidth(F(size)); via.SetDrill(F(drill))
@@ -248,9 +260,13 @@ def place_dogbones(board, v, placed):
         sx_ = 1 if x > cx + 1e-3 else -1 if x < cx - 1e-3 else 0
         sy_ = 1 if y > cy + 1e-3 else -1 if y < cy - 1e-3 else 0
         order = [(a_, b_) for a_ in ((sx_, -sx_) if sx_ else (1, -1)) for b_ in ((sy_, -sy_) if sy_ else (1, -1))]
+        if p.GetNumber() in v.get("skip", []):               # joined another way (a stub to a neighbour)
+            continue
         pref = v.get("prefer", {}).get(p.GetNumber())        # a ball's cell by hand: [dx, dy] in (-1, 1)
         if pref:
             order = [tuple(pref)] + [o for o in order if o != tuple(pref)]
+        if v.get("strict") and "prefer" in v:               # the planned cell or none
+            order = [tuple(pref)] if pref else []
         for dx, dy in order:
             vx, vy = x + dx * off, y + dy * off
             if any(math.hypot(vx - px, vy - py) < size + 0.15 for px, py in placed):
@@ -276,6 +292,7 @@ def main():
     vsize, vdrill, pitch = V.get("size", 0.45), V.get("drill", 0.25), V.get("pitch", 0.9)
     clr, hclr = V.get("clearance", 0.15), V.get("hole_clearance", 0.3)
     board = pcbnew.LoadBoard(a.board)
+    VIA_OVERRIDES[:] = spec.get("via_overrides", [])
     outer = board_rect(board)
     edge = board.GetDesignSettings().m_CopperEdgeClearance
 
@@ -320,6 +337,9 @@ def main():
     # pad vias and dogbones: a previous run's locked vias and stub tracks of those nets (inside the
     # field's rect, or the BGA's outline for dogbones) go; unlocked copper (hand routing) stays
     sweeps = [(v["net"], v.get("rect") or [-1e9, -1e9, 1e9, 1e9]) for v in spec.get("pad_vias", [])]
+    for v in spec.get("points", []) + spec.get("stubs", []):
+        for q in v.get("points", []) + v.get("stubs", []):
+            sweeps.append((q[-1], [q[0] - 0.05, q[1] - 0.05, q[0] + 0.05, q[1] + 0.05]))
     for v in spec.get("dogbones", []):
         bb = board.FindFootprintByReference(v["ref"]).GetBoundingBox(False)
         for n_ in v["nets"]:
@@ -447,6 +467,14 @@ def main():
         print(f"vias {v['name']:40s} {len(keep):4d} of {len(cand):4d} free sites (min {v.get('min', 0)}){flag}")
     # pad vias: one via per pad of a small rail, in the pad (filled and capped, DEC-027) when the pad
     # takes it, else just outside it with a stub track; and BGA dogbones (2026-11-04, small rails)
+    for v in spec.get("points", []):                     # vias at given points (a BGA's cap vias)
+        for x, y, n_ in v["points"]:
+            add_via(board, x, y, n_, v.get("size", vsize), v.get("drill", vdrill)); placed.append((x, y)); total += 1
+        print(f"points   {v['name']:36s} {len(v['points']):4d} placed")
+    for v in spec.get("stubs", []):                      # short tracks between two of those vias
+        for x1, y1, x2, y2, n_ in v["stubs"]:
+            add_stub(board, (x1, y1), (x2, y2), board.GetLayerID(v.get("layer", "B.Cu")), v.get("width", 0.2), n_)
+        print(f"stubs    {v['name']:36s} {len(v['stubs']):4d} drawn")
     for v in spec.get("dogbones", []):
         n_place, missing = place_dogbones(board, v, placed)
         total += n_place
