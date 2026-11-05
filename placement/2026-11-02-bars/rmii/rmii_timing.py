@@ -12,7 +12,11 @@ Then the four RMII windows (REF_CLK 50 MHz, 20 ns), worst case from the datashee
   LAN8670 (Table 7-15): output valid 12 ns max, invalid 3 ns min; input setup 4 ns, hold 1.5 ns.
   S32K344 (data sheet Table 58, RMII): input setup 4 ns, hold 2 ns; output valid 15 ns max at
   25 pF, invalid 2 ns min.
-  dclk = clock at U401 minus clock at U501 (positive when the MCU's branch is longer).
+  dclk = clock at U401 minus clock at U501 (positive when the MCU's branch is longer): each
+  branch's flight time plus its series resistor's RC, 0.69 x 33 ohm x (trace C + input C); trace C
+  0.12 pF/mm outside, 0.14 pF/mm inside (50 ohm); input C: U401 2-6 pF plus 2 pF package
+  (S32K3xx data sheet, GPIO CIN), U501 3 pF (LAN8670 ICLK CIN, design max). Each window takes the
+  worst dclk for it (dclk_hi with U401 at 8 pF, dclk_lo at 4 pF).
   TX setup = 20 - 15 - t_tx - dclk - 4      TX hold = 2 + t_tx + dclk - 1.5
   RX setup = 20 - 12 - t_rx + dclk - 4      RX hold = 3 + t_rx - dclk - 2
 """
@@ -26,6 +30,7 @@ Z = {"F.Cu": 0.0, "In1.Cu": 0.17, "In2.Cu": 0.79, "In3.Cu": 1.17, "In4.Cu": 1.79
 TX = ["/RMII0_T1S_TXD0", "/RMII0_T1S_TXD1", "/RMII0_T1S_TX_EN"]
 RX = ["/RMII0_T1S_RXD0", "/RMII0_T1S_RXD1", "/RMII0_T1S_CRS_DV", "/RMII0_T1S_RX_ER"]
 STD = {pcbnew.BOARD.GetStandardLayerName(i): i for i in range(pcbnew.PCB_LAYER_ID_COUNT)}
+R_SER = 33.0                                 # R503, R504
 MD = ["/MDIO0_T1S_MDC", "/MDIO0_T1S_MDIO"]
 
 
@@ -161,21 +166,36 @@ def main():
     mcu = est(mcu, [(y3, pad(b, "R504", "1")), (pad(b, "R504", "2"), pad(b, "U401", "U6"))])
     res["clk_phy"] = {"mm": round(sum(p["mm"] for p in phy if p) + 0.9, 2), "ps": round(sum(p["ps"] for p in phy if p), 1), "parts": phy}
     res["clk_mcu"] = {"mm": round(sum(p["mm"] for p in mcu if p) + 0.9, 2), "ps": round(sum(p["ps"] for p in mcu if p), 1), "parts": mcu}
-    dclk = (res["clk_mcu"]["ps"] - res["clk_phy"]["ps"]) / 1000
+    def rc(branch, cin):
+        c = cin
+        for p_ in branch["parts"]:
+            for k, v in p_["layers"].items():
+                if k in ("F.Cu", "B.Cu"):
+                    c += 0.12 * v
+                elif k not in ("via", "join"):
+                    c += 0.14 * v
+        return 0.69 * R_SER * c / 1000           # ohm x pF = ps; ns
+    flight = (res["clk_mcu"]["ps"] - res["clk_phy"]["ps"]) / 1000
+    rc_phy = rc(res["clk_phy"], 3.0)
+    dclk_hi = flight + rc(res["clk_mcu"], 8.0) - rc_phy
+    dclk_lo = flight + rc(res["clk_mcu"], 4.0) - rc_phy
+    res["clk_flight_ns"] = round(flight, 3)
+    res["dclk_hi_ns"], res["dclk_lo_ns"] = round(dclk_hi, 3), round(dclk_lo, 3)
     ttx = max(res["nets"][n.split("T1S_")[-1]]["ps"] for n in TX) / 1000
     ttx_min = min(res["nets"][n.split("T1S_")[-1]]["ps"] for n in TX) / 1000
     trx = max(res["nets"][n.split("T1S_")[-1]]["ps"] for n in RX) / 1000
     trx_min = min(res["nets"][n.split("T1S_")[-1]]["ps"] for n in RX) / 1000
-    res["dclk_ns"] = round(dclk, 3)
     res["slack_ns"] = {
-        "tx_setup": round(20 - 15 - ttx - dclk - 4, 3),
-        "tx_hold": round(2 + ttx_min + dclk - 1.5, 3),
-        "rx_setup": round(20 - 12 - trx + dclk - 4, 3),
-        "rx_hold": round(3 + trx_min - dclk - 2, 3),
+        "tx_setup": round(20 - 15 - ttx - dclk_hi - 4, 3),
+        "tx_hold": round(2 + ttx_min + dclk_lo - 1.5, 3),
+        "rx_setup": round(20 - 12 - trx + dclk_lo - 4, 3),
+        "rx_hold": round(3 + trx_min - dclk_hi - 2, 3),
     }
+    res["clk_mismatch_mm"] = round(res["clk_mcu"]["mm"] - res["clk_phy"]["mm"], 2)
     for k, v in res["nets"].items():
         print(f"{k:8s} {v['mm']:6.1f} mm {v['ps']:6.0f} ps  vias {v['vias']}  {v['layers']}")
-    print(f"clk to PHY {res['clk_phy']['mm']:.1f} mm {res['clk_phy']['ps']:.0f} ps; to MCU {res['clk_mcu']['mm']:.1f} mm {res['clk_mcu']['ps']:.0f} ps; dclk {dclk*1000:.0f} ps")
+    print(f"clk to PHY {res['clk_phy']['mm']:.1f} mm {res['clk_phy']['ps']:.0f} ps; to MCU {res['clk_mcu']['mm']:.1f} mm {res['clk_mcu']['ps']:.0f} ps; "
+          f"mismatch {res['clk_mismatch_mm']:+.1f} mm (Microchip: within 13); dclk flight {flight*1000:.0f} ps, with RC {dclk_lo*1000:.0f}..{dclk_hi*1000:.0f} ps")
     print("slack ns", res["slack_ns"])
     if "--json" in sys.argv:
         json.dump(res, open(sys.argv[sys.argv.index("--json") + 1], "w"), indent=1)

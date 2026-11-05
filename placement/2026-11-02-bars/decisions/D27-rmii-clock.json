@@ -1,0 +1,131 @@
+{
+  "id": "D27",
+  "name": "RMII clock skew",
+  "question": "Where should the 50 MHz oscillator Y501 sit, so the RMII clock reaches the PHY and the MCU together?",
+  "board": "node60",
+  "phase": "Routing",
+  "stage": "Signals",
+  "date": "2026-11-05",
+  "why_now": "You asked me to tighten the RMII transmit timing. Measuring it properly changed two things I told you earlier.\n\n**There is one length rule after all, but it is for the clock, not the data.** Microchip's LAN8670 data sheet (section 3, RMII) says: when one oscillator drives both the MAC and the PHY, match the trace from the oscillator to each within 0.5 inch (13 mm). Ours are 14 mm to U501 and 54 mm to U401, 40 mm apart. The data lines still need no matching.\n\n**The margin is thinner than I said.** Each clock branch has a 33 ohm series resistor (R503, R504) driving the trace and the chip's input. The MCU's branch is longer and its input is bigger (up to 6 pF plus 2 pF of package, against the PHY's 3 pF), so its edge comes later still. Counting that, the MCU sees the clock 0.39 to 0.48 ns after the PHY. The MCU may take 15 ns to drive TXD0/TXD1/TX_EN after its clock edge (at its 25 pF test load), and the PHY needs them 4 ns before the next edge, 20 ns later. That leaves **0.09 ns** worst case for the transmit setup today.\n\nThe skew, not the data length, is what to fix: 10 mm less transmit line buys 0.07 ns, while bringing the two clock edges together buys 0.4 ns. That means moving Y501, or lengthening the PHY's clock branch. The plan put Y501 beside the PHY with R503 within 6 mm of U501 pin 27 (T1S first), so this is your call.\n\n**Test points:** following your rule from today, all 62 are parked south of the board while routing (scripts/park_test_points.py; their poses are recorded). TP505 had sat in the MCU's clock path. That is already committed on this branch; nothing here depends on bringing them back.",
+  "facts": [
+    {
+      "label": "Microchip's clock rule",
+      "value": "Common oscillator: match the PCB traces from the oscillator to the LAN8670 and to the MAC within 0.5 inch (13 mm)",
+      "source": "LAN8670/1/2 data sheet DS60001573K, section 3 (RMII)"
+    },
+    {
+      "label": "RMII windows",
+      "value": "LAN8670: output valid 12 ns max, invalid 3 ns min; input setup 4 ns, hold 1.5 ns. S32K344: input setup 4 ns, hold 2 ns; output valid 15 ns max, invalid 2 ns min, at 25 pF with the pad at DSE = 1, SRE = 0",
+      "source": "LAN8670 Table 7-15; S32K3xx data sheet rev. 14, Table 58 and section 12.8.3"
+    },
+    {
+      "label": "Clock inputs",
+      "value": "U401 2–6 pF plus 2 pF package; U501 REFCLKIN 3 pF; R503 = R504 = 33 ohm",
+      "source": "S32K3xx data sheet (GPIO CIN); LAN8670 ICLK buffer; schematic p5"
+    },
+    {
+      "label": "How it is measured",
+      "value": "rmii/rmii_timing.py on the copper: shortest pad-to-pad path per net, 6.0 ps/mm on F/B and 7.0 ps/mm inside, via barrels by depth; each clock branch adds 0.69 × 33 ohm × (trace C + input C). Each window takes its worst skew",
+      "source": "placement/2026-11-02-bars/rmii/rmii_timing.py"
+    },
+    {
+      "label": "How it is routed and judged",
+      "value": "rmii/route_clock.sh: KRT at its latest commit (01e0476f), the clock first, then TX, MDIO/MDC, RX; then only these 12 nets' copper onto a real copy of the board, zones refilled, KiCad DRC with node60.kicad_dru",
+      "source": "route_clock.sh, transplant_nets.py"
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "name": "Y501 between J903 and U401",
+      "summary": "Move the oscillator east of J903, to (182.0, 41.0) on the bottom, so it sits about two-fifths of the way from U401 to U501. R503 (to the PHY) goes beside its output at (178.95, 40.05), R504 (to the MCU) north of it at (181.3, 38.4). C513, its 100 nF bypass, comes down from the top side, where it sat 8 mm away, to (184.7, 41.0) beside its supply pins. UNDER_Y501 is redrawn round it. The PHY's clock then runs 32 mm on In2 to pin 27, the MCU's 22 mm on B.Cu to ball U6, so the PHY's edge comes slightly later than the MCU's, the side that helps transmit setup. All ten RMII/MDIO lines are re-routed round it, with a top-side keep-out along the T1S trunk's line.",
+      "images": [
+        {"path": "img/d27_a.png", "caption": "A, routed and judged on a real copy: clock to the PHY red, to the MCU blue"},
+        {"path": "img/d27_today.png", "caption": "Today, for comparison: 14 mm to U501, 54 mm to U401"}
+      ],
+      "measures": [
+        {"label": "Clock branches (Y501 to U501 / to U401)", "value": "32 / 22 mm", "limit": "", "status": "info"},
+        {"label": "Branch mismatch", "value": "10 mm (the PHY's longer)", "limit": "≤ 13 mm", "status": "pass"},
+        {"label": "Clock skew at U401 vs U501", "value": "−0.10 to −0.01 ns", "limit": "near 0", "status": "pass"},
+        {"label": "TX setup slack", "value": "0.58 ns", "limit": "> 0", "status": "pass"},
+        {"label": "TX hold slack", "value": "0.71 ns", "limit": "> 0", "status": "pass"},
+        {"label": "RX setup / hold slack", "value": "3.34 / 1.34 ns", "limit": "> 0", "status": "pass"},
+        {"label": "Data line lengths", "value": "51–85 mm (TX 51–62)", "limit": "", "status": "info"},
+        {"label": "DRC on a real copy", "value": "0 errors; opens only to the parked test points", "limit": "0", "status": "pass"},
+        {"label": "Top-side crossings of the T1S trunk's line", "value": "0", "limit": "0", "status": "pass"},
+        {"label": "Clock to the bucks' switch nodes", "value": "17.9 mm or more", "limit": "≥ 3 mm", "status": "pass"},
+        {"label": "Block and plan changes", "value": "Y501, R503, R504 leave the k501 block for a block of their own; the plan's REFCLK row changes", "limit": "", "status": "warn"}
+      ],
+      "gains": [
+        "Transmit setup margin from 0.09 to 0.58 ns, with every window above 0.5 ns",
+        "Meets Microchip's 13 mm clock rule",
+        "No meanders; the 50 MHz line to the PHY runs on In2 between the GND plane and the 3V3 plane",
+        "Y501 gets its bypass cap beside it"
+      ],
+      "costs": [
+        "A third k501 change in three days; the plan's \"Y501 beside U501, R503 within 6 mm of pin 27\" is replaced by \"clock branches within 13 mm, the PHY's not shorter\"",
+        "The PHY's clock line is 32 mm instead of about 9 mm",
+        "Every RMII line is re-routed (D26's copper is replaced). CRS_DV and RX_ER are still the router's long way round, 85 mm"
+      ]
+    },
+    {
+      "key": "B",
+      "name": "Y501 stays, meander the PHY's branch",
+      "summary": "Keep Y501 beside U501 and let KRT lengthen the PHY's clock branch toward the MCU's with a length-match group. C513 still moves beside Y501. In the trial KRT reached 32 mm against the MCU's 51 mm, still 19 mm apart: it found room for the meander only right against U501's south edge, beside the T1S line pins 30/31. Closing the gap further needs about 20 mm more meander in the same crowded strip.",
+      "images": [
+        {"path": "img/d27_b.png", "caption": "B, routed and judged on a real copy: the red meander sits at U501's south edge"}
+      ],
+      "measures": [
+        {"label": "Clock branches (Y501 to U501 / to U401)", "value": "32 / 51 mm", "limit": "", "status": "info"},
+        {"label": "Branch mismatch", "value": "19 mm (the MCU's longer)", "limit": "≤ 13 mm", "status": "fail"},
+        {"label": "Clock skew at U401 vs U501", "value": "+0.17 to +0.26 ns", "limit": "near 0", "status": "warn"},
+        {"label": "TX setup slack", "value": "0.24 ns", "limit": "> 0", "status": "warn"},
+        {"label": "TX hold slack", "value": "1.01 ns", "limit": "> 0", "status": "pass"},
+        {"label": "RX setup / hold slack", "value": "3.56 / 1.08 ns", "limit": "> 0", "status": "pass"},
+        {"label": "Data line lengths", "value": "55–91 mm (TX 56–74)", "limit": "", "status": "info"},
+        {"label": "DRC on a real copy", "value": "0 errors; opens only to the parked test points", "limit": "0", "status": "pass"},
+        {"label": "Top-side crossings of the T1S trunk's line", "value": "1 (CRS_DV; the keep-out A used would move it)", "limit": "0", "status": "warn"},
+        {"label": "Block and plan changes", "value": "none (C513 only)", "limit": "", "status": "pass"}
+      ],
+      "gains": [
+        "The T1S block and the plan stay as you approved them"
+      ],
+      "costs": [
+        "Still outside Microchip's 13 mm, and transmit setup only 0.24 ns",
+        "A 50 MHz meander beside the T1S line pins, the board's one critical link"
+      ]
+    },
+    {
+      "key": "C",
+      "name": "Leave it, record the margin",
+      "summary": "Keep D26's routing and placement. Record the 0.09 ns worst-case transmit setup and the 40 mm clock mismatch as a known risk, to be checked at bring-up (GATE-NET-01) with the MCU's real, lighter load (about 10 pF of trace and input against the 25 pF the data sheet tests at).",
+      "images": [],
+      "measures": [
+        {"label": "Clock branches (Y501 to U501 / to U401)", "value": "14 / 54 mm", "limit": "", "status": "info"},
+        {"label": "Branch mismatch", "value": "40 mm (the MCU's longer)", "limit": "≤ 13 mm", "status": "fail"},
+        {"label": "Clock skew at U401 vs U501", "value": "+0.39 to +0.48 ns", "limit": "near 0", "status": "warn"},
+        {"label": "TX setup slack", "value": "0.09 ns", "limit": "> 0", "status": "warn"},
+        {"label": "TX hold slack", "value": "1.28 ns", "limit": "> 0", "status": "pass"},
+        {"label": "RX setup / hold slack", "value": "3.85 / 0.84 ns", "limit": "> 0", "status": "pass"},
+        {"label": "Data line lengths", "value": "46–83 mm (TX 62–64)", "limit": "", "status": "info"},
+        {"label": "DRC on a real copy", "value": "0 errors", "limit": "0", "status": "pass"},
+        {"label": "Top-side crossings of the T1S trunk's line", "value": "0", "limit": "0", "status": "pass"},
+        {"label": "Block and plan changes", "value": "none", "limit": "", "status": "pass"}
+      ],
+      "gains": ["No work; D26 stands"],
+      "costs": ["Against Microchip's recommendation; 0.09 ns is within the error of the model itself"]
+    }
+  ],
+  "recommendation": {
+    "option": "A",
+    "why": "The transmit window is set by how far apart the two clock edges arrive, and A is the only option that brings them together, without a meander. It meets Microchip's 13 mm rule and gives every RMII window more than half a nanosecond at the data sheet's worst case. B keeps the plan as it was, but it falls short of the rule and puts a 50 MHz meander beside the T1S line pins, which is worse for the link the plan was protecting. C leaves 0.09 ns.\n\nOn A I land it in one PR on top of D26: Y501, R503, R504 and C513 moved (a new pose table for the clock source; k501 loses the three); UNDER_Y501 redrawn; the plan's REFCLK row and the brief's rows rewritten; the twelve nets' copper (RMII, MDIO, both clock branches, the oscillator output) replacing D26's and locked; 3V3 vias for Y501 and C513 by draw_power.py; DRC and the records.\n\nWhatever you choose, one firmware requirement goes into the pin plan (mcu-config.yaml): **TXD0, TXD1 and TX_EN at DSE = 1, SRE = 0**. NXP's 15 ns holds only at that pad setting."
+  },
+  "answer": "Reply with A, B or C.",
+  "sources": [
+    "Microchip LAN8670/1/2 data sheet DS60001573K: section 3 (RMII clock source), 4.7.2, Table 7-15, ICLK buffer CIN",
+    "NXP S32K3xx data sheet rev. 14 (10 April 2026): section 12.8.3, Table 58, GPIO CIN",
+    "placement/2026-11-02-bars/rmii/: rmii_timing.py, route_clock.sh, prep_trial.py, transplant_nets.py, trunk_check.py, rmii_picture.py; trials in rmii/c/",
+    "KiCadRoutingTools 01e0476f (route.py, --length-match-group for B)",
+    "kicad-cli DRC with node60.kicad_dru on real copies a1 and b1"
+  ]
+}
