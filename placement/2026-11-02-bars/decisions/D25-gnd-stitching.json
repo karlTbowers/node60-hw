@@ -1,0 +1,121 @@
+{
+  "id": "D25",
+  "name": "Ground stitching",
+  "question": "Stitch GND now: the board-edge ring only, or a grid over the whole board?",
+  "board": "node60",
+  "phase": "Routing",
+  "stage": "Power shapes",
+  "date": "2026-11-05",
+  "why_now": "The GND pours on F.Cu and B.Cu cover the board, but they reach the In1 and In4 ground planes only through the vias at the two GND terminal rings and in cap pads. Once your tracks cut them up, any piece without a via of its own is a floating island, and a long way round for return current.\n\nThe question is when the interior gets its vias. Stitching the edge now is cheap: it sits where nothing routes, and it fences the board's edge for emissions (CISPR 25). A grid over the interior now would put hundreds of vias into the space you're about to route. After your routing, the same grid fills what's left, and DRC's island report shows where it's needed.",
+  "facts": [
+    {
+      "label": "Today",
+      "value": "GND pours on F.Cu and B.Cu (whole board), In1 and In4 solid GND; vias at J911/J902's rings and in the GND pads of decoupling and buck caps",
+      "source": "power_shapes.json"
+    },
+    {
+      "label": "Pitch",
+      "value": "5 mm: under λ/20 up to about 1 GHz in FR-4 (λ ≈ 150 mm there), the usual rule for an edge fence",
+      "source": "estimate"
+    },
+    {
+      "label": "Via",
+      "value": "0.45/0.25 mm (the Default class), 1 mm in from the edge, clear of every pad and courtyard",
+      "source": "draw_power.py"
+    },
+    {
+      "label": "Fast route",
+      "value": "On main's board with D22–D24 in: 27 open items and 196 blocking DRC items, against 29 and 218 in the last run (D17). The new planes and vias cost no routability. What fails is the same kind as before: the RMII and MDIO lines between U501 and U401 (CRS_DV, RXD1, RX_ER, TXD1, TX_EN, MDIO) and gate-drive nets in the power entry. RMII is next",
+      "source": "judge_route.sh on main's board (KRT at its latest commit, the board's own rules; In3 now left as drawn)"
+    }
+  ],
+  "options": [
+    {
+      "key": "A",
+      "name": "Edge ring now, interior after routing",
+      "summary": "61 GND vias at 5 mm, 1 mm in from the board edge, all the way round except over the T1S connectors J903 and J912 (x 127–188 on the north edge), where their bodies sit. The interior gets a grid after your routing, where space is left, plus GND vias beside the T1S line's own vias when you route it.",
+      "images": [
+        {
+          "path": "img/d25_edge_ring.png",
+          "caption": "The ring (dots at the edge), drawn on a copy of main"
+        }
+      ],
+      "measures": [
+        {
+          "label": "GND vias added",
+          "value": "61",
+          "limit": "",
+          "status": "info"
+        },
+        {
+          "label": "Vias in your routing space",
+          "value": "none (all within 1.2 mm of the edge)",
+          "limit": "few",
+          "status": "pass"
+        },
+        {
+          "label": "DRC on the copy",
+          "value": "0 errors, parity 0",
+          "limit": "0",
+          "status": "pass"
+        },
+        {
+          "label": "VBAT_PROT loss at 3 × 20 A",
+          "value": "0.867 W (main 0.867)",
+          "limit": "unchanged",
+          "status": "pass"
+        }
+      ],
+      "gains": [
+        "The edge fenced now, at no cost to routing",
+        "The interior stitched where your routing leaves room"
+      ],
+      "costs": [
+        "One more pass after routing (an automatic one)"
+      ]
+    },
+    {
+      "key": "B",
+      "name": "Ring and a 5 mm interior grid now",
+      "summary": "The ring plus a 5 mm grid over the interior, wherever a site is clear of pads and courtyards.",
+      "images": [
+        {
+          "path": "img/d25_full_grid.png",
+          "caption": "Every GND via with the interior grid added"
+        }
+      ],
+      "measures": [
+        {
+          "label": "GND vias added",
+          "value": "580 (61 + 519)",
+          "limit": "",
+          "status": "info"
+        },
+        {
+          "label": "Vias in your routing space",
+          "value": "519, every 5 mm across the open board",
+          "limit": "few",
+          "status": "warn"
+        }
+      ],
+      "gains": [
+        "No islands from the start"
+      ],
+      "costs": [
+        "Hundreds of vias in your routing channels before you route; many would come out again"
+      ]
+    }
+  ],
+  "recommendation": {
+    "option": "A",
+    "why": "The ring is the part that has to sit at the edge, and it costs your routing nothing. The interior is better stitched after routing, into the space you leave, guided by DRC's island report. B front-loads 519 vias into the channels you're about to use."
+  },
+  "answer": "Reply A or B. On A I land the ring in a PR (power_shapes.json, records).",
+  "sources": [
+    "scripts/draw_power.py (edge ring mode, 2026-11-05)",
+    "power/copper_r.py",
+    "judge_route.sh, grade_route.py",
+    "kicad-cli DRC on a copy of main"
+  ],
+  "answered": "A (user, 2026-11-05)"
+}

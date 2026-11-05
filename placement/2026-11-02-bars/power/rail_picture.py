@@ -21,6 +21,16 @@ COL = {"3V3_MAIN": (200, 60, 50), "1V5_CORE": (40, 140, 70), "VBAT_PROT": (40, 1
        "1V5_EN": (180, 180, 60)}
 
 
+PALETTE = [(31, 119, 180), (255, 127, 14), (44, 160, 44), (214, 39, 40), (148, 103, 189), (140, 86, 75),
+           (227, 119, 194), (23, 190, 207), (188, 189, 34), (90, 90, 200), (200, 90, 40)]
+
+
+def colour(n, nets_order):
+    if n in COL:
+        return COL[n]
+    return PALETTE[nets_order.index(n) % len(PALETTE)] if n in nets_order else (150, 150, 150)
+
+
 def short(n):
     return n.split("/")[-1]
 
@@ -33,10 +43,12 @@ def main():
     ap.add_argument("--nets", default=",".join(COL))
     ap.add_argument("--labels", default="", help="refs to label")
     ap.add_argument("--pins", default="", help="refs whose pad numbers to print")
+    ap.add_argument("--only-vias-in", default="", help="X0,Y0,X1,Y1: draw only the vias outside this rectangle (an edge ring)")
     a = ap.parse_args()
     X0, Y0, X1, Y1 = map(float, a.region.split(","))
     S, PAD, HEAD = a.scale, 20, 46
-    nets = set(a.nets.split(","))
+    nets_order = a.nets.split(",")
+    nets = set(nets_order)
     b = pcbnew.LoadBoard(a.board)
     W, H = int((X1 - X0) * S) + 2 * PAD, int((Y1 - Y0) * S) + 2 * PAD + HEAD + 26
     im = Image.new("RGB", (W, H), (250, 248, 243)); d = ImageDraw.Draw(im, "RGBA")
@@ -56,7 +68,7 @@ def main():
         for z in b.Zones():
             if z.GetIsRuleArea() or not z.IsOnLayer(lid) or short(z.GetNetname()) not in nets:
                 continue
-            c = COL.get(short(z.GetNetname()), (150, 150, 150))
+            c = colour(short(z.GetNetname()), nets_order)
             ps = z.GetFilledPolysList(lid)
             for i in range(ps.OutlineCount()):
                 o = ps.Outline(i)
@@ -75,7 +87,7 @@ def main():
         for p in fp.Pads():
             pb = p.GetBoundingBox()
             n = short(p.GetNetname())
-            c = COL.get(n) if n in nets else None
+            c = colour(n, nets_order) if n in nets else None
             d.rectangle([P(M(pb.GetLeft()), M(pb.GetTop())), P(M(pb.GetRight()), M(pb.GetBottom()))],
                         fill=(c + (230,)) if c else (210, 205, 195, 200), outline=(80, 80, 80, 120))
         if fp.GetReference() in a.labels.split(","):
@@ -89,17 +101,23 @@ def main():
         n = short(t.GetNetname())
         if n not in nets:
             continue
-        c = COL.get(n, (150, 150, 150))
+        c = colour(n, nets_order)
         if t.Type() == pcbnew.PCB_VIA_T:
             x, y, r = M(t.GetPosition().x), M(t.GetPosition().y), M(t.GetWidth()) / 2
+            if a.only_vias_in:
+                q0, q1, q2, q3 = map(float, a.only_vias_in.split(","))
+                if q0 < x < q2 and q1 < y < q3:
+                    continue
             if X0 <= x <= X1 and Y0 <= y <= Y1:
-                d.ellipse([P(x - r, y - r), P(x + r, y + r)], fill=c + (255,), outline=(255, 255, 255))
+                rr = max(r, 3.5 / S)                         # at least a few pixels across at small scales
+                d.ellipse([P(x - rr, y - rr), P(x + rr, y + rr)], fill=c + (255,), outline=(255, 255, 255))
         else:
             d.line([P(M(t.GetStart().x), M(t.GetStart().y)), P(M(t.GetEnd().x), M(t.GetEnd().y))], fill=c + (255,),
                    width=max(1, int(M(t.GetWidth()) * S)))
     x = PAD
-    for n, c in COL.items():
-        if n in nets:
+    for n in nets_order:
+        c = colour(n, nets_order)
+        if True:
             d.rectangle([x, H - 20, x + 12, H - 8], fill=c); d.text((x + 16, H - 21), n, fill=(40, 40, 40), font=f)
             x += 30 + int(d.textlength(n, font=f))
     im.save(a.out)

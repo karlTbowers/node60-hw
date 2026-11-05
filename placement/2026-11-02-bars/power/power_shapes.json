@@ -1,5 +1,5 @@
 {
- "about": "Node60 power shapes, stage 1 (2026-11-04): inner planes (D12-1/D17 A), the 60 A entry path on B, In2, In3 and the F band (D18 A), VBAT_PROT at the disconnect FETs' sources, GND pours, and via fields at 0.65 A per 0.45/0.25 mm via (D12-6). Stage 2: each switch's VBB pad gets in-pad vias (filled and capped, DEC-027); each output a pour on B and F from its pins to its header's pin 1, OUTb the mirror image of OUTa, with mirrored via fields so both outputs of a switch get the same copper. D19 A (2026-11-04): the cells' small parts moved clear of the OUT exits; the B output pours reach north to y 104.5 beside the pins (F stays south of the VBAT_IN bar area). D20 A (2026-11-04): both battery terminals VBAT_IN, the entry mirrored about x 155. D21 C (2026-11-04): rows swapped so the ideal-diode FETs sit beside U201 (short DGATE): VBAT_IN an L from each ring to its north-row FET on B and In2 (In3 stays VBAT_PROT under it, toward U601/U801), VBAT_D the north band around the U201/U202 column, VBAT_Q2D the south band, VBAT_PROT from the south-row sources; vias in all four FET tabs. In3 VBAT_PROT (2026-11-04): the user cut it from the whole board to the power band; in3_sweep.py found the knee at x 72-238, y 71-122 (south of the switches carries current; the north and the far ends little). Small rails (D22 A and D23, 2026-11-04): 3V3_MAIN on In3 north of y 70.8, a 1V5_CORE island on In3 from U401's core to R303, VBAT_PROT fingers on In3 to L201 and U301, VBAT_FILT on B from L201 to U302; one via per small-rail pad (in the pad where it fits), U401's power and ground balls dogboned. Under U401 every via is 0.35/0.20 mm (via_overrides) so In3 keeps 0.15 mm webs; the caps under it sit on via pairs posed by power/bga_decaps.py (blocks/u401_decaps.poses.json), its power and ground balls dogboned at the cells that script chose (prefer, strict); H7 joins H6 on B, and C403, C404 and C419 reach their vias by short F tracks. D24 (2026-11-05): U302's cell re-composed (U302 turned 180 degrees, its passives mirrored about the chip's east-west axis: on B the cell had been seated as TI's top-view figure, so SW pin 7 faced away from L301); L201, C206, C207, C217 and the VBAT_FILT test points follow the input caps south, the L201 finger on In3 moves to x 115-119, y 59-71; both bucks' hot-loop copper on B (VBAT_FILT, SW, the REG output node, 3V3 at U303) and GND vias in every buck cap's GND pad and U302's exposed pad.",
+ "about": "Node60 power shapes, stage 1 (2026-11-04): inner planes (D12-1/D17 A), the 60 A entry path on B, In2, In3 and the F band (D18 A), VBAT_PROT at the disconnect FETs' sources, GND pours, and via fields at 0.65 A per 0.45/0.25 mm via (D12-6). Stage 2: each switch's VBB pad gets in-pad vias (filled and capped, DEC-027); each output a pour on B and F from its pins to its header's pin 1, OUTb the mirror image of OUTa, with mirrored via fields so both outputs of a switch get the same copper. D19 A (2026-11-04): the cells' small parts moved clear of the OUT exits; the B output pours reach north to y 104.5 beside the pins (F stays south of the VBAT_IN bar area). D20 A (2026-11-04): both battery terminals VBAT_IN, the entry mirrored about x 155. D21 C (2026-11-04): rows swapped so the ideal-diode FETs sit beside U201 (short DGATE): VBAT_IN an L from each ring to its north-row FET on B and In2 (In3 stays VBAT_PROT under it, toward U601/U801), VBAT_D the north band around the U201/U202 column, VBAT_Q2D the south band, VBAT_PROT from the south-row sources; vias in all four FET tabs. In3 VBAT_PROT (2026-11-04): the user cut it from the whole board to the power band; in3_sweep.py found the knee at x 72-238, y 71-122 (south of the switches carries current; the north and the far ends little). Small rails (D22 A and D23, 2026-11-04): 3V3_MAIN on In3 north of y 70.8, a 1V5_CORE island on In3 from U401's core to R303, VBAT_PROT fingers on In3 to L201 and U301, VBAT_FILT on B from L201 to U302; one via per small-rail pad (in the pad where it fits), U401's power and ground balls dogboned. Under U401 every via is 0.35/0.20 mm (via_overrides) so In3 keeps 0.15 mm webs; the caps under it sit on via pairs posed by power/bga_decaps.py (blocks/u401_decaps.poses.json), its power and ground balls dogboned at the cells that script chose (prefer, strict); H7 joins H6 on B, and C403, C404 and C419 reach their vias by short F tracks. D24 (2026-11-05): U302's cell re-composed (U302 turned 180 degrees, its passives mirrored about the chip's east-west axis: on B the cell had been seated as TI's top-view figure, so SW pin 7 faced away from L301); L201, C206, C207, C217 and the VBAT_FILT test points follow the input caps south, the L201 finger on In3 moves to x 115-119, y 59-71; both bucks' hot-loop copper on B (VBAT_FILT, SW, the REG output node, 3V3 at U303) and GND vias in every buck cap's GND pad and U302's exposed pad. D25 A (2026-11-05): a GND ring at 5 mm, 1 mm in from the edge; the interior stitching after routing. D26 A (2026-11-05): RMII and MDIO routed (rmii/route_rmii.sh, locked copper); In3's 3V3 plane and 1V5 island take a 0.12 mm minimum width so the 0.15 mm webs between U401's vias survive every refill.",
  "via": {
   "size": 0.45,
   "drill": 0.25,
@@ -873,7 +873,7 @@
     "In3.Cu"
    ],
    "priority": 0,
-   "min_width": 0.15,
+   "min_width": 0.12,
    "rects": [
     [
      40.0,
@@ -890,7 +890,7 @@
     "In3.Cu"
    ],
    "priority": 10,
-   "min_width": 0.15,
+   "min_width": 0.12,
    "poly": [
     [
      198.53,
@@ -1842,6 +1842,22 @@
    ],
    "min": 1,
    "max": 1
+  },
+  {
+   "name": "GND edge ring (5 mm pitch, 1 mm in; D25 A)",
+   "net": "GND",
+   "edge": {
+    "outline": [
+     40.0,
+     30.0,
+     270.0,
+     140.0
+    ],
+    "inset": 1.0
+   },
+   "pitch": 5.0,
+   "min": 0,
+   "max": 1000
   }
  ],
  "dogbones": [

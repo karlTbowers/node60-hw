@@ -17,7 +17,8 @@ SPEC.json:
              "rects": [[x0, y0, x1, y1], ...] | "board", "poly": [[x, y], ...],    # rects or one polygon
              "holes": [[x0, y0, x1, y1], ...]}],                                    # with "board" only
   "vias": [{"name": "VBAT_D corridor", "net": "/Power entry/VBAT_D",
-            "rect": [x0, y0, x1, y1] | "annulus": [cx, cy, r0, r1],
+            "rect": [x0, y0, x1, y1] | "annulus": [cx, cy, r0, r1] | "edge": {"outline": [x0, y0, x1, y1], "inset": 1.0}
+            (sites every pitch along the outline, inset), "avoid": [[x0, y0, x1, y1], ...],
             "toward": [[x, y], ...] (rank: nearest first), "min": 93, "max": 200,
             "clip": [x0, y0, x1, y1] (sites only inside: keep a via field within its own zone),
             "pitch": 0.65 (the field's own), "in_pad": ["U601", "17"] (vias inside that pad, filled and
@@ -104,6 +105,15 @@ def add_zone(board, z, outer):
 
 
 def sites(v, pitch):
+    if "edge" in v:                                      # a ring inset from the board's rectangular outline
+        x0, y0, x1, y1 = v["edge"]["outline"]
+        d = v["edge"]["inset"]
+        x0, y0, x1, y1 = x0 + d, y0 + d, x1 - d, y1 - d
+        out = []
+        for (ax, ay), (bx, by) in (((x0, y0), (x1, y0)), ((x1, y0), (x1, y1)), ((x1, y1), (x0, y1)), ((x0, y1), (x0, y0))):
+            n = max(1, int(round(math.hypot(bx - ax, by - ay) / pitch)))
+            out += [(ax + (bx - ax) * k / n, ay + (by - ay) * k / n) for k in range(n)]
+        return out
     if "rect" in v:
         x0, y0, x1, y1 = v["rect"]
         nx, ny = int((x1 - x0) / pitch) + 1, int((y1 - y0) / pitch) + 1
@@ -307,6 +317,8 @@ def main():
                        if p.GetNumber() == v["in_pad"][1])
             bb = pad.GetBoundingBox()
             return [M(bb.GetLeft()), M(bb.GetTop()), M(bb.GetRight()), M(bb.GetBottom())], None
+        if "edge" in v:
+            return None, None
         return v.get("rect"), v.get("annulus")
 
     regions = []
@@ -324,11 +336,19 @@ def main():
             if "mirror_net" in c:
                 ax = c["axis_x"]
                 regions.append((c["mirror_net"], [2 * ax - (rect[2] + dx), rect[1], 2 * ax - (rect[0] + dx), rect[3]], None))
+    edge_bands = [(v["net"], v["edge"]) for v in spec.get("vias", []) if "edge" in v]
     for t in list(board.GetTracks()):
         if t.Type() == pcbnew.PCB_VIA_T and t.IsLocked():
             x, y = M(t.GetPosition().x), M(t.GetPosition().y)
+            gone = False
+            for n, e in edge_bands:                       # an edge ring's previous vias: within its inset band
+                ox0, oy0, ox1, oy1 = e["outline"]
+                if t.GetNetname() == n and min(x - ox0, ox1 - x, y - oy0, oy1 - y) <= e["inset"] + 0.3:
+                    board.Delete(t); gone = True; break
+            if gone:
+                continue
             for n, rect, ann in regions:
-                if t.GetNetname() != n:
+                if t.GetNetname() != n or rect is None and ann is None:
                     continue
                 inside = (rect[0] - 0.01 <= x <= rect[2] + 0.01 and rect[1] - 0.01 <= y <= rect[3] + 0.01) if rect \
                     else math.hypot(x - ann[0], y - ann[1]) <= ann[3] + 0.01
@@ -381,6 +401,15 @@ def main():
             if c.OutlineCount():
                 cyards.append((fp.GetReference(), c, c.BBox(), nets))
     placed = [(M(t.GetPosition().x), M(t.GetPosition().y)) for t in board.GetTracks() if t.Type() == pcbnew.PCB_VIA_T]
+    # routed copper of other nets (tracks and vias), bucketed: a via site must clear it too, so via
+    # fields and stitching can be drawn after routing (2026-11-05)
+    tbucket = {}
+    for t in board.GetTracks():
+        bb = t.GetBoundingBox()
+        for i in range(int(M(bb.GetLeft()) // 5), int(M(bb.GetRight()) // 5) + 1):
+            for j in range(int(M(bb.GetTop()) // 5), int(M(bb.GetBottom()) // 5) + 1):
+                tbucket.setdefault((i, j), []).append(t)
+    copper_layers = [l for l in board.GetEnabledLayers().CuStack()]
     r = vsize / 2
     total = 0
     short = []
@@ -391,7 +420,8 @@ def main():
         if not (outer[0] + M(edge) + r <= x <= outer[2] - M(edge) - r and outer[1] + M(edge) + r <= y <= outer[3] - M(edge) - r):
             return False
         pt = pcbnew.VECTOR2I(F(x), F(y))
-        for p in bucket.get((int(x // 5), int(y // 5)), []):
+        near = {id(q): q for di in (-1, 0, 1) for dj in (-1, 0, 1) for q in bucket.get((int(x // 5) + di, int(y // 5) + dj), [])}
+        for p in near.values():                          # the 3 x 3 buckets: a part just over a bucket edge counts
             if own_pad is not None and p.GetParentFootprint().GetReference() == own_pad[0] and p.GetNumber() == own_pad[1]:
                 continue
             if same_ok and netname and p.GetNetname() == netname and not p.HasHole():
@@ -402,6 +432,16 @@ def main():
                 d = p.GetDrillSize()
                 if math.hypot(x - M(p.GetPosition().x), y - M(p.GetPosition().y)) < M(max(d.x, d.y)) / 2 + r + hclr:
                     return False
+        circle = pcbnew.SHAPE_CIRCLE(pt, F(r))
+        for t in {id(q): q for di in (-1, 0, 1) for dj in (-1, 0, 1)
+                  for q in tbucket.get((int(x // 5) + di, int(y // 5) + dj), [])}.values():
+            if netname and t.GetNetname() == netname:
+                continue
+            if t.Type() == pcbnew.PCB_VIA_T:
+                if math.hypot(x - M(t.GetPosition().x), y - M(t.GetPosition().y)) < r + M(t.GetWidth()) / 2 + clr:
+                    return False
+            elif t.GetEffectiveShape(t.GetLayer()).Collide(circle, F(clr)):
+                return False
         if own_pad is not None:
             return True
         for ref, c, bb, nets in cyards:
@@ -439,6 +479,8 @@ def main():
                 images.append((lambda x, y, ax=m["axis_x"]: (2 * ax - x, y), m["net"]))
         for x, y in sites(v, vp):
             if clip and not (clip[0] + r <= x <= clip[2] - r and clip[1] + r <= y <= clip[3] - r):
+                continue
+            if any(a_[0] - r <= x <= a_[2] + r and a_[1] - r <= y <= a_[3] + r for a_ in v.get("avoid", [])):
                 continue
             ok = True
             for k, (f_, n_) in enumerate(images):            # kept only if every image is free (identical outputs)

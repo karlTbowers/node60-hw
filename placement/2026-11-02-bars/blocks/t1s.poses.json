@@ -1,319 +1,319 @@
 {
- "block": "k501",
- "anchor": "K501",
- "approved": "2026-11-04 (user: shift U501 and its parts south; D16-1 A otherwise); U301 group added 2026-11-04 (user)",
- "anchor_pose": {
-  "x": 155.0,
-  "y": 64.33,
-  "rot": 0.0,
-  "side": "B"
- },
- "parts": {
-  "C501": {
-   "dx": -2.7,
-   "dy": -23.53,
-   "rot": 90.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "U501 3V3 decoupling at pin 8, bottom side (the top over U501 is under the T1S connector housings); placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
+  "block": "k501",
+  "anchor": "K501",
+  "approved": "2026-11-04 (user: shift U501 and its parts south; D16-1 A otherwise); U301 group added 2026-11-04 (user); Y501, R503, R504 moved for RMII 2026-11-05 (D26 A)",
+  "anchor_pose": {
+    "x": 155.0,
+    "y": 64.33,
+    "rot": 0.0,
+    "side": "B"
   },
-  "C503": {
-   "dx": 3.7,
-   "dy": -24.53,
-   "rot": 90.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "U501 3V3 decoupling at pin 18, bottom side (the top over U501 is under the T1S connector housings); placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
-  },
-  "C504": {
-   "dx": -1.7,
-   "dy": -24.53,
-   "rot": 90.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "U501 3V3 decoupling at pin 8, bottom side (the top over U501 is under the T1S connector housings); placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
-  },
-  "C505": {
-   "dx": -5.5,
-   "dy": -24.58,
-   "rot": 180.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "U501 3V3 bulk (10 uF) beside the PHY, bottom side; placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
-  },
-  "C506": {
-   "dx": 2.2,
-   "dy": -24.53,
-   "rot": 180.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "U501 3V3 decoupling at pin 18, bottom side (the top over U501 is under the T1S connector housings); placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
-  },
-  "C507": {
-   "dx": -2.25,
-   "dy": -17.33,
-   "rot": 0.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "U501 3V3 decoupling at pin 29, bottom side (the top over U501 is under the T1S connector housings); placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
-  },
-  "C508": {
-   "dx": 0.0,
-   "dy": -26.33,
-   "rot": 90.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "U501 3V3 bulk (10 uF) beside the PHY, bottom side; placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
-  },
-  "C509": {
-   "dx": 3.25,
-   "dy": -17.08,
-   "rot": 0.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "VDDAU 10 nF at U501 pin 25, B.Cu: the top side there is under both connectors' housings. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
-  },
-  "C510": {
-   "dx": 4.25,
-   "dy": -15.58,
-   "rot": 90.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "VDDAU 100 nF beside C509. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
-  },
-  "C511": {
-   "dx": -1.25,
-   "dy": -9.68,
-   "rot": 270.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "DC block on T1S_P under the trunk: pad 2 directly below the F.Cu trunk (one via is the whole tap), pad 1 1.9 mm from FL501 pin 4; mirror of C512 about x 155 (DEC-012 rev. B). Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
-  },
-  "C512": {
-   "dx": 1.25,
-   "dy": -9.68,
-   "rot": 270.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "DC block on T1S_N, mirror of C511 about x 155: PHY stub P and N 12.5 mm each by construction (t1s_stubs.py). Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
-  },
-  "C514": {
-   "dx": 3.5,
-   "dy": -7.08,
-   "rot": 90.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "Termination centre-tap capacitor to GND between the trunk and K501, at the centre tap's two resistors. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
-  },
-  "D501": {
-   "dx": 15.53,
-   "dy": -17.2764,
-   "rot": 90.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "ESD on T1S_P at J903, on the trunk just inside J903's inner pin (AN1718 2.0). Mirrored at J912 by D503 (D16-2 A). Stays at J903's pins (not shifted)."
-  },
-  "D502": {
-   "dx": 15.1386,
-   "dy": -19.3288,
-   "rot": 270.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "ESD on T1S_N at J903, beside D501. Mirrored at J912 by D504."
-  },
-  "D503": {
-   "dx": -15.53,
-   "dy": -17.276,
-   "rot": 90.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "ESD on T1S_P at J912 (D16-2 A, DEC-012 rev. C): D501 mirrored about the trunk's midpoint x 155, so both connectors are protected alike; 1.9 mm from J912 pin 1."
-  },
-  "D504": {
-   "dx": -15.139,
-   "dy": -19.329,
-   "rot": 270.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "ESD on T1S_N at J912: D502 mirrored about x 155."
-  },
-  "FL501": {
-   "dx": 0.0,
-   "dy": -14.405,
-   "rot": 270.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "Common-mode choke straight under U501's line pins (rot 270: PHY side 1/2 north, line side 4/3 south). Its P winding is on the west and U501's P pin on the east, so the pair crosses once between FL501 and U501 (pinouts; one line hops to F.Cu). Nothing else under it (AN1718 2.0). Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
-  },
-  "Q501": {
-   "dx": 8.25,
-   "dy": -0.08,
-   "rot": 90.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "Relay coil driver east of K501, inside the line zone, clear of the power entry's HGATE parts (C202, R202)."
-  },
-  "Q502": {
-   "dx": 8.25,
-   "dy": 2.67,
-   "rot": 90.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "Relay coil driver east of K501, inside the line zone, clear of the power entry's HGATE parts (C202, R202)."
-  },
-  "R501": {
-   "dx": 2.75,
-   "dy": -16.08,
-   "rot": 180.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "RBIAS (12.4 kΩ) at U501 pin 26, in the line zone's north-east corner, clear of the choke. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
-  },
-  "R503": {
-   "dx": 4.7,
-   "dy": -18.83,
-   "rot": 270.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "REFCLK series resistor (33 Ω) between Y501 and U501 pin 27. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
-  },
-  "R504": {
-   "dx": 5.75,
-   "dy": -18.83,
-   "rot": 270.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "RMII REF_CLK series resistor at Y501's output, toward U401. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
-  },
-  "R516": {
-   "dx": -6.0,
-   "dy": 2.42,
-   "rot": 90.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "1.5 kΩ P drop leg, west of K501 beside pin 2. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
-  },
-  "R517": {
-   "dx": -6.0,
-   "dy": -2.33,
-   "rot": 90.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "49.9 Ω P termination leg, west of K501 beside pin 4 (P_END). Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
-  },
-  "R518": {
-   "dx": 6.0,
-   "dy": 2.17,
-   "rot": 90.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "1.5 kΩ N drop leg, east of K501 beside pin 7, mirroring R516. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
-  },
-  "R519": {
-   "dx": 6.0,
-   "dy": -2.83,
-   "rot": 90.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "49.9 Ω N termination leg, east of K501 beside pin 5 (N_END), mirroring R517. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
-  },
-  "R520": {
-   "dx": 6.25,
-   "dy": -6.33,
-   "rot": 0.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "Centre-tap bleed resistor beside C514. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
-  },
-  "R521": {
-   "dx": 7.75,
-   "dy": -2.33,
-   "rot": 270.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "Relay set-coil drive pull-down beside Q502, east of K501, inside the line zone."
-  },
-  "U501": {
-   "dx": 1.0,
-   "dy": -20.78,
-   "rot": 0.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "LAN8670 PHY moved north of the trunk (D16, user 2026-11-03: short, matched stubs; either port may be the used one): line pins 30/31 on its south edge centred on the trunk's midpoint x 155.0, 9 mm north of it; RMII leaves its west, north and east edges toward U401 (36 mm body to body, plan's 25 mm intent exceeded, on D16). Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
-  },
-  "Y501": {
-   "dx": 6.0,
-   "dy": -21.83,
-   "rot": 180.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "50 MHz oscillator east of U501, outside the line zone so its clock stays off the T1S chain; UNDER_Y501 keeps foreign nets out from under it. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
-  },
-  "U301": {
-   "dx": 6.25,
-   "dy": -16.58,
-   "rot": 180.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "VDDAU_AON regulator (TPS7B8133); its only load is U501 pin 25, so it sits beside U501, output pin 6 2.8 mm from pin 25 (user, 2026-11-04: it was 70 mm away by the output switches). Input from VBAT_PROT by via to the In3 plane."
-  },
-  "R301": {
-   "dx": 2.75,
-   "dy": -15.08,
-   "rot": 180.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "0 ohm debug link VDDAU_AON_REG -> VDDAU_AON (CLAUDE.md), between U301 pin 6 (3.0 mm) and U501 pin 25 (3.3 mm)."
-  },
-  "C301": {
-   "dx": 10.25,
-   "dy": -16.33,
-   "rot": 0.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "U301 input capacitor (1 uF, VBAT_PROT) at pins 1/2, 1.8 mm."
-  },
-  "C302": {
-   "dx": 6.25,
-   "dy": -14.58,
-   "rot": 0.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "U301 output capacitor (2.2 uF) at pin 6, 2.7 mm; bottom side (was top)."
+  "parts": {
+    "C501": {
+      "dx": -2.7,
+      "dy": -23.53,
+      "rot": 90.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "U501 3V3 decoupling at pin 8, bottom side (the top over U501 is under the T1S connector housings); placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
+    },
+    "C503": {
+      "dx": 3.7,
+      "dy": -24.53,
+      "rot": 90.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "U501 3V3 decoupling at pin 18, bottom side (the top over U501 is under the T1S connector housings); placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
+    },
+    "C504": {
+      "dx": -1.7,
+      "dy": -24.53,
+      "rot": 90.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "U501 3V3 decoupling at pin 8, bottom side (the top over U501 is under the T1S connector housings); placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
+    },
+    "C505": {
+      "dx": -5.5,
+      "dy": -24.58,
+      "rot": 180.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "U501 3V3 bulk (10 uF) beside the PHY, bottom side; placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
+    },
+    "C506": {
+      "dx": 2.2,
+      "dy": -24.53,
+      "rot": 180.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "U501 3V3 decoupling at pin 18, bottom side (the top over U501 is under the T1S connector housings); placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
+    },
+    "C507": {
+      "dx": -2.25,
+      "dy": -17.33,
+      "rot": 0.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "U501 3V3 decoupling at pin 29, bottom side (the top over U501 is under the T1S connector housings); placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
+    },
+    "C508": {
+      "dx": 0.0,
+      "dy": -26.33,
+      "rot": 90.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "U501 3V3 bulk (10 uF) beside the PHY, bottom side; placed 2026-11-04 (it had stayed at the PHY's pre-D16 spot)."
+    },
+    "C509": {
+      "dx": 3.25,
+      "dy": -17.08,
+      "rot": 0.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "VDDAU 10 nF at U501 pin 25, B.Cu: the top side there is under both connectors' housings. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
+    },
+    "C510": {
+      "dx": 4.25,
+      "dy": -15.58,
+      "rot": 90.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "VDDAU 100 nF beside C509. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
+    },
+    "C511": {
+      "dx": -1.25,
+      "dy": -9.68,
+      "rot": 270.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "DC block on T1S_P under the trunk: pad 2 directly below the F.Cu trunk (one via is the whole tap), pad 1 1.9 mm from FL501 pin 4; mirror of C512 about x 155 (DEC-012 rev. B). Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
+    },
+    "C512": {
+      "dx": 1.25,
+      "dy": -9.68,
+      "rot": 270.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "DC block on T1S_N, mirror of C511 about x 155: PHY stub P and N 12.5 mm each by construction (t1s_stubs.py). Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
+    },
+    "C514": {
+      "dx": 3.5,
+      "dy": -7.08,
+      "rot": 90.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "Termination centre-tap capacitor to GND between the trunk and K501, at the centre tap's two resistors. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
+    },
+    "D501": {
+      "dx": 15.53,
+      "dy": -17.2764,
+      "rot": 90.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "ESD on T1S_P at J903, on the trunk just inside J903's inner pin (AN1718 2.0). Mirrored at J912 by D503 (D16-2 A). Stays at J903's pins (not shifted)."
+    },
+    "D502": {
+      "dx": 15.1386,
+      "dy": -19.3288,
+      "rot": 270.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "ESD on T1S_N at J903, beside D501. Mirrored at J912 by D504."
+    },
+    "D503": {
+      "dx": -15.53,
+      "dy": -17.276,
+      "rot": 90.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "ESD on T1S_P at J912 (D16-2 A, DEC-012 rev. C): D501 mirrored about the trunk's midpoint x 155, so both connectors are protected alike; 1.9 mm from J912 pin 1."
+    },
+    "D504": {
+      "dx": -15.139,
+      "dy": -19.329,
+      "rot": 270.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "ESD on T1S_N at J912: D502 mirrored about x 155."
+    },
+    "FL501": {
+      "dx": 0.0,
+      "dy": -14.405,
+      "rot": 270.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "Common-mode choke straight under U501's line pins (rot 270: PHY side 1/2 north, line side 4/3 south). Its P winding is on the west and U501's P pin on the east, so the pair crosses once between FL501 and U501 (pinouts; one line hops to F.Cu). Nothing else under it (AN1718 2.0). Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
+    },
+    "Q501": {
+      "dx": 8.25,
+      "dy": -0.08,
+      "rot": 90.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "Relay coil driver east of K501, inside the line zone, clear of the power entry's HGATE parts (C202, R202)."
+    },
+    "Q502": {
+      "dx": 8.25,
+      "dy": 2.67,
+      "rot": 90.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "Relay coil driver east of K501, inside the line zone, clear of the power entry's HGATE parts (C202, R202)."
+    },
+    "R501": {
+      "dx": 2.75,
+      "dy": -16.08,
+      "rot": 180.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "RBIAS (12.4 kΩ) at U501 pin 26, in the line zone's north-east corner, clear of the choke. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
+    },
+    "R503": {
+      "dx": 8.0,
+      "dy": -21.43,
+      "rot": 270.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "REFCLK series resistor (33 ohm) for U501 pin 27, about 3.5 mm from Y501's output (D26 A, 2026-11-05; was south of the oscillator, in the RX pins' way once Y501 moved)."
+    },
+    "R504": {
+      "dx": 7.05,
+      "dy": -21.03,
+      "rot": 270.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "RMII REF_CLK series resistor at Y501's output, toward U401, about 3.5 mm from it (D26 A, 2026-11-05)."
+    },
+    "R516": {
+      "dx": -6.0,
+      "dy": 2.42,
+      "rot": 90.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "1.5 kΩ P drop leg, west of K501 beside pin 2. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
+    },
+    "R517": {
+      "dx": -6.0,
+      "dy": -2.33,
+      "rot": 90.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "49.9 Ω P termination leg, west of K501 beside pin 4 (P_END). Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
+    },
+    "R518": {
+      "dx": 6.0,
+      "dy": 2.17,
+      "rot": 90.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "1.5 kΩ N drop leg, east of K501 beside pin 7, mirroring R516. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
+    },
+    "R519": {
+      "dx": 6.0,
+      "dy": -2.83,
+      "rot": 90.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "49.9 Ω N termination leg, east of K501 beside pin 5 (N_END), mirroring R517. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
+    },
+    "R520": {
+      "dx": 6.25,
+      "dy": -6.33,
+      "rot": 0.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "Centre-tap bleed resistor beside C514. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
+    },
+    "R521": {
+      "dx": 7.75,
+      "dy": -2.33,
+      "rot": 270.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "Relay set-coil drive pull-down beside Q502, east of K501, inside the line zone."
+    },
+    "U501": {
+      "dx": 1.0,
+      "dy": -20.78,
+      "rot": 0.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "LAN8670 PHY moved north of the trunk (D16, user 2026-11-03: short, matched stubs; either port may be the used one): line pins 30/31 on its south edge centred on the trunk's midpoint x 155.0, 9 mm north of it; RMII leaves its west, north and east edges toward U401 (36 mm body to body, plan's 25 mm intent exceeded, on D16). Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to)."
+    },
+    "Y501": {
+      "dx": 8.0,
+      "dy": -24.18,
+      "rot": 90.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "50 MHz oscillator east of U501, outside the line zone so its clock stays off the T1S chain; UNDER_Y501 keeps foreign nets off B.Cu and In4 under it. Moved 2 mm east and turned 90 degrees in D26 A (2026-11-05): its courtyard had sat 0.33 mm from U501's east pads, so RX pins 19-21 could not escape."
+    },
+    "U301": {
+      "dx": 6.25,
+      "dy": -16.58,
+      "rot": 180.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "VDDAU_AON regulator (TPS7B8133); its only load is U501 pin 25, so it sits beside U501, output pin 6 2.8 mm from pin 25 (user, 2026-11-04: it was 70 mm away by the output switches). Input from VBAT_PROT by via to the In3 plane."
+    },
+    "R301": {
+      "dx": 2.75,
+      "dy": -15.08,
+      "rot": 180.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "0 ohm debug link VDDAU_AON_REG -> VDDAU_AON (CLAUDE.md), between U301 pin 6 (3.0 mm) and U501 pin 25 (3.3 mm)."
+    },
+    "C301": {
+      "dx": 10.25,
+      "dy": -16.33,
+      "rot": 0.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "U301 input capacitor (1 uF, VBAT_PROT) at pins 1/2, 1.8 mm."
+    },
+    "C302": {
+      "dx": 6.25,
+      "dy": -14.58,
+      "rot": 0.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "U301 output capacitor (2.2 uF) at pin 6, 2.7 mm; bottom side (was top)."
+    }
   }
- }
 }
