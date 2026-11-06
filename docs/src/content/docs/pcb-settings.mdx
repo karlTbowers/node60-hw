@@ -35,7 +35,7 @@ Six copper layers: F.Cu, In1.Cu–In4.Cu, B.Cu. The inner layers carry user name
 | F.Cu | Top. Decoupling caps, D201, J401, the busbars' copper and the T1S trunk |
 | In1.Cu | GND plane |
 | In2.Cu | Signals north of y 70 mm (rule area `SIGNAL_WINDOW_In2Cu_1`), VBAT_PROT south of it |
-| In3.Cu | VBAT_PROT in the power band (x 72–238, y 71–122; 2026-11-04) with fingers north to L201 and U301; 3V3_MAIN north of y 70.8 with a 1V5_CORE island from U401's core to R303 (D22 A, 2026-11-04); no tracks |
+| In3.Cu | VBAT_PROT in the power band (x 72–238, y 71–122; 2026-11-04) with fingers north to L201 and U301; 3V3_MAIN everywhere else (north of y 70.8 with a 1V5_CORE island from U401's core to R303, D22 A, 2026-11-04; since D29 C, 2026-11-05, also the margins x < 72 and x > 238 and the strip y > 122 under the output connectors, which feed the output cells' pockets from below); no tracks |
 | In4.Cu | GND plane |
 | B.Cu | Bottom, where nearly every part sits |
 

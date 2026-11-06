@@ -874,14 +874,25 @@
    ],
    "priority": 0,
    "min_width": 0.12,
-   "rects": [
+   "poly": [
     [
-     40.0,
-     30.0,
-     270.0,
-     70.8
+     40,
+     30
+    ],
+    [
+     270,
+     30
+    ],
+    [
+     270,
+     140
+    ],
+    [
+     40,
+     140
     ]
-   ]
+   ],
+   "why": "D29 C (user, 2026-11-05): the whole of In3 not taken by VBAT_PROT (priority 5), the entry's In3 pours and the 1V5 island (10): the north plane plus the free margins x < 72, x > 238 and the strip y > 122, which feed the output cells' pockets from below"
   },
   {
    "name": "PWR_1V5_CORE_In3",
@@ -2485,6 +2496,150 @@
      "GND"
     ]
    ]
+  },
+  {
+   "name": "3V3 into the power band (C): R601 (pocket, west)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     73.25,
+     122.6,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "3V3 into the power band (C): R601 (pocket, west)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     71.85,
+     114.2,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "3V3 into the power band (C): R701 (pocket, middle)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     147.7,
+     122.6,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "3V3 into the power band (C): R701 (pocket, middle)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     146.5,
+     114.2,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "3V3 into the power band (C): R801 (pocket, east)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     222.35,
+     122.6,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "3V3 into the power band (C): R801 (pocket, east)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     221.15,
+     114.2,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "3V3 into the power band (C): R607 (NTC, west)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     71.5,
+     102.8,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "3V3 into the power band (C): R807 (NTC, east)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     216.6,
+     70.4,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "3V3 into the power band (C): R211 and C215 from the R807 line",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     218.0,
+     94.6,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "3V3 into the power band (C): R211 and C215 from the R807 line",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     191.8,
+     89.2,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "3V3 into the power band (C): INA228 U202",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     161.9,
+     70.4,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "3V3 into the power band (C): TMP175 U203",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     120.556,
+     70.4,
+     "3V3_MAIN"
+    ]
+   ]
   }
  ],
  "stubs": [
@@ -3143,6 +3298,405 @@
      150.5,
      78.9,
      "/Power entry/VBAT_D"
+    ]
+   ]
+  },
+  {
+   "name": "3V3 into the power band (C): R601 (pocket, west)",
+   "layer": "F.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     73.25,
+     122.6,
+     73.25,
+     115.6,
+     "3V3_MAIN"
+    ],
+    [
+     73.25,
+     115.6,
+     71.85,
+     114.2,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "3V3 into the power band (C): R601 (pocket, west)",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     71.85,
+     114.2,
+     71.85,
+     113.6,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "3V3 into the power band (C): R701 (pocket, middle)",
+   "layer": "F.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     147.7,
+     122.6,
+     147.7,
+     115.4,
+     "3V3_MAIN"
+    ],
+    [
+     147.7,
+     115.4,
+     146.5,
+     114.2,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "3V3 into the power band (C): R701 (pocket, middle)",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     146.5,
+     114.2,
+     146.5,
+     113.6,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "3V3 into the power band (C): R801 (pocket, east)",
+   "layer": "F.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     222.35,
+     122.6,
+     222.35,
+     115.4,
+     "3V3_MAIN"
+    ],
+    [
+     222.35,
+     115.4,
+     221.15,
+     114.2,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "3V3 into the power band (C): R801 (pocket, east)",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     221.15,
+     114.2,
+     221.15,
+     113.6,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "3V3 into the power band (C): R607 (NTC, west)",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     71.5,
+     102.8,
+     76.5,
+     102.8,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "3V3 into the power band (C): R807 (NTC, east)",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     216.6,
+     70.4,
+     216.6,
+     93.6,
+     "3V3_MAIN"
+    ],
+    [
+     216.6,
+     93.6,
+     225.8,
+     102.8,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "3V3 into the power band (C): R707 (NTC, middle) from the R607 line",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     77.2,
+     102.6,
+     88.6,
+     102.6,
+     "3V3_MAIN"
+    ],
+    [
+     88.6,
+     102.6,
+     93.6,
+     107.6,
+     "3V3_MAIN"
+    ],
+    [
+     93.6,
+     107.6,
+     96.2,
+     107.6,
+     "3V3_MAIN"
+    ],
+    [
+     96.2,
+     107.6,
+     96.6,
+     108.0,
+     "3V3_MAIN"
+    ],
+    [
+     96.6,
+     108.0,
+     99.0,
+     108.0,
+     "3V3_MAIN"
+    ],
+    [
+     99.0,
+     108.0,
+     99.4,
+     107.6,
+     "3V3_MAIN"
+    ],
+    [
+     99.4,
+     107.6,
+     101.6,
+     107.6,
+     "3V3_MAIN"
+    ],
+    [
+     101.6,
+     107.6,
+     101.8,
+     107.8,
+     "3V3_MAIN"
+    ],
+    [
+     101.8,
+     107.8,
+     102.0,
+     107.6,
+     "3V3_MAIN"
+    ],
+    [
+     102.0,
+     107.6,
+     105.4,
+     107.6,
+     "3V3_MAIN"
+    ],
+    [
+     105.4,
+     107.6,
+     105.8,
+     108.0,
+     "3V3_MAIN"
+    ],
+    [
+     105.8,
+     108.0,
+     107.6,
+     108.0,
+     "3V3_MAIN"
+    ],
+    [
+     107.6,
+     108.0,
+     108.0,
+     107.6,
+     "3V3_MAIN"
+    ],
+    [
+     108.0,
+     107.6,
+     123.4,
+     107.6,
+     "3V3_MAIN"
+    ],
+    [
+     123.4,
+     107.6,
+     131.4,
+     99.6,
+     "3V3_MAIN"
+    ],
+    [
+     131.4,
+     99.6,
+     148.2,
+     99.6,
+     "3V3_MAIN"
+    ],
+    [
+     148.2,
+     99.6,
+     151.2,
+     102.6,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "3V3 into the power band (C): R211 and C215 from the R807 line",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     226.0,
+     102.6,
+     218.0,
+     94.6,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "3V3 into the power band (C): R211 and C215 from the R807 line",
+   "layer": "F.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     218.0,
+     94.6,
+     217.8,
+     94.4,
+     "3V3_MAIN"
+    ],
+    [
+     217.8,
+     94.4,
+     217.8,
+     90.0,
+     "3V3_MAIN"
+    ],
+    [
+     217.8,
+     90.0,
+     217.6,
+     89.8,
+     "3V3_MAIN"
+    ],
+    [
+     217.6,
+     89.8,
+     208.2,
+     89.8,
+     "3V3_MAIN"
+    ],
+    [
+     208.2,
+     89.8,
+     208.0,
+     89.6,
+     "3V3_MAIN"
+    ],
+    [
+     208.0,
+     89.6,
+     207.8,
+     89.8,
+     "3V3_MAIN"
+    ],
+    [
+     207.8,
+     89.8,
+     192.4,
+     89.8,
+     "3V3_MAIN"
+    ],
+    [
+     192.4,
+     89.8,
+     191.8,
+     89.2,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "3V3 into the power band (C): R211 and C215 from the R807 line",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     191.8,
+     89.2,
+     191.2,
+     88.6,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "3V3 into the power band (C): INA228 U202",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     161.9,
+     70.4,
+     161.9,
+     76.8,
+     "3V3_MAIN"
+    ],
+    [
+     161.9,
+     76.8,
+     160.5,
+     78.2,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "3V3 into the power band (C): TMP175 U203",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     120.556,
+     70.4,
+     120.556,
+     71.0,
+     "3V3_MAIN"
+    ],
+    [
+     120.556,
+     71.0,
+     119.956,
+     71.6,
+     "3V3_MAIN"
     ]
    ]
   }
