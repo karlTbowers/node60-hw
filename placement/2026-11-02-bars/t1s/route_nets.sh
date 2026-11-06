@@ -3,6 +3,7 @@
 # (Node60, D28; generalised from route_txd0.sh for the relay termination, 2026-11-05).
 # As rmii/route_clock.sh: the judge's preparation up to the crystal (no diff step: the T1S line is
 # already drawn), UNDER_Y401/Y501 via-free and the trunk's F.Cu corridor closed for the router.
+# TW, VIA, DRILL and FAB override the track width, via and fab file (power joins: 0.3 mm, 0.45/0.25).
 set -e
 IN=$1; OUT=$2; shift 2
 HERE=${0:A:h}; RUN=${HERE:h}
@@ -63,6 +64,6 @@ b.Save(sys.argv[1])
 PY
 cd $KRT
 $PY -X utf8 py_router/route.py $OUT/r0.kicad_pcb $OUT/r1.kicad_pcb --nets "$@" --no-bga-zones --clearance 0.15 --clearance-ceiling 0.15 \
-    --track-width 0.15 --via-size 0.35 --via-drill 0.2 --fab-tier standard --escalation off --fab-overrides $RUN/rmii/fab.txt --max-ripup 5 \
+    --track-width ${TW:-0.15} --via-size ${VIA:-0.35} --via-drill ${DRILL:-0.2} --fab-tier standard --escalation off --fab-overrides ${FAB:-$RUN/rmii/fab.txt} --max-ripup 5 \
     --layers F.Cu In1.Cu In2.Cu In3.Cu In4.Cu B.Cu --layer-costs 1.0 -1.0 1.0 -1.0 -1.0 1.0 > $OUT/r1.log 2>&1 || true
 grep -h "Single-ended" $OUT/r1.log | tail -1
