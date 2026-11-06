@@ -62,8 +62,11 @@ def main(out):
     tracks, vias = [], []
     # trunk: straight and coupled from x 140.35 to 169.65; fans out to the pins without running parallel
     S = 0.45                                              # tap stub: trunk line to its via
-    XN = 149.815                                          # N's tap via straight above its In2 line
-    XP = TAP_XP
+    if SWAP:      # FL501/K501 swapped (user, 2026-11-05): P east along the chain, N's via straight above its In2 line
+        XN, XP = TAP_XP, 149.815
+    else:
+        XN = 149.815                                      # N's tap via straight above its In2 line
+        XP = TAP_XP
     n_trunk = [(133.4, 46.0), (134.75, 44.65), (138.4, 44.65), (139.86, 45.35), (139.86 + (YN - 45.35), YN), (XN, YN), (171.4, YN)]
     p_trunk = [(138.6, YP), (XP, YP), (169.65, YP), (170.53, 46.7), (171.5, 47.35), (175.25, 47.35), (176.6, 46.0)]
     tracks += [trk("/T1S_N", "F.Cu", n_trunk), trk("/T1S_P", "F.Cu", p_trunk)]
@@ -74,39 +77,62 @@ def main(out):
     tracks += [trk("/T1S_P", "F.Cu", [(XP, YP), (XP, YP + S)]), trk("/T1S_N", "F.Cu", [(XN, YN), (XN, YN - S)])]
     vias += [via("/T1S_P", XP, YP + S), via("/T1S_N", XN, YN - S)]
     # the pair's centre line: south at x XN - H, south-east until its centre reaches x 155, south, split
-    cx = XN - H
+    cx = XN + H if SWAP else XN - H
     y3 = 54.3
     y2 = y3 - 0.3
     y1 = y2 - (155.0 - cx)
     centre = [(cx, 47.6), (cx, y1), (155.0, y2), (155.0, y3)]
-    pl, nl = offset_path(centre, H), offset_path(centre, -H)   # P west / south-west, N east / north-east
-    p_tap = [(XP, YP + S), (XP, YP + S + 0.5), (pl[0][0], YP + S + 0.5 + (pl[0][0] - XP))] + pl[1:] + [(153.75, y3 + (155.0 - H - 153.75)), (153.75, 56.1)]
-    # N's lead-in split above T1S_COUPLED_IN2, which starts at y 48.0, so only the coupled part is checked
-    n_tap = [(XN, YN - S), (XN, 47.8)] + nl[1:] + [(156.25, y3 + (156.25 - 155.0 - H)), (156.25, 56.1)]
+    west, east = offset_path(centre, H), offset_path(centre, -H)   # west / south-west, east / north-east
+    if SWAP:
+        # P east: its via south of the trunk jogs west onto its line; N straight down from its via
+        p_tap = [(XP, YP + S), (XP, YP + S + 0.5), (east[0][0], YP + S + 0.5 + (XP - east[0][0]))] + east[1:] + [(156.25, y3 + (156.25 - 155.0 - H)), (156.25, 56.1)]
+        n_tap = [(XN, YN - S), (XN, 47.8)] + west[1:] + [(153.75, y3 + (155.0 - H - 153.75)), (153.75, 56.1)]
+        xp_cap, xn_cap, xp_k, xn_k = 156.25, 153.75, 158.5, 151.5      # C511 east, C512 west; K501 pin 6 (P), 3 (N)
+    else:
+        p_tap = [(XP, YP + S), (XP, YP + S + 0.5), (west[0][0], YP + S + 0.5 + (west[0][0] - XP))] + west[1:] + [(153.75, y3 + (155.0 - H - 153.75)), (153.75, 56.1)]
+        # N's lead-in split above T1S_COUPLED_IN2, which starts at y 48.0, so only the coupled part is checked
+        n_tap = [(XN, YN - S), (XN, 47.8)] + east[1:] + [(156.25, y3 + (156.25 - 155.0 - H)), (156.25, 56.1)]
+        xp_cap, xn_cap, xp_k, xn_k = 153.75, 156.25, 151.5, 158.5
     tracks += [trk("/T1S_P", "In2.Cu", p_tap), trk("/T1S_N", "In2.Cu", n_tap)]
-    vias += [via("/T1S_P", 153.75, 56.1), via("/T1S_N", 156.25, 56.1)]              # C511/C512 pad 2
-    tracks += [trk("/T1S_P", "B.Cu", [(153.75, 56.1), (153.75, 62.73), (151.5, 62.73)]),   # K501 pin 3
-               trk("/T1S_N", "B.Cu", [(156.25, 56.1), (156.25, 62.73), (158.5, 62.73)])]   # K501 pin 6
-    # CMC pair: cap pad 1 to FL501 4 (P) / 3 (N)
-    tracks += [trk("/T1S/T1S_CMC_P", "B.Cu", [(153.75, 52.6), (154.5, 51.85)]),
-               trk("/T1S/T1S_CMC_N", "B.Cu", [(156.25, 52.6), (155.5, 51.85)])]
-    # PHY pair: N on B.Cu, P over it on F.Cu
-    tracks += [trk("/T1S/T1S_PHY_N", "B.Cu", [(154.75, 46.3), (154.75, 47.15), (155.5, 47.9)]),
-               trk("/T1S/T1S_PHY_P", "B.Cu", [(155.25, 46.3), (155.25, 46.85)]),
-               trk("/T1S/T1S_PHY_P", "F.Cu", [(155.25, 46.85), (154.5, 48.0)])]
-    vias += [via("/T1S/T1S_PHY_P", 155.25, 46.85), via("/T1S/T1S_PHY_P", 154.5, 48.0)]
+    vias += [via("/T1S_P", xp_cap, 56.1), via("/T1S_N", xn_cap, 56.1)]              # C511/C512 pad 2
+    tracks += [trk("/T1S_P", "B.Cu", [(xp_cap, 56.1), (xp_cap, 62.73), (xp_k, 62.73)]),   # K501's P pole
+               trk("/T1S_N", "B.Cu", [(xn_cap, 56.1), (xn_cap, 62.73), (xn_k, 62.73)])]   # K501's N pole
+    if SWAP:
+        # CMC pair: cap pad 1 to FL501 3 (P) / 4 (N); PHY pair straight from FL501 2 (P) / 1 (N) to U501 30 / 31
+        tracks += [trk("/T1S/T1S_CMC_P", "B.Cu", [(156.25, 52.6), (155.5, 51.85)]),
+                   trk("/T1S/T1S_CMC_N", "B.Cu", [(153.75, 52.6), (154.5, 51.85)])]
+        tracks += [trk("/T1S/T1S_PHY_P", "B.Cu", [(155.5, 47.9), (155.5, 47.4), (155.25, 47.15), (155.25, 46.3)]),
+                   trk("/T1S/T1S_PHY_N", "B.Cu", [(154.5, 47.9), (154.5, 47.4), (154.75, 47.15), (154.75, 46.3)])]
+    else:
+        # CMC pair: cap pad 1 to FL501 4 (P) / 3 (N)
+        tracks += [trk("/T1S/T1S_CMC_P", "B.Cu", [(153.75, 52.6), (154.5, 51.85)]),
+                   trk("/T1S/T1S_CMC_N", "B.Cu", [(156.25, 52.6), (155.5, 51.85)])]
+        # PHY pair: N on B.Cu, P over it on F.Cu
+        tracks += [trk("/T1S/T1S_PHY_N", "B.Cu", [(154.75, 46.3), (154.75, 47.15), (155.5, 47.9)]),
+                   trk("/T1S/T1S_PHY_P", "B.Cu", [(155.25, 46.3), (155.25, 46.85)]),
+                   trk("/T1S/T1S_PHY_P", "F.Cu", [(155.25, 46.85), (154.5, 48.0)])]
+        vias += [via("/T1S/T1S_PHY_P", 155.25, 46.85), via("/T1S/T1S_PHY_P", 154.5, 48.0)]
     # VDDA: pin 29 to a 3V3 via in C502's pad 1 (C502 on F.Cu, upright); REFCLK via moved east
     tracks += [dict(trk("3V3_MAIN", "B.Cu", [(155.75, 46.3), (155.75, 46.75), (156.3, 47.3)], 0.2), locked=False),
                trk("/T1S/T1S_REFCLK", "B.Cu", [(156.75, 46.0), (157.0, 47.35)], 0.15),
                trk("/T1S/T1S_REFCLK", "In2.Cu", [(157.0, 47.35), (156.8, 46.0)], 0.15)]
     vias += [via("/T1S/T1S_REFCLK", 157.0, 47.35)]      # the VDDA via is draw_power.py's (a "points" entry)
+    moves = {"C502": {"x": 156.3, "y": 47.76, "rot": C502_ROT, "side": "F"}}
+    if SWAP:      # the P-side parts change sides with P: C511 (P) east, C512 west; the termination resistors swap
+        moves.update({"C511": {"x": 156.25, "y": 54.65, "rot": -90.0, "side": "B"}, "C512": {"x": 153.75, "y": 54.65, "rot": -90.0, "side": "B"},
+                      "R516": {"x": 161.0, "y": 66.75, "rot": 90.0, "side": "B"}, "R517": {"x": 161.0, "y": 62.0, "rot": 90.0, "side": "B"},
+                      "R518": {"x": 149.0, "y": 66.5, "rot": 90.0, "side": "B"}, "R519": {"x": 149.0, "y": 61.5, "rot": 90.0, "side": "B"}})
     spec = {
-        "moves": {"C502": {"x": 156.3, "y": 47.76, "rot": C502_ROT, "side": "F"}},
+        "moves": moves,
         "delete": [{"net": "3V3_MAIN", "rect": [154.8, 45.8, 155.2, 47.0]},        # C502's old track and via
                    {"net": "3V3_MAIN", "rect": [152.2, 46.9, 152.4, 47.1]},        # C507's pad via (corridor)
                    {"net": "3V3_MAIN", "rect": [164.15, 46.1, 164.35, 46.3]},      # R506's pad via (corridor)
                    {"net": "/T1S/T1S_REFCLK", "rect": [156.7, 46.05, 156.8, 47.5]},  # REFCLK via, its B and In2 stubs
-                   {"net": "/RMII0_T1S_TXD0"}],                                    # re-routed by KRT
+                   {"net": "/RMII0_T1S_TXD0"}]                                     # re-routed by KRT
+                  + ([{"net": n} for n in ("/T1S_P", "/T1S_N", "/T1S/T1S_CMC_P", "/T1S/T1S_CMC_N", "/T1S/T1S_PHY_P",
+                                           "/T1S/T1S_PHY_N", "/T1S/T1S_P_DROP", "/T1S/T1S_P_END", "/T1S/T1S_N_DROP",
+                                           "/T1S/T1S_N_END", "/T1S/T1S_TERM_CT", "/T1S/T1S_TERM_COIL_S",
+                                           "/T1S/T1S_TERM_COIL_R", "/T1S_TERM_DROP", "/T1S_TERM_END")] if SWAP else []),
         "tracks": tracks, "vias": vias,
         "areas": [{"name": "T1S_PINS_U501", "layers": ["B.Cu"], "rect": [154.0, 45.5, 156.55, 47.55]},
                   {"name": "T1S_COUPLED_F", "layers": ["F.Cu"], "rect": [140.6, 45.6, 169.4, 46.4]},
@@ -119,6 +145,7 @@ def main(out):
 
 TAP_XP = float(sys.argv[2]) if len(sys.argv) > 2 else 149.0
 C502_ROT = float(sys.argv[3]) if len(sys.argv) > 3 else 90.0
+SWAP = len(sys.argv) > 4 and sys.argv[4] == "swap"      # FL501/K501 swapped (needs swap_pins.py on the board)
 
 
 if __name__ == "__main__":

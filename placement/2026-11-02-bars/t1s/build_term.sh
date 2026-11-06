@@ -15,6 +15,6 @@ cp $IN $OUT/m0.kicad_pcb; for x in pro dru; do cp ${IN:r}.kicad_$x $OUT/m0.kicad
 rm -rf $OUT/ra $OUT/rb
 zsh $HERE/route_nets.sh $OUT/m0.kicad_pcb $OUT/ra $LEGS 2>/dev/null | tail -1
 $KP $HERE/../rmii/transplant_nets.py $OUT/ra/r1.kicad_pcb $OUT/m0.kicad_pcb $OUT/m1.kicad_pcb $LEGS --lock 2>/dev/null
-zsh $HERE/route_nets.sh $OUT/m1.kicad_pcb $OUT/rb $REST 2>/dev/null | tail -1
+T1S_TRACK_KEEPOUT=1 zsh $HERE/route_nets.sh $OUT/m1.kicad_pcb $OUT/rb $REST 2>/dev/null | tail -1
 $KP $HERE/../rmii/transplant_nets.py $OUT/rb/r1.kicad_pcb $OUT/m1.kicad_pcb $OUT/m2.kicad_pcb $REST --lock 2>/dev/null
 (cd $OUT && kicad-cli pcb drc --severity-all --refill-zones --save-board --format json -o drc_m2.json m2.kicad_pcb >/dev/null 2>&1) || true
