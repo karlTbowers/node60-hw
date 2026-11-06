@@ -7526,7 +7526,7 @@
 			)
 		)
 	)
-	(hierarchical_label "OUT_A"
+	(hierarchical_label "OUT_B"
 		(shape output)
 		(at 322.58 142.24 0)
 		(effects
@@ -7850,7 +7850,7 @@
 			)
 		)
 	)
-	(hierarchical_label "OUT_B"
+	(hierarchical_label "OUT_A"
 		(shape output)
 		(at 322.58 160.02 0)
 		(effects

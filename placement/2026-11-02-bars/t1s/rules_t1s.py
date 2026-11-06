@@ -8,8 +8,8 @@
 - "T1S pairs coupled" (gap 0.14-0.16 mm) applies where the line is meant to be coupled: inside
   T1S_COUPLED_F (the trunk's middle on F.Cu) and T1S_COUPLED_IN2 (the taps' pair on In2). KiCad checks it on
   every parallel stretch of P and N however far apart (relay legs 2.5 mm apart, pin fan-outs).
-- The PHY pair's skew limit becomes 4.5 mm: its crossing (FL501's P winding sits west, U501's P pin east)
-  puts two through-board vias on P, 2 mm each in KiCad's length; the CMC pair keeps 0.5 mm.
+- The PHY pair has a skew rule of its own, 0.5 mm like the CMC pair's (D28 had 4.5 mm for a crossing that
+  D31's FL501/K501 swap removed).
 """
 import sys
 
@@ -37,11 +37,11 @@ rep = [('''(rule "T1S 0.75 mm from other nets"
 	(condition "A.inDiffPair('/T1S/T1S_CMC')")
 	(constraint skew (max 0.5mm) (within_diff_pairs)))
 
-# The PHY pair crosses once (FL501's P winding west, U501's P pin east): P hops over N through two
-# through-board vias, 2 mm each in KiCad's length, about 27 ps against a T1S bit of 80 ns (D28).
-(rule "T1S PHY pair matched within 0.5 mm plus its crossing's two vias"
+# The PHY pair runs straight from FL501 to U501 since D31 (FL501/K501 swapped, 2026-11-06); D28's crossing
+# (P over N through two vias) had needed 4.5 mm here.
+(rule "T1S PHY pair matched within 0.5 mm"
 	(condition "A.inDiffPair('/T1S/T1S_PHY')")
-	(constraint skew (max 4.5mm) (within_diff_pairs)))''')]
+	(constraint skew (max 0.5mm) (within_diff_pairs)))''')]
 for a, b in rep:
     if b in s:
         continue

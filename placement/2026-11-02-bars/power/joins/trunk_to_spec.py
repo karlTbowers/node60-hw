@@ -15,14 +15,15 @@ n = 0
 for f in res[opt]["feeds"]:
     if keep and f["name"] not in keep:
         continue
-    name = f"3V3 into the power band ({opt}): {f['name']}"
+    net = f.get("net", "3V3_MAIN")
+    name = f"{opt}: {f['name']}"
     for pc in f["pieces"]:
         for t in pc.get("tracks", []):
             p = t["pts"]
             spec["stubs"].append({"name": name, "layer": t["layer"], "width": f["width"],
-                                  "stubs": [[*p[i], *p[i + 1], "3V3_MAIN"] for i in range(len(p) - 1)]})
+                                  "stubs": [[*p[i], *p[i + 1], net] for i in range(len(p) - 1)]})
         for x, y in pc.get("vias", []):
-            spec["points"].append({"name": name, "size": 0.45, "drill": 0.25, "points": [[x, y, "3V3_MAIN"]]})
+            spec["points"].append({"name": name, "size": f.get("via", 0.45), "drill": f.get("drill", 0.25), "points": [[x, y, net]]})
     n += 1
 json.dump(spec, open(out, "w"), indent=1)
 print(f"{out}: {n} feeds of option {opt}")

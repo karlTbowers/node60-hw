@@ -10706,6 +10706,7 @@
 	(symbol
 		(lib_id "DropOut_Inductor:ACT1210E-241-2P-TL00")
 		(at 322.58 160.02 0)
+		(mirror x)
 		(unit 1)
 		(body_style 1)
 		(exclude_from_sim no)
@@ -16273,7 +16274,7 @@
 		)
 		(uuid "bfbd34d9-7096-457e-bd8c-16fcf243429f")
 	)
-	(label "T1S_P_DROP"
+	(label "T1S_N_DROP"
 		(at 466.09 176.53 0)
 		(effects
 			(font
@@ -16507,7 +16508,7 @@
 		)
 		(uuid "7f9a868e-5f5c-4bdb-bf38-f4aca32ad5f2")
 	)
-	(label "T1S_P_END"
+	(label "T1S_N_END"
 		(at 483.87 172.72 0)
 		(effects
 			(font
@@ -16741,7 +16742,7 @@
 		)
 		(uuid "ee367410-191e-452e-9d50-d12946804e10")
 	)
-	(label "T1S_N_DROP"
+	(label "T1S_P_DROP"
 		(at 509.27 172.72 0)
 		(effects
 			(font
@@ -16975,7 +16976,7 @@
 		)
 		(uuid "2b023c00-b93d-48de-94ab-7cefbc53d8f9")
 	)
-	(label "T1S_N_END"
+	(label "T1S_P_END"
 		(at 514.35 176.53 0)
 		(effects
 			(font
@@ -17493,7 +17494,7 @@
 		)
 		(uuid "c388a1d6-bbe4-4244-942b-5a8a47d8d572")
 	)
-	(label "T1S_P"
+	(label "T1S_N"
 		(at 548.64 200.66 0)
 		(effects
 			(font
@@ -17514,7 +17515,7 @@
 		)
 		(uuid "2190eaa5-5478-49dc-ae8e-428e9a50b3bf")
 	)
-	(label "T1S_N"
+	(label "T1S_P"
 		(at 548.64 195.58 0)
 		(effects
 			(font

@@ -60,6 +60,23 @@ for t in list(b.GetTracks()):
                      (max(x0, x1) + r, max(y0, y1) + r), (min(x0, x1) - r, max(y0, y1) + r)):
             o.Append(pcbnew.FromMM(x), pcbnew.FromMM(y))
         b.Add(k)
+# T1S_TRACK_KEEPOUT=1: no other net's track within 0.85 mm of a T1S track either (KRT keeps the T1S rule's
+# 0.75 mm only where it reads it; for a pass that routes no T1S-class net)
+import os
+if os.environ.get("T1S_TRACK_KEEPOUT"):
+    for t in list(b.GetTracks()):
+        if t.Type() != pcbnew.PCB_VIA_T and t.GetNetClassName() == "T1S_100R":
+            (x0, y0), (x1, y1) = pcbnew.ToMM(t.GetStart()), pcbnew.ToMM(t.GetEnd())
+            k = pcbnew.ZONE(b); k.SetIsRuleArea(True); k.SetZoneName("T1S_TRACK_KEEPOUT")
+            ls = pcbnew.LSET(); ls.AddLayer(t.GetLayer()); k.SetLayerSet(ls)
+            k.SetDoNotAllowTracks(True); k.SetDoNotAllowVias(True); k.SetDoNotAllowPads(False)
+            k.SetDoNotAllowZoneFills(False); k.SetDoNotAllowFootprints(False)
+            o = k.Outline(); o.RemoveAllContours(); o.NewOutline()
+            r = 0.85
+            for x, y in ((min(x0, x1) - r, min(y0, y1) - r), (max(x0, x1) + r, min(y0, y1) - r),
+                         (max(x0, x1) + r, max(y0, y1) + r), (min(x0, x1) - r, max(y0, y1) + r)):
+                o.Append(pcbnew.FromMM(x), pcbnew.FromMM(y))
+            b.Add(k)
 b.Save(sys.argv[1])
 PY
 cd $KRT

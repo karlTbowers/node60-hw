@@ -84,12 +84,16 @@ CMC = ("/T1S/T1S_CMC_P", "/T1S/T1S_CMC_N")
 
 
 def cmc_pair(b, detour=0.0):
-    """C511/C512 pad 1 to FL501 pins 4/3 on B.Cu, P with an optional sideways detour (skew)"""
+    """C511/C512 pad 1 to FL501's CMC pins (found by net: since D31 P is pin 3) on B.Cu, P with an optional
+    sideways detour (skew), outward from the pair"""
     clear(b, *CMC)
-    (ax, ay), (bx, by) = [(TM(p.GetPosition().x), TM(p.GetPosition().y)) for p in (pad_of(b, "C511", "1"), pad_of(b, "FL501", "4"))]
-    (cx, cy), (dx, dy) = [(TM(p.GetPosition().x), TM(p.GetPosition().y)) for p in (pad_of(b, "C512", "1"), pad_of(b, "FL501", "3"))]
+    fl = next(f for f in b.GetFootprints() if f.GetReference() == "FL501")
+    by_net = {p.GetNetname(): p.GetNumber() for p in fl.Pads()}
+    (ax, ay), (bx, by) = [(TM(p.GetPosition().x), TM(p.GetPosition().y)) for p in (pad_of(b, "C511", "1"), pad_of(b, "FL501", by_net[CMC[0]]))]
+    (cx, cy), (dx, dy) = [(TM(p.GetPosition().x), TM(p.GetPosition().y)) for p in (pad_of(b, "C512", "1"), pad_of(b, "FL501", by_net[CMC[1]]))]
     my = (ay + by) / 2
-    track(b, CMC[0], "B.Cu", ax, ay, ax - detour, my, 0.165); track(b, CMC[0], "B.Cu", ax - detour, my, bx, by, 0.165)
+    out = detour if ax > cx else -detour
+    track(b, CMC[0], "B.Cu", ax, ay, ax + out, my, 0.165); track(b, CMC[0], "B.Cu", ax + out, my, bx, by, 0.165)
     track(b, CMC[1], "B.Cu", cx, cy, dx, dy, 0.165)
 
 
@@ -105,10 +109,12 @@ def centre(b, ref):
 
 
 def phy_pair(b, detour=0.0, split=0.0):
-    """FL501 PHY pins (1 P, 2 N) to U501 pins 30/31 on B.Cu: a straight pair, P with an optional
-    sideways detour (skew), or the two lines run apart (uncoupled)"""
+    """FL501's PHY pins (P, N: found by net, since D31 P is pin 2) to U501 pins 30/31 on B.Cu: a straight
+    pair, P with an optional sideways detour (skew), or the two lines run apart (uncoupled)"""
     clear(b, *PHY)
-    p1, p2 = pad_of(b, "FL501", "1"), pad_of(b, "FL501", "2")
+    fl = next(f for f in b.GetFootprints() if f.GetReference() == "FL501")
+    by_net = {p.GetNetname(): p.GetNumber() for p in fl.Pads()}
+    p1, p2 = pad_of(b, "FL501", by_net[PHY[0]]), pad_of(b, "FL501", by_net[PHY[1]])
     u30, u31 = pad_of(b, "U501", "30"), pad_of(b, "U501", "31")
     P = lambda p: (TM(p.GetPosition().x), TM(p.GetPosition().y))
     (ax, ay), (bx, by), (cx, cy), (dx, dy) = P(p1), P(p2), P(u30), P(u31)
@@ -183,12 +189,12 @@ CASES = [
      "T1S PHY-side pairs", False, FREE,
      lambda b: (track(b, "/T1S_P", "B.Cu", FREE[0], FREE[1], FREE[0] + 10, FREE[1], 0.165),
                 track(b, "/T1S_N", "B.Cu", FREE[0], FREE[1] + 0.315, FREE[0] + 6, FREE[1] + 0.315, 0.165))),
-    ("PHY pair FL501 to U501, P about 6 mm longer by a detour (skew, pad to pad: KiCad measures"
-     " skew only on tracks that reach the pads)", "T1S PHY pair matched within 0.5 mm plus", True, None,
-     lambda b: phy_pair(b, detour=3.5)),
-    ("PHY pair FL501 to U501, P about 2 mm longer (control: the crossing's two vias are allowed, D28)",
-     "T1S PHY pair matched within 0.5 mm plus", False, None,
+    ("PHY pair FL501 to U501, P about 2 mm longer by a detour (skew, pad to pad: KiCad measures"
+     " skew only on tracks that reach the pads)", "T1S PHY pair matched within 0.5 mm", True, None,
      lambda b: phy_pair(b, detour=1.0)),
+    ("PHY pair FL501 to U501 straight (control: no crossing since D31, so 0.5 mm holds)",
+     "T1S PHY pair matched within 0.5 mm", False, None,
+     lambda b: phy_pair(b)),
     ("CMC pair C511/C512 to FL501, P 2 mm longer by a detour (FL501)", "T1S pairs matched within 0.5 mm", True, None,
      lambda b: cmc_pair(b, detour=1.5)),
     ("PHY-side pair FL501 to U501 split 3 mm apart (uncoupled)", "T1S PHY-side pairs: 2 mm uncoupled", True, None,

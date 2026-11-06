@@ -94,8 +94,16 @@ def dist(g, a, c):
     return None
 
 
+def by_net(b, ref, net, default):
+    """the pad of ref on net (FL501's windings and K501's poles can swap, 2026-11-05), else default"""
+    fp = b.FindFootprintByReference(ref)
+    return next((p.GetNumber() for p in fp.Pads() if p.GetNetname() == net), default)
+
+
 def measure(b, line, estimate):
     trunk, cmc, phy, jpin, cap, fl_line, fl_phy, upin, kpin = NETS[line]
+    fl_line, fl_phy = by_net(b, "FL501", cmc, fl_line), by_net(b, "FL501", phy, fl_phy)
+    kpin = by_net(b, "K501", trunk, kpin)
     A, B = pad(b, "J912", jpin), pad(b, "J903", jpin)
     C2, C1 = pad(b, cap, "2"), pad(b, cap, "1")
     K = pad(b, "K501", kpin)
