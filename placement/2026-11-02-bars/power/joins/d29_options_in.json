@@ -1,0 +1,186 @@
+{
+ "C": {
+  "about": "C: the In3 3V3 plane widened into the free margins; every feed from the plane, no output pour crossed",
+  "feeds": [
+   {
+    "name": "R601 (pocket, west)",
+    "loads": [
+     "R601.1"
+    ],
+    "block_pours": [
+     "/OUT1",
+     "/OUT2",
+     "/OUT3",
+     "/OUT4",
+     "/OUT5",
+     "/OUT6"
+    ],
+    "pour_cost": 40,
+    "box": [
+     57.650000000000006,
+     108,
+     87.65,
+     139.5
+    ],
+    "plane_ymin": 122.3
+   },
+   {
+    "name": "R701 (pocket, middle)",
+    "loads": [
+     "R701.1"
+    ],
+    "block_pours": [
+     "/OUT1",
+     "/OUT2",
+     "/OUT3",
+     "/OUT4",
+     "/OUT5",
+     "/OUT6"
+    ],
+    "pour_cost": 40,
+    "box": [
+     132.3,
+     108,
+     162.3,
+     139.5
+    ],
+    "plane_ymin": 122.3
+   },
+   {
+    "name": "R801 (pocket, east)",
+    "loads": [
+     "R801.1"
+    ],
+    "block_pours": [
+     "/OUT1",
+     "/OUT2",
+     "/OUT3",
+     "/OUT4",
+     "/OUT5",
+     "/OUT6"
+    ],
+    "pour_cost": 40,
+    "box": [
+     206.95,
+     108,
+     236.95,
+     139.5
+    ],
+    "plane_ymin": 122.3
+   },
+   {
+    "name": "R607 (NTC, west)",
+    "loads": [
+     "R607.1"
+    ],
+    "block_pours": [
+     "/OUT1",
+     "/OUT2",
+     "/OUT3",
+     "/OUT4",
+     "/OUT5",
+     "/OUT6"
+    ],
+    "pour_cost": 40
+   },
+   {
+    "name": "R807 (NTC, east)",
+    "loads": [
+     "R807.1"
+    ],
+    "block_pours": [
+     "/OUT1",
+     "/OUT2",
+     "/OUT3",
+     "/OUT4",
+     "/OUT5",
+     "/OUT6"
+    ],
+    "pour_cost": 40
+   },
+   {
+    "name": "R707 (NTC, middle) from the R607 line",
+    "from_plane": false,
+    "from": [
+     "R607.1"
+    ],
+    "loads": [
+     "R707.1"
+    ],
+    "block_pours": [
+     "/OUT1",
+     "/OUT2",
+     "/OUT3",
+     "/OUT4",
+     "/OUT5",
+     "/OUT6"
+    ],
+    "pour_cost": 40,
+    "box": [
+     64,
+     90,
+     160,
+     112
+    ]
+   },
+   {
+    "name": "R211 and C215 from the R807 line",
+    "from_plane": false,
+    "from": [
+     "R807.1"
+    ],
+    "loads": [
+     "R211.1"
+    ],
+    "block_pours": [
+     "/OUT1",
+     "/OUT2",
+     "/OUT3",
+     "/OUT4",
+     "/OUT5",
+     "/OUT6"
+    ],
+    "pour_cost": 40,
+    "box": [
+     180,
+     66,
+     240,
+     110
+    ]
+   },
+   {
+    "name": "INA228 U202",
+    "loads": [
+     "U202.6"
+    ],
+    "pour_cost": 40
+   },
+   {
+    "name": "TMP175 U203",
+    "loads": [
+     "U203.8"
+    ],
+    "pour_cost": 40
+   }
+  ]
+ },
+ "C_midA": {
+  "about": "C with R707 through the power entry",
+  "feeds": [
+   {
+    "name": "R707 (NTC, middle) from the plane",
+    "loads": [
+     "R707.1"
+    ],
+    "block_pours": [
+     "/OUT1",
+     "/OUT2",
+     "/OUT3",
+     "/OUT4",
+     "/OUT5",
+     "/OUT6"
+    ]
+   }
+  ]
+ }
+}
