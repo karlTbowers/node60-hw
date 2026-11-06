@@ -103,11 +103,11 @@
 	(condition "A.inDiffPair('/T1S/T1S_CMC')")
 	(constraint skew (max 0.5mm) (within_diff_pairs)))
 
-# The PHY pair crosses once (FL501's P winding west, U501's P pin east): P hops over N through two
-# through-board vias, 2 mm each in KiCad's length, about 27 ps against a T1S bit of 80 ns (D28).
-(rule "T1S PHY pair matched within 0.5 mm plus its crossing's two vias"
+# The PHY pair runs straight from FL501 to U501 since D31 (FL501/K501 swapped, 2026-11-06); D28's crossing
+# (P over N through two vias) had needed 4.5 mm here.
+(rule "T1S PHY pair matched within 0.5 mm"
 	(condition "A.inDiffPair('/T1S/T1S_PHY')")
-	(constraint skew (max 4.5mm) (within_diff_pairs)))
+	(constraint skew (max 0.5mm) (within_diff_pairs)))
 
 # Not at U501's line pins (T1S_PINS_U501: pin 29, VDDA, is 0.5 mm from pin 30, TRXP); other nets'
 # pours only on the outer layers, so the inner planes keep ordinary clearances round T1S vias and the

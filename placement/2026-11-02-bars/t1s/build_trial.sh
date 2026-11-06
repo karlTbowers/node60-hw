@@ -6,9 +6,9 @@ IN=${1:A}; OUT=${2:A}
 HERE=${0:A:h}; ROOT=${HERE:h:h:h}
 KP=/Applications/KiCad/KiCad.app/Contents/Frameworks/Python.framework/Versions/Current/bin/python3
 mkdir -p $OUT
-# T1S_SWAP=swap: FL501/K501 swapped (run swap_pins.py on BOARD first); the spec goes to OUTDIR then
+# T1S_SWAP=noswap draws D28's route (FL501/K501 as before D31) into OUTDIR; the default is the board's
 SPEC=$HERE/t1s_route.json; [[ -n "${T1S_SWAP:-}" ]] && SPEC=$OUT/t1s_route.json
-python3 $HERE/spec_t1s.py $SPEC 149.0 270 ${T1S_SWAP:-}
+python3 $HERE/spec_t1s.py $SPEC 149.0 270 ${T1S_SWAP:-swap}
 $KP $HERE/draw_t1s.py $IN $SPEC $OUT/t2.kicad_pcb 2>/dev/null
 cp ${IN:r}.kicad_pro $OUT/t2.kicad_pro
 python3 $HERE/rules_t1s.py ${IN:r}.kicad_dru $OUT/t2.kicad_dru

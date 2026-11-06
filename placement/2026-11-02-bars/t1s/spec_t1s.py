@@ -7,9 +7,10 @@ at J903 P passes south of N's pin (the AT13 pins put N west of P at both ends). 
 (P) on a via in their pad; D503 (P) and D502 (N) on B.Cu from their connector pin. The PHY's and the
 relay's taps leave the trunk west of U501 (B.Cu is clear there; under the trunk at x 153.5-158.5 are
 U501's pins) through one via per line onto In2, run as a pair to C511/C512 (a via in pad 2 of each),
-and continue on B.Cu to K501 pins 3 and 6. CMC pair C511/C512 pad 1 to FL501 pins 4/3 on B.Cu. PHY pair
-FL501 pins 1/2 to U501 pins 30/31: they cross once (FL501's P winding sits west, U501's P pin east),
-P hopping over N on F.Cu through two vias. Moves: C502 (VDDA decap) off the trunk's line to
+and continue on B.Cu to K501. Since D31 (user, 2026-11-06) P is east along the whole chain: FL501's P
+winding is pins 2/3, K501's P pole is pins 5-7 (COM2 pin 6), C511 (P) sits east of C512, N's tap via is
+north of the trunk at x 149.0 and P's south at 149.815, so the PHY pair runs straight from FL501 pins
+2/1 to U501 pins 30/31 with no via ("noswap" draws D28's route, where P crossed over N through two vias). Moves: C502 (VDDA decap) off the trunk's line to
 (156.76, 47.3) on F.Cu, its pad 1 on a 3V3 via that also takes U501 pin 29 (VDDA) on B.Cu; the REFCLK
 via 0.25 mm east to make room. TXD0 and the corridor's power vias are deleted here (KRT and
 draw_power.py redraw them).
@@ -118,10 +119,8 @@ def main(out):
                trk("/T1S/T1S_REFCLK", "In2.Cu", [(157.0, 47.35), (156.8, 46.0)], 0.15)]
     vias += [via("/T1S/T1S_REFCLK", 157.0, 47.35)]      # the VDDA via is draw_power.py's (a "points" entry)
     moves = {"C502": {"x": 156.3, "y": 47.76, "rot": C502_ROT, "side": "F"}}
-    if SWAP:      # the P-side parts change sides with P: C511 (P) east, C512 west; the termination resistors swap
-        moves.update({"C511": {"x": 156.25, "y": 54.65, "rot": -90.0, "side": "B"}, "C512": {"x": 153.75, "y": 54.65, "rot": -90.0, "side": "B"},
-                      "R516": {"x": 161.0, "y": 66.75, "rot": 90.0, "side": "B"}, "R517": {"x": 161.0, "y": 62.0, "rot": 90.0, "side": "B"},
-                      "R518": {"x": 149.0, "y": 66.5, "rot": 90.0, "side": "B"}, "R519": {"x": 149.0, "y": 61.5, "rot": 90.0, "side": "B"}})
+    if SWAP:      # C511 (P's DC block) changes sides with P; R516-R519 stay: the schematic moved P's names to R518/R519
+        moves.update({"C511": {"x": 156.25, "y": 54.65, "rot": -90.0, "side": "B"}, "C512": {"x": 153.75, "y": 54.65, "rot": -90.0, "side": "B"}})
     spec = {
         "moves": moves,
         "delete": [{"net": "3V3_MAIN", "rect": [154.8, 45.8, 155.2, 47.0]},        # C502's old track and via
@@ -145,7 +144,7 @@ def main(out):
 
 TAP_XP = float(sys.argv[2]) if len(sys.argv) > 2 else 149.0
 C502_ROT = float(sys.argv[3]) if len(sys.argv) > 3 else 90.0
-SWAP = len(sys.argv) > 4 and sys.argv[4] == "swap"      # FL501/K501 swapped (needs swap_pins.py on the board)
+SWAP = not (len(sys.argv) > 4 and sys.argv[4] == "noswap")   # FL501/K501 swapped (D31, on the schematic since 2026-11-06)
 
 
 if __name__ == "__main__":

@@ -218,7 +218,7 @@ KiCad's syntax check reports no errors. Until D28 it noted that "T1S pairs match
 | T1S pairs coupled | Gap 0.14–0.16 mm, inside T1S_COUPLED_F (the trunk's middle) and T1S_COUPLED_IN2 (the taps' pair) only: KiCad checks every parallel stretch of P and N however far apart | D16, D28 |
 | T1S PHY-side pairs: 2 mm uncoupled at most | | D16 |
 | T1S pairs matched within 0.5 mm | The CMC pair; skew rule of its own (KiCad 10 never reported skew in the coupling rule) | D16, D28 |
-| T1S PHY pair matched within 0.5 mm plus its crossing's two vias | 4.5 mm: the pair crosses once, P through two through-board vias (2 mm each in KiCad's length, about 27 ps) | D28 |
+| T1S PHY pair matched within 0.5 mm | The PHY pair FL501 to U501; a rule of its own, as the CMC pair's. 4.5 mm from D28 until D31 (FL501/K501 swapped, 2026-11-06) removed the pair's crossing | D28, D31 |
 | T1S 0.75 mm from other nets | Tracks and vias, every layer; not inside T1S_PINS_U501 (B.Cu at U501 pins 28–32: VDDA pin 29 is 0.5 mm from TRXP pin 30) | Crosstalk; D28 |
 | T1S 0.75 mm from other nets' pours on the outer layers | Pours on F.Cu and B.Cu only: the inner planes keep ordinary clearances round T1S vias | AN1718 (no pour round the line interface); D28 |
 | Buck switch nodes 10 mm from the T1S line | | Keeps switching noise off the bus |

@@ -1,11 +1,11 @@
 {
  "block": "u601",
  "anchor": "U601",
- "approved": "2026-11-04 (D19 A; D13 A before)",
+ "approved": "2026-11-06 (D31: switch turned 180 degrees with its pin-local parts; D19 A, D13 A before)",
  "anchor_pose": {
   "x": 77.65,
   "y": 111.6,
-  "rot": 0.0,
+  "rot": 180.0,
   "side": "B"
  },
  "parts": {
@@ -16,16 +16,16 @@
    "side": "F",
    "role": "core",
    "flex_mm": 0,
-   "why": "CVBB1, VBB to GND. TI SLVSHR0 §9.4.1: as close as possible to the VBB and GND pins. On F.Cu (decaps go on top), directly over the exposed VBB pad"
+   "why": "CVBB1, VBB to GND. TI SLVSHR0 §9.4.1: as close as possible to the VBB and GND pins. On F.Cu (decaps go on top), directly over the exposed VBB pad. Turned 180 degrees with the switch (D31): still over the VBB pad on F.Cu"
   },
   "C602": {
-   "dx": 0.5838,
-   "dy": 6.8511,
-   "rot": 270.0,
+   "dx": -0.5838,
+   "dy": -6.8511,
+   "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "VBB bulk cap, beside the VBB pad, on the channel's VBAT_PROT pour"
+   "why": "VBB bulk cap, beside the VBB pad, on the channel's VBAT_PROT pour. Unchanged by D31's turn: between the two OUT blocks, south of the chip"
   },
   "C603": {
    "dx": -4.306,
@@ -34,7 +34,7 @@
    "side": "F",
    "role": "core",
    "flex_mm": 0,
-   "why": "VDD decap (SW_VDD). On F.Cu (decaps go on top), over pin 3"
+   "why": "VDD decap (SW_VDD). On F.Cu (decaps go on top), over pin 3. Turned with the switch (D31): still over pin 3"
   },
   "C604": {
    "dx": -5.0782,
@@ -43,7 +43,7 @@
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "CSNS, SNS to GND. TI SLVSHR0 §9.4.1: close to the SNS pin (2.36 mm pad gap)"
+   "why": "CSNS, SNS to GND. TI SLVSHR0 §9.4.1: close to the SNS pin (2.36 mm pad gap). Turned with the switch (D31): still beside the SNS pin"
   },
   "C605": {
    "dx": -5.551,
@@ -52,25 +52,25 @@
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "First output's cap to GND, at the first output's pins (6-8)"
+   "why": "First output's cap to GND, at the first output's pins (6-8). Turned with the switch (D31): beside the first output's pins (6-8), now at the chip's south-east, on that output's block"
   },
   "C606": {
-   "dx": 2.9,
-   "dy": 4.401,
+   "dx": 5.551,
+   "dy": -0.975,
+   "rot": 0.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "Second output's cap to GND, at the second output's pins (9-11). Mirror image of C605 about the switch's centre line (D31): beside the second output's pins (9-11), on its block"
+  },
+  "C607": {
+   "dx": -1.25,
+   "dy": 9.35,
    "rot": 270.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "Second output's cap to GND, at the second output's pins (9-11)"
-  },
-  "C607": {
-   "dx": 1.25,
-   "dy": -9.35,
-   "rot": 90.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "NTC filter capacitor beside RT601 and R607, north of the switch (D19 A)."
+   "why": "NTC filter capacitor beside RT601 and R607, north of the switch (D19 A).. Unchanged by D31's turn: north of the switch with the thermistor"
   },
   "R601": {
    "dx": -6.0,
@@ -79,7 +79,7 @@
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "SW_VDD series resistor near pin 3, on the switch's south-west signal side (D19 A: moved off the OUT2 exit)."
+   "why": "SW_VDD series resistor near pin 3, on the switch's south-west signal side (D19 A: moved off the OUT2 exit).. Turned with the switch (D31): still by its pin"
   },
   "R602": {
    "dx": -1.3923,
@@ -88,7 +88,7 @@
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "DI pull-down, by pin 4"
+   "why": "DI pull-down, by pin 4. Turned with the switch (D31): still by its pin"
   },
   "R603": {
    "dx": -2.9,
@@ -97,7 +97,7 @@
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "LHI pull-down, by pin 5"
+   "why": "LHI pull-down, by pin 5. Turned with the switch (D31): still by its pin"
   },
   "R604": {
    "dx": 4.5,
@@ -106,7 +106,7 @@
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "FLT pull-up near pin 12, on the south-east signal side (D19 A: moved off the OUT2 exit)."
+   "why": "FLT pull-up near pin 12, on the south-east signal side (D19 A: moved off the OUT2 exit).. Turned with the switch (D31): still by its pin"
   },
   "R605": {
    "dx": -4.6782,
@@ -115,7 +115,7 @@
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "RSNS, SNS to GND. TI SLVSHR0 §9.4.1: close to the SNS pin (0.55 mm pad gap)"
+   "why": "RSNS, SNS to GND. TI SLVSHR0 §9.4.1: close to the SNS pin (0.55 mm pad gap). Turned with the switch (D31): still by its pin"
   },
   "R606": {
    "dx": -5.9045,
@@ -124,25 +124,25 @@
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "SNS series resistor to the MCU's ADC, from the SNS node to the channel's SNS test point"
+   "why": "SNS series resistor to the MCU's ADC, from the SNS node to the channel's SNS test point. Turned with the switch (D31): still by its pin"
   },
   "R607": {
-   "dx": -0.75,
-   "dy": -9.35,
-   "rot": 90.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "NTC divider resistor beside RT601, north of the switch (D19 A: moved with RT601)."
-  },
-  "RT601": {
-   "dx": -0.75,
-   "dy": -6.35,
+   "dx": 0.75,
+   "dy": 9.35,
    "rot": 270.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "NTC for U601's temperature, north of the switch between the two output exits (D19 A, 2026-11-04: moved off the OUT1 exit), 3.75 mm from the VBB pad's centre."
+   "why": "NTC divider resistor beside RT601, north of the switch (D19 A: moved with RT601).. Unchanged by D31's turn: north of the switch"
+  },
+  "RT601": {
+   "dx": 0.75,
+   "dy": 6.35,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "NTC for U601's temperature, north of the switch between the two output exits (D19 A, 2026-11-04: moved off the OUT1 exit), 3.75 mm from the VBB pad's centre.. Unchanged by D31's turn: north of the switch"
   },
   "TP601": {
    "dx": -3.8535,

@@ -100,6 +100,9 @@ T1S_TERM_DROP:
   note: termination relay RESET pulse, ≥ 10 ms high (DEC-017); never high together with T1S_TERM_END
 
 # Output switches (3 × TPS2HCS08A-Q1, sheets E-G): one LPSPI bus per switch (DEC-018).
+# Channel map (D31, 2026-11-06: the switches are turned 180° on the board, so each switch's
+# channels swap outputs): OUT1/OUT3/OUT5 are channel 2 of U601/U701/U801, OUT2/OUT4/OUT6 channel 1.
+# Connectors are unchanged (OUT1 = J904 ... OUT6 = J909).
 # SPI mode 1 (CPOL 0, CPHA 1), 8 MHz maximum, 32-bit frames with CRC. Zephyr: one
 # `nxp,lpspi` node per bus, the switch as its child at reg = <0> (native PCS0).
 SPI4_SWITCH1_SCK:

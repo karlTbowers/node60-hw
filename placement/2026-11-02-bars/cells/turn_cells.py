@@ -1,7 +1,11 @@
 #!/usr/bin/env python3
 """Turn the three output switches 180 degrees with their pin-local parts (D30 D work-up, 2026-11-05).
 
-    $KPY turn_cells.py BOARD SPEC.json OUT_BOARD OUT_SPEC.json
+    $KPY turn_cells.py BOARD SPEC.json OUT_BOARD OUT_SPEC.json [--keep-nets]
+
+--keep-nets (D31 as landed): the schematic already swaps each switch's channels (output-switch sheet,
+OUT_A/OUT_B), and apply_netlist.py has given the pads their nets, so the connectors, pours and via
+fields keep their OUT numbers; only the geometry turns.
 
 Each switch (U601/U701/U801) turns 180 degrees about its centre, so its logic pins (1-5, 12-16) face
 north and its OUT pins (6-11) face south, over the column heads. Its pin-local parts turn with it
@@ -26,6 +30,7 @@ import sys
 import pcbnew
 
 board, spec_in, board_out, spec_out = sys.argv[1:5]
+KEEP = "--keep-nets" in sys.argv
 CELLS = {"U601": "6", "U701": "7", "U801": "8"}
 TURN = ["C{}01", "C{}03", "C{}04", "C{}05", "C{}06", "R{}01", "R{}02", "R{}03", "R{}04", "R{}05", "R{}06"]
 SWAP = [("J904", "J905"), ("J906", "J907"), ("J908", "J909")]
@@ -47,7 +52,7 @@ for u, k in CELLS.items():
     p5 = f5.GetPosition()
     f6.SetPosition(pcbnew.VECTOR2I(2 * c.x - p5.x, p5.y))
     f6.SetOrientationDegrees((f5.GetOrientationDegrees() + 180) % 360)
-for a, z in SWAP:
+for a, z in ([] if KEEP else SWAP):
     fa, fz = b.FindFootprintByReference(a), b.FindFootprintByReference(z)
     na = {p.GetNumber(): p.GetNet() for p in fa.Pads()}
     nz = {p.GetNumber(): p.GetNet() for p in fz.Pads()}
@@ -104,13 +109,13 @@ for z in d["zones"]:
 # each pair's nets swap: the west column now carries the switch's second channel
 pairs = {"/OUT1": "/OUT2", "/OUT2": "/OUT1", "/OUT3": "/OUT4", "/OUT4": "/OUT3", "/OUT5": "/OUT6", "/OUT6": "/OUT5"}
 for z in d["zones"]:
-    if z["name"].startswith("PWR_OUT"):
+    if z["name"].startswith("PWR_OUT") and not KEEP:
         z["net"] = pairs[z["net"]]
 for v in d["vias"]:
     if v["name"].startswith("OUT strips"):
         r = v["rect"]; v["rect"] = [r[0], mirror_y(r[3]), r[2], mirror_y(r[1])]
         v["toward"] = [[x, mirror_y(y)] for x, y in v["toward"]]
-    if v["name"].startswith(("OUT strips", "OUT bands")):
+    if v["name"].startswith(("OUT strips", "OUT bands")) and not KEEP:
         v["net"] = pairs[v["net"]]
         for cp in v["copies"]:
             cp["net"], cp["mirror_net"] = pairs[cp["net"]], pairs[cp["mirror_net"]]
