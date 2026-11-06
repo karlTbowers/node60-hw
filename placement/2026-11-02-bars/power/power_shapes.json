@@ -2161,6 +2161,330 @@
    ],
    "size": 0.4,
    "drill": 0.2
+  },
+  {
+   "name": "Power join VBAT_PROT: U601.17 to C601.1 (plane, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     77.204,
+     111.632,
+     "VBAT_PROT"
+    ]
+   ]
+  },
+  {
+   "name": "Power join VBAT_PROT: U701.17 to C701.1 (plane, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     151.854,
+     111.632,
+     "VBAT_PROT"
+    ]
+   ]
+  },
+  {
+   "name": "Power join VBAT_PROT: U801.17 to C801.1 (plane, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     226.504,
+     111.632,
+     "VBAT_PROT"
+    ]
+   ]
+  },
+  {
+   "name": "Power join 3V3_MAIN: U303.1 to U303.3 (plane, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     215.501,
+     38.67,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "Power join 3V3_MAIN: U303.1 to U303.3 (plane, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     214.101,
+     38.67,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "Power join VBAT_D: U201.22 to U201.24 (via, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     152.25,
+     78.2,
+     "/Power entry/VBAT_D"
+    ]
+   ]
+  },
+  {
+   "name": "Power join 3V3_MAIN: via@152.30,41.26 to U501.8 (plane, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     153.55,
+     41.6,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "Power join VDDAU_AON: R301.2 to C509.1 (grid, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     157.295,
+     49.05,
+     "VDDAU_AON"
+    ]
+   ]
+  },
+  {
+   "name": "Power join VDDAU_AON: R301.2 to C509.1 (grid, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     157.795,
+     47.45,
+     "VDDAU_AON"
+    ]
+   ]
+  },
+  {
+   "name": "Power join 3V3_MAIN: U202.6 to C214.1 (via, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     161.75,
+     79.78,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "Power join 3V3_MAIN: Q501.4 to Q502.4 (plane, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     162.55,
+     63.515,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "Power join 3V3_MAIN: Q501.4 to Q502.4 (plane, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     162.55,
+     66.265,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "Power join VBAT_PROT: C702.1 to via@152.95,113.87 (plane, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     152.884,
+     117.001,
+     "VBAT_PROT"
+    ]
+   ]
+  },
+  {
+   "name": "Power join VBAT_PROT: via@227.60,113.87 to C802.1 (plane, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     227.534,
+     117.001,
+     "VBAT_PROT"
+    ]
+   ]
+  },
+  {
+   "name": "Power join VBAT_PROT: C602.1 to via@78.30,113.87 (plane, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     78.234,
+     117.001,
+     "VBAT_PROT"
+    ]
+   ]
+  },
+  {
+   "name": "Power join VBAT_D: U201.6 to U201.24 (via, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     150.025,
+     74.825,
+     "/Power entry/VBAT_D"
+    ]
+   ]
+  },
+  {
+   "name": "Power join OUT6: U801.11 to C806.1 (grid, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     229.85,
+     110.525,
+     "/OUT6"
+    ]
+   ]
+  },
+  {
+   "name": "Power join OUT6: U801.11 to C806.1 (grid, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     229.85,
+     115.225,
+     "/OUT6"
+    ]
+   ]
+  },
+  {
+   "name": "Power join OUT2: U601.11 to C606.1 (grid, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     80.55,
+     110.525,
+     "/OUT2"
+    ]
+   ]
+  },
+  {
+   "name": "Power join OUT2: U601.11 to C606.1 (grid, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     80.55,
+     115.225,
+     "/OUT2"
+    ]
+   ]
+  },
+  {
+   "name": "Power join OUT4: U701.11 to C706.1 (grid, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     155.2,
+     110.525,
+     "/OUT4"
+    ]
+   ]
+  },
+  {
+   "name": "Power join OUT4: U701.11 to C706.1 (grid, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     155.2,
+     115.225,
+     "/OUT4"
+    ]
+   ]
+  },
+  {
+   "name": "Power join 3V3_MAIN: R211.1 to C215.1 (via, plan_joins.py)",
+   "size": 0.4,
+   "drill": 0.2,
+   "points": [
+    [
+     185.244,
+     85.983,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "Power join GND: C215.2 to C205.2 (plane, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     186.205,
+     85.727,
+     "GND"
+    ]
+   ]
+  },
+  {
+   "name": "Power join GND: C215.2 to C205.2 (plane, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     177.75,
+     92.513,
+     "GND"
+    ]
+   ]
+  },
+  {
+   "name": "Power join GND: C201.2 to C210.2 (plane, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     133.8,
+     82.75,
+     "GND"
+    ]
+   ]
+  },
+  {
+   "name": "Power join GND: C201.2 to C210.2 (plane, plan_joins.py)",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     141.3,
+     72.25,
+     "GND"
+    ]
+   ]
   }
  ],
  "stubs": [
@@ -2287,6 +2611,538 @@
      165.1,
      47.45,
      "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "Power join VBAT_PROT: U201.15 to U201.16 (track, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     154.9,
+     75.25,
+     154.9,
+     75.75,
+     "VBAT_PROT"
+    ]
+   ]
+  },
+  {
+   "name": "Power join 3V3_MAIN: PWR_3V3_MAIN_U303_W_B to U303.3 (track, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     213.95,
+     38.67,
+     214.301,
+     38.67,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "Power join 3V3_MAIN: U303.1 to U303.3 (plane, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     215.301,
+     38.67,
+     215.501,
+     38.67,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "Power join 3V3_MAIN: U303.1 to U303.3 (plane, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     214.301,
+     38.67,
+     214.101,
+     38.67,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "Power join VBAT_D: U201.22 to U201.24 (via, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     152.75,
+     77.4,
+     152.75,
+     78.2,
+     "/Power entry/VBAT_D"
+    ],
+    [
+     152.75,
+     78.2,
+     152.25,
+     78.2,
+     "/Power entry/VBAT_D"
+    ]
+   ]
+  },
+  {
+   "name": "Power join VBAT_D: U201.22 to U201.24 (via, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     152.25,
+     78.2,
+     151.75,
+     78.2,
+     "/Power entry/VBAT_D"
+    ],
+    [
+     151.75,
+     78.2,
+     151.75,
+     77.4,
+     "/Power entry/VBAT_D"
+    ]
+   ]
+  },
+  {
+   "name": "Power join 1V1_MCU_V11: U401.H9 to U401.J10 (track, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.2,
+   "stubs": [
+    [
+     200.929,
+     52.29,
+     201.729,
+     51.49,
+     "/MCU and NVM/1V1_MCU_V11"
+    ]
+   ]
+  },
+  {
+   "name": "Power join 1V1_MCU_V11: U401.J8 to U401.H9 (track, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.2,
+   "stubs": [
+    [
+     200.129,
+     51.49,
+     200.929,
+     52.29,
+     "/MCU and NVM/1V1_MCU_V11"
+    ]
+   ]
+  },
+  {
+   "name": "Power join VDDAU_AON: U501.25 to C509.1 (track, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     157.75,
+     46.0,
+     157.79,
+     47.25,
+     "VDDAU_AON"
+    ]
+   ]
+  },
+  {
+   "name": "Power join 3V3_MAIN: via@152.30,41.26 to U501.8 (plane, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     153.55,
+     41.8,
+     153.55,
+     41.6,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "Power join VBAT_D: C209.1 to U201.24 (track, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     150.5,
+     78.9,
+     151.75,
+     77.4,
+     "/Power entry/VBAT_D"
+    ]
+   ]
+  },
+  {
+   "name": "Power join VDDAU_AON: R301.2 to C509.1 (grid, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     157.295,
+     49.25,
+     157.295,
+     49.05,
+     "VDDAU_AON"
+    ]
+   ]
+  },
+  {
+   "name": "Power join VDDAU_AON: R301.2 to C509.1 (grid, plan_joins.py)",
+   "layer": "F.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     157.295,
+     49.05,
+     157.295,
+     47.95,
+     "VDDAU_AON"
+    ],
+    [
+     157.295,
+     47.95,
+     157.795,
+     47.45,
+     "VDDAU_AON"
+    ]
+   ]
+  },
+  {
+   "name": "Power join VDDAU_AON: R301.2 to C509.1 (grid, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     157.795,
+     47.45,
+     157.795,
+     47.35,
+     "VDDAU_AON"
+    ],
+    [
+     157.795,
+     47.35,
+     157.79,
+     47.25,
+     "VDDAU_AON"
+    ]
+   ]
+  },
+  {
+   "name": "Power join 3V3_MAIN: U202.6 to C214.1 (via, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     160.5,
+     78.8,
+     161.75,
+     79.78,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "Power join 3V3_MAIN: U202.6 to C214.1 (via, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     161.75,
+     79.78,
+     161.75,
+     81.16,
+     "3V3_MAIN"
+    ],
+    [
+     161.75,
+     81.16,
+     161.0,
+     81.16,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "Power join 3V3_MAIN: Q501.4 to Q502.4 (plane, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     162.75,
+     63.615,
+     162.55,
+     63.515,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "Power join 3V3_MAIN: Q501.4 to Q502.4 (plane, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     162.75,
+     66.365,
+     162.55,
+     66.265,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "Power join VBAT_PROT: C203.1 to C204.1 (track, plan_joins.py)",
+   "layer": "F.Cu",
+   "width": 0.4,
+   "stubs": [
+    [
+     156.55,
+     81.6,
+     157.55,
+     82.6,
+     "VBAT_PROT"
+    ],
+    [
+     157.55,
+     82.6,
+     159.6,
+     82.6,
+     "VBAT_PROT"
+    ]
+   ]
+  },
+  {
+   "name": "Power join VBAT_D: U201.6 to U201.24 (via, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.25,
+   "stubs": [
+    [
+     151.1,
+     74.25,
+     150.6,
+     74.25,
+     "/Power entry/VBAT_D"
+    ],
+    [
+     150.6,
+     74.25,
+     150.025,
+     74.825,
+     "/Power entry/VBAT_D"
+    ]
+   ]
+  },
+  {
+   "name": "Power join VBAT_D: U201.6 to U201.24 (via, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.25,
+   "stubs": [
+    [
+     150.025,
+     74.825,
+     150.025,
+     77.4,
+     "/Power entry/VBAT_D"
+    ],
+    [
+     150.025,
+     77.4,
+     151.75,
+     77.4,
+     "/Power entry/VBAT_D"
+    ]
+   ]
+  },
+  {
+   "name": "Power join OUT6: U801.11 to C806.1 (grid, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.4,
+   "stubs": [
+    [
+     229.85,
+     110.625,
+     229.85,
+     110.525,
+     "/OUT6"
+    ]
+   ]
+  },
+  {
+   "name": "Power join OUT6: U801.11 to C806.1 (grid, plan_joins.py)",
+   "layer": "F.Cu",
+   "width": 0.4,
+   "stubs": [
+    [
+     229.85,
+     110.525,
+     229.85,
+     115.225,
+     "/OUT6"
+    ]
+   ]
+  },
+  {
+   "name": "Power join OUT6: U801.11 to C806.1 (grid, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.4,
+   "stubs": [
+    [
+     229.85,
+     115.251,
+     229.85,
+     115.251,
+     "/OUT6"
+    ]
+   ]
+  },
+  {
+   "name": "Power join OUT2: U601.11 to C606.1 (grid, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.4,
+   "stubs": [
+    [
+     80.55,
+     110.625,
+     80.55,
+     110.525,
+     "/OUT2"
+    ]
+   ]
+  },
+  {
+   "name": "Power join OUT2: U601.11 to C606.1 (grid, plan_joins.py)",
+   "layer": "F.Cu",
+   "width": 0.4,
+   "stubs": [
+    [
+     80.55,
+     110.525,
+     80.55,
+     115.225,
+     "/OUT2"
+    ]
+   ]
+  },
+  {
+   "name": "Power join OUT2: U601.11 to C606.1 (grid, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.4,
+   "stubs": [
+    [
+     80.55,
+     115.251,
+     80.55,
+     115.251,
+     "/OUT2"
+    ]
+   ]
+  },
+  {
+   "name": "Power join OUT4: U701.11 to C706.1 (grid, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.4,
+   "stubs": [
+    [
+     155.2,
+     110.625,
+     155.2,
+     110.525,
+     "/OUT4"
+    ]
+   ]
+  },
+  {
+   "name": "Power join OUT4: U701.11 to C706.1 (grid, plan_joins.py)",
+   "layer": "F.Cu",
+   "width": 0.4,
+   "stubs": [
+    [
+     155.2,
+     110.525,
+     155.2,
+     115.225,
+     "/OUT4"
+    ]
+   ]
+  },
+  {
+   "name": "Power join OUT4: U701.11 to C706.1 (grid, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.4,
+   "stubs": [
+    [
+     155.2,
+     115.251,
+     155.2,
+     115.251,
+     "/OUT4"
+    ]
+   ]
+  },
+  {
+   "name": "Power join 3V3_MAIN: R211.1 to C215.1 (via, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     191.003,
+     88.439,
+     185.244,
+     85.983,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "Power join 3V3_MAIN: R211.1 to C215.1 (via, plan_joins.py)",
+   "layer": "F.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     185.244,
+     85.983,
+     185.085,
+     85.927,
+     "3V3_MAIN"
+    ]
+   ]
+  },
+  {
+   "name": "Power join GND: C215.2 to C205.2 (plane, plan_joins.py)",
+   "layer": "F.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     186.005,
+     85.927,
+     186.205,
+     85.727,
+     "GND"
+    ]
+   ]
+  },
+  {
+   "name": "Power join VBAT_D: PWR_VBAT_D_B to C209.1 (track, plan_joins.py)",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     148.4,
+     78.9,
+     150.5,
+     78.9,
+     "/Power entry/VBAT_D"
     ]
    ]
   }
