@@ -194,7 +194,7 @@ res = {}
 for oname, o in opts.items():
     res[oname] = {"about": o.get("about", ""), "feeds": []}
     for f in o["feeds"]:
-        net, w = "3V3_MAIN", f.get("width", 0.3)
+        net, w = f.get("net", "3V3_MAIN"), f.get("width", 0.3)
         layers = tuple(f.get("layers", ["F.Cu", "B.Cu"]))
         laid = {}
         pieces = []
@@ -205,6 +205,10 @@ for oname, o in opts.items():
             goal = pad_geo(ref, num)
             if k == 0:
                 start_geo = {}
+                if f.get("from_box"):
+                    from shapely.geometry import box as _box
+                    for l in layers:
+                        start_geo[l] = _box(*f["from_box"])
                 for s in f.get("from", []):
                     r2, n2 = s.split(".")
                     for l, g in pad_geo(r2, n2).items():
@@ -218,7 +222,7 @@ for oname, o in opts.items():
             if not bx:
                 xs = [p.x for p in pts]; ys = [p.y for p in pts]
                 bx = [min(xs) - 12, min(ys + [62]) - 4, max(xs) + 12, max(ys) + 6]
-            r = search(bx, net, w, 0.45, 0.25, layers, from_plane, start_geo, goal, f.get("pour_cost"), tuple(f.get("block_pours", [])), f.get("plane_ymin"))
+            r = search(bx, net, w, f.get("via", 0.45), f.get("drill", 0.25), layers, from_plane, start_geo, goal, f.get("pour_cost"), tuple(f.get("block_pours", [])), f.get("plane_ymin"))
             if not r:
                 ok = False
                 pieces.append({"load": load, "failed": True})
@@ -228,7 +232,7 @@ for oname, o in opts.items():
                 laid.setdefault(t["layer"], []).append(g)
                 pj.added[t["layer"]].append((g, net))
             for (x, y) in r["vias"]:
-                g = Point(x, y).buffer(0.225)
+                g = Point(x, y).buffer(f.get("via", 0.45) / 2)
                 for l in pj.C["layers"]:
                     pj.added[l].append((g, net))
                     if l in layers:
@@ -241,7 +245,7 @@ for oname, o in opts.items():
                 total["cross"][n] = round(total["cross"].get(n, 0) + v, 1)
             pieces.append({"load": load, "tracks": r["tracks"], "vias": r["vias"], "mm": round(L, 1), "cross": cr})
         total["mm"] = round(total["mm"], 1)
-        res[oname]["feeds"].append({"name": f["name"], "ok": ok, "width": w, "total": total, "pieces": pieces})
+        res[oname]["feeds"].append({"name": f["name"], "net": net, "ok": ok, "width": w, "via": f.get("via", 0.45), "drill": f.get("drill", 0.25), "total": total, "pieces": pieces})
         print(f"{oname:10s} {f['name']:28s} {'ok ' if ok else 'FAIL'} {total['mm']:6.1f} mm {total['vias']} vias cross {total['cross']}")
     # each option starts from the board as it is
     for l in pj.added:
