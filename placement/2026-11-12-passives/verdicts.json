@@ -1,0 +1,196 @@
+{
+ "01-tmp175-home": {
+  "spec": "01-tmp175-home",
+  "name": "01 TMP175's decap and pull-up brought home",
+  "nets": [
+   "TMP175_ALERT_L"
+  ],
+  "gains": [
+   "49.8 mm of 3V3 track gone, 31 mm of it on F.Cu in the 10 mm strip between the two busbars",
+   "3 vias through the VBAT_PROT planes gone; 2 new ones beside U203, one of them the decap's GND via",
+   "C215 is 1.7 mm from U203's supply pin (was 68 mm): U203 has a bypass capacitor again"
+  ],
+  "costs": [
+   "C215 goes to the bottom side: U203 sits under the GND busbar, where nothing may stand on top",
+   "Lands through power_shapes.json (two named feeds deleted, one via added)"
+  ]
+ },
+ "02-east-feed": {
+  "spec": "02-east-feed",
+  "name": "02 East cell fed from the east margin",
+  "gains": [
+   "36.2 mm of 3V3 track on B.Cu gone (it ran north-south under the GND bar and past the VBAT_IN pour), replaced by 5.2 mm",
+   "4 vias gone, 1 new: the three joins' vias touched B.Cu tracks only, so each was a hole through four planes and the F.Cu pour for nothing",
+   "No part moves"
+  ],
+  "costs": [
+   "Lands through power_shapes.json",
+   "The middle cell keeps its 81.5 mm feed from the west: no layer carries 3V3 nearer to U701"
+  ]
+ },
+ "03a-i2c-pullups-row": {
+  "spec": "03a-i2c-pullups-row",
+  "name": "03a I2C pull-ups at U203, first arrangement",
+  "nets": [
+   "I2C0_TELEMETRY_SCL",
+   "I2C0_TELEMETRY_SDA"
+  ],
+  "gains": [
+   "Both pull-ups leave the MCU's south side; their two 3V3 vias there go"
+  ],
+  "costs": [
+   "R407's 3V3 pad lands south of the In3 plane edge, so its 3V3 track loops 6 mm round R406",
+   "Superseded by 03b"
+  ]
+ },
+ "03b-i2c-pullups-stair": {
+  "spec": "03b-i2c-pullups-stair",
+  "name": "03b I2C pull-ups at the end of the bus",
+  "nets": [
+   "I2C0_TELEMETRY_SCL",
+   "I2C0_TELEMETRY_SDA"
+  ],
+  "gains": [
+   "R406, R407 and R211 share one 3V3 via; the two 3V3 vias at the MCU go",
+   "Each resistor's signal pad is level with its U203 pin: three straight tracks, 1.5 to 3.7 mm, no via",
+   "Frees the bottom side just south of U401's ball rows A and B, where 20 signals leave the BGA"
+  ],
+  "costs": [
+   "The pull-ups are 87 mm from the MCU. At 400 kHz over a bus this short the position along the bus does not matter electrically",
+   "Needs 01 (R211's via)"
+  ]
+ },
+ "04-irq-pullup": {
+  "spec": "04-irq-pullup",
+  "name": "04 IRQ pull-up at the MCU ball",
+  "nets": [
+   "T1S_IRQ_L"
+  ],
+  "gains": [
+   "R508 is 3.3 mm from ball B3 (was 25 mm from U401 and 28 mm from U501, 14 mm off the line between them)",
+   "No stub under the GND busbar"
+  ],
+  "costs": [
+   "One more part in the 2.7 mm strip south of U401"
+  ]
+ },
+ "05-ntc-to-mcu": {
+  "spec": "05-ntc-to-mcu",
+  "name": "05 NTC pull-ups and filters at the MCU",
+  "nets": [
+   "NTC_SW1",
+   "NTC_SW2",
+   "NTC_SW3"
+  ],
+  "blocks": "out_6x, out_34, out_8x (R6x7, C6x7 are core parts)",
+  "gains": [
+   "R607, R707 and R807 each drop straight into the In3 3V3 plane through one via",
+   "Two parts fewer in each cell's channel north of the switch (a 0603 and a 1206), where seven signals enter",
+   "The 100 nF sits at the ADC ball and the pull-up on the same 3V3 as VREFH"
+  ],
+  "costs": [
+   "On its own it removes no track: the thin 3V3 track stays, because R601 and R701 (the 10R VDD resistors) hang on it too. See 08",
+   "3 new 3V3 vias at the MCU (the pull-ups shared the cells' track before)",
+   "Six parts, three of them 1206, in the strip south of U401",
+   "Changes three approved block tables: a new version of the output cell"
+  ]
+ },
+ "06-phy-strap": {
+  "spec": "06-phy-strap",
+  "name": "06 MODE0 strap on its pin's side",
+  "nets": [
+   "T1S_MODE0",
+   "T1S_MODE1",
+   "T1S_IRQ_L"
+  ],
+  "gains": [
+   "MODE0 is a 2.8 mm B.Cu track from pin 23 (it stood on the far side of the chip, 7.2 mm away through locked RMII copper)"
+  ],
+  "costs": [
+   "Takes the free pocket east of pins 22-24, which T1S_IRQ_L (pin 22) and MODE1 (pin 24) also leave through"
+  ]
+ },
+ "07a-combined": {
+  "spec": "07-combined-tidy",
+  "name": "07a All six, with 03a"
+ },
+ "07b-combined": {
+  "spec": "07-combined-tidy",
+  "name": "07 All six together",
+  "nets": [
+   "NTC_SW1",
+   "NTC_SW2",
+   "NTC_SW3",
+   "I2C0_TELEMETRY_SCL",
+   "I2C0_TELEMETRY_SDA",
+   "T1S_IRQ_L",
+   "TMP175_ALERT_L",
+   "T1S_MODE0"
+  ],
+  "blocks": "out_6x, out_34, out_8x (from 05)",
+  "gains": [
+   "3V3 track in the power band 201 to 138 mm, on F.Cu 32.8 to 1.5 mm",
+   "3V3 vias 69 to 65, those in the band 8 to 3",
+   "95 mm of track and 10 vias deleted, 32 mm and 7 vias drawn"
+  ],
+  "costs": [
+   "Everything listed under 01 to 06"
+  ]
+ },
+ "08-no-3v3-into-cells": {
+  "spec": "08-no-3v3-into-cells",
+  "name": "08 No 3V3 track into the cells",
+  "nets": [
+   "NTC_SW1",
+   "NTC_SW2",
+   "NTC_SW3"
+  ],
+  "blocks": "out_6x, out_34, out_8x (R6x1, R6x7, C6x7 are core parts)",
+  "gains": [
+   "3V3 track in the power band 201 mm to 8 mm: the 81.5 mm run under the VBAT_IN busbar, the 36 mm run in the east and every leg to R6x1 and R6x7 go. What is left is U202's stub",
+   "R601 and R801 stand at the In3 margins' vias, 0.5 mm of 3V3 track each; R701, R607, R707 and R807 stand on the plane at the MCU, one via each",
+   "In the west cell SW_VDD already had to run from pin 3 round the switch to R604; R601 now joins that run at R604's end, so the cell gains no track"
+  ],
+  "costs": [
+   "A thin track still enters each cell: SW_VDD, the filtered side of the 10R, in place of 3V3. In the middle cell it is as long as the 3V3 track was (no layer carries 3V3 nearer to U701), but it comes in with the cell's seven signals",
+   "R701 is 70 mm from U701. The 470 nF stays at the pin; the track adds about 0.2 ohm to the 10 ohm",
+   "The three cells no longer hold identical parts in identical places (R601 west, R801 east, R701 at the MCU)",
+   "Changes three approved block tables"
+  ]
+ },
+ "09-everything": {
+  "spec": "08-no-3v3-into-cells",
+  "name": "09 Everything together",
+  "nets": [
+   "NTC_SW1",
+   "NTC_SW2",
+   "NTC_SW3",
+   "I2C0_TELEMETRY_SCL",
+   "I2C0_TELEMETRY_SDA",
+   "T1S_IRQ_L",
+   "TMP175_ALERT_L",
+   "T1S_MODE0"
+  ],
+  "blocks": "out_6x, out_34, out_8x (from 05 and 08)",
+  "gains": [
+   "226 mm of track and 10 vias deleted; 34 mm and 8 vias drawn",
+   "3V3 track on the board 246 mm to 42 mm; in the power band 201 mm to 8 mm; on F.Cu between the busbars 33 mm to 1.5 mm",
+   "Supply tracks longer than 2 mm left on the board: one, U202's 6.4 mm 3V3 stub"
+  ],
+  "costs": [
+   "Everything listed under 01 to 08"
+  ]
+ },
+ "10-tvs-pour": {
+  "spec": "10-tvs-pour",
+  "name": "10 Power shape: VBAT_IN pour to the TVS",
+  "gains": [
+   "D201 is joined to VBAT_IN by 10.7 mm-wide copper, 6.7 mm long (it had none)",
+   "No part moves, no via"
+  ],
+  "costs": [
+   "178 mm2 of F.Cu west of the busbar becomes VBAT_IN (it was GND pour, with nothing routed there)",
+   "Lands as one zone in power_shapes.json"
+  ]
+ }
+}

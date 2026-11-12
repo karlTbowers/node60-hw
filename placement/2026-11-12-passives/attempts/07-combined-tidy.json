@@ -1,0 +1,5 @@
+{"id": "07-combined",
+ "title": "07 All six together",
+ "why": "With the NTC pull-up gone from the east cell (05) and the cell fed from the east margin (02), the 7.5 mm leg to R807's old pad and the bridges 05 drew there have nothing to feed.",
+ "delete": [{"seg": [225.8, 102.8, 226.446, 102.791]}, {"seg": [226.0, 102.6, 226.446, 102.791]},
+            {"seg": [233.975, 102.791, 226.446, 102.791]}]}

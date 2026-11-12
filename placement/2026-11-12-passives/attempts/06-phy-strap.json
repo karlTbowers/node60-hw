@@ -1,0 +1,5 @@
+{"id": "06-phy-strap",
+ "title": "06 MODE0 strap R513 moved from U501's west side to its east side, at pin 23",
+ "why": "Pin 23 is on U501's east edge; R513 stood on the west, so MODE0 had to cross to another layer and back round the chip. East of pins 22-24 there is a free bottom-side pocket north of U301.",
+ "moves": {"R513": {"x": 161.6, "y": 45.05, "p1": "W"}},
+ "tracks": [{"net": "T1S_MODE0", "layer": "B.Cu", "w": 0.15, "pts": [[158.45, 44.8], [159.6, 44.8], [159.85, 45.05], [161.14, 45.05]]}]}

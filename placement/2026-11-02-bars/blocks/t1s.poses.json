@@ -1,7 +1,7 @@
 {
  "block": "k501",
  "anchor": "K501",
- "approved": "2026-11-04 (user: shift U501 and its parts south; D16-1 A otherwise); U301 group added 2026-11-04 (user); Y501, R503, R504 moved for RMII 2026-11-05 (D26 A); Y501, R503, R504 moved to blocks/refclk.poses.json 2026-11-05 (D27 A); C511/C512 sides swapped 2026-11-06 (D31)",
+ "approved": "2026-11-04 (user: shift U501 and its parts south; D16-1 A otherwise); U301 group added 2026-11-04 (user); Y501, R503, R504 moved for RMII 2026-11-05 (D26 A); Y501, R503, R504 moved to blocks/refclk.poses.json 2026-11-05 (D27 A); C511/C512 sides swapped 2026-11-06 (D31); R513 added 2026-11-12 (D32 I)",
  "anchor_pose": {
   "x": 155.0,
   "y": 64.33,
@@ -287,6 +287,15 @@
    "role": "core",
    "flex_mm": 0,
    "why": "U301 output capacitor (2.2 uF) at pin 6, 2.7 mm; bottom side (was top)."
+  },
+  "R513": {
+   "dx": 6.6,
+   "dy": -19.28,
+   "rot": 0.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "MODE0 strap, 2.8 mm east of U501 pin 23 on B.Cu (D32; it stood west of the chip, 11.5 mm and two vias away in the fast route)"
   }
  }
 }

@@ -1,0 +1,44 @@
+{
+ "id": "04-irq-pullup",
+ "title": "04 T1S_IRQ_L pull-up R508 moved from mid-board to the MCU's ball B3",
+ "why": "R508 stood 25 mm from U401 and 28 mm from U501, 14 mm south of the straight line between them, under the GND busbar: a detour or a stub with a via. Ball B3 is in the second row from U401's south edge and leaves on B.Cu.",
+ "moves": {
+  "R508": {
+   "x": 195.3,
+   "y": 60.7,
+   "p1": "S"
+  }
+ },
+ "tracks": [
+  {
+   "net": "3V3_MAIN",
+   "layer": "B.Cu",
+   "w": 0.3,
+   "pts": [
+    [
+     195.3,
+     61.16
+    ],
+    [
+     195.3,
+     62.2
+    ]
+   ]
+  }
+ ],
+ "vias": [
+  {
+   "net": "3V3_MAIN",
+   "x": 195.3,
+   "y": 62.2
+  }
+ ],
+ "delete": [
+  {
+   "via": [
+    173.1249,
+    68.7367
+   ]
+  }
+ ]
+}

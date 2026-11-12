@@ -1,7 +1,7 @@
 {
  "block": "u801",
  "anchor": "U801",
- "approved": "2026-11-06 (D31: switch turned 180 degrees with its pin-local parts; D19 A, D13 A before)",
+ "approved": "2026-11-06 (D31: switch turned 180 degrees with its pin-local parts; D19 A, D13 A before); D32 I (2026-11-12, user: \"I and H\"): R801 at the east margin's 3V3 via; R807 and C807 left for blocks/mcu_pullups.poses.json",
  "copied_from": {
   "table": "/tmp/n60/out_6x.new.json",
   "approved": null
@@ -67,23 +67,14 @@
    "flex_mm": 0,
    "why": "Second output's cap to GND, at the second output's pins (9-11). Mirror image of C805 about the switch's centre line (D31): beside the second output's pins (9-11), on its block"
   },
-  "C807": {
-   "dx": -1.25,
-   "dy": 9.35,
-   "rot": 270.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "NTC filter capacitor beside RT601 and R607, north of the switch (D19 A).. Unchanged by D31's turn: north of the switch with the thermistor"
-  },
   "R801": {
-   "dx": -6.0,
-   "dy": 1.4,
-   "rot": 90.0,
+   "dx": -11.35,
+   "dy": 8.809,
+   "rot": 0.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "SW_VDD series resistor near pin 3, on the switch's south-west signal side (D19 A: moved off the OUT2 exit).. Turned with the switch (D31): still by its pin"
+   "why": "SW_VDD series resistor (10R). D32: moved to the east margin, pad 1 0.4 mm from the In3 3V3 margin's via at (239.2, 102.791), so no 3V3 track enters the cell"
   },
   "R802": {
    "dx": -1.3923,
@@ -129,15 +120,6 @@
    "role": "core",
    "flex_mm": 0,
    "why": "SNS series resistor to the MCU's ADC, from the SNS node to the channel's SNS test point. Turned with the switch (D31): still by its pin"
-  },
-  "R807": {
-   "dx": 0.75,
-   "dy": 9.35,
-   "rot": 270.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "NTC divider resistor beside RT601, north of the switch (D19 A: moved with RT601).. Unchanged by D31's turn: north of the switch"
   },
   "RT801": {
    "dx": 0.75,

@@ -1,0 +1,179 @@
+{
+ "id": "05-ntc-to-mcu",
+ "title": "05 Switch NTC pull-ups and filter caps (R6x7, C6x7) moved from the cells to the MCU",
+ "why": "Each NTC's 10k pull-up needed 3V3 in the power band, where no layer carries it; the NTC line runs to U401 anyway. At the MCU the pull-up stands on the 3V3 plane and the 100 nF sits at the ADC ball. The NTCs stay beside their switches.",
+ "moves": {
+  "R607": {
+   "x": 196.5,
+   "y": 64.6,
+   "p1": "S"
+  },
+  "C607": {
+   "x": 198.5,
+   "y": 64.6,
+   "p1": "N"
+  },
+  "R807": {
+   "x": 200.9,
+   "y": 64.6,
+   "p1": "S"
+  },
+  "C807": {
+   "x": 202.9,
+   "y": 64.6,
+   "p1": "N"
+  },
+  "R707": {
+   "x": 205.3,
+   "y": 64.6,
+   "p1": "S"
+  },
+  "C707": {
+   "x": 207.3,
+   "y": 64.6,
+   "p1": "N"
+  }
+ },
+ "tracks": [
+  {
+   "net": "3V3_MAIN",
+   "layer": "B.Cu",
+   "w": 0.3,
+   "pts": [
+    [
+     196.5,
+     65.39
+    ],
+    [
+     196.5,
+     67.2
+    ]
+   ]
+  },
+  {
+   "net": "3V3_MAIN",
+   "layer": "B.Cu",
+   "w": 0.3,
+   "pts": [
+    [
+     200.9,
+     65.39
+    ],
+    [
+     200.9,
+     67.2
+    ]
+   ]
+  },
+  {
+   "net": "3V3_MAIN",
+   "layer": "B.Cu",
+   "w": 0.3,
+   "pts": [
+    [
+     205.3,
+     65.39
+    ],
+    [
+     205.3,
+     67.2
+    ]
+   ]
+  },
+  {
+   "net": "3V3_MAIN",
+   "layer": "B.Cu",
+   "w": 0.3,
+   "pts": [
+    [
+     76.5,
+     102.8
+    ],
+    [
+     77.2,
+     102.6
+    ]
+   ]
+  },
+  {
+   "net": "3V3_MAIN",
+   "layer": "B.Cu",
+   "w": 0.2,
+   "pts": [
+    [
+     151.2,
+     102.6
+    ],
+    [
+     151.797,
+     102.791
+    ]
+   ]
+  },
+  {
+   "net": "3V3_MAIN",
+   "layer": "B.Cu",
+   "w": 0.2,
+   "pts": [
+    [
+     225.8,
+     102.8
+    ],
+    [
+     226.446,
+     102.791
+    ]
+   ]
+  },
+  {
+   "net": "3V3_MAIN",
+   "layer": "B.Cu",
+   "w": 0.2,
+   "pts": [
+    [
+     226.0,
+     102.6
+    ],
+    [
+     226.446,
+     102.791
+    ]
+   ]
+  }
+ ],
+ "vias": [
+  {
+   "net": "3V3_MAIN",
+   "x": 196.5,
+   "y": 67.2
+  },
+  {
+   "net": "3V3_MAIN",
+   "x": 200.9,
+   "y": 67.2
+  },
+  {
+   "net": "3V3_MAIN",
+   "x": 205.3,
+   "y": 67.2
+  }
+ ],
+ "delete": [
+  {
+   "seg": [
+    151.8,
+    102.79,
+    151.55,
+    103.04
+   ]
+  },
+  {
+   "seg": [
+    226.45,
+    102.79,
+    226.2,
+    103.04
+   ]
+  }
+ ]
+}

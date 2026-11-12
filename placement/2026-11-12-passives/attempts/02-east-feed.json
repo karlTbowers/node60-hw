@@ -1,0 +1,7 @@
+{"id": "02-east-feed",
+ "title": "02 East cell's 3V3 from the east margin of the In3 plane; three vias that join nothing removed",
+ "why": "R807 and R801 are fed by a 36 mm B.Cu track from the plane edge at y 70.4, though In3 is 3V3 only 5 mm east of the cell (x > 238). The joins at R601, R701 and R801 each carry a via whose two tracks are both on B.Cu.",
+ "delete": [{"seg": [216.6, 70.4, 216.6, 93.6]}, {"seg": [216.6, 93.6, 225.8, 102.8]}, {"via": [216.6, 70.4]},
+            {"via": [233.975, 102.791]}, {"via": [159.325, 102.791]}, {"via": [84.825, 108.772]}],
+ "tracks": [{"net": "3V3_MAIN", "layer": "B.Cu", "w": 0.3, "pts": [[233.975, 102.791], [239.2, 102.791]]}],
+ "vias": [{"net": "3V3_MAIN", "x": 239.2, "y": 102.791}]}

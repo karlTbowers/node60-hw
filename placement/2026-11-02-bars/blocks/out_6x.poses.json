@@ -1,7 +1,7 @@
 {
  "block": "u601",
  "anchor": "U601",
- "approved": "2026-11-06 (D31: switch turned 180 degrees with its pin-local parts; D19 A, D13 A before)",
+ "approved": "2026-11-06 (D31: switch turned 180 degrees with its pin-local parts; D19 A, D13 A before); D32 I (2026-11-12, user: \"I and H\"): R601 at the west margin's 3V3 via; R607 and C607 left for blocks/mcu_pullups.poses.json",
  "anchor_pose": {
   "x": 77.65,
   "y": 111.6,
@@ -63,23 +63,14 @@
    "flex_mm": 0,
    "why": "Second output's cap to GND, at the second output's pins (9-11). Mirror image of C605 about the switch's centre line (D31): beside the second output's pins (9-11), on its block"
   },
-  "C607": {
-   "dx": -1.25,
-   "dy": 9.35,
-   "rot": 270.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "NTC filter capacitor beside RT601 and R607, north of the switch (D19 A).. Unchanged by D31's turn: north of the switch with the thermistor"
-  },
   "R601": {
-   "dx": -6.0,
-   "dy": 1.4,
-   "rot": 90.0,
+   "dx": 5.2,
+   "dy": 8.8,
+   "rot": 180.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "SW_VDD series resistor near pin 3, on the switch's south-west signal side (D19 A: moved off the OUT2 exit).. Turned with the switch (D31): still by its pin"
+   "why": "SW_VDD series resistor (10R). D32: moved out of the cell's pocket to the west margin, pad 1 0.5 mm from the In3 3V3 margin's via at (71.5, 102.8), so no 3V3 track enters the cell; SW_VDD runs on to R604 and pin 3 with the cell's signals"
   },
   "R602": {
    "dx": -1.3923,
@@ -125,15 +116,6 @@
    "role": "core",
    "flex_mm": 0,
    "why": "SNS series resistor to the MCU's ADC, from the SNS node to the channel's SNS test point. Turned with the switch (D31): still by its pin"
-  },
-  "R607": {
-   "dx": 0.75,
-   "dy": 9.35,
-   "rot": 270.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "NTC divider resistor beside RT601, north of the switch (D19 A: moved with RT601).. Unchanged by D31's turn: north of the switch"
   },
   "RT601": {
    "dx": 0.75,

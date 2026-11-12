@@ -1,0 +1,234 @@
+{
+ "id": "D32",
+ "name": "Passive placement review",
+ "question": "Which of these passive moves and supply-copper changes should land on Node60's board?",
+ "board": "node60",
+ "phase": "Routing",
+ "stage": "Placement review",
+ "date": "2026-11-12",
+ "why_now": "You asked for a review of where the pull-ups, pull-downs, bypass capacitors and setting resistors stand, to cut vias and plane cuts before the remaining signals are routed, and said to make my own calls and keep a labelled picture of every attempt. Later you pointed at the thin 3V3 track to R607 and R707, and allowed the power shapes to change.\n\nI listed all 175 two-pad parts on the board with what each pad joins, how far it stands from the pin it serves, and whether its supply pad stands over that supply's plane (`passives.py`, `plane_at.py`). Most are right: every pull-down and setting resistor sits on GND copper within a few millimetres of its pin. The ones that are not fall into three groups, and each became an attempt on its own copy of main's board.\n\n**Parts that never followed their chip.** U203's bypass capacitor C215 and ALERT pull-up R211 stood 68 to 75 mm from U203, with a 43 mm 3V3 track and 3 vias drawn for the two of them (attempt 01).\n\n**Pull-ups standing where no layer carries 3V3, or off their signal's path.** The NTC pull-ups R607/R707/R807 (05), the I2C pull-ups (03), the PHY interrupt's pull-up (04) and one PHY strap on the wrong side of the chip (06).\n\n**Supply copper drawn round a problem a part or a shape can solve.** The east cell's 36 mm feed with the 3V3 plane 5 mm away, and three vias that join nothing (02); the whole thin 3V3 track into the output cells (08); the TVS with no copper to VBAT_IN (10).\n\n**About the track to R607 and R707.** It feeds four parts, not two: after R607 it goes on to R601, and after R707 to R701, the switches' 10 ohm VDD resistors. Moving the pull-ups alone (05) puts them on the plane, as you describe, but leaves the whole track in place. Attempt 08 moves the 10 ohm resistors onto the plane as well, and the track goes. What still has to enter each cell is the switch's logic supply, as SW_VDD after the 10 ohm; in the middle cell that is still a long thin track, because no layer carries 3V3 within reach of U701 and a 3V3 strip on In3 there would cut VBAT_PROT across the current's path to all three switches.\n\nNothing has been changed on main: every attempt is a copy in `placement/2026-11-12-passives/boards/`, with its spec in `attempts/` and its pictures in `img/`. Each board passes KiCad's DRC with the board's own rules (0 errors). Each was then fast-routed twice by KiCadRoutingTools v0.24.0 and graded by KiCad, against four fast routes of main (attempt 10 changes one pour and was not routed).",
+ "facts": [
+  {
+   "label": "How the fast-route numbers read",
+   "value": "KiCadRoutingTools v0.24.0 lays the same copper every time on the same board: main's four runs have identical signal vias and track, and KiCad's count of blocking items moves only 108 to 113 between them. But moving one resistor reshuffles the whole route: attempt 06 (one strap moved 6 mm) scores 101 and attempt 04 (one pull-up moved) 134 to 136, almost all of it in the router's own clearance errors (24 against 61), not in open connections (73 against 71). So the blocking count cannot rank these attempts. Unconnected items is the steadier figure: 75 on main, 69 to 74 on every attempt. KRT also routes supply nets pad to pad across the planes, so only signal nets are counted",
+   "source": "judge/v024 (22 runs), route_metrics.py, each run's grade.txt"
+  },
+  {
+   "label": "3V3 on In3",
+   "value": "North of y 70.8, the margins x < 72 and x > 238, and the strip y > 122. The power band between (x 72 to 238, y 71 to 122) is VBAT_PROT on In2 and In3",
+   "source": "node60.kicad_pcb zones; D22 A, D29 C"
+  },
+  {
+   "label": "Vias that join nothing",
+   "value": "The joins at R601, R701 and R801 each carry a 0.45/0.25 mm via whose two tracks are both on B.Cu. Deleting all three opens no connection",
+   "source": "power/joins plan 'how: via'; boards/02-east-feed.drc.json"
+  },
+  {
+   "label": "Not trialled: needs your word first",
+   "value": "R604/R704/R804 (FLT pull-ups) could stand at the MCU on 3V3_MAIN and take one track out of each cell, but the sheet's design note pulls FLT up to the switch's own VDD pin after TI's Table 9-1: a schematic change",
+   "source": "sheets/output-switch.kicad_sch, DESIGN VALUES"
+  },
+  {
+   "label": "Not trialled: found on the way",
+   "value": "C420, a fifth 100 nF on the MCU's V11, is 6.9 mm from the nearest V11 ball and in no block table (needs a bga_decaps.py pass). U203 is 13.7 mm from Q201 where the intent asks 5 mm. PWR 1V5_CORE_REG has the same 4.3 mm B.Cu track seven times over at (223.2, 33.3)-(223.2, 37.6). R306/R307 (1V5 enable divider) could move 6 mm closer to U303 pin 2: no via saved. R512 (PHYAD4 strap) is on the wrong side of U501 too, but pin 15 is boxed in by the locked RMII tracks and needs a via wherever R512 stands",
+   "source": "passives.py table; intent.json proximity[6]; data/main.json"
+  },
+  {
+   "label": "Your project file",
+   "value": "node60.kicad_pro has uncommitted changes from a KiCad save this morning (defaults written out; the values are the same as HEAD's). I left it alone",
+   "source": "git diff node60.kicad_pro"
+  }
+ ],
+ "option_list": [
+  [
+   "A",
+   "01-tmp175-home",
+   [
+    [
+     "01-tmp175-home/east_1_before.png",
+     "Before: C215 and R211 beside Q202, and the 3V3 track drawn for them (F.Cu between the busbars, then B.Cu)"
+    ],
+    [
+     "01-tmp175-home/east_2_after.png",
+     "After: the track and its three vias are gone"
+    ],
+    [
+     "01-tmp175-home/u203_1_before.png",
+     "Before: U203 alone"
+    ],
+    [
+     "01-tmp175-home/u203_2_after.png",
+     "After: C215 at pin 8 on the bottom, R211 level with pin 3"
+    ]
+   ]
+  ],
+  [
+   "B",
+   "02-east-feed",
+   [
+    [
+     "02-east-feed/east_1_before.png",
+     "Before: 36 mm from the plane edge at y 70.4 down to R807, then on to R801"
+    ],
+    [
+     "02-east-feed/east_2_after.png",
+     "After: 5.2 mm from a via in the In3 margin at x 239.2"
+    ],
+    [
+     "02-east-feed/vias_mid_1_before.png",
+     "Before: the via at the corner of two B.Cu tracks (middle cell; the same at the west and east cells)"
+    ],
+    [
+     "02-east-feed/vias_mid_2_after.png",
+     "After"
+    ]
+   ]
+  ],
+  [
+   "C",
+   "03b-i2c-pullups-stair",
+   [
+    [
+     "03b-i2c-pullups-stair/bus_1_before.png",
+     "Before: the bus runs west from U401; R406 and R407 stand south and south-east of it"
+    ],
+    [
+     "03b-i2c-pullups-stair/bus_2_after.png",
+     "After: both at U203, the end of the bus"
+    ],
+    [
+     "03b-i2c-pullups-stair/u203_2_after.png",
+     "03b: R211, R406, R407 in a staircase, one shared 3V3 via"
+    ],
+    [
+     "03a-i2c-pullups-row/u203_2_after.png",
+     "03a, the first arrangement, kept for the record: R407's 3V3 loops round R406"
+    ]
+   ]
+  ],
+  [
+   "D",
+   "04-irq-pullup",
+   [
+    [
+     "04-irq-pullup/link_1_before.png",
+     "Before: R508 under the GND busbar, off the line from U501 pin 22 to U401 ball B3"
+    ],
+    [
+     "04-irq-pullup/link_2_after.png",
+     "After: at ball B3"
+    ],
+    [
+     "04-irq-pullup/mcu_2_after.png",
+     "After, close up"
+    ]
+   ]
+  ],
+  [
+   "E",
+   "05-ntc-to-mcu",
+   [
+    [
+     "05-ntc-to-mcu/board_1_before.png",
+     "Before: each NTC line runs to U401; the pull-ups stand in the band (blue: VBAT_PROT on In3)"
+    ],
+    [
+     "05-ntc-to-mcu/board_2_after.png",
+     "After"
+    ],
+    [
+     "05-ntc-to-mcu/cell_mid_1_before.png",
+     "Before: middle cell"
+    ],
+    [
+     "05-ntc-to-mcu/cell_mid_2_after.png",
+     "After: RT701 stays; the 3V3 track stays too, for R701"
+    ],
+    [
+     "05-ntc-to-mcu/mcu_2_after.png",
+     "After: the three pairs south of U401, each pull-up on its own via"
+    ]
+   ]
+  ],
+  [
+   "F",
+   "06-phy-strap",
+   [
+    [
+     "06-phy-strap/u501_1_before.png",
+     "Before: R513 west of U501, its pin 23 on the east edge"
+    ],
+    [
+     "06-phy-strap/u501_2_after.png",
+     "After: 2.8 mm on B.Cu"
+    ]
+   ]
+  ],
+  [
+   "G",
+   "08-no-3v3-into-cells",
+   [
+    [
+     "08-no-3v3-into-cells/band_1_before.png",
+     "Before: the thin 3V3 track along the band. Red boxes: the parts it feeds"
+    ],
+    [
+     "08-no-3v3-into-cells/band_2_after.png",
+     "After: none of it left"
+    ],
+    [
+     "08-no-3v3-into-cells/west_2_after.png",
+     "After, west cell: R601 at the margin's via; SW_VDD (purple) on to R604 and pin 3"
+    ],
+    [
+     "08-no-3v3-into-cells/mid_2_after.png",
+     "After, middle cell: no 3V3 part left"
+    ],
+    [
+     "08-no-3v3-into-cells/mcu_2_after.png",
+     "After: R701 and the NTC parts on the plane south of U401"
+    ]
+   ]
+  ],
+  [
+   "H",
+   "10-tvs-pour",
+   [
+    [
+     "10-tvs-pour/tvs_1_before.png",
+     "Before: D201's tab 6.7 mm from the VBAT_IN pour, joined by nothing"
+    ],
+    [
+     "10-tvs-pour/tvs_2_after.png",
+     "After: the pour extended over the tab"
+    ]
+   ]
+  ],
+  [
+   "I",
+   "09-everything",
+   [
+    [
+     "09-everything/board_1_before.png",
+     "Before (main)"
+    ],
+    [
+     "09-everything/board_2_after.png",
+     "After: every move (A to G); the red rings mark where parts stood"
+    ]
+   ]
+  ]
+ ],
+ "sources": [
+  "placement/2026-11-12-passives/: attempts/*.json (each move), apply_attempt.py and build.sh (the boards), drc_counts.py, copper_table.py, route_metrics.py, study_picture.py and pictures.sh (the pictures), REPORT.md",
+  "KiCad 10 DRC with node60.kicad_pro and node60.kicad_dru on every attempt board",
+  "KiCadRoutingTools v0.24.0 (a27fdf2e) through placement/2026-11-02-bars/judge_route.sh and scripts/judge_batch.sh",
+  "sheets/output-switch.kicad_sch and sheets/power-entry.kicad_sch DESIGN VALUES notes",
+  "placement/2026-11-02-bars/decisions/log.md: D19, D22, D29, D30, D31"
+ ],
+ "recommendation": {
+  "option": "I",
+  "why": "Land **I (everything, attempts 01 to 08) together with H (the TVS pour)**.\n\nThe case rests on the copper, which is measured exactly: 3V3 track on the board falls from 246 mm to 42 mm, in the power band from 201 mm to 8 mm, and between the busbars on the top side from 33 mm to 1.5 mm; 10 vias go and 8 are drawn; every board passes DRC with 0 errors. H joins a TVS that today has no copper to the net it protects.\n\nThe fast routes do not argue for or against. Every attempt leaves fewer unconnected items than main (69 to 74 against 75), I the fewest with 69, but the router's result swings more from moving any one part than the attempts differ from each other, so I would not claim a routing gain from them. They do show no attempt makes the board harder to connect.\n\nIf you would rather not touch the approved output cells yet, **A, B, C, F and H** move only free parts and copper and can land on their own; they take the 3V3 track in the band from 201 mm to about 145 mm. G is the one that removes the thin track you pointed at, and it needs your approval of the three cell tables as a new version, with the three cells no longer identical and R701 70 mm from U701. D (the interrupt pull-up) is the weakest: its own net gets shorter (76 to 49 mm, 9 to 5 vias in the fast route) but nothing else changes; it is in I, and can be left out."
+ },
+ "answer": "Reply in the session with the letters to land (for example \"I and H\", or \"A B C F H\"), or a change to any of them. Nothing lands on main until you answer; landing goes through `power_shapes.json` and the block tables on a branch."
+}

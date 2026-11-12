@@ -1,0 +1,12 @@
+{"id": "01-tmp175-home",
+ "title": "01 TMP175's decap and ALERT pull-up brought home to U203",
+ "why": "C215 (U203's 100 nF) and R211 (ALERT pull-up) stood 68-75 mm from U203, beside Q202, on a 43 mm 3V3 track with 3 vias drawn for them alone. Beside U203 the 3V3 plane is under them.",
+ "moves": {"C215": {"x": 121.5, "y": 71.5, "p1": "W", "side": "B"},
+           "R211": {"x": 113.5, "y": 69.74, "p1": "N"}},
+ "delete": [{"box": [184.9, 85.8, 218.2, 94.7], "net": "3V3_MAIN"},
+            {"seg": [226.0, 102.6, 218.0, 94.6]}],
+ "tracks": [{"net": "3V3_MAIN", "layer": "B.Cu", "w": 0.3, "pts": [[119.4, 71.5], [121.04, 71.5]]},
+            {"net": "GND", "layer": "B.Cu", "w": 0.3, "pts": [[121.96, 71.5], [122.95, 71.5]]},
+            {"net": "TMP175_ALERT_L", "layer": "B.Cu", "w": 0.2, "pts": [[113.5, 70.2], [115.0, 70.2]]},
+            {"net": "3V3_MAIN", "layer": "B.Cu", "w": 0.3, "pts": [[113.5, 69.28], [112.4, 69.28]]}],
+ "vias": [{"net": "GND", "x": 122.95, "y": 71.5}, {"net": "3V3_MAIN", "x": 112.4, "y": 69.28}]}
