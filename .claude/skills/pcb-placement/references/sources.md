@@ -6,7 +6,8 @@ chose (2026-11-02) to keep the skill in the Node60 repo for now, and how to trea
 ## KiCadRoutingTools `plan-pcb-placement` (MIT)
 
 [drandyhaas/KiCadRoutingTools](https://github.com/drandyhaas/KiCadRoutingTools), MIT
-licence, as of commit `bf0405d8`. Its tools are **used in place** from a clone
+licence, first taken at commit `bf0405d8`; in use at v0.24.0 (`a27fdf2e`) since 2026-11-12
+(`fast-route.md` says what changed for the judge). Its tools are **used in place** from a clone
 (`~/Dev/KiCadRoutingTools`), not copied: the annealer (`py_placer/place_simple.py`), the intent
 and groups files, `check_floorplan.py`, `check_assembly.py`, `check_groups.py`,
 `fit_template.py`, `place_pose.py`, `render_placement.py`, `judge_seeds.py`, `quick_score.py`,

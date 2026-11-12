@@ -229,3 +229,44 @@ unless the run meant to change it, then re-run CI's DRC.
 - KRT honours a crystal's foreign-net rule for tracks, not vias: make the area a via keep-out on the router's copy. It also graded a 1.25 mm gap (fan-out stub to a pull-up pad, blocked by a decap) as joined; KiCad DRC on the real board found it.
 - Route on the judge's prepared board (STOP_AFTER=phy_first), then transplant only the routed nets' copper onto a real copy for DRC.
 - A zone whose minimum width equals the webs it must keep (0.15 mm between 0.35 mm vias at 0.8 mm) keeps or drops them by rounding from one refill to the next; set the minimum below the web.
+
+## KRT updated under a running comparison (2026-11-12, Node60 passive study)
+
+**What happened.** `~/Dev/KiCadRoutingTools` was pulled from v0.23.7 to v0.24.0 at 11:16 and its
+`grid_router.so` rebuilt at 11:19, while 25 judging runs started between 10:48 and 11:10 were still
+routing. Every KRT step is a fresh Python process from the checkout, so those runs mixed two versions
+and none could be compared. They were also three batches stacked on one machine (25 runs on 16 P
+cores): after 50 minutes not one had reached its grade, against about 17 minutes for a run alone.
+All were stopped and the whole comparison, baseline included, was run again on v0.24.0.
+
+**What the skill does.** Before a large run, look for a KRT update and install it (user, 2026-11-12).
+From there KRT is pinned for the length of the comparison: no pull while a batch runs,
+and after any KRT update the baseline is routed again with the variants, never carried over.
+`judge_batch.sh` marks a batch INVALID when KRT's commit or router binary at its end differs from
+its start. One batch at a time, at the script's own run limit; a second batch waits for the first
+one's `summary.tsv`.
+
+## A study of small moves checked with KiCad's DRC only (2026-11-12, Node60 passive study)
+
+**What happened.** Nine attempt boards (pull-ups, decaps and VDD resistors moved by hand-written
+coordinates) were judged legal on KiCad's DRC alone before they went to the fast route. DRC found no
+error on any, but it is not the placement gate: KRT's `check_floorplan` and `check_assembly` (intent
+keep-outs, heights, assembly) and a reachability screen were not run, and one attempt (05) moved core
+parts of three approved block tables, which only `block_poses.py check` showed.
+
+**What the skill does.** The light path for small moves (SKILL.md, "Small moves of free parts") lists
+its screens: `block_poses.py check` first, KiCad DRC, `check_floorplan` and `check_assembly` on any
+board that will be proposed for landing, and `check_reachability --part` on every chip a moved part
+now stands beside.
+
+## Reading a fast route of a board with parked test points (2026-11-12, Node60 passive study, KRT v0.24.0)
+- `grade_route.py`'s BLOCKING and open-net counts include every net whose test point is parked off the
+  board: 49 of main's 56 open nets. Count the nets open at a part on the board (7 on main, as on
+  2026-11-05); `route_review.py` names the pad each net is disconnected at.
+- The clearance errors of these routes (29 to 63) were all the T1S 0.75 mm rule, which the judge strips
+  from the router's copy: router copper near the T1S line, in x 140-180, y 40-60. Attempt 02 moved no
+  part and deleted one 36 mm supply track 60 mm away, and went from about 31 to 48. So that count is
+  routing noise here, not a measure of a placement; don't rank small moves by BLOCKING.
+- On v0.24.0 the two runs of every variant left the same nets open (v0.23 runs each lost a different
+  net), so two runs are enough to see a difference; a run took about 55 minutes with 14 at once.
+

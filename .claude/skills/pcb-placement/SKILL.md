@@ -159,6 +159,8 @@ intent, write `groups.json`, declare edges, covers, keep-outs and templates, the
   approved block, `escape_budget.py` on every BGA, `hot_loop.py`, `layer_capacity.py`. A seed
   that moves a core part, covers balls or breaks a hot-loop limit is repaired or dropped
   (KRT §3.6 "when no seed can be judged"), and every repair move is logged in REPORT.md.
+- On each chip the placement crowds (every BGA and QFN), `check_reachability.py --part REF`
+  (KRT v0.24.0) before the fast route: how many of its signal nets can leave at once.
 - Repairs and nudges go through `pose_search.py`: one spec lists the parts, their search
   radius, rotations and any `require` (e.g. a GND test point within 12 mm of its pin); it loads
   the board once, screens every pose in memory and runs `check_floorplan` and
@@ -173,6 +175,9 @@ against the board's real `.kicad_pro` and `.kicad_dru` (`references/fast-route.m
 both: KRT's `quick_score` blocking 0 and `grade_route.py` BLOCKING 0. When seeds are close,
 the choice between them is a decision page.
 
+Before a large run, check for a KRT update and install it; then one KRT version and one batch at a time: `references/fast-route.md`, "One KRT version, one batch
+at a time". The baseline is routed in the same batch as what it is compared with.
+
 ### 6. Placement gate
 
 `$KPY scripts/gate.py <kept seed> --plan plan.json --fast-route <its fast route> --fast-score
@@ -184,6 +189,42 @@ reads ACCEPTED.
 **Decision:** the placement itself, with the gate table, renders of both sides and the fast
 route. On approval, the kept seed (never a fast-routed board) replaces the board in the repo on a
 branch, with the run's records, in a PR.
+
+## Small moves of free parts
+
+A review that only nudges passives (a pull-up to the pin or plane it belongs with, a decap back to
+its chip, a supply stub shortened) doesn't re-run stages 1 to 6. Worked example:
+`placement/2026-11-12-passives/` (Node60). It still keeps rules 1, 2, 5 and 6.
+
+1. **Find candidates from the board, not by eye.** For every two-pad part: what each pad's net is,
+   how far it stands from the pin it serves, and whether its supply pad stands over that supply's
+   plane on some layer (the example's `passives.py` and `plane_at.py`). Measure the copper already
+   drawn for it (track and vias per supply net, and where).
+2. **One attempt, one spec, one copy.** Each move is a small JSON (parts with their new poses,
+   copper to delete and add, the reason) applied to a copy made with `copy_board.py`; the repo's
+   board is not touched. Number the attempts and keep the ones that were superseded or rejected,
+   with why.
+3. **Screen each copy**, in this order: `block_poses.py check` against every approved block table (a
+   core part that moved makes the attempt a block change, which is the user's decision on a page);
+   KiCad DRC with the board's own rules, refilled, compared with main's (0 new errors, and read the
+   unconnected and dangling changes); `check_floorplan` and `check_assembly` with the intent, under
+   `KRT_PY`; `check_reachability --part` on each chip a moved part now stands beside.
+4. **Pictures, labelled.** The same region before and after for every attempt, moved parts ringed,
+   the plane under them tinted, kept in the study folder for the user's review.
+5. **Judge by a fast route** only what passed the screens: baseline and attempts in one batch, each
+   repeated. Supply nets say nothing there (KRT routes them pad to pad across the planes); read the
+   blocking count and the moved parts' own signal nets.
+   Read each routed board with KRT's `py_tools/route_review.py` (it names the pad every open net
+   is disconnected at, so a net open only at a parked test point is told from one open at a chip,
+   and lists the nets with the most vias and the longest detours), and compare the moved nets
+   across boards with `py_tools/render_nets.py -o OUT.png --nets ... main=BASE attempt=BOARD`
+   (one panel per board, vias and length per panel). Both tried 2026-11-12: 2 to 20 s a board.
+   Before drawing a supply stub or any other join by hand, `py_tools/check_join.py BOARD NET
+   x,y,layer ... via:x,y` checks it against the board's tracks, vias and pads; it does not see
+   pours, so a join that cuts a zone reads CLEAN and KiCad's refill and DRC still judge that.
+6. **Decide on a page.** The attempts go to the user as one decision page. Landing an accepted move
+   goes through the records that draw the board (`power_shapes.json`, the block tables), on a
+   branch, with CI's DRC.
 
 ## Hand-back
 

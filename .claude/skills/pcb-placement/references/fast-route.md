@@ -61,6 +61,35 @@ Write `judge_chain.txt` from KRT's `plan-pcb-placement` §3.7, with these change
 3. **The sibling rules.** Keep the board's `.kicad_dru` beside every board in the chain
    (`copy_board.py` does), so `route.py` reads its net-filtered rules too.
 
+## One KRT version, one batch at a time
+
+A comparison is only as good as its baseline (`lessons.md`, 2026-11-12):
+
+- **Update first, then pin** (user, 2026-11-12). Before a large run (a batch, or anything over a
+  few routes), look for a KRT update and install it, while nothing is routing:
+  `git -C ~/Dev/KiCadRoutingTools fetch -q && git -C ~/Dev/KiCadRoutingTools log --oneline HEAD..origin/main | wc -l`;
+  when that isn't 0, `scripts/setup-workstation.sh --update-krt` (fast-forwards a clean `main` and
+  installs the matching router binary when the crate version moved), read the release's commits for what touches the judge, and note the new
+  version in `sources.md`. Then start the batch.
+- **Pin KRT.** Don't pull or rebuild `~/Dev/KiCadRoutingTools` while a batch runs. `judge_batch.sh`
+  writes KRT's commit and the router binary's hash to `versions.txt` at the start and the end, and
+  marks the batch INVALID in `summary.tsv` when they differ. Results from two KRT versions never
+  share a table: after an update, route the baseline again with the variants.
+- **One batch at a time.** `judge_batch.sh` sizes itself to the machine (14 runs at once on the
+  16 P-core Mac Studio). A second batch started beside it doubles every run's time; queue the
+  variants in one variants file, or wait for the first batch's `summary.tsv`.
+- **Repeat every variant**, the baseline at least as often as any other (`--repeat`): KRT is not
+  bit-for-bit repeatable, and a one-net difference is noise until reachability says otherwise.
+- **Screen before routing.** `check_reachability.py BOARD --part REF` (KRT v0.24.0, #1817) says how
+  many of a part's signal nets can leave it at once, in seconds; run it on each BGA and QFN a move
+  crowds, and route only what passes. As of 2026-11-12 this is taken from KRT's commit log and
+  `--help`, not yet from use on Node60: check its first results against a fast route.
+
+KRT v0.24.0 also gates the plane step's bridges, return vias, pad taps and rescue escapes against
+net-filtered `.kicad_dru` keep-outs (#1749, #1777, #1778, #1782), which the table above records as
+ignored at v0.23. The native keep-outs on the judging copy stay until a graded route shows they are
+no longer needed.
+
 ## Grading each fast route
 
 ```bash

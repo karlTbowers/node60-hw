@@ -18,6 +18,8 @@
 #
 # Each run goes to BATCH_DIR/<name>/ (judge_route.sh's own outputs, plus run.out, versions.txt and
 # env.txt). At the end: BATCH_DIR/summary.tsv (ranked by blocking count) and BATCH_DIR/perf.md.
+# KRT must not change under a batch: if its commit or grid_router.so differs at the end, the batch is
+# marked INVALID (BATCH_DIR/INVALID, summary.tsv's first line) and the script exits 3.
 # The runs share nothing but read-only inputs. Every run uses ~/Dev/KiCadRoutingTools as checked
 # out; its commit is recorded before and after, and a change during the batch is reported.
 emulate zsh
@@ -78,7 +80,8 @@ free_mb() {   # memory the system can hand out now: free + inactive + speculativ
 
 mkdir -p $BATCH
 krt_head() { git -C $KRT rev-parse HEAD 2>/dev/null || print unknown; }
-KRT0=$(krt_head)
+so_hash() { shasum -a 256 $KRT/rust_router/grid_router.so 2>/dev/null | cut -c1-12; }
+KRT0=$(krt_head); SO0=$(so_hash)
 ROUTER=$(cd $KRT && $KRT_PY -c 'import sys; sys.path.insert(0, "rust_router"); import grid_router; print(grid_router.__version__)' 2>/dev/null || print '?')
 {
   print "host\t$(hostname -s) $(sysctl -n hw.model) $(sysctl -n machdep.cpu.brand_string), $P P + $(sysctl -n hw.perflevel1.physicalcpu) E cores, $(( MEM_MB / 1024 )) GB"
@@ -127,9 +130,20 @@ while (( next <= ${#names} || ${#PIDS} )); do
   sleep 5
 done
 
-KRT1=$(krt_head)
-[[ $KRT1 == $KRT0 ]] || print "  WARNING: ~/Dev/KiCadRoutingTools moved from ${KRT0:0:8} to ${KRT1:0:8} during the batch; runs that started after that used other router code"
+KRT1=$(krt_head); SO1=$(so_hash)
+# A batch is one KRT version (lesson of 2026-11-12: a pull landed while 25 runs were routing, every
+# step being a fresh process from the checkout). When the commit or the router binary moved, the batch
+# is INVALID: BATCH_DIR/INVALID says why, summary.tsv's first line says so, and the exit code is 3.
+INVALID=""
+[[ $KRT1 == $KRT0 ]] || INVALID="KRT moved from ${KRT0:0:8} to ${KRT1:0:8} during the batch"
+[[ $SO1 == $SO0 ]] || INVALID="${INVALID:+$INVALID; }grid_router.so changed ($SO0 -> $SO1) during the batch"
+rm -f $BATCH/INVALID
+if [[ -n $INVALID ]]; then
+  print "$INVALID. Runs mixed router code: route the whole batch again, baseline included." > $BATCH/INVALID
+  print "  INVALID: $(<$BATCH/INVALID)"
+fi
 print "krt_commit_end\t$KRT1" >> $BATCH/versions.txt
+print "grid_router_end\tsha256 $SO1" >> $BATCH/versions.txt
 
 # --- summary ---------------------------------------------------------------------------------
 python3 - $BATCH ${names} <<'PY'
@@ -156,4 +170,8 @@ print("\n  %-28s %8s %9s %7s %8s" % ("variant", "blocking", "open nets", "wall s
 for r in rows: print("  %-28s %8s %9s %7s %8s" % tuple(f(r[k]) for k in ("name", "blocking", "open", "wall", "peak")))
 PY
 [[ -f $PERF ]] && python3 $PERF $BATCH/${^names} --md $BATCH/perf.md >/dev/null 2>&1 && print "\n  per-step times: $BATCH/perf.md"
+if [[ -n $INVALID ]]; then
+  print "# INVALID: $(<$BATCH/INVALID)" | cat - $BATCH/summary.tsv > $BATCH/summary.tsv.new && mv $BATCH/summary.tsv.new $BATCH/summary.tsv
+fi
 print "  summary: $BATCH/summary.tsv; versions: $BATCH/versions.txt"
+[[ -z $INVALID ]] || exit 3
