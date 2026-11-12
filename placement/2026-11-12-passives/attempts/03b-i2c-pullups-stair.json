@@ -1,0 +1,100 @@
+{
+ "id": "03b-i2c-pullups-stair",
+ "title": "03b I2C pull-ups R406/R407 at U203, standing north-south in a staircase with R211",
+ "why": "SDA and SCL leave U401 from inner balls on its west side and run west to U202 and U203. R406 stood 12 mm south of the MCU and R407 23 mm south-east, each a stub with its own via off the bus. At U203 the bus is already on B.Cu and the 3V3 plane is underneath. Each resistor's signal pad is level with its U203 pin, so the three tracks run straight east under one another's pads; the three 3V3 pads share R211's via.",
+ "moves": {
+  "R406": {
+   "x": 112.4,
+   "y": 70.385,
+   "p1": "N"
+  },
+  "R407": {
+   "x": 111.3,
+   "y": 71.035,
+   "p1": "N"
+  }
+ },
+ "tracks": [
+  {
+   "net": "I2C0_TELEMETRY_SCL",
+   "layer": "B.Cu",
+   "w": 0.2,
+   "pts": [
+    [
+     112.4,
+     70.84
+    ],
+    [
+     114.956,
+     70.84
+    ]
+   ]
+  },
+  {
+   "net": "I2C0_TELEMETRY_SDA",
+   "layer": "B.Cu",
+   "w": 0.2,
+   "pts": [
+    [
+     111.3,
+     71.49
+    ],
+    [
+     114.956,
+     71.49
+    ]
+   ]
+  },
+  {
+   "net": "3V3_MAIN",
+   "layer": "B.Cu",
+   "w": 0.3,
+   "pts": [
+    [
+     112.4,
+     69.93
+    ],
+    [
+     112.4,
+     69.28
+    ]
+   ]
+  },
+  {
+   "net": "3V3_MAIN",
+   "layer": "B.Cu",
+   "w": 0.3,
+   "pts": [
+    [
+     111.3,
+     70.58
+    ],
+    [
+     111.3,
+     69.28
+    ],
+    [
+     112.4,
+     69.28
+    ]
+   ]
+  }
+ ],
+ "needs": [
+  "01-tmp175-home"
+ ],
+ "delete": [
+  {
+   "via": [
+    196.9548,
+    60.4991
+   ]
+  },
+  {
+   "via": [
+    210.2544,
+    67.4263
+   ]
+  }
+ ]
+}

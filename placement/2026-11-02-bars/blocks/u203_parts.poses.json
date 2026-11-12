@@ -1,0 +1,49 @@
+{
+ "block": "u203_parts",
+ "anchor": "U203",
+ "approved": "2026-11-12 (D32 I, user: \"I and H\")",
+ "anchor_pose": {
+  "x": 117.156,
+  "y": 70.515,
+  "rot": 0.0,
+  "side": "B"
+ },
+ "parts": {
+  "C215": {
+   "dx": 4.344,
+   "dy": 0.985,
+   "rot": 0.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "U203's 100 nF, at pin 8 (V+) on the bottom side over the 3V3 plane; was 68 mm away beside Q202 on a 43 mm 3V3 track"
+  },
+  "R211": {
+   "dx": -3.656,
+   "dy": -0.775,
+   "rot": 270.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "ALERT pull-up, level with pin 3, on the 3V3 via at (112.4, 69.28)"
+  },
+  "R406": {
+   "dx": -4.756,
+   "dy": -0.13,
+   "rot": 270.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "I2C SCL pull-up at U203, the far end of the bus, sharing R211's 3V3 via"
+  },
+  "R407": {
+   "dx": -5.856,
+   "dy": 0.52,
+   "rot": 270.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "I2C SDA pull-up, a step south-west of R406 so both reach the same via without crossing"
+  }
+ }
+}

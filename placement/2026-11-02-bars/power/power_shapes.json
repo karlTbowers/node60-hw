@@ -1,5 +1,5 @@
 {
- "about": "Node60 power shapes, stage 1 (2026-11-04): inner planes (D12-1/D17 A), the 60 A entry path on B, In2, In3 and the F band (D18 A), VBAT_PROT at the disconnect FETs' sources, GND pours, and via fields at 0.65 A per 0.45/0.25 mm via (D12-6). Stage 2: each switch's VBB pad gets in-pad vias (filled and capped, DEC-027); each output a pour on B and F from its pins to its header's pin 1, OUTb the mirror image of OUTa, with mirrored via fields so both outputs of a switch get the same copper. D19 A (2026-11-04): the cells' small parts moved clear of the OUT exits; the B output pours reach north to y 104.5 beside the pins (F stays south of the VBAT_IN bar area). D20 A (2026-11-04): both battery terminals VBAT_IN, the entry mirrored about x 155. D21 C (2026-11-04): rows swapped so the ideal-diode FETs sit beside U201 (short DGATE): VBAT_IN an L from each ring to its north-row FET on B and In2 (In3 stays VBAT_PROT under it, toward U601/U801), VBAT_D the north band around the U201/U202 column, VBAT_Q2D the south band, VBAT_PROT from the south-row sources; vias in all four FET tabs. In3 VBAT_PROT (2026-11-04): the user cut it from the whole board to the power band; in3_sweep.py found the knee at x 72-238, y 71-122 (south of the switches carries current; the north and the far ends little). Small rails (D22 A and D23, 2026-11-04): 3V3_MAIN on In3 north of y 70.8, a 1V5_CORE island on In3 from U401's core to R303, VBAT_PROT fingers on In3 to L201 and U301, VBAT_FILT on B from L201 to U302; one via per small-rail pad (in the pad where it fits), U401's power and ground balls dogboned. Under U401 every via is 0.35/0.20 mm (via_overrides) so In3 keeps 0.15 mm webs; the caps under it sit on via pairs posed by power/bga_decaps.py (blocks/u401_decaps.poses.json), its power and ground balls dogboned at the cells that script chose (prefer, strict); H7 joins H6 on B, and C403, C404 and C419 reach their vias by short F tracks. D24 (2026-11-05): U302's cell re-composed (U302 turned 180 degrees, its passives mirrored about the chip's east-west axis: on B the cell had been seated as TI's top-view figure, so SW pin 7 faced away from L301); L201, C206, C207, C217 and the VBAT_FILT test points follow the input caps south, the L201 finger on In3 moves to x 115-119, y 59-71; both bucks' hot-loop copper on B (VBAT_FILT, SW, the REG output node, 3V3 at U303) and GND vias in every buck cap's GND pad and U302's exposed pad. D25 A (2026-11-05): a GND ring at 5 mm, 1 mm in from the edge; the interior stitching after routing. D26 A (2026-11-05): RMII and MDIO routed (rmii/route_rmii.sh, locked copper); In3's 3V3 plane and 1V5 island take a 0.12 mm minimum width so the 0.15 mm webs between U401's vias survive every refill.",
+ "about": "Node60 power shapes, stage 1 (2026-11-04): inner planes (D12-1/D17 A), the 60 A entry path on B, In2, In3 and the F band (D18 A), VBAT_PROT at the disconnect FETs' sources, GND pours, and via fields at 0.65 A per 0.45/0.25 mm via (D12-6). Stage 2: each switch's VBB pad gets in-pad vias (filled and capped, DEC-027); each output a pour on B and F from its pins to its header's pin 1, OUTb the mirror image of OUTa, with mirrored via fields so both outputs of a switch get the same copper. D19 A (2026-11-04): the cells' small parts moved clear of the OUT exits; the B output pours reach north to y 104.5 beside the pins (F stays south of the VBAT_IN bar area). D20 A (2026-11-04): both battery terminals VBAT_IN, the entry mirrored about x 155. D21 C (2026-11-04): rows swapped so the ideal-diode FETs sit beside U201 (short DGATE): VBAT_IN an L from each ring to its north-row FET on B and In2 (In3 stays VBAT_PROT under it, toward U601/U801), VBAT_D the north band around the U201/U202 column, VBAT_Q2D the south band, VBAT_PROT from the south-row sources; vias in all four FET tabs. In3 VBAT_PROT (2026-11-04): the user cut it from the whole board to the power band; in3_sweep.py found the knee at x 72-238, y 71-122 (south of the switches carries current; the north and the far ends little). Small rails (D22 A and D23, 2026-11-04): 3V3_MAIN on In3 north of y 70.8, a 1V5_CORE island on In3 from U401's core to R303, VBAT_PROT fingers on In3 to L201 and U301, VBAT_FILT on B from L201 to U302; one via per small-rail pad (in the pad where it fits), U401's power and ground balls dogboned. Under U401 every via is 0.35/0.20 mm (via_overrides) so In3 keeps 0.15 mm webs; the caps under it sit on via pairs posed by power/bga_decaps.py (blocks/u401_decaps.poses.json), its power and ground balls dogboned at the cells that script chose (prefer, strict); H7 joins H6 on B, and C403, C404 and C419 reach their vias by short F tracks. D24 (2026-11-05): U302's cell re-composed (U302 turned 180 degrees, its passives mirrored about the chip's east-west axis: on B the cell had been seated as TI's top-view figure, so SW pin 7 faced away from L301); L201, C206, C207, C217 and the VBAT_FILT test points follow the input caps south, the L201 finger on In3 moves to x 115-119, y 59-71; both bucks' hot-loop copper on B (VBAT_FILT, SW, the REG output node, 3V3 at U303) and GND vias in every buck cap's GND pad and U302's exposed pad. D25 A (2026-11-05): a GND ring at 5 mm, 1 mm in from the edge; the interior stitching after routing. D26 A (2026-11-05): RMII and MDIO routed (rmii/route_rmii.sh, locked copper); In3's 3V3 plane and 1V5 island take a 0.12 mm minimum width so the 0.15 mm webs between U401's vias survive every refill. D32 I and H (2026-11-12): the thin 3V3 tracks into the power band are gone but U202's and U203's: R601 and R801 stand at the In3 margins' vias, R701 and the NTC pull-ups R607/R707/R807 on the plane south of U401, C215, R211, R406 and R407 at U203, R508 at U401 ball B3, each on its own via (points and stubs named D32; excepted from the automatic pad vias); a VBAT_IN pour on F.Cu joins the TVS D201's tab to the bar's pour.",
  "via": {
   "size": 0.45,
   "drill": 0.25,
@@ -132,6 +132,22 @@
      90.2,
      217.4,
      109.0
+    ]
+   ]
+  },
+  {
+   "name": "PWR_VBAT_IN_D201_F",
+   "net": "/VBAT_IN",
+   "layers": [
+    "F.Cu"
+   ],
+   "priority": 11,
+   "rects": [
+    [
+     76.1,
+     91.4,
+     92.7,
+     102.1
     ]
    ]
   },
@@ -2390,30 +2406,6 @@
    ]
   },
   {
-   "name": "Power join 3V3_MAIN: R211.1 to C215.1 (via, plan_joins.py)",
-   "size": 0.4,
-   "drill": 0.2,
-   "points": [
-    [
-     185.244,
-     85.983,
-     "3V3_MAIN"
-    ]
-   ]
-  },
-  {
-   "name": "Power join GND: C215.2 to C205.2 (plane, plan_joins.py)",
-   "size": 0.45,
-   "drill": 0.25,
-   "points": [
-    [
-     186.205,
-     85.727,
-     "GND"
-    ]
-   ]
-  },
-  {
    "name": "Power join GND: C215.2 to C205.2 (plane, plan_joins.py)",
    "size": 0.45,
    "drill": 0.25,
@@ -2457,42 +2449,6 @@
     [
      71.5,
      102.8,
-     "3V3_MAIN"
-    ]
-   ]
-  },
-  {
-   "name": "3V3 into the power band (C): R807 (NTC, east)",
-   "size": 0.45,
-   "drill": 0.25,
-   "points": [
-    [
-     216.6,
-     70.4,
-     "3V3_MAIN"
-    ]
-   ]
-  },
-  {
-   "name": "3V3 into the power band (C): R211 and C215 from the R807 line",
-   "size": 0.45,
-   "drill": 0.25,
-   "points": [
-    [
-     218.0,
-     94.6,
-     "3V3_MAIN"
-    ]
-   ]
-  },
-  {
-   "name": "3V3 into the power band (C): R211 and C215 from the R807 line",
-   "size": 0.45,
-   "drill": 0.25,
-   "points": [
-    [
-     191.8,
-     89.2,
      "3V3_MAIN"
     ]
    ]
@@ -2558,38 +2514,49 @@
    ]
   },
   {
-   "name": "Power join 3V3_MAIN: R701.1 to R707.1 (via, plan_joins.py)",
+   "name": "D32 (2026-11-12): vias of the parts moved onto the 3V3 plane, and C215's GND",
    "size": 0.45,
    "drill": 0.25,
    "points": [
     [
-     159.325,
+     112.4,
+     69.28,
+     "3V3_MAIN"
+    ],
+    [
+     195.3,
+     62.2,
+     "3V3_MAIN"
+    ],
+    [
+     196.5,
+     67.2,
+     "3V3_MAIN"
+    ],
+    [
+     200.9,
+     67.2,
+     "3V3_MAIN"
+    ],
+    [
+     205.3,
+     67.2,
+     "3V3_MAIN"
+    ],
+    [
+     209.2,
+     62.75,
+     "3V3_MAIN"
+    ],
+    [
+     239.2,
      102.791,
      "3V3_MAIN"
-    ]
-   ]
-  },
-  {
-   "name": "Power join 3V3_MAIN: R801.1 to R807.1 (via, plan_joins.py)",
-   "size": 0.45,
-   "drill": 0.25,
-   "points": [
+    ],
     [
-     233.975,
-     102.791,
-     "3V3_MAIN"
-    ]
-   ]
-  },
-  {
-   "name": "Power join 3V3_MAIN: R601.1 to track@77.20,102.60 (via, plan_joins.py)",
-   "size": 0.45,
-   "drill": 0.25,
-   "points": [
-    [
-     84.825,
-     108.772,
-     "3V3_MAIN"
+     122.95,
+     71.5,
+     "GND"
     ]
    ]
   }
@@ -3072,48 +3039,6 @@
    ]
   },
   {
-   "name": "Power join 3V3_MAIN: R211.1 to C215.1 (via, plan_joins.py)",
-   "layer": "B.Cu",
-   "width": 0.3,
-   "stubs": [
-    [
-     191.003,
-     88.439,
-     185.244,
-     85.983,
-     "3V3_MAIN"
-    ]
-   ]
-  },
-  {
-   "name": "Power join 3V3_MAIN: R211.1 to C215.1 (via, plan_joins.py)",
-   "layer": "F.Cu",
-   "width": 0.3,
-   "stubs": [
-    [
-     185.244,
-     85.983,
-     185.085,
-     85.927,
-     "3V3_MAIN"
-    ]
-   ]
-  },
-  {
-   "name": "Power join GND: C215.2 to C205.2 (plane, plan_joins.py)",
-   "layer": "F.Cu",
-   "width": 0.3,
-   "stubs": [
-    [
-     186.005,
-     85.927,
-     186.205,
-     85.727,
-     "GND"
-    ]
-   ]
-  },
-  {
    "name": "Power join VBAT_D: PWR_VBAT_D_B to C209.1 (track, plan_joins.py)",
    "layer": "B.Cu",
    "width": 0.3,
@@ -3124,258 +3049,6 @@
      150.5,
      78.9,
      "/Power entry/VBAT_D"
-    ]
-   ]
-  },
-  {
-   "name": "3V3 into the power band (C): R607 (NTC, west)",
-   "layer": "B.Cu",
-   "width": 0.3,
-   "stubs": [
-    [
-     71.5,
-     102.8,
-     76.5,
-     102.8,
-     "3V3_MAIN"
-    ]
-   ]
-  },
-  {
-   "name": "3V3 into the power band (C): R807 (NTC, east)",
-   "layer": "B.Cu",
-   "width": 0.3,
-   "stubs": [
-    [
-     216.6,
-     70.4,
-     216.6,
-     93.6,
-     "3V3_MAIN"
-    ],
-    [
-     216.6,
-     93.6,
-     225.8,
-     102.8,
-     "3V3_MAIN"
-    ]
-   ]
-  },
-  {
-   "name": "3V3 into the power band (C): R707 (NTC, middle) from the R607 line",
-   "layer": "B.Cu",
-   "width": 0.3,
-   "stubs": [
-    [
-     77.2,
-     102.6,
-     88.6,
-     102.6,
-     "3V3_MAIN"
-    ],
-    [
-     88.6,
-     102.6,
-     93.6,
-     107.6,
-     "3V3_MAIN"
-    ],
-    [
-     93.6,
-     107.6,
-     96.2,
-     107.6,
-     "3V3_MAIN"
-    ],
-    [
-     96.2,
-     107.6,
-     96.6,
-     108.0,
-     "3V3_MAIN"
-    ],
-    [
-     96.6,
-     108.0,
-     99.0,
-     108.0,
-     "3V3_MAIN"
-    ],
-    [
-     99.0,
-     108.0,
-     99.4,
-     107.6,
-     "3V3_MAIN"
-    ],
-    [
-     99.4,
-     107.6,
-     101.6,
-     107.6,
-     "3V3_MAIN"
-    ],
-    [
-     101.6,
-     107.6,
-     101.8,
-     107.8,
-     "3V3_MAIN"
-    ],
-    [
-     101.8,
-     107.8,
-     102.0,
-     107.6,
-     "3V3_MAIN"
-    ],
-    [
-     102.0,
-     107.6,
-     105.4,
-     107.6,
-     "3V3_MAIN"
-    ],
-    [
-     105.4,
-     107.6,
-     105.8,
-     108.0,
-     "3V3_MAIN"
-    ],
-    [
-     105.8,
-     108.0,
-     107.6,
-     108.0,
-     "3V3_MAIN"
-    ],
-    [
-     107.6,
-     108.0,
-     108.0,
-     107.6,
-     "3V3_MAIN"
-    ],
-    [
-     108.0,
-     107.6,
-     123.4,
-     107.6,
-     "3V3_MAIN"
-    ],
-    [
-     123.4,
-     107.6,
-     131.4,
-     99.6,
-     "3V3_MAIN"
-    ],
-    [
-     131.4,
-     99.6,
-     148.2,
-     99.6,
-     "3V3_MAIN"
-    ],
-    [
-     148.2,
-     99.6,
-     151.2,
-     102.6,
-     "3V3_MAIN"
-    ]
-   ]
-  },
-  {
-   "name": "3V3 into the power band (C): R211 and C215 from the R807 line",
-   "layer": "B.Cu",
-   "width": 0.3,
-   "stubs": [
-    [
-     226.0,
-     102.6,
-     218.0,
-     94.6,
-     "3V3_MAIN"
-    ]
-   ]
-  },
-  {
-   "name": "3V3 into the power band (C): R211 and C215 from the R807 line",
-   "layer": "F.Cu",
-   "width": 0.3,
-   "stubs": [
-    [
-     218.0,
-     94.6,
-     217.8,
-     94.4,
-     "3V3_MAIN"
-    ],
-    [
-     217.8,
-     94.4,
-     217.8,
-     90.0,
-     "3V3_MAIN"
-    ],
-    [
-     217.8,
-     90.0,
-     217.6,
-     89.8,
-     "3V3_MAIN"
-    ],
-    [
-     217.6,
-     89.8,
-     208.2,
-     89.8,
-     "3V3_MAIN"
-    ],
-    [
-     208.2,
-     89.8,
-     208.0,
-     89.6,
-     "3V3_MAIN"
-    ],
-    [
-     208.0,
-     89.6,
-     207.8,
-     89.8,
-     "3V3_MAIN"
-    ],
-    [
-     207.8,
-     89.8,
-     192.4,
-     89.8,
-     "3V3_MAIN"
-    ],
-    [
-     192.4,
-     89.8,
-     191.8,
-     89.2,
-     "3V3_MAIN"
-    ]
-   ]
-  },
-  {
-   "name": "3V3 into the power band (C): R211 and C215 from the R807 line",
-   "layer": "B.Cu",
-   "width": 0.3,
-   "stubs": [
-    [
-     191.8,
-     89.2,
-     191.2,
-     88.6,
-     "3V3_MAIN"
     ]
    ]
   },
@@ -3422,121 +3095,100 @@
    ]
   },
   {
-   "name": "Power join 3V3_MAIN: R701.1 to R707.1 (via, plan_joins.py)",
-   "layer": "B.Cu",
-   "width": 0.2,
-   "stubs": [
-    [
-     158.3,
-     109.745,
-     159.325,
-     108.72,
-     "3V3_MAIN"
-    ],
-    [
-     159.325,
-     108.72,
-     159.325,
-     102.791,
-     "3V3_MAIN"
-    ]
-   ]
-  },
-  {
-   "name": "Power join 3V3_MAIN: R701.1 to R707.1 (via, plan_joins.py)",
-   "layer": "B.Cu",
-   "width": 0.2,
-   "stubs": [
-    [
-     159.325,
-     102.791,
-     151.797,
-     102.791,
-     "3V3_MAIN"
-    ],
-    [
-     151.797,
-     102.791,
-     151.55,
-     103.037,
-     "3V3_MAIN"
-    ]
-   ]
-  },
-  {
-   "name": "Power join 3V3_MAIN: R801.1 to R807.1 (via, plan_joins.py)",
-   "layer": "B.Cu",
-   "width": 0.2,
-   "stubs": [
-    [
-     232.95,
-     109.745,
-     233.975,
-     108.72,
-     "3V3_MAIN"
-    ],
-    [
-     233.975,
-     108.72,
-     233.975,
-     102.791,
-     "3V3_MAIN"
-    ]
-   ]
-  },
-  {
-   "name": "Power join 3V3_MAIN: R801.1 to R807.1 (via, plan_joins.py)",
-   "layer": "B.Cu",
-   "width": 0.2,
-   "stubs": [
-    [
-     233.975,
-     102.791,
-     226.446,
-     102.791,
-     "3V3_MAIN"
-    ],
-    [
-     226.446,
-     102.791,
-     226.2,
-     103.037,
-     "3V3_MAIN"
-    ]
-   ]
-  },
-  {
-   "name": "Power join 3V3_MAIN: R601.1 to track@77.20,102.60 (via, plan_joins.py)",
+   "name": "D32 (2026-11-12): moved parts' pads to their vias",
    "layer": "B.Cu",
    "width": 0.3,
    "stubs": [
     [
-     83.65,
-     109.745,
-     84.825,
-     108.772,
-     "3V3_MAIN"
-    ]
-   ]
-  },
-  {
-   "name": "Power join 3V3_MAIN: R601.1 to track@77.20,102.60 (via, plan_joins.py)",
-   "layer": "B.Cu",
-   "width": 0.3,
-   "stubs": [
-    [
-     84.825,
-     108.772,
-     84.825,
-     102.6,
+     71.5,
+     102.8,
+     71.99,
+     102.8,
      "3V3_MAIN"
     ],
     [
-     84.825,
-     102.6,
-     77.2,
-     102.6,
+     111.3,
+     69.28,
+     111.3,
+     70.58,
      "3V3_MAIN"
+    ],
+    [
+     111.3,
+     69.28,
+     112.4,
+     69.28,
+     "3V3_MAIN"
+    ],
+    [
+     112.4,
+     69.28,
+     112.4,
+     69.93,
+     "3V3_MAIN"
+    ],
+    [
+     112.4,
+     69.28,
+     113.5,
+     69.28,
+     "3V3_MAIN"
+    ],
+    [
+     119.4,
+     71.5,
+     121.04,
+     71.5,
+     "3V3_MAIN"
+    ],
+    [
+     195.3,
+     61.16,
+     195.3,
+     62.2,
+     "3V3_MAIN"
+    ],
+    [
+     196.5,
+     65.39,
+     196.5,
+     67.2,
+     "3V3_MAIN"
+    ],
+    [
+     200.9,
+     65.39,
+     200.9,
+     67.2,
+     "3V3_MAIN"
+    ],
+    [
+     205.3,
+     65.39,
+     205.3,
+     67.2,
+     "3V3_MAIN"
+    ],
+    [
+     209.2,
+     62.75,
+     209.2,
+     63.845,
+     "3V3_MAIN"
+    ],
+    [
+     238.76,
+     102.791,
+     239.2,
+     102.791,
+     "3V3_MAIN"
+    ],
+    [
+     121.96,
+     71.5,
+     122.95,
+     71.5,
+     "GND"
     ]
    ]
   }
@@ -3574,7 +3226,15 @@
     "U302",
     "U303",
     "C502",
-    "R506"
+    "R506",
+    "R211",
+    "R406",
+    "R407",
+    "R508",
+    "R607",
+    "R707",
+    "R807",
+    "R701"
    ],
    "except_rects": [
     [

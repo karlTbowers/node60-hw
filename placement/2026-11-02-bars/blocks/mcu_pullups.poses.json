@@ -1,0 +1,85 @@
+{
+ "block": "mcu_pullups",
+ "anchor": "U401",
+ "approved": "2026-11-12 (D32 I, user: \"I and H\")",
+ "anchor_pose": {
+  "x": 200.9291,
+  "y": 51.4898,
+  "rot": 0.0,
+  "side": "B"
+ },
+ "parts": {
+  "R701": {
+   "dx": 8.2709,
+   "dy": 12.8102,
+   "rot": 270.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "SW_VDD series resistor (10R) of U701. No layer carries 3V3 within reach of U701, so it stands on the plane here, 70 mm from the switch; the 470 nF C703 stays at the pin and the SW_VDD track adds about 0.2 ohm to the 10 ohm"
+  },
+  "R607": {
+   "dx": -4.4291,
+   "dy": 13.1102,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "NTC pull-up of output cell 1 (RT601 stays in the cell). On the 3V3 plane south of U401, one via; the NTC line runs to U401 anyway"
+  },
+  "C607": {
+   "dx": -2.4291,
+   "dy": 13.1102,
+   "rot": 270.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "NTC filter capacitor of cell 1, beside R607 at the ADC end of the line"
+  },
+  "R707": {
+   "dx": 4.3709,
+   "dy": 13.1102,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "NTC pull-up of output cell 2, as R607"
+  },
+  "C707": {
+   "dx": 6.3709,
+   "dy": 13.1102,
+   "rot": 270.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "NTC filter capacitor of cell 2, beside R707"
+  },
+  "R807": {
+   "dx": -0.0291,
+   "dy": 13.1102,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "NTC pull-up of output cell 3, as R607"
+  },
+  "C807": {
+   "dx": 1.9709,
+   "dy": 13.1102,
+   "rot": 270.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "NTC filter capacitor of cell 3, beside R807"
+  },
+  "R508": {
+   "dx": -5.6291,
+   "dy": 9.2102,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "T1S_IRQ_L pull-up, 3.3 mm from ball B3 on the line from U501 pin 22 (was under the GND busbar, 14 mm off that line)"
+  }
+ }
+}

@@ -379,8 +379,9 @@ def main():
             continue
         x, y = M(t.GetPosition().x if t.Type() == pcbnew.PCB_VIA_T else t.GetEnd().x), \
             M(t.GetPosition().y if t.Type() == pcbnew.PCB_VIA_T else t.GetEnd().y)
-        for n_, r_ in sweeps:
-            if t.GetNetname() == n_ and r_[0] - 2 <= x <= r_[2] + 2 and r_[1] - 2 <= y <= r_[3] + 2:
+        ends = [(x, y)] if t.Type() == pcbnew.PCB_VIA_T else [(x, y), (M(t.GetStart().x), M(t.GetStart().y))]
+        for n_, r_ in sweeps:                            # either end: a stub longer than 2 mm used to survive and stack
+            if t.GetNetname() == n_ and any(r_[0] - 2 <= ex <= r_[2] + 2 and r_[1] - 2 <= ey <= r_[3] + 2 for ex, ey in ends):
                 board.Delete(t); break
 
     for z in spec.get("zones", []):

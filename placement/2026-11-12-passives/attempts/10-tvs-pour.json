@@ -1,0 +1,4 @@
+{"id": "10-tvs-pour",
+ "title": "10 Power shape: a VBAT_IN pour on F.Cu from the busbar's pour to the TVS D201",
+ "why": "D201 (the load-dump TVS, DO-218AC, on top) has no copper to VBAT_IN: its 9.8 x 10.7 mm tab stands 6.7 mm west of the VBAT_IN pour under the busbar. A clamp wants a short, wide path, so this is a pour, not a track: the F.Cu VBAT_IN shape extended west over the tab, 10.7 mm wide.",
+ "zones": [{"name": "PWR_VBAT_IN_D201_F", "like": "PWR_VBAT_IN_bar_F", "rect": [76.1, 91.4, 92.7, 102.1]}]}

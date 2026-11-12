@@ -1,0 +1,855 @@
+{
+ "id": "D32",
+ "name": "Passive placement review",
+ "question": "Which of these passive moves and supply-copper changes should land on Node60's board?",
+ "board": "node60",
+ "phase": "Routing",
+ "stage": "Placement review",
+ "date": "2026-11-12",
+ "why_now": "You asked for a review of where the pull-ups, pull-downs, bypass capacitors and setting resistors stand, to cut vias and plane cuts before the remaining signals are routed, and said to make my own calls and keep a labelled picture of every attempt. Later you pointed at the thin 3V3 track to R607 and R707, and allowed the power shapes to change.\n\nI listed all 175 two-pad parts on the board with what each pad joins, how far it stands from the pin it serves, and whether its supply pad stands over that supply's plane (`passives.py`, `plane_at.py`). Most are right: every pull-down and setting resistor sits on GND copper within a few millimetres of its pin. The ones that are not fall into three groups, and each became an attempt on its own copy of main's board.\n\n**Parts that never followed their chip.** U203's bypass capacitor C215 and ALERT pull-up R211 stood 68 to 75 mm from U203, with a 43 mm 3V3 track and 3 vias drawn for the two of them (attempt 01).\n\n**Pull-ups standing where no layer carries 3V3, or off their signal's path.** The NTC pull-ups R607/R707/R807 (05), the I2C pull-ups (03), the PHY interrupt's pull-up (04) and one PHY strap on the wrong side of the chip (06).\n\n**Supply copper drawn round a problem a part or a shape can solve.** The east cell's 36 mm feed with the 3V3 plane 5 mm away, and three vias that join nothing (02); the whole thin 3V3 track into the output cells (08); the TVS with no copper to VBAT_IN (10).\n\n**About the track to R607 and R707.** It feeds four parts, not two: after R607 it goes on to R601, and after R707 to R701, the switches' 10 ohm VDD resistors. Moving the pull-ups alone (05) puts them on the plane, as you describe, but leaves the whole track in place. Attempt 08 moves the 10 ohm resistors onto the plane as well, and the track goes. What still has to enter each cell is the switch's logic supply, as SW_VDD after the 10 ohm; in the middle cell that is still a long thin track, because no layer carries 3V3 within reach of U701 and a 3V3 strip on In3 there would cut VBAT_PROT across the current's path to all three switches.\n\nNothing has been changed on main: every attempt is a copy in `placement/2026-11-12-passives/boards/`, with its spec in `attempts/` and its pictures in `img/`. Each board passes KiCad's DRC with the board's own rules (0 errors). Each was then fast-routed twice by KiCadRoutingTools v0.24.0 and graded by KiCad, against four fast routes of main (attempt 10 changes one pour and was not routed).",
+ "facts": [
+  {
+   "label": "How the fast-route numbers read",
+   "value": "KiCadRoutingTools v0.24.0 lays the same copper every time on the same board: main's four runs have identical signal vias and track, and KiCad's count of blocking items moves only 108 to 113 between them. But moving one resistor reshuffles the whole route: attempt 06 (one strap moved 6 mm) scores 101 and attempt 04 (one pull-up moved) 134 to 136, almost all of it in the router's own clearance errors (24 against 61), not in open connections (73 against 71). So the blocking count cannot rank these attempts. Unconnected items is the steadier figure: 75 on main, 69 to 74 on every attempt. KRT also routes supply nets pad to pad across the planes, so only signal nets are counted",
+   "source": "judge/v024 (22 runs), route_metrics.py, each run's grade.txt"
+  },
+  {
+   "label": "3V3 on In3",
+   "value": "North of y 70.8, the margins x < 72 and x > 238, and the strip y > 122. The power band between (x 72 to 238, y 71 to 122) is VBAT_PROT on In2 and In3",
+   "source": "node60.kicad_pcb zones; D22 A, D29 C"
+  },
+  {
+   "label": "Vias that join nothing",
+   "value": "The joins at R601, R701 and R801 each carry a 0.45/0.25 mm via whose two tracks are both on B.Cu. Deleting all three opens no connection",
+   "source": "power/joins plan 'how: via'; boards/02-east-feed.drc.json"
+  },
+  {
+   "label": "Not trialled: needs your word first",
+   "value": "R604/R704/R804 (FLT pull-ups) could stand at the MCU on 3V3_MAIN and take one track out of each cell, but the sheet's design note pulls FLT up to the switch's own VDD pin after TI's Table 9-1: a schematic change",
+   "source": "sheets/output-switch.kicad_sch, DESIGN VALUES"
+  },
+  {
+   "label": "Not trialled: found on the way",
+   "value": "C420, a fifth 100 nF on the MCU's V11, is 6.9 mm from the nearest V11 ball and in no block table (needs a bga_decaps.py pass). U203 is 13.7 mm from Q201 where the intent asks 5 mm. PWR 1V5_CORE_REG has the same 4.3 mm B.Cu track seven times over at (223.2, 33.3)-(223.2, 37.6). R306/R307 (1V5 enable divider) could move 6 mm closer to U303 pin 2: no via saved. R512 (PHYAD4 strap) is on the wrong side of U501 too, but pin 15 is boxed in by the locked RMII tracks and needs a via wherever R512 stands",
+   "source": "passives.py table; intent.json proximity[6]; data/main.json"
+  },
+  {
+   "label": "Your project file",
+   "value": "node60.kicad_pro has uncommitted changes from a KiCad save this morning (defaults written out; the values are the same as HEAD's). I left it alone",
+   "source": "git diff node60.kicad_pro"
+  }
+ ],
+ "sources": [
+  "placement/2026-11-12-passives/: attempts/*.json (each move), apply_attempt.py and build.sh (the boards), drc_counts.py, copper_table.py, route_metrics.py, study_picture.py and pictures.sh (the pictures), REPORT.md",
+  "KiCad 10 DRC with node60.kicad_pro and node60.kicad_dru on every attempt board",
+  "KiCadRoutingTools v0.24.0 (a27fdf2e) through placement/2026-11-02-bars/judge_route.sh and scripts/judge_batch.sh",
+  "sheets/output-switch.kicad_sch and sheets/power-entry.kicad_sch DESIGN VALUES notes",
+  "placement/2026-11-02-bars/decisions/log.md: D19, D22, D29, D30, D31"
+ ],
+ "recommendation": {
+  "option": "I",
+  "why": "Land **I (everything, attempts 01 to 08) together with H (the TVS pour)**.\n\nThe case rests on the copper, which is measured exactly: 3V3 track on the board falls from 246 mm to 42 mm, in the power band from 201 mm to 8 mm, and between the busbars on the top side from 33 mm to 1.5 mm; 10 vias go and 8 are drawn; every board passes DRC with 0 errors. H joins a TVS that today has no copper to the net it protects.\n\nThe fast routes do not argue for or against. Every attempt leaves fewer unconnected items than main (69 to 74 against 75), I the fewest with 69, but the router's result swings more from moving any one part than the attempts differ from each other, so I would not claim a routing gain from them. They do show no attempt makes the board harder to connect.\n\nIf you would rather not touch the approved output cells yet, **A, B, C, F and H** move only free parts and copper and can land on their own; they take the 3V3 track in the band from 201 mm to about 145 mm. G is the one that removes the thin track you pointed at, and it needs your approval of the three cell tables as a new version, with the three cells no longer identical and R701 70 mm from U701. D (the interrupt pull-up) is the weakest: its own net gets shorter (76 to 49 mm, 9 to 5 vias in the fast route) but nothing else changes; it is in I, and can be left out."
+ },
+ "answer": "Reply in the session with the letters to land (for example \"I and H\", or \"A B C F H\"), or a change to any of them. Nothing lands on main until you answer; landing goes through `power_shapes.json` and the block tables on a branch.",
+ "options": [
+  {
+   "key": "A",
+   "name": "01 TMP175's decap and pull-up brought home",
+   "summary": "C215 (U203's 100 nF) and R211 (ALERT pull-up) stood 68-75 mm from U203, beside Q202, on a 43 mm 3V3 track with 3 vias drawn for them alone. Beside U203 the 3V3 plane is under them.",
+   "images": [
+    {
+     "path": "../img/01-tmp175-home/east_1_before.png",
+     "caption": "Before: C215 and R211 beside Q202, and the 3V3 track drawn for them (F.Cu between the busbars, then B.Cu)"
+    },
+    {
+     "path": "../img/01-tmp175-home/east_2_after.png",
+     "caption": "After: the track and its three vias are gone"
+    },
+    {
+     "path": "../img/01-tmp175-home/u203_1_before.png",
+     "caption": "Before: U203 alone"
+    },
+    {
+     "path": "../img/01-tmp175-home/u203_2_after.png",
+     "caption": "After: C215 at pin 8 on the bottom, R211 level with pin 3"
+    }
+   ],
+   "measures": [
+    {
+     "label": "KiCad DRC errors, board's own rules",
+     "value": "0",
+     "limit": "0",
+     "status": "pass"
+    },
+    {
+     "label": "3V3 track in the power band",
+     "value": "153 mm",
+     "limit": "main 201 mm",
+     "status": "pass"
+    },
+    {
+     "label": "3V3 vias on the board",
+     "value": "67",
+     "limit": "main 69",
+     "status": "pass"
+    },
+    {
+     "label": "Fast route, blocking items per run",
+     "value": "107, 111",
+     "limit": "main 108, 111, 112, 113",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, unconnected items per run",
+     "value": "74, 74",
+     "limit": "main 75, 75, 75, 75",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, signal vias laid per run",
+     "value": "214, 214",
+     "limit": "main 216, 216, 216, 216",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, signal track on In2 per run (mm)",
+     "value": "1536.7, 1536.7",
+     "limit": "main 1474.0, 1474.0, 1474.0, 1474.0",
+     "status": "info"
+    },
+    {
+     "label": "This move's nets: vias per run",
+     "value": "3, 3",
+     "limit": "main 2, 2, 2, 2",
+     "status": "info"
+    },
+    {
+     "label": "This move's nets: track per run (mm)",
+     "value": "97.8, 97.8",
+     "limit": "main 130.4, 130.4, 130.4, 130.4",
+     "status": "info"
+    },
+    {
+     "label": "Approved block tables touched",
+     "value": "none",
+     "limit": "none",
+     "status": "pass"
+    }
+   ],
+   "gains": [
+    "49.8 mm of 3V3 track gone, 31 mm of it on F.Cu in the 10 mm strip between the two busbars",
+    "3 vias through the VBAT_PROT planes gone; 2 new ones beside U203, one of them the decap's GND via",
+    "C215 is 1.7 mm from U203's supply pin (was 68 mm): U203 has a bypass capacitor again"
+   ],
+   "costs": [
+    "C215 goes to the bottom side: U203 sits under the GND busbar, where nothing may stand on top",
+    "Lands through power_shapes.json (two named feeds deleted, one via added)"
+   ]
+  },
+  {
+   "key": "B",
+   "name": "02 East cell fed from the east margin",
+   "summary": "R807 and R801 are fed by a 36 mm B.Cu track from the plane edge at y 70.4, though In3 is 3V3 only 5 mm east of the cell (x > 238). The joins at R601, R701 and R801 each carry a via whose two tracks are both on B.Cu.",
+   "images": [
+    {
+     "path": "../img/02-east-feed/east_1_before.png",
+     "caption": "Before: 36 mm from the plane edge at y 70.4 down to R807, then on to R801"
+    },
+    {
+     "path": "../img/02-east-feed/east_2_after.png",
+     "caption": "After: 5.2 mm from a via in the In3 margin at x 239.2"
+    },
+    {
+     "path": "../img/02-east-feed/vias_mid_1_before.png",
+     "caption": "Before: the via at the corner of two B.Cu tracks (middle cell; the same at the west and east cells)"
+    },
+    {
+     "path": "../img/02-east-feed/vias_mid_2_after.png",
+     "caption": "After"
+    }
+   ],
+   "measures": [
+    {
+     "label": "KiCad DRC errors, board's own rules",
+     "value": "0",
+     "limit": "0",
+     "status": "pass"
+    },
+    {
+     "label": "3V3 track in the power band",
+     "value": "193 mm",
+     "limit": "main 201 mm",
+     "status": "pass"
+    },
+    {
+     "label": "3V3 vias on the board",
+     "value": "66",
+     "limit": "main 69",
+     "status": "pass"
+    },
+    {
+     "label": "Fast route, blocking items per run",
+     "value": "121, 123",
+     "limit": "main 108, 111, 112, 113",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, unconnected items per run",
+     "value": "70, 70",
+     "limit": "main 75, 75, 75, 75",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, signal vias laid per run",
+     "value": "243, 243",
+     "limit": "main 216, 216, 216, 216",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, signal track on In2 per run (mm)",
+     "value": "1476.6, 1476.6",
+     "limit": "main 1474.0, 1474.0, 1474.0, 1474.0",
+     "status": "info"
+    },
+    {
+     "label": "Approved block tables touched",
+     "value": "none",
+     "limit": "none",
+     "status": "pass"
+    }
+   ],
+   "gains": [
+    "36.2 mm of 3V3 track on B.Cu gone (it ran north-south under the GND bar and past the VBAT_IN pour), replaced by 5.2 mm",
+    "4 vias gone, 1 new: the three joins' vias touched B.Cu tracks only, so each was a hole through four planes and the F.Cu pour for nothing",
+    "No part moves"
+   ],
+   "costs": [
+    "Lands through power_shapes.json",
+    "The middle cell keeps its 81.5 mm feed from the west: no layer carries 3V3 nearer to U701"
+   ]
+  },
+  {
+   "key": "C",
+   "name": "03b I2C pull-ups at the end of the bus",
+   "summary": "SDA and SCL leave U401 from inner balls on its west side and run west to U202 and U203. R406 stood 12 mm south of the MCU and R407 23 mm south-east, each a stub with its own via off the bus. At U203 the bus is already on B.Cu and the 3V3 plane is underneath. Each resistor's signal pad is level with its U203 pin, so the three tracks run straight east under one another's pads; the three 3V3 pads share R211's via.",
+   "images": [
+    {
+     "path": "../img/03b-i2c-pullups-stair/bus_1_before.png",
+     "caption": "Before: the bus runs west from U401; R406 and R407 stand south and south-east of it"
+    },
+    {
+     "path": "../img/03b-i2c-pullups-stair/bus_2_after.png",
+     "caption": "After: both at U203, the end of the bus"
+    },
+    {
+     "path": "../img/03b-i2c-pullups-stair/u203_2_after.png",
+     "caption": "03b: R211, R406, R407 in a staircase, one shared 3V3 via"
+    },
+    {
+     "path": "../img/03a-i2c-pullups-row/u203_2_after.png",
+     "caption": "03a, the first arrangement, kept for the record: R407's 3V3 loops round R406"
+    }
+   ],
+   "measures": [
+    {
+     "label": "KiCad DRC errors, board's own rules",
+     "value": "0",
+     "limit": "0",
+     "status": "pass"
+    },
+    {
+     "label": "3V3 track in the power band",
+     "value": "153 mm",
+     "limit": "main 201 mm",
+     "status": "pass"
+    },
+    {
+     "label": "3V3 vias on the board",
+     "value": "65",
+     "limit": "main 69",
+     "status": "pass"
+    },
+    {
+     "label": "Fast route, blocking items per run",
+     "value": "122, 118",
+     "limit": "main 108, 111, 112, 113",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, unconnected items per run",
+     "value": "72, 72",
+     "limit": "main 75, 75, 75, 75",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, signal vias laid per run",
+     "value": "228, 228",
+     "limit": "main 216, 216, 216, 216",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, signal track on In2 per run (mm)",
+     "value": "1539.7, 1539.7",
+     "limit": "main 1474.0, 1474.0, 1474.0, 1474.0",
+     "status": "info"
+    },
+    {
+     "label": "This move's nets: vias per run",
+     "value": "10, 10",
+     "limit": "main 7, 7, 7, 7",
+     "status": "info"
+    },
+    {
+     "label": "This move's nets: track per run (mm)",
+     "value": "224.7, 224.7",
+     "limit": "main 324.2, 324.2, 324.2, 324.2",
+     "status": "info"
+    },
+    {
+     "label": "Approved block tables touched",
+     "value": "none",
+     "limit": "none",
+     "status": "pass"
+    }
+   ],
+   "gains": [
+    "R406, R407 and R211 share one 3V3 via; the two 3V3 vias at the MCU go",
+    "Each resistor's signal pad is level with its U203 pin: three straight tracks, 1.5 to 3.7 mm, no via",
+    "Frees the bottom side just south of U401's ball rows A and B, where 20 signals leave the BGA"
+   ],
+   "costs": [
+    "The pull-ups are 87 mm from the MCU. At 400 kHz over a bus this short the position along the bus does not matter electrically",
+    "Needs 01 (R211's via)"
+   ]
+  },
+  {
+   "key": "D",
+   "name": "04 IRQ pull-up at the MCU ball",
+   "summary": "R508 stood 25 mm from U401 and 28 mm from U501, 14 mm south of the straight line between them, under the GND busbar: a detour or a stub with a via. Ball B3 is in the second row from U401's south edge and leaves on B.Cu.",
+   "images": [
+    {
+     "path": "../img/04-irq-pullup/link_1_before.png",
+     "caption": "Before: R508 under the GND busbar, off the line from U501 pin 22 to U401 ball B3"
+    },
+    {
+     "path": "../img/04-irq-pullup/link_2_after.png",
+     "caption": "After: at ball B3"
+    },
+    {
+     "path": "../img/04-irq-pullup/mcu_2_after.png",
+     "caption": "After, close up"
+    }
+   ],
+   "measures": [
+    {
+     "label": "KiCad DRC errors, board's own rules",
+     "value": "0",
+     "limit": "0",
+     "status": "pass"
+    },
+    {
+     "label": "3V3 track in the power band",
+     "value": "201 mm",
+     "limit": "main 201 mm",
+     "status": "info"
+    },
+    {
+     "label": "3V3 vias on the board",
+     "value": "69",
+     "limit": "main 69",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, blocking items per run",
+     "value": "136, 134",
+     "limit": "main 108, 111, 112, 113",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, unconnected items per run",
+     "value": "71, 71",
+     "limit": "main 75, 75, 75, 75",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, signal vias laid per run",
+     "value": "230, 230",
+     "limit": "main 216, 216, 216, 216",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, signal track on In2 per run (mm)",
+     "value": "1383.2, 1383.2",
+     "limit": "main 1474.0, 1474.0, 1474.0, 1474.0",
+     "status": "info"
+    },
+    {
+     "label": "This move's nets: vias per run",
+     "value": "5, 5",
+     "limit": "main 9, 9, 9, 9",
+     "status": "info"
+    },
+    {
+     "label": "This move's nets: track per run (mm)",
+     "value": "48.9, 48.9",
+     "limit": "main 76, 76, 76, 76",
+     "status": "info"
+    },
+    {
+     "label": "Approved block tables touched",
+     "value": "none",
+     "limit": "none",
+     "status": "pass"
+    }
+   ],
+   "gains": [
+    "R508 is 3.3 mm from ball B3 (was 25 mm from U401 and 28 mm from U501, 14 mm off the line between them)",
+    "No stub under the GND busbar"
+   ],
+   "costs": [
+    "One more part in the 2.7 mm strip south of U401"
+   ]
+  },
+  {
+   "key": "E",
+   "name": "05 NTC pull-ups and filters at the MCU",
+   "summary": "Each NTC's 10k pull-up needed 3V3 in the power band, where no layer carries it; the NTC line runs to U401 anyway. At the MCU the pull-up stands on the 3V3 plane and the 100 nF sits at the ADC ball. The NTCs stay beside their switches.",
+   "images": [
+    {
+     "path": "../img/05-ntc-to-mcu/board_1_before.png",
+     "caption": "Before: each NTC line runs to U401; the pull-ups stand in the band (blue: VBAT_PROT on In3)"
+    },
+    {
+     "path": "../img/05-ntc-to-mcu/board_2_after.png",
+     "caption": "After"
+    },
+    {
+     "path": "../img/05-ntc-to-mcu/cell_mid_1_before.png",
+     "caption": "Before: middle cell"
+    },
+    {
+     "path": "../img/05-ntc-to-mcu/cell_mid_2_after.png",
+     "caption": "After: RT701 stays; the 3V3 track stays too, for R701"
+    },
+    {
+     "path": "../img/05-ntc-to-mcu/mcu_2_after.png",
+     "caption": "After: the three pairs south of U401, each pull-up on its own via"
+    }
+   ],
+   "measures": [
+    {
+     "label": "KiCad DRC errors, board's own rules",
+     "value": "0",
+     "limit": "0",
+     "status": "pass"
+    },
+    {
+     "label": "3V3 track in the power band",
+     "value": "203 mm",
+     "limit": "main 201 mm",
+     "status": "info"
+    },
+    {
+     "label": "3V3 vias on the board",
+     "value": "72",
+     "limit": "main 69",
+     "status": "warn"
+    },
+    {
+     "label": "Fast route, blocking items per run",
+     "value": "117, 114",
+     "limit": "main 108, 111, 112, 113",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, unconnected items per run",
+     "value": "69, 69",
+     "limit": "main 75, 75, 75, 75",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, signal vias laid per run",
+     "value": "245, 245",
+     "limit": "main 216, 216, 216, 216",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, signal track on In2 per run (mm)",
+     "value": "1638.3, 1638.3",
+     "limit": "main 1474.0, 1474.0, 1474.0, 1474.0",
+     "status": "info"
+    },
+    {
+     "label": "This move's nets: vias per run",
+     "value": "28, 28",
+     "limit": "main 17, 17, 17, 17",
+     "status": "info"
+    },
+    {
+     "label": "This move's nets: track per run (mm)",
+     "value": "389.3, 389.3",
+     "limit": "main 313.4, 313.4, 313.4, 313.4",
+     "status": "info"
+    },
+    {
+     "label": "Approved block tables touched",
+     "value": "out_6x, out_34, out_8x (R6x7, C6x7 are core parts)",
+     "limit": "none",
+     "status": "warn"
+    }
+   ],
+   "gains": [
+    "R607, R707 and R807 each drop straight into the In3 3V3 plane through one via",
+    "Two parts fewer in each cell's channel north of the switch (a 0603 and a 1206), where seven signals enter",
+    "The 100 nF sits at the ADC ball and the pull-up on the same 3V3 as VREFH"
+   ],
+   "costs": [
+    "On its own it removes no track: the thin 3V3 track stays, because R601 and R701 (the 10R VDD resistors) hang on it too. See 08",
+    "3 new 3V3 vias at the MCU (the pull-ups shared the cells' track before)",
+    "Six parts, three of them 1206, in the strip south of U401",
+    "Changes three approved block tables: a new version of the output cell"
+   ]
+  },
+  {
+   "key": "F",
+   "name": "06 MODE0 strap on its pin's side",
+   "summary": "Pin 23 is on U501's east edge; R513 stood on the west, so MODE0 had to cross to another layer and back round the chip. East of pins 22-24 there is a free bottom-side pocket north of U301.",
+   "images": [
+    {
+     "path": "../img/06-phy-strap/u501_1_before.png",
+     "caption": "Before: R513 west of U501, its pin 23 on the east edge"
+    },
+    {
+     "path": "../img/06-phy-strap/u501_2_after.png",
+     "caption": "After: 2.8 mm on B.Cu"
+    }
+   ],
+   "measures": [
+    {
+     "label": "KiCad DRC errors, board's own rules",
+     "value": "0",
+     "limit": "0",
+     "status": "pass"
+    },
+    {
+     "label": "3V3 track in the power band",
+     "value": "201 mm",
+     "limit": "main 201 mm",
+     "status": "info"
+    },
+    {
+     "label": "3V3 vias on the board",
+     "value": "69",
+     "limit": "main 69",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, blocking items per run",
+     "value": "101, 101",
+     "limit": "main 108, 111, 112, 113",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, unconnected items per run",
+     "value": "73, 73",
+     "limit": "main 75, 75, 75, 75",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, signal vias laid per run",
+     "value": "218, 218",
+     "limit": "main 216, 216, 216, 216",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, signal track on In2 per run (mm)",
+     "value": "1465.7, 1465.7",
+     "limit": "main 1474.0, 1474.0, 1474.0, 1474.0",
+     "status": "info"
+    },
+    {
+     "label": "This move's nets: vias per run",
+     "value": "7, 7",
+     "limit": "main 11, 11, 11, 11",
+     "status": "info"
+    },
+    {
+     "label": "This move's nets: track per run (mm)",
+     "value": "82.6, 82.6",
+     "limit": "main 93.9, 93.9, 93.9, 93.9",
+     "status": "info"
+    },
+    {
+     "label": "Approved block tables touched",
+     "value": "none",
+     "limit": "none",
+     "status": "pass"
+    }
+   ],
+   "gains": [
+    "MODE0 is a 2.8 mm B.Cu track from pin 23 (it stood on the far side of the chip, 7.2 mm away through locked RMII copper)"
+   ],
+   "costs": [
+    "Takes the free pocket east of pins 22-24, which T1S_IRQ_L (pin 22) and MODE1 (pin 24) also leave through"
+   ]
+  },
+  {
+   "key": "G",
+   "name": "08 No 3V3 track into the cells",
+   "summary": "The thin 3V3 track on B.Cu feeds four parts, not two: R607 and R707 (NTC pull-ups) and R601 and R701 (each switch's 10R VDD resistor). Moving the pull-ups alone leaves the whole track in place for the 10R resistors. Here the 10R resistors go onto the plane as well: R601 at the west margin's via, R801 at the east margin's via, R701 beside the NTC parts at the MCU. What enters each cell is then SW_VDD, the filtered side of the 10R, which already had to run round the switch to R6x4.",
+   "images": [
+    {
+     "path": "../img/08-no-3v3-into-cells/band_1_before.png",
+     "caption": "Before: the thin 3V3 track along the band. Red boxes: the parts it feeds"
+    },
+    {
+     "path": "../img/08-no-3v3-into-cells/band_2_after.png",
+     "caption": "After: none of it left"
+    },
+    {
+     "path": "../img/08-no-3v3-into-cells/west_2_after.png",
+     "caption": "After, west cell: R601 at the margin's via; SW_VDD (purple) on to R604 and pin 3"
+    },
+    {
+     "path": "../img/08-no-3v3-into-cells/mid_2_after.png",
+     "caption": "After, middle cell: no 3V3 part left"
+    },
+    {
+     "path": "../img/08-no-3v3-into-cells/mcu_2_after.png",
+     "caption": "After: R701 and the NTC parts on the plane south of U401"
+    }
+   ],
+   "measures": [
+    {
+     "label": "KiCad DRC errors, board's own rules",
+     "value": "0",
+     "limit": "0",
+     "status": "pass"
+    },
+    {
+     "label": "3V3 track in the power band",
+     "value": "8 mm",
+     "limit": "main 201 mm",
+     "status": "pass"
+    },
+    {
+     "label": "3V3 vias on the board",
+     "value": "68",
+     "limit": "main 69",
+     "status": "pass"
+    },
+    {
+     "label": "Fast route, blocking items per run",
+     "value": "134, 137",
+     "limit": "main 108, 111, 112, 113",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, unconnected items per run",
+     "value": "70, 70",
+     "limit": "main 75, 75, 75, 75",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, signal vias laid per run",
+     "value": "221, 221",
+     "limit": "main 216, 216, 216, 216",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, signal track on In2 per run (mm)",
+     "value": "1509.9, 1509.9",
+     "limit": "main 1474.0, 1474.0, 1474.0, 1474.0",
+     "status": "info"
+    },
+    {
+     "label": "This move's nets: vias per run",
+     "value": "28, 28",
+     "limit": "main 17, 17, 17, 17",
+     "status": "info"
+    },
+    {
+     "label": "This move's nets: track per run (mm)",
+     "value": "401.5, 401.5",
+     "limit": "main 313.4, 313.4, 313.4, 313.4",
+     "status": "info"
+    },
+    {
+     "label": "Approved block tables touched",
+     "value": "out_6x, out_34, out_8x (R6x1, R6x7, C6x7 are core parts)",
+     "limit": "none",
+     "status": "warn"
+    }
+   ],
+   "gains": [
+    "3V3 track in the power band 201 mm to 8 mm: the 81.5 mm run under the VBAT_IN busbar, the 36 mm run in the east and every leg to R6x1 and R6x7 go. What is left is U202's stub",
+    "R601 and R801 stand at the In3 margins' vias, 0.5 mm of 3V3 track each; R701, R607, R707 and R807 stand on the plane at the MCU, one via each",
+    "In the west cell SW_VDD already had to run from pin 3 round the switch to R604; R601 now joins that run at R604's end, so the cell gains no track"
+   ],
+   "costs": [
+    "A thin track still enters each cell: SW_VDD, the filtered side of the 10R, in place of 3V3. In the middle cell it is as long as the 3V3 track was (no layer carries 3V3 nearer to U701), but it comes in with the cell's seven signals",
+    "R701 is 70 mm from U701. The 470 nF stays at the pin; the track adds about 0.2 ohm to the 10 ohm",
+    "The three cells no longer hold identical parts in identical places (R601 west, R801 east, R701 at the MCU)",
+    "Changes three approved block tables"
+   ]
+  },
+  {
+   "key": "H",
+   "name": "10 Power shape: VBAT_IN pour to the TVS",
+   "summary": "D201 (the load-dump TVS, DO-218AC, on top) has no copper to VBAT_IN: its 9.8 x 10.7 mm tab stands 6.7 mm west of the VBAT_IN pour under the busbar. A clamp wants a short, wide path, so this is a pour, not a track: the F.Cu VBAT_IN shape extended west over the tab, 10.7 mm wide.",
+   "images": [
+    {
+     "path": "../img/10-tvs-pour/tvs_1_before.png",
+     "caption": "Before: D201's tab 6.7 mm from the VBAT_IN pour, joined by nothing"
+    },
+    {
+     "path": "../img/10-tvs-pour/tvs_2_after.png",
+     "caption": "After: the pour extended over the tab"
+    }
+   ],
+   "measures": [
+    {
+     "label": "KiCad DRC errors, board's own rules",
+     "value": "0",
+     "limit": "0",
+     "status": "pass"
+    },
+    {
+     "label": "3V3 track in the power band",
+     "value": "201 mm",
+     "limit": "main 201 mm",
+     "status": "info"
+    },
+    {
+     "label": "3V3 vias on the board",
+     "value": "69",
+     "limit": "main 69",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, blocking items per run",
+     "value": "not run",
+     "limit": "main 108, 111, 112, 113",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, unconnected items per run",
+     "value": "not run",
+     "limit": "main 75, 75, 75, 75",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, signal vias laid per run",
+     "value": "not run",
+     "limit": "main 216, 216, 216, 216",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, signal track on In2 per run (mm)",
+     "value": "not run",
+     "limit": "main 1474.0, 1474.0, 1474.0, 1474.0",
+     "status": "info"
+    },
+    {
+     "label": "Approved block tables touched",
+     "value": "none",
+     "limit": "none",
+     "status": "pass"
+    }
+   ],
+   "gains": [
+    "D201 is joined to VBAT_IN by 10.7 mm-wide copper, 6.7 mm long (it had none)",
+    "No part moves, no via"
+   ],
+   "costs": [
+    "178 mm2 of F.Cu west of the busbar becomes VBAT_IN (it was GND pour, with nothing routed there)",
+    "Lands as one zone in power_shapes.json"
+   ]
+  },
+  {
+   "key": "I",
+   "name": "09 Everything together",
+   "summary": "The thin 3V3 track on B.Cu feeds four parts, not two: R607 and R707 (NTC pull-ups) and R601 and R701 (each switch's 10R VDD resistor). Moving the pull-ups alone leaves the whole track in place for the 10R resistors. Here the 10R resistors go onto the plane as well: R601 at the west margin's via, R801 at the east margin's via, R701 beside the NTC parts at the MCU. What enters each cell is then SW_VDD, the filtered side of the 10R, which already had to run round the switch to R6x4.",
+   "images": [
+    {
+     "path": "../img/09-everything/board_1_before.png",
+     "caption": "Before (main)"
+    },
+    {
+     "path": "../img/09-everything/board_2_after.png",
+     "caption": "After: every move (A to G); the red rings mark where parts stood"
+    }
+   ],
+   "measures": [
+    {
+     "label": "KiCad DRC errors, board's own rules",
+     "value": "0",
+     "limit": "0",
+     "status": "pass"
+    },
+    {
+     "label": "3V3 track in the power band",
+     "value": "8 mm",
+     "limit": "main 201 mm",
+     "status": "pass"
+    },
+    {
+     "label": "3V3 vias on the board",
+     "value": "66",
+     "limit": "main 69",
+     "status": "pass"
+    },
+    {
+     "label": "Fast route, blocking items per run",
+     "value": "129, 131",
+     "limit": "main 108, 111, 112, 113",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, unconnected items per run",
+     "value": "69, 69",
+     "limit": "main 75, 75, 75, 75",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, signal vias laid per run",
+     "value": "227, 227",
+     "limit": "main 216, 216, 216, 216",
+     "status": "info"
+    },
+    {
+     "label": "Fast route, signal track on In2 per run (mm)",
+     "value": "1667.6, 1667.6",
+     "limit": "main 1474.0, 1474.0, 1474.0, 1474.0",
+     "status": "info"
+    },
+    {
+     "label": "This move's nets: vias per run",
+     "value": "37, 37",
+     "limit": "main 37, 37, 37, 37",
+     "status": "info"
+    },
+    {
+     "label": "This move's nets: track per run (mm)",
+     "value": "768.7, 768.7",
+     "limit": "main 855.5, 855.5, 855.5, 855.5",
+     "status": "info"
+    },
+    {
+     "label": "Approved block tables touched",
+     "value": "out_6x, out_34, out_8x (from 05 and 08)",
+     "limit": "none",
+     "status": "warn"
+    }
+   ],
+   "gains": [
+    "226 mm of track and 10 vias deleted; 34 mm and 8 vias drawn",
+    "3V3 track on the board 246 mm to 42 mm; in the power band 201 mm to 8 mm; on F.Cu between the busbars 33 mm to 1.5 mm",
+    "Supply tracks longer than 2 mm left on the board: one, U202's 6.4 mm 3V3 stub"
+   ],
+   "costs": [
+    "Everything listed under 01 to 08"
+   ]
+  }
+ ]
+}

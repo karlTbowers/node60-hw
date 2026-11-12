@@ -1,0 +1,125 @@
+{
+ "id": "03a-i2c-pullups-row",
+ "title": "03a I2C pull-ups R406/R407 moved to the end of the bus at U203 (first arrangement: lying east-west)",
+ "why": "SDA and SCL leave U401 from inner balls on its west side and run west to U202 and U203. R406 stood 12 mm south of the MCU and R407 23 mm south-east, each a stub with its own via off the bus. At U203 the bus is already on B.Cu and the 3V3 plane is underneath.",
+ "moves": {
+  "R406": {
+   "x": 112.0,
+   "y": 70.75,
+   "p1": "W"
+  },
+  "R407": {
+   "x": 113.0,
+   "y": 71.8,
+   "p1": "W"
+  }
+ },
+ "tracks": [
+  {
+   "net": "I2C0_TELEMETRY_SCL",
+   "layer": "B.Cu",
+   "w": 0.2,
+   "pts": [
+    [
+     112.46,
+     70.75
+    ],
+    [
+     114.3,
+     70.8
+    ],
+    [
+     115.0,
+     70.8
+    ]
+   ]
+  },
+  {
+   "net": "I2C0_TELEMETRY_SDA",
+   "layer": "B.Cu",
+   "w": 0.2,
+   "pts": [
+    [
+     113.46,
+     71.8
+    ],
+    [
+     114.0,
+     71.8
+    ],
+    [
+     114.3,
+     71.5
+    ],
+    [
+     115.0,
+     71.5
+    ]
+   ]
+  },
+  {
+   "net": "3V3_MAIN",
+   "layer": "B.Cu",
+   "w": 0.3,
+   "pts": [
+    [
+     111.54,
+     70.75
+    ],
+    [
+     111.54,
+     69.28
+    ],
+    [
+     112.4,
+     69.28
+    ]
+   ]
+  },
+  {
+   "net": "3V3_MAIN",
+   "layer": "B.Cu",
+   "w": 0.3,
+   "pts": [
+    [
+     112.54,
+     71.8
+    ],
+    [
+     110.6,
+     71.8
+    ],
+    [
+     110.6,
+     69.9
+    ],
+    [
+     111.22,
+     69.28
+    ],
+    [
+     111.54,
+     69.28
+    ]
+   ]
+  }
+ ],
+ "needs": [
+  "01-tmp175-home"
+ ],
+ "delete": [
+  {
+   "via": [
+    196.9548,
+    60.4991
+   ]
+  },
+  {
+   "via": [
+    210.2544,
+    67.4263
+   ]
+  }
+ ],
+ "verdict_note": "Works, but R407's 3V3 pad lands south of the plane edge, so its 3V3 track loops 6 mm round R406. Superseded by 03b."
+}

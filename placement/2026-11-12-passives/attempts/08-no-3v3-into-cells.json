@@ -1,0 +1,112 @@
+{
+ "id": "08-no-3v3-into-cells",
+ "title": "08 No 3V3 track into the output cells: NTC pull-ups at the MCU (05) and each switch's 10R VDD resistor on the 3V3 plane",
+ "why": "The thin 3V3 track on B.Cu feeds four parts, not two: R607 and R707 (NTC pull-ups) and R601 and R701 (each switch's 10R VDD resistor). Moving the pull-ups alone leaves the whole track in place for the 10R resistors. Here the 10R resistors go onto the plane as well: R601 at the west margin's via, R801 at the east margin's via, R701 beside the NTC parts at the MCU. What enters each cell is then SW_VDD, the filtered side of the 10R, which already had to run round the switch to R6x4.",
+ "moves": {
+  "R601": {
+   "x": 72.45,
+   "y": 102.8,
+   "p1": "W"
+  },
+  "R801": {
+   "x": 238.3,
+   "y": 102.791,
+   "p1": "E"
+  },
+  "R701": {
+   "x": 209.2,
+   "y": 64.3,
+   "p1": "N"
+  }
+ },
+ "delete": [
+  {
+   "seg": [
+    71.5,
+    102.8,
+    76.5,
+    102.8
+   ]
+  },
+  {
+   "box": [
+    76.4,
+    99.0,
+    160.0,
+    110.0
+   ],
+   "net": "3V3_MAIN"
+  },
+  {
+   "seg": [
+    233.975,
+    102.791,
+    239.2,
+    102.791
+   ]
+  },
+  {
+   "box": [
+    225.5,
+    102.0,
+    234.1,
+    110.0
+   ],
+   "net": "3V3_MAIN"
+  }
+ ],
+ "tracks": [
+  {
+   "net": "3V3_MAIN",
+   "layer": "B.Cu",
+   "w": 0.3,
+   "pts": [
+    [
+     71.5,
+     102.8
+    ],
+    [
+     71.99,
+     102.8
+    ]
+   ]
+  },
+  {
+   "net": "3V3_MAIN",
+   "layer": "B.Cu",
+   "w": 0.3,
+   "pts": [
+    [
+     239.2,
+     102.791
+    ],
+    [
+     238.76,
+     102.791
+    ]
+   ]
+  },
+  {
+   "net": "3V3_MAIN",
+   "layer": "B.Cu",
+   "w": 0.3,
+   "pts": [
+    [
+     209.2,
+     63.845
+    ],
+    [
+     209.2,
+     62.75
+    ]
+   ]
+  }
+ ],
+ "vias": [
+  {
+   "net": "3V3_MAIN",
+   "x": 209.2,
+   "y": 62.75
+  }
+ ]
+}
