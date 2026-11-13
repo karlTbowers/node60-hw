@@ -1,0 +1,128 @@
+{
+    "$schema": "https://schemas.kicad.org/erc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-11-12T22:34:14",
+    "ignored_checks": [
+        {
+            "description": "Global label only appears once in the schematic",
+            "key": "single_global_label"
+        },
+        {
+            "description": "Four connection points are joined together",
+            "key": "four_way_junction"
+        },
+        {
+            "description": "SPICE model issue",
+            "key": "simulation_model_issue"
+        },
+        {
+            "description": "Assigned footprint doesn't match footprint filters",
+            "key": "footprint_filter"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.7",
+    "sheets": [
+        {
+            "path": "/",
+            "uuid_path": "/55f51841-30a3-4965-b848-b796f60054d0",
+            "violations": []
+        },
+        {
+            "path": "/Power entry/",
+            "uuid_path": "/55f51841-30a3-4965-b848-b796f60054d0/822dbac5-68ee-4519-a5d1-8bcf1992c5d9",
+            "violations": []
+        },
+        {
+            "path": "/Regulators/",
+            "uuid_path": "/55f51841-30a3-4965-b848-b796f60054d0/0b1fdde0-4dcf-41c8-a0be-e22a76779263",
+            "violations": []
+        },
+        {
+            "path": "/MCU and NVM/",
+            "uuid_path": "/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453",
+            "violations": []
+        },
+        {
+            "path": "/T1S/",
+            "uuid_path": "/55f51841-30a3-4965-b848-b796f60054d0/3875e4cc-63e7-4387-b67f-49f6a7b34a4e",
+            "violations": [
+                {
+                    "comment": "LAN8670 pin tied to VSS as the datasheet requires when unused (TXER in RMII; WAKE_IN with no local wake, DEC-007). Bidirectional pin on GND is intended.",
+                    "description": "Conflict problem between pins",
+                    "excluded": true,
+                    "items": [
+                        {
+                            "description": "Symbol U501 Pin 11 [TXER/ACMA/LINK, Bidirectional, Line]",
+                            "pos": {
+                                "x": 198.12,
+                                "y": 177.8
+                            },
+                            "uuid": "cf0f5a95-3f08-5105-bf9b-1dd1339b559c"
+                        },
+                        {
+                            "description": "Symbol #FLG09009 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 210.82,
+                                "y": 81.28
+                            },
+                            "uuid": "a4ba14de-f714-596f-b22f-3c40fc99e6df"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                },
+                {
+                    "comment": "LAN8670 pin tied to VSS as the datasheet requires when unused (TXER in RMII; WAKE_IN with no local wake, DEC-007). Bidirectional pin on GND is intended.",
+                    "description": "Conflict problem between pins",
+                    "excluded": true,
+                    "items": [
+                        {
+                            "description": "Symbol U501 Pin 32 [WAKE_IN/WAKE_IO, Bidirectional, Line]",
+                            "pos": {
+                                "x": 264.16,
+                                "y": 175.26
+                            },
+                            "uuid": "8db82c9a-fec9-5b28-a456-9232b462af81"
+                        },
+                        {
+                            "description": "Symbol #FLG09009 Pin 1 [Power output, Line]",
+                            "pos": {
+                                "x": 210.82,
+                                "y": 81.28
+                            },
+                            "uuid": "a4ba14de-f714-596f-b22f-3c40fc99e6df"
+                        }
+                    ],
+                    "severity": "warning",
+                    "type": "pin_to_pin"
+                }
+            ]
+        },
+        {
+            "path": "/Outputs 1-2/",
+            "uuid_path": "/55f51841-30a3-4965-b848-b796f60054d0/ceecbbf6-496b-4919-aa4d-b8194f44838e",
+            "violations": []
+        },
+        {
+            "path": "/Outputs 3-4/",
+            "uuid_path": "/55f51841-30a3-4965-b848-b796f60054d0/68ca6db2-fb88-4c17-b54b-7131815c5345",
+            "violations": []
+        },
+        {
+            "path": "/Outputs 5-6/",
+            "uuid_path": "/55f51841-30a3-4965-b848-b796f60054d0/618ad5c3-1fe8-46d2-96b6-b9e1aa40313d",
+            "violations": []
+        },
+        {
+            "path": "/Connectors/",
+            "uuid_path": "/55f51841-30a3-4965-b848-b796f60054d0/e572f86f-2725-4aae-a9c5-04dc01b6640e",
+            "violations": []
+        }
+    ],
+    "source": "node60.kicad_sch"
+}

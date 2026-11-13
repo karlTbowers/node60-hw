@@ -1,0 +1,2891 @@
+{
+  "analyzer_type": "emc",
+  "schema_version": "1.4.0",
+  "inputs": {
+    "source_files": [
+      "reviews/2026-11-13-kicad-happy-after/schematic.json",
+      "reviews/2026-11-13-kicad-happy-after/pcb.json"
+    ],
+    "source_hashes": {
+      "reviews/2026-11-13-kicad-happy-after/schematic.json": "147f0f0d58ca4942427661b35e4fcf5d3debe70094e0398f2d77d0737a366690",
+      "reviews/2026-11-13-kicad-happy-after/pcb.json": "754b3cc5ed1cdf53eb4fdbed3763c6db5b0a1a0b05e43de1d7f1839466cb68ac"
+    },
+    "run_id": "20261113T073952Z-7bed29",
+    "config_hash": null,
+    "upstream_artifacts": {
+      "schematic": {
+        "path": "reviews/2026-11-13-kicad-happy-after/schematic.json",
+        "sha256": "147f0f0d58ca4942427661b35e4fcf5d3debe70094e0398f2d77d0737a366690",
+        "schema_version": "1.4.0",
+        "run_id": "20261113T073952Z-7bed29"
+      },
+      "pcb": {
+        "path": "reviews/2026-11-13-kicad-happy-after/pcb.json",
+        "sha256": "754b3cc5ed1cdf53eb4fdbed3763c6db5b0a1a0b05e43de1d7f1839466cb68ac",
+        "schema_version": "1.4.0",
+        "run_id": "20261113T073952Z-7bed29"
+      }
+    }
+  },
+  "compat": {
+    "minimum_consumer_version": "1.4.0",
+    "deprecated_fields": [],
+    "experimental_fields": []
+  },
+  "diagnostics": [],
+  "summary": {
+    "total_findings": 56,
+    "categories_checked": 5,
+    "active": 56,
+    "suppressed": 0,
+    "by_severity": {
+      "error": 0,
+      "warning": 13,
+      "info": 43
+    },
+    "emc_risk_score": 82.0
+  },
+  "target_standard": "cispr-25",
+  "findings": [
+    {
+      "detector": "emc_io_filtering",
+      "rule_id": "IO-001",
+      "category": "io_filtering",
+      "summary": "No EMC filtering near J906",
+      "description": "Connector J906 (AT13-2P-BM04) has no ferrite bead, CM choke, or ESD protection within 25mm. Unfiltered I/O cables are the dominant source of radiated emissions \u2014 common-mode current as low as 5 \u00b5A can exceed FCC Class B.",
+      "components": [
+        "J906"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "info",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "Add a ferrite bead (e.g., BLM18AG601SN1D, 600\u03a9@100MHz) on signal lines near J906. Add ESD/TVS protection for external interfaces.",
+      "fix_params": {
+        "type": "add_component",
+        "components": [
+          {
+            "type": "ferrite_bead"
+          }
+        ],
+        "basis": "EMI filter on external I/O"
+      },
+      "report_context": {
+        "section": "Io Filtering",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "pre_fab"
+      ],
+      "finding_id": "emc:IO-001:j906"
+    },
+    {
+      "detector": "emc_io_filtering",
+      "rule_id": "IO-001",
+      "category": "io_filtering",
+      "summary": "No EMC filtering near J909",
+      "description": "Connector J909 (AT13-2P-BM04) has no ferrite bead, CM choke, or ESD protection within 25mm. Unfiltered I/O cables are the dominant source of radiated emissions \u2014 common-mode current as low as 5 \u00b5A can exceed FCC Class B.",
+      "components": [
+        "J909"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "info",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "Add a ferrite bead (e.g., BLM18AG601SN1D, 600\u03a9@100MHz) on signal lines near J909. Add ESD/TVS protection for external interfaces.",
+      "fix_params": {
+        "type": "add_component",
+        "components": [
+          {
+            "type": "ferrite_bead"
+          }
+        ],
+        "basis": "EMI filter on external I/O"
+      },
+      "report_context": {
+        "section": "Io Filtering",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "pre_fab"
+      ],
+      "finding_id": "emc:IO-001:j909"
+    },
+    {
+      "detector": "emc_io_filtering",
+      "rule_id": "IO-001",
+      "category": "io_filtering",
+      "summary": "No EMC filtering near J401",
+      "description": "Connector J401 (FTSH-105-01-L-DV-K) has no ferrite bead, CM choke, or ESD protection within 25mm. Unfiltered I/O cables are the dominant source of radiated emissions \u2014 common-mode current as low as 5 \u00b5A can exceed FCC Class B.",
+      "components": [
+        "J401"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "info",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "Add a ferrite bead (e.g., BLM18AG601SN1D, 600\u03a9@100MHz) on signal lines near J401. Add ESD/TVS protection for external interfaces.",
+      "fix_params": {
+        "type": "add_component",
+        "components": [
+          {
+            "type": "ferrite_bead"
+          }
+        ],
+        "basis": "EMI filter on external I/O"
+      },
+      "report_context": {
+        "section": "Io Filtering",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "pre_fab"
+      ],
+      "finding_id": "emc:IO-001:j401"
+    },
+    {
+      "detector": "emc_io_filtering",
+      "rule_id": "IO-001",
+      "category": "io_filtering",
+      "summary": "No EMC filtering near BB902",
+      "description": "Connector BB902 (Busbar_Cu_19.05x3.175mm_L176.05mm_2xD6.5mm_P157mm) has no ferrite bead, CM choke, or ESD protection within 25mm. Unfiltered I/O cables are the dominant source of radiated emissions \u2014 common-mode current as low as 5 \u00b5A can exceed FCC Class B.",
+      "components": [
+        "BB902"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "info",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "BB902 appears to be a power-only connector (all pins are power/ground rails). A board-level ferrite bead would saturate at typical power-supply currents. If radiated EMI is a concern on the cable, add a system-level common-mode choke or use shielded cable with chassis termination.",
+      "fix_params": {
+        "type": "add_component",
+        "components": [
+          {
+            "type": "ferrite_bead"
+          }
+        ],
+        "basis": "EMI filter on external I/O"
+      },
+      "report_context": {
+        "section": "Io Filtering",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "pre_fab"
+      ],
+      "finding_id": "emc:IO-001:bb902"
+    },
+    {
+      "detector": "emc_io_filtering",
+      "rule_id": "IO-001",
+      "category": "io_filtering",
+      "summary": "No EMC filtering near J905",
+      "description": "Connector J905 (AT13-2P-BM04) has no ferrite bead, CM choke, or ESD protection within 25mm. Unfiltered I/O cables are the dominant source of radiated emissions \u2014 common-mode current as low as 5 \u00b5A can exceed FCC Class B.",
+      "components": [
+        "J905"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "info",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "Add a ferrite bead (e.g., BLM18AG601SN1D, 600\u03a9@100MHz) on signal lines near J905. Add ESD/TVS protection for external interfaces.",
+      "fix_params": {
+        "type": "add_component",
+        "components": [
+          {
+            "type": "ferrite_bead"
+          }
+        ],
+        "basis": "EMI filter on external I/O"
+      },
+      "report_context": {
+        "section": "Io Filtering",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "pre_fab"
+      ],
+      "finding_id": "emc:IO-001:j905"
+    },
+    {
+      "detector": "emc_io_filtering",
+      "rule_id": "IO-001",
+      "category": "io_filtering",
+      "summary": "No EMC filtering near J904",
+      "description": "Connector J904 (AT13-2P-BM04) has no ferrite bead, CM choke, or ESD protection within 25mm. Unfiltered I/O cables are the dominant source of radiated emissions \u2014 common-mode current as low as 5 \u00b5A can exceed FCC Class B.",
+      "components": [
+        "J904"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "info",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "Add a ferrite bead (e.g., BLM18AG601SN1D, 600\u03a9@100MHz) on signal lines near J904. Add ESD/TVS protection for external interfaces.",
+      "fix_params": {
+        "type": "add_component",
+        "components": [
+          {
+            "type": "ferrite_bead"
+          }
+        ],
+        "basis": "EMI filter on external I/O"
+      },
+      "report_context": {
+        "section": "Io Filtering",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "pre_fab"
+      ],
+      "finding_id": "emc:IO-001:j904"
+    },
+    {
+      "detector": "emc_io_filtering",
+      "rule_id": "IO-001",
+      "category": "io_filtering",
+      "summary": "No EMC filtering near J907",
+      "description": "Connector J907 (AT13-2P-BM04) has no ferrite bead, CM choke, or ESD protection within 25mm. Unfiltered I/O cables are the dominant source of radiated emissions \u2014 common-mode current as low as 5 \u00b5A can exceed FCC Class B.",
+      "components": [
+        "J907"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "info",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "Add a ferrite bead (e.g., BLM18AG601SN1D, 600\u03a9@100MHz) on signal lines near J907. Add ESD/TVS protection for external interfaces.",
+      "fix_params": {
+        "type": "add_component",
+        "components": [
+          {
+            "type": "ferrite_bead"
+          }
+        ],
+        "basis": "EMI filter on external I/O"
+      },
+      "report_context": {
+        "section": "Io Filtering",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "pre_fab"
+      ],
+      "finding_id": "emc:IO-001:j907"
+    },
+    {
+      "detector": "emc_io_filtering",
+      "rule_id": "IO-001",
+      "category": "io_filtering",
+      "summary": "No EMC filtering near J903",
+      "description": "Connector J903 (ATM13-2P-BM04) has no ferrite bead, CM choke, or ESD protection within 25mm. Unfiltered I/O cables are the dominant source of radiated emissions \u2014 common-mode current as low as 5 \u00b5A can exceed FCC Class B.",
+      "components": [
+        "J903"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "info",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "Add a ferrite bead (e.g., BLM18AG601SN1D, 600\u03a9@100MHz) on signal lines near J903. Add ESD/TVS protection for external interfaces.",
+      "fix_params": {
+        "type": "add_component",
+        "components": [
+          {
+            "type": "ferrite_bead"
+          }
+        ],
+        "basis": "EMI filter on external I/O"
+      },
+      "report_context": {
+        "section": "Io Filtering",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "pre_fab"
+      ],
+      "finding_id": "emc:IO-001:j903"
+    },
+    {
+      "detector": "emc_io_filtering",
+      "rule_id": "IO-001",
+      "category": "io_filtering",
+      "summary": "No EMC filtering near J912",
+      "description": "Connector J912 (ATM13-2P-BM04) has no ferrite bead, CM choke, or ESD protection within 25mm. Unfiltered I/O cables are the dominant source of radiated emissions \u2014 common-mode current as low as 5 \u00b5A can exceed FCC Class B.",
+      "components": [
+        "J912"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "info",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "Add a ferrite bead (e.g., BLM18AG601SN1D, 600\u03a9@100MHz) on signal lines near J912. Add ESD/TVS protection for external interfaces.",
+      "fix_params": {
+        "type": "add_component",
+        "components": [
+          {
+            "type": "ferrite_bead"
+          }
+        ],
+        "basis": "EMI filter on external I/O"
+      },
+      "report_context": {
+        "section": "Io Filtering",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "pre_fab"
+      ],
+      "finding_id": "emc:IO-001:j912"
+    },
+    {
+      "detector": "emc_io_filtering",
+      "rule_id": "IO-001",
+      "category": "io_filtering",
+      "summary": "No EMC filtering near J908",
+      "description": "Connector J908 (AT13-2P-BM04) has no ferrite bead, CM choke, or ESD protection within 25mm. Unfiltered I/O cables are the dominant source of radiated emissions \u2014 common-mode current as low as 5 \u00b5A can exceed FCC Class B.",
+      "components": [
+        "J908"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "info",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "Add a ferrite bead (e.g., BLM18AG601SN1D, 600\u03a9@100MHz) on signal lines near J908. Add ESD/TVS protection for external interfaces.",
+      "fix_params": {
+        "type": "add_component",
+        "components": [
+          {
+            "type": "ferrite_bead"
+          }
+        ],
+        "basis": "EMI filter on external I/O"
+      },
+      "report_context": {
+        "section": "Io Filtering",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "pre_fab"
+      ],
+      "finding_id": "emc:IO-001:j908"
+    },
+    {
+      "detector": "emc_io_filtering",
+      "rule_id": "IO-001",
+      "category": "io_filtering",
+      "summary": "No EMC filtering near BB901",
+      "description": "Connector BB901 (Busbar_Cu_19.05x3.175mm_L125.05mm_2xD6.5mm_P106mm) has no ferrite bead, CM choke, or ESD protection within 25mm. Unfiltered I/O cables are the dominant source of radiated emissions \u2014 common-mode current as low as 5 \u00b5A can exceed FCC Class B.",
+      "components": [
+        "BB901"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "info",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "BB901 appears to be a power-only connector (all pins are power/ground rails). A board-level ferrite bead would saturate at typical power-supply currents. If radiated EMI is a concern on the cable, add a system-level common-mode choke or use shielded cable with chassis termination.",
+      "fix_params": {
+        "type": "add_component",
+        "components": [
+          {
+            "type": "ferrite_bead"
+          }
+        ],
+        "basis": "EMI filter on external I/O"
+      },
+      "report_context": {
+        "section": "Io Filtering",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "pre_fab"
+      ],
+      "finding_id": "emc:IO-001:bb901"
+    },
+    {
+      "detector": "emc_io_filtering",
+      "rule_id": "IO-001",
+      "category": "io_filtering",
+      "summary": "No EMC filtering near J910",
+      "description": "Connector J910 (74660016R) has no ferrite bead, CM choke, or ESD protection within 25mm. Unfiltered I/O cables are the dominant source of radiated emissions \u2014 common-mode current as low as 5 \u00b5A can exceed FCC Class B.",
+      "components": [
+        "J910"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "info",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "J910 appears to be a power-only connector (all pins are power/ground rails). A board-level ferrite bead would saturate at typical power-supply currents. If radiated EMI is a concern on the cable, add a system-level common-mode choke or use shielded cable with chassis termination.",
+      "fix_params": {
+        "type": "add_component",
+        "components": [
+          {
+            "type": "ferrite_bead"
+          }
+        ],
+        "basis": "EMI filter on external I/O"
+      },
+      "report_context": {
+        "section": "Io Filtering",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "pre_fab"
+      ],
+      "finding_id": "emc:IO-001:j910"
+    },
+    {
+      "detector": "emc_io_filtering",
+      "rule_id": "IO-001",
+      "category": "io_filtering",
+      "summary": "No EMC filtering near J901",
+      "description": "Connector J901 (74660016R) has no ferrite bead, CM choke, or ESD protection within 25mm. Unfiltered I/O cables are the dominant source of radiated emissions \u2014 common-mode current as low as 5 \u00b5A can exceed FCC Class B.",
+      "components": [
+        "J901"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "info",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "J901 appears to be a power-only connector (all pins are power/ground rails). A board-level ferrite bead would saturate at typical power-supply currents. If radiated EMI is a concern on the cable, add a system-level common-mode choke or use shielded cable with chassis termination.",
+      "fix_params": {
+        "type": "add_component",
+        "components": [
+          {
+            "type": "ferrite_bead"
+          }
+        ],
+        "basis": "EMI filter on external I/O"
+      },
+      "report_context": {
+        "section": "Io Filtering",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "pre_fab"
+      ],
+      "finding_id": "emc:IO-001:j901"
+    },
+    {
+      "detector": "emc_io_filtering",
+      "rule_id": "IO-001",
+      "category": "io_filtering",
+      "summary": "No EMC filtering near J911",
+      "description": "Connector J911 (74660016R) has no ferrite bead, CM choke, or ESD protection within 25mm. Unfiltered I/O cables are the dominant source of radiated emissions \u2014 common-mode current as low as 5 \u00b5A can exceed FCC Class B.",
+      "components": [
+        "J911"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "info",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "J911 appears to be a power-only connector (all pins are power/ground rails). A board-level ferrite bead would saturate at typical power-supply currents. If radiated EMI is a concern on the cable, add a system-level common-mode choke or use shielded cable with chassis termination.",
+      "fix_params": {
+        "type": "add_component",
+        "components": [
+          {
+            "type": "ferrite_bead"
+          }
+        ],
+        "basis": "EMI filter on external I/O"
+      },
+      "report_context": {
+        "section": "Io Filtering",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "pre_fab"
+      ],
+      "finding_id": "emc:IO-001:j911"
+    },
+    {
+      "detector": "emc_io_filtering",
+      "rule_id": "IO-001",
+      "category": "io_filtering",
+      "summary": "No EMC filtering near J902",
+      "description": "Connector J902 (74660016R) has no ferrite bead, CM choke, or ESD protection within 25mm. Unfiltered I/O cables are the dominant source of radiated emissions \u2014 common-mode current as low as 5 \u00b5A can exceed FCC Class B.",
+      "components": [
+        "J902"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "info",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "J902 appears to be a power-only connector (all pins are power/ground rails). A board-level ferrite bead would saturate at typical power-supply currents. If radiated EMI is a concern on the cable, add a system-level common-mode choke or use shielded cable with chassis termination.",
+      "fix_params": {
+        "type": "add_component",
+        "components": [
+          {
+            "type": "ferrite_bead"
+          }
+        ],
+        "basis": "EMI filter on external I/O"
+      },
+      "report_context": {
+        "section": "Io Filtering",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "pre_fab"
+      ],
+      "finding_id": "emc:IO-001:j902"
+    },
+    {
+      "detector": "emc_clock_routing",
+      "rule_id": "CK-002",
+      "category": "clock_routing",
+      "summary": "Long clock trace: /SPI4_SWITCH1_SCK",
+      "description": "Clock net /SPI4_SWITCH1_SCK is 224mm long. Long clock traces act as antennas and radiate harmonics more effectively.",
+      "components": [],
+      "nets": [
+        "/SPI4_SWITCH1_SCK"
+      ],
+      "pins": [],
+      "severity": "warning",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "Minimize clock trace length. Place clock source close to destination.",
+      "report_context": {
+        "section": "Clock Routing",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:CK-002:/spi4_switch1_sck"
+    },
+    {
+      "detector": "emc_clock_routing",
+      "rule_id": "CK-002",
+      "category": "clock_routing",
+      "summary": "Long clock trace: /SPI5_SWITCH2_SCK",
+      "description": "Clock net /SPI5_SWITCH2_SCK is 122mm long. Long clock traces act as antennas and radiate harmonics more effectively.",
+      "components": [],
+      "nets": [
+        "/SPI5_SWITCH2_SCK"
+      ],
+      "pins": [],
+      "severity": "warning",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "Minimize clock trace length. Place clock source close to destination.",
+      "report_context": {
+        "section": "Clock Routing",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:CK-002:/spi5_switch2_sck"
+    },
+    {
+      "detector": "emc_clock_routing",
+      "rule_id": "CK-003",
+      "category": "clock_routing",
+      "summary": "Clock /MCU and NVM/SWD_CLK routed near connector J401",
+      "description": "Clock net /MCU and NVM/SWD_CLK passes within 5.6mm of connector J401. Clock harmonics can couple to attached cables via proximity, increasing radiated emissions.",
+      "components": [
+        "J401"
+      ],
+      "nets": [
+        "/MCU and NVM/SWD_CLK"
+      ],
+      "pins": [],
+      "severity": "warning",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Route /MCU and NVM/SWD_CLK away from J401, or add ground guard traces between the clock and connector.",
+      "report_context": {
+        "section": "Clock Routing",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:CK-003:j401"
+    },
+    {
+      "detector": "emc_clock_routing",
+      "rule_id": "CK-003",
+      "category": "clock_routing",
+      "summary": "Clock /SPI5_SWITCH2_SCK routed near connector BB902",
+      "description": "Clock net /SPI5_SWITCH2_SCK passes within 6.2mm of connector BB902. Clock harmonics can couple to attached cables via proximity, increasing radiated emissions.",
+      "components": [
+        "BB902"
+      ],
+      "nets": [
+        "/SPI5_SWITCH2_SCK"
+      ],
+      "pins": [],
+      "severity": "warning",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Route /SPI5_SWITCH2_SCK away from BB902, or add ground guard traces between the clock and connector.",
+      "report_context": {
+        "section": "Clock Routing",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:CK-003:bb902"
+    },
+    {
+      "detector": "emc_clock_routing",
+      "rule_id": "CK-003",
+      "category": "clock_routing",
+      "summary": "Clock /SPI5_SWITCH2_SCK routed near connector BB901",
+      "description": "Clock net /SPI5_SWITCH2_SCK passes within 7.5mm of connector BB901. Clock harmonics can couple to attached cables via proximity, increasing radiated emissions.",
+      "components": [
+        "BB901"
+      ],
+      "nets": [
+        "/SPI5_SWITCH2_SCK"
+      ],
+      "pins": [],
+      "severity": "warning",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Route /SPI5_SWITCH2_SCK away from BB901, or add ground guard traces between the clock and connector.",
+      "report_context": {
+        "section": "Clock Routing",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:CK-003:bb901"
+    },
+    {
+      "detector": "emc_clock_routing",
+      "rule_id": "CK-003",
+      "category": "clock_routing",
+      "summary": "Clock /SPI4_SWITCH1_SCK routed near connector J911",
+      "description": "Clock net /SPI4_SWITCH1_SCK passes within 9.7mm of connector J911. Clock harmonics can couple to attached cables via proximity, increasing radiated emissions.",
+      "components": [
+        "J911"
+      ],
+      "nets": [
+        "/SPI4_SWITCH1_SCK"
+      ],
+      "pins": [],
+      "severity": "warning",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Route /SPI4_SWITCH1_SCK away from J911, or add ground guard traces between the clock and connector.",
+      "report_context": {
+        "section": "Clock Routing",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:CK-003:j911"
+    },
+    {
+      "detector": "emc_clock_routing",
+      "rule_id": "CK-003",
+      "category": "clock_routing",
+      "summary": "Clock /SPI4_SWITCH1_SCK routed near connector J401",
+      "description": "Clock net /SPI4_SWITCH1_SCK passes within 5.3mm of connector J401. Clock harmonics can couple to attached cables via proximity, increasing radiated emissions.",
+      "components": [
+        "J401"
+      ],
+      "nets": [
+        "/SPI4_SWITCH1_SCK"
+      ],
+      "pins": [],
+      "severity": "warning",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Route /SPI4_SWITCH1_SCK away from J401, or add ground guard traces between the clock and connector.",
+      "report_context": {
+        "section": "Clock Routing",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:CK-003:j401#1"
+    },
+    {
+      "detector": "emc_clock_routing",
+      "rule_id": "CK-003",
+      "category": "clock_routing",
+      "summary": "Clock /RMII0_T1S_REF_CLK routed near connector J401",
+      "description": "Clock net /RMII0_T1S_REF_CLK passes within 4.6mm of connector J401. Clock harmonics can couple to attached cables via proximity, increasing radiated emissions.",
+      "components": [
+        "J401"
+      ],
+      "nets": [
+        "/RMII0_T1S_REF_CLK"
+      ],
+      "pins": [],
+      "severity": "warning",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Route /RMII0_T1S_REF_CLK away from J401, or add ground guard traces between the clock and connector.",
+      "report_context": {
+        "section": "Clock Routing",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:CK-003:j401#2"
+    },
+    {
+      "detector": "emc_clock_routing",
+      "rule_id": "CK-003",
+      "category": "clock_routing",
+      "summary": "Clock /T1S/T1S_OSC_OUT routed near connector J903",
+      "description": "Clock net /T1S/T1S_OSC_OUT passes within 6.9mm of connector J903. Clock harmonics can couple to attached cables via proximity, increasing radiated emissions.",
+      "components": [
+        "J903"
+      ],
+      "nets": [
+        "/T1S/T1S_OSC_OUT"
+      ],
+      "pins": [],
+      "severity": "warning",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Route /T1S/T1S_OSC_OUT away from J903, or add ground guard traces between the clock and connector.",
+      "report_context": {
+        "section": "Clock Routing",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:CK-003:j903"
+    },
+    {
+      "detector": "emc_clock_routing",
+      "rule_id": "CK-003",
+      "category": "clock_routing",
+      "summary": "Clock /T1S/T1S_REFCLK routed near connector J903",
+      "description": "Clock net /T1S/T1S_REFCLK passes within 7.8mm of connector J903. Clock harmonics can couple to attached cables via proximity, increasing radiated emissions.",
+      "components": [
+        "J903"
+      ],
+      "nets": [
+        "/T1S/T1S_REFCLK"
+      ],
+      "pins": [],
+      "severity": "warning",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Route /T1S/T1S_REFCLK away from J903, or add ground guard traces between the clock and connector.",
+      "report_context": {
+        "section": "Clock Routing",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:CK-003:j903#1"
+    },
+    {
+      "detector": "emc_emission_estimate",
+      "rule_id": "EE-001",
+      "category": "emission_estimate",
+      "summary": "Board cavity resonance frequencies",
+      "description": "Board (230\u00d7110mm, \u03b5r=3.9) cavity resonances: (1,0) at 330 MHz; (2,0) at 659 MHz; (0,1) at 689 MHz; (1,1) at 764 MHz; (2,1) at 954 MHz. PDN impedance spikes at these frequencies. Ensure adequate decoupling at and around these frequencies.",
+      "components": [],
+      "nets": [],
+      "pins": [],
+      "severity": "info",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "Add decoupling capacitors with SRF near these frequencies.",
+      "report_context": {
+        "section": "Emission Estimate",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:EE-001:14ba23cdf0dc"
+    },
+    {
+      "detector": "emc_return_path",
+      "rule_id": "RP-001",
+      "category": "return_path",
+      "summary": "Missing stitching via at layer transition: /SW_LHI",
+      "description": "Net /SW_LHI has 15 layer transition(s) across B.Cu, F.Cu, In2.Cu. 9 transition(s) have no ground stitching via within 1.0mm. The return current must find an alternate path, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "/SW_LHI"
+      ],
+      "pins": [],
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Add a ground stitching via within 1.0mm of each signal via. Place the ground via adjacent to the signal via on the same pad cluster.",
+      "report_context": {
+        "section": "Return Path",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:RP-001:/sw_lhi"
+    },
+    {
+      "detector": "emc_return_path",
+      "rule_id": "RP-001",
+      "category": "return_path",
+      "summary": "Missing stitching via at layer transition: /NTC_SW1",
+      "description": "Net /NTC_SW1 has 11 layer transition(s) across B.Cu, F.Cu, In2.Cu. 6 transition(s) have no ground stitching via within 1.0mm. The return current must find an alternate path, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "/NTC_SW1"
+      ],
+      "pins": [],
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Add a ground stitching via within 1.0mm of each signal via. Place the ground via adjacent to the signal via on the same pad cluster.",
+      "report_context": {
+        "section": "Return Path",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:RP-001:/ntc_sw1"
+    },
+    {
+      "detector": "emc_return_path",
+      "rule_id": "RP-001",
+      "category": "return_path",
+      "summary": "Missing stitching via at layer transition: /RESET_L",
+      "description": "Net /RESET_L has 11 layer transition(s) across B.Cu, F.Cu, In2.Cu. 4 transition(s) have no ground stitching via within 1.0mm. The return current must find an alternate path, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "/RESET_L"
+      ],
+      "pins": [],
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Add a ground stitching via within 1.0mm of each signal via. Place the ground via adjacent to the signal via on the same pad cluster.",
+      "report_context": {
+        "section": "Return Path",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:RP-001:/reset_l"
+    },
+    {
+      "detector": "emc_return_path",
+      "rule_id": "RP-001",
+      "category": "return_path",
+      "summary": "Missing stitching via at layer transition: /SPI5_SWITCH2_MISO",
+      "description": "Net /SPI5_SWITCH2_MISO has 11 layer transition(s) across B.Cu, F.Cu, In2.Cu. 4 transition(s) have no ground stitching via within 1.0mm. The return current must find an alternate path, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "/SPI5_SWITCH2_MISO"
+      ],
+      "pins": [],
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Add a ground stitching via within 1.0mm of each signal via. Place the ground via adjacent to the signal via on the same pad cluster.",
+      "report_context": {
+        "section": "Return Path",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:RP-001:/spi5_switch2_miso"
+    },
+    {
+      "detector": "emc_return_path",
+      "rule_id": "RP-001",
+      "category": "return_path",
+      "summary": "Missing stitching via at layer transition: /BATT_MON",
+      "description": "Net /BATT_MON has 10 layer transition(s) across B.Cu, F.Cu, In2.Cu. 2 transition(s) have no ground stitching via within 1.0mm. The return current must find an alternate path, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "/BATT_MON"
+      ],
+      "pins": [],
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Add a ground stitching via within 1.0mm of each signal via. Place the ground via adjacent to the signal via on the same pad cluster.",
+      "report_context": {
+        "section": "Return Path",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:RP-001:/batt_mon"
+    },
+    {
+      "detector": "emc_return_path",
+      "rule_id": "RP-001",
+      "category": "return_path",
+      "summary": "Missing stitching via at layer transition: /T1S_TERM_DROP",
+      "description": "Net /T1S_TERM_DROP has 9 layer transition(s) across B.Cu, F.Cu, In2.Cu. 7 transition(s) have no ground stitching via within 1.0mm. The return current must find an alternate path, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "/T1S_TERM_DROP"
+      ],
+      "pins": [],
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Add a ground stitching via within 1.0mm of each signal via. Place the ground via adjacent to the signal via on the same pad cluster.",
+      "report_context": {
+        "section": "Return Path",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:RP-001:/t1s_term_drop"
+    },
+    {
+      "detector": "emc_return_path",
+      "rule_id": "RP-001",
+      "category": "return_path",
+      "summary": "Missing stitching via at layer transition: /SPI5_SWITCH2_CS_L",
+      "description": "Net /SPI5_SWITCH2_CS_L has 8 layer transition(s) across B.Cu, F.Cu, In2.Cu. 6 transition(s) have no ground stitching via within 1.0mm. The return current must find an alternate path, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "/SPI5_SWITCH2_CS_L"
+      ],
+      "pins": [],
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Add a ground stitching via within 1.0mm of each signal via. Place the ground via adjacent to the signal via on the same pad cluster.",
+      "report_context": {
+        "section": "Return Path",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:RP-001:/spi5_switch2_cs_l"
+    },
+    {
+      "detector": "emc_return_path",
+      "rule_id": "RP-001",
+      "category": "return_path",
+      "summary": "Missing stitching via at layer transition: /SW1_FLT_L",
+      "description": "Net /SW1_FLT_L has 8 layer transition(s) across B.Cu, F.Cu, In2.Cu. 5 transition(s) have no ground stitching via within 1.0mm. The return current must find an alternate path, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "/SW1_FLT_L"
+      ],
+      "pins": [],
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Add a ground stitching via within 1.0mm of each signal via. Place the ground via adjacent to the signal via on the same pad cluster.",
+      "report_context": {
+        "section": "Return Path",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:RP-001:/sw1_flt_l"
+    },
+    {
+      "detector": "emc_return_path",
+      "rule_id": "RP-001",
+      "category": "return_path",
+      "summary": "Missing stitching via at layer transition: /I2C0_TELEMETRY_SCL",
+      "description": "Net /I2C0_TELEMETRY_SCL has 7 layer transition(s) across B.Cu, F.Cu, In2.Cu. 4 transition(s) have no ground stitching via within 1.0mm. The return current must find an alternate path, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "/I2C0_TELEMETRY_SCL"
+      ],
+      "pins": [],
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Add a ground stitching via within 1.0mm of each signal via. Place the ground via adjacent to the signal via on the same pad cluster.",
+      "report_context": {
+        "section": "Return Path",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:RP-001:/i2c0_telemetry_scl"
+    },
+    {
+      "detector": "emc_return_path",
+      "rule_id": "RP-001",
+      "category": "return_path",
+      "summary": "Missing stitching via at layer transition: /Power entry/DGATE",
+      "description": "Net /Power entry/DGATE has 7 layer transition(s) across B.Cu, F.Cu, In2.Cu. 6 transition(s) have no ground stitching via within 1.0mm. The return current must find an alternate path, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "/Power entry/DGATE"
+      ],
+      "pins": [],
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Add a ground stitching via within 1.0mm of each signal via. Place the ground via adjacent to the signal via on the same pad cluster.",
+      "report_context": {
+        "section": "Return Path",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:RP-001:/power-entry/dgate"
+    },
+    {
+      "detector": "emc_return_path",
+      "rule_id": "RP-001",
+      "category": "return_path",
+      "summary": "Missing stitching via at layer transition: /SPI5_SWITCH2_MOSI",
+      "description": "Net /SPI5_SWITCH2_MOSI has 7 layer transition(s) across B.Cu, F.Cu, In2.Cu. 2 transition(s) have no ground stitching via within 1.0mm. The return current must find an alternate path, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "/SPI5_SWITCH2_MOSI"
+      ],
+      "pins": [],
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Add a ground stitching via within 1.0mm of each signal via. Place the ground via adjacent to the signal via on the same pad cluster.",
+      "report_context": {
+        "section": "Return Path",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:RP-001:/spi5_switch2_mosi"
+    },
+    {
+      "detector": "emc_return_path",
+      "rule_id": "RP-001",
+      "category": "return_path",
+      "summary": "Missing stitching via at layer transition: /SW2_FLT_L",
+      "description": "Net /SW2_FLT_L has 7 layer transition(s) across B.Cu, F.Cu, In2.Cu. 3 transition(s) have no ground stitching via within 1.0mm. The return current must find an alternate path, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "/SW2_FLT_L"
+      ],
+      "pins": [],
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Add a ground stitching via within 1.0mm of each signal via. Place the ground via adjacent to the signal via on the same pad cluster.",
+      "report_context": {
+        "section": "Return Path",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:RP-001:/sw2_flt_l"
+    },
+    {
+      "detector": "emc_return_path",
+      "rule_id": "RP-001",
+      "category": "return_path",
+      "summary": "Missing stitching via at layer transition: /INH",
+      "description": "Net /INH has 6 layer transition(s) across B.Cu, F.Cu, In2.Cu. 2 transition(s) have no ground stitching via within 1.0mm. The return current must find an alternate path, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "/INH"
+      ],
+      "pins": [],
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Add a ground stitching via within 1.0mm of each signal via. Place the ground via adjacent to the signal via on the same pad cluster.",
+      "report_context": {
+        "section": "Return Path",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:RP-001:/inh"
+    },
+    {
+      "detector": "emc_return_path",
+      "rule_id": "RP-001",
+      "category": "return_path",
+      "summary": "Missing stitching via at layer transition: /Power entry/HGATE_G",
+      "description": "Net /Power entry/HGATE_G has 6 layer transition(s) across B.Cu, F.Cu. 5 transition(s) have no ground stitching via within 1.0mm. The return current must find an alternate path, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "/Power entry/HGATE_G"
+      ],
+      "pins": [],
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Add a ground stitching via within 1.0mm of each signal via. Place the ground via adjacent to the signal via on the same pad cluster.",
+      "report_context": {
+        "section": "Return Path",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:RP-001:/power-entry/hgate_g"
+    },
+    {
+      "detector": "emc_return_path",
+      "rule_id": "RP-001",
+      "category": "return_path",
+      "summary": "Missing stitching via at layer transition: /RMII0_T1S_RXD1",
+      "description": "Net /RMII0_T1S_RXD1 has 6 layer transition(s) across B.Cu, F.Cu, In2.Cu. 1 transition(s) have no ground stitching via within 1.0mm. The return current must find an alternate path, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "/RMII0_T1S_RXD1"
+      ],
+      "pins": [],
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Add a ground stitching via within 1.0mm of each signal via. Place the ground via adjacent to the signal via on the same pad cluster.",
+      "report_context": {
+        "section": "Return Path",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:RP-001:/rmii0_t1s_rxd1"
+    },
+    {
+      "detector": "emc_return_path",
+      "rule_id": "RP-001",
+      "category": "return_path",
+      "summary": "Missing stitching via at layer transition: /SPI4_SWITCH1_MOSI",
+      "description": "Net /SPI4_SWITCH1_MOSI has 6 layer transition(s) across B.Cu, F.Cu, In2.Cu. 3 transition(s) have no ground stitching via within 1.0mm. The return current must find an alternate path, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "/SPI4_SWITCH1_MOSI"
+      ],
+      "pins": [],
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Add a ground stitching via within 1.0mm of each signal via. Place the ground via adjacent to the signal via on the same pad cluster.",
+      "report_context": {
+        "section": "Return Path",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:RP-001:/spi4_switch1_mosi"
+    },
+    {
+      "detector": "emc_return_path",
+      "rule_id": "RP-001",
+      "category": "return_path",
+      "summary": "Missing stitching via at layer transition: /T1S/T1S_TERM_CT",
+      "description": "Net /T1S/T1S_TERM_CT has 6 layer transition(s) across B.Cu, F.Cu, In2.Cu. 4 transition(s) have no ground stitching via within 1.0mm. The return current must find an alternate path, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "/T1S/T1S_TERM_CT"
+      ],
+      "pins": [],
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Add a ground stitching via within 1.0mm of each signal via. Place the ground via adjacent to the signal via on the same pad cluster.",
+      "report_context": {
+        "section": "Return Path",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:RP-001:/t1s/t1s_term_ct"
+    },
+    {
+      "detector": "emc_return_path",
+      "rule_id": "RP-001",
+      "category": "return_path",
+      "summary": "Missing stitching via at layer transition: /MCU and NVM/SPI2_FLASH_CS_L",
+      "description": "Net /MCU and NVM/SPI2_FLASH_CS_L has 5 layer transition(s) across B.Cu, In2.Cu. 1 transition(s) have no ground stitching via within 1.0mm. The return current must find an alternate path, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "/MCU and NVM/SPI2_FLASH_CS_L"
+      ],
+      "pins": [],
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Add a ground stitching via within 1.0mm of each signal via. Place the ground via adjacent to the signal via on the same pad cluster.",
+      "report_context": {
+        "section": "Return Path",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:RP-001:/mcu-and-nvm/spi2_flash_cs_l"
+    },
+    {
+      "detector": "emc_return_path",
+      "rule_id": "RP-001",
+      "category": "return_path",
+      "summary": "Missing stitching via at layer transition: /NTC_SW2",
+      "description": "Net /NTC_SW2 has 5 layer transition(s) across B.Cu, F.Cu, In2.Cu. 4 transition(s) have no ground stitching via within 1.0mm. The return current must find an alternate path, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "/NTC_SW2"
+      ],
+      "pins": [],
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Add a ground stitching via within 1.0mm of each signal via. Place the ground via adjacent to the signal via on the same pad cluster.",
+      "report_context": {
+        "section": "Return Path",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:RP-001:/ntc_sw2"
+    },
+    {
+      "detector": "emc_return_path",
+      "rule_id": "RP-001",
+      "category": "return_path",
+      "summary": "Missing stitching via at layer transition: /RMII0_T1S_RX_ER",
+      "description": "Net /RMII0_T1S_RX_ER has 5 layer transition(s) across B.Cu, F.Cu, In2.Cu. 4 transition(s) have no ground stitching via within 1.0mm. The return current must find an alternate path, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "/RMII0_T1S_RX_ER"
+      ],
+      "pins": [],
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Add a ground stitching via within 1.0mm of each signal via. Place the ground via adjacent to the signal via on the same pad cluster.",
+      "report_context": {
+        "section": "Return Path",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:RP-001:/rmii0_t1s_rx_er"
+    },
+    {
+      "detector": "emc_return_path",
+      "rule_id": "RP-001",
+      "category": "return_path",
+      "summary": "Missing stitching via at layer transition: /SPI3_SWITCH3_MOSI",
+      "description": "Net /SPI3_SWITCH3_MOSI has 5 layer transition(s) across B.Cu, F.Cu, In2.Cu. 2 transition(s) have no ground stitching via within 1.0mm. The return current must find an alternate path, creating a loop antenna.",
+      "components": [],
+      "nets": [
+        "/SPI3_SWITCH3_MOSI"
+      ],
+      "pins": [],
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Add a ground stitching via within 1.0mm of each signal via. Place the ground via adjacent to the signal via on the same pad cluster.",
+      "report_context": {
+        "section": "Return Path",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:RP-001:/spi3_switch3_mosi"
+    },
+    {
+      "detector": "emc_return_path",
+      "rule_id": "RP-001",
+      "category": "return_path",
+      "summary": "21+ nets missing stitching vias (truncated)",
+      "description": "More than 20 nets have layer transitions without nearby ground stitching vias. Review via placement board-wide.",
+      "components": [],
+      "nets": [],
+      "pins": [],
+      "severity": "warning",
+      "confidence": "deterministic",
+      "evidence_source": "topology",
+      "recommendation": "Add ground stitching vias at all signal layer transitions.",
+      "report_context": {
+        "section": "Return Path",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:RP-001:8e25f4ed4075"
+    },
+    {
+      "detector": "emc_switching_emc",
+      "rule_id": "SW-001",
+      "category": "switching_emc",
+      "summary": "U302 harmonics in 30-88 MHz band",
+      "description": "U302 (LMQ66430MC3RXBRQ1) switching at 0.5 MHz has 117 harmonics in the 30-88 MHz band (harmonics 60-176). Envelope rolloff at 32 MHz (-40 dB/decade above).",
+      "components": [
+        "U302"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "warning",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "Minimize switching loop area for U302. Place input cap as close as possible. Consider spread-spectrum modulation if available.",
+      "report_context": {
+        "section": "Switching Emc",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:SW-001:u302"
+    },
+    {
+      "detector": "emc_switching_emc",
+      "rule_id": "SW-001",
+      "category": "switching_emc",
+      "summary": "U302 harmonics in 88-216 MHz band",
+      "description": "U302 (LMQ66430MC3RXBRQ1) switching at 0.5 MHz has 257 harmonics in the 88-216 MHz band (harmonics 176-432). Envelope rolloff at 32 MHz (-40 dB/decade above).",
+      "components": [
+        "U302"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "info",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "Minimize switching loop area for U302. Place input cap as close as possible. Consider spread-spectrum modulation if available.",
+      "report_context": {
+        "section": "Switching Emc",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:SW-001:u302#1"
+    },
+    {
+      "detector": "emc_switching_emc",
+      "rule_id": "SW-001",
+      "category": "switching_emc",
+      "summary": "U302 harmonics in 216-960 MHz band",
+      "description": "U302 (LMQ66430MC3RXBRQ1) switching at 0.5 MHz has 1489 harmonics in the 216-960 MHz band (harmonics 432-1920). Envelope rolloff at 32 MHz (-40 dB/decade above).",
+      "components": [
+        "U302"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "info",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "Minimize switching loop area for U302. Place input cap as close as possible. Consider spread-spectrum modulation if available.",
+      "report_context": {
+        "section": "Switching Emc",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:SW-001:u302#2"
+    },
+    {
+      "detector": "emc_switching_emc",
+      "rule_id": "SW-001",
+      "category": "switching_emc",
+      "summary": "U303 harmonics in 30-88 MHz band",
+      "description": "U303 (TPS628502QDRLRQ1) switching at 0.5 MHz has 117 harmonics in the 30-88 MHz band (harmonics 60-176). Envelope rolloff at 32 MHz (-40 dB/decade above).",
+      "components": [
+        "U303"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "warning",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "Minimize switching loop area for U303. Place input cap as close as possible. Consider spread-spectrum modulation if available.",
+      "report_context": {
+        "section": "Switching Emc",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:SW-001:u303"
+    },
+    {
+      "detector": "emc_switching_emc",
+      "rule_id": "SW-001",
+      "category": "switching_emc",
+      "summary": "U303 harmonics in 88-216 MHz band",
+      "description": "U303 (TPS628502QDRLRQ1) switching at 0.5 MHz has 257 harmonics in the 88-216 MHz band (harmonics 176-432). Envelope rolloff at 32 MHz (-40 dB/decade above).",
+      "components": [
+        "U303"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "info",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "Minimize switching loop area for U303. Place input cap as close as possible. Consider spread-spectrum modulation if available.",
+      "report_context": {
+        "section": "Switching Emc",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:SW-001:u303#1"
+    },
+    {
+      "detector": "emc_switching_emc",
+      "rule_id": "SW-001",
+      "category": "switching_emc",
+      "summary": "U303 harmonics in 216-960 MHz band",
+      "description": "U303 (TPS628502QDRLRQ1) switching at 0.5 MHz has 1489 harmonics in the 216-960 MHz band (harmonics 432-1920). Envelope rolloff at 32 MHz (-40 dB/decade above).",
+      "components": [
+        "U303"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "info",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "Minimize switching loop area for U303. Place input cap as close as possible. Consider spread-spectrum modulation if available.",
+      "report_context": {
+        "section": "Switching Emc",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:SW-001:u303#2"
+    },
+    {
+      "detector": "emc_emission_estimate",
+      "rule_id": "EE-002",
+      "category": "emission_estimate",
+      "summary": "U302 harmonic envelope",
+      "description": "U302 (LMQ66430MC3RXBRQ1) switching at 0.50 MHz, duty \u224850%. Harmonic envelope: flat to 0.3 MHz, -20 dB/dec to 32 MHz, -40 dB/dec above. Harmonics extend into FCC test range starting at 60th harmonic.",
+      "components": [
+        "U302"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "info",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "Minimize the hot loop area (input cap \u2192 high-side switch \u2192 inductor \u2192 low-side switch \u2192 input cap). Every halving of loop area reduces emissions by 6 dB.",
+      "report_context": {
+        "section": "Emission Estimate",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:EE-002:u302"
+    },
+    {
+      "detector": "emc_emission_estimate",
+      "rule_id": "EE-002",
+      "category": "emission_estimate",
+      "summary": "U303 harmonic envelope",
+      "description": "U303 (TPS628502QDRLRQ1) switching at 0.50 MHz, duty \u224850%. Harmonic envelope: flat to 0.3 MHz, -20 dB/dec to 32 MHz, -40 dB/dec above. Harmonics extend into FCC test range starting at 60th harmonic.",
+      "components": [
+        "U303"
+      ],
+      "nets": [],
+      "pins": [],
+      "severity": "info",
+      "confidence": "heuristic",
+      "evidence_source": "heuristic_rule",
+      "recommendation": "Minimize the hot loop area (input cap \u2192 high-side switch \u2192 inductor \u2192 low-side switch \u2192 input cap). Every halving of loop area reduces emissions by 6 dB.",
+      "report_context": {
+        "section": "Emission Estimate",
+        "impact": "",
+        "standard_ref": ""
+      },
+      "schema_era": "v3.0",
+      "suppressed": false,
+      "suppression_reason": "",
+      "stages": [
+        "layout"
+      ],
+      "finding_id": "emc:EE-002:u303"
+    }
+  ],
+  "assessments": [],
+  "per_net_scores": [
+    {
+      "net": "/SPI4_SWITCH1_SCK",
+      "score": 92.5,
+      "finding_count": 3,
+      "rules": [
+        "CK-002",
+        "CK-003"
+      ]
+    },
+    {
+      "net": "/SPI5_SWITCH2_SCK",
+      "score": 92.5,
+      "finding_count": 3,
+      "rules": [
+        "CK-002",
+        "CK-003"
+      ]
+    },
+    {
+      "net": "/MCU and NVM/SWD_CLK",
+      "score": 97.0,
+      "finding_count": 1,
+      "rules": [
+        "CK-003"
+      ]
+    },
+    {
+      "net": "/RMII0_T1S_REF_CLK",
+      "score": 97.0,
+      "finding_count": 1,
+      "rules": [
+        "CK-003"
+      ]
+    },
+    {
+      "net": "/T1S/T1S_OSC_OUT",
+      "score": 97.0,
+      "finding_count": 1,
+      "rules": [
+        "CK-003"
+      ]
+    },
+    {
+      "net": "/T1S/T1S_REFCLK",
+      "score": 97.0,
+      "finding_count": 1,
+      "rules": [
+        "CK-003"
+      ]
+    },
+    {
+      "net": "/SW_LHI",
+      "score": 100,
+      "finding_count": 1,
+      "rules": [
+        "RP-001"
+      ]
+    },
+    {
+      "net": "/NTC_SW1",
+      "score": 100,
+      "finding_count": 1,
+      "rules": [
+        "RP-001"
+      ]
+    },
+    {
+      "net": "/RESET_L",
+      "score": 100,
+      "finding_count": 1,
+      "rules": [
+        "RP-001"
+      ]
+    },
+    {
+      "net": "/SPI5_SWITCH2_MISO",
+      "score": 100,
+      "finding_count": 1,
+      "rules": [
+        "RP-001"
+      ]
+    },
+    {
+      "net": "/BATT_MON",
+      "score": 100,
+      "finding_count": 1,
+      "rules": [
+        "RP-001"
+      ]
+    },
+    {
+      "net": "/T1S_TERM_DROP",
+      "score": 100,
+      "finding_count": 1,
+      "rules": [
+        "RP-001"
+      ]
+    },
+    {
+      "net": "/SPI5_SWITCH2_CS_L",
+      "score": 100,
+      "finding_count": 1,
+      "rules": [
+        "RP-001"
+      ]
+    },
+    {
+      "net": "/SW1_FLT_L",
+      "score": 100,
+      "finding_count": 1,
+      "rules": [
+        "RP-001"
+      ]
+    },
+    {
+      "net": "/I2C0_TELEMETRY_SCL",
+      "score": 100,
+      "finding_count": 1,
+      "rules": [
+        "RP-001"
+      ]
+    },
+    {
+      "net": "/Power entry/DGATE",
+      "score": 100,
+      "finding_count": 1,
+      "rules": [
+        "RP-001"
+      ]
+    },
+    {
+      "net": "/SPI5_SWITCH2_MOSI",
+      "score": 100,
+      "finding_count": 1,
+      "rules": [
+        "RP-001"
+      ]
+    },
+    {
+      "net": "/SW2_FLT_L",
+      "score": 100,
+      "finding_count": 1,
+      "rules": [
+        "RP-001"
+      ]
+    },
+    {
+      "net": "/INH",
+      "score": 100,
+      "finding_count": 1,
+      "rules": [
+        "RP-001"
+      ]
+    },
+    {
+      "net": "/Power entry/HGATE_G",
+      "score": 100,
+      "finding_count": 1,
+      "rules": [
+        "RP-001"
+      ]
+    },
+    {
+      "net": "/RMII0_T1S_RXD1",
+      "score": 100,
+      "finding_count": 1,
+      "rules": [
+        "RP-001"
+      ]
+    },
+    {
+      "net": "/SPI4_SWITCH1_MOSI",
+      "score": 100,
+      "finding_count": 1,
+      "rules": [
+        "RP-001"
+      ]
+    },
+    {
+      "net": "/T1S/T1S_TERM_CT",
+      "score": 100,
+      "finding_count": 1,
+      "rules": [
+        "RP-001"
+      ]
+    },
+    {
+      "net": "/MCU and NVM/SPI2_FLASH_CS_L",
+      "score": 100,
+      "finding_count": 1,
+      "rules": [
+        "RP-001"
+      ]
+    },
+    {
+      "net": "/NTC_SW2",
+      "score": 100,
+      "finding_count": 1,
+      "rules": [
+        "RP-001"
+      ]
+    },
+    {
+      "net": "/RMII0_T1S_RX_ER",
+      "score": 100,
+      "finding_count": 1,
+      "rules": [
+        "RP-001"
+      ]
+    },
+    {
+      "net": "/SPI3_SWITCH3_MOSI",
+      "score": 100,
+      "finding_count": 1,
+      "rules": [
+        "RP-001"
+      ]
+    }
+  ],
+  "test_plan": {
+    "frequency_bands": [
+      {
+        "band": "30-68 MHz",
+        "freq_min_hz": 30000000.0,
+        "freq_max_hz": 68000000.0,
+        "risk_level": "medium",
+        "source_count": 5,
+        "sources": [
+          "U302 (LMQ66430MC3RXBRQ1) harmonics 60-136",
+          "U303 (TPS628502QDRLRQ1) harmonics 60-136",
+          "Y401 16.0MHz harmonic 2 (32.0MHz)",
+          "Y401 16.0MHz harmonic 3 (48.0MHz)",
+          "Y401 16.0MHz harmonic 4 (64.0MHz)"
+        ]
+      },
+      {
+        "band": "68-108 MHz",
+        "freq_min_hz": 68000000.0,
+        "freq_max_hz": 108000000.0,
+        "risk_level": "medium",
+        "source_count": 3,
+        "sources": [
+          "U302 (LMQ66430MC3RXBRQ1) harmonics 136-216",
+          "U303 (TPS628502QDRLRQ1) harmonics 136-216",
+          "Y401 16.0MHz harmonic 5 (80.0MHz)"
+        ]
+      },
+      {
+        "band": "108-230 MHz",
+        "freq_min_hz": 108000000.0,
+        "freq_max_hz": 230000000.0,
+        "risk_level": "medium",
+        "source_count": 2,
+        "sources": [
+          "U302 (LMQ66430MC3RXBRQ1) harmonics 216-460",
+          "U303 (TPS628502QDRLRQ1) harmonics 216-460"
+        ]
+      },
+      {
+        "band": "230-1000 MHz",
+        "freq_min_hz": 230000000.0,
+        "freq_max_hz": 1000000000.0,
+        "risk_level": "medium",
+        "source_count": 2,
+        "sources": [
+          "U302 (LMQ66430MC3RXBRQ1) harmonics 460-2000",
+          "U303 (TPS628502QDRLRQ1) harmonics 460-2000"
+        ]
+      }
+    ],
+    "interface_risks": [
+      {
+        "connector": "J906",
+        "value": "AT13-2P-BM04",
+        "protocol": "unknown",
+        "risk_score": 5,
+        "reasons": [
+          "No EMC filtering detected"
+        ]
+      },
+      {
+        "connector": "J909",
+        "value": "AT13-2P-BM04",
+        "protocol": "unknown",
+        "risk_score": 5,
+        "reasons": [
+          "No EMC filtering detected"
+        ]
+      },
+      {
+        "connector": "J401",
+        "value": "FTSH-105-01-L-DV-K",
+        "protocol": "unknown",
+        "risk_score": 5,
+        "reasons": [
+          "No EMC filtering detected"
+        ]
+      },
+      {
+        "connector": "BB902",
+        "value": "Busbar_Cu_19.05x3.175mm_L176.05mm_2xD6.5mm_P157mm",
+        "protocol": "unknown",
+        "risk_score": 5,
+        "reasons": [
+          "No EMC filtering detected"
+        ]
+      },
+      {
+        "connector": "J905",
+        "value": "AT13-2P-BM04",
+        "protocol": "unknown",
+        "risk_score": 5,
+        "reasons": [
+          "No EMC filtering detected"
+        ]
+      },
+      {
+        "connector": "J904",
+        "value": "AT13-2P-BM04",
+        "protocol": "unknown",
+        "risk_score": 5,
+        "reasons": [
+          "No EMC filtering detected"
+        ]
+      },
+      {
+        "connector": "J907",
+        "value": "AT13-2P-BM04",
+        "protocol": "unknown",
+        "risk_score": 5,
+        "reasons": [
+          "No EMC filtering detected"
+        ]
+      },
+      {
+        "connector": "J903",
+        "value": "ATM13-2P-BM04",
+        "protocol": "unknown",
+        "risk_score": 5,
+        "reasons": [
+          "No EMC filtering detected"
+        ]
+      },
+      {
+        "connector": "J912",
+        "value": "ATM13-2P-BM04",
+        "protocol": "unknown",
+        "risk_score": 5,
+        "reasons": [
+          "No EMC filtering detected"
+        ]
+      },
+      {
+        "connector": "J908",
+        "value": "AT13-2P-BM04",
+        "protocol": "unknown",
+        "risk_score": 5,
+        "reasons": [
+          "No EMC filtering detected"
+        ]
+      },
+      {
+        "connector": "BB901",
+        "value": "Busbar_Cu_19.05x3.175mm_L125.05mm_2xD6.5mm_P106mm",
+        "protocol": "unknown",
+        "risk_score": 5,
+        "reasons": [
+          "No EMC filtering detected"
+        ]
+      },
+      {
+        "connector": "J910",
+        "value": "74660016R",
+        "protocol": "unknown",
+        "risk_score": 5,
+        "reasons": [
+          "No EMC filtering detected"
+        ]
+      },
+      {
+        "connector": "J901",
+        "value": "74660016R",
+        "protocol": "unknown",
+        "risk_score": 5,
+        "reasons": [
+          "No EMC filtering detected"
+        ]
+      },
+      {
+        "connector": "J911",
+        "value": "74660016R",
+        "protocol": "unknown",
+        "risk_score": 5,
+        "reasons": [
+          "No EMC filtering detected"
+        ]
+      },
+      {
+        "connector": "J902",
+        "value": "74660016R",
+        "protocol": "unknown",
+        "risk_score": 5,
+        "reasons": [
+          "No EMC filtering detected"
+        ]
+      }
+    ],
+    "probe_points": [
+      {
+        "x": 117.1,
+        "y": 49.1,
+        "type": "inductor",
+        "ref": "L301",
+        "reason": "Switching inductor \u2014 highest dI/dt source"
+      },
+      {
+        "x": 217.4,
+        "y": 33.3,
+        "type": "inductor",
+        "ref": "L302",
+        "reason": "Switching inductor \u2014 highest dI/dt source"
+      },
+      {
+        "x": 117.2,
+        "y": 58.8,
+        "type": "inductor",
+        "ref": "L201",
+        "reason": "Switching inductor \u2014 highest dI/dt source"
+      },
+      {
+        "x": 190.5,
+        "y": 52.4,
+        "type": "crystal",
+        "ref": "Y401",
+        "reason": "Crystal/oscillator \u2014 clock harmonics source"
+      },
+      {
+        "x": 182.0,
+        "y": 41.0,
+        "type": "crystal",
+        "ref": "Y501",
+        "reason": "Crystal/oscillator \u2014 clock harmonics source"
+      },
+      {
+        "x": 133.7,
+        "y": 125.0,
+        "type": "unfiltered_connector",
+        "ref": "J906",
+        "reason": "Unfiltered I/O \u2014 cable radiation risk"
+      },
+      {
+        "x": 245.6,
+        "y": 125.0,
+        "type": "unfiltered_connector",
+        "ref": "J909",
+        "reason": "Unfiltered I/O \u2014 cable radiation risk"
+      },
+      {
+        "x": 200.0,
+        "y": 40.3,
+        "type": "unfiltered_connector",
+        "ref": "J401",
+        "reason": "Unfiltered I/O \u2014 cable radiation risk"
+      },
+      {
+        "x": 155.0,
+        "y": 70.6,
+        "type": "unfiltered_connector",
+        "ref": "BB902",
+        "reason": "Unfiltered I/O \u2014 cable radiation risk"
+      },
+      {
+        "x": 96.3,
+        "y": 125.0,
+        "type": "unfiltered_connector",
+        "ref": "J905",
+        "reason": "Unfiltered I/O \u2014 cable radiation risk"
+      },
+      {
+        "x": 59.0,
+        "y": 125.0,
+        "type": "unfiltered_connector",
+        "ref": "J904",
+        "reason": "Unfiltered I/O \u2014 cable radiation risk"
+      },
+      {
+        "x": 170.9,
+        "y": 125.0,
+        "type": "unfiltered_connector",
+        "ref": "J907",
+        "reason": "Unfiltered I/O \u2014 cable radiation risk"
+      },
+      {
+        "x": 176.6,
+        "y": 46.0,
+        "type": "unfiltered_connector",
+        "ref": "J903",
+        "reason": "Unfiltered I/O \u2014 cable radiation risk"
+      },
+      {
+        "x": 137.6,
+        "y": 46.0,
+        "type": "unfiltered_connector",
+        "ref": "J912",
+        "reason": "Unfiltered I/O \u2014 cable radiation risk"
+      },
+      {
+        "x": 208.2,
+        "y": 125.0,
+        "type": "unfiltered_connector",
+        "ref": "J908",
+        "reason": "Unfiltered I/O \u2014 cable radiation risk"
+      },
+      {
+        "x": 155.0,
+        "y": 99.6,
+        "type": "unfiltered_connector",
+        "ref": "BB901",
+        "reason": "Unfiltered I/O \u2014 cable radiation risk"
+      },
+      {
+        "x": 102.0,
+        "y": 99.6,
+        "type": "unfiltered_connector",
+        "ref": "J910",
+        "reason": "Unfiltered I/O \u2014 cable radiation risk"
+      },
+      {
+        "x": 208.0,
+        "y": 99.6,
+        "type": "unfiltered_connector",
+        "ref": "J901",
+        "reason": "Unfiltered I/O \u2014 cable radiation risk"
+      },
+      {
+        "x": 76.5,
+        "y": 70.6,
+        "type": "unfiltered_connector",
+        "ref": "J911",
+        "reason": "Unfiltered I/O \u2014 cable radiation risk"
+      },
+      {
+        "x": 233.5,
+        "y": 70.6,
+        "type": "unfiltered_connector",
+        "ref": "J902",
+        "reason": "Unfiltered I/O \u2014 cable radiation risk"
+      }
+    ]
+  },
+  "regulatory_coverage": {
+    "market": "automotive",
+    "applicable_standards": [
+      "CISPR 25 Class 5",
+      "CISPR 25 Class 5",
+      "ISO 10605",
+      "ISO 7637-2"
+    ],
+    "coverage_matrix": [
+      {
+        "standard": "CISPR 25 Class 5",
+        "test_type": "radiated",
+        "coverage": "minimal",
+        "checked_rules": [
+          "SW-001",
+          "CK-002",
+          "IO-001",
+          "EE-001",
+          "EE-002"
+        ],
+        "total_applicable_rules": 23,
+        "note": "Design rule checks identify common radiation sources. Cannot predict absolute emission levels."
+      },
+      {
+        "standard": "CISPR 25 Class 5",
+        "test_type": "conducted",
+        "coverage": "partial",
+        "checked_rules": [
+          "SW-001",
+          "EE-002"
+        ],
+        "total_applicable_rules": 4,
+        "note": "Switching harmonic analysis and decoupling checks. EMI filter verification not yet implemented."
+      },
+      {
+        "standard": "ISO 10605",
+        "test_type": "esd",
+        "coverage": "partial",
+        "checked_rules": [
+          "IO-001"
+        ],
+        "total_applicable_rules": 1,
+        "note": "Checks for ESD/TVS presence near connectors. Does not verify protection path routing or clamping voltage."
+      },
+      {
+        "standard": "ISO 7637-2",
+        "test_type": "transient",
+        "coverage": "lab_only",
+        "checked_rules": [],
+        "total_applicable_rules": 0,
+        "note": "Automotive transient testing requires lab testing."
+      }
+    ]
+  },
+  "category_summary": {
+    "io_filtering": {
+      "count": 15,
+      "max_severity": "info",
+      "severities": {
+        "error": 0,
+        "warning": 0,
+        "info": 15
+      },
+      "suppressed_count": 0
+    },
+    "clock_routing": {
+      "count": 10,
+      "max_severity": "warning",
+      "severities": {
+        "error": 0,
+        "warning": 10,
+        "info": 0
+      },
+      "suppressed_count": 0
+    },
+    "emission_estimate": {
+      "count": 3,
+      "max_severity": "info",
+      "severities": {
+        "error": 0,
+        "warning": 0,
+        "info": 3
+      },
+      "suppressed_count": 0
+    },
+    "return_path": {
+      "count": 22,
+      "max_severity": "warning",
+      "severities": {
+        "error": 0,
+        "warning": 1,
+        "info": 21
+      },
+      "suppressed_count": 0
+    },
+    "switching_emc": {
+      "count": 6,
+      "max_severity": "warning",
+      "severities": {
+        "error": 0,
+        "warning": 2,
+        "info": 4
+      },
+      "suppressed_count": 0
+    }
+  },
+  "board_info": {
+    "board_width_mm": 230.0,
+    "board_height_mm": 110.0,
+    "layer_count": 6,
+    "footprint_count": 282,
+    "via_count": 2931,
+    "has_stackup": true,
+    "board_thickness_mm": 2.0,
+    "total_components": 282,
+    "total_nets": 314,
+    "highest_frequency_hz": 16000000.0,
+    "crystal_frequencies_hz": [
+      16000000.0
+    ]
+  },
+  "elapsed_s": 0.061,
+  "audience_summary": {
+    "designer": {
+      "total_findings": 56,
+      "by_severity": {
+        "error": 0,
+        "warning": 13,
+        "info": 43
+      },
+      "by_category": {
+        "io_filtering": 15,
+        "clock_routing": 10,
+        "emission_estimate": 3,
+        "return_path": 22,
+        "switching_emc": 6
+      },
+      "top_issues": [
+        {
+          "detector": "emc_clock_routing",
+          "rule_id": "CK-002",
+          "category": "clock_routing",
+          "summary": "Long clock trace: /SPI4_SWITCH1_SCK",
+          "description": "Clock net /SPI4_SWITCH1_SCK is 224mm long. Long clock traces act as antennas and radiate harmonics more effectively.",
+          "components": [],
+          "nets": [
+            "/SPI4_SWITCH1_SCK"
+          ],
+          "pins": [],
+          "severity": "warning",
+          "confidence": "heuristic",
+          "evidence_source": "heuristic_rule",
+          "recommendation": "Minimize clock trace length. Place clock source close to destination.",
+          "report_context": {
+            "section": "Clock Routing",
+            "impact": "",
+            "standard_ref": ""
+          },
+          "schema_era": "v3.0",
+          "suppressed": false,
+          "suppression_reason": "",
+          "stages": [
+            "layout"
+          ],
+          "finding_id": "emc:CK-002:/spi4_switch1_sck"
+        },
+        {
+          "detector": "emc_clock_routing",
+          "rule_id": "CK-002",
+          "category": "clock_routing",
+          "summary": "Long clock trace: /SPI5_SWITCH2_SCK",
+          "description": "Clock net /SPI5_SWITCH2_SCK is 122mm long. Long clock traces act as antennas and radiate harmonics more effectively.",
+          "components": [],
+          "nets": [
+            "/SPI5_SWITCH2_SCK"
+          ],
+          "pins": [],
+          "severity": "warning",
+          "confidence": "heuristic",
+          "evidence_source": "heuristic_rule",
+          "recommendation": "Minimize clock trace length. Place clock source close to destination.",
+          "report_context": {
+            "section": "Clock Routing",
+            "impact": "",
+            "standard_ref": ""
+          },
+          "schema_era": "v3.0",
+          "suppressed": false,
+          "suppression_reason": "",
+          "stages": [
+            "layout"
+          ],
+          "finding_id": "emc:CK-002:/spi5_switch2_sck"
+        },
+        {
+          "detector": "emc_clock_routing",
+          "rule_id": "CK-003",
+          "category": "clock_routing",
+          "summary": "Clock /MCU and NVM/SWD_CLK routed near connector J401",
+          "description": "Clock net /MCU and NVM/SWD_CLK passes within 5.6mm of connector J401. Clock harmonics can couple to attached cables via proximity, increasing radiated emissions.",
+          "components": [
+            "J401"
+          ],
+          "nets": [
+            "/MCU and NVM/SWD_CLK"
+          ],
+          "pins": [],
+          "severity": "warning",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "recommendation": "Route /MCU and NVM/SWD_CLK away from J401, or add ground guard traces between the clock and connector.",
+          "report_context": {
+            "section": "Clock Routing",
+            "impact": "",
+            "standard_ref": ""
+          },
+          "schema_era": "v3.0",
+          "suppressed": false,
+          "suppression_reason": "",
+          "stages": [
+            "layout"
+          ],
+          "finding_id": "emc:CK-003:j401"
+        },
+        {
+          "detector": "emc_clock_routing",
+          "rule_id": "CK-003",
+          "category": "clock_routing",
+          "summary": "Clock /SPI5_SWITCH2_SCK routed near connector BB902",
+          "description": "Clock net /SPI5_SWITCH2_SCK passes within 6.2mm of connector BB902. Clock harmonics can couple to attached cables via proximity, increasing radiated emissions.",
+          "components": [
+            "BB902"
+          ],
+          "nets": [
+            "/SPI5_SWITCH2_SCK"
+          ],
+          "pins": [],
+          "severity": "warning",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "recommendation": "Route /SPI5_SWITCH2_SCK away from BB902, or add ground guard traces between the clock and connector.",
+          "report_context": {
+            "section": "Clock Routing",
+            "impact": "",
+            "standard_ref": ""
+          },
+          "schema_era": "v3.0",
+          "suppressed": false,
+          "suppression_reason": "",
+          "stages": [
+            "layout"
+          ],
+          "finding_id": "emc:CK-003:bb902"
+        },
+        {
+          "detector": "emc_clock_routing",
+          "rule_id": "CK-003",
+          "category": "clock_routing",
+          "summary": "Clock /SPI5_SWITCH2_SCK routed near connector BB901",
+          "description": "Clock net /SPI5_SWITCH2_SCK passes within 7.5mm of connector BB901. Clock harmonics can couple to attached cables via proximity, increasing radiated emissions.",
+          "components": [
+            "BB901"
+          ],
+          "nets": [
+            "/SPI5_SWITCH2_SCK"
+          ],
+          "pins": [],
+          "severity": "warning",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "recommendation": "Route /SPI5_SWITCH2_SCK away from BB901, or add ground guard traces between the clock and connector.",
+          "report_context": {
+            "section": "Clock Routing",
+            "impact": "",
+            "standard_ref": ""
+          },
+          "schema_era": "v3.0",
+          "suppressed": false,
+          "suppression_reason": "",
+          "stages": [
+            "layout"
+          ],
+          "finding_id": "emc:CK-003:bb901"
+        },
+        {
+          "detector": "emc_clock_routing",
+          "rule_id": "CK-003",
+          "category": "clock_routing",
+          "summary": "Clock /SPI4_SWITCH1_SCK routed near connector J911",
+          "description": "Clock net /SPI4_SWITCH1_SCK passes within 9.7mm of connector J911. Clock harmonics can couple to attached cables via proximity, increasing radiated emissions.",
+          "components": [
+            "J911"
+          ],
+          "nets": [
+            "/SPI4_SWITCH1_SCK"
+          ],
+          "pins": [],
+          "severity": "warning",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "recommendation": "Route /SPI4_SWITCH1_SCK away from J911, or add ground guard traces between the clock and connector.",
+          "report_context": {
+            "section": "Clock Routing",
+            "impact": "",
+            "standard_ref": ""
+          },
+          "schema_era": "v3.0",
+          "suppressed": false,
+          "suppression_reason": "",
+          "stages": [
+            "layout"
+          ],
+          "finding_id": "emc:CK-003:j911"
+        },
+        {
+          "detector": "emc_clock_routing",
+          "rule_id": "CK-003",
+          "category": "clock_routing",
+          "summary": "Clock /SPI4_SWITCH1_SCK routed near connector J401",
+          "description": "Clock net /SPI4_SWITCH1_SCK passes within 5.3mm of connector J401. Clock harmonics can couple to attached cables via proximity, increasing radiated emissions.",
+          "components": [
+            "J401"
+          ],
+          "nets": [
+            "/SPI4_SWITCH1_SCK"
+          ],
+          "pins": [],
+          "severity": "warning",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "recommendation": "Route /SPI4_SWITCH1_SCK away from J401, or add ground guard traces between the clock and connector.",
+          "report_context": {
+            "section": "Clock Routing",
+            "impact": "",
+            "standard_ref": ""
+          },
+          "schema_era": "v3.0",
+          "suppressed": false,
+          "suppression_reason": "",
+          "stages": [
+            "layout"
+          ],
+          "finding_id": "emc:CK-003:j401#1"
+        },
+        {
+          "detector": "emc_clock_routing",
+          "rule_id": "CK-003",
+          "category": "clock_routing",
+          "summary": "Clock /RMII0_T1S_REF_CLK routed near connector J401",
+          "description": "Clock net /RMII0_T1S_REF_CLK passes within 4.6mm of connector J401. Clock harmonics can couple to attached cables via proximity, increasing radiated emissions.",
+          "components": [
+            "J401"
+          ],
+          "nets": [
+            "/RMII0_T1S_REF_CLK"
+          ],
+          "pins": [],
+          "severity": "warning",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "recommendation": "Route /RMII0_T1S_REF_CLK away from J401, or add ground guard traces between the clock and connector.",
+          "report_context": {
+            "section": "Clock Routing",
+            "impact": "",
+            "standard_ref": ""
+          },
+          "schema_era": "v3.0",
+          "suppressed": false,
+          "suppression_reason": "",
+          "stages": [
+            "layout"
+          ],
+          "finding_id": "emc:CK-003:j401#2"
+        },
+        {
+          "detector": "emc_clock_routing",
+          "rule_id": "CK-003",
+          "category": "clock_routing",
+          "summary": "Clock /T1S/T1S_OSC_OUT routed near connector J903",
+          "description": "Clock net /T1S/T1S_OSC_OUT passes within 6.9mm of connector J903. Clock harmonics can couple to attached cables via proximity, increasing radiated emissions.",
+          "components": [
+            "J903"
+          ],
+          "nets": [
+            "/T1S/T1S_OSC_OUT"
+          ],
+          "pins": [],
+          "severity": "warning",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "recommendation": "Route /T1S/T1S_OSC_OUT away from J903, or add ground guard traces between the clock and connector.",
+          "report_context": {
+            "section": "Clock Routing",
+            "impact": "",
+            "standard_ref": ""
+          },
+          "schema_era": "v3.0",
+          "suppressed": false,
+          "suppression_reason": "",
+          "stages": [
+            "layout"
+          ],
+          "finding_id": "emc:CK-003:j903"
+        },
+        {
+          "detector": "emc_clock_routing",
+          "rule_id": "CK-003",
+          "category": "clock_routing",
+          "summary": "Clock /T1S/T1S_REFCLK routed near connector J903",
+          "description": "Clock net /T1S/T1S_REFCLK passes within 7.8mm of connector J903. Clock harmonics can couple to attached cables via proximity, increasing radiated emissions.",
+          "components": [
+            "J903"
+          ],
+          "nets": [
+            "/T1S/T1S_REFCLK"
+          ],
+          "pins": [],
+          "severity": "warning",
+          "confidence": "deterministic",
+          "evidence_source": "topology",
+          "recommendation": "Route /T1S/T1S_REFCLK away from J903, or add ground guard traces between the clock and connector.",
+          "report_context": {
+            "section": "Clock Routing",
+            "impact": "",
+            "standard_ref": ""
+          },
+          "schema_era": "v3.0",
+          "suppressed": false,
+          "suppression_reason": "",
+          "stages": [
+            "layout"
+          ],
+          "finding_id": "emc:CK-003:j903#1"
+        }
+      ]
+    },
+    "reviewer": {
+      "total_findings": 13,
+      "by_category": {
+        "clock_routing": 10,
+        "return_path": 1,
+        "switching_emc": 2
+      },
+      "top_issues": [
+        {
+          "rule_id": "CK-002",
+          "severity": "warning",
+          "summary": "Long clock trace: /SPI4_SWITCH1_SCK",
+          "recommendation": "Minimize clock trace length. Place clock source close to destination.",
+          "category": "clock_routing"
+        },
+        {
+          "rule_id": "CK-002",
+          "severity": "warning",
+          "summary": "Long clock trace: /SPI5_SWITCH2_SCK",
+          "recommendation": "Minimize clock trace length. Place clock source close to destination.",
+          "category": "clock_routing"
+        },
+        {
+          "rule_id": "CK-003",
+          "severity": "warning",
+          "summary": "Clock /MCU and NVM/SWD_CLK routed near connector J401",
+          "recommendation": "Route /MCU and NVM/SWD_CLK away from J401, or add ground guard traces between the clock and connector.",
+          "category": "clock_routing"
+        },
+        {
+          "rule_id": "CK-003",
+          "severity": "warning",
+          "summary": "Clock /SPI5_SWITCH2_SCK routed near connector BB902",
+          "recommendation": "Route /SPI5_SWITCH2_SCK away from BB902, or add ground guard traces between the clock and connector.",
+          "category": "clock_routing"
+        },
+        {
+          "rule_id": "CK-003",
+          "severity": "warning",
+          "summary": "Clock /SPI5_SWITCH2_SCK routed near connector BB901",
+          "recommendation": "Route /SPI5_SWITCH2_SCK away from BB901, or add ground guard traces between the clock and connector.",
+          "category": "clock_routing"
+        },
+        {
+          "rule_id": "CK-003",
+          "severity": "warning",
+          "summary": "Clock /SPI4_SWITCH1_SCK routed near connector J911",
+          "recommendation": "Route /SPI4_SWITCH1_SCK away from J911, or add ground guard traces between the clock and connector.",
+          "category": "clock_routing"
+        },
+        {
+          "rule_id": "CK-003",
+          "severity": "warning",
+          "summary": "Clock /SPI4_SWITCH1_SCK routed near connector J401",
+          "recommendation": "Route /SPI4_SWITCH1_SCK away from J401, or add ground guard traces between the clock and connector.",
+          "category": "clock_routing"
+        },
+        {
+          "rule_id": "CK-003",
+          "severity": "warning",
+          "summary": "Clock /RMII0_T1S_REF_CLK routed near connector J401",
+          "recommendation": "Route /RMII0_T1S_REF_CLK away from J401, or add ground guard traces between the clock and connector.",
+          "category": "clock_routing"
+        },
+        {
+          "rule_id": "CK-003",
+          "severity": "warning",
+          "summary": "Clock /T1S/T1S_OSC_OUT routed near connector J903",
+          "recommendation": "Route /T1S/T1S_OSC_OUT away from J903, or add ground guard traces between the clock and connector.",
+          "category": "clock_routing"
+        },
+        {
+          "rule_id": "CK-003",
+          "severity": "warning",
+          "summary": "Clock /T1S/T1S_REFCLK routed near connector J903",
+          "recommendation": "Route /T1S/T1S_REFCLK away from J903, or add ground guard traces between the clock and connector.",
+          "category": "clock_routing"
+        },
+        {
+          "rule_id": "RP-001",
+          "severity": "warning",
+          "summary": "21+ nets missing stitching vias (truncated)",
+          "recommendation": "Add ground stitching vias at all signal layer transitions.",
+          "category": "return_path"
+        },
+        {
+          "rule_id": "SW-001",
+          "severity": "warning",
+          "summary": "U302 harmonics in 30-88 MHz band",
+          "recommendation": "Minimize switching loop area for U302. Place input cap as close as possible. Consider spread-spectrum modulation if available.",
+          "category": "switching_emc"
+        },
+        {
+          "rule_id": "SW-001",
+          "severity": "warning",
+          "summary": "U303 harmonics in 30-88 MHz band",
+          "recommendation": "Minimize switching loop area for U303. Place input cap as close as possible. Consider spread-spectrum modulation if available.",
+          "category": "switching_emc"
+        }
+      ]
+    },
+    "manager": {
+      "risk_level": "moderate",
+      "blocker_count": 0,
+      "warning_count": 13,
+      "stage_readiness": {
+        "schematic": "pass",
+        "layout": "needs_review",
+        "pre_fab": "pass",
+        "bring_up": "pass"
+      },
+      "one_liner": "13 warnings across 3 categories."
+    }
+  },
+  "trust_summary": {
+    "total_findings": 56,
+    "trust_level": "mixed",
+    "by_confidence": {
+      "deterministic": 30,
+      "heuristic": 26,
+      "datasheet_backed": 0
+    },
+    "by_evidence_source": {
+      "datasheet": 0,
+      "topology": 30,
+      "heuristic_rule": 26,
+      "symbol_footprint": 0,
+      "bom": 0,
+      "geometry": 0,
+      "api_lookup": 0
+    },
+    "provenance_coverage_pct": 0.0
+  },
+  "capability_mode_ref": {
+    "source": "analysis/capability_mode.json",
+    "run_id": "20261113T073952Z-7bed29"
+  }
+}

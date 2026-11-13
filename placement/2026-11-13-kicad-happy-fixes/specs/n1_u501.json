@@ -1,0 +1,21 @@
+{
+ "_": "N1: 3 x 3 GND vias in U501's exposed pad per Microchip C04-2500 Rev B (0.33 mm hole, 1.20 mm pitch), the array 0.10 mm north of the pad centre so the south row keeps the T1S 0.75 mm rule; TXD1 (F.Cu), MDC (F.Cu) and TX_EN (In2) moved into the gaps between the rows. N3: the two dangling pin stubs.",
+ "delete": [
+  {"seg": [160.4, 43.3, 152.9, 43.3], "layer": "F.Cu", "net": "RMII0_T1S_TXD1"},
+  {"seg": [156.25, 41.425, 157.825, 43.0], "layer": "F.Cu", "net": "MDIO0_T1S_MDC"},
+  {"seg": [152.8, 42.2, 158.2, 42.2], "layer": "In2.Cu", "net": "RMII0_T1S_TX_EN"},
+  {"seg": [156.25, 41.1, 156.25, 40.625], "layer": "B.Cu", "net": "MDIO0_T1S_MDC"},
+  {"seg": [156.75, 41.1, 156.75, 40.625], "layer": "B.Cu", "net": "MDIO0_T1S_MDIO"},
+  {"seg": [156.25, 41.35, 156.25, 41.1], "layer": "B.Cu", "net": "MDIO0_T1S_MDC"}
+ ],
+ "tracks": [
+  {"net": "RMII0_T1S_TXD1", "layer": "F.Cu", "w": 0.15, "lock": true, "pts": [[152.9, 43.3], [153.65, 44.05], [158.3, 44.05], [159.05, 43.3], [160.4, 43.3]]},
+  {"net": "MDIO0_T1S_MDC", "layer": "F.Cu", "w": 0.15, "lock": true, "pts": [[156.25, 41.425], [156.6, 41.775], [156.6, 42.5], [156.95, 42.85], [157.675, 42.85], [157.825, 43.0]]},
+  {"net": "RMII0_T1S_TX_EN", "layer": "In2.Cu", "w": 0.15, "lock": true, "pts": [[152.8, 42.2], [153.45, 42.85], [157.55, 42.85], [158.2, 42.2]]}
+ ],
+ "vias": [
+  {"net": "GND", "x": 154.8, "y": 42.25, "d": 0.6, "drill": 0.33}, {"net": "GND", "x": 156.0, "y": 42.25, "d": 0.6, "drill": 0.33}, {"net": "GND", "x": 157.2, "y": 42.25, "d": 0.6, "drill": 0.33},
+  {"net": "GND", "x": 154.8, "y": 43.45, "d": 0.6, "drill": 0.33}, {"net": "GND", "x": 156.0, "y": 43.45, "d": 0.6, "drill": 0.33}, {"net": "GND", "x": 157.2, "y": 43.45, "d": 0.6, "drill": 0.33},
+  {"net": "GND", "x": 154.8, "y": 44.65, "d": 0.6, "drill": 0.33}, {"net": "GND", "x": 156.0, "y": 44.65, "d": 0.6, "drill": 0.33}, {"net": "GND", "x": 157.2, "y": 44.65, "d": 0.6, "drill": 0.33}
+ ]
+}

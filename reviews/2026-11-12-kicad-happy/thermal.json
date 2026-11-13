@@ -1,0 +1,103 @@
+{
+  "analyzer_type": "thermal",
+  "schema_version": "1.4.0",
+  "inputs": {
+    "source_files": [
+      "reviews/2026-11-12-kicad-happy/schematic.json",
+      "reviews/2026-11-12-kicad-happy/pcb.json"
+    ],
+    "source_hashes": {
+      "reviews/2026-11-12-kicad-happy/schematic.json": "d133b3525ab6b0f4d2c5bd2c8ea37426aa94ccc459ad2e5a17c6031b480fe4a7",
+      "reviews/2026-11-12-kicad-happy/pcb.json": "6b356b58d0477b70f08fde11d1ff38598de27168c0fc9a5d7b6ca3eabd1c710c"
+    },
+    "run_id": "20261113T063343Z-ccb241",
+    "config_hash": null,
+    "upstream_artifacts": {
+      "schematic": {
+        "path": "reviews/2026-11-12-kicad-happy/schematic.json",
+        "sha256": "d133b3525ab6b0f4d2c5bd2c8ea37426aa94ccc459ad2e5a17c6031b480fe4a7",
+        "schema_version": "1.4.0",
+        "run_id": "20261113T063343Z-ccb241"
+      },
+      "pcb": {
+        "path": "reviews/2026-11-12-kicad-happy/pcb.json",
+        "sha256": "6b356b58d0477b70f08fde11d1ff38598de27168c0fc9a5d7b6ca3eabd1c710c",
+        "schema_version": "1.4.0",
+        "run_id": "20261113T063343Z-ccb241"
+      }
+    }
+  },
+  "compat": {
+    "minimum_consumer_version": "1.4.0",
+    "deprecated_fields": [],
+    "experimental_fields": []
+  },
+  "diagnostics": [],
+  "summary": {
+    "total_findings": 0,
+    "components_assessed": 0,
+    "components_skipped": 4,
+    "active": 0,
+    "suppressed": 0,
+    "by_severity": {
+      "error": 0,
+      "warning": 0,
+      "info": 0
+    },
+    "thermal_score": null,
+    "skipped_reason": "No components had quantifiable power dissipation data (missing MPNs or no datasheet extraction cache)",
+    "total_board_dissipation_w": 0,
+    "components_analyzed": 0,
+    "components_above_85c": 0,
+    "components_above_tjmax": 0,
+    "ambient_c": 85.0
+  },
+  "findings": [],
+  "assessments": [],
+  "elapsed_s": 0.0,
+  "skipped_components": [
+    {
+      "ref": "U301",
+      "value": "TPS7B8133QWDRVRQ1",
+      "reason": "no_pdiss_estimate"
+    },
+    {
+      "ref": "U201",
+      "value": "LM74910HQRGERQ1",
+      "reason": "no_vout"
+    },
+    {
+      "ref": "U302",
+      "value": "LMQ66430MC3RXBRQ1",
+      "reason": "no_vout"
+    },
+    {
+      "ref": "U303",
+      "value": "TPS628502QDRLRQ1",
+      "reason": "no_load_estimate"
+    }
+  ],
+  "trust_summary": {
+    "total_findings": 0,
+    "trust_level": "high",
+    "by_confidence": {
+      "deterministic": 0,
+      "heuristic": 0,
+      "datasheet_backed": 0
+    },
+    "by_evidence_source": {
+      "datasheet": 0,
+      "topology": 0,
+      "heuristic_rule": 0,
+      "symbol_footprint": 0,
+      "bom": 0,
+      "geometry": 0,
+      "api_lookup": 0
+    },
+    "provenance_coverage_pct": null
+  },
+  "capability_mode_ref": {
+    "source": "analysis/capability_mode.json",
+    "run_id": "20261113T063343Z-ccb241"
+  }
+}

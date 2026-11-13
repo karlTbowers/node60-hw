@@ -1,0 +1,11 @@
+TXD0       62.3 mm    432 ps  vias 2  {'B.Cu': 3.56, 'via': 2.42, 'In2.Cu': 56.11, 'join': 0.18}
+TXD1       51.2 mm    311 ps  vias 2  {'B.Cu': 37.9, 'join': 0.24, 'via': 4.0, 'F.Cu': 9.06}
+TX_EN      58.1 mm    403 ps  vias 2  {'B.Cu': 3.22, 'join': 0.25, 'via': 2.42, 'In2.Cu': 52.21}
+RXD0       54.9 mm    333 ps  vias 2  {'B.Cu': 38.55, 'join': 0.08, 'via': 4.0, 'F.Cu': 12.22}
+RXD1       57.8 mm    389 ps  vias 5  {'B.Cu': 1.33, 'join': 0.42, 'via': 5.58, 'F.Cu': 14.19, 'In2.Cu': 36.27}
+CRS_DV     84.6 mm    520 ps  vias 3  {'B.Cu': 13.64, 'join': 0.27, 'via': 4.0, 'In2.Cu': 8.79, 'F.Cu': 57.87}
+RX_ER      85.1 mm    556 ps  vias 4  {'B.Cu': 7.19, 'join': 0.35, 'via': 4.0, 'In2.Cu': 41.86, 'F.Cu': 31.71}
+MDC        50.0 mm    304 ps  vias 2  {'via': 4.0, 'F.Cu': 44.46, 'join': 0.17, 'B.Cu': 1.37}
+MDIO       54.7 mm    336 ps  vias 4  {'via': 8.0, 'join': 0.25, 'F.Cu': 16.22, 'B.Cu': 30.23}
+clk to PHY 34.6 mm 233 ps; to MCU 22.0 mm 126 ps; mismatch -12.6 mm (Microchip: within 13); dclk flight -107 ps, with RC -125..-34 ps
+slack ns {'tx_setup': 0.601, 'tx_hold': 0.687, 'rx_setup': 3.319, 'rx_hold': 1.367}

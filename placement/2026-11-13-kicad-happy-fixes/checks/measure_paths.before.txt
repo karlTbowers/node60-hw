@@ -1,0 +1,16 @@
+VBAT_IN J901 to Q202 (all layers)	0.617 mohm
+VBAT_Q2D R201 to Q203+Q204 (all layers)	0.145 mohm
+VBAT_D Q201+Q202 to R201 (all layers)	0.298 mohm
+VBAT_IN J910 to Q201 (all layers)	0.611 mohm
+VBAT_IN J910 to Q201 (outer layers)	1.303 mohm
+VBAT_D Q201+Q202 to R201 (outer layers)	0.717 mohm
+OUT1 U601 to J904 (outer layers)	1.552 mohm
+OUT2 U601 to J905 (outer layers)	1.510 mohm
+OUT3 U701 to J906 (outer layers)	1.579 mohm
+OUT4 U701 to J907 (outer layers)	1.519 mohm
+OUT5 U801 to J908 (outer layers)	1.535 mohm
+OUT6 U801 to J909 (outer layers)	1.489 mohm
+VBAT_PROT Q203:3,4,5,6,7,8+Q204:3,4,5,6,7,8 -> U601:17 at 20 A: drop  15.08 mV
+VBAT_PROT Q203:3,4,5,6,7,8+Q204:3,4,5,6,7,8 -> U701:17 at 20 A: drop  10.58 mV
+VBAT_PROT Q203:3,4,5,6,7,8+Q204:3,4,5,6,7,8 -> U801:17 at 20 A: drop  14.70 mV
+VBAT_PROT all loads at once: 0.807 W in the copper  (378 vias joining layers, 468860 cells, 85 C)

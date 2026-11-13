@@ -1,0 +1,3616 @@
+{
+ "_": "N6: GND return vias and interior stitching (stitch.py)",
+ "vias": [
+  {
+   "net": "GND",
+   "x": 225.574,
+   "y": 48.145,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI2_FLASH_CS_L via at (226.279, 47.889)"
+  },
+  {
+   "net": "GND",
+   "x": 226.064,
+   "y": 46.45,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI2_FLASH_CS_L via at (226.600, 46.900)"
+  },
+  {
+   "net": "GND",
+   "x": 231.2,
+   "y": 48.436,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI2_FLASH_CS_L via at (230.750, 47.900)"
+  },
+  {
+   "net": "GND",
+   "x": 231.35,
+   "y": 47.206,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI2_FLASH_CS_L via at (231.700, 46.600)"
+  },
+  {
+   "net": "GND",
+   "x": 191.766,
+   "y": 59.1,
+   "d": 0.4,
+   "drill": 0.2,
+   "why": "return via for SPI2_FLASH_MISO via at (190.900, 59.600)"
+  },
+  {
+   "net": "GND",
+   "x": 211.05,
+   "y": 56.994,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI2_FLASH_MISO via at (210.700, 57.600)"
+  },
+  {
+   "net": "GND",
+   "x": 227.65,
+   "y": 49.336,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI2_FLASH_MISO via at (227.200, 48.800)"
+  },
+  {
+   "net": "GND",
+   "x": 219.1,
+   "y": 53.55,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI2_FLASH_MOSI via at (219.100, 52.850)"
+  },
+  {
+   "net": "GND",
+   "x": 228.292,
+   "y": 51.618,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI2_FLASH_SCK via at (228.500, 52.800) (1.0 to 1.5 mm away)"
+  },
+  {
+   "net": "GND",
+   "x": 156.514,
+   "y": 37.65,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for MDIO0_T1S_MDC via at (157.050, 37.200)"
+  },
+  {
+   "net": "GND",
+   "x": 183.2,
+   "y": 36.3,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for MDIO0_T1S_MDIO via at (182.500, 36.300)"
+  },
+  {
+   "net": "GND",
+   "x": 192.7,
+   "y": 47.2,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for MDIO0_T1S_MDIO via at (192.700, 46.500)"
+  },
+  {
+   "net": "GND",
+   "x": 160.88,
+   "y": 51.626,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for RMII0_T1S_CRS_DV via at (159.600, 51.400) (1.0 to 1.5 mm away)"
+  },
+  {
+   "net": "GND",
+   "x": 161.6,
+   "y": 43.5,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for RMII0_T1S_CRS_DV via at (160.900, 43.500)"
+  },
+  {
+   "net": "GND",
+   "x": 171.8,
+   "y": 38.6,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for RMII0_T1S_RXD0 via at (171.100, 38.600)"
+  },
+  {
+   "net": "GND",
+   "x": 182.15,
+   "y": 35.236,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for RMII0_T1S_RXD0 via at (181.700, 34.700)"
+  },
+  {
+   "net": "GND",
+   "x": 159.3,
+   "y": 41.8,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for RMII0_T1S_RXD1 via at (159.300, 42.500)"
+  },
+  {
+   "net": "GND",
+   "x": 165.344,
+   "y": 43.314,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for RMII0_T1S_RXD1 via at (165.500, 44.200)"
+  },
+  {
+   "net": "GND",
+   "x": 168.1,
+   "y": 37.4,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for RMII0_T1S_RXD1 via at (167.400, 37.400)"
+  },
+  {
+   "net": "GND",
+   "x": 193.7,
+   "y": 42.8,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for RMII0_T1S_RXD1 via at (193.000, 42.800)"
+  },
+  {
+   "net": "GND",
+   "x": 195.294,
+   "y": 39.85,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for RMII0_T1S_RXD1 via at (195.900, 40.200)"
+  },
+  {
+   "net": "GND",
+   "x": 182.2,
+   "y": 60.8,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for RMII0_T1S_RX_ER via at (181.500, 60.800)"
+  },
+  {
+   "net": "GND",
+   "x": 152.006,
+   "y": 44.65,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for RMII0_T1S_TXD0 via at (151.400, 44.300)"
+  },
+  {
+   "net": "GND",
+   "x": 161.95,
+   "y": 42.736,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for RMII0_T1S_TXD1 via at (161.500, 42.200)"
+  },
+  {
+   "net": "GND",
+   "x": 151.86,
+   "y": 41.858,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for RMII0_T1S_TX_EN via at (152.800, 42.200)"
+  },
+  {
+   "net": "GND",
+   "x": 212.682,
+   "y": 56.475,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI3_SWITCH3_MISO via at (212.200, 55.900)"
+  },
+  {
+   "net": "GND",
+   "x": 207.394,
+   "y": 69.35,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI3_SWITCH3_MOSI via at (208.000, 69.700)"
+  },
+  {
+   "net": "GND",
+   "x": 214.7,
+   "y": 68.3,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI3_SWITCH3_MOSI via at (214.000, 68.300)"
+  },
+  {
+   "net": "GND",
+   "x": 213.511,
+   "y": 59.721,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI3_SWITCH3_MOSI via at (214.200, 60.300)"
+  },
+  {
+   "net": "GND",
+   "x": 213.0,
+   "y": 67.4,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI3_SWITCH3_SCK via at (212.300, 67.400)"
+  },
+  {
+   "net": "GND",
+   "x": 93.944,
+   "y": 69.286,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI4_SWITCH1_CS_L via at (94.100, 68.400)"
+  },
+  {
+   "net": "GND",
+   "x": 154.448,
+   "y": 68.526,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI4_SWITCH1_CS_L via at (155.200, 68.800)"
+  },
+  {
+   "net": "GND",
+   "x": 196.05,
+   "y": 69.164,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI4_SWITCH1_CS_L via at (196.500, 69.700)"
+  },
+  {
+   "net": "GND",
+   "x": 91.15,
+   "y": 56.836,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI4_SWITCH1_MISO via at (90.700, 56.300)"
+  },
+  {
+   "net": "GND",
+   "x": 166.991,
+   "y": 57.983,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI4_SWITCH1_MISO via at (166.800, 56.900) (1.0 to 1.5 mm away)"
+  },
+  {
+   "net": "GND",
+   "x": 176.021,
+   "y": 57.55,
+   "d": 0.4,
+   "drill": 0.2,
+   "why": "return via for SPI4_SWITCH1_MISO via at (176.800, 57.100)"
+  },
+  {
+   "net": "GND",
+   "x": 209.028,
+   "y": 57.411,
+   "d": 0.4,
+   "drill": 0.2,
+   "why": "return via for SPI4_SWITCH1_MISO via at (208.300, 56.800)"
+  },
+  {
+   "net": "GND",
+   "x": 106.2,
+   "y": 58.007,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI4_SWITCH1_MOSI via at (106.600, 58.700)"
+  },
+  {
+   "net": "GND",
+   "x": 150.125,
+   "y": 58.418,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI4_SWITCH1_MOSI via at (150.700, 58.900)"
+  },
+  {
+   "net": "GND",
+   "x": 160.6,
+   "y": 61.9,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI4_SWITCH1_MOSI via at (159.900, 61.900)"
+  },
+  {
+   "net": "GND",
+   "x": 147.0,
+   "y": 63.476,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI5_SWITCH2_CS_L via at (146.550, 62.940)"
+  },
+  {
+   "net": "GND",
+   "x": 172.399,
+   "y": 63.69,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI5_SWITCH2_CS_L via at (171.100, 62.940) (1.0 to 1.5 mm away)"
+  },
+  {
+   "net": "GND",
+   "x": 146.258,
+   "y": 63.932,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI5_SWITCH2_MISO via at (146.050, 62.750) (1.0 to 1.5 mm away)"
+  },
+  {
+   "net": "GND",
+   "x": 166.344,
+   "y": 61.4,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI5_SWITCH2_MISO via at (166.950, 61.750)"
+  },
+  {
+   "net": "GND",
+   "x": 178.771,
+   "y": 63.693,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI5_SWITCH2_MISO via at (180.150, 63.450) (1.0 to 1.5 mm away)"
+  },
+  {
+   "net": "GND",
+   "x": 184.714,
+   "y": 64.2,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI5_SWITCH2_MISO via at (185.250, 63.750)"
+  },
+  {
+   "net": "GND",
+   "x": 191.064,
+   "y": 64.5,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI5_SWITCH2_MISO via at (191.600, 64.050)"
+  },
+  {
+   "net": "GND",
+   "x": 202.939,
+   "y": 60.122,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI5_SWITCH2_MISO via at (202.250, 60.000)"
+  },
+  {
+   "net": "GND",
+   "x": 201.9,
+   "y": 61.75,
+   "d": 0.4,
+   "drill": 0.2,
+   "why": "return via for SPI5_SWITCH2_MISO via at (202.550, 61.750)"
+  },
+  {
+   "net": "GND",
+   "x": 205.65,
+   "y": 62.286,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI5_SWITCH2_MISO via at (205.200, 61.750)"
+  },
+  {
+   "net": "GND",
+   "x": 208.883,
+   "y": 60.091,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI5_SWITCH2_MISO via at (207.800, 59.900) (1.0 to 1.5 mm away)"
+  },
+  {
+   "net": "GND",
+   "x": 137.189,
+   "y": 69.572,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI5_SWITCH2_MOSI via at (137.800, 70.300)"
+  },
+  {
+   "net": "GND",
+   "x": 152.9,
+   "y": 67.506,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI5_SWITCH2_MOSI via at (153.250, 66.900)"
+  },
+  {
+   "net": "GND",
+   "x": 155.6,
+   "y": 65.536,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI5_SWITCH2_MOSI via at (155.150, 65.000)"
+  },
+  {
+   "net": "GND",
+   "x": 170.176,
+   "y": 66.23,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI5_SWITCH2_MOSI via at (169.950, 64.950) (1.0 to 1.5 mm away)"
+  },
+  {
+   "net": "GND",
+   "x": 188.089,
+   "y": 66.322,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI5_SWITCH2_MOSI via at (187.400, 66.200)"
+  },
+  {
+   "net": "GND",
+   "x": 189.9,
+   "y": 62.8,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI5_SWITCH2_MOSI via at (190.800, 62.800)"
+  },
+  {
+   "net": "GND",
+   "x": 159.622,
+   "y": 69.359,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI5_SWITCH2_SCK via at (158.400, 68.915) (1.0 to 1.5 mm away)"
+  },
+  {
+   "net": "GND",
+   "x": 194.804,
+   "y": 62.6,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SPI5_SWITCH2_SCK via at (195.800, 61.765) (1.0 to 1.5 mm away)"
+  },
+  {
+   "net": "GND",
+   "x": 178.617,
+   "y": 40.739,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for T1S_REFCLK via at (178.495, 40.050)"
+  },
+  {
+   "net": "GND",
+   "x": 182.136,
+   "y": 64.465,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for I2C0_TELEMETRY_SCL via at (181.200, 64.300)"
+  },
+  {
+   "net": "GND",
+   "x": 189.1,
+   "y": 55.7,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for I2C0_TELEMETRY_SCL via at (189.800, 55.700)"
+  },
+  {
+   "net": "GND",
+   "x": 203.266,
+   "y": 42.943,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SWD_DIO via at (202.500, 42.300)"
+  },
+  {
+   "net": "GND",
+   "x": 212.5,
+   "y": 48.1,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SWD_DIO via at (211.800, 48.100)"
+  },
+  {
+   "net": "GND",
+   "x": 114.421,
+   "y": 42.743,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for RESET_L via at (115.800, 42.500) (1.0 to 1.5 mm away)"
+  },
+  {
+   "net": "GND",
+   "x": 153.384,
+   "y": 40.954,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for RESET_L via at (154.700, 40.475) (1.0 to 1.5 mm away)"
+  },
+  {
+   "net": "GND",
+   "x": 178.3,
+   "y": 50.8,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for RESET_L via at (177.400, 50.800)"
+  },
+  {
+   "net": "GND",
+   "x": 181.546,
+   "y": 48.308,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for RESET_L via at (180.700, 48.000)"
+  },
+  {
+   "net": "GND",
+   "x": 182.4,
+   "y": 55.2,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for RESET_L via at (181.700, 55.200)"
+  },
+  {
+   "net": "GND",
+   "x": 182.45,
+   "y": 57.436,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for RESET_L via at (182.000, 56.900)"
+  },
+  {
+   "net": "GND",
+   "x": 183.864,
+   "y": 57.65,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for RESET_L via at (184.400, 57.200)"
+  },
+  {
+   "net": "GND",
+   "x": 185.8,
+   "y": 58.0,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for RESET_L via at (185.100, 58.000)"
+  },
+  {
+   "net": "GND",
+   "x": 194.55,
+   "y": 42.894,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for RESET_L via at (194.900, 43.500)"
+  },
+  {
+   "net": "GND",
+   "x": 143.1,
+   "y": 61.0,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for BATT_MON via at (142.200, 61.000)"
+  },
+  {
+   "net": "GND",
+   "x": 144.5,
+   "y": 56.5,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for BATT_MON via at (143.800, 56.500)"
+  },
+  {
+   "net": "GND",
+   "x": 145.3,
+   "y": 68.439,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for BATT_MON via at (145.900, 67.400) (1.0 to 1.5 mm away)"
+  },
+  {
+   "net": "GND",
+   "x": 149.75,
+   "y": 53.964,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for BATT_MON via at (150.200, 54.500)"
+  },
+  {
+   "net": "GND",
+   "x": 178.106,
+   "y": 59.35,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for BATT_MON via at (177.500, 59.000)"
+  },
+  {
+   "net": "GND",
+   "x": 178.25,
+   "y": 56.864,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for BATT_MON via at (178.700, 57.400)"
+  },
+  {
+   "net": "GND",
+   "x": 182.425,
+   "y": 59.082,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for BATT_MON via at (183.000, 58.600)"
+  },
+  {
+   "net": "GND",
+   "x": 189.9,
+   "y": 58.5,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for BATT_MON via at (189.200, 58.500)"
+  },
+  {
+   "net": "GND",
+   "x": 192.594,
+   "y": 58.05,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for BATT_MON via at (193.200, 57.700)"
+  },
+  {
+   "net": "GND",
+   "x": 123.55,
+   "y": 51.536,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for INH via at (123.100, 51.000)"
+  },
+  {
+   "net": "GND",
+   "x": 142.511,
+   "y": 48.321,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for INH via at (143.200, 48.900)"
+  },
+  {
+   "net": "GND",
+   "x": 147.4,
+   "y": 68.4,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for INH via at (146.600, 68.400)"
+  },
+  {
+   "net": "GND",
+   "x": 188.224,
+   "y": 69.181,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for LM_FLT_L via at (188.600, 70.215) (1.0 to 1.5 mm away)"
+  },
+  {
+   "net": "GND",
+   "x": 199.825,
+   "y": 60.383,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for LM_FLT_L via at (199.250, 60.865)"
+  },
+  {
+   "net": "GND",
+   "x": 226.99,
+   "y": 51.572,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for FLASH_HOLD_L via at (227.400, 52.700) (1.0 to 1.5 mm away)"
+  },
+  {
+   "net": "GND",
+   "x": 180.95,
+   "y": 68.656,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for NTC_RSENSE via at (181.300, 69.263)"
+  },
+  {
+   "net": "GND",
+   "x": 185.365,
+   "y": 68.327,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for NTC_RSENSE via at (185.200, 69.263)"
+  },
+  {
+   "net": "GND",
+   "x": 100.8,
+   "y": 63.8,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for NTC_SW1 via at (100.100, 63.800)"
+  },
+  {
+   "net": "GND",
+   "x": 143.8,
+   "y": 59.4,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for NTC_SW1 via at (143.100, 59.400)"
+  },
+  {
+   "net": "GND",
+   "x": 152.964,
+   "y": 48.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for NTC_SW1 via at (153.500, 49.400)"
+  },
+  {
+   "net": "GND",
+   "x": 180.0,
+   "y": 51.8,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for NTC_SW1 via at (179.300, 51.800)"
+  },
+  {
+   "net": "GND",
+   "x": 179.836,
+   "y": 59.15,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for NTC_SW1 via at (179.300, 58.700)"
+  },
+  {
+   "net": "GND",
+   "x": 197.385,
+   "y": 63.974,
+   "d": 0.4,
+   "drill": 0.2,
+   "why": "return via for NTC_SW1 via at (196.400, 63.800)"
+  },
+  {
+   "net": "GND",
+   "x": 203.986,
+   "y": 67.45,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for NTC_SW2 via at (203.450, 67.000)"
+  },
+  {
+   "net": "GND",
+   "x": 207.474,
+   "y": 64.135,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for NTC_SW2 via at (207.300, 63.150)"
+  },
+  {
+   "net": "GND",
+   "x": 137.813,
+   "y": 68.998,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for DGATE via at (138.650, 68.850)"
+  },
+  {
+   "net": "GND",
+   "x": 153.934,
+   "y": 65.076,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for DGATE via at (152.900, 64.700) (1.0 to 1.5 mm away)"
+  },
+  {
+   "net": "GND",
+   "x": 120.25,
+   "y": 65.3,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SW1_FLT_L via at (119.500, 65.300)"
+  },
+  {
+   "net": "GND",
+   "x": 151.4,
+   "y": 56.5,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SW1_FLT_L via at (151.400, 57.200)"
+  },
+  {
+   "net": "GND",
+   "x": 176.15,
+   "y": 59.206,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SW1_FLT_L via at (175.800, 58.600)"
+  },
+  {
+   "net": "GND",
+   "x": 142.6,
+   "y": 68.4,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SW1_SNS via at (141.900, 68.400)"
+  },
+  {
+   "net": "GND",
+   "x": 146.385,
+   "y": 65.064,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SW2_FLT_L via at (146.550, 66.000)"
+  },
+  {
+   "net": "GND",
+   "x": 171.9,
+   "y": 64.95,
+   "d": 0.4,
+   "drill": 0.2,
+   "why": "return via for SW2_FLT_L via at (170.600, 64.950) (1.0 to 1.5 mm away)"
+  },
+  {
+   "net": "GND",
+   "x": 192.415,
+   "y": 64.986,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SW2_FLT_L via at (192.250, 64.050)"
+  },
+  {
+   "net": "GND",
+   "x": 192.8,
+   "y": 62.8,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SW2_FLT_L via at (193.500, 62.800)"
+  },
+  {
+   "net": "GND",
+   "x": 195.963,
+   "y": 59.648,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SW2_FLT_L via at (196.800, 59.500)"
+  },
+  {
+   "net": "GND",
+   "x": 177.886,
+   "y": 63.821,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SW2_SNS via at (178.850, 64.970) (1.0 to 1.5 mm away)"
+  },
+  {
+   "net": "GND",
+   "x": 156.857,
+   "y": 50.234,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SW_LHI via at (157.500, 51.000)"
+  },
+  {
+   "net": "GND",
+   "x": 168.35,
+   "y": 53.3,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SW_LHI via at (167.650, 53.300)"
+  },
+  {
+   "net": "GND",
+   "x": 167.485,
+   "y": 60.314,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SW_LHI via at (167.650, 61.250)"
+  },
+  {
+   "net": "GND",
+   "x": 190.811,
+   "y": 49.422,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SW_LHI via at (191.500, 49.300)"
+  },
+  {
+   "net": "GND",
+   "x": 192.004,
+   "y": 48.764,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SW_LHI via at (193.000, 49.600) (1.0 to 1.5 mm away)"
+  },
+  {
+   "net": "GND",
+   "x": 230.55,
+   "y": 56.136,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for SW_LHI via at (230.100, 55.600)"
+  },
+  {
+   "net": "GND",
+   "x": 152.6,
+   "y": 66.4,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for T1S_TERM_COIL_S via at (151.900, 66.400)"
+  },
+  {
+   "net": "GND",
+   "x": 162.2,
+   "y": 67.307,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for T1S_TERM_COIL_S via at (162.600, 68.000)"
+  },
+  {
+   "net": "GND",
+   "x": 150.35,
+   "y": 67.394,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for T1S_TERM_CT via at (150.000, 68.000)"
+  },
+  {
+   "net": "GND",
+   "x": 160.376,
+   "y": 69.034,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for T1S_TERM_CT via at (160.000, 68.000) (1.0 to 1.5 mm away)"
+  },
+  {
+   "net": "GND",
+   "x": 161.136,
+   "y": 58.375,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for T1S_TERM_CT via at (160.400, 58.800)"
+  },
+  {
+   "net": "GND",
+   "x": 162.95,
+   "y": 43.964,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for T1S_IRQ_L via at (163.400, 44.500)"
+  },
+  {
+   "net": "GND",
+   "x": 190.882,
+   "y": 57.998,
+   "d": 0.4,
+   "drill": 0.2,
+   "why": "return via for T1S_IRQ_L via at (191.300, 57.500)"
+  },
+  {
+   "net": "GND",
+   "x": 183.923,
+   "y": 64.475,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for T1S_TERM_DROP via at (183.100, 64.000)"
+  },
+  {
+   "net": "GND",
+   "x": 186.864,
+   "y": 59.85,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for T1S_TERM_DROP via at (187.400, 60.300)"
+  },
+  {
+   "net": "GND",
+   "x": 191.779,
+   "y": 55.657,
+   "d": 0.4,
+   "drill": 0.2,
+   "why": "return via for T1S_TERM_DROP via at (190.400, 55.900) (1.0 to 1.5 mm away)"
+  },
+  {
+   "net": "GND",
+   "x": 185.9,
+   "y": 54.0,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for T1S_TERM_END via at (186.600, 54.000)"
+  },
+  {
+   "net": "GND",
+   "x": 110.7,
+   "y": 65.8,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for TMP175_ALERT_L via at (110.000, 65.800)"
+  },
+  {
+   "net": "GND",
+   "x": 214.4,
+   "y": 46.8,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for TMP175_ALERT_L via at (213.700, 46.800)"
+  },
+  {
+   "net": "GND",
+   "x": 221.5,
+   "y": 61.6,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "return via for TMP175_ALERT_L via at (220.800, 61.600)"
+  },
+  {
+   "net": "GND",
+   "x": 45.143,
+   "y": 35.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (45, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 45.233,
+   "y": 40.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (45, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 44.95,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (45, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 44.95,
+   "y": 49.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (45, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 44.777,
+   "y": 54.85,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (45, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 45.233,
+   "y": 60.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (45, 60)"
+  },
+  {
+   "net": "GND",
+   "x": 45.35,
+   "y": 65.643,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (45, 65)"
+  },
+  {
+   "net": "GND",
+   "x": 44.795,
+   "y": 69.37,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (45, 70)"
+  },
+  {
+   "net": "GND",
+   "x": 50.143,
+   "y": 35.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (50, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 50.233,
+   "y": 40.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (50, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 49.95,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (50, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 49.95,
+   "y": 49.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (50, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 49.777,
+   "y": 54.85,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (50, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 50.233,
+   "y": 60.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (50, 60)"
+  },
+  {
+   "net": "GND",
+   "x": 50.35,
+   "y": 65.643,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (50, 65)"
+  },
+  {
+   "net": "GND",
+   "x": 49.795,
+   "y": 69.37,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (50, 70)"
+  },
+  {
+   "net": "GND",
+   "x": 55.143,
+   "y": 35.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (55, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 55.233,
+   "y": 40.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (55, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 54.95,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (55, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 54.95,
+   "y": 49.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (55, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 54.777,
+   "y": 54.85,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (55, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 55.233,
+   "y": 60.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (55, 60)"
+  },
+  {
+   "net": "GND",
+   "x": 55.35,
+   "y": 65.643,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (55, 65)"
+  },
+  {
+   "net": "GND",
+   "x": 54.795,
+   "y": 69.37,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (55, 70)"
+  },
+  {
+   "net": "GND",
+   "x": 60.143,
+   "y": 35.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (60, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 60.233,
+   "y": 40.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (60, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 59.95,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (60, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 59.95,
+   "y": 49.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (60, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 59.777,
+   "y": 54.85,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (60, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 60.233,
+   "y": 60.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (60, 60)"
+  },
+  {
+   "net": "GND",
+   "x": 60.35,
+   "y": 65.643,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (60, 65)"
+  },
+  {
+   "net": "GND",
+   "x": 59.795,
+   "y": 69.37,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (60, 70)"
+  },
+  {
+   "net": "GND",
+   "x": 65.143,
+   "y": 35.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (65, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 65.233,
+   "y": 40.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (65, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 64.95,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (65, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 64.95,
+   "y": 49.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (65, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 64.777,
+   "y": 54.85,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (65, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 65.233,
+   "y": 60.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (65, 60)"
+  },
+  {
+   "net": "GND",
+   "x": 65.35,
+   "y": 65.643,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (65, 65)"
+  },
+  {
+   "net": "GND",
+   "x": 64.795,
+   "y": 69.37,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (65, 70)"
+  },
+  {
+   "net": "GND",
+   "x": 70.143,
+   "y": 35.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (70, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 70.233,
+   "y": 40.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (70, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 69.95,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (70, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 69.95,
+   "y": 49.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (70, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 69.777,
+   "y": 54.85,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (70, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 70.233,
+   "y": 60.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (70, 60)"
+  },
+  {
+   "net": "GND",
+   "x": 75.143,
+   "y": 35.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (75, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 75.233,
+   "y": 40.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (75, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 74.95,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (75, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 74.95,
+   "y": 49.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (75, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 74.777,
+   "y": 54.85,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (75, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 80.143,
+   "y": 35.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (80, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 80.233,
+   "y": 40.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (80, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 79.95,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (80, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 79.95,
+   "y": 49.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (80, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 79.777,
+   "y": 54.85,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (80, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 85.143,
+   "y": 35.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (85, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 85.233,
+   "y": 40.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (85, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 84.95,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (85, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 84.95,
+   "y": 49.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (85, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 84.777,
+   "y": 54.85,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (85, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 85.233,
+   "y": 60.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (85, 60)"
+  },
+  {
+   "net": "GND",
+   "x": 90.143,
+   "y": 35.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (90, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 90.233,
+   "y": 40.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (90, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 89.95,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (90, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 89.95,
+   "y": 49.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (90, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 90.233,
+   "y": 60.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (90, 60)"
+  },
+  {
+   "net": "GND",
+   "x": 89.536,
+   "y": 63.405,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (90, 65)"
+  },
+  {
+   "net": "GND",
+   "x": 94.95,
+   "y": 33.75,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (95, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 93.405,
+   "y": 40.364,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (95, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 94.95,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (95, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 94.95,
+   "y": 49.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (95, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 95.123,
+   "y": 54.85,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (95, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 95.233,
+   "y": 60.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (95, 60)"
+  },
+  {
+   "net": "GND",
+   "x": 94.536,
+   "y": 63.405,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (95, 65)"
+  },
+  {
+   "net": "GND",
+   "x": 99.95,
+   "y": 33.75,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (100, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 99.95,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (100, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 100.15,
+   "y": 49.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (100, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 99.777,
+   "y": 54.85,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (100, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 100.233,
+   "y": 60.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (100, 60)"
+  },
+  {
+   "net": "GND",
+   "x": 105.143,
+   "y": 35.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (105, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 105.233,
+   "y": 40.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (105, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 105.15,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (105, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 104.95,
+   "y": 49.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (105, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 104.777,
+   "y": 54.85,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (105, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 103.819,
+   "y": 63.819,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (105, 65)"
+  },
+  {
+   "net": "GND",
+   "x": 110.143,
+   "y": 35.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (110, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 110.233,
+   "y": 40.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (110, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 109.95,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (110, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 109.95,
+   "y": 49.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (110, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 109.777,
+   "y": 54.85,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (110, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 115.143,
+   "y": 35.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (115, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 114.95,
+   "y": 40.35,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (115, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 114.639,
+   "y": 53.791,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (115, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 113.819,
+   "y": 63.819,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (115, 65)"
+  },
+  {
+   "net": "GND",
+   "x": 120.143,
+   "y": 35.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (120, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 120.47,
+   "y": 40.25,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (120, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 120.35,
+   "y": 59.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (120, 60)"
+  },
+  {
+   "net": "GND",
+   "x": 120.799,
+   "y": 69.101,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (120, 70)"
+  },
+  {
+   "net": "GND",
+   "x": 125.143,
+   "y": 35.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (125, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 125.233,
+   "y": 40.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (125, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 124.95,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (125, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 124.777,
+   "y": 54.85,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (125, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 125.75,
+   "y": 59.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (125, 60)"
+  },
+  {
+   "net": "GND",
+   "x": 125.143,
+   "y": 65.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (125, 65)"
+  },
+  {
+   "net": "GND",
+   "x": 125.799,
+   "y": 69.101,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (125, 70)"
+  },
+  {
+   "net": "GND",
+   "x": 130.143,
+   "y": 35.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (130, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 129.846,
+   "y": 39.564,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (130, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 129.95,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (130, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 129.95,
+   "y": 49.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (130, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 129.777,
+   "y": 54.85,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (130, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 129.95,
+   "y": 59.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (130, 60)"
+  },
+  {
+   "net": "GND",
+   "x": 130.143,
+   "y": 65.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (130, 65)"
+  },
+  {
+   "net": "GND",
+   "x": 129.101,
+   "y": 69.101,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (130, 70)"
+  },
+  {
+   "net": "GND",
+   "x": 135.143,
+   "y": 35.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (135, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 133.819,
+   "y": 43.819,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (135, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 135.157,
+   "y": 50.723,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (135, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 134.777,
+   "y": 54.85,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (135, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 134.95,
+   "y": 59.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (135, 60)"
+  },
+  {
+   "net": "GND",
+   "x": 135.143,
+   "y": 65.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (135, 65)"
+  },
+  {
+   "net": "GND",
+   "x": 140.143,
+   "y": 35.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (140, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 140.105,
+   "y": 40.53,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (140, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 139.639,
+   "y": 43.791,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (140, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 140.157,
+   "y": 50.723,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (140, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 139.777,
+   "y": 54.85,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (140, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 139.95,
+   "y": 59.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (140, 60)"
+  },
+  {
+   "net": "GND",
+   "x": 140.143,
+   "y": 65.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (140, 65)"
+  },
+  {
+   "net": "GND",
+   "x": 145.143,
+   "y": 35.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (145, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 144.795,
+   "y": 39.37,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (145, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 144.667,
+   "y": 44.667,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (145, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 144.588,
+   "y": 48.598,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (145, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 149.37,
+   "y": 35.105,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (150, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 149.384,
+   "y": 40.516,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (150, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 150.312,
+   "y": 51.302,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (150, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 155.143,
+   "y": 35.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (155, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 154.95,
+   "y": 61.15,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (155, 60)"
+  },
+  {
+   "net": "GND",
+   "x": 160.143,
+   "y": 35.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (160, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 160.65,
+   "y": 53.738,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (160, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 159.484,
+   "y": 66.689,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (160, 65)"
+  },
+  {
+   "net": "GND",
+   "x": 164.564,
+   "y": 35.054,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (165, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 165.233,
+   "y": 40.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (165, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 165.47,
+   "y": 49.65,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (165, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 170.143,
+   "y": 35.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (170, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 169.45,
+   "y": 44.084,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (170, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 169.85,
+   "y": 49.777,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (170, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 169.35,
+   "y": 68.911,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (170, 70)"
+  },
+  {
+   "net": "GND",
+   "x": 175.233,
+   "y": 35.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (175, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 174.45,
+   "y": 44.084,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (175, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 174.85,
+   "y": 49.777,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (175, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 174.95,
+   "y": 54.35,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (175, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 174.639,
+   "y": 63.791,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (175, 65)"
+  },
+  {
+   "net": "GND",
+   "x": 174.25,
+   "y": 68.738,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (175, 70)"
+  },
+  {
+   "net": "GND",
+   "x": 180.233,
+   "y": 35.233,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (180, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 179.45,
+   "y": 44.084,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (180, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 179.95,
+   "y": 54.35,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (180, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 185.123,
+   "y": 39.85,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (185, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 185.45,
+   "y": 44.084,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (185, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 184.85,
+   "y": 49.777,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (185, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 190.989,
+   "y": 35.55,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (190, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 189.777,
+   "y": 39.85,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (190, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 190.53,
+   "y": 45.105,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (190, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 195.143,
+   "y": 35.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (195, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 200.143,
+   "y": 35.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (200, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 199.95,
+   "y": 69.35,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (200, 70)"
+  },
+  {
+   "net": "GND",
+   "x": 205.143,
+   "y": 35.002,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (205, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 204.777,
+   "y": 39.85,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (205, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 204.95,
+   "y": 69.35,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (205, 70)"
+  },
+  {
+   "net": "GND",
+   "x": 210.05,
+   "y": 39.777,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (210, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 210.55,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (210, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 209.65,
+   "y": 65.47,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (210, 65)"
+  },
+  {
+   "net": "GND",
+   "x": 215.15,
+   "y": 39.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (215, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 214.95,
+   "y": 49.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (215, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 214.95,
+   "y": 54.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (215, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 214.95,
+   "y": 64.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (215, 65)"
+  },
+  {
+   "net": "GND",
+   "x": 219.95,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (220, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 219.95,
+   "y": 49.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (220, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 219.795,
+   "y": 65.53,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (220, 65)"
+  },
+  {
+   "net": "GND",
+   "x": 219.795,
+   "y": 69.37,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (220, 70)"
+  },
+  {
+   "net": "GND",
+   "x": 224.95,
+   "y": 39.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (225, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 224.95,
+   "y": 59.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (225, 60)"
+  },
+  {
+   "net": "GND",
+   "x": 229.95,
+   "y": 34.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (230, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 229.95,
+   "y": 39.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (230, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 229.95,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (230, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 234.95,
+   "y": 34.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (235, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 234.95,
+   "y": 39.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (235, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 234.95,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (235, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 234.95,
+   "y": 49.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (235, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 234.95,
+   "y": 54.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (235, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 239.95,
+   "y": 34.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (240, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 239.95,
+   "y": 39.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (240, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 239.95,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (240, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 239.95,
+   "y": 49.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (240, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 239.95,
+   "y": 54.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (240, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 239.95,
+   "y": 59.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (240, 60)"
+  },
+  {
+   "net": "GND",
+   "x": 244.95,
+   "y": 34.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (245, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 244.95,
+   "y": 39.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (245, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 244.95,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (245, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 244.95,
+   "y": 49.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (245, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 244.95,
+   "y": 54.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (245, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 244.95,
+   "y": 59.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (245, 60)"
+  },
+  {
+   "net": "GND",
+   "x": 244.95,
+   "y": 64.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (245, 65)"
+  },
+  {
+   "net": "GND",
+   "x": 249.95,
+   "y": 34.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (250, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 249.95,
+   "y": 39.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (250, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 249.95,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (250, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 249.95,
+   "y": 49.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (250, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 249.95,
+   "y": 54.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (250, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 249.95,
+   "y": 59.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (250, 60)"
+  },
+  {
+   "net": "GND",
+   "x": 249.95,
+   "y": 64.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (250, 65)"
+  },
+  {
+   "net": "GND",
+   "x": 249.795,
+   "y": 69.37,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (250, 70)"
+  },
+  {
+   "net": "GND",
+   "x": 254.95,
+   "y": 34.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (255, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 254.95,
+   "y": 39.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (255, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 254.95,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (255, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 254.95,
+   "y": 49.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (255, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 254.95,
+   "y": 54.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (255, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 254.95,
+   "y": 59.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (255, 60)"
+  },
+  {
+   "net": "GND",
+   "x": 254.95,
+   "y": 64.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (255, 65)"
+  },
+  {
+   "net": "GND",
+   "x": 254.795,
+   "y": 69.37,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (255, 70)"
+  },
+  {
+   "net": "GND",
+   "x": 259.95,
+   "y": 34.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (260, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 259.95,
+   "y": 39.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (260, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 259.95,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (260, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 259.95,
+   "y": 49.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (260, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 259.95,
+   "y": 54.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (260, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 259.95,
+   "y": 59.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (260, 60)"
+  },
+  {
+   "net": "GND",
+   "x": 259.95,
+   "y": 64.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (260, 65)"
+  },
+  {
+   "net": "GND",
+   "x": 259.795,
+   "y": 69.37,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (260, 70)"
+  },
+  {
+   "net": "GND",
+   "x": 264.95,
+   "y": 34.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (265, 35)"
+  },
+  {
+   "net": "GND",
+   "x": 264.95,
+   "y": 39.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (265, 40)"
+  },
+  {
+   "net": "GND",
+   "x": 264.95,
+   "y": 44.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (265, 45)"
+  },
+  {
+   "net": "GND",
+   "x": 264.95,
+   "y": 49.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (265, 50)"
+  },
+  {
+   "net": "GND",
+   "x": 264.95,
+   "y": 54.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (265, 55)"
+  },
+  {
+   "net": "GND",
+   "x": 264.95,
+   "y": 59.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (265, 60)"
+  },
+  {
+   "net": "GND",
+   "x": 264.95,
+   "y": 64.95,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (265, 65)"
+  },
+  {
+   "net": "GND",
+   "x": 264.795,
+   "y": 69.37,
+   "d": 0.45,
+   "drill": 0.25,
+   "why": "stitching, grid point (265, 70)"
+  }
+ ],
+ "no_site": [
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI2_FLASH_CS_L via at (194.929, 54.289)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI2_FLASH_MISO via at (191.200, 56.900)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI2_FLASH_MOSI via at (198.200, 55.950)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI2_FLASH_SCK via at (193.600, 55.700)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI2_FLASH_SCK via at (209.150, 56.650)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of MDIO0_T1S_MDC via at (196.529, 49.490)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of MDIO0_T1S_MDIO via at (156.600, 39.100)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of MDIO0_T1S_MDIO via at (156.750, 41.100)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of RMII0_T1S_CRS_DV via at (207.800, 48.800)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of RMII0_T1S_RXD1 via at (199.400, 44.500)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of RMII0_T1S_RX_ER via at (158.700, 49.900)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of RMII0_T1S_RX_ER via at (160.500, 43.900)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of RMII0_T1S_RX_ER via at (161.200, 49.000)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of RMII0_T1S_RX_ER via at (203.600, 48.100)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of RMII0_T1S_TXD0 via at (197.000, 44.500)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of RMII0_T1S_TXD1 via at (152.900, 43.300)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of RMII0_T1S_TX_EN via at (197.600, 44.300)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI3_SWITCH3_CS_L via at (223.100, 110.000)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI3_SWITCH3_CS_L via at (228.100, 103.800)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI3_SWITCH3_MISO via at (208.250, 54.450)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI3_SWITCH3_MISO via at (222.100, 96.300)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI3_SWITCH3_MOSI via at (208.500, 51.400)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI3_SWITCH3_MOSI via at (223.100, 111.300)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI3_SWITCH3_SCK via at (224.200, 106.200)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI4_SWITCH1_CS_L via at (204.900, 58.600)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI4_SWITCH1_MISO via at (155.000, 50.400)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI4_SWITCH1_MOSI via at (71.400, 111.100)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI4_SWITCH1_MOSI via at (74.400, 91.000)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI4_SWITCH1_MOSI via at (205.500, 58.500)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI4_SWITCH1_SCK via at (67.000, 101.500)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI4_SWITCH1_SCK via at (74.400, 109.300)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI4_SWITCH1_SCK via at (209.136, 54.864)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI5_SWITCH2_CS_L via at (168.100, 62.940)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI5_SWITCH2_CS_L via at (194.850, 58.540)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI5_SWITCH2_CS_L via at (197.000, 58.540)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI5_SWITCH2_CS_L via at (206.550, 53.140)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI5_SWITCH2_CS_L via at (208.250, 49.740)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI5_SWITCH2_MISO via at (203.700, 58.500)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI5_SWITCH2_MOSI via at (205.800, 57.900)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SPI5_SWITCH2_SCK via at (198.100, 59.465)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of T1S_REFCLK via at (157.000, 47.350)",
+   "rank": 0
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of I2C0_TELEMETRY_SCL via at (137.150, 71.200)",
+   "rank": 1
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of I2C0_TELEMETRY_SCL via at (145.450, 71.200)",
+   "rank": 1
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of I2C0_TELEMETRY_SCL via at (165.100, 68.100)",
+   "rank": 1
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of I2C0_TELEMETRY_SCL via at (197.600, 54.700)",
+   "rank": 1
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SWD_CLK via at (201.400, 43.000)",
+   "rank": 1
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SWD_CLK via at (204.050, 50.225)",
+   "rank": 1
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SWD_DIO via at (206.500, 60.600)",
+   "rank": 1
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SWD_SWO via at (193.062, 55.932)",
+   "rank": 1
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SWD_SWO via at (199.962, 53.382)",
+   "rank": 1
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of UART0_DEBUG_TX via at (205.379, 54.290)",
+   "rank": 1
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of UART0_DEBUG_TX via at (206.929, 50.340)",
+   "rank": 1
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of RESET_L via at (190.800, 60.200)",
+   "rank": 1
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of RESET_L via at (197.000, 42.300)",
+   "rank": 1
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of BATT_MON via at (146.500, 71.700)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of INH via at (147.000, 67.400)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of INH via at (151.000, 72.700)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of LM_FLT_L via at (202.250, 59.065)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of NTC_RSENSE via at (151.700, 86.200)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of NTC_RSENSE via at (178.550, 72.000)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of NTC_SW1 via at (73.700, 101.200)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of NTC_SW1 via at (75.500, 104.600)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of NTC_SW1 via at (85.100, 85.500)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of NTC_SW1 via at (190.100, 61.300)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of NTC_SW1 via at (196.900, 54.700)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of NTC_SW2 via at (170.800, 71.300)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of NTC_SW2 via at (200.629, 54.190)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of NTC_SW2 via at (202.129, 55.940)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of NTC_SW3 via at (200.850, 58.825)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of NTC_SW3 via at (203.200, 63.400)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of NTC_SW3 via at (220.100, 79.800)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW_DI via at (79.500, 107.300)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW_DI via at (84.200, 109.800)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW_SNS via at (155.550, 109.975)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW_SNS via at (156.980, 110.420)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW_DI via at (229.100, 107.800)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW_DI via at (234.000, 110.100)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of DGATE via at (134.900, 82.900)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of DGATE via at (147.900, 62.200)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of DGATE via at (150.100, 62.400)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of DGATE via at (151.200, 76.900)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of DGATE via at (173.200, 75.800)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of HGATE via at (155.000, 74.750)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of HGATE via at (156.000, 72.900)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of HGATE_G via at (137.150, 89.400)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of HGATE_G via at (149.700, 72.800)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of HGATE_G via at (156.450, 71.000)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of HGATE_G via at (156.955, 72.500)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of HGATE_G via at (172.500, 86.500)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of LM_CSP via at (153.500, 78.400)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of LM_CSP via at (154.500, 78.900)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of LM_CSP via at (156.500, 78.700)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of LM_OV via at (145.300, 73.700)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of LM_OV via at (150.200, 74.900)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of LM_TMR via at (149.800, 71.400)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of LM_TMR via at (152.700, 73.000)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of LM_UVLO via at (146.500, 73.790)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of LM_UVLO via at (149.950, 73.500)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW1_FLT_L via at (74.750, 111.900)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW1_FLT_L via at (74.900, 108.750)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW1_FLT_L via at (90.500, 77.700)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW1_FLT_L via at (165.400, 58.100)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW1_FLT_L via at (197.600, 57.200)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW1_SNS via at (92.350, 81.800)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW1_SNS via at (199.500, 58.900)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW2_FLT_L via at (147.800, 109.300)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW2_FLT_L via at (148.600, 111.925)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW2_SNS via at (200.910, 58.320)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW3_FLT_L via at (201.300, 59.300)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW3_FLT_L via at (202.300, 65.000)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW3_FLT_L via at (218.100, 107.900)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW3_FLT_L via at (220.700, 106.800)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW3_FLT_L via at (222.400, 109.000)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW3_SNS via at (201.800, 58.700)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW3_SNS via at (203.900, 62.100)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW3_SNS via at (218.400, 75.600)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW3_SNS via at (224.300, 96.700)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW3_SNS via at (230.000, 102.400)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW_LHI via at (80.650, 112.000)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW_LHI via at (81.200, 108.500)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW_LHI via at (90.200, 89.600)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW_LHI via at (229.900, 111.994)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW_LHI via at (230.100, 107.000)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW_LHI via at (230.550, 108.544)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of SW_LHI via at (236.000, 101.200)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of T1S_TERM_CT via at (149.000, 63.500)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of T1S_TERM_CT via at (160.300, 63.500)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of T1S_TERM_CT via at (162.300, 60.700)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of T1S_IRQ_L via at (160.300, 44.500)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of T1S_IRQ_L via at (196.200, 57.200)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of T1S_TERM_DROP via at (162.600, 61.700)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of T1S_TERM_DROP via at (163.250, 66.360)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of T1S_TERM_DROP via at (163.250, 67.470)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of T1S_TERM_DROP via at (165.000, 61.950)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of T1S_TERM_DROP via at (165.750, 66.500)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of T1S_TERM_DROP via at (196.000, 54.700)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of T1S_TERM_END via at (167.200, 63.500)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of T1S_TERM_END via at (171.400, 63.500)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of T1S_TERM_END via at (193.900, 52.700)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of TMP175_ALERT_L via at (113.900, 70.100)",
+   "rank": 2
+  },
+  {
+   "skip": true,
+   "why": "no site within 1.5 mm of TMP175_ALERT_L via at (205.000, 60.000)",
+   "rank": 2
+  }
+ ]
+}
