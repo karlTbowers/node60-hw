@@ -27,3 +27,5 @@ judge/
 land/
 work/
 work.full.out
+# the routing run's hand specs named s1, s3h ... are records, not KRT seeds
+!hand/s[0-9]*.json

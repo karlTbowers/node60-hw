@@ -24,7 +24,8 @@ while i < len(a):
     elif a[i] == "--avoid": avoid.append(tuple(float(v) for v in a[i + 1].split(","))); i += 2
     else: pos.append(a[i]); i += 1
 C, CY, PARK = (json.load(open(p)) for p in pos[:3])
-R_PAD, R_CY, CLR, CLR_T1S, HCLR, EDGE, MAX_ON = 0.5, 1.05, 0.2, 0.8, 0.35, 1.7, 15.0
+import os
+R_PAD, R_CY, CLR, CLR_T1S, HCLR, EDGE, MAX_ON = 0.5, 1.05, 0.2, 0.8, 0.35, 1.7, float(os.environ.get('TP_MAX_ON', 15.0))   # TP_MAX_ON=200: on its own copper wherever that is, rather than a stub
 P = lambda o: Polygon(o["outer"], o["holes"])
 tpnet = {p["ref"]: p["net"] for p in C["pads"] if p["ref"].startswith("TP")}
 # each test point's own size: the signal ones are 1 mm pads, the ground ones 2.5 x 2.8 mm pads (probe loops)
@@ -99,7 +100,7 @@ for ref in sorted(PARK):
         g = f.buffer(-(rp + 0.1))
         if g.is_empty: continue
         x0, y0, x1, y1 = g.bounds
-        x0, y0, x1, y1 = max(x0, ox - 30), max(y0, oy - 30), min(x1, ox + 30), min(y1, oy + 30)
+        x0, y0, x1, y1 = max(x0, ox - max(30, MAX_ON)), max(y0, oy - max(30, MAX_ON)), min(x1, ox + max(30, MAX_ON)), min(y1, oy + max(30, MAX_ON))
         yy = y0
         while yy <= y1:
             xx = x0

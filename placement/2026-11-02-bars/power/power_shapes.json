@@ -1,5 +1,5 @@
 {
- "about": "Node60 power shapes, stage 1 (2026-11-04): inner planes (D12-1/D17 A), the 60 A entry path on B, In2, In3 and the F band (D18 A), VBAT_PROT at the disconnect FETs' sources, GND pours, and via fields at 0.65 A per 0.45/0.25 mm via (D12-6). Stage 2: each switch's VBB pad gets in-pad vias (filled and capped, DEC-027); each output a pour on B and F from its pins to its header's pin 1, OUTb the mirror image of OUTa, with mirrored via fields so both outputs of a switch get the same copper. D19 A (2026-11-04): the cells' small parts moved clear of the OUT exits; the B output pours reach north to y 104.5 beside the pins (F stays south of the VBAT_IN bar area). D20 A (2026-11-04): both battery terminals VBAT_IN, the entry mirrored about x 155. D21 C (2026-11-04): rows swapped so the ideal-diode FETs sit beside U201 (short DGATE): VBAT_IN an L from each ring to its north-row FET on B and In2 (In3 stays VBAT_PROT under it, toward U601/U801), VBAT_D the north band around the U201/U202 column, VBAT_Q2D the south band, VBAT_PROT from the south-row sources; vias in all four FET tabs. In3 VBAT_PROT (2026-11-04): the user cut it from the whole board to the power band; in3_sweep.py found the knee at x 72-238, y 71-122 (south of the switches carries current; the north and the far ends little). Small rails (D22 A and D23, 2026-11-04): 3V3_MAIN on In3 north of y 70.8, a 1V5_CORE island on In3 from U401's core to R303, VBAT_PROT fingers on In3 to L201 and U301, VBAT_FILT on B from L201 to U302; one via per small-rail pad (in the pad where it fits), U401's power and ground balls dogboned. Under U401 every via is 0.35/0.20 mm (via_overrides) so In3 keeps 0.15 mm webs; the caps under it sit on via pairs posed by power/bga_decaps.py (blocks/u401_decaps.poses.json), its power and ground balls dogboned at the cells that script chose (prefer, strict); H7 joins H6 on B, and C403, C404 and C419 reach their vias by short F tracks. D24 (2026-11-05): U302's cell re-composed (U302 turned 180 degrees, its passives mirrored about the chip's east-west axis: on B the cell had been seated as TI's top-view figure, so SW pin 7 faced away from L301); L201, C206, C207, C217 and the VBAT_FILT test points follow the input caps south, the L201 finger on In3 moves to x 115-119, y 59-71; both bucks' hot-loop copper on B (VBAT_FILT, SW, the REG output node, 3V3 at U303) and GND vias in every buck cap's GND pad and U302's exposed pad. D25 A (2026-11-05): a GND ring at 5 mm, 1 mm in from the edge; the interior stitching after routing. D26 A (2026-11-05): RMII and MDIO routed (rmii/route_rmii.sh, locked copper); In3's 3V3 plane and 1V5 island take a 0.12 mm minimum width so the 0.15 mm webs between U401's vias survive every refill. D32 I and H (2026-11-12): the thin 3V3 tracks into the power band are gone but U202's and U203's: R601 and R801 stand at the In3 margins' vias, R701 and the NTC pull-ups R607/R707/R807 on the plane south of U401, C215, R211, R406 and R407 at U203, R508 at U401 ball B3, each on its own via (points and stubs named D32; excepted from the automatic pad vias); a VBAT_IN pour on F.Cu joins the TVS D201's tab to the bar's pour.",
+ "about": "Node60 power shapes, stage 1 (2026-11-04): inner planes (D12-1/D17 A), the 60 A entry path on B, In2, In3 and the F band (D18 A), VBAT_PROT at the disconnect FETs' sources, GND pours, and via fields at 0.65 A per 0.45/0.25 mm via (D12-6). Stage 2: each switch's VBB pad gets in-pad vias (filled and capped, DEC-027); each output a pour on B and F from its pins to its header's pin 1, OUTb the mirror image of OUTa, with mirrored via fields so both outputs of a switch get the same copper. D19 A (2026-11-04): the cells' small parts moved clear of the OUT exits; the B output pours reach north to y 104.5 beside the pins (F stays south of the VBAT_IN bar area). D20 A (2026-11-04): both battery terminals VBAT_IN, the entry mirrored about x 155. D21 C (2026-11-04): rows swapped so the ideal-diode FETs sit beside U201 (short DGATE): VBAT_IN an L from each ring to its north-row FET on B and In2 (In3 stays VBAT_PROT under it, toward U601/U801), VBAT_D the north band around the U201/U202 column, VBAT_Q2D the south band, VBAT_PROT from the south-row sources; vias in all four FET tabs. In3 VBAT_PROT (2026-11-04): the user cut it from the whole board to the power band; in3_sweep.py found the knee at x 72-238, y 71-122 (south of the switches carries current; the north and the far ends little). Small rails (D22 A and D23, 2026-11-04): 3V3_MAIN on In3 north of y 70.8, a 1V5_CORE island on In3 from U401's core to R303, VBAT_PROT fingers on In3 to L201 and U301, VBAT_FILT on B from L201 to U302; one via per small-rail pad (in the pad where it fits), U401's power and ground balls dogboned. Under U401 every via is 0.35/0.20 mm (via_overrides) so In3 keeps 0.15 mm webs; the caps under it sit on via pairs posed by power/bga_decaps.py (blocks/u401_decaps.poses.json), its power and ground balls dogboned at the cells that script chose (prefer, strict); H7 joins H6 on B, and C403, C404 and C419 reach their vias by short F tracks. D24 (2026-11-05): U302's cell re-composed (U302 turned 180 degrees, its passives mirrored about the chip's east-west axis: on B the cell had been seated as TI's top-view figure, so SW pin 7 faced away from L301); L201, C206, C207, C217 and the VBAT_FILT test points follow the input caps south, the L201 finger on In3 moves to x 115-119, y 59-71; both bucks' hot-loop copper on B (VBAT_FILT, SW, the REG output node, 3V3 at U303) and GND vias in every buck cap's GND pad and U302's exposed pad. D25 A (2026-11-05): a GND ring at 5 mm, 1 mm in from the edge; the interior stitching after routing. D26 A (2026-11-05): RMII and MDIO routed (rmii/route_rmii.sh, locked copper); In3's 3V3 plane and 1V5 island take a 0.12 mm minimum width so the 0.15 mm webs between U401's vias survive every refill. D32 I and H (2026-11-12): the thin 3V3 tracks into the power band are gone but U202's and U203's: R601 and R801 stand at the In3 margins' vias, R701 and the NTC pull-ups R607/R707/R807 on the plane south of U401, C215, R211, R406 and R407 at U203, R508 at U401 ball B3, each on its own via (points and stubs named D32; excepted from the automatic pad vias); a VBAT_IN pour on F.Cu joins the TVS D201's tab to the bar's pour. Routing run 2026-11-12 (D33 B): the routed board's supply joins are in the 'D33 B routing' groups; the In3 VBAT_PROT finger to U301 widened beside Q501 and Q502; four field vias beside R201's S1 pad removed for RS_SENSE_N (keep_clear). Not redrawn: draw_power.py is for an unrouted board.",
  "via": {
   "size": 0.45,
   "drill": 0.25,
@@ -77,6 +77,14 @@
     ],
     [
      164.4,
+     62.0
+    ],
+    [
+     165.6,
+     62.0
+    ],
+    [
+     165.6,
      71.0
     ],
     [
@@ -91,7 +99,8 @@
      72.0,
      122.0
     ]
-   ]
+   ],
+   "note": "2026-11-12 (routing run, D35-6): the finger to U301 is 2.4 mm wide from y 62 to 71 (x 163.2 to 165.6), so the in-pad vias of Q501 pin 1 and Q502 leave it whole."
   },
   {
    "name": "PWR_GND_B",
@@ -2545,6 +2554,145 @@
      "VDDAU_AON"
     ]
    ]
+  },
+  {
+   "name": "D33 B routing (2026-11-12): vias",
+   "size": 0.35,
+   "drill": 0.2,
+   "points": [
+    [
+     158.7,
+     42.3,
+     "3V3_MAIN"
+    ],
+    [
+     158.34,
+     39.45,
+     "GND"
+    ],
+    [
+     159.1,
+     80.85,
+     "GND"
+    ],
+    [
+     161.0,
+     80.24,
+     "GND"
+    ],
+    [
+     163.75,
+     64.885,
+     "GND"
+    ],
+    [
+     160.2,
+     82.0,
+     "VBAT_PROT"
+    ],
+    [
+     161.41,
+     71.7,
+     "VBAT_PROT"
+    ]
+   ]
+  },
+  {
+   "name": "D33 B routing (2026-11-12): vias",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     210.675,
+     32.807,
+     "1V5_CORE"
+    ],
+    [
+     212.442,
+     31.74,
+     "1V5_CORE"
+    ],
+    [
+     151.1,
+     42.59,
+     "GND"
+    ],
+    [
+     152.0,
+     71.5,
+     "GND"
+    ],
+    [
+     152.655,
+     71.4,
+     "GND"
+    ],
+    [
+     154.205,
+     71.6,
+     "GND"
+    ],
+    [
+     154.95,
+     108.354,
+     "GND"
+    ],
+    [
+     156.6,
+     49.47,
+     "GND"
+    ],
+    [
+     156.628,
+     107.417,
+     "GND"
+    ],
+    [
+     156.978,
+     108.48,
+     "GND"
+    ],
+    [
+     158.25,
+     70.8,
+     "GND"
+    ],
+    [
+     158.505,
+     48.15,
+     "GND"
+    ],
+    [
+     158.601,
+     112.575,
+     "GND"
+    ],
+    [
+     159.01,
+     47.95,
+     "GND"
+    ],
+    [
+     160.0,
+     77.95,
+     "GND"
+    ],
+    [
+     164.85,
+     59.805,
+     "GND"
+    ],
+    [
+     166.7,
+     47.5,
+     "GND"
+    ],
+    [
+     183.25,
+     68.75,
+     "GND"
+    ]
+   ]
   }
  ],
  "stubs": [
@@ -3135,6 +3283,559 @@
      "VDDAU_AON"
     ]
    ]
+  },
+  {
+   "name": "D33 B routing (2026-11-12): stubs",
+   "layer": "B.Cu",
+   "width": 0.1,
+   "stubs": [
+    [
+     156.74,
+     39.8,
+     157.24,
+     40.3,
+     "GND"
+    ],
+    [
+     157.24,
+     40.3,
+     157.99,
+     40.3,
+     "GND"
+    ],
+    [
+     157.99,
+     40.3,
+     158.19,
+     40.1,
+     "GND"
+    ],
+    [
+     158.19,
+     39.6,
+     158.19,
+     40.1,
+     "GND"
+    ],
+    [
+     158.19,
+     39.6,
+     158.34,
+     39.45,
+     "GND"
+    ]
+   ]
+  },
+  {
+   "name": "D33 B routing (2026-11-12): stubs",
+   "layer": "B.Cu",
+   "width": 0.15,
+   "stubs": [
+    [
+     154.9,
+     75.25,
+     155.45,
+     75.25,
+     "VBAT_PROT"
+    ],
+    [
+     155.45,
+     75.25,
+     155.75,
+     74.95,
+     "VBAT_PROT"
+    ],
+    [
+     155.75,
+     73.95,
+     155.75,
+     74.95,
+     "VBAT_PROT"
+    ],
+    [
+     155.75,
+     73.95,
+     156.0,
+     73.7,
+     "VBAT_PROT"
+    ],
+    [
+     156.0,
+     73.7,
+     157.35,
+     73.7,
+     "VBAT_PROT"
+    ],
+    [
+     157.35,
+     73.7,
+     157.6,
+     73.95,
+     "VBAT_PROT"
+    ],
+    [
+     157.6,
+     73.95,
+     157.6,
+     75.4,
+     "VBAT_PROT"
+    ],
+    [
+     157.6,
+     75.4,
+     157.9,
+     75.7,
+     "VBAT_PROT"
+    ],
+    [
+     157.9,
+     75.7,
+     158.8,
+     75.7,
+     "VBAT_PROT"
+    ],
+    [
+     158.8,
+     75.7,
+     159.5,
+     76.4,
+     "VBAT_PROT"
+    ],
+    [
+     159.5,
+     76.4,
+     159.5,
+     78.8,
+     "VBAT_PROT"
+    ],
+    [
+     159.5,
+     76.4,
+     159.9,
+     76.0,
+     "VBAT_PROT"
+    ],
+    [
+     159.5,
+     78.8,
+     159.5,
+     79.55,
+     "VBAT_PROT"
+    ],
+    [
+     159.5,
+     79.55,
+     160.2,
+     80.25,
+     "VBAT_PROT"
+    ],
+    [
+     159.9,
+     76.0,
+     161.11,
+     76.0,
+     "VBAT_PROT"
+    ],
+    [
+     160.2,
+     80.25,
+     160.2,
+     82.0,
+     "VBAT_PROT"
+    ],
+    [
+     161.11,
+     76.0,
+     161.41,
+     75.7,
+     "VBAT_PROT"
+    ],
+    [
+     161.41,
+     71.7,
+     161.41,
+     75.7,
+     "VBAT_PROT"
+    ]
+   ]
+  },
+  {
+   "name": "D33 B routing (2026-11-12): stubs",
+   "layer": "B.Cu",
+   "width": 0.25,
+   "stubs": [
+    [
+     161.5,
+     48.4,
+     162.225,
+     48.4,
+     "GND"
+    ],
+    [
+     162.225,
+     47.1,
+     162.9,
+     47.1,
+     "VBAT_PROT"
+    ],
+    [
+     162.225,
+     47.75,
+     163.3,
+     47.75,
+     "VBAT_PROT"
+    ],
+    [
+     162.9,
+     47.1,
+     163.3,
+     47.5,
+     "VBAT_PROT"
+    ]
+   ]
+  },
+  {
+   "name": "D33 B routing (2026-11-12): stubs",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     210.675,
+     32.807,
+     210.775,
+     32.907,
+     "1V5_CORE"
+    ],
+    [
+     210.775,
+     32.907,
+     210.925,
+     32.907,
+     "1V5_CORE"
+    ],
+    [
+     212.442,
+     31.74,
+     212.792,
+     32.09,
+     "1V5_CORE"
+    ],
+    [
+     151.1,
+     41.49,
+     151.1,
+     42.59,
+     "GND"
+    ],
+    [
+     151.1,
+     41.49,
+     151.7,
+     40.89,
+     "GND"
+    ],
+    [
+     151.7,
+     40.84,
+     151.7,
+     40.89,
+     "GND"
+    ],
+    [
+     151.7,
+     40.84,
+     151.75,
+     40.84,
+     "GND"
+    ],
+    [
+     151.75,
+     40.79,
+     151.75,
+     40.84,
+     "GND"
+    ],
+    [
+     151.75,
+     40.79,
+     151.8,
+     40.79,
+     "GND"
+    ],
+    [
+     151.8,
+     40.74,
+     151.8,
+     40.79,
+     "GND"
+    ],
+    [
+     151.8,
+     40.74,
+     151.85,
+     40.69,
+     "GND"
+    ],
+    [
+     151.85,
+     40.69,
+     151.95,
+     40.69,
+     "GND"
+    ],
+    [
+     151.95,
+     40.69,
+     152.3,
+     40.34,
+     "GND"
+    ],
+    [
+     152.0,
+     71.5,
+     152.0,
+     71.6,
+     "GND"
+    ],
+    [
+     152.655,
+     71.25,
+     152.655,
+     71.4,
+     "GND"
+    ],
+    [
+     152.655,
+     71.25,
+     152.955,
+     70.95,
+     "GND"
+    ],
+    [
+     152.955,
+     70.95,
+     153.705,
+     70.95,
+     "GND"
+    ],
+    [
+     153.705,
+     70.95,
+     153.955,
+     71.2,
+     "GND"
+    ],
+    [
+     153.955,
+     71.2,
+     153.955,
+     71.3,
+     "GND"
+    ],
+    [
+     153.955,
+     71.3,
+     154.255,
+     71.6,
+     "GND"
+    ],
+    [
+     154.205,
+     71.6,
+     154.255,
+     71.6,
+     "GND"
+    ],
+    [
+     154.95,
+     108.354,
+     155.05,
+     108.254,
+     "GND"
+    ],
+    [
+     155.05,
+     108.254,
+     155.2,
+     108.254,
+     "GND"
+    ],
+    [
+     156.628,
+     107.417,
+     156.628,
+     107.617,
+     "GND"
+    ],
+    [
+     156.978,
+     108.48,
+     156.978,
+     109.23,
+     "GND"
+    ],
+    [
+     158.205,
+     48.25,
+     158.405,
+     48.25,
+     "GND"
+    ],
+    [
+     158.25,
+     70.8,
+     158.25,
+     71.3,
+     "GND"
+    ],
+    [
+     158.405,
+     48.25,
+     158.505,
+     48.15,
+     "GND"
+    ],
+    [
+     158.96,
+     47.25,
+     158.96,
+     47.9,
+     "GND"
+    ],
+    [
+     158.96,
+     47.25,
+     158.96,
+     47.95,
+     "GND"
+    ],
+    [
+     158.96,
+     47.9,
+     159.01,
+     47.95,
+     "GND"
+    ],
+    [
+     160.0,
+     77.95,
+     160.0,
+     78.8,
+     "GND"
+    ],
+    [
+     162.75,
+     62.455,
+     163.4,
+     62.455,
+     "GND"
+    ],
+    [
+     163.4,
+     62.455,
+     163.9,
+     61.955,
+     "GND"
+    ],
+    [
+     163.9,
+     61.955,
+     164.0,
+     61.955,
+     "GND"
+    ],
+    [
+     164.0,
+     61.955,
+     164.85,
+     61.105,
+     "GND"
+    ],
+    [
+     164.85,
+     59.805,
+     164.85,
+     61.105,
+     "GND"
+    ],
+    [
+     166.7,
+     47.5,
+     166.7,
+     48.0,
+     "GND"
+    ],
+    [
+     183.25,
+     68.75,
+     183.45,
+     68.95,
+     "GND"
+    ],
+    [
+     183.45,
+     68.95,
+     183.45,
+     70.0,
+     "GND"
+    ]
+   ]
+  },
+  {
+   "name": "D33 B routing (2026-11-12): stubs",
+   "layer": "F.Cu",
+   "width": 0.15,
+   "stubs": [
+    [
+     159.6,
+     82.6,
+     160.2,
+     82.0,
+     "VBAT_PROT"
+    ]
+   ]
+  },
+  {
+   "name": "D33 B routing (2026-11-12): stubs",
+   "layer": "F.Cu",
+   "width": 0.2,
+   "stubs": [
+    [
+     159.1,
+     80.85,
+     159.35,
+     81.1,
+     "GND"
+    ],
+    [
+     159.35,
+     81.1,
+     159.6,
+     81.1,
+     "GND"
+    ]
+   ]
+  },
+  {
+   "name": "D33 B routing (2026-11-12): stubs",
+   "layer": "F.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     156.3,
+     48.22,
+     156.3,
+     49.17,
+     "GND"
+    ],
+    [
+     156.3,
+     49.17,
+     156.6,
+     49.47,
+     "GND"
+    ]
+   ]
   }
  ],
  "via_overrides": [
@@ -3285,6 +3986,15 @@
     44.8,
     176.6,
     47.2
+   ]
+  },
+  {
+   "name": "RS_SENSE_N's lane beside R201's S1 pad (routing run 2026-11-12, D35-3): three VBAT_D field vias at x 160.05 and one VBAT_Q2D via at (159.85, 88.15) went",
+   "rect": [
+    159.5,
+    80.6,
+    160.3,
+    88.4
    ]
   }
  ],

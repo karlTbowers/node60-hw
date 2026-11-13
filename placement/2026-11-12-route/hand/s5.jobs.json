@@ -1,0 +1,83 @@
+[
+ {
+  "net": "/T1S_TERM_DROP",
+  "name": "T1S_TERM_DROP R521.1 to its In2 line",
+  "from": [
+   162.75,
+   61.55,
+   "B.Cu"
+  ],
+  "to": [
+   165.0,
+   62.2,
+   "In2.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6,
+  "rip": false,
+  "pour_cost": 40
+ },
+ {
+  "net": "/T1S_TERM_DROP",
+  "name": "T1S_TERM_DROP Q502.2 to its In2 line",
+  "from": [
+   163.25,
+   67.64,
+   "B.Cu"
+  ],
+  "to": [
+   165.8,
+   66.0,
+   "In2.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6,
+  "rip": false,
+  "pour_cost": 40
+ },
+ {
+  "net": "/SW_LHI",
+  "name": "SW_LHI lane branch to the In2 line, east of the finger",
+  "from": [
+   167.65,
+   61.25,
+   "B.Cu"
+  ],
+  "to": [
+   166.5,
+   50.3,
+   "In2.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 8,
+  "rip": false,
+  "pour_cost": 40
+ }
+]

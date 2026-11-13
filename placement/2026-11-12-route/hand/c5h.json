@@ -1,0 +1,164 @@
+{
+ "id": "c5h",
+ "title": "The shunt's sense lines at U201 and U202",
+ "why": "The bulk router's RS_SENSE_N ran round R209 and R210 and walled R210 pad 1 (RS_SENSE_P) in. Both lines are battery nets, so neither may hop to F.Cu under the GND bar. RS_SENSE_N from U201 pin 19 and C212 now runs south of R209, between the shunt's F1 and S1 pads, and joins the line from S2; RS_SENSE_P runs up R209's west side to R210.",
+ "delete": [
+  {
+   "seg": [
+    155.0,
+    78.3,
+    156.1,
+    79.4
+   ]
+  },
+  {
+   "seg": [
+    156.1,
+    79.4,
+    157.0,
+    79.4
+   ]
+  },
+  {
+   "seg": [
+    157.0,
+    79.4,
+    157.1,
+    79.3
+   ]
+  },
+  {
+   "seg": [
+    157.1,
+    79.3,
+    157.2,
+    79.3
+   ]
+  },
+  {
+   "seg": [
+    157.2,
+    79.3,
+    158.0,
+    78.5
+   ]
+  },
+  {
+   "seg": [
+    158.0,
+    78.5,
+    158.0,
+    78.0
+   ]
+  },
+  {
+   "seg": [
+    158.0,
+    78.0,
+    158.6,
+    77.4
+   ]
+  },
+  {
+   "seg": [
+    155.75,
+    79.75,
+    156.1,
+    79.4
+   ]
+  },
+  {
+   "seg": [
+    155.75,
+    80.25,
+    155.75,
+    79.75
+   ]
+  },
+  {
+   "seg": [
+    154.8,
+    78.3,
+    155.0,
+    78.3
+   ]
+  },
+  {
+   "seg": [
+    154.56,
+    78.06,
+    154.8,
+    78.3
+   ]
+  }
+ ],
+ "tracks": [
+  {
+   "net": "/Power entry/RS_SENSE_N",
+   "layer": "B.Cu",
+   "w": 0.15,
+   "pts": [
+    [
+     153.25,
+     79.5
+    ],
+    [
+     153.25,
+     80.6
+    ],
+    [
+     153.6,
+     80.95
+    ],
+    [
+     158.15,
+     80.95
+    ],
+    [
+     158.15,
+     83.7
+    ],
+    [
+     158.45,
+     84.0
+    ],
+    [
+     159.75,
+     84.0
+    ]
+   ]
+  },
+  {
+   "net": "/Power entry/RS_SENSE_P",
+   "layer": "B.Cu",
+   "w": 0.15,
+   "pts": [
+    [
+     156.6,
+     80.19
+    ],
+    [
+     156.0,
+     80.19
+    ],
+    [
+     155.8,
+     79.99
+    ],
+    [
+     155.8,
+     77.6
+    ],
+    [
+     156.05,
+     77.35
+    ],
+    [
+     156.15,
+     77.35
+    ]
+   ]
+  }
+ ],
+ "vias": []
+}

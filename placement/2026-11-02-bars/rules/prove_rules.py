@@ -72,6 +72,15 @@ def area(b, name, layer, x0, y0, x1, y1):
     b.Add(z)
 
 
+def pour(b, net, layer, x0, y0, x1, y1):
+    """a small copper pour of a net (unfilled: the disallow rule looks at the zone itself)"""
+    z = pcbnew.ZONE(b); z.SetLayer(b.GetLayerID(layer)); z.SetNet(b.FindNet(net)); z.SetAssignedPriority(100)
+    o = z.Outline(); o.NewOutline()
+    for x, y in ((x0, y0), (x1, y0), (x1, y1), (x0, y1)):
+        o.Append(FM(x), FM(y))
+    b.Add(z)
+
+
 def clear(b, *nets):
     """the board's routed copper of these nets off the case's copy (since D28 the T1S line is routed)"""
     for t in list(b.GetTracks()):
@@ -133,17 +142,63 @@ SDA = "/I2C0_TELEMETRY_SDA"
 SCL = "/I2C0_TELEMETRY_SCL"
 FREE = (95.0, 36.0)        # checked free of parts on B.Cu and In2/In3 (see the "free spot" case)
 
+
+def free_strip(b, layer, x0, y0, x1, y1, length=6.5, margin=0.6):
+    """the west end (x, y) of a horizontal strip of the given length inside the box with no track, via or pad of
+    that layer within the margin: on a routed board the planted items need copper-free ground, since KiCad
+    reports one violation per track and a short would hide the rule under test"""
+    lid = b.GetLayerID(layer); boxes = []
+    for t in b.GetTracks():
+        if t.Type() == pcbnew.PCB_VIA_T or t.GetLayer() == lid:
+            bb = t.GetBoundingBox(); boxes.append((TM(bb.GetLeft()), TM(bb.GetTop()), TM(bb.GetRight()), TM(bb.GetBottom())))
+    for fp in b.GetFootprints():
+        for p in fp.Pads():
+            if p.IsOnLayer(lid):
+                bb = p.GetBoundingBox(); boxes.append((TM(bb.GetLeft()), TM(bb.GetTop()), TM(bb.GetRight()), TM(bb.GetBottom())))
+    y = y0 + margin
+    while y <= y1 - margin:
+        x = x0 + margin
+        while x + length <= x1 - margin:
+            hit = [q for q in boxes if q[0] < x + length + margin and q[2] > x - margin and q[1] < y + margin and q[3] > y - margin]
+            if not hit: return (round(x, 2), round(y, 2))
+            x = max(q[2] for q in hit) + margin + 0.01
+        y += 0.25
+    raise SystemExit(f"no free strip on {layer} in {x0},{y0},{x1},{y1}")
+
+
+_B0 = pcbnew.LoadBoard(os.path.join(ROOT, BOARD))
+BAR_GND = free_strip(_B0, "F.Cu", 68.0, 61.6, 242.0, 79.6)        # F.Cu under the GND busbar (y 61.1-80.1)
+BAR_VIN = free_strip(_B0, "F.Cu", 93.5, 91.0, 216.5, 108.5)       # F.Cu under the VBAT_IN busbar (y 90.1-109.1); B.Cu there for the control
+BAR_VIN_B = free_strip(_B0, "B.Cu", 100.0, 100.0, 123.0, 107.0)
+_e = next(z for z in _B0.Zones() if z.GetIsRuleArea() and z.GetZoneName() == "ESCAPE_U401").GetBoundingBox()
+ESC_F = free_strip(_B0, "F.Cu", TM(_e.GetLeft()) + 0.3, TM(_e.GetTop()) + 0.3, TM(_e.GetRight()) - 0.3, TM(_e.GetBottom()) - 0.3, length=1.6, margin=0.45)   # inside U401's escape area on F.Cu
+
 # (name, rule expected, fires?, where (x, y), function adding the item)
 CASES = [
+    # the busbar rules (D01; the GND bar's since D33 B, user 2026-11-12: signal tracks allowed under it on F.Cu)
+    ("SDA track on F.Cu under the GND busbar (control, D33 B: a signal may run there; pours refilled)", "F.Cu under the GND busbar", False, BAR_GND,
+     lambda b: track(b, SDA, "F.Cu", BAR_GND[0], BAR_GND[1], BAR_GND[0] + 6, BAR_GND[1], 0.15)),
+    ("VBAT_PROT track on F.Cu under the GND busbar (class PWR_BATT; pours refilled)", "F.Cu under the GND busbar: no battery-net tracks", True, BAR_GND,
+     lambda b: track(b, "VBAT_PROT", "F.Cu", BAR_GND[0], BAR_GND[1], BAR_GND[0] + 6, BAR_GND[1], 0.3)),
+    ("RS_SENSE_P track on F.Cu under the GND busbar (battery potential, named in the rule; pours refilled)", "F.Cu under the GND busbar: no battery-net tracks", True, BAR_GND,
+     lambda b: track(b, "/Power entry/RS_SENSE_P", "F.Cu", BAR_GND[0], BAR_GND[1], BAR_GND[0] + 6, BAR_GND[1], 0.15)),
+    ("VBAT_FILT track on F.Cu under the GND busbar (named in the rule; pours refilled)", "F.Cu under the GND busbar: no battery-net tracks", True, BAR_GND,
+     lambda b: track(b, "VBAT_FILT", "F.Cu", BAR_GND[0], BAR_GND[1], BAR_GND[0] + 6, BAR_GND[1], 0.3)),
+    ("SDA pour on F.Cu under the GND busbar", "F.Cu under the GND busbar: no other net's pour", True, BAR_GND,
+     lambda b: pour(b, SDA, "F.Cu", BAR_GND[0], BAR_GND[1] - 1, BAR_GND[0] + 6, BAR_GND[1] + 1)),
+    ("SDA track on F.Cu under the VBAT_IN busbar (unchanged by D33; pours refilled)", "F.Cu under the VBAT_IN busbar", True, BAR_VIN,
+     lambda b: track(b, SDA, "F.Cu", BAR_VIN[0], BAR_VIN[1], BAR_VIN[0] + 6, BAR_VIN[1], 0.15)),
+    ("SDA track on B.Cu under the VBAT_IN busbar (control: the rule is F.Cu's; pours refilled)", "F.Cu under the VBAT_IN busbar", False, BAR_VIN_B,
+     lambda b: track(b, SDA, "B.Cu", BAR_VIN_B[0], BAR_VIN_B[1], BAR_VIN_B[0] + 6, BAR_VIN_B[1], 0.15)),
     ("free spot: nothing fires on a 0.2 mm track", "Tracks under 0.15", False, FREE,
      lambda b: track(b, SDA, "B.Cu", FREE[0], FREE[1], FREE[0] + 6, FREE[1], 0.2)),
     ("0.1 mm track outside the escape areas", "Tracks under 0.15 mm only in the U401/U501 escape areas", True, FREE,
      lambda b: track(b, SDA, "B.Cu", FREE[0], FREE[1], FREE[0] + 6, FREE[1], 0.1)),
-    # x 209.5, y 44.5-48.5: a free stretch of U401's escape ring on F.Cu (y 50-54 holds D23's C420 and its vias)
-    ("0.1 mm track inside ESCAPE_U401 (F.Cu margin ring)", "Tracks under 0.15", False, (209.5, 46.5),
-     lambda b: track(b, SDA, "F.Cu", 209.5, 44.5, 209.5, 48.5, 0.1)),
-    ("0.1 mm clearance inside ESCAPE_U401: no clearance error (pours refilled round the planted tracks)", "Escape areas", False, (209.5, 46.5),
-     lambda b: (track(b, SDA, "F.Cu", 209.4, 44.5, 209.4, 48.5, 0.1), track(b, SCL, "F.Cu", 209.6, 44.5, 209.6, 48.5, 0.1))),
+    # ESC_F: a copper-free 1.6 mm strip of F.Cu inside U401's escape area (found on the board as it is, routed or not)
+    ("0.1 mm track inside ESCAPE_U401 (F.Cu)", "Tracks under 0.15", False, ESC_F,
+     lambda b: track(b, SDA, "F.Cu", ESC_F[0], ESC_F[1], ESC_F[0] + 1.6, ESC_F[1], 0.1)),
+    ("0.1 mm clearance inside ESCAPE_U401: no clearance error (pours refilled round the planted tracks)", "Escape areas", False, ESC_F,
+     lambda b: (track(b, SDA, "F.Cu", ESC_F[0], ESC_F[1] - 0.1, ESC_F[0] + 1.6, ESC_F[1] - 0.1, 0.1), track(b, SCL, "F.Cu", ESC_F[0], ESC_F[1] + 0.1, ESC_F[0] + 1.6, ESC_F[1] + 0.1, 0.1))),
     ("0.1 mm clearance outside: netclass 0.15 fires", "clearance", True, FREE,
      lambda b: (track(b, SDA, "B.Cu", FREE[0], FREE[1], FREE[0] + 6, FREE[1], 0.2),
                 track(b, SCL, "B.Cu", FREE[0], FREE[1] + 0.3, FREE[0] + 6, FREE[1] + 0.3, 0.2))),
@@ -275,8 +330,10 @@ def zone_case(src):
             o.Append(int(x), int(y))
         b.Add(z)
         pcbnew.ZONE_FILLER(b).Fill([z])
-        probe = pcbnew.VECTOR2I(bb.GetRight() + FM(0.12), bb.GetBottom() + FM(0.12))
-        filled = z.GetFilledPolysList(layer).Contains(probe)
+        # just off each corner of the pad: solid fill reaches at least one (a routed track may stand beside another)
+        fill = z.GetFilledPolysList(layer)
+        filled = any(fill.Contains(pcbnew.VECTOR2I(x, y)) for x in (bb.GetLeft() - FM(0.12), bb.GetRight() + FM(0.12))
+                     for y in (bb.GetTop() - FM(0.12), bb.GetBottom() + FM(0.12)))
         ok = filled == expect_solid
         results.append((f"zone fill at {ref} pad {num}: {'solid' if filled else 'relief'}",
                         "High-current pads solid", expect_solid, ok))

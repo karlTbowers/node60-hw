@@ -1,0 +1,272 @@
+[
+ {
+  "net": "/Regulators/1V5_EN",
+  "name": "/Regulators/1V5_EN Track to TP306.1",
+  "from": [
+   208.7,
+   35.3,
+   "In2.Cu"
+  ],
+  "to": [
+   209.3068,
+   35.9262,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/INH",
+  "name": "/INH TP305.1 to Track",
+  "from": [
+   124.0,
+   50.75,
+   "B.Cu"
+  ],
+  "to": [
+   123.1,
+   51.0,
+   "F.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/MCU and NVM/1V1_MCU_V11",
+  "name": "/MCU and NVM/1V1_MCU_V11 TP411.1 to Track",
+  "from": [
+   210.8296,
+   50.2229,
+   "B.Cu"
+  ],
+  "to": [
+   210.4,
+   48.6,
+   "F.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/INH",
+  "name": "/INH TP501.1 to Track",
+  "from": [
+   143.7237,
+   67.7226,
+   "B.Cu"
+  ],
+  "to": [
+   146.6,
+   68.4,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/MCU and NVM/UART0_DEBUG_RX",
+  "name": "/MCU and NVM/UART0_DEBUG_RX U401.D17 to TP402.1",
+  "from": [
+   207.3291,
+   55.4898,
+   "B.Cu"
+  ],
+  "to": [
+   210.0868,
+   56.7539,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/MCU and NVM/SPI2_FLASH_SCK",
+  "name": "/MCU and NVM/SPI2_FLASH_SCK Track to TP407.1",
+  "from": [
+   209.2,
+   56.6,
+   "In2.Cu"
+  ],
+  "to": [
+   212.0,
+   58.0,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/MDIO0_T1S_MDC",
+  "name": "/MDIO0_T1S_MDC TP503.1 to Track",
+  "from": [
+   157.25,
+   37.0,
+   "B.Cu"
+  ],
+  "to": [
+   156.25,
+   41.099999,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/MCU and NVM/UART0_DEBUG_TX",
+  "name": "/MCU and NVM/UART0_DEBUG_TX U401.E16 to TP401.1",
+  "from": [
+   206.5291,
+   54.6898,
+   "B.Cu"
+  ],
+  "to": [
+   210.8301,
+   54.4398,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/MCU and NVM/SPI2_FLASH_CS_L",
+  "name": "/MCU and NVM/SPI2_FLASH_CS_L TP408.1 to Track",
+  "from": [
+   232.0367,
+   47.8886,
+   "B.Cu"
+  ],
+  "to": [
+   226.9,
+   46.6,
+   "In2.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/SPI5_SWITCH2_CS_L",
+  "name": "/SPI5_SWITCH2_CS_L TP416.1 to Track",
+  "from": [
+   211.0291,
+   64.8908,
+   "B.Cu"
+  ],
+  "to": [
+   208.1,
+   57.2398,
+   "F.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false,
+  "pour_cost": 40.0
+ }
+]

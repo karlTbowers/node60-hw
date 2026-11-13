@@ -1,0 +1,83 @@
+[
+ {
+  "net": "/SW2_SNS",
+  "name": "SW2_SNS via to its lane",
+  "from": [
+   200.91,
+   58.32,
+   "F.Cu"
+  ],
+  "to": [
+   171.5,
+   72.3,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12,
+  "rip": false,
+  "pour_cost": 40
+ },
+ {
+  "net": "/SPI5_SWITCH2_SCK",
+  "name": "SCK lane to the MCU",
+  "from": [
+   139.1,
+   72.8,
+   "B.Cu"
+  ],
+  "to": [
+   206.5291,
+   58.3148,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12,
+  "rip": false,
+  "pour_cost": 40
+ },
+ {
+  "net": "/SPI5_SWITCH2_MISO",
+  "name": "MISO lane to the MCU",
+  "from": [
+   137.9,
+   70.8,
+   "B.Cu"
+  ],
+  "to": [
+   202.2,
+   60.0,
+   "In2.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12,
+  "rip": false,
+  "pour_cost": 40
+ }
+]

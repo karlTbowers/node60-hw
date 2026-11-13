@@ -5,6 +5,7 @@ does not model (judge_route.sh's S0_HOOK; from t1s/route_nets.sh, 2026-11-12). K
 - the T1S trunk's F.Cu corridor (x 133.4-176.6, y 44.8-47.2): no tracks, no vias;
 - round every T1S-class via, 1.05 mm: no tracks or vias on any layer;
 - along every T1S-class track, 1.0 mm: no vias; 0.85 mm on its own layer: no tracks (the 0.75 mm rule);
+- over the In3 VBAT_PROT finger to U301 (x 162.8-164.8, y 49.6-71.4): no vias;
 - under the crystals (UNDER_Y401, UNDER_Y501): no vias; with HOOK_REPAIR=1 (a pass after the crystal is
   routed) no tracks either: node60.kicad_dru allows only the crystal's nets and GND there;
 - round the buck switch-node copper on B.Cu, 1.15 mm: no tracks (1V5_CORE_FB 1 mm from the switch nodes; this
@@ -32,6 +33,9 @@ def along(p, q, r):
     return [(x0 - ux * r + nx * r, y0 - uy * r + ny * r), (x1 + ux * r + nx * r, y1 + uy * r + ny * r),
             (x1 + ux * r - nx * r, y1 + uy * r - ny * r), (x0 - ux * r - nx * r, y0 - uy * r - ny * r)]
 area("TRUNK_KEEPOUT_F", [(133.4, 44.8), (176.6, 44.8), (176.6, 47.2), (133.4, 47.2)], [pcbnew.F_Cu])
+# the In3 VBAT_PROT finger to U301 and C301 (x 163.2-164.4, y 47-71) is 1.2 mm wide: a few signal vias cut it
+# (2026-11-12). No vias within 0.4 mm of it; tracks may cross on the other layers.
+area("U301_FINGER_NO_VIA", [(162.8, 49.6), (164.8, 49.6), (164.8, 71.4), (162.8, 71.4)], tracks=False)
 n = 0
 for t in list(b.GetTracks()):
     cls = t.GetNetClassName()

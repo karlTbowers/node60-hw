@@ -1,0 +1,41 @@
+{
+ "id": "s7h",
+ "title": "Q501 pin 1 to GND; the GND pocket at R513",
+ "why": "Q501 pin 1 (GND) is walled in on B.Cu by the relay coil's drive line and stands on the In3 finger to U301. It gets a 0.35/0.20 mm via in its pad; the In3 VBAT_PROT finger is widened to x 165.6 from y 62 to 71 so the via leaves it 1.5 mm; T1S_TERM_COIL_S's In2 run moves 0.35 mm east of the via, and SW2_FLT_L and MOSI step round it on F.Cu. R513 pad 2's GND pocket was closed by T1S_IRQ_L on B.Cu (no via may stand there: the T1S trunk is 0.8 mm away on F.Cu); T1S_IRQ_L hops over it on F.Cu.",
+ "delete": [
+  {
+   "seg": [
+    164.0,
+    62.4,
+    164.0,
+    68.0
+   ]
+  },
+  {
+   "seg": [
+    155.15,
+    65.0,
+    169.9,
+    65.0
+   ]
+  },
+  {
+   "seg": [
+    152.65,
+    64.2,
+    169.85,
+    64.2
+   ]
+  },
+  {
+   "seg": [
+    159.3,
+    44.5,
+    164.4,
+    44.5
+   ]
+  }
+ ],
+ "tracks": [],
+ "vias": []
+}

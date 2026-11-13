@@ -1,7 +1,7 @@
 {
  "block": "u601",
  "anchor": "U601",
- "approved": "2026-11-06 (D31: switch turned 180 degrees with its pin-local parts; D19 A, D13 A before); D32 I (2026-11-12, user: \"I and H\"): R601 at the west margin's 3V3 via; R607 and C607 left for blocks/mcu_pullups.poses.json",
+ "approved": "2026-11-06 (D31: switch turned 180 degrees with its pin-local parts; D19 A, D13 A before); D32 I (2026-11-12, user: \"I and H\"): R601 at the west margin's 3V3 via; R607 and C607 left for blocks/mcu_pullups.poses.json; TP601, TP602, TP603, TP604, TP605, TP606 re-posed 2026-11-12 (D34, routing run)",
  "anchor_pose": {
   "x": 77.65,
   "y": 111.6,
@@ -127,58 +127,58 @@
    "why": "NTC for U601's temperature, north of the switch between the two output exits (D19 A, 2026-11-04: moved off the OUT1 exit), 3.75 mm from the VBB pad's centre.. Unchanged by D31's turn: north of the switch"
   },
   "TP601": {
-   "dx": -3.8535,
-   "dy": 6.188,
-   "rot": 270.0,
+   "dx": -7.0423,
+   "dy": 7.7923,
+   "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "SNS test point (MCU side)"
+   "why": "SNS test point (MCU side) Routing run 2026-11-12 (D35-8): put back after routing, on its own net's copper where a free spot was."
   },
   "TP602": {
-   "dx": 0.75,
-   "dy": -3.85,
-   "rot": 0.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "FLT test point north of the switch, between the output exits (D19 A)."
-  },
-  "TP603": {
-   "dx": 5.051,
-   "dy": 0.975,
-   "rot": 270.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "SPI MISO test point"
-  },
-  "TP604": {
-   "dx": -8.2048,
-   "dy": -1.0045,
-   "rot": 270.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "First output's test point"
-  },
-  "TP605": {
-   "dx": 2.9,
-   "dy": 7.052,
-   "rot": 270.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "Second output's test point"
-  },
-  "TP606": {
-   "dx": 0.0,
-   "dy": 10.4,
+   "dx": 2.75,
+   "dy": 3.85,
    "rot": 180.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "GND test point south of the switch (D19 A: moved off the OUT1 exit)."
+   "why": "FLT test point north of the switch, between the output exits (D19 A). Routing run 2026-11-12 (D35-8): put back after routing, on its own net's copper where a free spot was."
+  },
+  "TP603": {
+   "dx": 7.6792,
+   "dy": 3.3292,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "SPI MISO test point Routing run 2026-11-12 (D35-8): put back after routing, on its own net's copper where a free spot was."
+  },
+  "TP604": {
+   "dx": 9.3,
+   "dy": 1.35,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "First output's test point Routing run 2026-11-12 (D35-8): put back after routing, on its own net's copper where a free spot was."
+  },
+  "TP605": {
+   "dx": -3.25,
+   "dy": -6.4,
+   "rot": 90.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "Second output's test point Routing run 2026-11-12 (D35-8): put back after routing, on its own net's copper where a free spot was."
+  },
+  "TP606": {
+   "dx": -0.1438,
+   "dy": -11.6938,
+   "rot": 0.0,
+   "side": "B",
+   "role": "core",
+   "flex_mm": 0,
+   "why": "GND test point south of the switch (D19 A: moved off the OUT1 exit). Routing run 2026-11-12 (D35-8): put back after routing, on its own net's copper where a free spot was."
   }
  }
 }

@@ -1,0 +1,16 @@
+{
+ "id": "c6v",
+ "title": "NTC_SW3's via at the 0.35/0.20 mm preset",
+ "why": "Applied after c6h, whose delete takes the 0.45 mm via at the same spot.",
+ "delete": [],
+ "tracks": [],
+ "vias": [
+  {
+   "net": "/NTC_SW3",
+   "x": 200.85,
+   "y": 58.825,
+   "d": 0.35,
+   "drill": 0.2
+  }
+ ]
+}

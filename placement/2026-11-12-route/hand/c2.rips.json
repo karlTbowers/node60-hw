@@ -1,0 +1,8 @@
+[
+ {"nets": ["/NTC_SW2", "/Outputs 3-4/SW_VDD", "/SPI5_SWITCH2_MOSI", "/SPI5_SWITCH2_CS_L", "/SPI5_SWITCH2_SCK", "/SPI5_SWITCH2_MISO",
+           "/SW2_FLT_L", "/SW2_SNS", "/NTC_RSENSE", "/Outputs 3-4/SW_DI", "/Outputs 3-4/SW_SNS"], "box": [100, 61.2, 240, 126]},
+ {"nets": ["/Power entry/RS_SENSE_N"], "box": [150, 80.0, 165, 95]},
+ {"nets": ["/Power entry/HGATE_G"], "box": [136, 86.0, 172.45, 96.5]},
+ {"nets": ["/SW3_FLT_L"], "box": [206, 69.0, 218.0, 90.0]},
+ {"nets": ["/SW1_SNS"], "box": [92, 80.0, 102, 90.2]}
+]

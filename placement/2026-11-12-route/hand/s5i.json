@@ -1,0 +1,28 @@
+{
+ "id": "s5i",
+ "title": "SW1_SNS across the finger on In2",
+ "why": "Applied after s5h, whose deletes name the same segment on B.Cu.",
+ "delete": [],
+ "tracks": [
+  {
+   "net": "/SW1_SNS",
+   "layer": "In2.Cu",
+   "w": 0.15,
+   "pts": [
+    [
+     163.7,
+     60.0
+    ],
+    [
+     164.3,
+     60.6
+    ],
+    [
+     164.3,
+     60.8
+    ]
+   ]
+  }
+ ],
+ "vias": []
+}

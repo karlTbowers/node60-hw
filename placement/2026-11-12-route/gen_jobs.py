@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""gen_jobs.py DRC.json BOARD_DUMP.json OUT.jobs.json [--supply | --signal] -- mini_route.py jobs from a DRC
+"""gen_jobs.py DRC.json BOARD_DUMP.json OUT.jobs.json [--supply | --signal] [--pour-cost N] -- mini_route.py jobs from a DRC
 report's unconnected items (those at a test point left out unless --tp).
 
 --supply: for each pad, track end or via of a plane net that DRC lists as unconnected, a "to_plane" job to the
@@ -12,6 +12,7 @@ d = json.load(open(sys.argv[1])); b = json.load(open(sys.argv[2])); mode = sys.a
 tp = "--tp" in sys.argv
 MARGIN = float(sys.argv[sys.argv.index("--margin") + 1]) if "--margin" in sys.argv else 5
 SKIP = sys.argv[sys.argv.index("--skip") + 1].split(",") if "--skip" in sys.argv else []
+POUR = {"pour_cost": float(sys.argv[sys.argv.index("--pour-cost") + 1])} if "--pour-cost" in sys.argv else {}   # battery pours: dearer than any way round
 ONLY = sys.argv[sys.argv.index("--only") + 1].split(",") if "--only" in sys.argv else None
 PLANES = {"GND": ["In1.Cu", "In4.Cu"], "VBAT_PROT": ["In2.Cu", "In3.Cu"], "3V3_MAIN": ["In3.Cu"], "1V5_CORE": ["In3.Cu"],
           "/VBAT_IN": ["In2.Cu"], "/Power entry/VBAT_D": ["In2.Cu", "In3.Cu"], "/Power entry/VBAT_Q2D": ["In2.Cu", "In3.Cu"]}
@@ -19,7 +20,7 @@ SUPPLY = set(PLANES) | {"VDDAU_AON", "VBAT_FILT", "/OUT1", "/OUT2", "/OUT3", "/O
 W = {"GND": 0.3, "VBAT_PROT": 0.4, "3V3_MAIN": 0.3, "1V5_CORE": 0.3, "/VBAT_IN": 0.4, "VDDAU_AON": 0.3, "VBAT_FILT": 0.3}
 pads = {(f["ref"], p["num"]): (p, f) for f in b["footprints"] for p in f["pads"]}
 def layer_of(desc):
-    m = re.search(r" on ([FB])\.Cu", desc); return (m.group(1) + ".Cu") if m else "B.Cu"
+    m = re.search(r" on (F|B|In2)\.Cu", desc); return (m.group(1) + ".Cu") if m else "B.Cu"
 jobs, seen = [], set()
 for u in d.get("unconnected_items", []):
     s = " | ".join(i["description"] for i in u["items"])
@@ -46,7 +47,7 @@ for u in d.get("unconnected_items", []):
         a, c = ends
         lay = sorted({a[2], c[2]} | ({"B.Cu", "F.Cu", "In2.Cu"} if mode == "--signal" else {"B.Cu", "F.Cu"}))
         jobs.append({"net": net, "name": f"{net} {a[3]} to {c[3]}", "from": list(a[:3]), "to": list(c[:3]), "layers": lay,
-                     "w": W.get(net, 0.15), "via": [0.35, 0.2] if mode == "--signal" else [0.45, 0.25], "margin": MARGIN, "rip": "--rip" in sys.argv})
+                     "w": W.get(net, 0.15), "via": [0.35, 0.2] if mode == "--signal" else [0.45, 0.25], "margin": MARGIN, "rip": "--rip" in sys.argv, **POUR})
 import math
 if "--short-first" in sys.argv:                     # local joins before the long ones that would fence them in
     jobs.sort(key=lambda j: math.dist(j["from"][:2], j["to"][:2]) if "to" in j else 0)

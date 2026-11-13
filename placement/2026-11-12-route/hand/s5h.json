@@ -1,0 +1,90 @@
+{
+ "id": "s5h",
+ "title": "Signal vias off the In3 VBAT_PROT finger to U301",
+ "why": "Seven new vias of SW_LHI, SW1_SNS and T1S_TERM_DROP stood on the 1.2 mm finger of In3 that feeds U301 and C301 (x 163.2 to 164.4, y 47 to 71) and cut it in three. Five go: SW1_SNS stays on In2 (spec s5i), the rest is routed again with a no-via zone over the finger. Q502's two in-pad vias stay (a B.Cu link under the part would cross T1S_TERM_COIL_S); they stand on the finger's west edge and leave it 0.75 mm.",
+ "delete": [
+  {
+   "via": [
+    163.3,
+    52.1
+   ]
+  },
+  {
+   "seg": [
+    163.3,
+    56.9,
+    163.3,
+    52.1
+   ]
+  },
+  {
+   "seg": [
+    167.65,
+    61.25,
+    163.3,
+    56.9
+   ]
+  },
+  {
+   "via": [
+    163.7,
+    60.0
+   ]
+  },
+  {
+   "via": [
+    164.3,
+    60.8
+   ]
+  },
+  {
+   "seg": [
+    163.7,
+    60.0,
+    164.3,
+    60.6
+   ]
+  },
+  {
+   "seg": [
+    164.3,
+    60.6,
+    164.3,
+    60.8
+   ]
+  }
+ ],
+ "tracks": [
+  {
+   "net": "/T1S_TERM_DROP",
+   "layer": "F.Cu",
+   "w": 0.15,
+   "pts": [
+    [
+     163.25,
+     66.36
+    ],
+    [
+     163.25,
+     67.47
+    ]
+   ]
+  }
+ ],
+ "vias": [
+  {
+   "net": "/T1S_TERM_DROP",
+   "x": 163.25,
+   "y": 66.36,
+   "d": 0.35,
+   "drill": 0.2
+  },
+  {
+   "net": "/T1S_TERM_DROP",
+   "x": 163.25,
+   "y": 67.47,
+   "d": 0.35,
+   "drill": 0.2
+  }
+ ]
+}

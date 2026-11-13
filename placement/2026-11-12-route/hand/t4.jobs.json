@@ -1,14 +1,15 @@
 [
  {
-  "net": "1V5_CORE",
-  "name": "1V5_CORE R303.2 to its plane",
+  "net": "GND",
+  "name": "GND pour piece at R705.2 (0.3 mm2, B.Cu) to its plane",
   "from": [
-   212.7919,
-   32.0898,
+   156.9782,
+   109.2295,
    "B.Cu"
   ],
   "to_plane": [
-   "In3.Cu"
+   "In1.Cu",
+   "In4.Cu"
   ],
   "layers": [
    "B.Cu"
@@ -19,18 +20,20 @@
    0.25
   ],
   "margin": 3,
-  "rip": false
+  "rip": false,
+  "in_pad": true
  },
  {
-  "net": "1V5_CORE",
-  "name": "1V5_CORE TP303.1 to its plane",
+  "net": "GND",
+  "name": "GND pour piece at C509.2 (7.6 mm2, B.Cu) to its plane",
   "from": [
-   210.9252,
-   32.9071,
+   158.96,
+   47.25,
    "B.Cu"
   ],
   "to_plane": [
-   "In3.Cu"
+   "In1.Cu",
+   "In4.Cu"
   ],
   "layers": [
    "B.Cu"
@@ -41,31 +44,31 @@
    0.25
   ],
   "margin": 3,
-  "rip": false
+  "rip": false,
+  "in_pad": true
  },
  {
-  "net": "VDDAU_AON",
-  "name": "VDDAU_AON TP301.1 to U501.25",
+  "net": "GND",
+  "name": "GND pour piece at C501.2 (1.6 mm2, B.Cu) to its plane",
   "from": [
-   166.75,
-   32.75,
+   152.3,
+   40.34,
    "B.Cu"
   ],
-  "to": [
-   157.75,
-   46.0,
-   "B.Cu"
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
   ],
   "layers": [
-   "B.Cu",
-   "F.Cu"
+   "B.Cu"
   ],
   "w": 0.3,
   "via": [
    0.45,
    0.25
   ],
-  "margin": 5,
-  "rip": false
+  "margin": 3,
+  "rip": false,
+  "in_pad": true
  }
 ]

@@ -1,7 +1,7 @@
 {
  "block": "r201",
  "anchor": "R201",
- "approved": "2026-11-04 (D21 C: rows swapped; D20 A mirrored about x 155)",
+ "approved": "2026-11-04 (D21 C: rows swapped; D20 A mirrored about x 155); TP206, TP207, TP208, TP209 re-posed 2026-11-12 (D34, routing run)",
  "anchor_pose": {
   "x": 155.8,
   "y": 86.5,
@@ -298,31 +298,31 @@
    "why": "VBAT_PROT test point at Q204's sources."
   },
   "TP206": {
-   "dx": -14.0,
-   "dy": 16.3,
+   "dx": -25.5,
+   "dy": 13.6,
    "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "BATT_MON test point at the divider string."
+   "why": "BATT_MON test point at the divider string. Routing run 2026-11-12 (D35-8): put back after routing, on its own net's copper where a free spot was."
   },
   "TP207": {
-   "dx": -14.25,
-   "dy": -4.2,
+   "dx": -25.6352,
+   "dy": -42.67,
    "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "FLT_L test point beside U201's north-east corner."
+   "why": "FLT_L test point beside U201's north-east corner. Routing run 2026-11-12 (D35-8): put back after routing, on its own net's copper where a free spot was."
   },
   "TP208": {
-   "dx": -19.25,
-   "dy": 9.0,
+   "dx": -37.6,
+   "dy": 12.6,
    "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "INH test point; nearest legal spot is 7 mm north-west of pin 7, by the T1S test points."
+   "why": "INH test point; nearest legal spot is 7 mm north-west of pin 7, by the T1S test points. Routing run 2026-11-12 (D35-8): put back after routing, on its own net's copper where a free spot was."
   },
   "C216": {
    "dx": -16.5,
@@ -343,13 +343,13 @@
    "why": "NTC_RSENSE pull-up to 3V3_MAIN, with C216."
   },
   "TP209": {
-   "dx": -16.5,
-   "dy": -31.45,
+   "dx": -16.2062,
+   "dy": -37.9938,
    "rot": 180.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "GND test loop with the NTC parts, out of the power pours."
+   "why": "GND test loop with the NTC parts, out of the power pours. Routing run 2026-11-12 (D35-8): put back after routing, on its own net's copper where a free spot was."
   }
  }
 }

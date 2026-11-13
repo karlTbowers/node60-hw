@@ -1,0 +1,439 @@
+{
+ "place": {
+  "TP201": {
+   "x": 126.0,
+   "y": 80.0,
+   "moved_mm": 0.0,
+   "on": "copper",
+   "net": "/VBAT_IN"
+  },
+  "TP202": {
+   "x": 150.5,
+   "y": 83.75,
+   "moved_mm": 0.0,
+   "on": "copper",
+   "net": "/Power entry/VBAT_D"
+  },
+  "TP203": {
+   "x": 150.3755,
+   "y": 93.1755,
+   "moved_mm": 0.89,
+   "on": "copper",
+   "net": "/Power entry/VBAT_Q2D"
+  },
+  "TP204": {
+   "x": 177.5,
+   "y": 89.5,
+   "moved_mm": 0.0,
+   "on": "copper",
+   "net": "VBAT_PROT"
+  },
+  "TP205": {
+   "x": 113.75,
+   "y": 60.75,
+   "moved_mm": 0.0,
+   "on": "pour",
+   "net": "VBAT_FILT"
+  },
+  "TP206": {
+   "x": 144.2,
+   "y": 64.8,
+   "moved_mm": 9.02,
+   "on": "copper",
+   "net": "/BATT_MON"
+  },
+  "TP207": {
+   "x": 163.0,
+   "y": 72.25,
+   "moved_mm": 3.0,
+   "on": "stub",
+   "net": "/LM_FLT_L"
+  },
+  "TP208": {
+   "x": 146.0,
+   "y": 63.65,
+   "moved_mm": 3.69,
+   "on": "copper",
+   "net": "/INH"
+  },
+  "TP209": {
+   "x": 188.25,
+   "y": 72.5,
+   "moved_mm": 2.69,
+   "on": "pour",
+   "net": "GND"
+  },
+  "TP301": {
+   "x": 166.75,
+   "y": 32.75,
+   "moved_mm": 0.75,
+   "on": "stub",
+   "net": "VDDAU_AON"
+  },
+  "TP302": {
+   "x": 119.0,
+   "y": 40.75,
+   "moved_mm": 0.0,
+   "on": "pour",
+   "net": "3V3_MAIN"
+  },
+  "TP303": {
+   "x": 210.9252,
+   "y": 32.9071,
+   "moved_mm": 0.0,
+   "on": "stub",
+   "net": "1V5_CORE"
+  },
+  "TP304": {
+   "x": 113.5,
+   "y": 55.25,
+   "moved_mm": 0.0,
+   "on": "pour",
+   "net": "VBAT_FILT"
+  },
+  "TP305": {
+   "x": 124.0,
+   "y": 50.75,
+   "moved_mm": 0.0,
+   "on": "copper",
+   "net": "/INH"
+  },
+  "TP306": {
+   "x": 209.3068,
+   "y": 35.9262,
+   "moved_mm": 0.0,
+   "on": "stub",
+   "net": "/Regulators/1V5_EN"
+  },
+  "TP307": {
+   "x": 176.1875,
+   "y": 37.1228,
+   "moved_mm": 0.0,
+   "on": "stub",
+   "net": "/RESET_L"
+  },
+  "TP308": {
+   "x": 130.7965,
+   "y": 40.9946,
+   "moved_mm": 0.0,
+   "on": "pour",
+   "net": "GND"
+  },
+  "TP401": {
+   "x": 213.5801,
+   "y": 52.4398,
+   "moved_mm": 4.16,
+   "on": "stub",
+   "net": "/MCU and NVM/UART0_DEBUG_TX"
+  },
+  "TP402": {
+   "x": 208.8368,
+   "y": 60.7539,
+   "moved_mm": 3.25,
+   "on": "stub",
+   "net": "/MCU and NVM/UART0_DEBUG_RX"
+  },
+  "TP403": {
+   "x": 193.7341,
+   "y": 66.2643,
+   "moved_mm": 0.0,
+   "on": "stub",
+   "net": "/SPI4_SWITCH1_SCK"
+  },
+  "TP404": {
+   "x": 195.3147,
+   "y": 68.4151,
+   "moved_mm": 0.0,
+   "on": "stub",
+   "net": "/SPI4_SWITCH1_MOSI"
+  },
+  "TP405": {
+   "x": 207.686,
+   "y": 68.0263,
+   "moved_mm": 2.0,
+   "on": "stub",
+   "net": "/SPI4_SWITCH1_MISO"
+  },
+  "TP406": {
+   "x": 192.6529,
+   "y": 68.4491,
+   "moved_mm": 0.0,
+   "on": "stub",
+   "net": "/SPI4_SWITCH1_CS_L"
+  },
+  "TP407": {
+   "x": 215.0,
+   "y": 56.75,
+   "moved_mm": 3.01,
+   "on": "stub",
+   "net": "/MCU and NVM/SPI2_FLASH_SCK"
+  },
+  "TP408": {
+   "x": 232.0367,
+   "y": 47.8886,
+   "moved_mm": 0.0,
+   "on": "stub",
+   "net": "/MCU and NVM/SPI2_FLASH_CS_L"
+  },
+  "TP409": {
+   "x": 184.6,
+   "y": 63.5263,
+   "moved_mm": 10.89,
+   "on": "copper",
+   "net": "/I2C0_TELEMETRY_SCL"
+  },
+  "TP410": {
+   "x": 197.6517,
+   "y": 60.5483,
+   "moved_mm": 14.44,
+   "on": "copper",
+   "net": "/I2C0_TELEMETRY_SDA"
+  },
+  "TP411": {
+   "x": 210.3296,
+   "y": 50.2229,
+   "moved_mm": 0.25,
+   "on": "stub",
+   "net": "/MCU and NVM/1V1_MCU_V11"
+  },
+  "TP412": {
+   "x": 233.5529,
+   "y": 51.7938,
+   "moved_mm": 0.53,
+   "on": "pour",
+   "net": "GND"
+  },
+  "TP413": {
+   "x": 213.5928,
+   "y": 61.0861,
+   "moved_mm": 2.0,
+   "on": "stub",
+   "net": "/SPI5_SWITCH2_SCK"
+  },
+  "TP414": {
+   "x": 204.5233,
+   "y": 67.8439,
+   "moved_mm": 2.93,
+   "on": "stub",
+   "net": "/SPI5_SWITCH2_MOSI"
+  },
+  "TP415": {
+   "x": 205.6291,
+   "y": 60.6408,
+   "moved_mm": 1.5,
+   "on": "stub",
+   "net": "/SPI5_SWITCH2_MISO"
+  },
+  "TP416": {
+   "x": 211.1931,
+   "y": 57.3931,
+   "moved_mm": 5.68,
+   "on": "copper",
+   "net": "/SPI5_SWITCH2_CS_L"
+  },
+  "TP417": {
+   "x": 217.8902,
+   "y": 57.8031,
+   "moved_mm": 0.25,
+   "on": "stub",
+   "net": "/SPI3_SWITCH3_SCK"
+  },
+  "TP418": {
+   "x": 221.4,
+   "y": 55.6,
+   "moved_mm": 1.13,
+   "on": "copper",
+   "net": "/SPI3_SWITCH3_MOSI"
+  },
+  "TP419": {
+   "x": 216.9391,
+   "y": 55.7391,
+   "moved_mm": 3.27,
+   "on": "copper",
+   "net": "/SPI3_SWITCH3_MISO"
+  },
+  "TP420": {
+   "x": 216.9636,
+   "y": 60.9136,
+   "moved_mm": 7.91,
+   "on": "copper",
+   "net": "/SPI3_SWITCH3_CS_L"
+  },
+  "TP501": {
+   "x": 146.0,
+   "y": 61.4,
+   "moved_mm": 7.19,
+   "on": "copper",
+   "net": "/INH"
+  },
+  "TP502": {
+   "x": 171.7,
+   "y": 56.9,
+   "moved_mm": 9.44,
+   "on": "copper",
+   "net": "/T1S_IRQ_L"
+  },
+  "TP503": {
+   "x": 157.25,
+   "y": 37.0,
+   "moved_mm": 0.25,
+   "on": "stub",
+   "net": "/MDIO0_T1S_MDC"
+  },
+  "TP504": {
+   "x": 159.3516,
+   "y": 36.3,
+   "moved_mm": 1.2,
+   "on": "copper",
+   "net": "/MDIO0_T1S_MDIO"
+  },
+  "TP505": {
+   "x": 164.75,
+   "y": 43.0,
+   "moved_mm": 0.0,
+   "on": "stub",
+   "net": "/RMII0_T1S_REF_CLK"
+  },
+  "TP506": {
+   "x": 194.3,
+   "y": 39.2,
+   "moved_mm": 8.28,
+   "on": "copper",
+   "net": "/RESET_L"
+  },
+  "TP507": {
+   "x": 173.0,
+   "y": 66.5,
+   "moved_mm": 3.91,
+   "on": "pour",
+   "net": "GND"
+  },
+  "TP601": {
+   "x": 73.7965,
+   "y": 117.788,
+   "moved_mm": 0.0,
+   "on": "stub",
+   "net": "/SW1_SNS"
+  },
+  "TP602": {
+   "x": 71.6267,
+   "y": 109.8267,
+   "moved_mm": 7.08,
+   "on": "copper",
+   "net": "/SW1_FLT_L"
+  },
+  "TP603": {
+   "x": 76.0,
+   "y": 107.592,
+   "moved_mm": 8.35,
+   "on": "copper",
+   "net": "/SPI4_SWITCH1_MISO"
+  },
+  "TP604": {
+   "x": 68.35,
+   "y": 110.25,
+   "moved_mm": 1.15,
+   "on": "copper",
+   "net": "/OUT1"
+  },
+  "TP605": {
+   "x": 80.9,
+   "y": 118.0195,
+   "moved_mm": 0.72,
+   "on": "pour",
+   "net": "/OUT2"
+  },
+  "TP606": {
+   "x": 77.65,
+   "y": 123.5,
+   "moved_mm": 1.5,
+   "on": "pour",
+   "net": "GND"
+  },
+  "TP701": {
+   "x": 148.4465,
+   "y": 117.788,
+   "moved_mm": 0.0,
+   "on": "stub",
+   "net": "/SW2_SNS"
+  },
+  "TP702": {
+   "x": 149.798,
+   "y": 105.302,
+   "moved_mm": 4.07,
+   "on": "copper",
+   "net": "/SW2_FLT_L"
+  },
+  "TP703": {
+   "x": 157.351,
+   "y": 114.575,
+   "moved_mm": 2.0,
+   "on": "stub",
+   "net": "/SPI5_SWITCH2_MISO"
+  },
+  "TP704": {
+   "x": 143.0,
+   "y": 110.25,
+   "moved_mm": 1.15,
+   "on": "copper",
+   "net": "/OUT3"
+  },
+  "TP705": {
+   "x": 155.55,
+   "y": 118.0,
+   "moved_mm": 0.74,
+   "on": "pour",
+   "net": "/OUT4"
+  },
+  "TP706": {
+   "x": 152.3,
+   "y": 123.5,
+   "moved_mm": 1.5,
+   "on": "pour",
+   "net": "GND"
+  },
+  "TP801": {
+   "x": 223.0965,
+   "y": 117.788,
+   "moved_mm": 0.0,
+   "on": "stub",
+   "net": "/SW3_SNS"
+  },
+  "TP802": {
+   "x": 221.1,
+   "y": 107.1846,
+   "moved_mm": 6.62,
+   "on": "copper",
+   "net": "/SW3_FLT_L"
+  },
+  "TP803": {
+   "x": 232.001,
+   "y": 114.575,
+   "moved_mm": 2.0,
+   "on": "stub",
+   "net": "/SPI3_SWITCH3_MISO"
+  },
+  "TP804": {
+   "x": 217.65,
+   "y": 110.25,
+   "moved_mm": 1.15,
+   "on": "copper",
+   "net": "/OUT5"
+  },
+  "TP805": {
+   "x": 230.2,
+   "y": 118.0,
+   "moved_mm": 0.74,
+   "on": "pour",
+   "net": "/OUT6"
+  },
+  "TP806": {
+   "x": 226.95,
+   "y": 123.5,
+   "moved_mm": 1.5,
+   "on": "pour",
+   "net": "GND"
+  }
+ },
+ "failed": []
+}

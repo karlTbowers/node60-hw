@@ -1,0 +1,405 @@
+[
+ {
+  "net": "/Power entry/DGATE",
+  "name": "DGATE west, F.Cu end to its B.Cu end",
+  "from": [
+   135.0,
+   72.5,
+   "F.Cu"
+  ],
+  "to": [
+   145.3,
+   62.2,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6,
+  "rip": false,
+  "pour_cost": 40
+ },
+ {
+  "net": "/Power entry/HGATE_G",
+  "name": "HGATE_G east, on F.Cu north of DGATE",
+  "from": [
+   173.9,
+   72.6,
+   "F.Cu"
+  ],
+  "to": [
+   161.2,
+   74.0,
+   "F.Cu"
+  ],
+  "layers": [
+   "F.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6,
+  "rip": false,
+  "pour_cost": 40
+ },
+ {
+  "net": "/Outputs 3-4/SW_VDD",
+  "name": "SW_VDD east lane to R701.2",
+  "from": [
+   171.8,
+   72.8,
+   "B.Cu"
+  ],
+  "to": [
+   209.2,
+   64.755,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12,
+  "rip": false,
+  "pour_cost": 40
+ },
+ {
+  "net": "/SW2_SNS",
+  "name": "SW2_SNS lane to the MCU",
+  "from": [
+   171.5,
+   72.3,
+   "B.Cu"
+  ],
+  "to": [
+   200.9291,
+   58.3148,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12,
+  "rip": false,
+  "pour_cost": 40
+ },
+ {
+  "net": "/SW_LHI",
+  "name": "SW_LHI lane to the net",
+  "from": [
+   171.2,
+   71.8,
+   "B.Cu"
+  ],
+  "to": [
+   163.3,
+   52.1,
+   "In2.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12,
+  "rip": false,
+  "pour_cost": 40
+ },
+ {
+  "net": "/NTC_SW2",
+  "name": "NTC_SW2 R707.2 to C707.1",
+  "from": [
+   205.3,
+   63.8125,
+   "B.Cu"
+  ],
+  "to": [
+   207.3,
+   63.15,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 4,
+  "rip": false,
+  "pour_cost": 40
+ },
+ {
+  "net": "/NTC_SW2",
+  "name": "NTC_SW2 lane to C707.1",
+  "from": [
+   170.9,
+   71.3,
+   "B.Cu"
+  ],
+  "to": [
+   207.3,
+   63.15,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12,
+  "rip": false,
+  "pour_cost": 40
+ },
+ {
+  "net": "/NTC_SW2",
+  "name": "NTC_SW2 ball F9 to R707.2",
+  "from": [
+   200.9291,
+   53.8898,
+   "B.Cu"
+  ],
+  "to": [
+   205.3,
+   63.8125,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6,
+  "rip": false,
+  "pour_cost": 40
+ },
+ {
+  "net": "/SPI5_SWITCH2_SCK",
+  "name": "SCK lane to the MCU",
+  "from": [
+   139.1,
+   72.8,
+   "B.Cu"
+  ],
+  "to": [
+   206.5291,
+   58.3148,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12,
+  "rip": false,
+  "pour_cost": 40
+ },
+ {
+  "net": "/Outputs 3-4/SW_VDD",
+  "name": "SW_VDD west lane to R701.2",
+  "from": [
+   138.8,
+   72.3,
+   "B.Cu"
+  ],
+  "to": [
+   209.2,
+   64.755,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12,
+  "rip": false,
+  "pour_cost": 40
+ },
+ {
+  "net": "/SW2_FLT_L",
+  "name": "SW2_FLT_L lane to the MCU",
+  "from": [
+   138.5,
+   71.8,
+   "B.Cu"
+  ],
+  "to": [
+   193.5,
+   62.8,
+   "In2.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12,
+  "rip": false,
+  "pour_cost": 40
+ },
+ {
+  "net": "/SPI5_SWITCH2_CS_L",
+  "name": "CS lane to ball G16",
+  "from": [
+   138.2,
+   71.3,
+   "B.Cu"
+  ],
+  "to": [
+   206.5291,
+   53.0898,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12,
+  "rip": false,
+  "pour_cost": 40
+ },
+ {
+  "net": "/SPI5_SWITCH2_MISO",
+  "name": "MISO lane to the MCU",
+  "from": [
+   137.9,
+   70.8,
+   "B.Cu"
+  ],
+  "to": [
+   202.2,
+   60.0,
+   "In2.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12,
+  "rip": false,
+  "pour_cost": 40
+ },
+ {
+  "net": "/SPI5_SWITCH2_MOSI",
+  "name": "MOSI lane to the MCU",
+  "from": [
+   137.6,
+   70.3,
+   "B.Cu"
+  ],
+  "to": [
+   190.8,
+   62.8,
+   "In2.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12,
+  "rip": false,
+  "pour_cost": 40
+ },
+ {
+  "net": "/I2C0_TELEMETRY_SCL",
+  "name": "I2C SCL, laid again clear of the lane tops",
+  "from": [
+   124.3,
+   71.2,
+   "B.Cu"
+  ],
+  "to": [
+   147.3,
+   71.2,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 8,
+  "rip": false,
+  "pour_cost": 40
+ }
+]

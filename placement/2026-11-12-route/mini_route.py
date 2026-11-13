@@ -11,9 +11,10 @@ the margin, 45-degree moves, a via where it is legal on every layer. It keeps th
   outer layers), 0.75 mm from T1S-class copper except inside T1S_PINS_U501 on B.Cu;
 - 0.2 mm from every other net's via hole and 0.35 mm from through-hole pads' holes (node60.kicad_dru), 0.25 mm
   hole to hole, 0.5 mm from the board edge;
-- F.Cu under a busbar only for that bar's net; nothing on F.Cu and no via in the T1S trunk corridor
+- F.Cu under the VBAT_IN busbar only for VBAT_IN, under the GND busbar for any net but a battery one (D33 B,
+  2026-11-12: VBAT*, OUT*, RS_SENSE*); nothing on F.Cu and no via in the T1S trunk corridor
   (x 133.4-176.6, y 44.8-47.2); under the crystals no via and no B.Cu track; In2.Cu only north of y 69.5
-  (the signal window). Supply pours retreat round new copper but cost extra per cell (an output's pour
+  (the signal window); no via of another net on the In3 VBAT_PROT finger to U301 (NOVIA). Supply pours retreat round new copper but cost extra per cell (an output's pour
   most), so they are crossed only where the way round is much longer, and by the shortest cut.
 A job with "to_plane": ["In1.Cu", "In4.Cu"] in place of "to" ends at the nearest legal via inside the net's own
 pour on one of those layers (a supply pad's join to its plane); "to_pour": true ends where the track reaches the
@@ -39,6 +40,11 @@ T1SPINS = area.get("T1S_PINS_U501", Polygon())
 UNDER = unary_union([area.get("UNDER_Y401", Polygon()), area.get("UNDER_Y501", Polygon())])
 CORRIDOR = box(133.4, 44.8, 176.6, 47.2)
 BARS = [(n.replace("BUSBAR_", ""), g) for n, g in area.items() if n.startswith("BUSBAR_")]
+# Narrow fingers of a supply plane that a row of signal vias would cut (2026-11-12: seven vias cut the 1.2 mm In3
+# VBAT_PROT finger to U301 and C301, x 163.2-164.4, y 47-71; the keep-outs of D17 A let vias pass). No via of
+# another net within 0.4 mm of it.
+NOVIA = [[162.8, 46.6, 164.8, 71.4, "VBAT_PROT"]]
+BATT = lambda n: "VBAT" in n or n.startswith("/OUT") or "RS_SENSE" in n      # node60.kicad_dru: no battery-net track on F.Cu under the GND bar
 e = C["edge"]; EDGE = box(e[0] + 0.5, e[1] + 0.5, e[2] - 0.5, e[3] - 0.5)
 
 # copper per layer: (geometry, net, is_t1s); holes: (geometry, net)
@@ -112,8 +118,8 @@ def route(job, soft=False):
             b |= shapely.contains_xy(UNDER.buffer(w / 2 + SAFE), xs, ys)
         if l == "F.Cu":
             b |= shapely.contains_xy(CORRIDOR.buffer(w / 2 + SAFE), xs, ys)
-            for bn, bg in BARS:
-                if bn not in net: b |= shapely.contains_xy(bg.buffer(w / 2 + SAFE), xs, ys)
+            for bn, bg in BARS:                      # the VBAT_IN bar: its own net only. The GND bar (D33 B): any net but a battery one
+                if (bn not in net) if bn != "GND" else BATT(net): b |= shapely.contains_xy(bg.buffer(w / 2 + SAFE), xs, ys)
         if l == "In2.Cu":
             b |= ys > 69.5
         for av in job.get("avoid", []):              # [x0, y0, x1, y1, [layers]]: no copper of this job here
@@ -138,6 +144,8 @@ def route(job, soft=False):
         vb |= mask([g for g, n, t in near[l] if n != net and not t], xs, ys, vr)
         vb |= mask([g for g, n, t in near[l] if t], xs, ys, vd / 2 + 0.75 + SAFE)
     vb |= mask([g for g, n in hl], xs, ys, vdr / 2 + 0.25 + SAFE) & ~mask([g for g, n in hl if n == net], xs, ys, 0.0)
+    for nv in NOVIA + job.get("no_via", []):         # [x0, y0, x1, y1]: no via of another net here (a narrow plane finger)
+        if net not in nv[4:]: vb |= (xs >= nv[0] - vd / 2) & (xs <= nv[2] + vd / 2) & (ys >= nv[1] - vd / 2) & (ys <= nv[3] + vd / 2)
     if soft:                                         # a via may not land on copper that would have to be ripped
         for l in LAYERS: vb |= mask([g for g, n, sg in softs[l]], xs, ys, vr)
     if plane:                                        # goal cells: a legal via site inside the net's own fill on a plane layer

@@ -1,7 +1,7 @@
 {
  "block": "crystal",
  "anchor": "Y401",
- "approved": "2026-11-02 (D07)",
+ "approved": "2026-11-02 (D07); TP407 re-posed 2026-11-12 (D34, routing run)",
  "anchor_pose": {
   "x": 190.529,
   "y": 52.44,
@@ -38,12 +38,12 @@
   },
   "TP407": {
    "dx": -21.471,
-   "dy": -4.56,
+   "dy": -5.56,
    "rot": 180.0,
    "side": "B",
    "role": "flex",
    "flex_mm": 0,
-   "why": "SPI2_FLASH_SCK test point, moved from 2.2 mm beside the oscillator to (212, 57), 7 mm away and clear of U401's courtyard (NXP \u00a73.2: clocks away from the crystal)."
+   "why": "SPI2_FLASH_SCK test point, moved from 2.2 mm beside the oscillator to (212, 57), 7 mm away and clear of U401's courtyard (NXP \u00a73.2: clocks away from the crystal). Routing run 2026-11-12 (D35-8): put back after routing, on its own net's copper where a free spot was."
   },
   "Y401": {
    "role": "core",

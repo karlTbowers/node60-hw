@@ -1,0 +1,82 @@
+{
+ "id": "c0",
+ "title": "SW_LHI at U401 ball G6",
+ "why": "The bulk router put a 0.45 mm via in ball G6's pad, 0.06 mm from C402's 1V5_CORE and GND vias. Replaced by the board's 0.35/0.20 mm via in the ball's free escape cell (south-west), as every other ball under U401.",
+ "delete": [
+  {
+   "via": [
+    198.5291,
+    53.0898
+   ]
+  },
+  {
+   "seg": [
+    198.5291,
+    53.0898,
+    198.479,
+    53.14
+   ]
+  },
+  {
+   "seg": [
+    198.5,
+    53.1,
+    198.4,
+    53.1
+   ]
+  },
+  {
+   "seg": [
+    198.4,
+    53.1,
+    197.6,
+    53.9
+   ]
+  }
+ ],
+ "tracks": [
+  {
+   "net": "/SW_LHI",
+   "layer": "B.Cu",
+   "w": 0.1,
+   "pts": [
+    [
+     198.5291,
+     53.0898
+    ],
+    [
+     198.1291,
+     53.4898
+    ]
+   ]
+  },
+  {
+   "net": "/SW_LHI",
+   "layer": "In2.Cu",
+   "w": 0.15,
+   "pts": [
+    [
+     198.1291,
+     53.4898
+    ],
+    [
+     197.719,
+     53.9
+    ],
+    [
+     197.6,
+     53.9
+    ]
+   ]
+  }
+ ],
+ "vias": [
+  {
+   "net": "/SW_LHI",
+   "x": 198.1291,
+   "y": 53.4898,
+   "d": 0.35,
+   "drill": 0.2
+  }
+ ]
+}

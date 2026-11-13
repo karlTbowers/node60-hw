@@ -1,0 +1,542 @@
+[
+ {
+  "net": "/SPI5_SWITCH2_SCK",
+  "name": "/SPI5_SWITCH2_SCK Track to Track",
+  "from": [
+   139.1,
+   72.8,
+   "B.Cu"
+  ],
+  "to": [
+   206.5291,
+   58.3148,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/Outputs 3-4/SW_VDD",
+  "name": "/Outputs 3-4/SW_VDD U701.3 to Track",
+  "from": [
+   155.2,
+   110.625,
+   "B.Cu"
+  ],
+  "to": [
+   147.8,
+   100.3,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/Outputs 3-4/SW_VDD",
+  "name": "/Outputs 3-4/SW_VDD R701.2 to Track",
+  "from": [
+   209.2,
+   64.755,
+   "B.Cu"
+  ],
+  "to": [
+   171.8,
+   72.8,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/SW2_FLT_L",
+  "name": "/SW2_FLT_L Track to Track",
+  "from": [
+   138.5,
+   72.8,
+   "B.Cu"
+  ],
+  "to": [
+   196.8,
+   59.5,
+   "In2.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/SPI5_SWITCH2_CS_L",
+  "name": "/SPI5_SWITCH2_CS_L Track to U401.G16",
+  "from": [
+   138.2,
+   72.8,
+   "B.Cu"
+  ],
+  "to": [
+   206.5291,
+   53.0898,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/SPI5_SWITCH2_MISO",
+  "name": "/SPI5_SWITCH2_MISO Track to Track",
+  "from": [
+   202.2,
+   60.0,
+   "In2.Cu"
+  ],
+  "to": [
+   137.9,
+   72.8,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/SPI5_SWITCH2_MOSI",
+  "name": "/SPI5_SWITCH2_MOSI Track to Track",
+  "from": [
+   190.8,
+   62.8,
+   "In2.Cu"
+  ],
+  "to": [
+   137.6,
+   72.8,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/SW2_SNS",
+  "name": "/SW2_SNS Track to Track",
+  "from": [
+   171.5,
+   72.8,
+   "B.Cu"
+  ],
+  "to": [
+   200.9291,
+   58.3148,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/SW_LHI",
+  "name": "/SW_LHI Track to Track",
+  "from": [
+   171.2,
+   72.8,
+   "B.Cu"
+  ],
+  "to": [
+   163.3,
+   52.1,
+   "In2.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/NTC_SW2",
+  "name": "/NTC_SW2 Track to Track",
+  "from": [
+   165.3,
+   35.8,
+   "In2.Cu"
+  ],
+  "to": [
+   170.9,
+   72.8,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/NTC_SW2",
+  "name": "/NTC_SW2 R707.2 to C707.1",
+  "from": [
+   205.3,
+   63.8125,
+   "B.Cu"
+  ],
+  "to": [
+   207.3,
+   63.15,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/NTC_SW2",
+  "name": "/NTC_SW2 C707.1 to Track",
+  "from": [
+   207.3,
+   63.15,
+   "B.Cu"
+  ],
+  "to": [
+   200.9,
+   54.8,
+   "In2.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/NTC_RSENSE",
+  "name": "/NTC_RSENSE C216.1 to R212.2",
+  "from": [
+   180.55,
+   70.0,
+   "B.Cu"
+  ],
+  "to": [
+   185.25,
+   69.2125,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/NTC_RSENSE",
+  "name": "/NTC_RSENSE C216.1 to RT201.1",
+  "from": [
+   180.55,
+   70.0,
+   "B.Cu"
+  ],
+  "to": [
+   150.95,
+   87.2,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/NTC_RSENSE",
+  "name": "/NTC_RSENSE Track to R212.2",
+  "from": [
+   184.9,
+   64.7,
+   "B.Cu"
+  ],
+  "to": [
+   185.25,
+   69.2125,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/Power entry/HGATE_G",
+  "name": "/Power entry/HGATE_G Track to Track",
+  "from": [
+   137.15,
+   80.35,
+   "F.Cu"
+  ],
+  "to": [
+   156.95,
+   71.5,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/MCU and NVM/SWD_SWO",
+  "name": "/MCU and NVM/SWD_SWO J401.6 to U401.G8",
+  "from": [
+   199.9624,
+   42.3321,
+   "F.Cu"
+  ],
+  "to": [
+   200.1291,
+   53.0898,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/SW1_SNS",
+  "name": "/SW1_SNS Track to Track",
+  "from": [
+   101.7,
+   80.5,
+   "F.Cu"
+  ],
+  "to": [
+   92.3,
+   96.2,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/SW3_FLT_L",
+  "name": "/SW3_FLT_L Track to Track",
+  "from": [
+   217.6,
+   89.8,
+   "F.Cu"
+  ],
+  "to": [
+   202.3,
+   65.0,
+   "F.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12.0,
+  "rip": false,
+  "pour_cost": 40.0
+ },
+ {
+  "net": "/Power entry/RS_SENSE_P",
+  "name": "/Power entry/RS_SENSE_P U202.10 to R210.1",
+  "from": [
+   158.5,
+   78.8,
+   "B.Cu"
+  ],
+  "to": [
+   156.145,
+   77.35,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 12.0,
+  "rip": false,
+  "pour_cost": 40.0
+ }
+]

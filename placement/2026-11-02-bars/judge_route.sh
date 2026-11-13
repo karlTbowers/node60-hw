@@ -5,7 +5,7 @@
 # 0.45/0.25 mm via; signals on F.Cu and B.Cu only, the inner layers planes (D12-1 A: In1 and In4
 # GND, In2 and In3 VBAT_PROT); the T1S pair is never ripped by later passes, and no rip-anything
 # pass (route_open.sh retired, D12-7). --fab-tier standard and --escalation off everywhere,
-# so no step goes below the board's sizes: a net that can't route at them stays open and shows. The busbar areas get native track keep-outs (D01: tented vias allowed). J901 is on
+# so no step goes below the board's sizes: a net that can't route at them stays open and shows. The VBAT_IN busbar area gets a native track keep-out (D01: tented vias allowed; the GND bar's area too until D33 B, 2026-11-12, which opened F.Cu under it to signal tracks). J901 is on
 # its own net, VBAT_IN_DOWNSTREAM, joined to VBAT_IN only by the busbar net tie BB901 (D02), so the
 # router lays no copper in parallel with the bar. Graded by grade_route.py against node60.kicad_pro/.kicad_dru.
 set -e
@@ -19,13 +19,13 @@ mkdir -p $OUT
 printf "step\twall_s\tuser_s\tsys_s\tmaxrss_mb\n" > $OUT/timing.tsv
 RUN_T0=$(date +%s)
 python3 - $IN $OUT/s0.kicad_pcb <<'PY'
-import re, sys
+import os, re, sys
 s = open(sys.argv[1]).read()
 for m in reversed(list(re.finditer(r'\n\t\(footprint "(?:DropOut_Busbar:)?Busbar_[^"]*"[\s\S]*?\n\t\)', s))):   # bar footprints out (KRT counts them as overlapping the REDCUBEs)
     s = s[:m.start()] + s[m.end():]
 for m in reversed(list(re.finditer(r'\n\t\(zone\n[\s\S]*?\n\t\)', s))):                      # bar areas: no tracks
     z = m.group(0)
-    if '(name "BUSBAR_' in z:
+    if '(name "BUSBAR_VBAT_IN"' in z or ('(name "BUSBAR_' in z and os.environ.get("BARS_CLOSED")):   # D33 B (2026-11-12): signals may run on F.Cu under the GND bar; BARS_CLOSED=1 closes both as before
         s = s[:m.start()] + z.replace("(tracks allowed)", "(tracks not_allowed)") + s[m.end():]
 # A custom pad whose only copper is one ring (gr_circle, fill no) -- the REDCUBE terminals' pad 1 --
 # becomes a round pad of the ring's outer diameter at the ring's centre. KRT turns each ring into a

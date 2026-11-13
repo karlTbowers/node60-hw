@@ -204,7 +204,8 @@ KiCad's syntax check reports no errors. Until D28 it noted that "T1S pairs match
 
 | Rule | What it does | Why |
 |---|---|---|
-| F.Cu under the VBAT_IN / GND busbar | Only the bar's own net(s) in F.Cu tracks and pours under each bar; tented vias of any net allowed | The bars rest on the board (DEC-023, DEC-025; D01) |
+| F.Cu under the VBAT_IN busbar | Only VBAT_IN in F.Cu tracks and pours under the bar; tented vias of any net allowed | The bar rests 0.6 mm above the board on the REDCUBE spigots (DEC-023, DEC-025; D01) |
+| F.Cu under the GND busbar | No pour of another net, and no track of a battery net (class PWR_BATT, VBAT_FILT, RS_SENSE_P/N); signal tracks of other nets may run there under solder mask; tented vias of any net allowed | Since placement decision D33 B (2026-11-12): the worst fault under this bar is a signal shorted to GND, and without it signals in the power band had only B.Cu, which is power pour there. Until then only GND was allowed |
 | No vias on the MCU crystal nets | XTAL/EXTAL traces without vias | NXP S32K3 hardware design guidelines (D07) |
 | Tracks under 0.15 mm only in the U401/U501 escape areas | 0.10 mm tracks only where the BGA and PHY need them | D12 |
 | Escape areas: 0.1 mm track and clearance on the outer layers | 0.10 / 0.10 mm in ESCAPE_U401, ESCAPE_U501 | JLCPCB 1 oz: 0.09 mm |

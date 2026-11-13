@@ -1,0 +1,3 @@
+{"id": "c7h", "title": "SW2_SNS's first diagonal 0.12 mm west", "why": "It passed NTC_SW3's via at 0.097 mm, 3 um short of the escape area's 0.1 mm.",
+ "delete": [{"seg": [200.91, 58.32, 200.9, 58.32]}, {"seg": [200.9, 58.32, 198.9, 60.32]}, {"seg": [198.9, 60.32, 192.35, 60.32]}],
+ "tracks": [{"net": "/SW2_SNS", "layer": "F.Cu", "w": 0.1, "pts": [[200.91, 58.32], [200.78, 58.32], [198.78, 60.32], [192.35, 60.32]]}], "vias": []}

@@ -14,10 +14,22 @@
 	(condition "A.intersectsArea('BUSBAR_VBAT_IN') && A.NetName != '/VBAT_IN'")
 	(constraint disallow track zone))
 
-(rule "F.Cu under the GND busbar: GND only"
+# Under the GND bar (placement decision D33 B, user, 2026-11-12): signal tracks of other nets may run on
+# F.Cu, covered by solder mask like the vias of D01; the worst fault there is a signal shorted to GND.
+# No other net's pour, and no track of a battery net: class PWR_BATT (VBAT_IN, VBAT_D, VBAT_Q2D,
+# VBAT_PROT, OUT1-6), VBAT_FILT, and the shunt's sense lines RS_SENSE_P/N, which sit at battery
+# potential with no resistor in the way (ahead of the load-disconnect FETs, so only the harness fuse
+# would clear a short). Until D33 only GND was allowed, which left signals in the power band B.Cu
+# alone, and B.Cu there is power pour. The VBAT_IN bar's rule above is unchanged.
+(rule "F.Cu under the GND busbar: no other net's pour"
 	(layer "F.Cu")
 	(condition "A.intersectsArea('BUSBAR_GND') && A.NetName != 'GND'")
-	(constraint disallow track zone))
+	(constraint disallow zone))
+
+(rule "F.Cu under the GND busbar: no battery-net tracks"
+	(layer "F.Cu")
+	(condition "A.intersectsArea('BUSBAR_GND') && (A.NetClass == 'PWR_BATT' || A.NetName == 'VBAT_FILT' || A.NetName == '/Power entry/RS_SENSE_P' || A.NetName == '/Power entry/RS_SENSE_N')")
+	(constraint disallow track))
 
 # MCU crystal (NXP S32K3 Hardware Design Guidelines Rev E2, §3.2): the traces between XTAL/EXTAL, the
 # crystal and its load capacitors are as short as possible and use no via (placement decision D07).
