@@ -3,8 +3,8 @@
 Asked by the user on 2026-11-13: "kick off another session to add the series resistors on the SPI bus"
 (the kicad-happy review's open note under CK-002: no series resistor on any SPI clock). Taken by Claude from the
 sources below; none changes a `DEC-*` or anything `CLAUDE.md` records as decided, no part moved, and
-`node60.kicad_dru` and `node60.kicad_pro` are untouched. Each entry says how to undo it. S03 is open and is the
-user's: its page is `decisions/S03-sdo-resistor.json`.
+`node60.kicad_dru` and `node60.kicad_pro` are untouched. Each entry says how to undo it. S03 was put to the user and
+answered on 2026-11-13 (A, keep 33 Ω): its page is `decisions/S03-sdo-resistor.json`.
 
 **S01. Which lines get a resistor: all four lines of each output-switch bus, and the log flash's SCK. 13 parts.**
 - The DropOut handbook (v0.10.0, chapter 05) has no rule on series resistors, so nothing here disagrees with it.
@@ -36,11 +36,13 @@ matched termination: the resistor limits edge current and what a transient on th
 RC cost: 33 Ω into about 35 pF (212 mm of line, a pin, two test points; estimated) is 1.2 ns.
 Undo: change the `Value`/MPN of the 13 symbols (and add the 22 Ω part to the library first); same footprint.
 
-**S03. OPEN, the user's: SDO's resistor, 33 Ω (as fitted) or TI's RSDO 768 Ω.**
+**S03 A (user, 2026-11-13: "Keep 33 Ω"): SDO's resistor stays 33 Ω, not TI's RSDO 768 Ω.**
 TI's Table 9-1 gives RSDO 768 Ω, "Higher values to increase the total resistance to MCU VDD to 768 Ω for ground
 loss detection", and Table 8-5 lists "Loss of GND: protection Y, with RSDO ≥ 768 Ω". Each Node60 switch is the
 last (only) device on its bus, so the note applies to R608/R708/R808. 768 Ω into the line's capacitance slows
-SDO: about 5 MHz SPI clock at most on the longest bus instead of 8. Fitted now: 33 Ω. Same footprint either way.
+SDO: about 5 MHz SPI clock at most on the longest bus instead of 8. Fitted: 33 Ω. Same footprint either way.
+What A leaves: TI's condition for its loss-of-ground protection (RSDO ≥ 768 Ω) is not met on SDO, so that case
+rests on the board's ground (planes, the GND bar) and is not claimed from TI's table.
 Page: `decisions/S03-sdo-resistor.json` (published as a private Artifact; link in REPORT.md).
 Undo / change: the `Value` and MPN of one symbol on the output-switch sheet (a 768 Ω 0402 goes into the library).
 

@@ -2,8 +2,8 @@
 
 Asked by the user: "kick off another session to add the series resistors on the SPI bus", the note the
 kicad-happy review left under CK-002 (no series resistor on any SPI clock). Decisions taken on the way, each
-with its source and its undo: `decisions/log.md` (S01 to S05). **One is open and the user's, S03**: the value
-of the SDO resistor, 33 Ω as fitted or TI's 768 Ω. Page: https://claude.ai/artifact/Lg5kELfNjbfz8ujCLtS6cZ
+with its source and its undo: `decisions/log.md` (S01 to S05). **S03 was the user's and is answered (2026-11-13): A, the SDO
+resistor stays 33 Ω**, not TI's 768 Ω. Page: https://claude.ai/artifact/Lg5kELfNjbfz8ujCLtS6cZ
 (private; source `decisions/S03-sdo-resistor.json`).
 
 ## Where it ended
@@ -90,7 +90,8 @@ not a requirement; GATE-OUT-02 is where the working clock gets set. With 768 Ω 
 
 ## Left for the user
 
-1. **S03**: A (33 Ω, fitted) or B (768 Ω) on SDO. Nothing waits on it; the footprint is the same.
+1. **S03**: answered 2026-11-13, A: 33 Ω stays on SDO. TI's loss-of-ground condition (RSDO ≥ 768 Ω) is not met;
+   the footprint is the same if that is wanted later.
 2. `mcu-config.yaml` does not set the SPI pads' drive strength. It now notes NXP's timing condition (DSE = 1,
    SRC = 0); choosing the setting is firmware's.
 3. 22 Ω (TI's typical RSPI) instead of 33 Ω would need AC0402JR-0722RL in the library (S02); not proposed.
