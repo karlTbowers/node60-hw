@@ -52,7 +52,7 @@ that fits**: it has the same 0.10 mm ring as the board's default via, so it leav
   Growing them widens their antipads in the battery pours and planes: VBAT_D 0.298 -> 0.299 mΩ (outer layers
   0.717 -> 0.720), OUT3 1.579 -> 1.580 mΩ, VBAT_PROT to U701 10.58 -> 10.59 mV at 20 A. The task's rule was
   that no supply path gets worse, so they stay; `specs/n2_band_option.json` applies them
-  (`apply_fix.py BOARD specs/n2_band_option.json OUT`, DRC clean) if the user prefers the ring. The enlarged
+  (`apply_fix.py BOARD specs/n2_band_option.json OUT`, DRC clean) if the ring is ever preferred. **User, 2026-11-13: "Leave them small"; settled.** The enlarged
   vias in the west and east output cells cost nothing measurable and are in.
 - 24 supply vias that `power_shapes.json` lists changed size; their points moved to groups of the new size.
 Undo: leave `specs/n2_resize.json` out of `build.sh`.

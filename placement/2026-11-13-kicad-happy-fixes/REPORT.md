@@ -102,8 +102,8 @@ from their part (F05). The remaining 19 warnings are footprint graphics.
 
 ## Left for the user
 
-1. The JLCPCB question above, and with it whether to apply `specs/n2_band_option.json` (24 power-band vias
-   to a 0.10 mm ring for +0.001 mΩ on VBAT_D).
+1. The JLCPCB question above. The 24 power-band vias stay 0.35/0.20 mm (user, 2026-11-13: "Leave them
+   small"); `specs/n2_band_option.json` remains as the fallback if JLCPCB refuses the 0.075 mm ring.
 2. The 19 silk warnings need footprint or part changes: the AT13/ATM13 footprints' body outline beyond the
    board edge (library), and R605/R705/R805 0.15 mm further from their switch's pin 1 marker (or the marker
    moved in the library footprint).
