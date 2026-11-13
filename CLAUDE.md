@@ -58,13 +58,13 @@ One-time exceptions, decided by the user on 2026-10-22 when the first complete a
 
 The next architecture revision is **Rev B**.
 
-Temporary, decided by the user on 2026-10-30 (PR #21):
+Temporary, decided by the user on 2026-10-30 (PR #21), **ended 2026-11-12** (user, once the board was fully routed):
 
-- **Unrouted connections are DRC warnings, not errors**, while layout is in progress: `node60.kicad_pro` sets `rule_severities.unconnected_items` to `warning`, so CI's DRC (errors fail, chapter 06) passes on an unrouted board while every other DRC and parity error still fails. Set it back to `error` (delete the override) before routing is signed off and before any `rev-*` tag. If KiCad is open on the project, saving the board settings may rewrite this; check the diff.
+- While layout was in progress, unrouted connections were DRC warnings, not errors: `node60.kicad_pro` set `rule_severities.unconnected_items` to `warning`, so CI's DRC (errors fail, chapter 06) passed on an unrouted board. The override was deleted on 2026-11-12; unrouted connections fail CI again, as the handbook asks. If KiCad is open on the project, saving the board settings rewrites `rule_severities` in full; check the diff.
 
 ## Routing status (2026-11-12)
 
-**The board is fully routed** (routing run `placement/2026-11-12-route/`: REPORT.md, `decisions/log.md` D33 to D36). DRC 0 errors, 0 unconnected items, parity 0, all 62 test points joined. `unconnected_items` is still a warning in `node60.kicad_pro`: set it back to `error` at routing sign-off (the user's).
+**The board is fully routed** (routing run `placement/2026-11-12-route/`: REPORT.md, `decisions/log.md` D33 to D36). DRC 0 errors, 0 unconnected items, parity 0, all 62 test points joined. `unconnected_items` is an error again since 2026-11-12 (user): the override in `node60.kicad_pro` is gone, so CI fails on any unrouted connection.
 
 - **Decision D36 A (user, 2026-11-12): U201 pin 2 (VBAT_IN, the LM74910's anode sense) is joined with no rule change.** It runs on B.Cu from the pin between R204's pads to a via at (147.9, 71.6) and from there in a 0.6 mm VBAT_IN pour finger on In2 (zone `PWR_VBAT_IN_U201_In2`, y 70.2 to 70.8, x 135.6 to 148.2; `power_shapes.json`) under the west channel's lines to the west VBAT_IN pour. LM_SW and LM_UVLO's R204 to R205 link are on F.Cu with vias in their pads. Don't put a via on the finger.
 - The UART debug lines leave U401 through tight gaps (TX in the channel between balls E16 and D16, RX out of the east edge between two 0.35/0.20 mm vias, 0.225 mm hole clearance and 0.11 mm copper at the pinch): check them first if anything near balls D15 to E17 moves. C510 reaches VDDAU_AON by a 12 mm F.Cu loop round U301 (connected, poor as decoupling).

@@ -72,9 +72,7 @@
           "thermal_relief_spoke_width": 0.5
         }
       },
-      "rule_severities": {
-        "unconnected_items": "warning"
-      },
+      "rule_severities": {},
       "rules": {
         "min_clearance": 0.1,
         "min_track_width": 0.1,
