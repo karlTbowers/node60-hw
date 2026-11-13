@@ -1,0 +1,40 @@
+{
+ "id": "S03",
+ "name": "SDO series resistor",
+ "question": "Which resistor goes in each output switch's SDO line: 33 Ω like the other SPI lines, or TI's 768 Ω RSDO?",
+ "board": "node60",
+ "stage": "SPI series resistors",
+ "date": "2026-11-13",
+ "why_now": "The series resistors you asked for are on the schematic and the routed board (13 parts, DRC clean). TI's data sheet gives two values for the one in SDO, for two different purposes, and does not say enough to pick between them from the page.\n\nNothing waits on the answer: R608, R708 and R808 are fitted as 33 Ω now, and the other value is the same 0402 footprint, so this changes one symbol's value and the bill of materials, not the board.",
+ "facts": [
+  {"label": "What TI draws", "value": "Figure 9-1 puts `RSPI` in CSN, SDI and SCLK, and \"RSPI or (RSDO if last in daisy chain)\" in SDO. Each Node60 switch is alone on its bus (DEC-018), so it is the last device and the note applies to all three.", "source": "TPS2HCS08-Q1 data sheet SLVSHR0 (May 2025), Figure 9-1"},
+  {"label": "RSPI", "value": "22 Ω typical, \"(Optional) For EMI or other transient limits on the SPI pins\".", "source": "SLVSHR0 Table 9-1"},
+  {"label": "RSDO", "value": "768 Ω, \"Higher values to increase the total resistance to MCU VDD to 768 Ω for ground loss detection\". The fault table lists \"Loss of GND: protection Y, with RSDO ≥ 768 Ω\". The data sheet says no more about the mechanism.", "source": "SLVSHR0 Table 9-1 and Table 8-5"},
+  {"label": "Node60's ground", "value": "Each switch's GND pin goes straight to the ground plane the MCU also uses; there is no RGND/DGND network (the LM74910H blocks reverse battery at the input instead).", "source": "sheets/output-switch.kicad_sch; DEC-016"},
+  {"label": "SDO timing", "value": "SDO is valid 30 ns after SCLK's rising edge at most (TI §6.6, with 30 pF and 220 Ω); the S32K344 wants it 25 ns before it samples (LPSPI controller tSU, NXP data sheet Table 47). In mode 1 that leaves 62.5 ns at 8 MHz for 30 + 25 ns, the flight out and back (2.9 ns on the 212 mm bus) and the resistor's RC.", "source": "SLVSHR0 §6.6; S32K3xx data sheet Rev. 14 §12.1"},
+  {"label": "Line capacitance", "value": "About 35 pF on the longest bus (U601: 212 mm of 0.15 mm track, the MCU pin, two test points), 27 pF on U701's, 18 pF on U801's. Estimated, not measured.", "source": "checks/measure.md for the lengths; 0.12 pF/mm assumed"}
+ ],
+ "options": [
+  {"key": "A", "name": "33 Ω, as fitted", "summary": "SDO gets the same source resistor as SCK, MOSI and CS_L. This is TI's RSPI purpose (edge and transient limiting) with the board's existing 33 Ω part.",
+   "images": [{"path": "img/r608.png", "caption": "R608 on B.Cu beside U601's SDO pin (bottom side, as KiCad plots it): 1.7 mm of track from pin 14, before test point TP603. R708 and R808 stand the same way at U701 and U801."}],
+   "measures": [
+    {"label": "RC on the longest bus", "value": "1.2 ns", "limit": "", "status": "info"},
+    {"label": "SPI clock the data sheets allow (U601's bus)", "value": "8 MHz, about 3.5 ns to spare", "limit": "8 MHz (DEC-018 maximum)", "status": "pass"},
+    {"label": "TI's loss-of-ground condition (RSDO ≥ 768 Ω)", "value": "not met", "limit": "", "status": "warn"},
+    {"label": "New library part", "value": "none", "limit": "", "status": "pass"}],
+   "gains": ["All four lines alike; 8 MHz stays possible on every bus.", "No new part."],
+   "costs": ["TI's table does not credit loss-of-ground protection without RSDO ≥ 768 Ω."]},
+  {"key": "B", "name": "768 Ω (TI's RSDO)", "summary": "R608, R708 and R808 become 768 Ω, 1 %, 0402 (a new library part). SCK, MOSI and CS_L keep 33 Ω.",
+   "images": [{"path": "img/ti_fig_9-1_spi.png", "caption": "TI's Figure 9-1, the SPI lines: RSPI in three of them, RSPI or RSDO in the SDO line (second from the top, MCU SDI to device SDO)."}],
+   "measures": [
+    {"label": "RC on the longest bus", "value": "27 ns", "limit": "", "status": "info"},
+    {"label": "SPI clock the data sheets allow (U601's bus)", "value": "about 5 MHz (estimate; 4 MHz with margin)", "limit": "8 MHz (DEC-018 maximum)", "status": "warn"},
+    {"label": "TI's loss-of-ground condition (RSDO ≥ 768 Ω)", "value": "met", "limit": "", "status": "pass"},
+    {"label": "New library part", "value": "one (768 Ω 0402, AEC-Q200)", "limit": "", "status": "info"}],
+   "gains": ["Meets the condition TI attaches to its loss-of-ground line.", "A slower SDO edge on the three longest lines of the board."],
+   "costs": ["SPI clock limited to about 4 to 5 MHz on the switch buses (a 32-bit frame then takes 8 µs instead of 4); firmware sets `spi-max-frequency` to match.", "One more BOM line and a library part."]}
+ ],
+ "recommendation": {"option": "A", "why": "No clear winner from the data sheet alone. A is fitted because it is what the request was about (edge control on the SPI lines), keeps the bus as DEC-018 describes it, and B can replace it at any time without touching the board.\n\nIf loss of a switch's ground is a fault Node60 has to ride through, B is the cheap way to have TI's condition met, and 4 MHz is plenty for these switches. It would be worth asking TI what the 768 Ω does when the switch and the MCU share one ground plane, as they do here; the data sheet's two lines do not say."},
+ "answer": "Reply in the session with A or B (or a change to either). A needs nothing further. B: the 768 Ω part is added to the library, the output-switch sheet's R?08 takes it, and the SPI maximum in DEC-018's firmware notes drops.",
+ "sources": ["TI TPS2HCS08-Q1 data sheet, SLVSHR0, May 2025: Figure 9-1, Table 9-1, Table 8-5, §6.6", "NXP S32K3xx data sheet, Rev. 14, April 2026: §12.1 Table 47 (LPSPI)", "placement/2026-11-13-spi-series-r/REPORT.md and decisions/log.md (S01 to S05)"]
+}

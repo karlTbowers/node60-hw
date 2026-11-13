@@ -48,8 +48,8 @@ The schematic and this site follow the naming rules adopted on 2026-10-22 (handb
 | TMP175 ALERT | `TMP175_ALERT_L` |
 | LHI | `SW_LHI` (MCU PTE4, pulled low on each switch) |
 | SNS (×3) | `SW1_SNS`, `SW2_SNS`, `SW3_SNS` |
-| Switch SPI, one bus per switch (DEC-018) | `SPI4_SWITCH1_*` (U601), `SPI5_SWITCH2_*` (U701), `SPI3_SWITCH3_*` (U801); each `_SCK`, `_MOSI`, `_MISO`, `_CS_L` |
-| Flash SPI | `SPI2_FLASH_SCK`, `SPI2_FLASH_MOSI`, `SPI2_FLASH_MISO`, `SPI2_FLASH_CS_L` |
+| Switch SPI, one bus per switch (DEC-018) | `SPI4_SWITCH1_*` (U601), `SPI5_SWITCH2_*` (U701), `SPI3_SWITCH3_*` (U801); each `_SCK`, `_MOSI`, `_MISO`, `_CS_L`. Each line has a 33 Ω series resistor at its driver (2026-11-13): R409–R417 at U401 on SCK, MOSI and CS_L, where the short net from the ball to the resistor is `<line>_MCU`; R608 / R708 / R808 at each switch's SDO pin, where it is `SW_SDO` |
+| Flash SPI | `SPI2_FLASH_SCK`, `SPI2_FLASH_MOSI`, `SPI2_FLASH_MISO`, `SPI2_FLASH_CS_L`. SCK has a 33 Ω series resistor at U401 (R418; `SPI2_FLASH_SCK_MCU` from the ball to it) |
 | Shared I²C | `I2C0_TELEMETRY_SCL`, `I2C0_TELEMETRY_SDA` |
 | RMII / MDIO | `RMII0_T1S_*`, `MDIO0_T1S_MDC`, `MDIO0_T1S_MDIO` |
 | T1S pair | `T1S_P`, `T1S_N` |

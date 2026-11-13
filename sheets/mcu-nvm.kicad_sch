@@ -10,6 +10,243 @@
 		(comment 1 "Architecture Rev A")
 	)
 	(lib_symbols
+		(symbol "DropOut_Resistor:AC0402JR-0733RL"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.54 2.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "33R"
+				(at 2.54 0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Yageo AC thick film chip resistor, 33 Ω ±5%, 1/16 W, 50 V, ±200 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Yageo"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "AC0402JR-0733RL"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "YAG3543CT-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "603-AC0402JR-0733RL"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Tolerance" "±5%"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Power" "1/16W"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "50V"
+				(at 7.62 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "0402"
+				(at 12.7 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ki_keywords" "resistor thick film automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R?0402?1005Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "AC0402JR-0733RL_1_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "DropOut_Capacitor:AC0603KRX7R6BB225"
 			(pin_names
 				(offset 1.016)
@@ -17242,14 +17479,13 @@
 		)
 		(uuid "f2899deb-9c0f-5b12-8911-0747f467876b")
 	)
-	(hierarchical_label "SPI4_SWITCH1_CS_L"
-		(shape output)
+	(label "SPI4_SWITCH1_CS_L_MCU"
 		(at 586.74 109.22 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify right bottom)
 		)
 		(uuid "6c9b253a-5164-5cd1-9ee8-1187825e45ed")
 	)
@@ -17264,14 +17500,13 @@
 		)
 		(uuid "b058ec90-ed7a-5cdc-8beb-1cf52c991249")
 	)
-	(hierarchical_label "SPI4_SWITCH1_MOSI"
-		(shape output)
+	(label "SPI4_SWITCH1_MOSI_MCU"
 		(at 586.74 111.76 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify right bottom)
 		)
 		(uuid "b0c5c27e-7a85-5e40-b369-c9bc248e8e1f")
 	)
@@ -17308,14 +17543,13 @@
 		)
 		(uuid "043e5406-1e1f-5704-8381-be4f33368da7")
 	)
-	(hierarchical_label "SPI4_SWITCH1_SCK"
-		(shape output)
+	(label "SPI4_SWITCH1_SCK_MCU"
 		(at 586.74 114.3 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify right bottom)
 		)
 		(uuid "63939165-2ce4-547e-9173-64d04c1ad161")
 	)
@@ -18187,14 +18421,13 @@
 		)
 		(uuid "a412f99f-3646-4e2b-b8aa-8fcf0aef7e25")
 	)
-	(hierarchical_label "SPI5_SWITCH2_MOSI"
-		(shape output)
+	(label "SPI5_SWITCH2_MOSI_MCU"
 		(at 472.44 228.6 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify left bottom)
 		)
 		(uuid "cc239913-163e-442b-9668-9f00c366be90")
 	)
@@ -18209,14 +18442,13 @@
 		)
 		(uuid "809664ca-74db-4577-bb8f-10d2425bfee5")
 	)
-	(hierarchical_label "SPI5_SWITCH2_SCK"
-		(shape output)
+	(label "SPI5_SWITCH2_SCK_MCU"
 		(at 472.44 226.06 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify left bottom)
 		)
 		(uuid "ca458b7b-e6f2-447c-8e81-92819f2234a8")
 	)
@@ -18285,14 +18517,13 @@
 		)
 		(uuid "59b6ccbc-9769-4cea-87b6-2d302e754b6d")
 	)
-	(hierarchical_label "SPI5_SWITCH2_CS_L"
-		(shape output)
+	(label "SPI5_SWITCH2_CS_L_MCU"
 		(at 436.88 210.82 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify right bottom)
 		)
 		(uuid "3e73a82c-c167-4261-88e0-5586fb6e69eb")
 	)
@@ -18930,7 +19161,7 @@
 		)
 		(uuid "beedfc4e-0bbd-5fe6-9326-98f7ec5a8fa2")
 	)
-	(label "SPI2_FLASH_SCK"
+	(label "SPI2_FLASH_SCK_MCU"
 		(at 586.74 238.76 180)
 		(effects
 			(font
@@ -19395,14 +19626,13 @@
 		)
 		(uuid "0b9f94b5-30d4-4960-9c8f-f1157e00d25a")
 	)
-	(hierarchical_label "SPI3_SWITCH3_SCK"
-		(shape output)
-		(at 721.36 233.68 180)
+	(label "SPI3_SWITCH3_SCK_MCU"
+		(at 693.42 233.68 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify right bottom)
 		)
 		(uuid "d2032f64-bde4-40fc-977f-8cd706401a29")
 	)
@@ -19439,14 +19669,13 @@
 		)
 		(uuid "391a7cd4-744f-492a-80bf-02c257e9f887")
 	)
-	(hierarchical_label "SPI3_SWITCH3_MOSI"
-		(shape output)
+	(label "SPI3_SWITCH3_MOSI_MCU"
 		(at 721.36 238.76 180)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify right)
+			(justify right bottom)
 		)
 		(uuid "1fa7da7a-e985-457a-8aaf-54ab4bd55cfd")
 	)
@@ -19469,14 +19698,13 @@
 		)
 		(uuid "02e4a0a3-0aa9-4a02-acb9-9d87fdf39923")
 	)
-	(hierarchical_label "SPI3_SWITCH3_CS_L"
-		(shape output)
+	(label "SPI3_SWITCH3_CS_L_MCU"
 		(at 756.92 200.66 0)
 		(effects
 			(font
 				(size 1.27 1.27)
 			)
-			(justify left)
+			(justify left bottom)
 		)
 		(uuid "bf71b0c1-b811-48a1-9283-f9af3fe8decd")
 	)
@@ -27138,6 +27366,1992 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "98fff1d3-f4d9-4ad8-b7f8-03f693c0f6db")
+	)
+	(rectangle
+		(start 431.8 421.64)
+		(end 645.16 515.62)
+		(stroke
+			(width 0.254)
+			(type dash)
+			(color 132 132 132 1)
+		)
+		(fill
+			(type none)
+		)
+		(uuid "3f5b5b2e-3dc3-548e-9328-5580ad1486e4")
+	)
+	(text "SPI series resistors at U401 (R409-R418)"
+		(exclude_from_sim no)
+		(at 431.8 420.37 0)
+		(effects
+			(font
+				(size 1.778 1.778)
+				(thickness 0.3)
+				bold
+			)
+			(justify left bottom)
+		)
+		(uuid "2bb379a7-9355-51db-ad41-8f91849f8e1d")
+	)
+	(text "One 33R at U401 on every SPI line the MCU drives toward an output switch (SCK, MOSI, CS_L), and on the log\nflash's SCK. TI's TPS2HCS08-Q1 data sheet (SLVSHR0, Figure 9-1 and Table 9-1) draws RSPI on all four lines:\n22R typical, optional, for EMI and transient limits; its SPI timing (6.6) is given with 220R. 33R is the board's\nseries value (R503/R504). The switch's SDO has its resistor at the switch (R608/R708/R808, pages 6 to 8).\n<NET>_MCU is the stub from the ball to the resistor; <NET> keeps the line, its test point and its sheet pin.\nPlace each resistor at its ball. Decisions S01 to S03, placement/2026-11-13-spi-series-r."
+		(exclude_from_sim no)
+		(at 434.34 424.18 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left top)
+		)
+		(uuid "86cf5b0d-0f7a-50ac-8d09-72c72670e763")
+	)
+	(symbol
+		(lib_id "DropOut_Resistor:AC0402JR-0733RL")
+		(at 441.96 480.06 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "9f730ae7-23cc-5965-813d-98af3fc23239")
+		(property "Reference" "R"
+			(at 444.5 476.833 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "33R"
+			(at 444.5 478.611 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
+			(at 441.96 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+			(at 441.96 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Yageo AC thick film chip resistor, 33 Ω ±5%, 1/16 W, 50 V, ±200 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+			(at 441.96 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 441.96 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AC0402JR-0733RL"
+			(at 444.5 483.945 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "DigiKey_PN" "YAG3543CT-ND"
+			(at 441.96 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "603-AC0402JR-0733RL"
+			(at 441.96 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+			(at 441.96 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Tolerance" "±5%"
+			(at 444.5 480.389 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Power" "1/16W"
+			(at 441.96 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "50V"
+			(at 449.326 480.389 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Case" "0402"
+			(at 444.5 482.167 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "5ca9673f-da1d-5ecd-9ab3-7a139969e5ad")
+		)
+		(pin "2"
+			(uuid "4ff1dfd0-73dc-508d-b67f-03725a5a439b")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453"
+					(reference "R409")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 441.96 473.71) (xy 441.96 476.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fe455e9e-661e-5831-83b5-ceabbc264d08")
+	)
+	(wire
+		(pts
+			(xy 441.96 483.87) (xy 441.96 486.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6ee1315a-7836-58d5-b9cd-a80345132106")
+	)
+	(label "SPI4_SWITCH1_SCK_MCU"
+		(at 441.96 473.71 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "fcc18638-e2dc-5369-8aff-de991fb15bdc")
+	)
+	(hierarchical_label "SPI4_SWITCH1_SCK"
+		(shape output)
+		(at 441.96 486.41 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "4586a682-9eb4-5569-ab6f-3921f1f4dbfd")
+	)
+	(symbol
+		(lib_id "DropOut_Resistor:AC0402JR-0733RL")
+		(at 462.28 480.06 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "a2b89d89-7a5b-53ec-916a-2a347bad581d")
+		(property "Reference" "R"
+			(at 464.82 476.833 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "33R"
+			(at 464.82 478.611 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
+			(at 462.28 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+			(at 462.28 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Yageo AC thick film chip resistor, 33 Ω ±5%, 1/16 W, 50 V, ±200 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+			(at 462.28 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 462.28 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AC0402JR-0733RL"
+			(at 464.82 483.945 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "DigiKey_PN" "YAG3543CT-ND"
+			(at 462.28 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "603-AC0402JR-0733RL"
+			(at 462.28 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+			(at 462.28 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Tolerance" "±5%"
+			(at 464.82 480.389 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Power" "1/16W"
+			(at 462.28 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "50V"
+			(at 469.646 480.389 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Case" "0402"
+			(at 464.82 482.167 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "63c8dbe0-a636-5356-8cb4-ca5fcf57e77d")
+		)
+		(pin "2"
+			(uuid "4361d0c5-c206-5693-9fcf-af26e5b69469")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453"
+					(reference "R410")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 462.28 473.71) (xy 462.28 476.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dc25fedf-471d-5a33-9a8d-3b5c81c749b9")
+	)
+	(wire
+		(pts
+			(xy 462.28 483.87) (xy 462.28 486.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cddca9da-5d00-5cd0-954e-1ffc64bccc35")
+	)
+	(label "SPI4_SWITCH1_MOSI_MCU"
+		(at 462.28 473.71 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1495f84a-8cef-58df-92c4-a2025a680a84")
+	)
+	(hierarchical_label "SPI4_SWITCH1_MOSI"
+		(shape output)
+		(at 462.28 486.41 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "1b777cf4-2d73-57b0-8139-8bc56022ba03")
+	)
+	(symbol
+		(lib_id "DropOut_Resistor:AC0402JR-0733RL")
+		(at 482.6 480.06 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "5509c938-8247-54e9-9339-415c82f74230")
+		(property "Reference" "R"
+			(at 485.14 476.833 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "33R"
+			(at 485.14 478.611 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
+			(at 482.6 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+			(at 482.6 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Yageo AC thick film chip resistor, 33 Ω ±5%, 1/16 W, 50 V, ±200 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+			(at 482.6 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 482.6 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AC0402JR-0733RL"
+			(at 485.14 483.945 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "DigiKey_PN" "YAG3543CT-ND"
+			(at 482.6 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "603-AC0402JR-0733RL"
+			(at 482.6 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+			(at 482.6 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Tolerance" "±5%"
+			(at 485.14 480.389 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Power" "1/16W"
+			(at 482.6 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "50V"
+			(at 489.966 480.389 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Case" "0402"
+			(at 485.14 482.167 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "e0d0b96c-105c-5d48-aa41-ec8ae67eba4e")
+		)
+		(pin "2"
+			(uuid "77653167-6601-5c69-bd01-88a821d12bc8")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453"
+					(reference "R411")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 482.6 473.71) (xy 482.6 476.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "03081524-3e6e-53ef-8d9e-700b17be67a0")
+	)
+	(wire
+		(pts
+			(xy 482.6 483.87) (xy 482.6 486.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2f59e59a-4460-5016-8f67-6c0d1e3c8477")
+	)
+	(label "SPI4_SWITCH1_CS_L_MCU"
+		(at 482.6 473.71 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b5cadc09-7087-57f2-8d21-2ce88269545a")
+	)
+	(hierarchical_label "SPI4_SWITCH1_CS_L"
+		(shape output)
+		(at 482.6 486.41 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "b2c4ea68-db8b-5e3a-baf5-aa654ba3ca1b")
+	)
+	(symbol
+		(lib_id "DropOut_Resistor:AC0402JR-0733RL")
+		(at 502.92 480.06 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "4b78710c-bc92-5245-a61f-7ececb0f09f8")
+		(property "Reference" "R"
+			(at 505.46 476.833 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "33R"
+			(at 505.46 478.611 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
+			(at 502.92 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+			(at 502.92 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Yageo AC thick film chip resistor, 33 Ω ±5%, 1/16 W, 50 V, ±200 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+			(at 502.92 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 502.92 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AC0402JR-0733RL"
+			(at 505.46 483.945 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "DigiKey_PN" "YAG3543CT-ND"
+			(at 502.92 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "603-AC0402JR-0733RL"
+			(at 502.92 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+			(at 502.92 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Tolerance" "±5%"
+			(at 505.46 480.389 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Power" "1/16W"
+			(at 502.92 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "50V"
+			(at 510.286 480.389 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Case" "0402"
+			(at 505.46 482.167 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "ed0f1d3c-221e-5dcc-a791-2b944e283fce")
+		)
+		(pin "2"
+			(uuid "56ff279b-efe6-51fe-98db-281414877bf8")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453"
+					(reference "R412")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 502.92 473.71) (xy 502.92 476.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "72ba2c33-7b61-584a-ae3d-644b7ff4c2b4")
+	)
+	(wire
+		(pts
+			(xy 502.92 483.87) (xy 502.92 486.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "84094c63-f572-5d97-b769-0d5547cce681")
+	)
+	(label "SPI5_SWITCH2_SCK_MCU"
+		(at 502.92 473.71 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d23d7243-68dc-5901-83c5-9b7e09a6ac46")
+	)
+	(hierarchical_label "SPI5_SWITCH2_SCK"
+		(shape output)
+		(at 502.92 486.41 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "6dafbb33-c800-58ec-b4ec-1489bde3ef66")
+	)
+	(symbol
+		(lib_id "DropOut_Resistor:AC0402JR-0733RL")
+		(at 523.24 480.06 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "9d014c5b-040f-5238-82c4-faee3da2cc62")
+		(property "Reference" "R"
+			(at 525.78 476.833 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "33R"
+			(at 525.78 478.611 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
+			(at 523.24 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+			(at 523.24 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Yageo AC thick film chip resistor, 33 Ω ±5%, 1/16 W, 50 V, ±200 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+			(at 523.24 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 523.24 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AC0402JR-0733RL"
+			(at 525.78 483.945 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "DigiKey_PN" "YAG3543CT-ND"
+			(at 523.24 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "603-AC0402JR-0733RL"
+			(at 523.24 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+			(at 523.24 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Tolerance" "±5%"
+			(at 525.78 480.389 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Power" "1/16W"
+			(at 523.24 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "50V"
+			(at 530.606 480.389 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Case" "0402"
+			(at 525.78 482.167 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "1c7cce9a-73ce-54c8-9589-7948f62eba5e")
+		)
+		(pin "2"
+			(uuid "7249fec3-374c-525d-81b2-179e6bd3376a")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453"
+					(reference "R413")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 523.24 473.71) (xy 523.24 476.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "69519233-3da0-5151-872b-2f71505c1eda")
+	)
+	(wire
+		(pts
+			(xy 523.24 483.87) (xy 523.24 486.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "abc8a10a-1c2b-5f2e-94af-42d160109ad7")
+	)
+	(label "SPI5_SWITCH2_MOSI_MCU"
+		(at 523.24 473.71 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "90f85f92-8ac0-5df3-9757-dcf1db3c0beb")
+	)
+	(hierarchical_label "SPI5_SWITCH2_MOSI"
+		(shape output)
+		(at 523.24 486.41 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "36431b95-ecb2-53a0-9dd2-615a114ce29f")
+	)
+	(symbol
+		(lib_id "DropOut_Resistor:AC0402JR-0733RL")
+		(at 543.56 480.06 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "34017391-2b14-5e2c-a770-ad90ae632716")
+		(property "Reference" "R"
+			(at 546.1 476.833 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "33R"
+			(at 546.1 478.611 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
+			(at 543.56 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+			(at 543.56 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Yageo AC thick film chip resistor, 33 Ω ±5%, 1/16 W, 50 V, ±200 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+			(at 543.56 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 543.56 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AC0402JR-0733RL"
+			(at 546.1 483.945 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "DigiKey_PN" "YAG3543CT-ND"
+			(at 543.56 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "603-AC0402JR-0733RL"
+			(at 543.56 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+			(at 543.56 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Tolerance" "±5%"
+			(at 546.1 480.389 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Power" "1/16W"
+			(at 543.56 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "50V"
+			(at 550.926 480.389 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Case" "0402"
+			(at 546.1 482.167 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "35feca32-759f-557a-847e-622c1ce9178a")
+		)
+		(pin "2"
+			(uuid "7ad4b6ba-5262-5521-994c-901df845e3ab")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453"
+					(reference "R414")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 543.56 473.71) (xy 543.56 476.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f4c99231-6b50-58ed-b2c8-3def4c5b1ad2")
+	)
+	(wire
+		(pts
+			(xy 543.56 483.87) (xy 543.56 486.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "586fd8ea-115a-59af-b8a6-5631c135f74a")
+	)
+	(label "SPI5_SWITCH2_CS_L_MCU"
+		(at 543.56 473.71 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "0c4e45b5-207c-502d-85be-2d8234be2913")
+	)
+	(hierarchical_label "SPI5_SWITCH2_CS_L"
+		(shape output)
+		(at 543.56 486.41 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "3041700b-c88b-5773-b3c7-22e3e41c7a6c")
+	)
+	(wire
+		(pts
+			(xy 721.36 233.68) (xy 693.42 233.68)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "134e3a56-5f50-56fe-a458-09f2b28cf05c")
+	)
+	(symbol
+		(lib_id "DropOut_Resistor:AC0402JR-0733RL")
+		(at 563.88 480.06 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "800787bd-033f-5881-9ef3-02f57a7d81a3")
+		(property "Reference" "R"
+			(at 566.42 476.833 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "33R"
+			(at 566.42 478.611 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
+			(at 563.88 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+			(at 563.88 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Yageo AC thick film chip resistor, 33 Ω ±5%, 1/16 W, 50 V, ±200 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+			(at 563.88 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 563.88 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AC0402JR-0733RL"
+			(at 566.42 483.945 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "DigiKey_PN" "YAG3543CT-ND"
+			(at 563.88 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "603-AC0402JR-0733RL"
+			(at 563.88 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+			(at 563.88 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Tolerance" "±5%"
+			(at 566.42 480.389 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Power" "1/16W"
+			(at 563.88 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "50V"
+			(at 571.246 480.389 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Case" "0402"
+			(at 566.42 482.167 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "5f9b95d1-e99b-586c-9070-a771d941beb5")
+		)
+		(pin "2"
+			(uuid "a0e1b2cd-5288-5270-a437-660f1608c41c")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453"
+					(reference "R415")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 563.88 473.71) (xy 563.88 476.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0cbb0c3b-6089-5832-93cc-dbcc533406ad")
+	)
+	(wire
+		(pts
+			(xy 563.88 483.87) (xy 563.88 486.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "76591d99-3008-5d97-b382-54bca710dad9")
+	)
+	(label "SPI3_SWITCH3_SCK_MCU"
+		(at 563.88 473.71 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "7e1f1a09-4ba3-5566-8b0f-5c8ae55ef4ac")
+	)
+	(hierarchical_label "SPI3_SWITCH3_SCK"
+		(shape output)
+		(at 563.88 486.41 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "cc769a5c-2aba-5ebd-aa17-8549a91fe982")
+	)
+	(symbol
+		(lib_id "DropOut_Resistor:AC0402JR-0733RL")
+		(at 584.2 480.06 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "58380bae-6f61-55f9-aafd-9e4b77c581d0")
+		(property "Reference" "R"
+			(at 586.74 476.833 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "33R"
+			(at 586.74 478.611 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
+			(at 584.2 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+			(at 584.2 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Yageo AC thick film chip resistor, 33 Ω ±5%, 1/16 W, 50 V, ±200 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+			(at 584.2 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 584.2 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AC0402JR-0733RL"
+			(at 586.74 483.945 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "DigiKey_PN" "YAG3543CT-ND"
+			(at 584.2 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "603-AC0402JR-0733RL"
+			(at 584.2 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+			(at 584.2 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Tolerance" "±5%"
+			(at 586.74 480.389 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Power" "1/16W"
+			(at 584.2 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "50V"
+			(at 591.566 480.389 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Case" "0402"
+			(at 586.74 482.167 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "1cc7a620-5a8d-532b-b679-aea5a6473dc6")
+		)
+		(pin "2"
+			(uuid "3ae3642d-4363-5754-8ea7-b6308541c8ec")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453"
+					(reference "R416")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 584.2 473.71) (xy 584.2 476.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ab771f64-8a58-5962-8752-1eed1b6cf035")
+	)
+	(wire
+		(pts
+			(xy 584.2 483.87) (xy 584.2 486.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dca705c7-1779-5d83-9b21-4f93f14baa16")
+	)
+	(label "SPI3_SWITCH3_MOSI_MCU"
+		(at 584.2 473.71 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "3b69509a-cae3-5f10-9f41-65e5a2aabe8a")
+	)
+	(hierarchical_label "SPI3_SWITCH3_MOSI"
+		(shape output)
+		(at 584.2 486.41 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "00c1efd3-7fa5-597e-8239-8686991dc827")
+	)
+	(symbol
+		(lib_id "DropOut_Resistor:AC0402JR-0733RL")
+		(at 604.52 480.06 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "ddee8d31-d3fa-5f0f-8262-abc17d7115f6")
+		(property "Reference" "R"
+			(at 607.06 476.833 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "33R"
+			(at 607.06 478.611 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
+			(at 604.52 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+			(at 604.52 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Yageo AC thick film chip resistor, 33 Ω ±5%, 1/16 W, 50 V, ±200 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+			(at 604.52 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 604.52 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AC0402JR-0733RL"
+			(at 607.06 483.945 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "DigiKey_PN" "YAG3543CT-ND"
+			(at 604.52 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "603-AC0402JR-0733RL"
+			(at 604.52 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+			(at 604.52 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Tolerance" "±5%"
+			(at 607.06 480.389 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Power" "1/16W"
+			(at 604.52 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "50V"
+			(at 611.886 480.389 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Case" "0402"
+			(at 607.06 482.167 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "cd5f55ad-91c4-50e7-ac7b-50c6691e076c")
+		)
+		(pin "2"
+			(uuid "3dc535f9-8716-5e3e-bab3-c577ac43edbf")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453"
+					(reference "R417")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 604.52 473.71) (xy 604.52 476.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5b8d180e-4f77-5047-9ed6-b77ede949dd9")
+	)
+	(wire
+		(pts
+			(xy 604.52 483.87) (xy 604.52 486.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e78d9f76-c69e-5997-ac46-3f4620f465c3")
+	)
+	(label "SPI3_SWITCH3_CS_L_MCU"
+		(at 604.52 473.71 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "1cf1365e-1942-514e-9d37-499644070da5")
+	)
+	(hierarchical_label "SPI3_SWITCH3_CS_L"
+		(shape output)
+		(at 604.52 486.41 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "08a6068d-e5b0-52ea-8c61-f5695819c876")
+	)
+	(symbol
+		(lib_id "DropOut_Resistor:AC0402JR-0733RL")
+		(at 624.84 480.06 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(fields_autoplaced no)
+		(uuid "7d8b0531-927b-524d-90df-48ced3c6d0e4")
+		(property "Reference" "R"
+			(at 627.38 476.833 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "33R"
+			(at 627.38 478.611 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
+			(at 624.84 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+			(at 624.84 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Yageo AC thick film chip resistor, 33 Ω ±5%, 1/16 W, 50 V, ±200 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+			(at 624.84 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 624.84 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "MPN" "AC0402JR-0733RL"
+			(at 627.38 483.945 0)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "DigiKey_PN" "YAG3543CT-ND"
+			(at 624.84 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Mouser_PN" "603-AC0402JR-0733RL"
+			(at 624.84 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+			(at 624.84 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Tolerance" "±5%"
+			(at 627.38 480.389 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Power" "1/16W"
+			(at 624.84 480.06 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Voltage" "50V"
+			(at 632.206 480.389 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Case" "0402"
+			(at 627.38 482.167 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "ad9900ff-bc3b-565b-8fcc-30e9fb31abcd")
+		)
+		(pin "2"
+			(uuid "4c4b84f8-5d95-532a-8090-40260db2e0a9")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/0ad74954-de59-42a0-82d0-e554fbd19453"
+					(reference "R418")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 624.84 473.71) (xy 624.84 476.25)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bd9cc29a-b515-52d2-9009-5a3b5f04d60e")
+	)
+	(wire
+		(pts
+			(xy 624.84 483.87) (xy 624.84 486.41)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "228c1424-14d1-5d04-8237-0737890a7445")
+	)
+	(label "SPI2_FLASH_SCK_MCU"
+		(at 624.84 473.71 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "d1ff5cbd-69e2-5cbe-8ab1-e8bc0d143bd7")
+	)
+	(label "SPI2_FLASH_SCK"
+		(at 624.84 486.41 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "ebb104aa-bdb9-53c2-8174-7a2fc86e5890")
 	)
 	(embedded_fonts no)
 )
