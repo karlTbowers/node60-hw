@@ -1,0 +1,93 @@
+{
+ "id": "d1",
+ "title": "D36 A: room for U201 pin 2 (deletes)",
+ "why": "LM_SW's via stood at pin 2's exit and the R204 to R205 link of LM_UVLO closed the gap between R204's pads. Both are resistor-limited divider lines, so D33 B lets them use F.Cu under the GND bar.",
+ "delete": [
+  {
+   "seg": [
+    151.1,
+    75.75,
+    150.75,
+    75.75
+   ]
+  },
+  {
+   "seg": [
+    150.75,
+    75.75,
+    150.6,
+    75.8
+   ]
+  },
+  {
+   "seg": [
+    150.6,
+    75.8,
+    150.3,
+    76.1
+   ]
+  },
+  {
+   "via": [
+    150.1,
+    76.1
+   ]
+  },
+  {
+   "seg": [
+    150.1,
+    76.1,
+    151.1,
+    75.1
+   ]
+  },
+  {
+   "via": [
+    148.7,
+    74.0
+   ]
+  },
+  {
+   "seg": [
+    150.0,
+    74.0,
+    148.7,
+    74.0
+   ]
+  },
+  {
+   "seg": [
+    148.7,
+    74.0,
+    148.5,
+    73.8
+   ]
+  },
+  {
+   "seg": [
+    146.6,
+    73.8,
+    147.6,
+    72.8
+   ]
+  },
+  {
+   "seg": [
+    147.6,
+    72.8,
+    148.8,
+    72.8
+   ]
+  },
+  {
+   "seg": [
+    148.8,
+    72.8,
+    149.8,
+    73.8
+   ]
+  }
+ ],
+ "tracks": [],
+ "vias": []
+}

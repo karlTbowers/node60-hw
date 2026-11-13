@@ -1,0 +1,53 @@
+{
+ "id": "d3",
+ "title": "Both UART debug lines out of the BGA (deletes)",
+ "why": "Balls E16 (TX) and D17 (RX) had one escape channel between them, so only RX reached its test point. RX (an edge ball) now leaves east through the gap between SPI3_SWITCH3_MISO's via and SPI4_SWITCH1_SCK's escape and round SCK's via; TX takes the channel RX used. To open the gap the two vias shrink from 0.45/0.25 to the 0.35/0.20 mm preset used under U401 and move 0.16 and 0.09 mm. UART0_DEBUG_RX's old copper is ripped with rip_nets.py before this spec. SPI3_SWITCH3_CS_L's diagonal is 0.1 mm wide inside the escape area (to x 209.9), as its ball's stub is, which gives RX 0.11 mm beside it.",
+ "delete": [
+  {
+   "via": [
+    208.3,
+    54.6
+   ]
+  },
+  {
+   "seg": [
+    208.0,
+    54.3,
+    208.3,
+    54.6
+   ]
+  },
+  {
+   "via": [
+    209.2,
+    54.8
+   ]
+  },
+  {
+   "seg": [
+    207.8,
+    55.9,
+    208.9,
+    54.8
+   ]
+  },
+  {
+   "seg": [
+    208.9,
+    54.8,
+    209.2,
+    54.8
+   ]
+  },
+  {
+   "seg": [
+    207.8,
+    52.7,
+    223.7,
+    68.6
+   ]
+  }
+ ],
+ "tracks": [],
+ "vias": []
+}
