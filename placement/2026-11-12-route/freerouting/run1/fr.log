@@ -1,0 +1,312 @@
+2026-11-12 15:41:47.369 INFO   Freerouting v2.5.0 (build-date: 2026-10-05)
+WARNING: Final field userProfileSettings in class app.freerouting.settings.GlobalSettings has been mutated reflectively by class com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$2 in unnamed module @78186a70 (file:/Users/karl/Applications/freerouting/freerouting-2.5.0.jar)
+WARNING: Use --enable-final-field-mutation=ALL-UNNAMED to avoid a warning
+WARNING: Mutating final fields will be blocked in a future release unless final field mutation is enabled
+2026-11-12 15:41:47.643 INFO   Hardware: 20 CPU cores, 378 CPU score, 30688 MB RAM
+2026-11-12 15:41:47.644 WARN   Unknown command line argument: --router.autorouter.max_passes
+2026-11-12 15:41:47.644 WARN   Unknown command line argument: 15
+2026-11-12 15:41:48.699 INFO   Opening 'in.dsn'...
+2026-11-12 15:41:49.354 INFO   [B2A5A4\23558F] Loading board file 'in.dsn'...
+2026-11-12 15:41:49.767 WARN   Wiring: duplicate via skipped at (1570000, -473500)
+2026-11-12 15:41:49.841 WARN   DSN file 'in.dsn' was loaded with 1 warning(s).
+2026-11-12 15:42:02.091 WARN   Design Warning: Board has 12740 pre-existing clearance violation(s) in the loaded design (before routing):
+  - 12740 unfixable violation(s) (cannot be resolved by Freerouting):
+      * 12740 fixed trace/via clearance violations (first 5 shown):
+          - FixedVia#6376 [net /Regulators/VDDAU_AON_REG] <-> ObstacleArea#79
+          - FixedVia#6376 [net /Regulators/VDDAU_AON_REG] <-> ObstacleArea#94
+          - FixedVia#6376 [net /Regulators/VDDAU_AON_REG] <-> ObstacleArea#95
+          - FixedVia#6375 [net /Regulators/VDDAU_AON_REG] <-> ObstacleArea#79
+          - FixedVia#6375 [net /Regulators/VDDAU_AON_REG] <-> ObstacleArea#94
+          ... and 12735 more
+  - 0 potentially fixable violations
+Notice: Freerouting does not modify component placement, board outlines, or fixed items.
+Resolving these 12740 unfixable violation(s) is the responsibility of the board author in their EDA tool (e.g. KiCad).
+2026-11-12 15:42:07.960 INFO   [B2A5A4\23558F] Starting routing of 'in' on 19 threads...
+2026-11-12 15:42:08.004 INFO   [B2A5A4\23558F] Pipeline thread limits: autorouter pass is single-threaded, optimizer.max_threads=19.
+2026-11-12 15:42:31.689 INFO   [B2A5A4\23558F] Fanout stage started on board 'f487d4b43c8977c9091c4948ed28b299' with 461 of 874 SMD pins needing fanout (407 already connected, 6 netless).
+2026-11-12 15:43:09.865 WARN   BasicBoard.normalizeTraces: reached 2000 iterations for net '/RMII0_T1S_TX_EN' — stopping to prevent hang. The board geometry for this net may be oscillating (split/combine cycle); traces are kept as-is and further normalization for this net is suppressed on this board candidate.
+2026-11-12 15:43:56.381 INFO   [B2A5A4\23558F] Fanout pass #1 on board '7913bac5476cd524fe9d134161ec1f4e' completed in 73.01 seconds with 181 SMD pins fanouted, 168 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=100).
+2026-11-12 15:44:15.097 WARN   Polyline: must contain at least 2 different points
+2026-11-12 15:44:59.989 INFO   [B2A5A4\23558F] Fanout pass #2 on board '823a3b3337d1d5937923cd0cca4cba56' completed in 63.57 seconds with 80 SMD pins fanouted, 116 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=200).
+2026-11-12 15:45:59.522 INFO   [B2A5A4\23558F] Fanout pass #3 on board '173c4d42833d7dc84590e0b3c3dcf12b' completed in 59.49 seconds with 74 SMD pins fanouted, 79 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=300).
+2026-11-12 15:46:18.249 WARN   Polyline: must contain at least 2 different points
+2026-11-12 15:47:00.121 INFO   [B2A5A4\23558F] Fanout pass #4 on board '0002b94a265af89dcdecdc087d506b27' completed in 60.56 seconds with 76 SMD pins fanouted, 75 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=400).
+2026-11-12 15:48:00.075 INFO   [B2A5A4\23558F] Fanout pass #5 on board '24272209b371edf61004f2b6f723f11d' completed in 59.91 seconds with 74 SMD pins fanouted, 76 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=500).
+2026-11-12 15:48:18.669 WARN   Polyline: must contain at least 2 different points
+2026-11-12 15:49:01.706 INFO   [B2A5A4\23558F] Fanout pass #6 on board 'c1e2839b97ecdb816a537c217f36034f' completed in 61.59 seconds with 76 SMD pins fanouted, 75 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=600).
+2026-11-12 15:50:04.945 INFO   [B2A5A4\23558F] Fanout pass #7 on board '26fa9ea0b6029fb0601259ded53fb7d7' completed in 63.20 seconds with 75 SMD pins fanouted, 75 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=700).
+2026-11-12 15:50:23.325 WARN   Polyline: must contain at least 2 different points
+2026-11-12 15:51:04.740 INFO   [B2A5A4\23558F] Fanout pass #8 on board 'c017e4dd4c0898b042e28248bd6f6870' completed in 59.76 seconds with 75 SMD pins fanouted, 75 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=800).
+2026-11-12 15:52:04.976 INFO   [B2A5A4\23558F] Fanout pass #9 on board '3e911895b803ece4f460604868f22f7f' completed in 60.20 seconds with 75 SMD pins fanouted, 75 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=900).
+2026-11-12 15:52:24.048 WARN   Polyline: must contain at least 2 different points
+2026-11-12 15:53:05.925 INFO   [B2A5A4\23558F] Fanout pass #10 on board 'cb12d5f6cd24eece8c459477836fb770' completed in 60.91 seconds with 75 SMD pins fanouted, 75 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=1000).
+2026-11-12 15:53:05.925 INFO   Fanout stopped after 10 passes: no progress for 3 consecutive passes.
+2026-11-12 15:53:19.254 INFO   [B2A5A4\23558F] Fanout stage completed: started with 868 total SMD pins, completed in 635.92 seconds, escaped pins: 459/868 (52.9%), using 647.57 total CPU seconds, 150.86 GB total allocated, and 248.4 MB peak heap usage.
+2026-11-12 15:54:00.632 INFO   [B2A5A4\23558F] Auto-routing stage started on board 'cb12d5f6cd24eece8c459477836fb770' with baseline score 385.29 for 173 unrouted items.
+2026-11-12 16:03:42.376 INFO   [B2A5A4\23558F] Auto-routing pass #1 on board 'cb12d5f6cd24eece8c459477836fb770' was completed in 567.84 seconds with score 449.81 (143 unrouted and 12740 violations), using 1253.17 CPU seconds and the job allocated 326.64 GB of memory so far.
+2026-11-12 16:11:35.871 INFO   [B2A5A4\23558F] Auto-routing pass #2 on board 'cf15a019040b46a9ed06fce39dd59d17' was completed in 459.28 seconds with score 391.74 (170 unrouted and 12740 violations), using 1714.06 CPU seconds and the job allocated 466.48 GB of memory so far.
+2026-11-12 16:20:09.434 INFO   [B2A5A4\23558F] Auto-routing pass #3 on board 'bdbafa339f094721a74770e2af76bf65' was completed in 494.23 seconds with score 434.75 (150 unrouted and 12740 violations), using 2204.91 CPU seconds and the job allocated 610.13 GB of memory so far.
+2026-11-12 16:28:12.515 INFO   [B2A5A4\23558F] Auto-routing pass #4 on board '22f038b00ef99cdc8da26f03a5915ae0' was completed in 468.95 seconds with score 376.69 (177 unrouted and 12740 violations), using 2666.24 CPU seconds and the job allocated 747.54 GB of memory so far.
+2026-11-12 16:37:11.604 INFO   [B2A5A4\23558F] Auto-routing pass #5 on board '3dc0a91deafb1248b0d730c70ed9d59a' was completed in 523.64 seconds with score 426.15 (154 unrouted and 12740 violations), using 3176.02 CPU seconds and the job allocated 894.55 GB of memory so far.
+2026-11-12 16:45:20.948 INFO   [B2A5A4\23558F] Auto-routing pass #6 on board '1f4d69fb71456006052d8c1df1e394e4' was completed in 475.63 seconds with score 378.84 (176 unrouted and 12740 violations), using 3641.94 CPU seconds and the job allocated 1033.32 GB of memory so far.
+2026-11-12 16:55:03.338 INFO   [B2A5A4\23558F] Auto-routing pass #7 on board 'd5dd442f31f68568bbdd704c58c681fa' was completed in 569.04 seconds with score 426.15 (154 unrouted and 12740 violations), using 4151.02 CPU seconds and the job allocated 1182.28 GB of memory so far.
+2026-11-12 17:03:39.185 INFO   [B2A5A4\23558F] Auto-routing pass #8 on board 'cf15a019040b46a9ed06fce39dd59d17' was completed in 0.00 seconds with score 449.81 (143 unrouted and 12740 violations), using 4644.75 CPU seconds and the job allocated 1332.39 GB of memory so far.
+2026-11-12 17:07:25.164 WARN   BasicBoard.normalizeTraces: reached 2000 iterations for net '/RMII0_T1S_TX_EN' — stopping to prevent hang. The board geometry for this net may be oscillating (split/combine cycle); traces are kept as-is and further normalization for this net is suppressed on this board candidate.
+2026-11-12 17:09:38.526 INFO   [B2A5A4\23558F] Auto-routing pass #9 on board 'cf15a019040b46a9ed06fce39dd59d17' was completed in 359.20 seconds with score 380.99 (175 unrouted and 12740 violations), using 4994.95 CPU seconds and the job allocated 1477.50 GB of memory so far.
+2026-11-12 17:16:05.574 INFO   [B2A5A4\23558F] Auto-routing pass #10 on board 'ee950aca8bb3ea12cbab0fb81684c354' was completed in 376.92 seconds with score 443.36 (146 unrouted and 12740 violations), using 5380.51 CPU seconds and the job allocated 1624.90 GB of memory so far.
+2026-11-12 17:22:13.805 INFO   [B2A5A4\23558F] Auto-routing pass #11 on board '93eb103c774355c38a9b8ea92b0d503a' was completed in 347.12 seconds with score 363.79 (183 unrouted and 12740 violations), using 5747.27 CPU seconds and the job allocated 1770.17 GB of memory so far.
+2026-11-12 17:29:32.098 INFO   [B2A5A4\23558F] Auto-routing pass #12 on board 'cf15a019040b46a9ed06fce39dd59d17' was completed in 0.00 seconds with score 449.81 (143 unrouted and 12740 violations), using 6165.44 CPU seconds and the job allocated 1927.11 GB of memory so far.
+2026-11-12 17:33:25.323 WARN   BasicBoard.normalizeTraces: reached 2000 iterations for net '/RMII0_T1S_TX_EN' — stopping to prevent hang. The board geometry for this net may be oscillating (split/combine cycle); traces are kept as-is and further normalization for this net is suppressed on this board candidate.
+2026-11-12 17:35:38.361 INFO   [B2A5A4\23558F] Auto-routing pass #13 on board 'cf15a019040b46a9ed06fce39dd59d17' was completed in 366.11 seconds with score 383.14 (174 unrouted and 12740 violations), using 6523.18 CPU seconds and the job allocated 2073.26 GB of memory so far.
+2026-11-12 17:41:56.685 INFO   [B2A5A4\23558F] Auto-routing pass #14 on board '450dbee9f65e610e8cb55f48a0a78599' was completed in 368.45 seconds with score 432.60 (151 unrouted and 12740 violations), using 6900.44 CPU seconds and the job allocated 2223.65 GB of memory so far.
+2026-11-12 17:47:45.156 INFO   [B2A5A4\23558F] Auto-routing pass #15 on board '514981b81c5fd0eb7987454e054aa42f' was completed in 338.22 seconds with score 376.69 (177 unrouted and 12740 violations), using 7247.43 CPU seconds and the job allocated 2366.44 GB of memory so far.
+2026-11-12 17:54:15.747 INFO   [B2A5A4\23558F] Auto-routing pass #16 on board 'cf15a019040b46a9ed06fce39dd59d17' was completed in 0.00 seconds with score 449.81 (143 unrouted and 12740 violations), using 7637.55 CPU seconds and the job allocated 2521.51 GB of memory so far.
+2026-11-12 17:58:00.248 WARN   BasicBoard.normalizeTraces: reached 2000 iterations for net '/RMII0_T1S_TX_EN' — stopping to prevent hang. The board geometry for this net may be oscillating (split/combine cycle); traces are kept as-is and further normalization for this net is suppressed on this board candidate.
+2026-11-12 18:00:02.233 INFO   [B2A5A4\23558F] Auto-routing pass #17 on board 'cf15a019040b46a9ed06fce39dd59d17' was completed in 346.35 seconds with score 383.14 (174 unrouted and 12740 violations), using 7982.25 CPU seconds and the job allocated 2668.06 GB of memory so far.
+2026-11-12 18:06:25.738 INFO   [B2A5A4\23558F] Auto-routing pass #18 on board 'c8dce3577bef3c749edbfbf7bcf745de' was completed in 373.47 seconds with score 432.60 (151 unrouted and 12740 violations), using 8364.39 CPU seconds and the job allocated 2818.71 GB of memory so far.
+2026-11-12 18:06:26.001 INFO   [B2A5A4\23558F] The router's best score (449.81) has not improved by more than 0.5 points since pass #8. Stopping the auto-router after 18 passes (143 items still unconnected).
+The following connections could not be routed -- please review your design (e.g. check pad clearances, trace width rules, and available routing space):
+  Net 'VBAT_PROT' (3 unrouted connections):
+    - U202-8  ->  C204-1
+    - U201-16  ->  U202-8
+    - conductionarea  ->  U202-8
+  Net '/VBAT_IN' (2 unrouted connections):
+    - conductionarea  ->  conductionarea
+    - conductionarea  ->  U201-2
+  Net '/Power entry/VBAT_D' (1 unrouted connection):
+    - U201-24  ->  C209-1
+  Net '/Regulators/3V3_MAIN_REG' (1 unrouted connection):
+    - conductionarea  ->  U302-11
+  Net '3V3_MAIN' (27 unrouted connections):
+    - C318-1  ->  U304-3
+    - R801-1  ->  via
+    - via  ->  R601-1
+    - U401-N4  ->  C407-1
+    - U401-R10  ->  C415-1
+    - via  ->  U401-H6
+    - via  ->  U401-G10
+    - U401-K11  ->  via
+    - U401-H7  ->  via
+    - U401-R7  ->  via
+    - U401-L8  ->  via
+    - U401-D14  ->  C406-1
+    - C318-1  ->  via
+    - via  ->  C411-1
+    - via  ->  R403-1
+    - U402-8  ->  C411-1
+    - R508-1  ->  via
+    - via  ->  R211-1
+    - via  ->  C215-1
+    - C502-1  ->  U501-29
+    - via  ->  U203-8
+    - conductionarea  ->  U304-5
+    - U501-18  ->  C503-1
+    - R401-1  ->  R402-1
+    - R308-1  ->  conductionarea
+    - via  ->  C416-1
+    - via  ->  R404-1
+  Net '/Regulators/1V5_CORE_SW' (1 unrouted connection):
+    - conductionarea  ->  U303-7
+  Net '1V5_CORE' (5 unrouted connections):
+    - C401-1  ->  U401-H10
+    - via  ->  U401-K10
+    - via  ->  U401-H8
+    - U401-K8  ->  via
+    - C404-1  ->  conductionarea
+  Net '/MCU and NVM/SWD_DIO' (2 unrouted connections):
+    - R404-2  ->  J401-2
+    - U401-F6  ->  J401-2
+  Net '/MCU and NVM/SWD_CLK' (2 unrouted connections):
+    - J401-4  ->  R405-1
+    - R405-1  ->  U401-F7
+  Net '/MCU and NVM/SWD_SWO' (1 unrouted connection):
+    - J401-6  ->  U401-G8
+  Net '/RESET_L' (2 unrouted connections):
+    - U401-A3  ->  J401-10
+    - J401-10  ->  U501-10
+  Net '/MCU and NVM/1V1_MCU_V11' (3 unrouted connections):
+    - via  ->  U401-K9
+    - U401-J8  ->  U401-K9
+    - U401-H9  ->  U401-J8
+  Net '/Outputs 1-2/SW_VDD' (3 unrouted connections):
+    - U601-3  ->  C603-1
+    - R604-2  ->  R601-2
+    - R604-2  ->  U601-3
+  Net '/Outputs 5-6/SW_VDD' (3 unrouted connections):
+    - U801-3  ->  C803-1
+    - U801-3  ->  R804-2
+    - U801-3  ->  R801-2
+  Net '/T1S_P' (2 unrouted connections):
+    - D503-2  ->  J912-1
+    - D501-2  ->  J903-1
+  Net '/T1S_N' (3 unrouted connections):
+    - J903-2  ->  D502-2
+    - J912-2  ->  D504-2
+    - via  ->  D502-2
+  Net '/Outputs 3-4/SW_VDD' (3 unrouted connections):
+    - C703-1  ->  U701-3
+    - U701-3  ->  R704-2
+    - C703-1  ->  R701-2
+  Net '/SW_LHI' (3 unrouted connections):
+    - U401-G6  ->  R803-1
+    - R703-1  ->  U401-G6
+    - U601-5  ->  U701-5
+  Net '/NTC_RSENSE' (3 unrouted connections):
+    - R212-2  ->  C216-1
+    - R212-2  ->  U401-C1
+    - RT201-1  ->  C216-1
+  Net '/SW2_FLT_L' (2 unrouted connections):
+    - U701-12  ->  R704-1
+    - R704-1  ->  U401-A5
+  Net '/SW1_SNS' (1 unrouted connection):
+    - R606-2  ->  U401-A7
+  Net '/SW3_SNS' (1 unrouted connection):
+    - U401-A10  ->  R806-2
+  Net '/TMP175_ALERT_L' (2 unrouted connections):
+    - R211-2  ->  U203-3
+    - U401-A11  ->  U203-3
+  Net '/SPI4_SWITCH1_CS_L' (1 unrouted connection):
+    - U601-15  ->  U401-A14
+  Net '/SPI5_SWITCH2_MOSI' (1 unrouted connection):
+    - U401-A15  ->  U701-13
+  Net '/SPI5_SWITCH2_SCK' (1 unrouted connection):
+    - U701-16  ->  U401-A16
+  Net '/BATT_MON' (1 unrouted connection):
+    - R205-2  ->  U401-B1
+  Net '/T1S_IRQ_L' (2 unrouted connections):
+    - R508-2  ->  U401-B3
+    - U401-B3  ->  U501-22
+  Net '/SW1_FLT_L' (1 unrouted connection):
+    - U401-B5  ->  U601-12
+  Net '/NTC_SW3' (3 unrouted connections):
+    - C807-1  ->  R807-2
+    - C807-1  ->  U401-B9
+    - C807-1  ->  RT801-1
+  Net '/SW3_FLT_L' (2 unrouted connections):
+    - R804-1  ->  U801-12
+    - U401-B10  ->  R804-1
+  Net '/LM_FLT_L' (1 unrouted connection):
+    - R203-2  ->  U401-B11
+  Net '/SPI5_SWITCH2_MISO' (1 unrouted connection):
+    - U701-14  ->  U401-B13
+  Net '/MCU and NVM/SPI2_FLASH_MISO' (1 unrouted connection):
+    - U402-2  ->  U401-C2
+  Net '/MCU and NVM/SPI2_FLASH_MOSI' (1 unrouted connection):
+    - U401-C6  ->  U402-5
+  Net '/SPI4_SWITCH1_MOSI' (1 unrouted connection):
+    - U601-13  ->  U401-C15
+  Net '/SPI4_SWITCH1_MISO' (1 unrouted connection):
+    - U401-C17  ->  U601-14
+  Net '/MCU and NVM/SPI2_FLASH_SCK' (1 unrouted connection):
+    - U401-D2  ->  U402-6
+  Net '/SPI4_SWITCH1_SCK' (1 unrouted connection):
+    - U601-16  ->  U401-D15
+  Net '/MCU and NVM/SPI2_FLASH_CS_L' (1 unrouted connection):
+    - U402-1  ->  via
+  Net '/T1S_TERM_DROP' (3 unrouted connections):
+    - Q502-5  ->  Q502-2
+    - Q502-5  ->  R521-1
+    - U401-E3  ->  R521-1
+  Net '/NTC_SW1' (2 unrouted connections):
+    - C607-1  ->  U401-E4
+    - R607-2  ->  RT601-1
+  Net '/SPI3_SWITCH3_SCK' (1 unrouted connection):
+    - U801-16  ->  U401-E14
+  Net '/SPI3_SWITCH3_MISO' (1 unrouted connection):
+    - U801-14  ->  U401-E15
+  Net '/T1S_TERM_END' (1 unrouted connection):
+    - R522-1  ->  U401-F3
+  Net '/NTC_SW2' (3 unrouted connections):
+    - R707-2  ->  C707-1
+    - U401-F9  ->  R707-2
+    - RT701-1  ->  R707-2
+  Net '/SPI3_SWITCH3_MOSI' (1 unrouted connection):
+    - U801-13  ->  U401-F14
+  Net '/SPI3_SWITCH3_CS_L' (1 unrouted connection):
+    - U801-15  ->  U401-G15
+  Net '/SPI5_SWITCH2_CS_L' (1 unrouted connection):
+    - U401-G16  ->  U701-15
+  Net '/I2C0_TELEMETRY_SCL' (2 unrouted connections):
+    - U202-5  ->  U401-M4
+    - U203-2  ->  U202-5
+  Net '/MDIO0_T1S_MDC' (1 unrouted connection):
+    - U401-N3  ->  via
+  Net '/MDIO0_T1S_MDIO' (1 unrouted connection):
+    - via  ->  R507-2
+  Net '/I2C0_TELEMETRY_SDA' (2 unrouted connections):
+    - U203-1  ->  U202-4
+    - U401-P5  ->  U202-4
+  Net '/RMII0_T1S_RX_ER' (1 unrouted connection):
+    - via  ->  U401-P6
+  Net '/RMII0_T1S_TX_EN' (2 unrouted connections):
+    - U501-7  ->  via
+    - R514-1  ->  via
+  Net '/RMII0_T1S_CRS_DV' (2 unrouted connections):
+    - R509-1  ->  via
+    - via  ->  U401-R6
+  Net '/RMII0_T1S_RXD1' (1 unrouted connection):
+    - via  ->  R511-1
+  Net '/Power entry/RS_SENSE_N' (1 unrouted connection):
+    - U201-19  ->  C213-2
+  Net '/T1S/T1S_N_DROP' (1 unrouted connection):
+    - K501-2  ->  R516-2
+  Net '/Outputs 5-6/SW_SNS' (1 unrouted connection):
+    - R805-1  ->  C804-1
+  Net '/T1S/T1S_OSC_OUT' (1 unrouted connection):
+    - R503-1  ->  Y501-3
+  Net '/Outputs 5-6/SW_DI' (1 unrouted connection):
+    - U801-4  ->  R802-1
+  Net '/Power entry/LM_SW' (1 unrouted connection):
+    - R204-1  ->  U201-3
+  Net '/Power entry/LM_UVLO' (1 unrouted connection):
+    - U201-4  ->  R204-2
+  Net '/Outputs 3-4/SW_SNS' (1 unrouted connection):
+    - R705-1  ->  C704-1
+  Net '/Power entry/LM_CSP' (1 unrouted connection):
+    - U201-20  ->  C212-2
+  Net '/Regulators/1V5_CORE_FB' (2 unrouted connections):
+    - R304-2  ->  U303-5
+    - R304-2  ->  R305-1
+  Net '/T1S/T1S_N_END' (1 unrouted connection):
+    - R517-2  ->  K501-4
+  Net '/T1S/T1S_PHYAD4' (1 unrouted connection):
+    - R512-1  ->  U501-15
+  Net 'VDDAU_AON' (1 unrouted connection):
+    - R301-2  ->  C510-1
+  Net '/T1S/T1S_PHY_P' (1 unrouted connection):
+    - U501-30  ->  FL501-2
+  Net '/T1S/T1S_PHY_N' (1 unrouted connection):
+    - U501-31  ->  FL501-1
+  Net '/T1S/T1S_CMC_P' (1 unrouted connection):
+    - C511-1  ->  FL501-3
+  Net '/T1S/T1S_CMC_N' (1 unrouted connection):
+    - FL501-4  ->  C512-1
+  Net '/Outputs 1-2/SW_DI' (1 unrouted connection):
+    - R602-1  ->  U601-4
+  Net '/Power entry/HGATE_G' (1 unrouted connection):
+    - Q204-2  ->  R202-1
+  Net '/T1S/T1S_TERM_COIL_R' (1 unrouted connection):
+    - Q501-3  ->  K501-8
+  Net '/Outputs 3-4/SW_DI' (1 unrouted connection):
+    - R702-1  ->  U701-4
+  Net '/Regulators/3V3_MAIN_VCC' (1 unrouted connection):
+    - C306-1  ->  U302-10
+  Net '/T1S/T1S_P_END' (1 unrouted connection):
+    - R519-2  ->  K501-5
+  Net '/Power entry/LM_TMR' (1 unrouted connection):
+    - U201-9  ->  C211-1
+  Net '/T1S/T1S_P_DROP' (1 unrouted connection):
+    - K501-7  ->  R518-2
+  Net '/Power entry/RS_SENSE_P' (2 unrouted connections):
+    - R210-1  ->  U202-10
+    - R209-1  ->  R201-2
+2026-11-12 18:07:17.142 INFO   [B2A5A4\23558F] Auto-routing stage completed: started with 277 unrouted nets, completed in 8709.18 seconds, final score: 449.81 (143 unrouted and 12740 violations), using 8415.75 total CPU seconds, 2833.97 GB total allocated, and 1028.9 MB peak heap usage.
+2026-11-12 18:07:17.257 INFO   [B2A5A4\23558F] Starting optimization on 19 threads...
+2026-11-12 18:07:27.473 INFO   [B2A5A4\23558F] Skipping optimization stage: the board has 143 unrouted connection(s) (optimizer only runs on completely routed boards).
+2026-11-12 18:07:37.654 INFO   [B2A5A4\23558F] Optimization was completed in 20.40 seconds with the score of 449.81 (143 unrouted and 12740 violations).
+2026-11-12 18:07:37.680 WARN   [B2A5A4\23558F] Invalid traces after autoroute: 49 traces not 45 degree
+2026-11-12 18:07:58.108 INFO   Saving 'out.ses'...
+2026-11-12 18:07:58.245 INFO   Saved 53981 bytes to 'out.ses'.
+real 8771.77
+user 9412.66
+sys 858.82

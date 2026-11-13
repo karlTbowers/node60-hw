@@ -1,0 +1,74 @@
+2026-11-12 18:10:26.818 INFO   Freerouting v2.5.0 (build-date: 2026-10-05)
+WARNING: Final field userProfileSettings in class app.freerouting.settings.GlobalSettings has been mutated reflectively by class com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$2 in unnamed module @78186a70 (file:/Users/karl/Applications/freerouting/freerouting-2.5.0.jar)
+WARNING: Use --enable-final-field-mutation=ALL-UNNAMED to avoid a warning
+WARNING: Mutating final fields will be blocked in a future release unless final field mutation is enabled
+2026-11-12 18:10:27.086 INFO   Hardware: 20 CPU cores, 384 CPU score, 30688 MB RAM
+2026-11-12 18:10:27.086 WARN   Deprecated settings path '-mp / --router.max_passes'; use '--router.autorouter.max_passes' instead. The old path will be removed in a future release.
+2026-11-12 18:10:28.160 WARN   Deprecated settings path 'router.max_passes'; use 'router.autorouter.max_passes' instead. The old path will be removed in a future release.
+2026-11-12 18:10:28.169 INFO   Opening 'in.dsn'...
+2026-11-12 18:10:29.787 INFO   [B375AB\AB3742] Loading board file 'in.dsn'...
+2026-11-12 18:10:30.057 WARN   Wiring: duplicate via skipped at (1570000, -473500)
+2026-11-12 18:10:30.095 WARN   DSN file 'in.dsn' was loaded with 1 warning(s).
+2026-11-12 18:10:30.115 WARN   Power-plane validation failed:
+- Dedicated power layer 'In3.Cu.PWR' has overlapping conduction areas: Area (ID 426, Net(s): [1V5_CORE]) and Area (ID 425, Net(s): [3V3_MAIN]) overlap.
+- Dedicated power layer 'In3.Cu.PWR' has overlapping conduction areas: Area (ID 425, Net(s): [3V3_MAIN]) and Area (ID 424, Net(s): [VBAT_PROT]) overlap.
+- Dedicated power layer 'In3.Cu.PWR' has overlapping conduction areas: Area (ID 425, Net(s): [3V3_MAIN]) and Area (ID 423, Net(s): [/Power entry/VBAT_D]) overlap.
+- Dedicated power layer 'In3.Cu.PWR' has overlapping conduction areas: Area (ID 425, Net(s): [3V3_MAIN]) and Area (ID 419, Net(s): [/Power entry/VBAT_Q2D]) overlap.
+- Dedicated power layer 'In3.Cu.PWR' has overlapping conduction areas: Area (ID 424, Net(s): [VBAT_PROT]) and Area (ID 423, Net(s): [/Power entry/VBAT_D]) overlap.
+- Dedicated power layer 'In3.Cu.PWR' has overlapping conduction areas: Area (ID 424, Net(s): [VBAT_PROT]) and Area (ID 419, Net(s): [/Power entry/VBAT_Q2D]) overlap.
+
+Proper Definition and Best Practices for Power Planes:
+1. What Belongs on a Power Plane:
+   - Solid Copper Pours: A single, uninterrupted sheet of copper assigned to one voltage (e.g., +3.3V).
+   - Split Planes: Multiple distinct voltage zones divided by thin isolation gaps (puzzle pieces).
+   - Vias and Anti-Pads: Plated holes passing through the board, surrounded by circular voids (anti-pads) to prevent shorting.
+   - Thermal Reliefs: Spoked connections for vias or pins that connect to the plane, facilitating soldering.
+2. Why Signal Wires/Traces are Banned:
+   - Destroyed Return Paths: High-speed signals on adjacent layers couple to the solid plane below/above as return paths. Crossing a trace gap detours return currents, causing severe EMI and signal integrity issues.
+   - Compromised Power Delivery: Power planes should provide the lowest impedance path. Routing traces chops up the copper, creating bottleneck restrictions and voltage drops.
+
+2026-11-12 18:10:37.793 WARN   Design Warning: Board has 4016 pre-existing clearance violation(s) in the loaded design (before routing):
+  - 4016 unfixable violation(s) (cannot be resolved by Freerouting):
+      * 4016 fixed trace/via clearance violations (first 5 shown):
+          - FixedVia#6372 [net /Power entry/VBAT_Q2D] <-> ObstacleArea#3319
+          - FixedVia#6372 [net /Power entry/VBAT_Q2D] <-> ObstacleArea#15
+          - FixedVia#6372 [net /Power entry/VBAT_Q2D] <-> ObstacleArea#3318
+          - FixedVia#6372 [net /Power entry/VBAT_Q2D] <-> ObstacleArea#3317
+          - FixedVia#6372 [net /Power entry/VBAT_Q2D] <-> ObstacleArea#3316
+          ... and 4011 more
+  - 0 potentially fixable violations
+Notice: Freerouting does not modify component placement, board outlines, or fixed items.
+Resolving these 4016 unfixable violation(s) is the responsibility of the board author in their EDA tool (e.g. KiCad).
+2026-11-12 18:10:46.273 INFO   [B375AB\AB3742] Starting routing of 'in' on 19 threads...
+2026-11-12 18:10:46.325 INFO   [B375AB\AB3742] Pipeline thread limits: autorouter pass is single-threaded, optimizer.max_threads=19.
+2026-11-12 18:11:00.510 INFO   [B375AB\AB3742] Fanout stage started on board '0a1105ef0fe56fc6f8fa96729bf1f534' with 461 of 874 SMD pins needing fanout (407 already connected, 6 netless).
+2026-11-12 18:11:26.620 WARN   BasicBoard.normalizeTraces: reached 2000 iterations for net '/RMII0_T1S_TX_EN' — stopping to prevent hang. The board geometry for this net may be oscillating (split/combine cycle); traces are kept as-is and further normalization for this net is suppressed on this board candidate.
+2026-11-12 18:11:55.567 INFO   [B375AB\AB3742] Fanout pass #1 on board 'cea65e6b5668533eb601445cf06be6ea' completed in 48.03 seconds with 199 SMD pins fanouted, 150 not routed, 0 insert errors, +22 extra vias (0 SMD pins still to check in pass, ripup costs=100).
+2026-11-12 18:12:33.125 INFO   [B375AB\AB3742] Fanout pass #2 on board '45c6aa5ad5460f1ef860d235fc80cc22' completed in 37.52 seconds with 82 SMD pins fanouted, 113 not routed, 0 insert errors, +6 extra vias (0 SMD pins still to check in pass, ripup costs=200).
+2026-11-12 18:13:10.350 INFO   [B375AB\AB3742] Fanout pass #3 on board '6d3fcb9ace84fbd5a44b4236d10866de' completed in 37.19 seconds with 72 SMD pins fanouted, 86 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=300).
+2026-11-12 18:13:47.322 INFO   [B375AB\AB3742] Fanout pass #4 on board '4312abbc59cdc7ca8914cb42c1fa4bd5' completed in 36.93 seconds with 69 SMD pins fanouted, 73 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=400).
+2026-11-12 18:14:24.250 INFO   [B375AB\AB3742] Fanout pass #5 on board 'ec7a5cb4528f2a078d1e932bf0ba90f1' completed in 36.89 seconds with 69 SMD pins fanouted, 70 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=500).
+2026-11-12 18:15:01.300 INFO   [B375AB\AB3742] Fanout pass #6 on board 'b0afeefc522d51d1fc3517911c2c65f6' completed in 37.01 seconds with 69 SMD pins fanouted, 70 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=600).
+2026-11-12 18:15:38.242 INFO   [B375AB\AB3742] Fanout pass #7 on board 'd5bd5e8575feaf5862d85e3d6d2d569a' completed in 36.90 seconds with 69 SMD pins fanouted, 70 not routed, 0 insert errors, +0 extra vias (0 SMD pins still to check in pass, ripup costs=700).
+2026-11-12 18:15:38.242 INFO   Fanout stopped after 7 passes: no progress for 3 consecutive passes.
+2026-11-12 18:15:46.325 INFO   [B375AB\AB3742] Fanout stage completed: started with 868 total SMD pins, completed in 278.83 seconds, escaped pins: 490/868 (56.5%), using 291.96 total CPU seconds, 90.79 GB total allocated, and 453.4 MB peak heap usage.
+2026-11-12 18:16:11.371 INFO   [B375AB\AB3742] Auto-routing stage started on board 'd5bd5e8575feaf5862d85e3d6d2d569a' with baseline score 529.28 for 173 unrouted items.
+2026-11-12 18:26:00.297 INFO   [B375AB\AB3742] Auto-routing pass #1 on board 'd5bd5e8575feaf5862d85e3d6d2d569a' was completed in 580.51 seconds with score 641.11 (121 unrouted and 4016 violations), using 909.72 CPU seconds and the job allocated 414.98 GB of memory so far.
+2026-11-12 18:33:56.960 INFO   [B375AB\AB3742] Auto-routing pass #2 on board '91d4ad9dbc4d376be566b205fcd0f032' was completed in 467.83 seconds with score 563.69 (157 unrouted and 4016 violations), using 1382.73 CPU seconds and the job allocated 675.05 GB of memory so far.
+2026-11-12 18:41:56.170 INFO   [B375AB\AB3742] Auto-routing pass #3 on board 'c9e12c2d72871231fa463f8250da39b5' was completed in 470.75 seconds with score 626.05 (128 unrouted and 4016 violations), using 1859.79 CPU seconds and the job allocated 915.47 GB of memory so far.
+2026-11-12 18:49:04.521 INFO   [B375AB\AB3742] Auto-routing pass #4 on board 'db91b8d41c456dcda0da49f402a2cc2a' was completed in 419.56 seconds with score 570.14 (154 unrouted and 4016 violations), using 2286.66 CPU seconds and the job allocated 1142.52 GB of memory so far.
+2026-11-12 18:56:41.376 INFO   [B375AB\AB3742] Auto-routing pass #5 on board 'b6bc29d96df31feb5eea6473a405e170' was completed in 448.39 seconds with score 643.26 (120 unrouted and 4016 violations), using 2741.18 CPU seconds and the job allocated 1372.00 GB of memory so far.
+2026-11-12 19:03:43.119 INFO   [B375AB\AB3742] Auto-routing pass #6 on board '57a7af4c2787499df52151033007d124' was completed in 412.87 seconds with score 580.89 (149 unrouted and 4016 violations), using 3161.42 CPU seconds and the job allocated 1593.40 GB of memory so far.
+2026-11-12 19:11:21.159 INFO   [B375AB\AB3742] Auto-routing pass #7 on board '5538bba12cdb12161f05a170f2211b7e' was completed in 449.50 seconds with score 654.01 (115 unrouted and 4016 violations), using 3617.71 CPU seconds and the job allocated 1825.58 GB of memory so far.
+2026-11-12 19:18:06.391 INFO   [B375AB\AB3742] Auto-routing pass #8 on board '5bdee053c85fb78ecee5f2086ff457a9' was completed in 396.31 seconds with score 654.01 (115 unrouted and 4016 violations), using 4019.93 CPU seconds and the job allocated 2037.96 GB of memory so far.
+2026-11-12 19:22:57.246 WARN   BasicBoard.normalizeTraces: reached 2000 iterations for net '/RMII0_T1S_TX_EN' — stopping to prevent hang. The board geometry for this net may be oscillating (split/combine cycle); traces are kept as-is and further normalization for this net is suppressed on this board candidate.
+2026-11-12 19:24:31.345 INFO   [B375AB\AB3742] Auto-routing pass #9 on board '5bdee053c85fb78ecee5f2086ff457a9' was completed in 384.83 seconds with score 587.34 (146 unrouted and 4016 violations), using 4402.86 CPU seconds and the job allocated 2260.81 GB of memory so far.
+2026-11-12 19:32:12.720 INFO   [B375AB\AB3742] Auto-routing pass #10 on board '02c85639f1741ca3d3b4eec5e75ee198' was completed in 453.20 seconds with score 658.31 (113 unrouted and 4016 violations), using 4839.51 CPU seconds and the job allocated 2480.29 GB of memory so far.
+2026-11-12 19:32:36.810 INFO   [B375AB\AB3742] Auto-routing stage completed: started with 277 unrouted nets, completed in 4910.54 seconds, final score: 658.31 (113 unrouted and 4016 violations), using 4863.55 total CPU seconds, 2487.29 GB total allocated, and 4979.7 MB peak heap usage.
+2026-11-12 19:32:36.923 INFO   [B375AB\AB3742] Starting optimization on 19 threads...
+2026-11-12 19:32:45.002 INFO   [B375AB\AB3742] Skipping optimization stage: the board has 113 unrouted connection(s) (optimizer only runs on completely routed boards).
+2026-11-12 19:32:52.871 INFO   [B375AB\AB3742] Optimization was completed in 15.95 seconds with the score of 658.31 (113 unrouted and 4016 violations).
+2026-11-12 19:32:52.901 WARN   [B375AB\AB3742] Invalid traces after autoroute: 49 traces not 45 degree
+2026-11-12 19:33:08.664 INFO   Saving 'out.ses'...
+2026-11-12 19:33:08.805 INFO   Saved 89268 bytes to 'out.ses'.
+freerouting -de in.dsn -do out.ses -mp 10  5963.82s user 363.16s system 127% cpu 1:22:42.86 total
