@@ -23,3 +23,7 @@ outputs/
 Thumbs.db
 .vscode/
 .idea/
+
+# Datasheet PDFs fetched by the kicad-happy distributor skills (third-party documents; re-fetch with
+# sync_datasheets_digikey.py node60.kicad_sch)
+datasheets/

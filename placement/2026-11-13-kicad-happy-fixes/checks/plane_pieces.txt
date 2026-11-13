@@ -1,0 +1,10 @@
+B.Cu    PWR_1V5_CORE_REG_B                34.1 ->      34.0 mm2 (-0.1), pieces 2 -> 2
+B.Cu    PWR_GND_B                      17569.8 ->   17693.1 mm2 (+123.3), pieces 27 -> 38
+F.Cu    PWR_GND_F                      18492.4 ->   18598.6 mm2 (+106.2), pieces 11 -> 20
+F.Cu    PWR_OUT1_F                       209.2 ->     209.1 mm2 (-0.1), pieces 1 -> 1
+In1.Cu  PWR_GND_In1                    22866.4 ->   22859.1 mm2 (-7.4), pieces 1 -> 1
+In2.Cu  PWR_VBAT_PROT_In2              11755.6 ->   11755.1 mm2 (-0.6), pieces 1 -> 1
+In3.Cu  PWR_3V3_MAIN_In3               15745.1 ->   15571.3 mm2 (-173.9), pieces 2 -> 2
+In3.Cu  PWR_VBAT_PROT_In3               6571.0 ->    6570.3 mm2 (-0.7), pieces 1 -> 1
+In4.Cu  PWR_GND_In4                    22866.4 ->   22859.1 mm2 (-7.4), pieces 1 -> 1
+pieces in all: 92 -> 112

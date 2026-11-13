@@ -1,0 +1,1856 @@
+[
+ {
+  "x": 74.75,
+  "y": 111.9,
+  "net": "/SW1_FLT_L",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 74.9,
+  "y": 108.75,
+  "net": "/SW1_FLT_L",
+  "locked": false,
+  "size": [
+   0.4,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ]
+ },
+ {
+  "x": 80.65,
+  "y": 112.0,
+  "net": "/SW_LHI",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.35,
+   0.2
+  ],
+  "left_small": "no room under the board's rules (DRC)"
+ },
+ {
+  "x": 81.2,
+  "y": 108.5,
+  "net": "/SW_LHI",
+  "locked": false,
+  "size": [
+   0.4,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ]
+ },
+ {
+  "x": 92.35,
+  "y": 81.8,
+  "net": "/SW1_SNS",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 123.1,
+  "y": 51.0,
+  "net": "/INH",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 137.15,
+  "y": 71.2,
+  "net": "/I2C0_TELEMETRY_SCL",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ],
+  "left_small": "power band: growing it costs VBAT_D/OUT3 resistance (specs/n2_band_option.json)"
+ },
+ {
+  "x": 137.15,
+  "y": 89.4,
+  "net": "/Power entry/HGATE_G",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ],
+  "left_small": "power band: growing it costs VBAT_D/OUT3 resistance (specs/n2_band_option.json)"
+ },
+ {
+  "x": 137.8,
+  "y": 70.3,
+  "net": "/SPI5_SWITCH2_MOSI",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.35,
+   0.2
+  ],
+  "left_small": "no room under the board's rules (DRC)"
+ },
+ {
+  "x": 138.65,
+  "y": 68.85,
+  "net": "/Power entry/DGATE",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 139.86,
+  "y": 45.35,
+  "net": "/T1S_N",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 145.45,
+  "y": 69.455,
+  "net": "/Outputs 3-4/SW_VDD",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 145.45,
+  "y": 71.2,
+  "net": "/I2C0_TELEMETRY_SCL",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ],
+  "left_small": "power band: growing it costs VBAT_D/OUT3 resistance (specs/n2_band_option.json)"
+ },
+ {
+  "x": 146.05,
+  "y": 62.75,
+  "net": "/SPI5_SWITCH2_MISO",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.35,
+   0.2
+  ],
+  "left_small": "no room under the board's rules (DRC)"
+ },
+ {
+  "x": 146.5,
+  "y": 73.79,
+  "net": "/Power entry/LM_UVLO",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ],
+  "left_small": "power band: growing it costs VBAT_D/OUT3 resistance (specs/n2_band_option.json)"
+ },
+ {
+  "x": 146.55,
+  "y": 62.9398,
+  "net": "/SPI5_SWITCH2_CS_L",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.35,
+   0.2
+  ],
+  "left_small": "no room under the board's rules (DRC)"
+ },
+ {
+  "x": 146.55,
+  "y": 66.0,
+  "net": "/SW2_FLT_L",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.35,
+   0.2
+  ],
+  "left_small": "no room under the board's rules (DRC)"
+ },
+ {
+  "x": 147.8,
+  "y": 109.3,
+  "net": "/SW2_FLT_L",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ],
+  "left_small": "power band: growing it costs VBAT_D/OUT3 resistance (specs/n2_band_option.json)"
+ },
+ {
+  "x": 147.9,
+  "y": 71.6,
+  "net": "/VBAT_IN",
+  "locked": true,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ],
+  "left_small": "power band: growing it costs VBAT_D/OUT3 resistance (specs/n2_band_option.json)"
+ },
+ {
+  "x": 148.2,
+  "y": 74.0,
+  "net": "/Power entry/LM_SW",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ],
+  "left_small": "power band: growing it costs VBAT_D/OUT3 resistance (specs/n2_band_option.json)"
+ },
+ {
+  "x": 148.6,
+  "y": 111.925,
+  "net": "/SW2_FLT_L",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ],
+  "left_small": "power band: growing it costs VBAT_D/OUT3 resistance (specs/n2_band_option.json)"
+ },
+ {
+  "x": 149.0,
+  "y": 45.3925,
+  "net": "/T1S_N",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 149.0,
+  "y": 63.5,
+  "net": "/T1S/T1S_TERM_CT",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 149.7,
+  "y": 72.8,
+  "net": "/Power entry/HGATE_G",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ],
+  "left_small": "power band: growing it costs VBAT_D/OUT3 resistance (specs/n2_band_option.json)"
+ },
+ {
+  "x": 149.815,
+  "y": 46.6075,
+  "net": "/T1S_P",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 149.95,
+  "y": 73.5,
+  "net": "/Power entry/LM_UVLO",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ],
+  "left_small": "power band: growing it costs VBAT_D/OUT3 resistance (specs/n2_band_option.json)"
+ },
+ {
+  "x": 150.0,
+  "y": 68.0,
+  "net": "/T1S/T1S_TERM_CT",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 151.2,
+  "y": 75.75,
+  "net": "/Power entry/LM_SW",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ],
+  "left_small": "power band: growing it costs VBAT_D/OUT3 resistance (specs/n2_band_option.json)"
+ },
+ {
+  "x": 151.4,
+  "y": 44.3,
+  "net": "/RMII0_T1S_TXD0",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 151.7,
+  "y": 86.2,
+  "net": "/NTC_RSENSE",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ],
+  "left_small": "power band: growing it costs VBAT_D/OUT3 resistance (specs/n2_band_option.json)"
+ },
+ {
+  "x": 151.9,
+  "y": 66.4,
+  "net": "/T1S/T1S_TERM_COIL_S",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 152.8,
+  "y": 42.2,
+  "net": "/RMII0_T1S_TX_EN",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 152.9,
+  "y": 43.3,
+  "net": "/RMII0_T1S_TXD1",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 153.25,
+  "y": 66.9,
+  "net": "/SPI5_SWITCH2_MOSI",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 153.75,
+  "y": 56.1,
+  "net": "/T1S_N",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 154.7,
+  "y": 71.0,
+  "net": "/Power entry/HGATE_G",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ],
+  "left_small": "power band: growing it costs VBAT_D/OUT3 resistance (specs/n2_band_option.json)"
+ },
+ {
+  "x": 155.0,
+  "y": 74.75,
+  "net": "/Power entry/HGATE",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ],
+  "left_small": "power band: growing it costs VBAT_D/OUT3 resistance (specs/n2_band_option.json)"
+ },
+ {
+  "x": 155.15,
+  "y": 65.0,
+  "net": "/SPI5_SWITCH2_MOSI",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 155.2,
+  "y": 71.5148,
+  "net": "/LM_FLT_L",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ],
+  "left_small": "power band: growing it costs VBAT_D/OUT3 resistance (specs/n2_band_option.json)"
+ },
+ {
+  "x": 155.55,
+  "y": 109.975,
+  "net": "/Outputs 3-4/SW_SNS",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ],
+  "left_small": "power band: growing it costs VBAT_D/OUT3 resistance (specs/n2_band_option.json)"
+ },
+ {
+  "x": 155.55,
+  "y": 110.625,
+  "net": "/Outputs 3-4/SW_VDD",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ],
+  "left_small": "power band: growing it costs VBAT_D/OUT3 resistance (specs/n2_band_option.json)"
+ },
+ {
+  "x": 156.25,
+  "y": 41.425,
+  "net": "/MDIO0_T1S_MDC",
+  "locked": true,
+  "size": [
+   0.4,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ]
+ },
+ {
+  "x": 156.25,
+  "y": 56.1,
+  "net": "/T1S_P",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 156.45,
+  "y": 71.0,
+  "net": "/Power entry/HGATE_G",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ],
+  "left_small": "power band: growing it costs VBAT_D/OUT3 resistance (specs/n2_band_option.json)"
+ },
+ {
+  "x": 156.6,
+  "y": 39.1,
+  "net": "/MDIO0_T1S_MDIO",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 156.75,
+  "y": 41.1,
+  "net": "/MDIO0_T1S_MDIO",
+  "locked": true,
+  "size": [
+   0.4,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ]
+ },
+ {
+  "x": 156.98,
+  "y": 110.42,
+  "net": "/Outputs 3-4/SW_SNS",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ],
+  "left_small": "power band: growing it costs VBAT_D/OUT3 resistance (specs/n2_band_option.json)"
+ },
+ {
+  "x": 157.0,
+  "y": 47.35,
+  "net": "/T1S/T1S_REFCLK",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 157.05,
+  "y": 37.2,
+  "net": "/MDIO0_T1S_MDC",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 158.34,
+  "y": 39.45,
+  "net": "GND",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 158.4,
+  "y": 68.9148,
+  "net": "/SPI5_SWITCH2_SCK",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 158.7,
+  "y": 42.3,
+  "net": "3V3_MAIN",
+  "locked": true,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.35,
+   0.2
+  ],
+  "left_small": "no room under the board's rules (DRC)"
+ },
+ {
+  "x": 158.7,
+  "y": 49.9,
+  "net": "/RMII0_T1S_RX_ER",
+  "locked": true,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.35,
+   0.2
+  ],
+  "left_small": "no room under the board's rules (DRC)"
+ },
+ {
+  "x": 159.1,
+  "y": 80.85,
+  "net": "GND",
+  "locked": true,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.35,
+   0.2
+  ],
+  "left_small": "no room under the board's rules (DRC)"
+ },
+ {
+  "x": 159.145,
+  "y": 50.21,
+  "net": "VDDAU_AON",
+  "locked": true,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.35,
+   0.2
+  ],
+  "left_small": "no room under the board's rules (DRC)"
+ },
+ {
+  "x": 159.3,
+  "y": 42.5,
+  "net": "/RMII0_T1S_RXD1",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 159.6,
+  "y": 51.4,
+  "net": "/RMII0_T1S_CRS_DV",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 159.6,
+  "y": 111.75,
+  "net": "/Outputs 3-4/SW_VDD",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ],
+  "left_small": "power band: growing it costs VBAT_D/OUT3 resistance (specs/n2_band_option.json)"
+ },
+ {
+  "x": 159.75,
+  "y": 68.505,
+  "net": "/Outputs 3-4/SW_VDD",
+  "locked": false,
+  "size": [
+   0.4,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ]
+ },
+ {
+  "x": 160.0,
+  "y": 68.0,
+  "net": "/T1S/T1S_TERM_CT",
+  "locked": true,
+  "size": [
+   0.4,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ]
+ },
+ {
+  "x": 160.2,
+  "y": 82.0,
+  "net": "VBAT_PROT",
+  "locked": true,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ],
+  "left_small": "power band: growing it costs VBAT_D/OUT3 resistance (specs/n2_band_option.json)"
+ },
+ {
+  "x": 160.3,
+  "y": 44.5,
+  "net": "/T1S_IRQ_L",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 160.3,
+  "y": 63.5,
+  "net": "/T1S/T1S_TERM_CT",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 160.4,
+  "y": 58.8,
+  "net": "/T1S/T1S_TERM_CT",
+  "locked": true,
+  "size": [
+   0.4,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ]
+ },
+ {
+  "x": 160.5,
+  "y": 43.9,
+  "net": "/RMII0_T1S_RX_ER",
+  "locked": true,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.35,
+   0.2
+  ],
+  "left_small": "no room under the board's rules (DRC)"
+ },
+ {
+  "x": 160.9,
+  "y": 43.5,
+  "net": "/RMII0_T1S_CRS_DV",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 161.0,
+  "y": 80.24,
+  "net": "GND",
+  "locked": true,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ],
+  "left_small": "power band: growing it costs VBAT_D/OUT3 resistance (specs/n2_band_option.json)"
+ },
+ {
+  "x": 161.2,
+  "y": 49.0,
+  "net": "/RMII0_T1S_RX_ER",
+  "locked": true,
+  "size": [
+   0.4,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ]
+ },
+ {
+  "x": 161.41,
+  "y": 71.7,
+  "net": "VBAT_PROT",
+  "locked": true,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.35,
+   0.2
+  ],
+  "left_small": "no room under the board's rules (DRC)"
+ },
+ {
+  "x": 161.5,
+  "y": 42.2,
+  "net": "/RMII0_T1S_TXD1",
+  "locked": true,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.35,
+   0.2
+  ],
+  "left_small": "no room under the board's rules (DRC)"
+ },
+ {
+  "x": 162.3,
+  "y": 60.7,
+  "net": "/T1S/T1S_TERM_CT",
+  "locked": true,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.35,
+   0.2
+  ],
+  "left_small": "no room under the board's rules (DRC)"
+ },
+ {
+  "x": 162.6,
+  "y": 61.7,
+  "net": "/T1S_TERM_DROP",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 162.6,
+  "y": 68.0,
+  "net": "/T1S/T1S_TERM_COIL_S",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 163.25,
+  "y": 66.36,
+  "net": "/T1S_TERM_DROP",
+  "locked": false,
+  "size": [
+   0.4,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ]
+ },
+ {
+  "x": 163.25,
+  "y": 67.47,
+  "net": "/T1S_TERM_DROP",
+  "locked": false,
+  "size": [
+   0.4,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ]
+ },
+ {
+  "x": 163.4,
+  "y": 44.5,
+  "net": "/T1S_IRQ_L",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 163.75,
+  "y": 64.885,
+  "net": "GND",
+  "locked": true,
+  "size": [
+   0.4,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ]
+ },
+ {
+  "x": 165.0,
+  "y": 61.95,
+  "net": "/T1S_TERM_DROP",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 165.5,
+  "y": 44.2,
+  "net": "/RMII0_T1S_RXD1",
+  "locked": true,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.35,
+   0.2
+  ],
+  "left_small": "no room under the board's rules (DRC)"
+ },
+ {
+  "x": 165.75,
+  "y": 66.5,
+  "net": "/T1S_TERM_DROP",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 166.95,
+  "y": 61.75,
+  "net": "/SPI5_SWITCH2_MISO",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.35,
+   0.2
+  ],
+  "left_small": "no room under the board's rules (DRC)"
+ },
+ {
+  "x": 167.4,
+  "y": 37.4,
+  "net": "/RMII0_T1S_RXD1",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 167.65,
+  "y": 53.3,
+  "net": "/SW_LHI",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 167.65,
+  "y": 61.25,
+  "net": "/SW_LHI",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.35,
+   0.2
+  ],
+  "left_small": "no room under the board's rules (DRC)"
+ },
+ {
+  "x": 168.1,
+  "y": 62.9398,
+  "net": "/SPI5_SWITCH2_CS_L",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 169.95,
+  "y": 64.95,
+  "net": "/SPI5_SWITCH2_MOSI",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.35,
+   0.2
+  ],
+  "left_small": "no room under the board's rules (DRC)"
+ },
+ {
+  "x": 170.53,
+  "y": 46.7,
+  "net": "/T1S_P",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 170.6,
+  "y": 64.95,
+  "net": "/SW2_FLT_L",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 170.8,
+  "y": 71.3,
+  "net": "/NTC_SW2",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ],
+  "left_small": "power band: growing it costs VBAT_D/OUT3 resistance (specs/n2_band_option.json)"
+ },
+ {
+  "x": 171.1,
+  "y": 38.6,
+  "net": "/RMII0_T1S_RXD0",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 171.1,
+  "y": 62.9398,
+  "net": "/SPI5_SWITCH2_CS_L",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 171.25,
+  "y": 64.95,
+  "net": "/SW_LHI",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 178.495,
+  "y": 40.05,
+  "net": "/T1S/T1S_REFCLK",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 178.55,
+  "y": 72.0,
+  "net": "/NTC_RSENSE",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ],
+  "left_small": "power band: growing it costs VBAT_D/OUT3 resistance (specs/n2_band_option.json)"
+ },
+ {
+  "x": 178.85,
+  "y": 64.97,
+  "net": "/SW2_SNS",
+  "locked": false,
+  "size": [
+   0.4,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ]
+ },
+ {
+  "x": 180.15,
+  "y": 63.45,
+  "net": "/SPI5_SWITCH2_MISO",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.35,
+   0.2
+  ],
+  "left_small": "no room under the board's rules (DRC)"
+ },
+ {
+  "x": 181.3,
+  "y": 69.2625,
+  "net": "/NTC_RSENSE",
+  "locked": false,
+  "size": [
+   0.4,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ]
+ },
+ {
+  "x": 181.5,
+  "y": 60.8,
+  "net": "/RMII0_T1S_RX_ER",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 181.7,
+  "y": 34.7,
+  "net": "/RMII0_T1S_RXD0",
+  "locked": true,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.35,
+   0.2
+  ],
+  "left_small": "no room under the board's rules (DRC)"
+ },
+ {
+  "x": 182.5,
+  "y": 36.3,
+  "net": "/MDIO0_T1S_MDIO",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 185.2,
+  "y": 69.2625,
+  "net": "/NTC_RSENSE",
+  "locked": false,
+  "size": [
+   0.4,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ]
+ },
+ {
+  "x": 185.25,
+  "y": 63.75,
+  "net": "/SPI5_SWITCH2_MISO",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 187.4,
+  "y": 66.2,
+  "net": "/SPI5_SWITCH2_MOSI",
+  "locked": false,
+  "size": [
+   0.4,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ]
+ },
+ {
+  "x": 188.6,
+  "y": 70.2148,
+  "net": "/LM_FLT_L",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 190.8,
+  "y": 62.8,
+  "net": "/SPI5_SWITCH2_MOSI",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 191.6,
+  "y": 64.05,
+  "net": "/SPI5_SWITCH2_MISO",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 192.25,
+  "y": 64.05,
+  "net": "/SW2_FLT_L",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.35,
+   0.2
+  ],
+  "left_small": "no room under the board's rules (DRC)"
+ },
+ {
+  "x": 192.7,
+  "y": 46.5,
+  "net": "/MDIO0_T1S_MDIO",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 193.0,
+  "y": 42.8,
+  "net": "/RMII0_T1S_RXD1",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 193.5,
+  "y": 62.8,
+  "net": "/SW2_FLT_L",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 195.8,
+  "y": 61.7648,
+  "net": "/SPI5_SWITCH2_SCK",
+  "locked": false,
+  "size": [
+   0.4,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ]
+ },
+ {
+  "x": 195.9,
+  "y": 40.2,
+  "net": "/RMII0_T1S_RXD1",
+  "locked": true,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 199.25,
+  "y": 60.8648,
+  "net": "/LM_FLT_L",
+  "locked": false,
+  "size": [
+   0.4,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ]
+ },
+ {
+  "x": 202.25,
+  "y": 60.0,
+  "net": "/SPI5_SWITCH2_MISO",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 202.55,
+  "y": 61.75,
+  "net": "/SPI5_SWITCH2_MISO",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.35,
+   0.2
+  ],
+  "left_small": "no room under the board's rules (DRC)"
+ },
+ {
+  "x": 203.45,
+  "y": 67.0,
+  "net": "/NTC_SW2",
+  "locked": false,
+  "size": [
+   0.4,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ]
+ },
+ {
+  "x": 204.6,
+  "y": 64.505,
+  "net": "/Outputs 3-4/SW_VDD",
+  "locked": false,
+  "size": [
+   0.4,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ]
+ },
+ {
+  "x": 205.2,
+  "y": 61.75,
+  "net": "/SPI5_SWITCH2_MISO",
+  "locked": false,
+  "size": [
+   0.4,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ]
+ },
+ {
+  "x": 207.3,
+  "y": 63.15,
+  "net": "/NTC_SW2",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 207.8,
+  "y": 59.9,
+  "net": "/SPI5_SWITCH2_MISO",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.35,
+   0.2
+  ],
+  "left_small": "no room under the board's rules (DRC)"
+ },
+ {
+  "x": 208.4,
+  "y": 60.5,
+  "net": "/SPI5_SWITCH2_MISO",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 209.136,
+  "y": 54.864,
+  "net": "/SPI4_SWITCH1_SCK",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.35,
+   0.2
+  ],
+  "left_small": "no room under the board's rules (DRC)"
+ },
+ {
+  "x": 209.15,
+  "y": 56.65,
+  "net": "/MCU and NVM/SPI2_FLASH_SCK",
+  "locked": false,
+  "size": [
+   0.35,
+   0.2
+  ],
+  "fits": [
+   0.35,
+   0.2
+  ],
+  "left_small": "no room under the board's rules (DRC)"
+ },
+ {
+  "x": 209.3,
+  "y": 35.9,
+  "net": "/Regulators/1V5_EN",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 210.85,
+  "y": 49.05,
+  "net": "/MCU and NVM/1V1_MCU_V11",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 226.2791,
+  "y": 47.8886,
+  "net": "/MCU and NVM/SPI2_FLASH_CS_L",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 229.9,
+  "y": 111.994,
+  "net": "/SW_LHI",
+  "locked": false,
+  "size": [
+   0.4,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ]
+ },
+ {
+  "x": 230.55,
+  "y": 108.544,
+  "net": "/SW_LHI",
+  "locked": false,
+  "size": [
+   0.45,
+   0.25
+  ],
+  "fits": [
+   0.45,
+   0.25
+  ]
+ },
+ {
+  "x": 230.75,
+  "y": 47.9,
+  "net": "/MCU and NVM/SPI2_FLASH_CS_L",
+  "locked": false,
+  "size": [
+   0.4,
+   0.2
+  ],
+  "fits": [
+   0.4,
+   0.2
+  ]
+ }
+]

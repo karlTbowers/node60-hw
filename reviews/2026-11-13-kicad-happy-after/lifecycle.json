@@ -1,0 +1,2695 @@
+{
+  "analyzer_type": "lifecycle",
+  "schema_version": "1.4.0",
+  "audit_date": "2026-11-12T23:44:10-08:00",
+  "components_checked": 72,
+  "components_with_mpn": 72,
+  "components_without_mpn": 1,
+  "sources_available": [
+    "digikey"
+  ],
+  "findings": [
+    {
+      "mpn": "744383560056HT",
+      "references": [
+        "L302"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 150.0,
+          "temp_raw": "-55\u00b0C ~ 150\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "744383560056HT: active (1 ref(s))",
+      "components": [
+        "L302"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "74438356022HT",
+      "references": [
+        "L201",
+        "L301"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 150.0,
+          "temp_raw": "-55\u00b0C ~ 150\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "74438356022HT: active (2 ref(s))",
+      "components": [
+        "L201",
+        "L301"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "ABM8AIG-16.000MHZ-8-1Z-T",
+      "references": [
+        "Y401"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -40.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-40\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "ABM8AIG-16.000MHZ-8-1Z-T: active (1 ref(s))",
+      "components": [
+        "Y401"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "AC0402FR-07100KL",
+      "references": [
+        "R306",
+        "R307"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 155.0,
+          "temp_raw": "-55\u00b0C ~ 155\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "AC0402FR-07100KL: active (2 ref(s))",
+      "components": [
+        "R306",
+        "R307"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "AC0402FR-0712K4L",
+      "references": [
+        "R501"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 155.0,
+          "temp_raw": "-55\u00b0C ~ 155\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "AC0402FR-0712K4L: active (1 ref(s))",
+      "components": [
+        "R501"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "AC0402FR-0726K7L",
+      "references": [
+        "R208"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 155.0,
+          "temp_raw": "-55\u00b0C ~ 155\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "AC0402FR-0726K7L: active (1 ref(s))",
+      "components": [
+        "R208"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "AC0402FR-07383RL",
+      "references": [
+        "R210"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 155.0,
+          "temp_raw": "-55\u00b0C ~ 155\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "AC0402FR-07383RL: active (1 ref(s))",
+      "components": [
+        "R210"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "AC0402FR-0751KL",
+      "references": [
+        "R305"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 155.0,
+          "temp_raw": "-55\u00b0C ~ 155\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "AC0402FR-0751KL: active (1 ref(s))",
+      "components": [
+        "R305"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "AC0402FR-0776K8L",
+      "references": [
+        "R304"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 155.0,
+          "temp_raw": "-55\u00b0C ~ 155\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "AC0402FR-0776K8L: active (1 ref(s))",
+      "components": [
+        "R304"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "AC0402JR-070RL",
+      "references": [
+        "R301",
+        "R408"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 155.0,
+          "temp_raw": "-55\u00b0C ~ 155\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "AC0402JR-070RL: active (2 ref(s))",
+      "components": [
+        "R301",
+        "R408"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "AC0402JR-0710KL",
+      "references": [
+        "R203",
+        "R211",
+        "R401",
+        "R402",
+        "R403",
+        "R404",
+        "R405",
+        "R505",
+        "R506",
+        "R507",
+        "R508",
+        "R509",
+        "R510",
+        "R511",
+        "R512",
+        "R513",
+        "R514",
+        "R515",
+        "R602",
+        "R603",
+        "R606",
+        "R702",
+        "R703",
+        "R706",
+        "R802",
+        "R803",
+        "R806"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 155.0,
+          "temp_raw": "-55\u00b0C ~ 155\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "AC0402JR-0710KL: active (27 ref(s))",
+      "components": [
+        "R203",
+        "R211",
+        "R401",
+        "R402",
+        "R403",
+        "R404",
+        "R405",
+        "R505",
+        "R506",
+        "R507",
+        "R508",
+        "R509",
+        "R510",
+        "R511",
+        "R512",
+        "R513",
+        "R514",
+        "R515",
+        "R602",
+        "R603",
+        "R606",
+        "R702",
+        "R703",
+        "R706",
+        "R802",
+        "R803",
+        "R806"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "AC0402JR-0710RL",
+      "references": [
+        "R202",
+        "R601",
+        "R701",
+        "R801"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 155.0,
+          "temp_raw": "-55\u00b0C ~ 155\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "AC0402JR-0710RL: active (4 ref(s))",
+      "components": [
+        "R202",
+        "R601",
+        "R701",
+        "R801"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "AC0402JR-072K2L",
+      "references": [
+        "R406",
+        "R407"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 155.0,
+          "temp_raw": "-55\u00b0C ~ 155\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "AC0402JR-072K2L: active (2 ref(s))",
+      "components": [
+        "R406",
+        "R407"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "AC0402JR-0733RL",
+      "references": [
+        "R503",
+        "R504"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 155.0,
+          "temp_raw": "-55\u00b0C ~ 155\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "AC0402JR-0733RL: active (2 ref(s))",
+      "components": [
+        "R503",
+        "R504"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "AC0402JR-074K7L",
+      "references": [
+        "R308",
+        "R604",
+        "R704",
+        "R804"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 155.0,
+          "temp_raw": "-55\u00b0C ~ 155\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "AC0402JR-074K7L: active (4 ref(s))",
+      "components": [
+        "R308",
+        "R604",
+        "R704",
+        "R804"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "AC0603FR-07107KL",
+      "references": [
+        "R204"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 155.0,
+          "temp_raw": "-55\u00b0C ~ 155\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "AC0603FR-07107KL: active (1 ref(s))",
+      "components": [
+        "R204"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "AC0603FR-072K1L",
+      "references": [
+        "R207"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 155.0,
+          "temp_raw": "-55\u00b0C ~ 155\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "AC0603FR-072K1L: active (1 ref(s))",
+      "components": [
+        "R207"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "AC0603FR-072KL",
+      "references": [
+        "R205"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 155.0,
+          "temp_raw": "-55\u00b0C ~ 155\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "AC0603FR-072KL: active (1 ref(s))",
+      "components": [
+        "R205"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "AC0603FR-0749R9L",
+      "references": [
+        "R209"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 155.0,
+          "temp_raw": "-55\u00b0C ~ 155\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "AC0603FR-0749R9L: active (1 ref(s))",
+      "components": [
+        "R209"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "AC0603FR-077K87L",
+      "references": [
+        "R206"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 155.0,
+          "temp_raw": "-55\u00b0C ~ 155\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "AC0603FR-077K87L: active (1 ref(s))",
+      "components": [
+        "R206"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "AC0603KRX7R6BB225",
+      "references": [
+        "C302",
+        "C421"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-55\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "AC0603KRX7R6BB225: active (2 ref(s))",
+      "components": [
+        "C302",
+        "C421"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "AC0805FR-07100KL",
+      "references": [
+        "R520"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 155.0,
+          "temp_raw": "-55\u00b0C ~ 155\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "AC0805FR-07100KL: active (1 ref(s))",
+      "components": [
+        "R520"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "ACT1210E-241-2P-TL00",
+      "references": [
+        "FL501"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -40.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-40\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "ACT1210E-241-2P-TL00: active (1 ref(s))",
+      "components": [
+        "FL501"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "AT13-2P-BM04",
+      "references": [
+        "J904",
+        "J905",
+        "J906",
+        "J907",
+        "J908",
+        "J909"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-55\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "AT13-2P-BM04: active (6 ref(s))",
+      "components": [
+        "J904",
+        "J905",
+        "J906",
+        "J907",
+        "J908",
+        "J909"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "ATM13-2P-BM04",
+      "references": [
+        "J903",
+        "J912"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-55\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "ATM13-2P-BM04: active (2 ref(s))",
+      "components": [
+        "J903",
+        "J912"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "BVR-Z-R0003-1.0",
+      "references": [
+        "R201"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -65.0,
+          "temp_max_c": 170.0,
+          "temp_raw": "-65\u00b0C ~ 170\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "BVR-Z-R0003-1.0: active (1 ref(s))",
+      "components": [
+        "R201"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "Busbar_Cu_19.05x3.175mm_L125.05mm_2xD6.5mm_P106mm",
+      "references": [
+        "BB901"
+      ],
+      "status": "unknown",
+      "sources": {},
+      "detector": "audit_bom",
+      "rule_id": "LC-004",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "Busbar_Cu_19.05x3.175mm_L125.05mm_2xD6.5mm_P106mm: unknown (1 ref(s))",
+      "description": "Component Busbar_Cu_19.05x3.175mm_L125.05mm_2xD6.5mm_P106mm is unknown.",
+      "components": [
+        "BB901"
+      ],
+      "nets": [],
+      "pins": [],
+      "recommendation": "Replace Busbar_Cu_19.05x3.175mm_L125.05mm_2xD6.5mm_P106mm \u2014 part is unknown.",
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "Supply chain risk",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "Busbar_Cu_19.05x3.175mm_L176.05mm_2xD6.5mm_P157mm",
+      "references": [
+        "BB902"
+      ],
+      "status": "unknown",
+      "sources": {},
+      "detector": "audit_bom",
+      "rule_id": "LC-004",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "Busbar_Cu_19.05x3.175mm_L176.05mm_2xD6.5mm_P157mm: unknown (1 ref(s))",
+      "description": "Component Busbar_Cu_19.05x3.175mm_L176.05mm_2xD6.5mm_P157mm is unknown.",
+      "components": [
+        "BB902"
+      ],
+      "nets": [],
+      "pins": [],
+      "recommendation": "Replace Busbar_Cu_19.05x3.175mm_L176.05mm_2xD6.5mm_P157mm \u2014 part is unknown.",
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "Supply chain risk",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "CGA4J2X7R2A104K125AA",
+      "references": [
+        "C514"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-55\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "CGA4J2X7R2A104K125AA: active (1 ref(s))",
+      "components": [
+        "C514"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "CGA5L2X7R2A105K160AA",
+      "references": [
+        "C209",
+        "C301",
+        "C602",
+        "C702",
+        "C802"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-55\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "CGA5L2X7R2A105K160AA: active (5 ref(s))",
+      "components": [
+        "C209",
+        "C301",
+        "C602",
+        "C702",
+        "C802"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "CNA6P1X7R2A475K250AE",
+      "references": [
+        "C205",
+        "C206",
+        "C304",
+        "C305"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-55\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "CNA6P1X7R2A475K250AE: active (4 ref(s))",
+      "components": [
+        "C205",
+        "C206",
+        "C304",
+        "C305"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "CRCW06030000Z0EAHP",
+      "references": [
+        "R302",
+        "R303"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 155.0,
+          "temp_raw": "-55\u00b0C ~ 155\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "CRCW06030000Z0EAHP: active (2 ref(s))",
+      "components": [
+        "R302",
+        "R303"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "CRCW12061K50FKEA",
+      "references": [
+        "R516",
+        "R518"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 155.0,
+          "temp_raw": "-55\u00b0C ~ 155\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "CRCW12061K50FKEA: active (2 ref(s))",
+      "components": [
+        "R516",
+        "R518"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "CRCW120649R9FKEAHP",
+      "references": [
+        "R517",
+        "R519"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 155.0,
+          "temp_raw": "-55\u00b0C ~ 155\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "CRCW120649R9FKEAHP: active (2 ref(s))",
+      "components": [
+        "R517",
+        "R519"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "DMC2710UVQ-7",
+      "references": [
+        "Q501",
+        "Q502"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 150.0,
+          "temp_raw": "-55\u00b0C ~ 150\u00b0C (TJ)"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "DMC2710UVQ-7: active (2 ref(s))",
+      "components": [
+        "Q501",
+        "Q502"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "ECS-3225SMVQ-500-DS-TR",
+      "references": [
+        "Y501"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -40.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-40\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "ECS-3225SMVQ-500-DS-TR: active (1 ref(s))",
+      "components": [
+        "Y501"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "ERA-3AEB103V",
+      "references": [
+        "R212",
+        "R607",
+        "R707",
+        "R807"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 155.0,
+          "temp_raw": "-55\u00b0C ~ 155\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "ERA-3AEB103V: active (4 ref(s))",
+      "components": [
+        "R212",
+        "R607",
+        "R707",
+        "R807"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "ERA-3AEB6980V",
+      "references": [
+        "R605",
+        "R705",
+        "R805"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 155.0,
+          "temp_raw": "-55\u00b0C ~ 155\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "ERA-3AEB6980V: active (3 ref(s))",
+      "components": [
+        "R605",
+        "R705",
+        "R805"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "ERJ-2RKF1003X",
+      "references": [
+        "R521",
+        "R522"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 155.0,
+          "temp_raw": "-55\u00b0C ~ 155\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "ERJ-2RKF1003X: active (2 ref(s))",
+      "components": [
+        "R521",
+        "R522"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "FTSH-105-01-L-DV-K",
+      "references": [
+        "J401"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-55\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "FTSH-105-01-L-DV-K: active (1 ref(s))",
+      "components": [
+        "J401"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "G6KU-2F-Y-T1-TRS DC3",
+      "references": [
+        "K501"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -40.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-40\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "G6KU-2F-Y-T1-TRS DC3: active (1 ref(s))",
+      "components": [
+        "K501"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "GCJ188R72A104KA01D",
+      "references": [
+        "C201",
+        "C203",
+        "C204",
+        "C208",
+        "C303",
+        "C310",
+        "C601",
+        "C605",
+        "C606",
+        "C701",
+        "C705",
+        "C706",
+        "C801",
+        "C805",
+        "C806"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-55\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "GCJ188R72A104KA01D: active (15 ref(s))",
+      "components": [
+        "C201",
+        "C203",
+        "C204",
+        "C208",
+        "C303",
+        "C310",
+        "C601",
+        "C605",
+        "C606",
+        "C701",
+        "C705",
+        "C706",
+        "C801",
+        "C805",
+        "C806"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "GCM1555C1H100JA16D",
+      "references": [
+        "C319",
+        "C424",
+        "C425"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-55\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "GCM1555C1H100JA16D: active (3 ref(s))",
+      "components": [
+        "C319",
+        "C424",
+        "C425"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "GCM155R71C104KA55D",
+      "references": [
+        "C214",
+        "C215",
+        "C309",
+        "C317",
+        "C318",
+        "C401",
+        "C402",
+        "C403",
+        "C404",
+        "C406",
+        "C407",
+        "C408",
+        "C409",
+        "C410",
+        "C411",
+        "C412",
+        "C413",
+        "C414",
+        "C417",
+        "C418",
+        "C419",
+        "C420",
+        "C423",
+        "C502",
+        "C504",
+        "C507",
+        "C510",
+        "C513"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-55\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "GCM155R71C104KA55D: active (28 ref(s))",
+      "components": [
+        "C214",
+        "C215",
+        "C309",
+        "C317",
+        "C318",
+        "C401",
+        "C402",
+        "C403",
+        "C404",
+        "C406",
+        "C407",
+        "C408",
+        "C409",
+        "C410",
+        "C411",
+        "C412",
+        "C413",
+        "C414",
+        "C417",
+        "C418",
+        "C419",
+        "C420",
+        "C423",
+        "C502",
+        "C504",
+        "C507",
+        "C510",
+        "C513"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "GCM155R71C224KE02D",
+      "references": [
+        "C422"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-55\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "GCM155R71C224KE02D: active (1 ref(s))",
+      "components": [
+        "C422"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "GCM155R71H103KA55D",
+      "references": [
+        "C501",
+        "C503",
+        "C506",
+        "C509"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-55\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "GCM155R71H103KA55D: active (4 ref(s))",
+      "components": [
+        "C501",
+        "C503",
+        "C506",
+        "C509"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "GCM1885C1H103GA16D",
+      "references": [
+        "C210",
+        "C212"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-55\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "GCM1885C1H103GA16D: active (2 ref(s))",
+      "components": [
+        "C210",
+        "C212"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "GCM1885C1H472JA16D",
+      "references": [
+        "C604",
+        "C704",
+        "C804"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-55\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "GCM1885C1H472JA16D: active (3 ref(s))",
+      "components": [
+        "C604",
+        "C704",
+        "C804"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "GCM1885C2A103JE02D",
+      "references": [
+        "C202"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-55\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "GCM1885C2A103JE02D: active (1 ref(s))",
+      "components": [
+        "C202"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "GCM188R71C105KA64D",
+      "references": [
+        "C306",
+        "C415"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-55\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "GCM188R71C105KA64D: active (2 ref(s))",
+      "components": [
+        "C306",
+        "C415"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "GCM188R71C474KA55D",
+      "references": [
+        "C603",
+        "C703",
+        "C803"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-55\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "GCM188R71C474KA55D: active (3 ref(s))",
+      "components": [
+        "C603",
+        "C703",
+        "C803"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "GCM21BR71C475KA73L",
+      "references": [
+        "C405"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-55\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "GCM21BR71C475KA73L: active (1 ref(s))",
+      "components": [
+        "C405"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "GCM31C5C1H683JA16L",
+      "references": [
+        "C211"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-55\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "GCM31C5C1H683JA16L: active (1 ref(s))",
+      "components": [
+        "C211"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "GCM31C5C2A104JE02L",
+      "references": [
+        "C216",
+        "C511",
+        "C512",
+        "C607",
+        "C707",
+        "C807"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-55\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "GCM31C5C2A104JE02L: active (6 ref(s))",
+      "components": [
+        "C216",
+        "C511",
+        "C512",
+        "C607",
+        "C707",
+        "C807"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "GCM31CR71C106KA64L",
+      "references": [
+        "C311",
+        "C416",
+        "C505",
+        "C508"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-55\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "GCM31CR71C106KA64L: active (4 ref(s))",
+      "components": [
+        "C311",
+        "C416",
+        "C505",
+        "C508"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "GCM32ER71A226KE12L",
+      "references": [
+        "C307",
+        "C308",
+        "C314",
+        "C315",
+        "C316"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-55\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "GCM32ER71A226KE12L: active (5 ref(s))",
+      "components": [
+        "C307",
+        "C308",
+        "C314",
+        "C315",
+        "C316"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "GYF1H470MCQ1GS",
+      "references": [
+        "C207"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-55\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "GYF1H470MCQ1GS: active (1 ref(s))",
+      "components": [
+        "C207"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "IAUTN08S5N012LATMA1",
+      "references": [
+        "Q201",
+        "Q202",
+        "Q203",
+        "Q204"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 175.0,
+          "temp_raw": "-55\u00b0C ~ 175\u00b0C (TJ)"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "IAUTN08S5N012LATMA1: active (4 ref(s))",
+      "components": [
+        "Q201",
+        "Q202",
+        "Q203",
+        "Q204"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "INA228AQDGSRQ1",
+      "references": [
+        "U202"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -40.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-40\u00b0C ~ 125\u00b0C (TA)"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "INA228AQDGSRQ1: active (1 ref(s))",
+      "components": [
+        "U202"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "IS25LP032D-JNLA3",
+      "references": [
+        "U402"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -40.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-40\u00b0C ~ 125\u00b0C (TA)"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "IS25LP032D-JNLA3: active (1 ref(s))",
+      "components": [
+        "U402"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "LAN8670D0-E/LMXVAO",
+      "references": [
+        "U501"
+      ],
+      "status": "unknown",
+      "sources": {},
+      "detector": "audit_bom",
+      "rule_id": "LC-004",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "LAN8670D0-E/LMXVAO: unknown (1 ref(s))",
+      "description": "Component LAN8670D0-E/LMXVAO is unknown.",
+      "components": [
+        "U501"
+      ],
+      "nets": [],
+      "pins": [],
+      "recommendation": "Replace LAN8670D0-E/LMXVAO \u2014 part is unknown.",
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "Supply chain risk",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "LM74910HQRGERQ1",
+      "references": [
+        "U201"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -40.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-40\u00b0C ~ 125\u00b0C (TA)"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "LM74910HQRGERQ1: active (1 ref(s))",
+      "components": [
+        "U201"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "LMQ66430MC3RXBRQ1",
+      "references": [
+        "U302"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -40.0,
+          "temp_max_c": 150.0,
+          "temp_raw": "-40\u00b0C ~ 150\u00b0C (TJ)"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "LMQ66430MC3RXBRQ1: active (1 ref(s))",
+      "components": [
+        "U302"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "NCU18XH103F6SRB",
+      "references": [
+        "RT201",
+        "RT601",
+        "RT701",
+        "RT801"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 150.0,
+          "temp_raw": "-55\u00b0C ~ 150\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "NCU18XH103F6SRB: active (4 ref(s))",
+      "components": [
+        "RT201",
+        "RT601",
+        "RT701",
+        "RT801"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "S32K344EHT1MMMST",
+      "references": [
+        "U401"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -40.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-40\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "S32K344EHT1MMMST: active (1 ref(s))",
+      "components": [
+        "U401"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "TMP175AQDGKRQ1",
+      "references": [
+        "U203"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -40.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-40\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "TMP175AQDGKRQ1: active (1 ref(s))",
+      "components": [
+        "U203"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "TPS2HCS08AQPWPRQ1",
+      "references": [
+        "U601",
+        "U701",
+        "U801"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -40.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-40\u00b0C ~ 125\u00b0C (TA)"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "TPS2HCS08AQPWPRQ1: active (3 ref(s))",
+      "components": [
+        "U601",
+        "U701",
+        "U801"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "TPS3702AX33QDDCRQ1",
+      "references": [
+        "U304"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -40.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-40\u00b0C ~ 125\u00b0C (TA)"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "TPS3702AX33QDDCRQ1: active (1 ref(s))",
+      "components": [
+        "U304"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "TPS628502QDRLRQ1",
+      "references": [
+        "U303"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -40.0,
+          "temp_max_c": 125.0,
+          "temp_raw": "-40\u00b0C ~ 125\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "TPS628502QDRLRQ1: active (1 ref(s))",
+      "components": [
+        "U303"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "TPS7B8133QWDRVRQ1",
+      "references": [
+        "U301"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -40.0,
+          "temp_max_c": 150.0,
+          "temp_raw": "-40\u00b0C ~ 150\u00b0C (TJ)"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "TPS7B8133QWDRVRQ1: active (1 ref(s))",
+      "components": [
+        "U301"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "VETH100A1DD1HG3-08",
+      "references": [
+        "D501",
+        "D502",
+        "D503",
+        "D504"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 150.0,
+          "temp_raw": "-55\u00b0C ~ 150\u00b0C (TJ)"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "VETH100A1DD1HG3-08: active (4 ref(s))",
+      "components": [
+        "D501",
+        "D502",
+        "D503",
+        "D504"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    },
+    {
+      "mpn": "XLD8A24CAHM3_A/I",
+      "references": [
+        "D201"
+      ],
+      "status": "active",
+      "sources": {
+        "digikey": {
+          "status": "Active",
+          "discontinued": false,
+          "temp_min_c": -55.0,
+          "temp_max_c": 175.0,
+          "temp_raw": "-55\u00b0C ~ 175\u00b0C"
+        }
+      },
+      "detector": "audit_bom",
+      "rule_id": "LC-ACT",
+      "category": "lifecycle",
+      "severity": "info",
+      "confidence": "deterministic",
+      "evidence_source": "api_lookup",
+      "summary": "XLD8A24CAHM3_A/I: active (1 ref(s))",
+      "components": [
+        "D201"
+      ],
+      "nets": [],
+      "pins": [],
+      "report_context": {
+        "section": "Lifecycle",
+        "impact": "",
+        "standard_ref": ""
+      }
+    }
+  ],
+  "lifecycle_summary": {
+    "active": 69,
+    "nrnd": 0,
+    "last_time_buy": 0,
+    "obsolete": 0,
+    "discontinued": 0,
+    "unknown": 3
+  },
+  "temperature_summary": {
+    "design_target": {
+      "min_c": -40.0,
+      "max_c": 125.0,
+      "grade": "automotive"
+    },
+    "components_checked": 69,
+    "components_meeting_spec": 69,
+    "components_failing_spec": 0,
+    "grade_distribution": {
+      "military": 55,
+      "automotive": 14
+    }
+  },
+  "summary": {
+    "total_findings": 72,
+    "by_severity": {
+      "error": 0,
+      "warning": 0,
+      "info": 72
+    },
+    "components_checked": 72,
+    "lifecycle_issues": 72,
+    "temperature_issues": 0
+  },
+  "trust_summary": {
+    "total_findings": 72,
+    "trust_level": "high",
+    "by_confidence": {
+      "deterministic": 72,
+      "heuristic": 0,
+      "datasheet_backed": 0
+    },
+    "by_evidence_source": {
+      "datasheet": 0,
+      "topology": 0,
+      "heuristic_rule": 0,
+      "symbol_footprint": 0,
+      "bom": 0,
+      "geometry": 0,
+      "api_lookup": 72
+    },
+    "provenance_coverage_pct": 0.0
+  }
+}

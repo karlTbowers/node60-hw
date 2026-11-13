@@ -1,0 +1,1 @@
+0 F.Cu crossings of the trunk line, 0 vias in its corridor, 0 top-side pads

@@ -1,0 +1,221 @@
+{
+ "_": "Option, not applied: the vias in the middle of the power band (x 130-180, y > 70.5) that DRC lets grow. Applying it takes their ring to 0.10 mm and costs VBAT_D 0.298 -> 0.299 mohm (outer layers 0.717 -> 0.720), OUT3 1.579 -> 1.580 mohm, VBAT_PROT to U701 10.58 -> 10.59 mV at 20 A.",
+ "resize": [
+  {
+   "via": [
+    137.15,
+    71.2
+   ],
+   "d": 0.45,
+   "drill": 0.25,
+   "net": "/I2C0_TELEMETRY_SCL"
+  },
+  {
+   "via": [
+    137.15,
+    89.4
+   ],
+   "d": 0.45,
+   "drill": 0.25,
+   "net": "/Power entry/HGATE_G"
+  },
+  {
+   "via": [
+    145.45,
+    71.2
+   ],
+   "d": 0.45,
+   "drill": 0.25,
+   "net": "/I2C0_TELEMETRY_SCL"
+  },
+  {
+   "via": [
+    146.5,
+    73.79
+   ],
+   "d": 0.45,
+   "drill": 0.25,
+   "net": "/Power entry/LM_UVLO"
+  },
+  {
+   "via": [
+    147.8,
+    109.3
+   ],
+   "d": 0.45,
+   "drill": 0.25,
+   "net": "/SW2_FLT_L"
+  },
+  {
+   "via": [
+    147.9,
+    71.6
+   ],
+   "d": 0.45,
+   "drill": 0.25,
+   "net": "/VBAT_IN"
+  },
+  {
+   "via": [
+    148.2,
+    74.0
+   ],
+   "d": 0.45,
+   "drill": 0.25,
+   "net": "/Power entry/LM_SW"
+  },
+  {
+   "via": [
+    148.6,
+    111.925
+   ],
+   "d": 0.45,
+   "drill": 0.25,
+   "net": "/SW2_FLT_L"
+  },
+  {
+   "via": [
+    149.7,
+    72.8
+   ],
+   "d": 0.4,
+   "drill": 0.2,
+   "net": "/Power entry/HGATE_G"
+  },
+  {
+   "via": [
+    149.95,
+    73.5
+   ],
+   "d": 0.45,
+   "drill": 0.25,
+   "net": "/Power entry/LM_UVLO"
+  },
+  {
+   "via": [
+    151.2,
+    75.75
+   ],
+   "d": 0.45,
+   "drill": 0.25,
+   "net": "/Power entry/LM_SW"
+  },
+  {
+   "via": [
+    151.7,
+    86.2
+   ],
+   "d": 0.45,
+   "drill": 0.25,
+   "net": "/NTC_RSENSE"
+  },
+  {
+   "via": [
+    154.7,
+    71.0
+   ],
+   "d": 0.4,
+   "drill": 0.2,
+   "net": "/Power entry/HGATE_G"
+  },
+  {
+   "via": [
+    155.0,
+    74.75
+   ],
+   "d": 0.4,
+   "drill": 0.2,
+   "net": "/Power entry/HGATE"
+  },
+  {
+   "via": [
+    155.2,
+    71.5148
+   ],
+   "d": 0.45,
+   "drill": 0.25,
+   "net": "/LM_FLT_L"
+  },
+  {
+   "via": [
+    155.55,
+    109.975
+   ],
+   "d": 0.45,
+   "drill": 0.25,
+   "net": "/Outputs 3-4/SW_SNS"
+  },
+  {
+   "via": [
+    155.55,
+    110.625
+   ],
+   "d": 0.45,
+   "drill": 0.25,
+   "net": "/Outputs 3-4/SW_VDD"
+  },
+  {
+   "via": [
+    156.45,
+    71.0
+   ],
+   "d": 0.45,
+   "drill": 0.25,
+   "net": "/Power entry/HGATE_G"
+  },
+  {
+   "via": [
+    156.98,
+    110.42
+   ],
+   "d": 0.4,
+   "drill": 0.2,
+   "net": "/Outputs 3-4/SW_SNS"
+  },
+  {
+   "via": [
+    159.6,
+    111.75
+   ],
+   "d": 0.45,
+   "drill": 0.25,
+   "net": "/Outputs 3-4/SW_VDD"
+  },
+  {
+   "via": [
+    160.2,
+    82.0
+   ],
+   "d": 0.45,
+   "drill": 0.25,
+   "net": "VBAT_PROT"
+  },
+  {
+   "via": [
+    161.0,
+    80.24
+   ],
+   "d": 0.45,
+   "drill": 0.25,
+   "net": "GND"
+  },
+  {
+   "via": [
+    170.8,
+    71.3
+   ],
+   "d": 0.45,
+   "drill": 0.25,
+   "net": "/NTC_SW2"
+  },
+  {
+   "via": [
+    178.55,
+    72.0
+   ],
+   "d": 0.45,
+   "drill": 0.25,
+   "net": "/NTC_RSENSE"
+  }
+ ]
+}
