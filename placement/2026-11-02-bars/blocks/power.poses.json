@@ -1,7 +1,7 @@
 {
  "block": "r201",
  "anchor": "R201",
- "approved": "2026-11-04 (D21 C: rows swapped; D20 A mirrored about x 155)",
+ "approved": "2026-11-04 (D21 C: rows swapped; D20 A mirrored about x 155); TP203, TP206, TP207, TP208, TP209 re-posed 2026-11-12 (D34, routing run)",
  "anchor_pose": {
   "x": 155.8,
   "y": 86.5,
@@ -280,13 +280,13 @@
    "why": "VBAT_D test point at the shunt's F1 (north) end."
   },
   "TP203": {
-   "dx": 6.5,
-   "dy": 4.55,
+   "dx": 6.6755,
+   "dy": 5.4245,
    "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "VBAT_Q2D test point at the shunt's F2 (south) end."
+   "why": "VBAT_Q2D test point at the shunt's F2 (south) end. D34 (2026-11-12): pose after the routing run (a test point back on its net's copper near its old pose; R501 turned so its RBIAS pad is under U501 pin 26; C509 0.25 mm east to let RBIAS pass)."
   },
   "TP204": {
    "dx": 3.0,
@@ -298,31 +298,31 @@
    "why": "VBAT_PROT test point at Q204's sources."
   },
   "TP206": {
-   "dx": -14.0,
-   "dy": 16.3,
+   "dx": -21.7,
+   "dy": 11.6,
    "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "BATT_MON test point at the divider string."
+   "why": "BATT_MON test point at the divider string. D34 (2026-11-12): pose after the routing run (a test point back on its net's copper near its old pose; R501 turned so its RBIAS pad is under U501 pin 26; C509 0.25 mm east to let RBIAS pass)."
   },
   "TP207": {
    "dx": -14.25,
-   "dy": -4.2,
+   "dy": -7.2,
    "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "FLT_L test point beside U201's north-east corner."
+   "why": "FLT_L test point beside U201's north-east corner. D34 (2026-11-12): pose after the routing run (a test point back on its net's copper near its old pose; R501 turned so its RBIAS pad is under U501 pin 26; C509 0.25 mm east to let RBIAS pass)."
   },
   "TP208": {
-   "dx": -19.25,
-   "dy": 9.0,
+   "dx": -22.85,
+   "dy": 9.8,
    "rot": 90.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "INH test point; nearest legal spot is 7 mm north-west of pin 7, by the T1S test points."
+   "why": "INH test point; nearest legal spot is 7 mm north-west of pin 7, by the T1S test points. D34 (2026-11-12): pose after the routing run (a test point back on its net's copper near its old pose; R501 turned so its RBIAS pad is under U501 pin 26; C509 0.25 mm east to let RBIAS pass)."
   },
   "C216": {
    "dx": -16.5,
@@ -343,13 +343,13 @@
    "why": "NTC_RSENSE pull-up to 3V3_MAIN, with C216."
   },
   "TP209": {
-   "dx": -16.5,
-   "dy": -31.45,
+   "dx": -14.0,
+   "dy": -32.45,
    "rot": 180.0,
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "GND test loop with the NTC parts, out of the power pours."
+   "why": "GND test loop with the NTC parts, out of the power pours. D34 (2026-11-12): pose after the routing run (a test point back on its net's copper near its old pose; R501 turned so its RBIAS pad is under U501 pin 26; C509 0.25 mm east to let RBIAS pass)."
   }
  }
 }

@@ -79,7 +79,7 @@
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "VDDAU 10 nF at U501 pin 25, B.Cu: the top side there is under both connectors' housings. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to). D34 (2026-11-12): R501 turned so its RBIAS pad is under U501 pin 26, C509 0.25 mm east, so RBIAS can pass between the REFCLK via and C509."
+   "why": "VDDAU 10 nF at U501 pin 25, B.Cu: the top side there is under both connectors' housings. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to). D34 (2026-11-12): pose after the routing run (a test point back on its net's copper near its old pose; R501 turned so its RBIAS pad is under U501 pin 26; C509 0.25 mm east to let RBIAS pass)."
   },
   "C510": {
    "dx": 4.25,
@@ -187,7 +187,7 @@
    "side": "B",
    "role": "core",
    "flex_mm": 0,
-   "why": "RBIAS (12.4 kΩ) at U501 pin 26, in the line zone's north-east corner, clear of the choke. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to). D34 (2026-11-12): R501 turned so its RBIAS pad is under U501 pin 26, C509 0.25 mm east, so RBIAS can pass between the REFCLK via and C509."
+   "why": "RBIAS (12.4 kΩ) at U501 pin 26, in the line zone's north-east corner, clear of the choke. Shifted 10 mm south with the whole PHY and relay group (user, 2026-11-04: U501 was too close to the north edge to route to). D34 (2026-11-12): pose after the routing run (a test point back on its net's copper near its old pose; R501 turned so its RBIAS pad is under U501 pin 26; C509 0.25 mm east to let RBIAS pass)."
   },
   "R516": {
    "dx": -6.0,

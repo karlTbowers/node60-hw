@@ -1,54 +1,54 @@
 {
- "block": "crystal",
- "anchor": "Y401",
- "approved": "2026-11-02 (D07)",
- "anchor_pose": {
-  "x": 190.529,
-  "y": 52.44,
-  "rot": 180.0,
-  "side": "B"
- },
- "parts": {
-  "C424": {
-   "dx": -0.871,
-   "dy": -2.36,
-   "rot": 0.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "EXTAL load cap, 1.6 mm from Y401 pin 1, mirroring C425 (NXP \u00a73.2: short, symmetric). Moved from 3.1 mm."
+  "block": "crystal",
+  "anchor": "Y401",
+  "approved": "2026-11-02 (D07); TP407 re-posed 2026-11-12 (D34, routing run)",
+  "anchor_pose": {
+    "x": 190.529,
+    "y": 52.44,
+    "rot": 180.0,
+    "side": "B"
   },
-  "C425": {
-   "dx": 1.929,
-   "dy": 2.24,
-   "rot": 0.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "XTAL load cap, 1.5 mm from Y401 pin 3, mirroring C424. Moved from 8.4 mm."
+  "parts": {
+    "C424": {
+      "dx": -0.871,
+      "dy": -2.36,
+      "rot": 0.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "EXTAL load cap, 1.6 mm from Y401 pin 1, mirroring C425 (NXP §3.2: short, symmetric). Moved from 3.1 mm."
+    },
+    "C425": {
+      "dx": 1.929,
+      "dy": 2.24,
+      "rot": 0.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "XTAL load cap, 1.5 mm from Y401 pin 3, mirroring C424. Moved from 8.4 mm."
+    },
+    "R408": {
+      "dx": -1.3234,
+      "dy": 2.3813,
+      "rot": 0.0,
+      "side": "B",
+      "role": "core",
+      "flex_mm": 0,
+      "why": "RsEXT 0 Ω at ball L1, 2.2 mm."
+    },
+    "TP407": {
+      "dx": -24.471,
+      "dy": -4.31,
+      "rot": 180.0,
+      "side": "B",
+      "role": "flex",
+      "flex_mm": 0,
+      "why": "SPI2_FLASH_SCK test point, moved from 2.2 mm beside the oscillator to (212, 57), 7 mm away and clear of U401's courtyard (NXP §3.2: clocks away from the crystal). D34 (2026-11-12): pose after the routing run (a test point back on its net's copper near its old pose; R501 turned so its RBIAS pad is under U501 pin 26; C509 0.25 mm east to let RBIAS pass)."
+    },
+    "Y401": {
+      "role": "core",
+      "why": "16 MHz crystal at U401's K1/L1 balls, 3.9 mm from K1 (NXP S32K3 HDG Rev E2 §3.2)."
+    }
   },
-  "R408": {
-   "dx": -1.3234,
-   "dy": 2.3813,
-   "rot": 0.0,
-   "side": "B",
-   "role": "core",
-   "flex_mm": 0,
-   "why": "RsEXT 0 \u03a9 at ball L1, 2.2 mm."
-  },
-  "TP407": {
-   "dx": -21.471,
-   "dy": -4.56,
-   "rot": 180.0,
-   "side": "B",
-   "role": "flex",
-   "flex_mm": 0,
-   "why": "SPI2_FLASH_SCK test point, moved from 2.2 mm beside the oscillator to (212, 57), 7 mm away and clear of U401's courtyard (NXP \u00a73.2: clocks away from the crystal)."
-  },
-  "Y401": {
-   "role": "core",
-   "why": "16 MHz crystal at U401's K1/L1 balls, 3.9 mm from K1 (NXP S32K3 HDG Rev E2 \u00a73.2)."
-  }
- },
- "anchor_why": "16 MHz crystal at U401's K1/L1 balls, 3.9 mm from K1 (NXP S32K3 HDG Rev E2 \u00a73.2)."
+  "anchor_why": "16 MHz crystal at U401's K1/L1 balls, 3.9 mm from K1 (NXP S32K3 HDG Rev E2 §3.2)."
 }
