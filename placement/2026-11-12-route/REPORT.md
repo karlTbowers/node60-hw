@@ -15,6 +15,7 @@ The user answered D33 on 2026-11-12: **B**, signal tracks on F.Cu under the GND 
     GND bar, and on B.Cu the pocket west of U201 is closed by the divider lines LM_SW, LM_UVLO and LM_OV. It
     needs those three lines re-laid on F.Cu (they are resistor-limited, so the rule allows it) and an In2 hop
     over the west channel's lanes.
+    Decision page D36: https://claude.ai/artifact/DWV3TCNBaJfFMNQ4Pdn2cW
   - **C510 pad 1 (VDDAU_AON, the PHY's second always-on decoupling cap).** Walled in by R301, R505 and the
     regulator's output; C509 on the same pin pair is connected.
 - **All 62 test points are back on the board; 60 are joined.** TP301 (VDDAU_AON) and TP401 (UART0_DEBUG_TX)

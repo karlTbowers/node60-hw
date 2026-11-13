@@ -1,0 +1,135 @@
+{
+ "id": "D36",
+ "name": "U201 anode sense",
+ "question": "How should U201 pin 2 (the LM74910's anode sense) be joined to VBAT_IN?",
+ "board": "node60",
+ "stage": "Routing",
+ "date": "2026-11-12",
+ "why_now": "The board is routed under D33 B with one functional join left open: U201 pin 2 needs VBAT_IN, and no layer the rules allow gets it there without re-laying lines routed today. C510 pad 1 and test points TP301 and TP401 are also open; those need work, not a decision.",
+ "facts": [
+  {
+   "label": "Where pin 2 is",
+   "value": "On U201's west side, in the notch of the VBAT_D pour under the GND busbar, 14.7 mm east of the west VBAT_IN pour (Q201's source pads) and 22 mm west of the east one.",
+   "source": "node60.kicad_pcb: U201 pin 2 at (151.1, 76.25); PWR_VBAT_IN_W to x 136.4"
+  },
+  {
+   "label": "Why F.Cu is closed to it",
+   "value": "VBAT_IN is class PWR_BATT. D33 B allows signal tracks on F.Cu under the GND bar but no battery-net track: the line sits at battery potential ahead of every protection, and only the harness fuse would clear a short to the bar.",
+   "source": "node60.kicad_dru, rule 'F.Cu under the GND busbar: no battery-net tracks'"
+  },
+  {
+   "label": "Why B.Cu is closed to it today",
+   "value": "West of the pin: LM_SW's via, R204's pads, C211, then the six lane lines of the west channel running east on B.Cu at y 69.3 to 71.2. In2 may carry tracks only north of y 70, which is north of those lines.",
+   "source": "picture below; SIGNAL_WINDOW_In2Cu_1"
+  },
+  {
+   "label": "State before this run",
+   "value": "Open on main since the placement landed: the fast routes never closed it and the hand route was left to you.",
+   "source": "commit b404f9c DRC: 'Zone PWR_VBAT_IN_W | Pad 2 of U201'"
+  }
+ ],
+ "options": [
+  {
+   "key": "A",
+   "name": "Re-lay the lines in its way",
+   "summary": "No rule changes. LM_SW, LM_UVLO and the R204 to R205 link move to F.Cu with vias in their pads (they are resistor-limited, so D33 B allows them); the west channel's lines are routed again north of the band so that VBAT_IN can run on B.Cu out of the notch, hop over them on In2 north of y 70, and drop into the west VBAT_IN pour beside Q201.",
+   "images": [
+    {
+     "path": "../img/d36_u201_west.png",
+     "caption": "Pin 2 is the dark blue pin on U201's west side; the west VBAT_IN pour is the blue area at the left. The six grey lines turning north-east above the pour are the west channel's lines."
+    }
+   ],
+   "measures": [
+    {
+     "label": "Rule changes",
+     "value": "none",
+     "limit": "",
+     "status": "pass"
+    },
+    {
+     "label": "Lines routed today that are routed again",
+     "value": "about 9",
+     "limit": "",
+     "status": "warn"
+    },
+    {
+     "label": "Length of the sense line",
+     "value": "about 25 mm, 2 vias",
+     "limit": "",
+     "status": "info"
+    }
+   ],
+   "gains": [
+    "The battery-net rule you chose today stays whole",
+    "The sense line never leaves B.Cu and In2"
+   ],
+   "costs": [
+    "An hour or more of routing and checking; the six west lines and their test points move again",
+    "The sense line is longer than a direct one and passes close to SPI lines on In2"
+   ]
+  },
+  {
+   "key": "B",
+   "name": "One exception: this line on F.Cu under the GND bar",
+   "summary": "Add U201's sense track to the GND-busbar rule as a named exception: one 0.15 mm VBAT_IN track on F.Cu, about 15 mm, from a via beside pin 2 west to Q201's source pads, under solder mask like the signal tracks.",
+   "images": [],
+   "measures": [
+    {
+     "label": "Rule changes",
+     "value": "one named exception",
+     "limit": "",
+     "status": "warn"
+    },
+    {
+     "label": "Lines routed again",
+     "value": "1 or 2 (LM_SW's via)",
+     "limit": "",
+     "status": "pass"
+    },
+    {
+     "label": "Length of the sense line",
+     "value": "about 15 mm, 1 via",
+     "limit": "",
+     "status": "info"
+    }
+   ],
+   "gains": [
+    "Short and direct, the way the LM74910 wants its anode sense",
+    "Little of today's routing moves"
+   ],
+   "costs": [
+    "A track at battery potential, with nothing but its own 0.15 mm width to limit a fault, 0.6 mm under the grounded bar",
+    "An exception to a rule made the same day"
+   ]
+  },
+  {
+   "key": "C",
+   "name": "Leave it for hand routing",
+   "summary": "The board stays as it is on main; you route pin 2 in KiCad. `unconnected_items` stays a warning until then.",
+   "images": [],
+   "measures": [
+    {
+     "label": "Rule changes",
+     "value": "none",
+     "limit": "",
+     "status": "pass"
+    }
+   ],
+   "gains": [
+    "Nothing moves until you have looked at the routed board"
+   ],
+   "costs": [
+    "The ideal-diode controller has no anode connection until it is done: the board is not ready for a `rev-*` tag"
+   ]
+  }
+ ],
+ "recommendation": {
+  "option": "A",
+  "why": "**A.** It keeps the rule as you set it, and everything it moves is copper routed today. B is quicker and electrically neater, but it puts the one kind of track the rule exists to keep out under the bar."
+ },
+ "answer": "Reply with A, B or C, or a change to one.",
+ "sources": [
+  "placement/2026-11-12-route/REPORT.md and decisions/log.md (D35-10)",
+  "node60.kicad_pcb at commit 6a5e2f3"
+ ]
+}
