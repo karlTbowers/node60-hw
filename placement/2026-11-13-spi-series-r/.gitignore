@@ -1,0 +1,4 @@
+work/
+__pycache__/
+decisions/img/
+decisions/*.html

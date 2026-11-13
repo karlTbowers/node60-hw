@@ -105,84 +105,87 @@ T1S_TERM_DROP:
 # Connectors are unchanged (OUT1 = J904 ... OUT6 = J909).
 # SPI mode 1 (CPOL 0, CPHA 1), 8 MHz maximum, 32-bit frames with CRC. Zephyr: one
 # `nxp,lpspi` node per bus, the switch as its child at reg = <0> (native PCS0).
-SPI4_SWITCH1_SCK:
+# Series resistors (2026-11-13): SCK, MOSI and CS_L leave U401 through 33 Ω (R409-R417), so the ball's net is
+# <line>_MCU; MISO comes through 33 Ω at the switch (R608/R708/R808). Pad drive is not set here yet: NXP gives its
+# LPSPI timing at DSE = 1, SRC = 0 (S32K3xx data sheet, section 12.1), the fastest edges these lines see.
+SPI4_SWITCH1_SCK_MCU:
   function: LPSPI4_SCK
   group: spi-switch
   dir: out
   pull: none
   init: low
-  note: U601 (outputs 1-2)
-SPI4_SWITCH1_MOSI:
+  note: U601 (outputs 1-2); through R409 33 Ω at the ball to SPI4_SWITCH1_SCK
+SPI4_SWITCH1_MOSI_MCU:
   function: LPSPI4_SOUT
   group: spi-switch
   dir: out
   pull: none
-  note: U601 SDI
+  note: U601 SDI; through R410 33 Ω at the ball to SPI4_SWITCH1_MOSI
 SPI4_SWITCH1_MISO:
   function: LPSPI4_SIN
   group: spi-switch
   dir: in
   pull: up
   note: U601 SDO, high-impedance while CS_L is high
-SPI4_SWITCH1_CS_L:
+SPI4_SWITCH1_CS_L_MCU:
   function: LPSPI4_PCS0
   group: spi-switch
   dir: out
   pull: up
   init: high
-  note: U601 CS; the switch's internal pull-up holds it high through reset
-SPI5_SWITCH2_SCK:
+  note: U601 CS; the switch's internal pull-up holds it high through reset; through R411 33 Ω at the ball to SPI4_SWITCH1_CS_L
+SPI5_SWITCH2_SCK_MCU:
   function: LPSPI5_SCK
   group: spi-switch
   dir: out
   pull: none
   init: low
-  note: U701 (outputs 3-4)
-SPI5_SWITCH2_MOSI:
+  note: U701 (outputs 3-4); through R412 33 Ω at the ball to SPI5_SWITCH2_SCK
+SPI5_SWITCH2_MOSI_MCU:
   function: LPSPI5_SOUT
   group: spi-switch
   dir: out
   pull: none
-  note: U701 SDI
+  note: U701 SDI; through R413 33 Ω at the ball to SPI5_SWITCH2_MOSI
 SPI5_SWITCH2_MISO:
   function: LPSPI5_SIN
   group: spi-switch
   dir: in
   pull: up
   note: U701 SDO, high-impedance while CS_L is high
-SPI5_SWITCH2_CS_L:
+SPI5_SWITCH2_CS_L_MCU:
   function: LPSPI5_PCS0
   group: spi-switch
   dir: out
   pull: up
   init: high
-  note: U701 CS; the switch's internal pull-up holds it high through reset
-SPI3_SWITCH3_SCK:
+  note: U701 CS; the switch's internal pull-up holds it high through reset; through R414 33 Ω at the ball to SPI5_SWITCH2_CS_L
+SPI3_SWITCH3_SCK_MCU:
   function: LPSPI3_SCK
   group: spi-switch
   dir: out
   pull: none
   init: low
-  note: U801 (outputs 5-6)
-SPI3_SWITCH3_MOSI:
+  note: U801 (outputs 5-6); through R415 33 Ω at the ball to SPI3_SWITCH3_SCK
+SPI3_SWITCH3_MOSI_MCU:
   function: LPSPI3_SOUT
   group: spi-switch
   dir: out
   pull: none
-  note: U801 SDI
+  note: U801 SDI; through R416 33 Ω at the ball to SPI3_SWITCH3_MOSI
 SPI3_SWITCH3_MISO:
   function: LPSPI3_SIN
   group: spi-switch
   dir: in
   pull: up
   note: U801 SDO, high-impedance while CS_L is high
-SPI3_SWITCH3_CS_L:
+SPI3_SWITCH3_CS_L_MCU:
   function: LPSPI3_PCS0
   group: spi-switch
   dir: out
   pull: up
   init: high
-  note: U801 CS; the switch's internal pull-up holds it high through reset
+  note: U801 CS; the switch's internal pull-up holds it high through reset; through R417 33 Ω at the ball to SPI3_SWITCH3_CS_L
 SW_LHI:
   function: GPIO
   group: gpio
@@ -288,12 +291,13 @@ LM_FLT_L:
   note: LM74910H fault (U201)
 
 # Log flash (IS25LP032D, U402)
-SPI2_FLASH_SCK:
+SPI2_FLASH_SCK_MCU:
   function: LPSPI2_SCK
   group: spi-flash
   dir: out
   pull: none
   init: low
+  note: through R418 33 Ω at the ball to SPI2_FLASH_SCK
 SPI2_FLASH_MOSI:
   function: LPSPI2_SOUT
   group: spi-flash

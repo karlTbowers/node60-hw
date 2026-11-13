@@ -1,0 +1,317 @@
+{
+  "analyzer_type": "cross_analysis",
+  "schema_version": "1.4.0",
+  "inputs": {
+    "source_files": [
+      "reviews/2026-11-13-spi-series-r/schematic.json",
+      "reviews/2026-11-13-spi-series-r/pcb.json"
+    ],
+    "source_hashes": {
+      "reviews/2026-11-13-spi-series-r/schematic.json": "c2194a053f25296cb2c6c8529fd482abffd993b099bd3de9bc9d7fa1f74071e0",
+      "reviews/2026-11-13-spi-series-r/pcb.json": "c266a106172c6fe2642713bab946f192cf69134b8bbd77b39d4cc2b0d73695b1"
+    },
+    "run_id": "20261113T181021Z-6c7c7d",
+    "config_hash": null,
+    "upstream_artifacts": {
+      "schematic": {
+        "path": "reviews/2026-11-13-spi-series-r/schematic.json",
+        "sha256": "c2194a053f25296cb2c6c8529fd482abffd993b099bd3de9bc9d7fa1f74071e0",
+        "schema_version": "1.4.0",
+        "run_id": "20261113T181021Z-6c7c7d"
+      },
+      "pcb": {
+        "path": "reviews/2026-11-13-spi-series-r/pcb.json",
+        "sha256": "c266a106172c6fe2642713bab946f192cf69134b8bbd77b39d4cc2b0d73695b1",
+        "schema_version": "1.4.0",
+        "run_id": "20261113T181021Z-6c7c7d"
+      }
+    }
+  },
+  "compat": {
+    "minimum_consumer_version": "1.4.0",
+    "deprecated_fields": [],
+    "experimental_fields": []
+  },
+  "diagnostics": [],
+  "elapsed_s": 0.252,
+  "summary": {
+    "total_findings": 2,
+    "by_severity": {
+      "error": 0,
+      "warning": 2,
+      "info": 0
+    }
+  },
+  "findings": [
+    {
+      "detector": "check_connector_current",
+      "rule_id": "CC-001",
+      "category": "current_capacity",
+      "summary": "Connector J401: trace on 3V3_MAIN too narrow for ~0.7A",
+      "description": "Power net 3V3_MAIN at connector J401 carries 0.7A (estimated from the regulator output capacitance) but narrowest trace is 0.20mm. IPC-2152 recommends >= 0.33mm (1oz Cu, 10C rise).",
+      "components": [
+        "J401"
+      ],
+      "nets": [
+        "3V3_MAIN"
+      ],
+      "pins": [],
+      "severity": "warning",
+      "confidence": "heuristic",
+      "evidence_source": "topology",
+      "recommendation": "Widen trace on 3V3_MAIN to >= 0.3mm or use copper pour.",
+      "report_context": {
+        "section": "Current Capacity",
+        "impact": "Trace overheating and voltage drop",
+        "standard_ref": "IPC-2152"
+      },
+      "schema_era": "v3.0",
+      "finding_id": "cross_analysis:CC-001:j401",
+      "stages": [
+        "pre_fab"
+      ]
+    },
+    {
+      "detector": "check_trace_width_power",
+      "rule_id": "TW-001",
+      "category": "current_capacity",
+      "summary": "Power net 3V3_MAIN: trace 0.20mm too narrow for ~0.7A",
+      "description": "Power net 3V3_MAIN carries ~0.7A (estimated from regulator output capacitance) but narrowest trace is 0.20mm. IPC-2152 recommends >= 0.33mm.",
+      "components": [],
+      "nets": [
+        "3V3_MAIN"
+      ],
+      "pins": [],
+      "severity": "warning",
+      "confidence": "heuristic",
+      "evidence_source": "topology",
+      "recommendation": "Widen 3V3_MAIN traces to >= 0.3mm or use copper pour.",
+      "fix_params": {
+        "type": "resistor_value_change",
+        "change": "trace width -> 0.3mm",
+        "basis": "IPC-2152: 0.7A"
+      },
+      "report_context": {
+        "section": "Current Capacity",
+        "impact": "Trace overheating and voltage drop",
+        "standard_ref": "IPC-2152"
+      },
+      "schema_era": "v3.0",
+      "finding_id": "cross_analysis:TW-001:3v3_main",
+      "stages": [
+        "layout"
+      ]
+    }
+  ],
+  "assessments": [],
+  "checks_run": [
+    {
+      "check": "CC-001",
+      "ran": true,
+      "reason_skipped": null,
+      "items_examined": 13,
+      "findings": 1
+    },
+    {
+      "check": "EG-001",
+      "ran": true,
+      "reason_skipped": null,
+      "items_examined": 13,
+      "findings": 0
+    },
+    {
+      "check": "DA-001",
+      "ran": true,
+      "reason_skipped": null,
+      "items_examined": 22,
+      "findings": 0
+    },
+    {
+      "check": "XV-001..003",
+      "ran": true,
+      "reason_skipped": null,
+      "items_examined": 295,
+      "findings": 0
+    },
+    {
+      "check": "XV-004",
+      "ran": true,
+      "reason_skipped": null,
+      "items_examined": 295,
+      "findings": 0
+    },
+    {
+      "check": "NR-001",
+      "ran": true,
+      "reason_skipped": null,
+      "items_examined": 2208,
+      "findings": 0
+    },
+    {
+      "check": "RP-002",
+      "ran": true,
+      "reason_skipped": null,
+      "items_examined": 2208,
+      "findings": 0
+    },
+    {
+      "check": "TW-001",
+      "ran": true,
+      "reason_skipped": null,
+      "items_examined": 2,
+      "findings": 1
+    },
+    {
+      "check": "PS-002",
+      "ran": true,
+      "reason_skipped": null,
+      "items_examined": 327,
+      "findings": 0
+    },
+    {
+      "check": "VS-002",
+      "ran": true,
+      "reason_skipped": null,
+      "items_examined": 2945,
+      "findings": 0
+    },
+    {
+      "check": "DP-005",
+      "ran": false,
+      "reason_skipped": "no differential pairs classified in schematic net_classifications",
+      "items_examined": 0,
+      "findings": 0
+    }
+  ],
+  "trust_summary": {
+    "total_findings": 2,
+    "trust_level": "low",
+    "by_confidence": {
+      "deterministic": 0,
+      "heuristic": 2,
+      "datasheet_backed": 0
+    },
+    "by_evidence_source": {
+      "datasheet": 0,
+      "topology": 2,
+      "heuristic_rule": 0,
+      "symbol_footprint": 0,
+      "bom": 0,
+      "geometry": 0,
+      "api_lookup": 0
+    },
+    "provenance_coverage_pct": 0.0
+  },
+  "audience_summary": {
+    "designer": {
+      "total_findings": 2,
+      "by_severity": {
+        "error": 0,
+        "warning": 2,
+        "info": 0
+      },
+      "by_category": {
+        "current_capacity": 2
+      },
+      "top_issues": [
+        {
+          "detector": "check_connector_current",
+          "rule_id": "CC-001",
+          "category": "current_capacity",
+          "summary": "Connector J401: trace on 3V3_MAIN too narrow for ~0.7A",
+          "description": "Power net 3V3_MAIN at connector J401 carries 0.7A (estimated from the regulator output capacitance) but narrowest trace is 0.20mm. IPC-2152 recommends >= 0.33mm (1oz Cu, 10C rise).",
+          "components": [
+            "J401"
+          ],
+          "nets": [
+            "3V3_MAIN"
+          ],
+          "pins": [],
+          "severity": "warning",
+          "confidence": "heuristic",
+          "evidence_source": "topology",
+          "recommendation": "Widen trace on 3V3_MAIN to >= 0.3mm or use copper pour.",
+          "report_context": {
+            "section": "Current Capacity",
+            "impact": "Trace overheating and voltage drop",
+            "standard_ref": "IPC-2152"
+          },
+          "schema_era": "v3.0",
+          "finding_id": "cross_analysis:CC-001:j401",
+          "stages": [
+            "pre_fab"
+          ]
+        },
+        {
+          "detector": "check_trace_width_power",
+          "rule_id": "TW-001",
+          "category": "current_capacity",
+          "summary": "Power net 3V3_MAIN: trace 0.20mm too narrow for ~0.7A",
+          "description": "Power net 3V3_MAIN carries ~0.7A (estimated from regulator output capacitance) but narrowest trace is 0.20mm. IPC-2152 recommends >= 0.33mm.",
+          "components": [],
+          "nets": [
+            "3V3_MAIN"
+          ],
+          "pins": [],
+          "severity": "warning",
+          "confidence": "heuristic",
+          "evidence_source": "topology",
+          "recommendation": "Widen 3V3_MAIN traces to >= 0.3mm or use copper pour.",
+          "fix_params": {
+            "type": "resistor_value_change",
+            "change": "trace width -> 0.3mm",
+            "basis": "IPC-2152: 0.7A"
+          },
+          "report_context": {
+            "section": "Current Capacity",
+            "impact": "Trace overheating and voltage drop",
+            "standard_ref": "IPC-2152"
+          },
+          "schema_era": "v3.0",
+          "finding_id": "cross_analysis:TW-001:3v3_main",
+          "stages": [
+            "layout"
+          ]
+        }
+      ]
+    },
+    "reviewer": {
+      "total_findings": 2,
+      "by_category": {
+        "current_capacity": 2
+      },
+      "top_issues": [
+        {
+          "rule_id": "CC-001",
+          "severity": "warning",
+          "summary": "Connector J401: trace on 3V3_MAIN too narrow for ~0.7A",
+          "recommendation": "Widen trace on 3V3_MAIN to >= 0.3mm or use copper pour.",
+          "category": "current_capacity"
+        },
+        {
+          "rule_id": "TW-001",
+          "severity": "warning",
+          "summary": "Power net 3V3_MAIN: trace 0.20mm too narrow for ~0.7A",
+          "recommendation": "Widen 3V3_MAIN traces to >= 0.3mm or use copper pour.",
+          "category": "current_capacity"
+        }
+      ]
+    },
+    "manager": {
+      "risk_level": "low",
+      "blocker_count": 0,
+      "warning_count": 2,
+      "stage_readiness": {
+        "schematic": "pass",
+        "layout": "needs_review",
+        "pre_fab": "needs_review",
+        "bring_up": "pass"
+      },
+      "one_liner": "2 warnings across 1 category."
+    }
+  },
+  "capability_mode_ref": {
+    "source": "analysis/capability_mode.json",
+    "run_id": "20261113T181021Z-6c7c7d"
+  }
+}

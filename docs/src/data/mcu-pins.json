@@ -312,10 +312,9 @@
     "ADC0_X[0]",
     "WKPU[25]"
    ],
-   "net": "SPI4_SWITCH1_CS_L",
+   "net": "SPI4_SWITCH1_CS_L_MCU",
    "connects": [
-    "TP406 test point",
-    "U601 CS_L"
+    "R411 33R to SPI4_SWITCH1_CS_L"
    ],
    "externalPull": null,
    "function": "LPSPI4_PCS0"
@@ -337,10 +336,9 @@
     "ADC1_S21",
     "WKPU[51]"
    ],
-   "net": "SPI5_SWITCH2_MOSI",
+   "net": "SPI5_SWITCH2_MOSI_MCU",
    "connects": [
-    "TP414 test point",
-    "U701 SDI"
+    "R413 33R to SPI5_SWITCH2_MOSI"
    ],
    "externalPull": null,
    "function": "LPSPI5_SOUT"
@@ -362,10 +360,9 @@
     "LCU0_OUT0",
     "ADC2_S16"
    ],
-   "net": "SPI5_SWITCH2_SCK",
+   "net": "SPI5_SWITCH2_SCK_MCU",
    "connects": [
-    "TP413 test point",
-    "U701 SCLK"
+    "R412 33R to SPI5_SWITCH2_SCK"
    ],
    "externalPull": null,
    "function": "LPSPI5_SCK"
@@ -842,9 +839,9 @@
    ],
    "net": "SPI5_SWITCH2_MISO",
    "connects": [
+    "R708 33R to SW_SDO",
     "TP415 test point",
-    "TP703 test point",
-    "U701 SDO"
+    "TP703 test point"
    ],
    "externalPull": null,
    "function": "LPSPI5_SIN"
@@ -1379,10 +1376,9 @@
     "ADC0_X[1]",
     "WKPU[17]"
    ],
-   "net": "SPI4_SWITCH1_MOSI",
+   "net": "SPI4_SWITCH1_MOSI_MCU",
    "connects": [
-    "TP404 test point",
-    "U601 SDI"
+    "R410 33R to SPI4_SWITCH1_MOSI"
    ],
    "externalPull": null,
    "function": "LPSPI4_SOUT"
@@ -1422,9 +1418,9 @@
    ],
    "net": "SPI4_SWITCH1_MISO",
    "connects": [
+    "R608 33R to SW_SDO",
     "TP405 test point",
-    "TP603 test point",
-    "U601 SDO"
+    "TP603 test point"
    ],
    "externalPull": null,
    "function": "LPSPI4_SIN"
@@ -1471,10 +1467,9 @@
     "EIRQ[14]",
     "ADC0_P3"
    ],
-   "net": "SPI2_FLASH_SCK",
+   "net": "SPI2_FLASH_SCK_MCU",
    "connects": [
-    "TP407 test point",
-    "U402 SCK"
+    "R418 33R to SPI2_FLASH_SCK"
    ],
    "externalPull": null,
    "function": "LPSPI2_SCK"
@@ -2105,10 +2100,9 @@
     "CMP2_IN1",
     "ADC0_X[2]"
    ],
-   "net": "SPI4_SWITCH1_SCK",
+   "net": "SPI4_SWITCH1_SCK_MCU",
    "connects": [
-    "TP403 test point",
-    "U601 SCLK"
+    "R409 33R to SPI4_SWITCH1_SCK"
    ],
    "externalPull": null,
    "function": "LPSPI4_SCK"
@@ -2276,10 +2270,9 @@
     "LPUART10_RX",
     "EIRQ[21]"
    ],
-   "net": "SPI3_SWITCH3_SCK",
+   "net": "SPI3_SWITCH3_SCK_MCU",
    "connects": [
-    "TP417 test point",
-    "U801 SCLK"
+    "R415 33R to SPI3_SWITCH3_SCK"
    ],
    "externalPull": null,
    "function": "LPSPI3_SCK"
@@ -2300,9 +2293,9 @@
    ],
    "net": "SPI3_SWITCH3_MISO",
    "connects": [
+    "R808 33R to SW_SDO",
     "TP419 test point",
-    "TP803 test point",
-    "U801 SDO"
+    "TP803 test point"
    ],
    "externalPull": null,
    "function": "LPSPI3_SIN"
@@ -2595,10 +2588,9 @@
     "FCCU_ERR_IN1",
     "EIRQ[23]"
    ],
-   "net": "SPI3_SWITCH3_MOSI",
+   "net": "SPI3_SWITCH3_MOSI_MCU",
    "connects": [
-    "TP418 test point",
-    "U801 SDI"
+    "R416 33R to SPI3_SWITCH3_MOSI"
    ],
    "externalPull": null,
    "function": "LPSPI3_SOUT"
@@ -3304,10 +3296,9 @@
     "ADC1_MA[0]",
     "LPSPI3_PCS0"
    ],
-   "net": "SPI3_SWITCH3_CS_L",
+   "net": "SPI3_SWITCH3_CS_L_MCU",
    "connects": [
-    "TP420 test point",
-    "U801 CS_L"
+    "R417 33R to SPI3_SWITCH3_CS_L"
    ],
    "externalPull": null,
    "function": "LPSPI3_PCS0"
@@ -3328,10 +3319,9 @@
     "ADC0_S19",
     "WKPU[22]"
    ],
-   "net": "SPI5_SWITCH2_CS_L",
+   "net": "SPI5_SWITCH2_CS_L_MCU",
    "connects": [
-    "TP416 test point",
-    "U701 CS_L"
+    "R414 33R to SPI5_SWITCH2_CS_L"
    ],
    "externalPull": null,
    "function": "LPSPI5_PCS0"

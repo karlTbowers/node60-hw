@@ -1,0 +1,8 @@
+T1S line on /Users/karl/Dev/node60-hw/.claude/worktrees/spi-series-resistors-5a03cb/placement/2026-11-13-spi-series-r/work/base_filled.kicad_pcb (routed; lengths in mm, a via counted as 2.0 mm)
+                                                       P       N     P-N
+  trunk J912 to J903                               38.91   38.92   -0.01
+  PHY stub: trunk to U501 pin                      24.58   25.59   -1.01
+    of which the tap (trunk to cap)                15.02   16.03   -1.01
+  relay leg: trunk to K501 pin                     23.90   24.91   -1.01
+  end node, J912 used: dangles past the relay      27.70   22.40    5.30
+  end node, J903 used: dangles past the relay      11.21   16.52   -5.31

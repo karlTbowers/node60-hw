@@ -1,0 +1,737 @@
+{
+    "$schema": "https://schemas.kicad.org/drc.v1.json",
+    "coordinate_units": "mm",
+    "date": "2026-11-13T10:09:11",
+    "ignored_checks": [
+        {
+            "description": "Footprint has no courtyard defined",
+            "key": "missing_courtyard"
+        },
+        {
+            "description": "Track endpoint not centered on via",
+            "key": "track_not_centered_on_via"
+        },
+        {
+            "description": "Tuning profile track geometries",
+            "key": "tuning_profile_track_geometries"
+        },
+        {
+            "description": "Footprint doesn't match symbol's footprint filters",
+            "key": "footprint_filters_mismatch"
+        },
+        {
+            "description": "Footprint component type doesn't match footprint pads",
+            "key": "footprint_type_mismatch"
+        }
+    ],
+    "included_severities": [
+        "error",
+        "warning",
+        "exclusion"
+    ],
+    "kicad_version": "10.0.7",
+    "schematic_parity": [
+        {
+            "description": "Missing symbol field 'ki_fp_filters' in footprint",
+            "items": [
+                {
+                    "description": "Footprint C424",
+                    "pos": {
+                        "x": 191.4,
+                        "y": 54.8
+                    },
+                    "uuid": "2069f4dc-4944-4fe6-8df2-4e171a2239c0"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_fp_filters' in footprint",
+            "items": [
+                {
+                    "description": "Footprint C425",
+                    "pos": {
+                        "x": 188.6,
+                        "y": 50.199999
+                    },
+                    "uuid": "7d48e24b-a1c3-482e-8136-7a67a701c38f"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_fp_filters' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R408",
+                    "pos": {
+                        "x": 191.8524,
+                        "y": 50.058699
+                    },
+                    "uuid": "31c17b77-f3ea-46e8-b67f-a00c9dd0db99"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_fp_filters' in footprint",
+            "items": [
+                {
+                    "description": "Footprint Y401",
+                    "pos": {
+                        "x": 190.529,
+                        "y": 52.44
+                    },
+                    "uuid": "4f18e6a7-a15d-423e-882e-0ccb216e52e4"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_fp_filters' in footprint",
+            "items": [
+                {
+                    "description": "Footprint C514",
+                    "pos": {
+                        "x": 158.5,
+                        "y": 57.25
+                    },
+                    "uuid": "67104d9f-a4cb-41a8-a0b1-06e5054d5204"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_fp_filters' in footprint",
+            "items": [
+                {
+                    "description": "Footprint K501",
+                    "pos": {
+                        "x": 155.0,
+                        "y": 64.33
+                    },
+                    "uuid": "b04557ed-170e-46cb-acf5-b7ba0f72e080"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_fp_filters' in footprint",
+            "items": [
+                {
+                    "description": "Footprint Q501",
+                    "pos": {
+                        "x": 163.25,
+                        "y": 64.25
+                    },
+                    "uuid": "5498e7d1-4aed-481e-93f6-5c5ff4dd0f4e"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_fp_filters' in footprint",
+            "items": [
+                {
+                    "description": "Footprint Q502",
+                    "pos": {
+                        "x": 163.25,
+                        "y": 67.0
+                    },
+                    "uuid": "8154f5eb-ac2c-4c1b-aa04-3466a800e15d"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_fp_filters' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R516",
+                    "pos": {
+                        "x": 149.0,
+                        "y": 66.75
+                    },
+                    "uuid": "0971bb2a-01b1-4ff1-9451-af6a12f06b75"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_fp_filters' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R517",
+                    "pos": {
+                        "x": 149.0,
+                        "y": 62.0
+                    },
+                    "uuid": "426be4f9-2b5a-4215-a2d2-eddb3cbae5c0"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_fp_filters' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R518",
+                    "pos": {
+                        "x": 161.0,
+                        "y": 66.5
+                    },
+                    "uuid": "a4cc49d0-9d73-4e8b-abfb-8a82d822b4a8"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_fp_filters' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R519",
+                    "pos": {
+                        "x": 161.0,
+                        "y": 61.5
+                    },
+                    "uuid": "780ef154-f2b9-4161-9668-57c4b4aa94ae"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_fp_filters' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R520",
+                    "pos": {
+                        "x": 161.25,
+                        "y": 58.0
+                    },
+                    "uuid": "fc4298cc-9d66-46f8-8dd5-491be4855215"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_fp_filters' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R521",
+                    "pos": {
+                        "x": 162.75,
+                        "y": 62.0
+                    },
+                    "uuid": "4f793242-594c-497c-bae0-2ca7ac27cfe2"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_fp_filters' in footprint",
+            "items": [
+                {
+                    "description": "Footprint R522",
+                    "pos": {
+                        "x": 171.7565,
+                        "y": 62.7939
+                    },
+                    "uuid": "cb92f328-e612-43eb-9480-82419813d507"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_fp_filters' in footprint",
+            "items": [
+                {
+                    "description": "Footprint J901",
+                    "pos": {
+                        "x": 208.0,
+                        "y": 99.6
+                    },
+                    "uuid": "4c201e55-9072-4b55-a48a-88e4ca824dae"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_fp_filters' in footprint",
+            "items": [
+                {
+                    "description": "Footprint J902",
+                    "pos": {
+                        "x": 233.5,
+                        "y": 70.6
+                    },
+                    "uuid": "c3e6200a-2820-4085-980c-445c308a8aa0"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_fp_filters' in footprint",
+            "items": [
+                {
+                    "description": "Footprint J910",
+                    "pos": {
+                        "x": 102.0,
+                        "y": 99.6
+                    },
+                    "uuid": "0eefd1b5-5d9b-4d64-ad2c-22eddddf5544"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        },
+        {
+            "description": "Missing symbol field 'ki_fp_filters' in footprint",
+            "items": [
+                {
+                    "description": "Footprint J911",
+                    "pos": {
+                        "x": 76.5,
+                        "y": 70.6
+                    },
+                    "uuid": "9a576a80-ff05-4114-9f9f-c9403c140aa3"
+                }
+            ],
+            "severity": "warning",
+            "type": "footprint_symbol_field_mismatch"
+        }
+    ],
+    "source": "node60.kicad_pcb",
+    "unconnected_items": [],
+    "violations": [
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 40.0,
+                        "y": 30.0
+                    },
+                    "uuid": "cd7933a6-af1b-4695-a8ec-b7c11361c2c5"
+                },
+                {
+                    "description": "Segment of J906 on F.Silkscreen",
+                    "pos": {
+                        "x": 118.6,
+                        "y": 140.65
+                    },
+                    "uuid": "78fcb6b2-19c4-46e8-b66c-c12f21559590"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 40.0,
+                        "y": 30.0
+                    },
+                    "uuid": "cd7933a6-af1b-4695-a8ec-b7c11361c2c5"
+                },
+                {
+                    "description": "Segment of J906 on F.Silkscreen",
+                    "pos": {
+                        "x": 154.1,
+                        "y": 129.45
+                    },
+                    "uuid": "91a8dd01-93d1-4eea-8bfc-96f0151fe2d4"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 40.0,
+                        "y": 30.0
+                    },
+                    "uuid": "cd7933a6-af1b-4695-a8ec-b7c11361c2c5"
+                },
+                {
+                    "description": "Segment of J909 on F.Silkscreen",
+                    "pos": {
+                        "x": 230.5,
+                        "y": 140.65
+                    },
+                    "uuid": "568627fc-b460-456e-a185-e5333318fb2e"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 40.0,
+                        "y": 30.0
+                    },
+                    "uuid": "cd7933a6-af1b-4695-a8ec-b7c11361c2c5"
+                },
+                {
+                    "description": "Segment of J909 on F.Silkscreen",
+                    "pos": {
+                        "x": 266.0,
+                        "y": 129.45
+                    },
+                    "uuid": "cc044490-b1b0-4b0c-8be4-000a75339b41"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 40.0,
+                        "y": 30.0
+                    },
+                    "uuid": "cd7933a6-af1b-4695-a8ec-b7c11361c2c5"
+                },
+                {
+                    "description": "Segment of J905 on F.Silkscreen",
+                    "pos": {
+                        "x": 81.3,
+                        "y": 140.65
+                    },
+                    "uuid": "ae44e228-8cc8-44f4-93b0-f1d20909d927"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 40.0,
+                        "y": 30.0
+                    },
+                    "uuid": "cd7933a6-af1b-4695-a8ec-b7c11361c2c5"
+                },
+                {
+                    "description": "Segment of J905 on F.Silkscreen",
+                    "pos": {
+                        "x": 116.8,
+                        "y": 129.45
+                    },
+                    "uuid": "4cacee7b-bc3b-47f9-98c9-9ca3d1bb11ba"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 40.0,
+                        "y": 30.0
+                    },
+                    "uuid": "cd7933a6-af1b-4695-a8ec-b7c11361c2c5"
+                },
+                {
+                    "description": "Segment of J904 on F.Silkscreen",
+                    "pos": {
+                        "x": 44.0,
+                        "y": 140.65
+                    },
+                    "uuid": "eb4eb934-e1b5-4a29-8ea4-4709c9cc2df1"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 40.0,
+                        "y": 30.0
+                    },
+                    "uuid": "cd7933a6-af1b-4695-a8ec-b7c11361c2c5"
+                },
+                {
+                    "description": "Segment of J904 on F.Silkscreen",
+                    "pos": {
+                        "x": 79.5,
+                        "y": 129.45
+                    },
+                    "uuid": "696dd135-2248-47dd-90f5-9086be5188a2"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 40.0,
+                        "y": 30.0
+                    },
+                    "uuid": "cd7933a6-af1b-4695-a8ec-b7c11361c2c5"
+                },
+                {
+                    "description": "Segment of J907 on F.Silkscreen",
+                    "pos": {
+                        "x": 155.9,
+                        "y": 140.65
+                    },
+                    "uuid": "01575412-6fa3-4adb-aeec-68e16f2a3e8e"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 40.0,
+                        "y": 30.0
+                    },
+                    "uuid": "cd7933a6-af1b-4695-a8ec-b7c11361c2c5"
+                },
+                {
+                    "description": "Segment of J907 on F.Silkscreen",
+                    "pos": {
+                        "x": 191.4,
+                        "y": 129.45
+                    },
+                    "uuid": "a166c2c7-6d34-4012-8ad2-64e952a3200c"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 40.0,
+                        "y": 30.0
+                    },
+                    "uuid": "cd7933a6-af1b-4695-a8ec-b7c11361c2c5"
+                },
+                {
+                    "description": "Segment of J903 on F.Silkscreen",
+                    "pos": {
+                        "x": 155.94,
+                        "y": 43.55
+                    },
+                    "uuid": "24977750-b24a-4d1c-aaf2-65af4d978a6b"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 40.0,
+                        "y": 30.0
+                    },
+                    "uuid": "cd7933a6-af1b-4695-a8ec-b7c11361c2c5"
+                },
+                {
+                    "description": "Segment of J903 on F.Silkscreen",
+                    "pos": {
+                        "x": 193.06,
+                        "y": 29.35
+                    },
+                    "uuid": "3b9385ca-5d3e-40bf-9f49-3de62117154f"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 40.0,
+                        "y": 30.0
+                    },
+                    "uuid": "cd7933a6-af1b-4695-a8ec-b7c11361c2c5"
+                },
+                {
+                    "description": "Segment of J912 on F.Silkscreen",
+                    "pos": {
+                        "x": 116.94,
+                        "y": 43.55
+                    },
+                    "uuid": "dfee24fe-bf90-4821-ab60-539a7f167c24"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 40.0,
+                        "y": 30.0
+                    },
+                    "uuid": "cd7933a6-af1b-4695-a8ec-b7c11361c2c5"
+                },
+                {
+                    "description": "Segment of J912 on F.Silkscreen",
+                    "pos": {
+                        "x": 154.06,
+                        "y": 29.35
+                    },
+                    "uuid": "095800df-b680-4e22-aed3-22a920a2e11d"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 40.0,
+                        "y": 30.0
+                    },
+                    "uuid": "cd7933a6-af1b-4695-a8ec-b7c11361c2c5"
+                },
+                {
+                    "description": "Segment of J908 on F.Silkscreen",
+                    "pos": {
+                        "x": 193.2,
+                        "y": 140.65
+                    },
+                    "uuid": "80dcfcb0-e7cb-4371-9af0-60d78299a14a"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by board edge",
+            "items": [
+                {
+                    "description": "Rectangle on Edge.Cuts",
+                    "pos": {
+                        "x": 40.0,
+                        "y": 30.0
+                    },
+                    "uuid": "cd7933a6-af1b-4695-a8ec-b7c11361c2c5"
+                },
+                {
+                    "description": "Segment of J908 on F.Silkscreen",
+                    "pos": {
+                        "x": 228.7,
+                        "y": 129.45
+                    },
+                    "uuid": "e7fcdfac-6799-4619-968d-f053df92848d"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_edge_clearance"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Polygon of U601 on B.Silkscreen",
+                    "pos": {
+                        "x": 81.56,
+                        "y": 109.32
+                    },
+                    "uuid": "3f6fdafd-ae26-44d1-87d1-f3187585ed52"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Polygon of U801 on B.Silkscreen",
+                    "pos": {
+                        "x": 230.86,
+                        "y": 109.32
+                    },
+                    "uuid": "1b3620dc-bdfd-4352-b563-b62fdb406472"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        },
+        {
+            "description": "Silkscreen clipped by solder mask",
+            "items": [
+                {
+                    "description": "Polygon of U701 on B.Silkscreen",
+                    "pos": {
+                        "x": 156.21,
+                        "y": 109.32
+                    },
+                    "uuid": "247b8fe0-b410-47e6-ac80-501fd54b370d"
+                }
+            ],
+            "severity": "warning",
+            "type": "silk_over_copper"
+        }
+    ]
+}

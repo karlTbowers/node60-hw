@@ -1,0 +1,1785 @@
+[
+ {
+  "ref": "R708",
+  "x": 147.45,
+  "y": 110.62,
+  "rot": 0,
+  "swap": 1,
+  "line": "/SPI5_SWITCH2_MISO",
+  "stub": "/Outputs 3-4/SW_SDO",
+  "driver": "U701.14",
+  "cut_at": 1.4,
+  "joins_mm": 0.21,
+  "delete": [
+   {
+    "seg": [
+     146.6,
+     110.625,
+     149.4,
+     110.625
+    ],
+    "layer": "B.Cu",
+    "net": "/SPI5_SWITCH2_MISO"
+   }
+  ],
+  "pieces": [
+   {
+    "layer": "B.Cu",
+    "a": [
+     149.4,
+     110.625
+    ],
+    "b": [
+     148.0,
+     110.625
+    ],
+    "w": 0.15,
+    "net": "/Outputs 3-4/SW_SDO",
+    "cls": "Default"
+   },
+   {
+    "layer": "B.Cu",
+    "a": [
+     147.1,
+     110.625
+    ],
+    "b": [
+     146.6,
+     110.625
+    ],
+    "w": 0.15,
+    "net": "/SPI5_SWITCH2_MISO",
+    "cls": "Default"
+   }
+  ],
+  "tracks": [
+   {
+    "net": "/Outputs 3-4/SW_SDO",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      148.0,
+      110.625
+     ],
+     [
+      148.005,
+      110.62
+     ],
+     [
+      147.905,
+      110.62
+     ]
+    ]
+   },
+   {
+    "net": "/SPI5_SWITCH2_MISO",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      146.995,
+      110.62
+     ],
+     [
+      147.095,
+      110.62
+     ],
+     [
+      147.1,
+      110.625
+     ]
+    ]
+   }
+  ],
+  "vias": []
+ },
+ {
+  "ref": "R608",
+  "x": 72.75,
+  "y": 110.6,
+  "rot": 0,
+  "swap": 1,
+  "line": "/SPI4_SWITCH1_MISO",
+  "stub": "/Outputs 1-2/SW_SDO",
+  "driver": "U601.14",
+  "cut_at": 1.4,
+  "joins_mm": 0.4,
+  "delete": [
+   {
+    "seg": [
+     74.8,
+     110.6,
+     72.3,
+     110.6
+    ],
+    "layer": "B.Cu",
+    "net": "/SPI4_SWITCH1_MISO"
+   }
+  ],
+  "pieces": [
+   {
+    "layer": "B.Cu",
+    "a": [
+     74.8,
+     110.6
+    ],
+    "b": [
+     73.4,
+     110.6
+    ],
+    "w": 0.15,
+    "net": "/Outputs 1-2/SW_SDO",
+    "cls": "Default"
+   },
+   {
+    "layer": "B.Cu",
+    "a": [
+     72.5,
+     110.6
+    ],
+    "b": [
+     72.3,
+     110.6
+    ],
+    "w": 0.15,
+    "net": "/SPI4_SWITCH1_MISO",
+    "cls": "Default"
+   }
+  ],
+  "tracks": [
+   {
+    "net": "/Outputs 1-2/SW_SDO",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      73.4,
+      110.6
+     ],
+     [
+      73.205,
+      110.6
+     ]
+    ]
+   },
+   {
+    "net": "/SPI4_SWITCH1_MISO",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      72.295,
+      110.6
+     ],
+     [
+      72.495,
+      110.6
+     ],
+     [
+      72.5,
+      110.6
+     ]
+    ]
+   }
+  ],
+  "vias": []
+ },
+ {
+  "ref": "R409",
+  "x": 209.8,
+  "y": 48.4,
+  "rot": 90,
+  "swap": 1,
+  "line": "/SPI4_SWITCH1_SCK",
+  "stub": "/MCU and NVM/SPI4_SWITCH1_SCK_MCU",
+  "driver": "U401.D15",
+  "cut_at": 11.6,
+  "joins_mm": 0.29,
+  "delete": [
+   {
+    "seg": [
+     209.9,
+     49.8,
+     209.9,
+     43.4
+    ],
+    "layer": "B.Cu",
+    "net": "/SPI4_SWITCH1_SCK"
+   }
+  ],
+  "pieces": [
+   {
+    "layer": "B.Cu",
+    "a": [
+     209.9,
+     49.8
+    ],
+    "b": [
+     209.9,
+     48.9543
+    ],
+    "w": 0.15,
+    "net": "/MCU and NVM/SPI4_SWITCH1_SCK_MCU",
+    "cls": "Default"
+   },
+   {
+    "layer": "B.Cu",
+    "a": [
+     209.9,
+     48.0543
+    ],
+    "b": [
+     209.9,
+     43.4
+    ],
+    "w": 0.15,
+    "net": "/SPI4_SWITCH1_SCK",
+    "cls": "Default"
+   }
+  ],
+  "tracks": [
+   {
+    "net": "/MCU and NVM/SPI4_SWITCH1_SCK_MCU",
+    "layer": "B.Cu",
+    "w": 0.1,
+    "pts": [
+     [
+      209.9,
+      48.9543
+     ],
+     [
+      209.9,
+      48.955
+     ],
+     [
+      209.8,
+      48.855
+     ]
+    ]
+   },
+   {
+    "net": "/SPI4_SWITCH1_SCK",
+    "layer": "B.Cu",
+    "w": 0.1,
+    "pts": [
+     [
+      209.8,
+      47.945
+     ],
+     [
+      209.9,
+      48.045
+     ],
+     [
+      209.9,
+      48.0543
+     ]
+    ]
+   }
+  ],
+  "vias": []
+ },
+ {
+  "ref": "R410",
+  "x": 195.41,
+  "y": 66.69,
+  "rot": 0,
+  "swap": 1,
+  "line": "/SPI4_SWITCH1_MOSI",
+  "stub": "/MCU and NVM/SPI4_SWITCH1_MOSI_MCU",
+  "driver": "U401.C15",
+  "cut_at": 16.1,
+  "joins_mm": 4.66,
+  "delete": [
+   {
+    "seg": [
+     191.9,
+     67.6,
+     200.4,
+     59.1
+    ],
+    "layer": "In2.Cu",
+    "net": "/SPI4_SWITCH1_MOSI"
+   }
+  ],
+  "pieces": [
+   {
+    "layer": "In2.Cu",
+    "a": [
+     200.4,
+     59.1
+    ],
+    "b": [
+     195.232,
+     64.268
+    ],
+    "w": 0.15,
+    "net": "/MCU and NVM/SPI4_SWITCH1_MOSI_MCU",
+    "cls": "Default"
+   },
+   {
+    "layer": "In2.Cu",
+    "a": [
+     194.5956,
+     64.9044
+    ],
+    "b": [
+     191.9,
+     67.6
+    ],
+    "w": 0.15,
+    "net": "/SPI4_SWITCH1_MOSI",
+    "cls": "Default"
+   }
+  ],
+  "tracks": [
+   {
+    "net": "/MCU and NVM/SPI4_SWITCH1_MOSI_MCU",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      195.232,
+      64.268
+     ],
+     [
+      195.882,
+      64.918
+     ],
+     [
+      195.882,
+      66.668
+     ]
+    ]
+   },
+   {
+    "net": "/MCU and NVM/SPI4_SWITCH1_MOSI_MCU",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      195.882,
+      66.668
+     ],
+     [
+      195.865,
+      66.69
+     ]
+    ]
+   },
+   {
+    "net": "/SPI4_SWITCH1_MOSI",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      194.955,
+      66.69
+     ],
+     [
+      194.9456,
+      66.7044
+     ],
+     [
+      194.9456,
+      66.4044
+     ]
+    ]
+   },
+   {
+    "net": "/SPI4_SWITCH1_MOSI",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      194.9456,
+      66.4044
+     ],
+     [
+      194.9456,
+      65.2544
+     ],
+     [
+      194.5956,
+      64.9044
+     ]
+    ]
+   }
+  ],
+  "vias": [
+   {
+    "net": "/MCU and NVM/SPI4_SWITCH1_MOSI_MCU",
+    "x": 195.882,
+    "y": 66.668,
+    "d": 0.45,
+    "drill": 0.25
+   },
+   {
+    "net": "/SPI4_SWITCH1_MOSI",
+    "x": 194.9456,
+    "y": 66.4044,
+    "d": 0.45,
+    "drill": 0.25
+   }
+  ]
+ },
+ {
+  "ref": "R411",
+  "x": 202.08,
+  "y": 67.44,
+  "rot": 0,
+  "swap": 1,
+  "line": "/SPI4_SWITCH1_CS_L",
+  "stub": "/MCU and NVM/SPI4_SWITCH1_CS_L_MCU",
+  "driver": "U401.A14",
+  "cut_at": 9.2,
+  "joins_mm": 2.6,
+  "delete": [
+   {
+    "seg": [
+     204.4,
+     63.8,
+     201.7,
+     66.5
+    ],
+    "layer": "In2.Cu",
+    "net": "/SPI4_SWITCH1_CS_L"
+   },
+   {
+    "seg": [
+     201.7,
+     66.5,
+     199.7,
+     66.5
+    ],
+    "layer": "In2.Cu",
+    "net": "/SPI4_SWITCH1_CS_L"
+   }
+  ],
+  "pieces": [
+   {
+    "layer": "In2.Cu",
+    "a": [
+     204.4,
+     63.8
+    ],
+    "b": [
+     202.2236,
+     65.9764
+    ],
+    "w": 0.15,
+    "net": "/MCU and NVM/SPI4_SWITCH1_CS_L_MCU",
+    "cls": "Default"
+   },
+   {
+    "layer": "In2.Cu",
+    "a": [
+     201.5405,
+     66.5
+    ],
+    "b": [
+     199.7,
+     66.5
+    ],
+    "w": 0.15,
+    "net": "/SPI4_SWITCH1_CS_L",
+    "cls": "Default"
+   }
+  ],
+  "tracks": [
+   {
+    "net": "/MCU and NVM/SPI4_SWITCH1_CS_L_MCU",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      202.2236,
+      65.9764
+     ],
+     [
+      202.2236,
+      67.1264
+     ],
+     [
+      202.4236,
+      67.3264
+     ]
+    ]
+   },
+   {
+    "net": "/MCU and NVM/SPI4_SWITCH1_CS_L_MCU",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      202.4236,
+      67.3264
+     ],
+     [
+      202.5236,
+      67.4264
+     ],
+     [
+      202.535,
+      67.44
+     ]
+    ]
+   },
+   {
+    "net": "/SPI4_SWITCH1_CS_L",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      201.625,
+      67.44
+     ],
+     [
+      201.6405,
+      67.45
+     ],
+     [
+      201.6405,
+      66.6
+     ],
+     [
+      201.5405,
+      66.5
+     ]
+    ]
+   }
+  ],
+  "vias": [
+   {
+    "net": "/MCU and NVM/SPI4_SWITCH1_CS_L_MCU",
+    "x": 202.4236,
+    "y": 67.3264,
+    "d": 0.45,
+    "drill": 0.25
+   },
+   {
+    "net": "/SPI4_SWITCH1_CS_L",
+    "x": 201.5405,
+    "y": 66.5,
+    "d": 0.45,
+    "drill": 0.25
+   }
+  ]
+ },
+ {
+  "ref": "R412",
+  "x": 193.35,
+  "y": 61.72,
+  "rot": 0,
+  "swap": 1,
+  "line": "/SPI5_SWITCH2_SCK",
+  "stub": "/MCU and NVM/SPI5_SWITCH2_SCK_MCU",
+  "driver": "U401.A16",
+  "cut_at": 15.5,
+  "joins_mm": 0.41,
+  "delete": [
+   {
+    "seg": [
+     192.5,
+     61.7148,
+     195.75,
+     61.7148
+    ],
+    "layer": "F.Cu",
+    "net": "/SPI5_SWITCH2_SCK"
+   }
+  ],
+  "pieces": [
+   {
+    "layer": "F.Cu",
+    "a": [
+     195.75,
+     61.715
+    ],
+    "b": [
+     193.8046,
+     61.715
+    ],
+    "w": 0.15,
+    "net": "/MCU and NVM/SPI5_SWITCH2_SCK_MCU",
+    "cls": "Default"
+   },
+   {
+    "layer": "F.Cu",
+    "a": [
+     192.9046,
+     61.715
+    ],
+    "b": [
+     192.5,
+     61.715
+    ],
+    "w": 0.15,
+    "net": "/SPI5_SWITCH2_SCK",
+    "cls": "Default"
+   }
+  ],
+  "tracks": [
+   {
+    "net": "/MCU and NVM/SPI5_SWITCH2_SCK_MCU",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      193.8046,
+      61.715
+     ],
+     [
+      193.8046,
+      61.815
+     ]
+    ]
+   },
+   {
+    "net": "/MCU and NVM/SPI5_SWITCH2_SCK_MCU",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      193.8046,
+      61.815
+     ],
+     [
+      193.8046,
+      61.715
+     ],
+     [
+      193.805,
+      61.72
+     ]
+    ]
+   },
+   {
+    "net": "/SPI5_SWITCH2_SCK",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      192.895,
+      61.72
+     ],
+     [
+      192.895,
+      61.815
+     ]
+    ]
+   },
+   {
+    "net": "/SPI5_SWITCH2_SCK",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      192.895,
+      61.815
+     ],
+     [
+      192.895,
+      61.715
+     ],
+     [
+      192.9046,
+      61.715
+     ]
+    ]
+   }
+  ],
+  "vias": [
+   {
+    "net": "/MCU and NVM/SPI5_SWITCH2_SCK_MCU",
+    "x": 193.8046,
+    "y": 61.815,
+    "d": 0.45,
+    "drill": 0.25
+   },
+   {
+    "net": "/SPI5_SWITCH2_SCK",
+    "x": 192.895,
+    "y": 61.815,
+    "d": 0.45,
+    "drill": 0.25
+   }
+  ]
+ },
+ {
+  "ref": "R413",
+  "x": 193.42,
+  "y": 60.78,
+  "rot": 0,
+  "swap": 1,
+  "line": "/SPI5_SWITCH2_MOSI",
+  "stub": "/MCU and NVM/SPI5_SWITCH2_MOSI_MCU",
+  "driver": "U401.A15",
+  "cut_at": 13.7,
+  "joins_mm": 1.28,
+  "delete": [
+   {
+    "seg": [
+     190.8,
+     62.8,
+     194.6,
+     59.0
+    ],
+    "layer": "In2.Cu",
+    "net": "/SPI5_SWITCH2_MOSI"
+   }
+  ],
+  "pieces": [
+   {
+    "layer": "In2.Cu",
+    "a": [
+     194.6,
+     59.0
+    ],
+    "b": [
+     193.6352,
+     59.9648
+    ],
+    "w": 0.15,
+    "net": "/MCU and NVM/SPI5_SWITCH2_MOSI_MCU",
+    "cls": "Default"
+   },
+   {
+    "layer": "In2.Cu",
+    "a": [
+     192.9988,
+     60.6012
+    ],
+    "b": [
+     190.8,
+     62.8
+    ],
+    "w": 0.15,
+    "net": "/SPI5_SWITCH2_MOSI",
+    "cls": "Default"
+   }
+  ],
+  "tracks": [
+   {
+    "net": "/MCU and NVM/SPI5_SWITCH2_MOSI_MCU",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      193.6352,
+      59.9648
+     ],
+     [
+      193.6352,
+      60.5648
+     ],
+     [
+      193.8852,
+      60.8148
+     ]
+    ]
+   },
+   {
+    "net": "/MCU and NVM/SPI5_SWITCH2_MOSI_MCU",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      193.8852,
+      60.8148
+     ],
+     [
+      193.8852,
+      60.7648
+     ],
+     [
+      193.875,
+      60.78
+     ]
+    ]
+   },
+   {
+    "net": "/SPI5_SWITCH2_MOSI",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      192.965,
+      60.78
+     ],
+     [
+      192.965,
+      60.8012
+     ]
+    ]
+   },
+   {
+    "net": "/SPI5_SWITCH2_MOSI",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      192.965,
+      60.8012
+     ],
+     [
+      192.965,
+      60.6512
+     ],
+     [
+      193.015,
+      60.6012
+     ],
+     [
+      192.9988,
+      60.6012
+     ]
+    ]
+   }
+  ],
+  "vias": [
+   {
+    "net": "/MCU and NVM/SPI5_SWITCH2_MOSI_MCU",
+    "x": 193.8852,
+    "y": 60.8148,
+    "d": 0.45,
+    "drill": 0.25
+   },
+   {
+    "net": "/SPI5_SWITCH2_MOSI",
+    "x": 192.965,
+    "y": 60.8012,
+    "d": 0.45,
+    "drill": 0.25
+   }
+  ]
+ },
+ {
+  "ref": "R415",
+  "x": 207.53,
+  "y": 61.03,
+  "rot": 90,
+  "swap": 0,
+  "line": "/SPI3_SWITCH3_SCK",
+  "stub": "/MCU and NVM/SPI3_SWITCH3_SCK_MCU",
+  "driver": "U401.E14",
+  "cut_at": 9.2,
+  "joins_mm": 1.36,
+  "delete": [
+   {
+    "seg": [
+     209.7,
+     62.4,
+     206.2,
+     58.9
+    ],
+    "layer": "B.Cu",
+    "net": "/SPI3_SWITCH3_SCK"
+   }
+  ],
+  "pieces": [
+   {
+    "layer": "B.Cu",
+    "a": [
+     206.2,
+     58.9
+    ],
+    "b": [
+     207.507,
+     60.207
+    ],
+    "w": 0.15,
+    "net": "/MCU and NVM/SPI3_SWITCH3_SCK_MCU",
+    "cls": "Default"
+   },
+   {
+    "layer": "B.Cu",
+    "a": [
+     208.1434,
+     60.8434
+    ],
+    "b": [
+     209.7,
+     62.4
+    ],
+    "w": 0.15,
+    "net": "/SPI3_SWITCH3_SCK",
+    "cls": "Default"
+   }
+  ],
+  "tracks": [
+   {
+    "net": "/MCU and NVM/SPI3_SWITCH3_SCK_MCU",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      207.507,
+      60.207
+     ],
+     [
+      207.507,
+      60.557
+     ],
+     [
+      207.53,
+      60.575
+     ]
+    ]
+   },
+   {
+    "net": "/SPI3_SWITCH3_SCK",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      207.53,
+      61.485
+     ],
+     [
+      207.53,
+      61.4934
+     ],
+     [
+      207.88,
+      61.1434
+     ],
+     [
+      207.98,
+      61.1434
+     ],
+     [
+      208.13,
+      60.9934
+     ],
+     [
+      208.13,
+      60.8434
+     ],
+     [
+      208.1434,
+      60.8434
+     ]
+    ]
+   }
+  ],
+  "vias": []
+ },
+ {
+  "ref": "R416",
+  "x": 212.4,
+  "y": 54.7,
+  "rot": 90,
+  "swap": 0,
+  "line": "/SPI3_SWITCH3_MOSI",
+  "stub": "/MCU and NVM/SPI3_SWITCH3_MOSI_MCU",
+  "driver": "U401.F14",
+  "cut_at": 9.8,
+  "joins_mm": 1.19,
+  "delete": [
+   {
+    "seg": [
+     214.2,
+     57.2,
+     208.5,
+     51.5
+    ],
+    "layer": "In2.Cu",
+    "net": "/SPI3_SWITCH3_MOSI"
+   }
+  ],
+  "pieces": [
+   {
+    "layer": "In2.Cu",
+    "a": [
+     208.5,
+     51.5
+    ],
+    "b": [
+     211.5823,
+     54.5823
+    ],
+    "w": 0.15,
+    "net": "/MCU and NVM/SPI3_SWITCH3_MOSI_MCU",
+    "cls": "Default"
+   },
+   {
+    "layer": "In2.Cu",
+    "a": [
+     212.2187,
+     55.2187
+    ],
+    "b": [
+     214.2,
+     57.2
+    ],
+    "w": 0.15,
+    "net": "/SPI3_SWITCH3_MOSI",
+    "cls": "Default"
+   }
+  ],
+  "tracks": [
+   {
+    "net": "/MCU and NVM/SPI3_SWITCH3_MOSI_MCU",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      211.5823,
+      54.5823
+     ],
+     [
+      211.5823,
+      54.595
+     ],
+     [
+      212.0323,
+      54.595
+     ],
+     [
+      212.3823,
+      54.245
+     ]
+    ]
+   },
+   {
+    "net": "/MCU and NVM/SPI3_SWITCH3_MOSI_MCU",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      212.3823,
+      54.245
+     ],
+     [
+      212.4,
+      54.245
+     ]
+    ]
+   },
+   {
+    "net": "/SPI3_SWITCH3_MOSI",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      212.4,
+      55.155
+     ],
+     [
+      212.2687,
+      55.155
+     ],
+     [
+      212.2187,
+      55.205
+     ]
+    ]
+   },
+   {
+    "net": "/SPI3_SWITCH3_MOSI",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      212.2187,
+      55.205
+     ],
+     [
+      212.2187,
+      55.2187
+     ]
+    ]
+   }
+  ],
+  "vias": [
+   {
+    "net": "/MCU and NVM/SPI3_SWITCH3_MOSI_MCU",
+    "x": 212.3823,
+    "y": 54.245,
+    "d": 0.45,
+    "drill": 0.25
+   },
+   {
+    "net": "/SPI3_SWITCH3_MOSI",
+    "x": 212.2187,
+    "y": 55.205,
+    "d": 0.45,
+    "drill": 0.25
+   }
+  ]
+ },
+ {
+  "ref": "R808",
+  "x": 221.0,
+  "y": 108.65,
+  "rot": 0,
+  "swap": 0,
+  "line": "/SPI3_SWITCH3_MISO",
+  "stub": "/Outputs 5-6/SW_SDO",
+  "driver": "U801.14",
+  "cut_at": 2.9,
+  "joins_mm": 2.45,
+  "delete": [
+   {
+    "seg": [
+     221.9,
+     110.6,
+     221.9,
+     96.5
+    ],
+    "layer": "B.Cu",
+    "net": "/SPI3_SWITCH3_MISO"
+   }
+  ],
+  "pieces": [
+   {
+    "layer": "B.Cu",
+    "a": [
+     221.9,
+     110.6
+    ],
+    "b": [
+     221.9,
+     109.8
+    ],
+    "w": 0.15,
+    "net": "/Outputs 5-6/SW_SDO",
+    "cls": "Default"
+   },
+   {
+    "layer": "B.Cu",
+    "a": [
+     221.9,
+     108.9
+    ],
+    "b": [
+     221.9,
+     96.5
+    ],
+    "w": 0.15,
+    "net": "/SPI3_SWITCH3_MISO",
+    "cls": "Default"
+   }
+  ],
+  "tracks": [
+   {
+    "net": "/Outputs 5-6/SW_SDO",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      221.9,
+      109.8
+     ],
+     [
+      221.895,
+      109.8
+     ],
+     [
+      221.295,
+      109.2
+     ],
+     [
+      220.995,
+      109.2
+     ],
+     [
+      220.545,
+      108.75
+     ],
+     [
+      220.545,
+      108.65
+     ]
+    ]
+   },
+   {
+    "net": "/SPI3_SWITCH3_MISO",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      221.455,
+      108.65
+     ],
+     [
+      221.705,
+      108.9
+     ],
+     [
+      221.905,
+      108.9
+     ],
+     [
+      221.9,
+      108.9
+     ]
+    ]
+   }
+  ],
+  "vias": []
+ },
+ {
+  "ref": "R417",
+  "x": 213.49,
+  "y": 58.09,
+  "rot": 90,
+  "swap": 0,
+  "line": "/SPI3_SWITCH3_CS_L",
+  "stub": "/MCU and NVM/SPI3_SWITCH3_CS_L_MCU",
+  "driver": "U401.G15",
+  "cut_at": 9.5,
+  "joins_mm": 0.79,
+  "delete": [
+   {
+    "seg": [
+     209.9,
+     54.8,
+     223.7,
+     68.6
+    ],
+    "layer": "B.Cu",
+    "net": "/SPI3_SWITCH3_CS_L"
+   }
+  ],
+  "pieces": [
+   {
+    "layer": "B.Cu",
+    "a": [
+     209.9,
+     54.8
+    ],
+    "b": [
+     212.9758,
+     57.8758
+    ],
+    "w": 0.15,
+    "net": "/MCU and NVM/SPI3_SWITCH3_CS_L_MCU",
+    "cls": "Default"
+   },
+   {
+    "layer": "B.Cu",
+    "a": [
+     213.6122,
+     58.5122
+    ],
+    "b": [
+     223.7,
+     68.6
+    ],
+    "w": 0.15,
+    "net": "/SPI3_SWITCH3_CS_L",
+    "cls": "Default"
+   }
+  ],
+  "tracks": [
+   {
+    "net": "/MCU and NVM/SPI3_SWITCH3_CS_L_MCU",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      212.9758,
+      57.8758
+     ],
+     [
+      212.9758,
+      57.885
+     ],
+     [
+      213.2258,
+      57.635
+     ],
+     [
+      213.4758,
+      57.635
+     ],
+     [
+      213.49,
+      57.635
+     ]
+    ]
+   },
+   {
+    "net": "/SPI3_SWITCH3_CS_L",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      213.49,
+      58.545
+     ],
+     [
+      213.49,
+      58.5622
+     ],
+     [
+      213.54,
+      58.5122
+     ],
+     [
+      213.59,
+      58.5122
+     ],
+     [
+      213.6122,
+      58.5122
+     ]
+    ]
+   }
+  ],
+  "vias": []
+ },
+ {
+  "ref": "R418",
+  "x": 209.97,
+  "y": 58.33,
+  "rot": 0,
+  "swap": 0,
+  "line": "/MCU and NVM/SPI2_FLASH_SCK",
+  "stub": "/MCU and NVM/SPI2_FLASH_SCK_MCU",
+  "driver": "U401.D2",
+  "cut_at": 18.57,
+  "joins_mm": 11.13,
+  "delete": [
+   {
+    "seg": [
+     209.2,
+     56.6,
+     205.9,
+     59.9
+    ],
+    "layer": "In2.Cu",
+    "net": "/MCU and NVM/SPI2_FLASH_SCK"
+   },
+   {
+    "seg": [
+     211.9,
+     58.1,
+     212.0,
+     58.0
+    ],
+    "layer": "B.Cu",
+    "net": "/MCU and NVM/SPI2_FLASH_SCK"
+   },
+   {
+    "seg": [
+     210.4,
+     58.1,
+     211.9,
+     58.1
+    ],
+    "layer": "B.Cu",
+    "net": "/MCU and NVM/SPI2_FLASH_SCK"
+   },
+   {
+    "seg": [
+     209.4,
+     57.1,
+     210.4,
+     58.1
+    ],
+    "layer": "B.Cu",
+    "net": "/MCU and NVM/SPI2_FLASH_SCK"
+   },
+   {
+    "seg": [
+     209.15,
+     56.65,
+     209.4,
+     56.9
+    ],
+    "layer": "B.Cu",
+    "net": "/MCU and NVM/SPI2_FLASH_SCK"
+   },
+   {
+    "seg": [
+     209.4,
+     56.9,
+     209.4,
+     57.1
+    ],
+    "layer": "B.Cu",
+    "net": "/MCU and NVM/SPI2_FLASH_SCK"
+   }
+  ],
+  "pieces": [
+   {
+    "layer": "In2.Cu",
+    "a": [
+     208.5636,
+     57.2364
+    ],
+    "b": [
+     205.9,
+     59.9
+    ],
+    "w": 0.15,
+    "net": "/MCU and NVM/SPI2_FLASH_SCK",
+    "cls": "Default"
+   }
+  ],
+  "tracks": [
+   {
+    "net": "/MCU and NVM/SPI2_FLASH_SCK_MCU",
+    "layer": "B.Cu",
+    "w": 0.1,
+    "pts": [
+     [
+      209.15,
+      56.65
+     ],
+     [
+      209.15,
+      56.95
+     ],
+     [
+      209.5,
+      57.3
+     ],
+     [
+      209.5,
+      58.35
+     ],
+     [
+      209.515,
+      58.33
+     ]
+    ]
+   },
+   {
+    "net": "/MCU and NVM/SPI2_FLASH_SCK",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      210.425,
+      58.33
+     ],
+     [
+      210.425,
+      58.35
+     ],
+     [
+      211.625,
+      58.35
+     ],
+     [
+      211.975,
+      58.0
+     ],
+     [
+      212.0,
+      58.0
+     ]
+    ]
+   },
+   {
+    "net": "/MCU and NVM/SPI2_FLASH_SCK",
+    "layer": "In2.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      208.5636,
+      57.2364
+     ],
+     [
+      208.3636,
+      57.4364
+     ],
+     [
+      208.3136,
+      57.4364
+     ],
+     [
+      208.3136,
+      57.4864
+     ],
+     [
+      208.0636,
+      57.7364
+     ],
+     [
+      208.0636,
+      57.8364
+     ]
+    ]
+   },
+   {
+    "net": "/MCU and NVM/SPI2_FLASH_SCK",
+    "layer": "F.Cu",
+    "w": 0.1,
+    "pts": [
+     [
+      208.0636,
+      57.8364
+     ],
+     [
+      208.4136,
+      58.1864
+     ],
+     [
+      209.1136,
+      58.1864
+     ]
+    ]
+   },
+   {
+    "net": "/MCU and NVM/SPI2_FLASH_SCK",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      209.1136,
+      58.1864
+     ],
+     [
+      210.8136,
+      56.4864
+     ],
+     [
+      211.2636,
+      56.4864
+     ],
+     [
+      211.5636,
+      56.7864
+     ],
+     [
+      211.5636,
+      57.4864
+     ]
+    ]
+   },
+   {
+    "net": "/MCU and NVM/SPI2_FLASH_SCK",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      211.5636,
+      57.4864
+     ],
+     [
+      210.7136,
+      58.3364
+     ],
+     [
+      210.4136,
+      58.3364
+     ],
+     [
+      210.425,
+      58.33
+     ]
+    ]
+   }
+  ],
+  "vias": [
+   {
+    "net": "/MCU and NVM/SPI2_FLASH_SCK",
+    "x": 208.0636,
+    "y": 57.8364,
+    "d": 0.45,
+    "drill": 0.25
+   },
+   {
+    "net": "/MCU and NVM/SPI2_FLASH_SCK",
+    "x": 211.5636,
+    "y": 57.4864,
+    "d": 0.45,
+    "drill": 0.25
+   }
+  ]
+ },
+ {
+  "ref": "R414",
+  "x": 212.95,
+  "y": 52.34,
+  "rot": 90,
+  "swap": 0,
+  "line": "/SPI5_SWITCH2_CS_L",
+  "stub": "/MCU and NVM/SPI5_SWITCH2_CS_L_MCU",
+  "driver": "U401.G16",
+  "cut_at": 6.5,
+  "joins_mm": 8.96,
+  "delete": [
+   {
+    "seg": [
+     208.7,
+     52.2398,
+     208.1,
+     51.6398
+    ],
+    "layer": "F.Cu",
+    "net": "/SPI5_SWITCH2_CS_L"
+   },
+   {
+    "seg": [
+     208.7,
+     57.0398,
+     208.7,
+     52.2398
+    ],
+    "layer": "F.Cu",
+    "net": "/SPI5_SWITCH2_CS_L"
+   }
+  ],
+  "pieces": [
+   {
+    "layer": "F.Cu",
+    "a": [
+     208.1,
+     51.64
+    ],
+    "b": [
+     208.4067,
+     51.9467
+    ],
+    "w": 0.1,
+    "net": "/MCU and NVM/SPI5_SWITCH2_CS_L_MCU",
+    "cls": "Default"
+   },
+   {
+    "layer": "F.Cu",
+    "a": [
+     208.7,
+     52.7252
+    ],
+    "b": [
+     208.7,
+     57.04
+    ],
+    "w": 0.1,
+    "net": "/SPI5_SWITCH2_CS_L",
+    "cls": "Default"
+   }
+  ],
+  "tracks": [
+   {
+    "net": "/MCU and NVM/SPI5_SWITCH2_CS_L_MCU",
+    "layer": "F.Cu",
+    "w": 0.1,
+    "pts": [
+     [
+      208.4067,
+      51.9467
+     ],
+     [
+      208.4067,
+      51.935
+     ],
+     [
+      209.6067,
+      51.935
+     ],
+     [
+      209.7567,
+      51.785
+     ]
+    ]
+   },
+   {
+    "net": "/MCU and NVM/SPI5_SWITCH2_CS_L_MCU",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      209.7567,
+      51.785
+     ],
+     [
+      212.8567,
+      51.785
+     ],
+     [
+      212.9567,
+      51.885
+     ]
+    ]
+   },
+   {
+    "net": "/MCU and NVM/SPI5_SWITCH2_CS_L_MCU",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      212.9567,
+      51.885
+     ],
+     [
+      212.95,
+      51.885
+     ]
+    ]
+   },
+   {
+    "net": "/SPI5_SWITCH2_CS_L",
+    "layer": "B.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      212.95,
+      52.795
+     ],
+     [
+      212.95,
+      52.7752
+     ],
+     [
+      212.6,
+      52.7752
+     ]
+    ]
+   },
+   {
+    "net": "/SPI5_SWITCH2_CS_L",
+    "layer": "F.Cu",
+    "w": 0.15,
+    "pts": [
+     [
+      212.6,
+      52.7752
+     ],
+     [
+      208.75,
+      52.7752
+     ]
+    ]
+   },
+   {
+    "net": "/SPI5_SWITCH2_CS_L",
+    "layer": "F.Cu",
+    "w": 0.1,
+    "pts": [
+     [
+      208.75,
+      52.7752
+     ],
+     [
+      208.7,
+      52.7252
+     ]
+    ]
+   }
+  ],
+  "vias": [
+   {
+    "net": "/MCU and NVM/SPI5_SWITCH2_CS_L_MCU",
+    "x": 212.9567,
+    "y": 51.885,
+    "d": 0.45,
+    "drill": 0.25
+   },
+   {
+    "net": "/SPI5_SWITCH2_CS_L",
+    "x": 212.6,
+    "y": 52.7752,
+    "d": 0.45,
+    "drill": 0.25
+   }
+  ]
+ }
+]

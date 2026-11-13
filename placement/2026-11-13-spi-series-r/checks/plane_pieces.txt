@@ -1,0 +1,6 @@
+B.Cu    PWR_GND_B                      17693.1 ->   17675.8 mm2 (-17.4), pieces 38 -> 38
+F.Cu    PWR_GND_F                      18598.6 ->   18589.1 mm2 (-9.6), pieces 20 -> 21
+In1.Cu  PWR_GND_In1                    22859.1 ->   22852.7 mm2 (-6.4), pieces 1 -> 1
+In3.Cu  PWR_3V3_MAIN_In3               15571.3 ->   15565.1 mm2 (-6.2), pieces 2 -> 2
+In4.Cu  PWR_GND_In4                    22859.1 ->   22852.7 mm2 (-6.4), pieces 1 -> 1
+pieces in all: 112 -> 113
