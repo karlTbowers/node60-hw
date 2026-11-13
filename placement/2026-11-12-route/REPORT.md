@@ -24,7 +24,9 @@ the user's answer D33 B, the third after D36 A).
   `PWR_VBAT_IN_U201_In2`, y 70.2 to 70.8) to the west VBAT_IN pour. This is not the In2 track the decision page
   described: SCK and I2C SCL lie on B.Cu exactly where a track would have to reach In2 north of y 70, and a track
   hop meant re-laying six or more lines and moving R515. The finger lies in In2's power-only region, under those
-  lines, so none of them moved. Picture: `img/d36_u201_routed.png`.
+  lines, so none of them moved. Picture: `img/d36_u201_routed.png`. Cost: the finger crosses the In2 VBAT_PROT
+  strip north of the west VBAT_IN plane, In2's way west, so VBAT_PROT's drop to U601 rises from 14.79 to
+  15.08 mV at 20 A (+2 %) and the loss at 3 x 20 A from 0.801 to 0.807 W. In3 carries VBAT_PROT there as before.
 - **C510 pad 1 (VDDAU_AON):** a via beside the pad and a 12 mm F.Cu loop round U301 to R301's via. Connected,
   but poor as decoupling; C509 is the close cap on the rail.
 - **TP401 and TP402 (the UART debug lines):** balls E16 and D17 shared one escape channel. TX has it now; RX
@@ -54,8 +56,8 @@ placed but not joined; the third pass closed them.
 | OUT1 / OUT2 (outer layers) | 1.551 / 1.504 mOhm | 1.597 / 1.553 | 1.552 / 1.510 mOhm |
 | OUT3 / OUT4 (outer layers) | 1.553 / 1.487 mOhm | 1.688 / 1.933 | 1.579 / 1.519 mOhm (+2 %) |
 | OUT5 / OUT6 (outer layers) | 1.533 / 1.509 mOhm | 1.604 / 1.812 | 1.535 / 1.489 mOhm |
-| VBAT_PROT to U601 / U701 / U801, 20 A each | 14.70 / 10.48 / 14.63 mV | 14.91 / 10.67 / 14.86 | 14.79 / 10.54 / 14.71 mV |
-| VBAT_PROT loss at 3 x 20 A | 0.796 W | 0.809 W | 0.801 W (+0.6 %) |
+| VBAT_PROT to U601 / U701 / U801, 20 A each | 14.70 / 10.48 / 14.63 mV | 14.91 / 10.67 / 14.86 | 15.08 / 10.58 / 14.70 mV |
+| VBAT_PROT loss at 3 x 20 A | 0.796 W | 0.809 W | 0.807 W (+1.4 %) |
 
 **VBAT_D is the one path that pays**: +11 % on all six layers (0.030 mOhm, 0.11 W at 60 A). The shunt's sense
 pads sit between its F1 pad and Q202, so the two sense lines to U202 and U201 cut the B.Cu pour beside the pad
