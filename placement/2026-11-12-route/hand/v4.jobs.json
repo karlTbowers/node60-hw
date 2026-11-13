@@ -1,0 +1,195 @@
+[
+ {
+  "net": "VBAT_PROT",
+  "name": "U301.1 to U301.2",
+  "from": [
+   162.225,
+   47.1,
+   "B.Cu"
+  ],
+  "to": [
+   162.225,
+   47.75,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.25,
+  "margin": 1.5,
+  "rip": false
+ },
+ {
+  "net": "VBAT_PROT",
+  "name": "U301.2 to its pour",
+  "from": [
+   162.225,
+   47.75,
+   "B.Cu"
+  ],
+  "to_pour": true,
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.25,
+  "margin": 4,
+  "rip": false,
+  "in_pad": true
+ },
+ {
+  "net": "VDDAU_AON",
+  "name": "C510.1 to R301.2",
+  "from": [
+   159.25,
+   49.21,
+   "B.Cu"
+  ],
+  "to": [
+   157.295,
+   49.25,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu"
+  ],
+  "w": 0.2,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false
+ },
+ {
+  "net": "3V3_MAIN",
+  "name": "U501.18 to its via",
+  "from": [
+   158.45,
+   42.3,
+   "B.Cu"
+  ],
+  "to": [
+   158.7,
+   40.26,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.2,
+  "margin": 2.5,
+  "rip": false
+ },
+ {
+  "net": "VBAT_PROT",
+  "name": "U202.8 to the F.Cu join",
+  "from": [
+   159.5,
+   78.8,
+   "B.Cu"
+  ],
+  "to": [
+   157.55,
+   82.6,
+   "F.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu"
+  ],
+  "w": 0.2,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 4,
+  "rip": false
+ },
+ {
+  "net": "/VBAT_IN",
+  "name": "U201.2 to the VBAT_IN pour",
+  "from": [
+   151.1,
+   76.25,
+   "B.Cu"
+  ],
+  "to_pour": true,
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.2,
+  "margin": 18,
+  "rip": false,
+  "in_pad": true
+ },
+ {
+  "net": "GND",
+  "name": "C701.2 to GND",
+  "from": [
+   152.7462,
+   113.0684,
+   "F.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "F.Cu"
+  ],
+  "w": 0.2,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 6,
+  "rip": false
+ },
+ {
+  "net": "GND",
+  "name": "C506.2 to GND",
+  "from": [
+   156.74,
+   39.8,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.2,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 5,
+  "rip": false
+ },
+ {
+  "net": "GND",
+  "name": "Q501.1 to GND",
+  "from": [
+   163.75,
+   64.885,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.2,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 5,
+  "rip": false
+ }
+]

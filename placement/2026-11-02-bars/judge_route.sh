@@ -93,6 +93,9 @@ for n in ['Buck switch nodes 10 mm from the T1S line', 'T1S 0.75 mm from other n
     s = re.sub(r'\(rule "' + re.escape(n) + r'"[\s\S]*?\)\)\n', '', s)
 open(sys.argv[2], 'w').write(s)
 PY
+# S0_HOOK=script (2026-11-12, routing run): run with KiCad's Python on the router's copy before anything
+# routes, e.g. keep-outs round the hand-routed T1S line, which KRT's reading of the rules does not keep.
+if [[ -n "${S0_HOOK:-}" ]]; then $KP ${S0_HOOK} $OUT/s0.kicad_pcb > $OUT/hook.log 2>&1 || true; fi
 cd $KRT
 # Layer roles. Defaults: D17 A (user, 2026-11-04): In1/In4 GND and In3 VBAT_PROT poured whole; In2
 # open to tracks, which its rule areas on the board confine to the window north of y 70 mm (the
@@ -143,7 +146,12 @@ for i in U201 U302 U303; do
   step fanout_$i py_router/qfn_fanout.py $OUT/s2.kicad_pcb --component $i --output $OUT/s2.kicad_pcb --track-width 0.15 $SZ || true
 done
 step fanout_U501 py_router/qfn_fanout.py $OUT/s2.kicad_pcb --component U501 --output $OUT/s2.kicad_pcb --track-width 0.1 $ESC || true
-step decap py_placer/place_fanout_clearance.py $OUT/s2.kicad_pcb $OUT/s3.kicad_pcb --clearance 0.15
+# KEEP_DECAPS=1 (2026-11-12): leave U401's caps where the board has them. place_fanout_clearance.py moves
+# them on the router's copy, so copper routed after it does not fit the real board (its caps are an
+# approved block on via pairs that already leave every signal ball an escape cell).
+if [[ -n "${KEEP_DECAPS:-}" ]]; then for x in pcb pro dru; do cp $OUT/s2.kicad_$x $OUT/s3.kicad_$x; done; echo "== decap: skipped (KEEP_DECAPS)" >> $OUT/chain.log
+else step decap py_placer/place_fanout_clearance.py $OUT/s2.kicad_pcb $OUT/s3.kicad_pcb --clearance 0.15
+fi
 # The MCU crystal's nets route on B.Cu only, with no via (NXP S32K3 HDG §3.2; node60.kicad_dru), before anything else claims the area
 step crystal py_router/route.py $OUT/s3.kicad_pcb $OUT/s3.kicad_pcb --nets '*FXOSC*' --clearance 0.15 --clearance-ceiling 0.15 --track-width 0.15 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off $FAB --layers B.Cu
 step diff py_router/route_diff.py $OUT/s3.kicad_pcb $OUT/s4.kicad_pcb --nets /T1S/T1S_CMC_P /T1S/T1S_CMC_N /T1S/T1S_PHY_P /T1S/T1S_PHY_N /T1S_P /T1S_N --track-width 0.165 --diff-pair-gap 0.15 --clearance 0.15 --clearance-ceiling 0.15 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off $FAB $L
@@ -154,9 +162,11 @@ step diff py_router/route_diff.py $OUT/s3.kicad_pcb $OUT/s4.kicad_pcb --nets /T1
 step phy_first py_router/route.py $OUT/s4.kicad_pcb $OUT/s4.kicad_pcb --nets /T1S/T1S_REFCLK /T1S/T1S_RBIAS --clearance 0.15 --clearance-ceiling 0.15 --track-width 0.15 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off $FAB $L
 # Power widths for the judge only (hand routing sets the real copper). Not 3V3_MAIN or 1V5_CORE:
 # routed wide into U401's balls they block its escape (2026-11-03, about 110 nets failed at 0.4 mm).
+# ROUTE_NETS (2026-11-12): the bulk passes' net patterns, e.g. "* !GND !3V3_MAIN" to leave the plane nets to
+# power_shapes.json (no pad-to-pad supply copper in the signals' way; their pours stay uncut).
 PW=(--power-nets 'GN[D/]' 'VBAT_PRO[T/]' /VBAT_IN "/Power entry/VBAT_D" 'VBAT_FIL[T/]' "/Power entry/VBAT_Q2D" '/OUT?' 'VDDAU_AO[N/]' "/Outputs 1-2/SW_VDD" "/Outputs 5-6/SW_VDD" "/Outputs 3-4/SW_VDD" /Regulators/VDDAU_AON_REG --power-nets-widths 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3 0.3)
-step route py_router/route.py $OUT/s4.kicad_pcb $OUT/s5.kicad_pcb --nets "*" --no-bga-zones --clearance 0.15 --clearance-ceiling 0.15 --track-width 0.15 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off $FAB --max-ripup 5 $PW $L
-step route_p2 py_router/route.py $OUT/s5.kicad_pcb $OUT/s6.kicad_pcb --nets "*" --no-bga-zones --clearance 0.15 --clearance-ceiling 0.15 --track-width 0.15 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off $FAB --max-ripup 5 $PW $L
+step route py_router/route.py $OUT/s4.kicad_pcb $OUT/s5.kicad_pcb --nets ${=ROUTE_NETS:-"*"} --no-bga-zones --clearance 0.15 --clearance-ceiling 0.15 --track-width 0.15 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off $FAB --max-ripup 5 $PW $L
+step route_p2 py_router/route.py $OUT/s5.kicad_pcb $OUT/s6.kicad_pcb --nets ${=ROUTE_NETS:-"*"} --no-bga-zones --clearance 0.15 --clearance-ceiling 0.15 --track-width 0.15 --via-size 0.45 --via-drill 0.25 --fab-tier standard --escalation off $FAB --max-ripup 5 $PW $L
 cp $OUT/s6.kicad_pcb $OUT/s6_before_p3.kicad_pcb
 cd $REPO
 timed grade $KP .claude/skills/pcb-placement/scripts/grade_route.py $OUT/s6.kicad_pcb --project node60.kicad_pro --rules node60.kicad_dru --json $OUT/rules.json > $OUT/grade.txt 2>&1 || true

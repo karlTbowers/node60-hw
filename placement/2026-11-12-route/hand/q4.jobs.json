@@ -1,0 +1,210 @@
+[
+ {
+  "net": "/Outputs 3-4/SW_VDD",
+  "name": "/Outputs 3-4/SW_VDD Track to Track",
+  "from": [
+   155.2,
+   110.6,
+   "F.Cu"
+  ],
+  "to": [
+   151.95,
+   105.25,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 14.0,
+  "rip": false
+ },
+ {
+  "net": "/SW_LHI",
+  "name": "/SW_LHI R703.1 to Track",
+  "from": [
+   155.2,
+   107.344,
+   "B.Cu"
+  ],
+  "to": [
+   198.4791,
+   59.0398,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 14.0,
+  "rip": false
+ },
+ {
+  "net": "/SW_LHI",
+  "name": "/SW_LHI U701.5 to R703.1",
+  "from": [
+   155.2,
+   111.925,
+   "B.Cu"
+  ],
+  "to": [
+   155.2,
+   107.344,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 14.0,
+  "rip": false
+ },
+ {
+  "net": "/SW_LHI",
+  "name": "/SW_LHI U701.5 to Track",
+  "from": [
+   155.2,
+   111.925,
+   "B.Cu"
+  ],
+  "to": [
+   83.5,
+   110.794,
+   "F.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 14.0,
+  "rip": false
+ },
+ {
+  "net": "/SW2_SNS",
+  "name": "/SW2_SNS Track to R706.2",
+  "from": [
+   200.9291,
+   58.3148,
+   "B.Cu"
+  ],
+  "to": [
+   157.7495,
+   105.412,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 14.0,
+  "rip": false
+ },
+ {
+  "net": "/SPI5_SWITCH2_SCK",
+  "name": "/SPI5_SWITCH2_SCK Track to U701.16",
+  "from": [
+   206.5291,
+   58.3148,
+   "B.Cu"
+  ],
+  "to": [
+   149.4,
+   109.325,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 14.0,
+  "rip": false
+ },
+ {
+  "net": "/SPI5_SWITCH2_MISO",
+  "name": "/SPI5_SWITCH2_MISO Track to Track",
+  "from": [
+   203.7541,
+   58.3148,
+   "B.Cu"
+  ],
+  "to": [
+   149.4,
+   110.6,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 14.0,
+  "rip": false
+ },
+ {
+  "net": "/NTC_SW1",
+  "name": "/NTC_SW1 Via to Track",
+  "from": [
+   196.9,
+   54.7,
+   "F.Cu"
+  ],
+  "to": [
+   196.5,
+   63.8,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 14.0,
+  "rip": false
+ }
+]

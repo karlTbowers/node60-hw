@@ -1,0 +1,314 @@
+[
+ {
+  "net": "GND",
+  "name": "GND pour piece at C701.2 (0.9 mm2, F.Cu) to its plane",
+  "from": [
+   152.7462,
+   113.0684,
+   "F.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "F.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false,
+  "in_pad": true
+ },
+ {
+  "net": "GND",
+  "name": "GND pour piece at C603.2 (4.3 mm2, F.Cu) to its plane",
+  "from": [
+   82.706,
+   111.2562,
+   "F.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "F.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false,
+  "in_pad": true
+ },
+ {
+  "net": "GND",
+  "name": "GND pour piece at C705.2 (160.1 mm2, B.Cu) to its plane",
+  "from": [
+   158.601,
+   112.575,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false,
+  "in_pad": true
+ },
+ {
+  "net": "GND",
+  "name": "GND pour piece at C806.2 (312.4 mm2, B.Cu) to its plane",
+  "from": [
+   220.649,
+   112.575,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false,
+  "in_pad": true
+ },
+ {
+  "net": "GND",
+  "name": "GND pour piece at R703.2 (0.5 mm2, B.Cu) to its plane",
+  "from": [
+   155.2,
+   108.254,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false,
+  "in_pad": true
+ },
+ {
+  "net": "GND",
+  "name": "GND pour piece at RT701.2 (18.6 mm2, B.Cu) to its plane",
+  "from": [
+   151.55,
+   105.95,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false,
+  "in_pad": true
+ },
+ {
+  "net": "GND",
+  "name": "GND pour piece at C704.2 (3.3 mm2, B.Cu) to its plane",
+  "from": [
+   156.6282,
+   107.617,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false,
+  "in_pad": true
+ },
+ {
+  "net": "GND",
+  "name": "GND pour piece at C804.2 (23.7 mm2, B.Cu) to its plane",
+  "from": [
+   231.2782,
+   107.617,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false,
+  "in_pad": true
+ },
+ {
+  "net": "GND",
+  "name": "GND pour piece at C211.2 (6.8 mm2, B.Cu) to its plane",
+  "from": [
+   152.0,
+   71.6,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false,
+  "in_pad": true
+ },
+ {
+  "net": "GND",
+  "name": "GND pour piece at R521.2 (320.5 mm2, B.Cu) to its plane",
+  "from": [
+   162.75,
+   62.455,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false,
+  "in_pad": true
+ },
+ {
+  "net": "GND",
+  "name": "GND pour piece at C509.2 (2.9 mm2, B.Cu) to its plane",
+  "from": [
+   158.96,
+   47.25,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false,
+  "in_pad": true
+ },
+ {
+  "net": "GND",
+  "name": "GND pour piece at R513.2 (3.9 mm2, B.Cu) to its plane",
+  "from": [
+   162.055,
+   45.05,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false,
+  "in_pad": true
+ },
+ {
+  "net": "GND",
+  "name": "GND pour piece at C501.2 (1.6 mm2, B.Cu) to its plane",
+  "from": [
+   152.3,
+   40.34,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false,
+  "in_pad": true
+ }
+]

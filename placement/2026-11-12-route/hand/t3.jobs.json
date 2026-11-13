@@ -1,0 +1,652 @@
+[
+ {
+  "net": "/Regulators/1V5_EN",
+  "name": "/Regulators/1V5_EN Track to TP306.1",
+  "from": [
+   209.3,
+   34.7,
+   "B.Cu"
+  ],
+  "to": [
+   209.3068,
+   35.9262,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/MCU and NVM/SPI2_FLASH_CS_L",
+  "name": "/MCU and NVM/SPI2_FLASH_CS_L Via to TP408.1",
+  "from": [
+   231.7,
+   46.6,
+   "F.Cu"
+  ],
+  "to": [
+   232.0367,
+   47.8886,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/MCU and NVM/1V1_MCU_V11",
+  "name": "/MCU and NVM/1V1_MCU_V11 TP411.1 to Track",
+  "from": [
+   210.3296,
+   50.2229,
+   "B.Cu"
+  ],
+  "to": [
+   210.4,
+   48.6,
+   "F.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/SPI5_SWITCH2_MISO",
+  "name": "/SPI5_SWITCH2_MISO TP415.1 to Track",
+  "from": [
+   205.6291,
+   60.6408,
+   "B.Cu"
+  ],
+  "to": [
+   203.7541,
+   58.3148,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/SPI5_SWITCH2_SCK",
+  "name": "/SPI5_SWITCH2_SCK Track to TP413.1",
+  "from": [
+   210.1,
+   62.9148,
+   "B.Cu"
+  ],
+  "to": [
+   213.5928,
+   61.0861,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/MDIO0_T1S_MDC",
+  "name": "/MDIO0_T1S_MDC TP503.1 to Track",
+  "from": [
+   157.25,
+   37.0,
+   "B.Cu"
+  ],
+  "to": [
+   156.25,
+   41.099999,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/SPI3_SWITCH3_SCK",
+  "name": "/SPI3_SWITCH3_SCK TP417.1 to Track",
+  "from": [
+   217.8902,
+   57.8031,
+   "B.Cu"
+  ],
+  "to": [
+   221.3,
+   54.7,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/MCU and NVM/UART0_DEBUG_RX",
+  "name": "/MCU and NVM/UART0_DEBUG_RX U401.D17 to TP402.1",
+  "from": [
+   207.3291,
+   55.4898,
+   "B.Cu"
+  ],
+  "to": [
+   208.8368,
+   60.7539,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/MCU and NVM/UART0_DEBUG_TX",
+  "name": "/MCU and NVM/UART0_DEBUG_TX U401.E16 to TP401.1",
+  "from": [
+   206.5291,
+   54.6898,
+   "B.Cu"
+  ],
+  "to": [
+   213.5801,
+   52.4398,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/LM_FLT_L",
+  "name": "/LM_FLT_L R203.2 to TP207.1",
+  "from": [
+   155.25,
+   71.455,
+   "B.Cu"
+  ],
+  "to": [
+   163.0,
+   72.25,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/MCU and NVM/SPI2_FLASH_SCK",
+  "name": "/MCU and NVM/SPI2_FLASH_SCK TP407.1 to Track",
+  "from": [
+   215.0,
+   56.75,
+   "B.Cu"
+  ],
+  "to": [
+   206.9,
+   59.4,
+   "F.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/SPI3_SWITCH3_MISO",
+  "name": "/SPI3_SWITCH3_MISO U801.14 to TP803.1",
+  "from": [
+   224.05,
+   110.625,
+   "B.Cu"
+  ],
+  "to": [
+   232.001,
+   114.575,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/SPI5_SWITCH2_MISO",
+  "name": "/SPI5_SWITCH2_MISO Track to TP703.1",
+  "from": [
+   149.4,
+   110.6,
+   "B.Cu"
+  ],
+  "to": [
+   157.351,
+   114.575,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/SPI4_SWITCH1_MISO",
+  "name": "/SPI4_SWITCH1_MISO Track to TP405.1",
+  "from": [
+   207.2,
+   58.7,
+   "B.Cu"
+  ],
+  "to": [
+   207.686,
+   68.0263,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/SPI5_SWITCH2_MOSI",
+  "name": "/SPI5_SWITCH2_MOSI Track to TP414.1",
+  "from": [
+   206.3,
+   58.1,
+   "B.Cu"
+  ],
+  "to": [
+   204.5233,
+   67.8439,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/RESET_L",
+  "name": "/RESET_L TP307.1 to Track",
+  "from": [
+   176.1875,
+   37.1228,
+   "B.Cu"
+  ],
+  "to": [
+   166.9,
+   32.6,
+   "F.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/SPI4_SWITCH1_MOSI",
+  "name": "/SPI4_SWITCH1_MOSI TP404.1 to Track",
+  "from": [
+   195.3147,
+   68.4151,
+   "B.Cu"
+  ],
+  "to": [
+   203.1,
+   60.8,
+   "F.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/SW2_SNS",
+  "name": "/SW2_SNS R706.2 to TP701.1",
+  "from": [
+   157.7495,
+   105.412,
+   "B.Cu"
+  ],
+  "to": [
+   148.4465,
+   117.788,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/SW1_SNS",
+  "name": "/SW1_SNS TP601.1 to Track",
+  "from": [
+   73.7965,
+   117.788,
+   "B.Cu"
+  ],
+  "to": [
+   83.1,
+   105.4,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/SPI4_SWITCH1_CS_L",
+  "name": "/SPI4_SWITCH1_CS_L TP406.1 to Track",
+  "from": [
+   192.6529,
+   68.4491,
+   "B.Cu"
+  ],
+  "to": [
+   204.9291,
+   58.3148,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/SPI4_SWITCH1_SCK",
+  "name": "/SPI4_SWITCH1_SCK TP403.1 to Track",
+  "from": [
+   193.7341,
+   66.2643,
+   "B.Cu"
+  ],
+  "to": [
+   205.7291,
+   55.4898,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/RMII0_T1S_REF_CLK",
+  "name": "/RMII0_T1S_REF_CLK R504.2 to TP505.1",
+  "from": [
+   181.755,
+   38.4,
+   "B.Cu"
+  ],
+  "to": [
+   164.75,
+   43.0,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/SW3_SNS",
+  "name": "/SW3_SNS Track to TP801.1",
+  "from": [
+   236.7,
+   106.3,
+   "B.Cu"
+  ],
+  "to": [
+   223.0965,
+   117.788,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/SPI5_SWITCH2_MISO",
+  "name": "/SPI5_SWITCH2_MISO TP703.1 to TP415.1",
+  "from": [
+   157.351,
+   114.575,
+   "B.Cu"
+  ],
+  "to": [
+   205.6291,
+   60.6408,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/SPI4_SWITCH1_CS_L",
+  "name": "/SPI4_SWITCH1_CS_L Track to TP406.1",
+  "from": [
+   73.8,
+   110.0,
+   "B.Cu"
+  ],
+  "to": [
+   192.6529,
+   68.4491,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ }
+]

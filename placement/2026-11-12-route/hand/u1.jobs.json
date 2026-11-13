@@ -1,0 +1,262 @@
+[
+ {
+  "net": "/Power entry/LM_CSP",
+  "name": "/Power entry/LM_CSP Track to C212.2",
+  "from": [
+   153.75,
+   77.75,
+   "B.Cu"
+  ],
+  "to": [
+   154.75,
+   79.5,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/Power entry/LM_CSP",
+  "name": "/Power entry/LM_CSP C212.2 to R209.2",
+  "from": [
+   154.75,
+   79.5,
+   "B.Cu"
+  ],
+  "to": [
+   156.6,
+   78.6125,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/Power entry/HGATE",
+  "name": "/Power entry/HGATE Track to R202.2",
+  "from": [
+   155.25,
+   74.75,
+   "B.Cu"
+  ],
+  "to": [
+   156.045,
+   72.5,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/Power entry/RS_SENSE_P",
+  "name": "/Power entry/RS_SENSE_P Track to R210.1",
+  "from": [
+   158.2,
+   79.7,
+   "B.Cu"
+  ],
+  "to": [
+   156.145,
+   77.35,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/Power entry/LM_TMR",
+  "name": "/Power entry/LM_TMR Track to C211.1",
+  "from": [
+   152.75,
+   73.25,
+   "B.Cu"
+  ],
+  "to": [
+   149.1,
+   71.6,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/Power entry/LM_OV",
+  "name": "/Power entry/LM_OV Track to Track",
+  "from": [
+   150.75,
+   74.75,
+   "B.Cu"
+  ],
+  "to": [
+   144.8,
+   73.8,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/Power entry/RS_SENSE_N",
+  "name": "/Power entry/RS_SENSE_N Track to R201.3",
+  "from": [
+   157.1,
+   79.4,
+   "B.Cu"
+  ],
+  "to": [
+   159.0,
+   90.525,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/Power entry/HGATE_G",
+  "name": "/Power entry/HGATE_G Track to Track",
+  "from": [
+   151.9,
+   86.5,
+   "B.Cu"
+  ],
+  "to": [
+   156.95,
+   71.5,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/Power entry/DGATE",
+  "name": "/Power entry/DGATE Track to Track",
+  "from": [
+   135.6,
+   83.0,
+   "B.Cu"
+  ],
+  "to": [
+   150.75,
+   76.75,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ },
+ {
+  "net": "/Power entry/DGATE",
+  "name": "/Power entry/DGATE Track to Track",
+  "from": [
+   151.1,
+   76.75,
+   "B.Cu"
+  ],
+  "to": [
+   174.4,
+   75.8,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu",
+   "In2.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 6.0,
+  "rip": false
+ }
+]

@@ -1,0 +1,321 @@
+{
+ "id": "h0",
+ "title": "Before the bulk route: RBIAS's way out, the 1V5 feedback, MCU ball E1 freed",
+ "why": "U501 pin 26 (RBIAS) could not reach R501: the REFCLK via's hole and C509 left 0.4 mm where a track needs 0.8. R501 is turned 180 degrees (its RBIAS pad now under the pin), C509 moves 0.2 mm east with its VDDAU_AON via inside its pad, and pin 25's track narrows to 0.2 mm on the pad's east side. 1V5_CORE_FB is drawn by hand so it keeps 1 mm from the switch node (its end at the south-west corner of U303 pin 5; the SW stub starts at pin 7's north end). U201's pins 1 to 5 and 23 were caged by VBAT_D joins drawn on 2026-11-05 (pin 6 to pin 24 down the west side, pin 22 to pin 24 round pin 23's end): pin 6's via into the In2/In3 VBAT_D planes moves north of the pin, to (150.9, 73.8), out of the west pins' way, and the track on to pin 24 goes; pin 22 gets its own plane via at (152.75, 78.5).",
+ "moves": {
+  "R501": {
+   "x": 157.75,
+   "y": 48.25,
+   "p1": "W"
+  },
+  "C509": {
+   "x": 158.5,
+   "y": 47.25,
+   "p1": "W"
+  }
+ },
+ "delete": [
+  {
+   "seg": [
+    157.75,
+    46.0,
+    157.79,
+    47.25
+   ]
+  },
+  {
+   "seg": [
+    157.795,
+    47.45,
+    157.795,
+    47.35
+   ]
+  },
+  {
+   "seg": [
+    157.795,
+    47.35,
+    157.79,
+    47.25
+   ]
+  },
+  {
+   "seg": [
+    157.295,
+    47.95,
+    157.795,
+    47.45
+   ]
+  },
+  {
+   "via": [
+    157.795,
+    47.45
+   ]
+  },
+  {
+   "seg": [
+    214.8,
+    37.19,
+    214.8,
+    35.75
+   ]
+  },
+  {
+   "seg": [
+    150.025,
+    74.825,
+    150.025,
+    77.4
+   ]
+  },
+  {
+   "seg": [
+    150.025,
+    77.4,
+    151.75,
+    77.4
+   ]
+  },
+  {
+   "seg": [
+    152.75,
+    77.4,
+    152.75,
+    78.2
+   ]
+  },
+  {
+   "seg": [
+    152.75,
+    78.2,
+    152.25,
+    78.2
+   ]
+  },
+  {
+   "seg": [
+    152.25,
+    78.2,
+    151.75,
+    78.2
+   ]
+  },
+  {
+   "seg": [
+    151.75,
+    78.2,
+    151.75,
+    77.4
+   ]
+  },
+  {
+   "via": [
+    152.25,
+    78.2
+   ]
+  },
+  {
+   "seg": [
+    151.1,
+    74.25,
+    150.6,
+    74.25
+   ]
+  },
+  {
+   "seg": [
+    150.6,
+    74.25,
+    150.025,
+    74.825
+   ]
+  },
+  {
+   "via": [
+    150.025,
+    74.825
+   ]
+  }
+ ],
+ "tracks": [
+  {
+   "net": "VDDAU_AON",
+   "layer": "B.Cu",
+   "w": 0.2,
+   "pts": [
+    [
+     157.8,
+     46.2
+    ],
+    [
+     157.9,
+     46.7
+    ],
+    [
+     158.04,
+     47.25
+    ]
+   ]
+  },
+  {
+   "net": "VDDAU_AON",
+   "layer": "F.Cu",
+   "w": 0.3,
+   "pts": [
+    [
+     158.1,
+     47.45
+    ],
+    [
+     157.6,
+     47.95
+    ],
+    [
+     157.295,
+     47.95
+    ]
+   ]
+  },
+  {
+   "net": "GND",
+   "layer": "B.Cu",
+   "w": 0.3,
+   "pts": [
+    [
+     158.205,
+     48.25
+    ],
+    [
+     159.25,
+     48.29
+    ]
+   ]
+  },
+  {
+   "net": "/Regulators/1V5_CORE_SW",
+   "layer": "B.Cu",
+   "w": 0.25,
+   "pts": [
+    [
+     214.8,
+     36.9
+    ],
+    [
+     214.8,
+     35.75
+    ]
+   ]
+  },
+  {
+   "net": "/Regulators/1V5_CORE_FB",
+   "layer": "B.Cu",
+   "w": 0.15,
+   "pts": [
+    [
+     213.66,
+     37.5
+    ],
+    [
+     213.36,
+     37.2
+    ],
+    [
+     212.755,
+     37.2
+    ]
+   ]
+  },
+  {
+   "net": "/Regulators/1V5_CORE_FB",
+   "layer": "B.Cu",
+   "w": 0.15,
+   "pts": [
+    [
+     212.755,
+     37.2
+    ],
+    [
+     213.055,
+     36.9
+    ],
+    [
+     213.055,
+     36.1
+    ]
+   ]
+  },
+  {
+   "net": "/Regulators/1V5_CORE_FB",
+   "layer": "B.Cu",
+   "w": 0.15,
+   "pts": [
+    [
+     212.755,
+     37.2
+    ],
+    [
+     212.76,
+     38.2
+    ]
+   ]
+  },
+  {
+   "net": "/Power entry/VBAT_D",
+   "layer": "B.Cu",
+   "w": 0.25,
+   "pts": [
+    [
+     152.75,
+     77.4
+    ],
+    [
+     152.75,
+     78.5
+    ]
+   ]
+  },
+  {
+   "net": "/Power entry/VBAT_D",
+   "layer": "B.Cu",
+   "w": 0.25,
+   "pts": [
+    [
+     151.1,
+     74.25
+    ],
+    [
+     150.9,
+     74.05
+    ],
+    [
+     150.9,
+     73.8
+    ]
+   ]
+  }
+ ],
+ "vias": [
+  {
+   "net": "VDDAU_AON",
+   "x": 158.1,
+   "y": 47.45,
+   "d": 0.45,
+   "drill": 0.25
+  },
+  {
+   "net": "/Power entry/VBAT_D",
+   "x": 152.75,
+   "y": 78.5,
+   "d": 0.45,
+   "drill": 0.25
+  },
+  {
+   "net": "/Power entry/VBAT_D",
+   "x": 150.9,
+   "y": 73.8,
+   "d": 0.45,
+   "drill": 0.25
+  }
+ ]
+}

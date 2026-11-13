@@ -2274,18 +2274,6 @@
    ]
   },
   {
-   "name": "Power join VBAT_D: U201.22 to U201.24 (via, plan_joins.py)",
-   "size": 0.45,
-   "drill": 0.25,
-   "points": [
-    [
-     152.25,
-     78.2,
-     "/Power entry/VBAT_D"
-    ]
-   ]
-  },
-  {
    "name": "Power join 3V3_MAIN: via@152.30,41.26 to U501.8 (plane, plan_joins.py)",
    "size": 0.45,
    "drill": 0.25,
@@ -2305,18 +2293,6 @@
     [
      157.295,
      49.05,
-     "VDDAU_AON"
-    ]
-   ]
-  },
-  {
-   "name": "Power join VDDAU_AON: R301.2 to C509.1 (grid, plan_joins.py)",
-   "size": 0.45,
-   "drill": 0.25,
-   "points": [
-    [
-     157.795,
-     47.45,
      "VDDAU_AON"
     ]
    ]
@@ -2390,18 +2366,6 @@
      78.234,
      117.001,
      "VBAT_PROT"
-    ]
-   ]
-  },
-  {
-   "name": "Power join VBAT_D: U201.6 to U201.24 (via, plan_joins.py)",
-   "size": 0.45,
-   "drill": 0.25,
-   "points": [
-    [
-     150.025,
-     74.825,
-     "/Power entry/VBAT_D"
     ]
    ]
   },
@@ -2559,6 +2523,28 @@
      "GND"
     ]
    ]
+  },
+  {
+   "name": "D34 before the bulk route (2026-11-12): vias",
+   "size": 0.45,
+   "drill": 0.25,
+   "points": [
+    [
+     150.9,
+     73.8,
+     "/Power entry/VBAT_D"
+    ],
+    [
+     152.75,
+     78.5,
+     "/Power entry/VBAT_D"
+    ],
+    [
+     158.1,
+     47.45,
+     "VDDAU_AON"
+    ]
+   ]
   }
  ],
  "stubs": [
@@ -2653,13 +2639,6 @@
     ],
     [
      214.8,
-     37.19,
-     214.8,
-     35.75,
-     "/Regulators/1V5_CORE_SW"
-    ],
-    [
-     214.8,
      35.75,
      215.75,
      35.75,
@@ -2745,48 +2724,6 @@
    ]
   },
   {
-   "name": "Power join VBAT_D: U201.22 to U201.24 (via, plan_joins.py)",
-   "layer": "B.Cu",
-   "width": 0.3,
-   "stubs": [
-    [
-     152.75,
-     77.4,
-     152.75,
-     78.2,
-     "/Power entry/VBAT_D"
-    ],
-    [
-     152.75,
-     78.2,
-     152.25,
-     78.2,
-     "/Power entry/VBAT_D"
-    ]
-   ]
-  },
-  {
-   "name": "Power join VBAT_D: U201.22 to U201.24 (via, plan_joins.py)",
-   "layer": "B.Cu",
-   "width": 0.3,
-   "stubs": [
-    [
-     152.25,
-     78.2,
-     151.75,
-     78.2,
-     "/Power entry/VBAT_D"
-    ],
-    [
-     151.75,
-     78.2,
-     151.75,
-     77.4,
-     "/Power entry/VBAT_D"
-    ]
-   ]
-  },
-  {
    "name": "Power join 1V1_MCU_V11: U401.H9 to U401.J10 (track, plan_joins.py)",
    "layer": "B.Cu",
    "width": 0.2,
@@ -2811,20 +2748,6 @@
      200.929,
      52.29,
      "/MCU and NVM/1V1_MCU_V11"
-    ]
-   ]
-  },
-  {
-   "name": "Power join VDDAU_AON: U501.25 to C509.1 (track, plan_joins.py)",
-   "layer": "B.Cu",
-   "width": 0.3,
-   "stubs": [
-    [
-     157.75,
-     46.0,
-     157.79,
-     47.25,
-     "VDDAU_AON"
     ]
    ]
   },
@@ -2880,34 +2803,6 @@
      49.05,
      157.295,
      47.95,
-     "VDDAU_AON"
-    ],
-    [
-     157.295,
-     47.95,
-     157.795,
-     47.45,
-     "VDDAU_AON"
-    ]
-   ]
-  },
-  {
-   "name": "Power join VDDAU_AON: R301.2 to C509.1 (grid, plan_joins.py)",
-   "layer": "B.Cu",
-   "width": 0.3,
-   "stubs": [
-    [
-     157.795,
-     47.45,
-     157.795,
-     47.35,
-     "VDDAU_AON"
-    ],
-    [
-     157.795,
-     47.35,
-     157.79,
-     47.25,
      "VDDAU_AON"
     ]
    ]
@@ -2993,48 +2888,6 @@
      159.6,
      82.6,
      "VBAT_PROT"
-    ]
-   ]
-  },
-  {
-   "name": "Power join VBAT_D: U201.6 to U201.24 (via, plan_joins.py)",
-   "layer": "B.Cu",
-   "width": 0.25,
-   "stubs": [
-    [
-     151.1,
-     74.25,
-     150.6,
-     74.25,
-     "/Power entry/VBAT_D"
-    ],
-    [
-     150.6,
-     74.25,
-     150.025,
-     74.825,
-     "/Power entry/VBAT_D"
-    ]
-   ]
-  },
-  {
-   "name": "Power join VBAT_D: U201.6 to U201.24 (via, plan_joins.py)",
-   "layer": "B.Cu",
-   "width": 0.25,
-   "stubs": [
-    [
-     150.025,
-     74.825,
-     150.025,
-     77.4,
-     "/Power entry/VBAT_D"
-    ],
-    [
-     150.025,
-     77.4,
-     151.75,
-     77.4,
-     "/Power entry/VBAT_D"
     ]
    ]
   },
@@ -3189,6 +3042,97 @@
      122.95,
      71.5,
      "GND"
+    ]
+   ]
+  },
+  {
+   "name": "D34 before the bulk route (2026-11-12): stubs",
+   "layer": "B.Cu",
+   "width": 0.2,
+   "stubs": [
+    [
+     157.8,
+     46.2,
+     157.9,
+     46.7,
+     "VDDAU_AON"
+    ],
+    [
+     157.9,
+     46.7,
+     158.04,
+     47.25,
+     "VDDAU_AON"
+    ]
+   ]
+  },
+  {
+   "name": "D34 before the bulk route (2026-11-12): stubs",
+   "layer": "B.Cu",
+   "width": 0.25,
+   "stubs": [
+    [
+     150.9,
+     73.8,
+     150.9,
+     74.05,
+     "/Power entry/VBAT_D"
+    ],
+    [
+     150.9,
+     74.05,
+     151.1,
+     74.25,
+     "/Power entry/VBAT_D"
+    ],
+    [
+     152.75,
+     77.4,
+     152.75,
+     78.5,
+     "/Power entry/VBAT_D"
+    ],
+    [
+     214.8,
+     35.75,
+     214.8,
+     36.9,
+     "/Regulators/1V5_CORE_SW"
+    ]
+   ]
+  },
+  {
+   "name": "D34 before the bulk route (2026-11-12): stubs",
+   "layer": "B.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     158.205,
+     48.25,
+     159.25,
+     48.29,
+     "GND"
+    ]
+   ]
+  },
+  {
+   "name": "D34 before the bulk route (2026-11-12): stubs",
+   "layer": "F.Cu",
+   "width": 0.3,
+   "stubs": [
+    [
+     157.295,
+     47.95,
+     157.6,
+     47.95,
+     "VDDAU_AON"
+    ],
+    [
+     157.6,
+     47.95,
+     158.1,
+     47.45,
+     "VDDAU_AON"
     ]
    ]
   }

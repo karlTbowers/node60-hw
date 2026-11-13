@@ -1,0 +1,71 @@
+[
+ {
+  "net": "1V5_CORE",
+  "name": "1V5_CORE R303.2 to its plane",
+  "from": [
+   212.7919,
+   32.0898,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In3.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false
+ },
+ {
+  "net": "1V5_CORE",
+  "name": "1V5_CORE TP303.1 to its plane",
+  "from": [
+   210.9252,
+   32.9071,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In3.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false
+ },
+ {
+  "net": "VDDAU_AON",
+  "name": "VDDAU_AON TP301.1 to U501.25",
+  "from": [
+   166.75,
+   32.75,
+   "B.Cu"
+  ],
+  "to": [
+   157.75,
+   46.0,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 5,
+  "rip": false
+ }
+]

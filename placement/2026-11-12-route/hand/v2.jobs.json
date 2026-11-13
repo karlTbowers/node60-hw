@@ -1,0 +1,530 @@
+[
+ {
+  "net": "3V3_MAIN",
+  "name": "3V3_MAIN Via to its plane",
+  "from": [
+   158.7,
+   40.26,
+   "F.Cu"
+  ],
+  "to_plane": [
+   "In3.Cu"
+  ],
+  "layers": [
+   "F.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false
+ },
+ {
+  "net": "3V3_MAIN",
+  "name": "3V3_MAIN U501.18 to its plane",
+  "from": [
+   158.45,
+   42.3,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In3.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false
+ },
+ {
+  "net": "GND",
+  "name": "GND C706.2 to its plane",
+  "from": [
+   145.999,
+   112.575,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false
+ },
+ {
+  "net": "GND",
+  "name": "GND C701.2 to its plane",
+  "from": [
+   152.7462,
+   113.0684,
+   "F.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "F.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false
+ },
+ {
+  "net": "GND",
+  "name": "GND R515.2 to its plane",
+  "from": [
+   146.3383,
+   69.7457,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false
+ },
+ {
+  "net": "GND",
+  "name": "GND RT201.2 to its plane",
+  "from": [
+   150.95,
+   85.8,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false
+ },
+ {
+  "net": "GND",
+  "name": "GND C208.2 to its plane",
+  "from": [
+   151.45,
+   81.6,
+   "F.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "F.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false
+ },
+ {
+  "net": "GND",
+  "name": "GND U701.1 to its plane",
+  "from": [
+   155.2,
+   109.325,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false
+ },
+ {
+  "net": "GND",
+  "name": "GND C504.2 to its plane",
+  "from": [
+   153.3,
+   39.34,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false
+ },
+ {
+  "net": "GND",
+  "name": "GND U501.11 to its plane",
+  "from": [
+   155.25,
+   41.1,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false
+ },
+ {
+  "net": "GND",
+  "name": "GND C506.2 to its plane",
+  "from": [
+   156.74,
+   39.8,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false
+ },
+ {
+  "net": "GND",
+  "name": "GND C214.2 to its plane",
+  "from": [
+   161.0,
+   80.24,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false
+ },
+ {
+  "net": "GND",
+  "name": "GND C204.2 to its plane",
+  "from": [
+   159.6,
+   81.1,
+   "F.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "F.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false
+ },
+ {
+  "net": "GND",
+  "name": "GND Q501.1 to its plane",
+  "from": [
+   163.75,
+   64.885,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false
+ },
+ {
+  "net": "GND",
+  "name": "GND R803.2 to its plane",
+  "from": [
+   229.85,
+   108.254,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In1.Cu",
+   "In4.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false
+ },
+ {
+  "net": "VBAT_PROT",
+  "name": "VBAT_PROT Track to its plane",
+  "from": [
+   154.9,
+   75.25,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In2.Cu",
+   "In3.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.4,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false
+ },
+ {
+  "net": "VBAT_PROT",
+  "name": "VBAT_PROT U202.8 to its plane",
+  "from": [
+   159.5,
+   78.8,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In2.Cu",
+   "In3.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.4,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false
+ },
+ {
+  "net": "VBAT_PROT",
+  "name": "VBAT_PROT Track to its plane",
+  "from": [
+   157.55,
+   82.6,
+   "F.Cu"
+  ],
+  "to_plane": [
+   "In2.Cu",
+   "In3.Cu"
+  ],
+  "layers": [
+   "F.Cu"
+  ],
+  "w": 0.4,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false
+ },
+ {
+  "net": "VBAT_PROT",
+  "name": "VBAT_PROT U301.1 to its plane",
+  "from": [
+   162.225,
+   47.1,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In2.Cu",
+   "In3.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.4,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false
+ },
+ {
+  "net": "VBAT_PROT",
+  "name": "VBAT_PROT U301.2 to its plane",
+  "from": [
+   162.225,
+   47.75,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In2.Cu",
+   "In3.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.4,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false
+ },
+ {
+  "net": "VBAT_PROT",
+  "name": "VBAT_PROT Via to its plane",
+  "from": [
+   175.45,
+   87.15,
+   "F.Cu"
+  ],
+  "to_plane": [
+   "In2.Cu",
+   "In3.Cu"
+  ],
+  "layers": [
+   "F.Cu"
+  ],
+  "w": 0.4,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false
+ },
+ {
+  "net": "/VBAT_IN",
+  "name": "/VBAT_IN U201.2 to its plane",
+  "from": [
+   151.1,
+   76.25,
+   "B.Cu"
+  ],
+  "to_plane": [
+   "In2.Cu"
+  ],
+  "layers": [
+   "B.Cu"
+  ],
+  "w": 0.4,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 3,
+  "rip": false
+ },
+ {
+  "net": "VDDAU_AON",
+  "name": "VDDAU_AON Track to C510.1",
+  "from": [
+   157.295,
+   49.25,
+   "B.Cu"
+  ],
+  "to": [
+   159.25,
+   49.21,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu"
+  ],
+  "w": 0.3,
+  "via": [
+   0.45,
+   0.25
+  ],
+  "margin": 5,
+  "rip": false
+ }
+]

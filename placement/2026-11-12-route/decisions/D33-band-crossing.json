@@ -1,0 +1,212 @@
+{
+ "id": "D33",
+ "name": "Signals across the power band",
+ "question": "How should signals cross the power band to reach the middle output cell and U201?",
+ "board": "node60",
+ "stage": "Routing",
+ "date": "2026-11-12",
+ "why_now": "You asked for the board to be routed. With the board's own rules in force it cannot be, without cutting the power pours.\n\nThe board lost its inner-layer keep-outs on 2026-11-05 (commit `111fb0e`): the In2 signal window north of y 70 and the power-only areas of your decision D17 A. Every router run since, including the fast routes behind D29, D31 and D32, laid signals on In2 through the power band, and nothing flagged it. I drew them again (D34-1).\n\nWith them back, a signal in the band has only the bottom layer under each busbar: the top layer there is closed to other nets by `node60.kicad_dru`, and In2 is power south of y 70. Nine lines from the MCU to the middle cell and the small signals of U201 and U202 must cross y 72.5 to 86 on the bottom layer, where it is VBAT_IN, VBAT_D or VBAT_Q2D pour from x 93.5 to 216.5.\n\nI routed the board that way to see what it costs (option A). It is on branch `layout/route-attempt-6layer`, not on main. Main has the board prepared for routing, with the supply paths unchanged.",
+ "facts": [
+  {
+   "label": "Layers open to a signal in the band",
+   "value": "Under the GND busbar (y 61 to 80) and under the VBAT_IN busbar (y 90 to 109): B.Cu only. Between the bars (y 80 to 90) and south of y 109: F.Cu and B.Cu. In2 only north of y 70; In1, In3, In4 never",
+   "source": "node60.kicad_dru busbar rules; plan.json plane_windows (D17 A); the rule areas drawn again by prep.sh"
+  },
+  {
+   "label": "Why the top layer is closed under a bar",
+   "value": "The rule file's own note: the bars rest on the terminal spigots 0.6 mm above the top face, so only a bar's own net may have tracks or pours under it. Tented vias of any net are already allowed there (your D01)",
+   "source": "node60.kicad_dru, lines 3 to 10; DEC-023, DEC-025"
+  },
+  {
+   "label": "A way through that cuts nothing, if F.Cu opens under the GND bar",
+   "value": "South on F.Cu from the In2 window to the strip between the bars, a via to B.Cu at y 89, then south between the VBAT_Q2D pour (x up to 172.4) and the lower leg of the east VBAT_IN pour (x from 186.4), and west along y 100 to 108 to the cell. The same exists on the west side (x 123.6 to 139.3). Not routed yet: it needs the rule first",
+   "source": "power_shapes.json zone outlines PWR_VBAT_IN_W/E, PWR_VBAT_Q2D_B_in"
+  },
+  {
+   "label": "U201",
+   "value": "Its divider resistors R204 to R207 stand in the opposite order to pins 3 to 5 and one track fits between their pads and Q201's tab, so on one layer the three nets must cross. With F.Cu open under the GND bar they cross by a via pair; without it the resistors have to be re-placed",
+   "source": "routed attempt, img/u201_attempt.png"
+  },
+  {
+   "label": "Why I did not change the rule myself",
+   "value": "It is the file that judges the route. The session's safety check stopped the edit, rightly: it is yours to make",
+   "source": "this session"
+  },
+  {
+   "label": "Cost of 8 layers",
+   "value": "JLCPCB, 5 boards, 230 x 110 x 2.0 mm, ENIG: 6 layers $263, 8 layers $387",
+   "source": "CLAUDE.md, quotes of 2026-11-01"
+  }
+ ],
+ "options": [
+  {
+   "key": "A",
+   "name": "Keep the rules, cut the pours",
+   "summary": "The routed attempt as it stands: every line that has to cross the band does so on the bottom layer, through the power pours. KiCad's DRC passes with 0 errors; 30 items are still unconnected (7 round U201, 3 at the middle cell, 13 supply pads, 7 test points).",
+   "images": [
+    {
+     "path": "../img/band_east_B_1_before.png",
+     "caption": "Before: the east VBAT_IN pour and the VBAT_Q2D pour on B.Cu"
+    },
+    {
+     "path": "../img/band_east_B_2_attempt.png",
+     "caption": "The attempt: the same pours with the middle cell's lines cut through them"
+    },
+    {
+     "path": "../img/u201_attempt.png",
+     "caption": "U201 and U202: the thin lines are joins still open"
+    },
+    {
+     "path": "../img/mid_cell_attempt.png",
+     "caption": "Middle cell: three joins still open"
+    }
+   ],
+   "measures": [
+    {
+     "label": "KiCad DRC errors, board's own rules",
+     "value": "0",
+     "limit": "0",
+     "status": "pass"
+    },
+    {
+     "label": "Unconnected items",
+     "value": "30",
+     "limit": "0",
+     "status": "fail"
+    },
+    {
+     "label": "VBAT_IN, J901 to Q202 (all layers, 85 C)",
+     "value": "0.788 mOhm",
+     "limit": "before 0.614",
+     "status": "warn"
+    },
+    {
+     "label": "VBAT_Q2D, R201 to Q203 and Q204 (all layers)",
+     "value": "0.246 mOhm",
+     "limit": "before 0.135",
+     "status": "fail"
+    },
+    {
+     "label": "VBAT_D, FET tabs to R201 (outer layers)",
+     "value": "0.655 mOhm",
+     "limit": "before 0.522",
+     "status": "warn"
+    },
+    {
+     "label": "OUT4 / OUT6 (outer layers)",
+     "value": "1.933 / 1.812 mOhm",
+     "limit": "before 1.487 / 1.509",
+     "status": "warn"
+    },
+    {
+     "label": "East VBAT_IN pour on B.Cu",
+     "value": "722 mm2, 2 pieces",
+     "limit": "before 1,144 mm2, 1 piece",
+     "status": "fail"
+    },
+    {
+     "label": "Board cost, 5 boards",
+     "value": "$263",
+     "limit": "",
+     "status": "info"
+    }
+   ],
+   "gains": [
+    "No rule changes",
+    "Most of the board is connected today: 181 of 211 open items closed"
+   ],
+   "costs": [
+    "VBAT_Q2D up 82 %, the east VBAT_IN leg up 28 %, OUT4 up 30 %: on the 60 A path and a 10 A output",
+    "The outer-layer pours are in pieces; the current leans on the inner layers and the vias at the FET tabs",
+    "U201's cluster still does not route on one layer without re-placing R204 to R207"
+   ]
+  },
+  {
+   "key": "B",
+   "name": "Signal tracks on top under the GND bar",
+   "summary": "Change one rule in `node60.kicad_dru`: under the GND busbar only, mask-covered signal tracks may run on F.Cu. Battery nets and other nets' pours stay excluded there, and the VBAT_IN bar's rule does not change. Then route again. The bar is at GND and stands 0.6 mm above the solder mask; the worst case of a fault there is a signal shorted to GND.\n\nNot routed yet, so there are no numbers for it: the facts above show the pour-free way it opens.",
+   "images": [
+    {
+     "path": "../img/band_east_B_1_before.png",
+     "caption": "The pours a route under this rule would leave as they are"
+    }
+   ],
+   "measures": [
+    {
+     "label": "KiCad DRC errors, board's own rules",
+     "value": "not routed yet",
+     "limit": "0",
+     "status": "info"
+    },
+    {
+     "label": "Unconnected items",
+     "value": "not routed yet",
+     "limit": "0",
+     "status": "info"
+    },
+    {
+     "label": "Board cost, 5 boards",
+     "value": "$263",
+     "limit": "",
+     "status": "info"
+    }
+   ],
+   "gains": [
+    "A second layer exactly where the board has one: y 61 to 80, with U201 and U202 in it",
+    "A way to the middle cell that cuts no power pour",
+    "U201's nets cross by a via pair; R204 to R207 can stay",
+    "No stackup or cost change"
+   ],
+   "costs": [
+    "Signal copper 0.6 mm under a bare copper bar, kept apart by solder mask and air: a rule of DEC-025's reading relaxed",
+    "The GND pour on F.Cu under the bar is cut by those tracks (it carries no supply current: the bar does)",
+    "About an hour of router time to route again, and the same hand work on what it leaves"
+   ]
+  },
+  {
+   "key": "C",
+   "name": "8 layers",
+   "summary": "Two more signal layers under everything. The stackup, the plan's layer roles and DEC-027 change; the placement can stay.",
+   "images": [],
+   "measures": [
+    {
+     "label": "KiCad DRC errors, board's own rules",
+     "value": "not routed yet",
+     "limit": "0",
+     "status": "info"
+    },
+    {
+     "label": "Unconnected items",
+     "value": "not routed yet",
+     "limit": "0",
+     "status": "info"
+    },
+    {
+     "label": "Board cost, 5 boards",
+     "value": "$387",
+     "limit": "",
+     "status": "info"
+    }
+   ],
+   "gains": [
+    "No signal needs a power layer or the space under a bar",
+    "What you named as the fallback in D17"
+   ],
+   "costs": [
+    "$124 more per 5 boards at JLCPCB's quote",
+    "DEC-027, the stackup, the via preset and every plane model are redone"
+   ]
+  }
+ ],
+ "recommendation": {
+  "option": "B",
+  "why": "**B.** It gives the band a second signal layer for the price of one rule, and the fault it risks is a signal touching ground, not battery. A is measured and costs too much on the 60 A path to accept as it is. C works but changes the stackup for a problem one rule solves.\n\nIf you take B, the edit is yours to make or to tell me plainly to make: replace the rule \"F.Cu under the GND busbar: GND only\" with one that disallows other nets' zones there and tracks of the PWR_BATT class, and `prove_rules.py` gets the matching cases. I then route again from main's prepared board."
+ },
+ "answer": "Reply with A, B or C, or a change to one. For B, say whether I should make the rule edit.",
+ "sources": [
+  "placement/2026-11-12-route/REPORT.md and decisions/log.md",
+  "Branch layout/route-attempt-6layer: the routed attempt (board, power_shapes.json, block tables)",
+  "placement/2026-11-02-bars/power/copper_r.py at 85 C for every resistance",
+  "node60.kicad_dru; placement/2026-11-02-bars/plan.json (plane_windows, D17 A)"
+ ]
+}
