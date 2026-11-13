@@ -1,0 +1,137 @@
+{
+ "id": "d2",
+ "title": "D36 A: U201 pin 2 to VBAT_IN",
+ "why": "LM_SW gets a via in U201 pin 3's pad and one in R204 pad 1; LM_UVLO's R204 to R205 link runs on F.Cu between vias in the two pads. VBAT_IN leaves pin 2 west on B.Cu, runs north between R204's pads and ends at a via at (147.9, 71.6) into a 0.6 mm VBAT_IN pour finger on In2 (zone PWR_VBAT_IN_U201_In2), which reaches the west VBAT_IN pour under the six lanes. The finger lies in In2's power-only region (y 70.2 to 70.8): a power shape, not a track, so the signal lines above it stay where they are.",
+ "delete": [],
+ "tracks": [
+  {
+   "net": "/Power entry/LM_SW",
+   "layer": "F.Cu",
+   "w": 0.15,
+   "pts": [
+    [
+     151.2,
+     75.75
+    ],
+    [
+     151.2,
+     75.2
+    ],
+    [
+     151.1,
+     75.1
+    ]
+   ]
+  },
+  {
+   "net": "/Power entry/LM_SW",
+   "layer": "F.Cu",
+   "w": 0.15,
+   "pts": [
+    [
+     150.0,
+     74.0
+    ],
+    [
+     148.2,
+     74.0
+    ]
+   ]
+  },
+  {
+   "net": "/Power entry/LM_UVLO",
+   "layer": "F.Cu",
+   "w": 0.15,
+   "pts": [
+    [
+     149.95,
+     73.5
+    ],
+    [
+     149.85,
+     73.4
+    ],
+    [
+     146.9,
+     73.4
+    ],
+    [
+     146.5,
+     73.79
+    ]
+   ]
+  },
+  {
+   "net": "/VBAT_IN",
+   "layer": "B.Cu",
+   "w": 0.2,
+   "pts": [
+    [
+     151.1,
+     76.25
+    ],
+    [
+     149.3,
+     76.25
+    ],
+    [
+     149.0,
+     75.95
+    ],
+    [
+     149.0,
+     72.95
+    ],
+    [
+     148.2,
+     72.95
+    ],
+    [
+     147.9,
+     72.65
+    ],
+    [
+     147.9,
+     71.6
+    ]
+   ]
+  }
+ ],
+ "vias": [
+  {
+   "net": "/Power entry/LM_SW",
+   "x": 151.2,
+   "y": 75.75,
+   "d": 0.35,
+   "drill": 0.2
+  },
+  {
+   "net": "/Power entry/LM_SW",
+   "x": 148.2,
+   "y": 74.0,
+   "d": 0.35,
+   "drill": 0.2
+  },
+  {
+   "net": "/Power entry/LM_UVLO",
+   "x": 149.95,
+   "y": 73.5,
+   "d": 0.35,
+   "drill": 0.2
+  },
+  {
+   "net": "/Power entry/LM_UVLO",
+   "x": 146.5,
+   "y": 73.79,
+   "d": 0.35,
+   "drill": 0.2
+  },
+  {
+   "net": "/VBAT_IN",
+   "x": 147.9,
+   "y": 71.6,
+   "d": 0.35,
+   "drill": 0.2
+  }
+ ]
+}

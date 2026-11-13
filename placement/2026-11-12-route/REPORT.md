@@ -3,25 +3,43 @@
 Asked by the user: finish routing everything on Node60's board, then put the test points back, then
 commit and push to main. Decisions taken on the way are in `decisions/log.md`.
 
-## Where it ended (second run, after decision D33 B)
+## Where it ended
 
-The user answered D33 on 2026-11-12: **B**, signal tracks on F.Cu under the GND busbar. With that rule
-(`node60.kicad_dru`, proven by `prove_rules.py`, 39 of 39) the board is routed and on main:
+**The board is fully routed and on main** (three passes on 2026-11-12: the first before D33, the second after
+the user's answer D33 B, the third after D36 A).
 
-- KiCad DRC with the board's own `.kicad_pro` and `.kicad_dru`: **0 errors**. Schematic parity: 0.
-- **Every signal join is closed** (124 were open on the prepared board).
-- **Two supply joins are open**, both open on main before the run too:
-  - **U201 pin 2 (VBAT_IN, the LM74910's anode sense).** It is a battery net, so it may not use F.Cu under the
-    GND bar, and on B.Cu the pocket west of U201 is closed by the divider lines LM_SW, LM_UVLO and LM_OV. It
-    needs those three lines re-laid on F.Cu (they are resistor-limited, so the rule allows it) and an In2 hop
-    over the west channel's lanes.
-    Decision page D36: https://claude.ai/artifact/DWV3TCNBaJfFMNQ4Pdn2cW
-  - **C510 pad 1 (VDDAU_AON, the PHY's second always-on decoupling cap).** Walled in by R301, R505 and the
-    regulator's output; C509 on the same pin pair is connected.
-- **All 62 test points are back on the board; 60 are joined.** TP301 (VDDAU_AON) and TP401 (UART0_DEBUG_TX)
-  are placed but not joined.
+- KiCad DRC with the board's own `.kicad_pro` and `.kicad_dru`: **0 errors, 0 unconnected items**. Schematic
+  parity: 0. `prove_rules.py`: 39 of 39.
+- All 62 test points are on the board and joined.
 - T1S line as before (`t1s_stubs.py`: trunk 38.9 mm, PHY stub 24.6/25.6, relay leg 23.9/24.9; trunk corridor
-  clean). Every block on its table (test points re-posed).
+  clean). Every block on its table.
+- Not done here: `unconnected_items` is still a warning in `node60.kicad_pro` (the user's file has an uncommitted
+  KiCad save; set it back to `error` at routing sign-off). The docs hero renderings were not re-rendered.
+
+## Third pass: the last joins (D36 A)
+
+- **U201 pin 2 (VBAT_IN, the LM74910's anode sense)**, decision D36, answer A (no rule change). LM_SW and
+  LM_UVLO's R204 to R205 link moved to F.Cu with vias in their pads; VBAT_IN runs on B.Cu from pin 2 between
+  R204's pads to a via at (147.9, 71.6), then in a 0.6 mm **VBAT_IN pour finger on In2** (zone
+  `PWR_VBAT_IN_U201_In2`, y 70.2 to 70.8) to the west VBAT_IN pour. This is not the In2 track the decision page
+  described: SCK and I2C SCL lie on B.Cu exactly where a track would have to reach In2 north of y 70, and a track
+  hop meant re-laying six or more lines and moving R515. The finger lies in In2's power-only region, under those
+  lines, so none of them moved. Picture: `img/d36_u201_routed.png`. Cost: the finger crosses the In2 VBAT_PROT
+  strip north of the west VBAT_IN plane, In2's way west, so VBAT_PROT's drop to U601 rises from 14.79 to
+  15.08 mV at 20 A (+2 %) and the loss at 3 x 20 A from 0.801 to 0.807 W. In3 carries VBAT_PROT there as before.
+- **C510 pad 1 (VDDAU_AON):** a via beside the pad and a 12 mm F.Cu loop round U301 to R301's via. Connected,
+  but poor as decoupling; C509 is the close cap on the rail.
+- **TP401 and TP402 (the UART debug lines):** balls E16 and D17 shared one escape channel. TX has it now; RX
+  leaves the BGA's east edge through a gap opened by shrinking two neighbouring vias to the 0.35/0.20 mm preset.
+  The margins there are small (0.225 mm hole clearance where 0.2 is needed, 0.11 mm copper where 0.1 is).
+- **TP301 (VDDAU_AON)** moved beside the rail's via at C510: a 2.8 mm stub in place of 32 mm.
+
+Specs: `hand/d1.json` to `d8.json`; decisions D36 and D36-1 to D36-4 in `decisions/log.md`.
+
+## Second pass, after D33 B
+
+At the end of the second pass two supply joins were open (U201 pin 2 and C510 pad 1) and TP301 and TP401 were
+placed but not joined; the third pass closed them.
 
 ## What the route cost the power paths
 
@@ -29,8 +47,8 @@ The user answered D33 on 2026-11-12: **B**, signal tracks on F.Cu under the GND 
 
 | Path | Before | First attempt (pours cut) | Now |
 |---|---|---|---|
-| VBAT_IN, J901 to Q202 (all layers) | 0.614 mOhm | 0.788 mOhm | 0.620 mOhm (+1 %) |
-| VBAT_IN, J910 to Q201 (all layers) | 0.611 mOhm | | 0.606 mOhm |
+| VBAT_IN, J901 to Q202 (all layers) | 0.614 mOhm | 0.788 mOhm | 0.617 mOhm |
+| VBAT_IN, J910 to Q201 (all layers) | 0.611 mOhm | | 0.611 mOhm |
 | VBAT_Q2D, R201 to Q203 and Q204 (all layers) | 0.135 mOhm | 0.246 mOhm | 0.145 mOhm (+7 %) |
 | VBAT_D, Q201 and Q202 to R201 (all layers) | 0.268 mOhm | | 0.298 mOhm (+11 %) |
 | VBAT_D, the same (outer layers only) | 0.522 mOhm | 0.655 mOhm | 0.717 mOhm (+37 %) |
@@ -38,8 +56,8 @@ The user answered D33 on 2026-11-12: **B**, signal tracks on F.Cu under the GND 
 | OUT1 / OUT2 (outer layers) | 1.551 / 1.504 mOhm | 1.597 / 1.553 | 1.552 / 1.510 mOhm |
 | OUT3 / OUT4 (outer layers) | 1.553 / 1.487 mOhm | 1.688 / 1.933 | 1.579 / 1.519 mOhm (+2 %) |
 | OUT5 / OUT6 (outer layers) | 1.533 / 1.509 mOhm | 1.604 / 1.812 | 1.535 / 1.489 mOhm |
-| VBAT_PROT to U601 / U701 / U801, 20 A each | 14.70 / 10.48 / 14.63 mV | 14.91 / 10.67 / 14.86 | 14.79 / 10.54 / 14.71 mV |
-| VBAT_PROT loss at 3 x 20 A | 0.796 W | 0.809 W | 0.801 W (+0.6 %) |
+| VBAT_PROT to U601 / U701 / U801, 20 A each | 14.70 / 10.48 / 14.63 mV | 14.91 / 10.67 / 14.86 | 15.08 / 10.58 / 14.70 mV |
+| VBAT_PROT loss at 3 x 20 A | 0.796 W | 0.809 W | 0.807 W (+1.4 %) |
 
 **VBAT_D is the one path that pays**: +11 % on all six layers (0.030 mOhm, 0.11 W at 60 A). The shunt's sense
 pads sit between its F1 pad and Q202, so the two sense lines to U202 and U201 cut the B.Cu pour beside the pad
@@ -105,11 +123,11 @@ Pictures: `img/d33_band_B.png`, `img/d33_band_F.png`, `img/d33_channel_W.png`, `
 | bulk route, transplanted | 5 | 13 | 23 | 62 |
 | lanes and cell by hand, joins routed | 0 | 0 | 24 | 62 |
 | supply joins | 0 | 0 | 2 | 62 |
-| test points back (on main now) | 0 | 0 | 2 | 2 |
+| test points back (end of the second pass) | 0 | 0 | 2 | 2 |
+| third pass, D36 A (on main now) | 0 | 0 | 0 | 0 |
 
 New tools in this folder: `rip_nets_box.py`, `prune_islands.py`, `missing_in_routed.py`, `pour_crossings.py`,
-`measure_paths.sh` (with `r_jobs.json`), `drop_dangling.py`, `dedupe_vias.py`, `set_zone_poly.py`. The hero
-renderings on the docs front page were not re-rendered.
+`measure_paths.sh` (with `r_jobs.json`), `drop_dangling.py`, `dedupe_vias.py`, `set_zone_poly.py`, `add_zone.py`.
 
 ## First run, before D33: the finding behind it
 

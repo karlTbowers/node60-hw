@@ -1,0 +1,27 @@
+[
+ {
+  "net": "VDDAU_AON",
+  "name": "TP301 to VDDAU_AON's via at C510",
+  "from": [
+   159.145,
+   50.21,
+   "B.Cu"
+  ],
+  "to": [
+   160.0,
+   52.5,
+   "B.Cu"
+  ],
+  "layers": [
+   "B.Cu",
+   "F.Cu"
+  ],
+  "w": 0.15,
+  "via": [
+   0.35,
+   0.2
+  ],
+  "margin": 4,
+  "rip": false
+ }
+]

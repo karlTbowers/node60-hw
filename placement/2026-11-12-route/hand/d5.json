@@ -1,0 +1,88 @@
+{
+ "id": "mini",
+ "title": "C510 pad 1 to VDDAU_AON",
+ "why": "mini_route.py at 0.15 mm (the earlier tries were at 0.2 mm): a via beside C510 pad 1 and a 12 mm F.Cu loop round U301 to R301 pad 2's existing via. Long for a decoupling cap; C509 is the close one on this rail.",
+ "delete": [],
+ "tracks": [
+  {
+   "net": "VDDAU_AON",
+   "layer": "B.Cu",
+   "w": 0.15,
+   "pts": [
+    [
+     159.25,
+     49.21
+    ],
+    [
+     159.245,
+     49.21
+    ],
+    [
+     159.145,
+     49.31
+    ],
+    [
+     159.145,
+     50.21
+    ]
+   ]
+  },
+  {
+   "net": "VDDAU_AON",
+   "layer": "F.Cu",
+   "w": 0.15,
+   "pts": [
+    [
+     159.145,
+     50.21
+    ],
+    [
+     160.695,
+     50.21
+    ],
+    [
+     160.795,
+     50.31
+    ],
+    [
+     161.645,
+     50.31
+    ],
+    [
+     162.345,
+     49.61
+    ],
+    [
+     162.345,
+     48.31
+    ],
+    [
+     161.545,
+     47.51
+    ],
+    [
+     158.395,
+     47.51
+    ],
+    [
+     157.345,
+     48.56
+    ],
+    [
+     157.29,
+     49.05
+    ]
+   ]
+  }
+ ],
+ "vias": [
+  {
+   "net": "VDDAU_AON",
+   "x": 159.145,
+   "y": 50.21,
+   "d": 0.35,
+   "drill": 0.2
+  }
+ ],
+ "failed": []
+}
