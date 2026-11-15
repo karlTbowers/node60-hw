@@ -49679,7 +49679,7 @@
 	(footprint "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
 		(layer "B.Cu")
 		(uuid "788e555c-7fb4-4a8c-8c88-c7cc5d83dfc7")
-		(at 231.4769 103.8769 -90)
+		(at 238.1 114.5 -90)
 		(descr "Exposed copper test pad, diameter 1.0mm, solder mask opening only (no paste, no part), https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/TestPoint.py")
 		(tags "test point pad exposed copper")
 		(property "Reference" "TP801"
