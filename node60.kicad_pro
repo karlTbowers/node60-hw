@@ -899,13 +899,50 @@
       {
         "filename": "node60.kicad_sch",
         "name": "node60",
-        "uuid": "00000000-0000-0000-0000-000000000000"
+        "uuid": "55f51841-30a3-4965-b848-b796f60054d0"
       }
     ],
     "used_designators": "",
     "variants": []
   },
-  "sheets": [],
+  "sheets": [
+    [
+      "55f51841-30a3-4965-b848-b796f60054d0",
+      "node60"
+    ],
+    [
+      "822dbac5-68ee-4519-a5d1-8bcf1992c5d9",
+      "Power entry"
+    ],
+    [
+      "0b1fdde0-4dcf-41c8-a0be-e22a76779263",
+      "Regulators"
+    ],
+    [
+      "0ad74954-de59-42a0-82d0-e554fbd19453",
+      "MCU and NVM"
+    ],
+    [
+      "3875e4cc-63e7-4387-b67f-49f6a7b34a4e",
+      "T1S"
+    ],
+    [
+      "ceecbbf6-496b-4919-aa4d-b8194f44838e",
+      "Outputs 1-2"
+    ],
+    [
+      "68ca6db2-fb88-4c17-b54b-7131815c5345",
+      "Outputs 3-4"
+    ],
+    [
+      "618ad5c3-1fe8-46d2-96b6-b9e1aa40313d",
+      "Outputs 5-6"
+    ],
+    [
+      "e572f86f-2725-4aae-a9c5-04dc01b6640e",
+      "Connectors"
+    ]
+  ],
   "text_variables": {},
   "tuning_profiles": {
     "meta": {
