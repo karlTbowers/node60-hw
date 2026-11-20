@@ -47,7 +47,7 @@
 - id: GATE-TMP-02
   title: TMP175 interface
   group: temperature
-  evidence: Verify address straps, shared-bus operation with INA228, startup, readback, fault handling, and optional ALERT interrupt
+  evidence: Verify address straps, operation on its own bus (LPI2C1, DEC-028), startup, readback, fault handling, and the ALERT interrupt
   blocks: Firmware baseline
   status: open
   page: subsystems/temperature
@@ -160,9 +160,9 @@
 - id: GATE-MCU-01
   title: Package map
   group: freeze
-  evidence: S32K344EHT1MMMST package-specific pin audit of all 257 balls (signal, power and unused) against NXP's ball map and IOMUX table, including EXTAL/XTAL for the 16 MHz crystal (DEC-015) and the unused-pin handling. Passed 2026-10-28; re-run for DEC-018's eight added balls (A15, A16, B13, G16, E14, E15, F14, G15) and passed 2026-10-30
+  evidence: S32K344EHT1MMMST package-specific pin audit of all 257 balls (signal, power and unused) against NXP's ball map and IOMUX table, including EXTAL/XTAL for the 16 MHz crystal (DEC-015) and the unused-pin handling. Passed 2026-10-28; re-run for DEC-018's eight added balls (A15, A16, B13, G16, E14, E15, F14, G15) and passed 2026-10-30. Open again since 2026-11-19 for DEC-028's three added balls (A12, B12, C12), with the IOMUX check passed and the IBIS and BSDL checks and the user's sign-off outstanding
   blocks: Schematic
-  status: passed
+  status: open
   page: subsystems/compute
   result: /node60-hw/validation/gate-mcu-01/
 

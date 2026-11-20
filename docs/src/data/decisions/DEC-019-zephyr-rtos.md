@@ -23,11 +23,11 @@ Rev A listed Zephyr as a basis requirement (REQ-FW-001) and relied on it in seve
 | Function | Node60 part / peripheral | Zephyr compatible | Status |
 |---|---|---|---|
 | Pin mux | SIUL2 | `nxp,s32k3-siul2-pinctrl` | Upstream |
-| GPIO and pin interrupts | SIUL2 GPIO + EIRQ | `nxp,siul2-gpio`, `nxp,siul2-eirq` | Upstream. Every interrupt ball in the pin plan is in the driver's EIRQ map, on distinct lines (0, 1, 2, 6, 17, 23) |
+| GPIO and pin interrupts | SIUL2 GPIO + EIRQ | `nxp,siul2-gpio`, `nxp,siul2-eirq` | Upstream. Every interrupt ball in the pin plan is in the driver's EIRQ map, on distinct lines (0, 1, 2, 6, 17, 23; line 4 added for `INA228_ALERT_L` on 2026-11-19, DEC-028) |
 | Output switch SPI | LPSPI3 / 4 / 5 | `nxp,lpspi` | Upstream; native PCS0 chip selects |
 | Output switch device | TPS2HCS08A-Q1 × 3 | none | **Out-of-tree driver to write**, three instances |
 | Log flash | LPSPI2 + IS25LP032D | `nxp,lpspi` + `jedec,spi-nor` | Upstream (FCB, NVS) |
-| Telemetry I²C | LPI2C0 | `nxp,lpi2c` | Upstream |
+| Telemetry I²C | LPI2C0 (INA228); LPI2C1 (TMP175) since DEC-028, 2026-11-19 | `nxp,lpi2c` | Upstream |
 | Total-rail monitor | INA228A-Q1 | `ti,ina228` | Upstream |
 | Board temperature | TMP175-Q1 | `ti,tmp175` (Node60 binding) | **Out-of-tree driver to write** (user, 2026-10-30): 12-bit mode, ALERT on `TMP175_ALERT_L` as a sensor trigger. The upstream `lm75` driver is not used |
 | NTC inputs, SNS, BATT_MON | ADC1, ADC2 (SAR) | `nxp,s32-adc-sar`, `ntc-thermistor` | Upstream. One `group-channel` per ADC instance: ADC1 and ADC2 use only precision (P) channels |

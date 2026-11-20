@@ -2183,7 +2183,7 @@
 	)
 	(sheet
 		(at 309.88 50.8)
-		(size 60.96 63.5)
+		(size 60.96 68.58)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -2209,7 +2209,7 @@
 			)
 		)
 		(property "Sheetfile" "sheets/mcu-nvm.kicad_sch"
-			(at 309.88 114.9 0)
+			(at 309.88 119.98 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -2637,6 +2637,36 @@
 					(size 1.27 1.27)
 				)
 				(justify left)
+			)
+		)
+		(pin "INA228_ALERT_L" input
+			(at 309.88 111.76 180)
+			(uuid "016e03c6-34b6-52ed-b478-d75454ac2197")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "I2C1_TEMP_SCL" output
+			(at 370.84 111.76 0)
+			(uuid "fe44dec7-bc27-5f45-82db-9d76306a85cf")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "I2C1_TEMP_SDA" bidirectional
+			(at 370.84 114.3 0)
+			(uuid "6b717acc-bfe7-5b08-a400-bfd5aa79f066")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
 			)
 		)
 		(instances
@@ -3223,7 +3253,7 @@
 	)
 	(sheet
 		(at 40.64 160.02)
-		(size 60.96 17.78)
+		(size 60.96 22.86)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
@@ -3249,7 +3279,7 @@
 			)
 		)
 		(property "Sheetfile" "sheets/power-entry.kicad_sch"
-			(at 40.64 178.4 0)
+			(at 40.64 183.48 0)
 			(show_name no)
 			(do_not_autoplace no)
 			(effects
@@ -3332,6 +3362,36 @@
 		(pin "NTC_RSENSE" output
 			(at 101.6 172.72 0)
 			(uuid "66bc592f-8b3d-5b93-a195-f782a1e912e8")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "I2C1_TEMP_SCL" input
+			(at 40.64 170.18 180)
+			(uuid "2c6e880d-2ed6-5408-b7d9-b7bb79f7937a")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "I2C1_TEMP_SDA" bidirectional
+			(at 101.6 175.26 0)
+			(uuid "bec28009-234e-5bc6-8a87-e41ae3d106fc")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "INA228_ALERT_L" output
+			(at 101.6 177.8 0)
+			(uuid "47eecb50-b48e-5584-b267-7039ba0db625")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -3633,6 +3693,126 @@
 		(path "/"
 			(page "1")
 		)
+	)
+	(wire
+		(pts
+			(xy 40.64 170.18) (xy 38.1 170.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "138f06fe-03d8-5137-b325-d923a8870365")
+	)
+	(label "I2C1_TEMP_SCL"
+		(at 38.1 170.18 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "5bd9c5ac-7d92-518b-bbba-a52aceb363dd")
+	)
+	(wire
+		(pts
+			(xy 101.6 175.26) (xy 104.14 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "db338598-2cb5-5269-9264-2e84fedb746b")
+	)
+	(label "I2C1_TEMP_SDA"
+		(at 104.14 175.26 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "cad033de-921c-5e21-a121-74c13d0d8391")
+	)
+	(wire
+		(pts
+			(xy 101.6 177.8) (xy 104.14 177.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "727fa4a8-ab4b-5c3a-8a3a-a34c8cf51084")
+	)
+	(label "INA228_ALERT_L"
+		(at 104.14 177.8 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "061a18a7-7076-5eba-84f4-9a78a0669a35")
+	)
+	(wire
+		(pts
+			(xy 309.88 111.76) (xy 307.34 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "30fac515-9995-54a5-ac10-aa9c58507607")
+	)
+	(label "INA228_ALERT_L"
+		(at 307.34 111.76 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "5502bf9b-38ab-51a5-812a-fd9ff1e5fe35")
+	)
+	(wire
+		(pts
+			(xy 370.84 111.76) (xy 373.38 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0f1fb9c9-1198-5cfb-875f-0f652e777338")
+	)
+	(label "I2C1_TEMP_SCL"
+		(at 373.38 111.76 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "e56784a2-185a-5c84-b37c-d98cefa85988")
+	)
+	(wire
+		(pts
+			(xy 370.84 114.3) (xy 373.38 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f70f084e-9c18-5bbf-88db-fc2f6407a23e")
+	)
+	(label "I2C1_TEMP_SDA"
+		(at 373.38 114.3 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "664b0eed-02df-53ae-8a81-c5d885660f1f")
 	)
 	(embedded_fonts no)
 )

@@ -1,9 +1,21 @@
 ---
 title: GATE-MCU-01 result
-description: S32K344EHT1MMMST package map audit, all 257 balls, passed 2026-10-28; re-run for DEC-018 passed 2026-10-30.
+description: S32K344EHT1MMMST package map audit, all 257 balls, passed 2026-10-28; re-run for DEC-018 passed 2026-10-30; open since 2026-11-19 for DEC-028's three balls.
 ---
 
-**Passed on 2026-10-28; re-run passed on 2026-10-30.** The user signed off the audit of all 257 balls of U401 (S32K344EHT1MMMST, 257MAPBGA), after a machine cross-check that found no differences, and signed off the re-run for DEC-018's eight added balls on 2026-10-30.
+**Open since 2026-11-19** for the three balls DEC-028 added (A12, B12, C12); see the re-run below. **Passed on 2026-10-28; re-run passed on 2026-10-30.** The user signed off the audit of all 257 balls of U401 (S32K344EHT1MMMST, 257MAPBGA), after a machine cross-check that found no differences, and signed off the re-run for DEC-018's eight added balls on 2026-10-30.
+
+## Re-run for DEC-028: open since 2026-11-19
+
+<a href="../../decisions/dec-028/">DEC-028</a> gives each sensor its own I²C bus and wires the INA228's ALERT, which uses three more balls. **The gate is open until the user signs this re-run off.**
+
+| Ball | Port | Net | Function |
+|---|---|---|---|
+| C12 | PTC6 | `I2C1_TEMP_SDA` | LPI2C1_SDA |
+| B12 | PTC7 | `I2C1_TEMP_SCL` | LPI2C1_SCL |
+| A12 | PTA16 | `INA228_ALERT_L` | EIRQ[4] |
+
+Machine check so far: every function above is in that ball's IOMUX alternate list (library pin table; the docs build checks it), and EIRQ 4 is not used by any other interrupt line. Not done yet: the IBIS and BSDL port check for the three balls (the Hardware Design Package files were not on the workstation that made the change). The three balls were unconnected with no-connect flags in the earlier audits.
 
 ## Re-run for DEC-018: passed 2026-10-30
 

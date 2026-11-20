@@ -43,7 +43,7 @@ sensing: "Measurement inputs" {
   sup: "TPS3702-Q1\n3V3 OV/UV supervisor" {class: compute; link: "/subsystems/supervision/"}
 }
 
-mcu: "S32K344 · Zephyr\nLPSPI ×4 · LPI2C · 12-bit ADC · GPIO\ninternal SWT watchdog · CMU" {class: compute; link: "/subsystems/compute/"}
+mcu: "S32K344 · Zephyr\nLPSPI ×4 · LPI2C ×2 · 12-bit ADC · GPIO\ninternal SWT watchdog · CMU" {class: compute; link: "/subsystems/compute/"}
 
 outputs: "Controlled devices" {
   class: group
@@ -62,8 +62,8 @@ sensing.rsense -- sensing.ina: "Kelvin IN+/IN−" {class: ana}
 sensing.lm -- sensing.div: "SW pin" {class: ana}
 sensing.div -- mcu: "BATT_MON → ADC" {class: ana}
 sensing.ntc -- mcu: "4 × → ADC" {class: ana}
-sensing.ina <-> mcu: "LPI2C" {class: dig}
-sensing.tmp <-> mcu: "LPI2C · ALERT" {class: dig}
+sensing.ina <-> mcu: "LPI2C0 · ALERT" {class: dig}
+sensing.tmp <-> mcu: "LPI2C1 · ALERT" {class: dig}
 sensing.lm -> mcu: "FLT" {class: dig}
 sensing.sup -> mcu: "RESET_L" {class: dig}
 

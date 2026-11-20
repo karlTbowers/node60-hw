@@ -38,6 +38,7 @@ INA228A-Q1 avoids an MCU ADC channel and preserves useful low-current accuracy d
 
 ## Consequences
 
+- ALERT (pin 3) goes to the MCU on `INA228_ALERT_L` (PTA16, EIRQ 4) with a 10 kΩ pull-up, and the INA228 is alone on LPI2C0 (DEC-028, 2026-11-19). Until then the pin was open and the bus was shared with the TMP175.
 - Keep both voltage measurements: INA228 measures the protected rail, the LM74910H SW divider measures VBAT_RAW before the ideal-diode FET.
 - Current diverted ahead of RSENSE, including through the primary TVS, remains outside this measurement.
 - A single 60 A RSENSE cannot also resolve parked sleep current; parked-drain verification remains a validation-lab measurement.

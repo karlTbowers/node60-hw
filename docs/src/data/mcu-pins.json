@@ -264,10 +264,14 @@
     "ADC1_S13",
     "WKPU[31]"
    ],
-   "net": null,
-   "connects": [],
-   "externalPull": null,
-   "function": null
+   "net": "INA228_ALERT_L",
+   "connects": [
+    "R213 10k to 3V3_MAIN",
+    "TP210 test point",
+    "U202 ALERT_L"
+   ],
+   "externalPull": "10k up to 3V3_MAIN (R213)",
+   "function": "EIRQ[4]"
   },
   {
    "ball": "A13",
@@ -435,6 +439,8 @@
     "C215 100nF to 3V3_MAIN",
     "C216 100nF to NTC_RSENSE",
     "C217 47uF to VBAT_FILT",
+    "C218 4.7uF to VBAT_PROT",
+    "C219 100nF to VBAT_IN",
     "C301 1uF to VBAT_PROT",
     "C302 2.2uF to VDDAU_AON_REG",
     "C303 100nF to VBAT_FILT",
@@ -817,10 +823,14 @@
     "WKPU[2]",
     "ADC1_S16"
    ],
-   "net": null,
-   "connects": [],
-   "externalPull": null,
-   "function": null
+   "net": "I2C1_TEMP_SCL",
+   "connects": [
+    "R419 2.2k to 3V3_MAIN",
+    "TP421 test point",
+    "U203 SCL"
+   ],
+   "externalPull": "2.2k up to 3V3_MAIN (R419)",
+   "function": "LPI2C1_SCL"
   },
   {
    "ball": "B13",
@@ -914,6 +924,8 @@
     "C215 100nF to 3V3_MAIN",
     "C216 100nF to NTC_RSENSE",
     "C217 47uF to VBAT_FILT",
+    "C218 4.7uF to VBAT_PROT",
+    "C219 100nF to VBAT_IN",
     "C301 1uF to VBAT_PROT",
     "C302 2.2uF to VDDAU_AON_REG",
     "C303 100nF to VBAT_FILT",
@@ -1314,10 +1326,14 @@
     "WKPU[3]",
     "ADC1_S18"
    ],
-   "net": null,
-   "connects": [],
-   "externalPull": null,
-   "function": null
+   "net": "I2C1_TEMP_SDA",
+   "connects": [
+    "R420 2.2k to 3V3_MAIN",
+    "TP422 test point",
+    "U203 SDA"
+   ],
+   "externalPull": "2.2k up to 3V3_MAIN (R420)",
+   "function": "LPI2C1_SDA"
   },
   {
    "ball": "C13",
@@ -1517,6 +1533,8 @@
     "C215 100nF to 3V3_MAIN",
     "C216 100nF to NTC_RSENSE",
     "C217 47uF to VBAT_FILT",
+    "C218 4.7uF to VBAT_PROT",
+    "C219 100nF to VBAT_IN",
     "C301 1uF to VBAT_PROT",
     "C302 2.2uF to VDDAU_AON_REG",
     "C303 100nF to VBAT_FILT",
@@ -1772,6 +1790,8 @@
     "C215 100nF to 3V3_MAIN",
     "C216 100nF to NTC_RSENSE",
     "C217 47uF to VBAT_FILT",
+    "C218 4.7uF to VBAT_PROT",
+    "C219 100nF to VBAT_IN",
     "C301 1uF to VBAT_PROT",
     "C302 2.2uF to VDDAU_AON_REG",
     "C303 100nF to VBAT_FILT",
@@ -2046,6 +2066,7 @@
     "R203 10k to LM_FLT_L",
     "R211 10k to TMP175_ALERT_L",
     "R212 10k to NTC_RSENSE",
+    "R213 10k to INA228_ALERT_L",
     "R302 0R to 3V3_MAIN_REG",
     "R306 100k to 1V5_EN",
     "R308 4.7k to RESET_L",
@@ -2055,6 +2076,8 @@
     "R404 10k to SWD_DIO",
     "R406 2.2k to I2C0_TELEMETRY_SCL",
     "R407 2.2k to I2C0_TELEMETRY_SDA",
+    "R419 2.2k to I2C1_TEMP_SCL",
+    "R420 2.2k to I2C1_TEMP_SDA",
     "R505 10k to RMII0_T1S_RX_ER",
     "R506 10k to T1S_MODE1",
     "R507 10k to MDIO0_T1S_MDIO",
@@ -2789,6 +2812,8 @@
     "C215 100nF to 3V3_MAIN",
     "C216 100nF to NTC_RSENSE",
     "C217 47uF to VBAT_FILT",
+    "C218 4.7uF to VBAT_PROT",
+    "C219 100nF to VBAT_IN",
     "C301 1uF to VBAT_PROT",
     "C302 2.2uF to VDDAU_AON_REG",
     "C303 100nF to VBAT_FILT",
@@ -3026,6 +3051,7 @@
     "R203 10k to LM_FLT_L",
     "R211 10k to TMP175_ALERT_L",
     "R212 10k to NTC_RSENSE",
+    "R213 10k to INA228_ALERT_L",
     "R302 0R to 3V3_MAIN_REG",
     "R306 100k to 1V5_EN",
     "R308 4.7k to RESET_L",
@@ -3035,6 +3061,8 @@
     "R404 10k to SWD_DIO",
     "R406 2.2k to I2C0_TELEMETRY_SCL",
     "R407 2.2k to I2C0_TELEMETRY_SDA",
+    "R419 2.2k to I2C1_TEMP_SCL",
+    "R420 2.2k to I2C1_TEMP_SDA",
     "R505 10k to RMII0_T1S_RX_ER",
     "R506 10k to T1S_MODE1",
     "R507 10k to MDIO0_T1S_MDIO",
@@ -3089,6 +3117,8 @@
     "C215 100nF to 3V3_MAIN",
     "C216 100nF to NTC_RSENSE",
     "C217 47uF to VBAT_FILT",
+    "C218 4.7uF to VBAT_PROT",
+    "C219 100nF to VBAT_IN",
     "C301 1uF to VBAT_PROT",
     "C302 2.2uF to VDDAU_AON_REG",
     "C303 100nF to VBAT_FILT",
@@ -3459,6 +3489,7 @@
     "R203 10k to LM_FLT_L",
     "R211 10k to TMP175_ALERT_L",
     "R212 10k to NTC_RSENSE",
+    "R213 10k to INA228_ALERT_L",
     "R302 0R to 3V3_MAIN_REG",
     "R306 100k to 1V5_EN",
     "R308 4.7k to RESET_L",
@@ -3468,6 +3499,8 @@
     "R404 10k to SWD_DIO",
     "R406 2.2k to I2C0_TELEMETRY_SCL",
     "R407 2.2k to I2C0_TELEMETRY_SDA",
+    "R419 2.2k to I2C1_TEMP_SCL",
+    "R420 2.2k to I2C1_TEMP_SDA",
     "R505 10k to RMII0_T1S_RX_ER",
     "R506 10k to T1S_MODE1",
     "R507 10k to MDIO0_T1S_MDIO",
@@ -3538,6 +3571,7 @@
     "R203 10k to LM_FLT_L",
     "R211 10k to TMP175_ALERT_L",
     "R212 10k to NTC_RSENSE",
+    "R213 10k to INA228_ALERT_L",
     "R302 0R to 3V3_MAIN_REG",
     "R306 100k to 1V5_EN",
     "R308 4.7k to RESET_L",
@@ -3547,6 +3581,8 @@
     "R404 10k to SWD_DIO",
     "R406 2.2k to I2C0_TELEMETRY_SCL",
     "R407 2.2k to I2C0_TELEMETRY_SDA",
+    "R419 2.2k to I2C1_TEMP_SCL",
+    "R420 2.2k to I2C1_TEMP_SDA",
     "R505 10k to RMII0_T1S_RX_ER",
     "R506 10k to T1S_MODE1",
     "R507 10k to MDIO0_T1S_MDIO",
@@ -3784,6 +3820,8 @@
     "C215 100nF to 3V3_MAIN",
     "C216 100nF to NTC_RSENSE",
     "C217 47uF to VBAT_FILT",
+    "C218 4.7uF to VBAT_PROT",
+    "C219 100nF to VBAT_IN",
     "C301 1uF to VBAT_PROT",
     "C302 2.2uF to VDDAU_AON_REG",
     "C303 100nF to VBAT_FILT",
@@ -4003,6 +4041,8 @@
     "C215 100nF to 3V3_MAIN",
     "C216 100nF to NTC_RSENSE",
     "C217 47uF to VBAT_FILT",
+    "C218 4.7uF to VBAT_PROT",
+    "C219 100nF to VBAT_IN",
     "C301 1uF to VBAT_PROT",
     "C302 2.2uF to VDDAU_AON_REG",
     "C303 100nF to VBAT_FILT",
@@ -4188,6 +4228,8 @@
     "C215 100nF to 3V3_MAIN",
     "C216 100nF to NTC_RSENSE",
     "C217 47uF to VBAT_FILT",
+    "C218 4.7uF to VBAT_PROT",
+    "C219 100nF to VBAT_IN",
     "C301 1uF to VBAT_PROT",
     "C302 2.2uF to VDDAU_AON_REG",
     "C303 100nF to VBAT_FILT",
@@ -4408,6 +4450,8 @@
     "C215 100nF to 3V3_MAIN",
     "C216 100nF to NTC_RSENSE",
     "C217 47uF to VBAT_FILT",
+    "C218 4.7uF to VBAT_PROT",
+    "C219 100nF to VBAT_IN",
     "C301 1uF to VBAT_PROT",
     "C302 2.2uF to VDDAU_AON_REG",
     "C303 100nF to VBAT_FILT",
@@ -4650,6 +4694,8 @@
     "C215 100nF to 3V3_MAIN",
     "C216 100nF to NTC_RSENSE",
     "C217 47uF to VBAT_FILT",
+    "C218 4.7uF to VBAT_PROT",
+    "C219 100nF to VBAT_IN",
     "C301 1uF to VBAT_PROT",
     "C302 2.2uF to VDDAU_AON_REG",
     "C303 100nF to VBAT_FILT",
@@ -5083,6 +5129,7 @@
     "R203 10k to LM_FLT_L",
     "R211 10k to TMP175_ALERT_L",
     "R212 10k to NTC_RSENSE",
+    "R213 10k to INA228_ALERT_L",
     "R302 0R to 3V3_MAIN_REG",
     "R306 100k to 1V5_EN",
     "R308 4.7k to RESET_L",
@@ -5092,6 +5139,8 @@
     "R404 10k to SWD_DIO",
     "R406 2.2k to I2C0_TELEMETRY_SCL",
     "R407 2.2k to I2C0_TELEMETRY_SDA",
+    "R419 2.2k to I2C1_TEMP_SCL",
+    "R420 2.2k to I2C1_TEMP_SDA",
     "R505 10k to RMII0_T1S_RX_ER",
     "R506 10k to T1S_MODE1",
     "R507 10k to MDIO0_T1S_MDIO",
@@ -5351,6 +5400,8 @@
     "C215 100nF to 3V3_MAIN",
     "C216 100nF to NTC_RSENSE",
     "C217 47uF to VBAT_FILT",
+    "C218 4.7uF to VBAT_PROT",
+    "C219 100nF to VBAT_IN",
     "C301 1uF to VBAT_PROT",
     "C302 2.2uF to VDDAU_AON_REG",
     "C303 100nF to VBAT_FILT",
@@ -5552,6 +5603,7 @@
     "R203 10k to LM_FLT_L",
     "R211 10k to TMP175_ALERT_L",
     "R212 10k to NTC_RSENSE",
+    "R213 10k to INA228_ALERT_L",
     "R302 0R to 3V3_MAIN_REG",
     "R306 100k to 1V5_EN",
     "R308 4.7k to RESET_L",
@@ -5561,6 +5613,8 @@
     "R404 10k to SWD_DIO",
     "R406 2.2k to I2C0_TELEMETRY_SCL",
     "R407 2.2k to I2C0_TELEMETRY_SDA",
+    "R419 2.2k to I2C1_TEMP_SCL",
+    "R420 2.2k to I2C1_TEMP_SDA",
     "R505 10k to RMII0_T1S_RX_ER",
     "R506 10k to T1S_MODE1",
     "R507 10k to MDIO0_T1S_MDIO",
@@ -5653,6 +5707,8 @@
     "C215 100nF to 3V3_MAIN",
     "C216 100nF to NTC_RSENSE",
     "C217 47uF to VBAT_FILT",
+    "C218 4.7uF to VBAT_PROT",
+    "C219 100nF to VBAT_IN",
     "C301 1uF to VBAT_PROT",
     "C302 2.2uF to VDDAU_AON_REG",
     "C303 100nF to VBAT_FILT",
@@ -5984,8 +6040,7 @@
    "connects": [
     "R406 2.2k to 3V3_MAIN",
     "TP409 test point",
-    "U202 SCL",
-    "U203 SCL"
+    "U202 SCL"
    ],
    "externalPull": "2.2k up to 3V3_MAIN (R406)",
    "function": "LPI2C0_SCL"
@@ -6315,6 +6370,7 @@
     "R203 10k to LM_FLT_L",
     "R211 10k to TMP175_ALERT_L",
     "R212 10k to NTC_RSENSE",
+    "R213 10k to INA228_ALERT_L",
     "R302 0R to 3V3_MAIN_REG",
     "R306 100k to 1V5_EN",
     "R308 4.7k to RESET_L",
@@ -6324,6 +6380,8 @@
     "R404 10k to SWD_DIO",
     "R406 2.2k to I2C0_TELEMETRY_SCL",
     "R407 2.2k to I2C0_TELEMETRY_SDA",
+    "R419 2.2k to I2C1_TEMP_SCL",
+    "R420 2.2k to I2C1_TEMP_SDA",
     "R505 10k to RMII0_T1S_RX_ER",
     "R506 10k to T1S_MODE1",
     "R507 10k to MDIO0_T1S_MDIO",
@@ -6532,6 +6590,8 @@
     "C215 100nF to 3V3_MAIN",
     "C216 100nF to NTC_RSENSE",
     "C217 47uF to VBAT_FILT",
+    "C218 4.7uF to VBAT_PROT",
+    "C219 100nF to VBAT_IN",
     "C301 1uF to VBAT_PROT",
     "C302 2.2uF to VDDAU_AON_REG",
     "C303 100nF to VBAT_FILT",
@@ -6713,8 +6773,7 @@
    "connects": [
     "R407 2.2k to 3V3_MAIN",
     "TP410 test point",
-    "U202 SDA",
-    "U203 SDA"
+    "U202 SDA"
    ],
    "externalPull": "2.2k up to 3V3_MAIN (R407)",
    "function": "LPI2C0_SDA"
@@ -6911,6 +6970,8 @@
     "C215 100nF to 3V3_MAIN",
     "C216 100nF to NTC_RSENSE",
     "C217 47uF to VBAT_FILT",
+    "C218 4.7uF to VBAT_PROT",
+    "C219 100nF to VBAT_IN",
     "C301 1uF to VBAT_PROT",
     "C302 2.2uF to VDDAU_AON_REG",
     "C303 100nF to VBAT_FILT",
@@ -7318,6 +7379,7 @@
     "R203 10k to LM_FLT_L",
     "R211 10k to TMP175_ALERT_L",
     "R212 10k to NTC_RSENSE",
+    "R213 10k to INA228_ALERT_L",
     "R302 0R to 3V3_MAIN_REG",
     "R306 100k to 1V5_EN",
     "R308 4.7k to RESET_L",
@@ -7327,6 +7389,8 @@
     "R404 10k to SWD_DIO",
     "R406 2.2k to I2C0_TELEMETRY_SCL",
     "R407 2.2k to I2C0_TELEMETRY_SDA",
+    "R419 2.2k to I2C1_TEMP_SCL",
+    "R420 2.2k to I2C1_TEMP_SDA",
     "R505 10k to RMII0_T1S_RX_ER",
     "R506 10k to T1S_MODE1",
     "R507 10k to MDIO0_T1S_MDIO",
@@ -7440,6 +7504,7 @@
     "R203 10k to LM_FLT_L",
     "R211 10k to TMP175_ALERT_L",
     "R212 10k to NTC_RSENSE",
+    "R213 10k to INA228_ALERT_L",
     "R302 0R to 3V3_MAIN_REG",
     "R306 100k to 1V5_EN",
     "R308 4.7k to RESET_L",
@@ -7449,6 +7514,8 @@
     "R404 10k to SWD_DIO",
     "R406 2.2k to I2C0_TELEMETRY_SCL",
     "R407 2.2k to I2C0_TELEMETRY_SDA",
+    "R419 2.2k to I2C1_TEMP_SCL",
+    "R420 2.2k to I2C1_TEMP_SDA",
     "R505 10k to RMII0_T1S_RX_ER",
     "R506 10k to T1S_MODE1",
     "R507 10k to MDIO0_T1S_MDIO",
@@ -7675,6 +7742,8 @@
     "C215 100nF to 3V3_MAIN",
     "C216 100nF to NTC_RSENSE",
     "C217 47uF to VBAT_FILT",
+    "C218 4.7uF to VBAT_PROT",
+    "C219 100nF to VBAT_IN",
     "C301 1uF to VBAT_PROT",
     "C302 2.2uF to VDDAU_AON_REG",
     "C303 100nF to VBAT_FILT",
@@ -7953,6 +8022,8 @@
     "C215 100nF to 3V3_MAIN",
     "C216 100nF to NTC_RSENSE",
     "C217 47uF to VBAT_FILT",
+    "C218 4.7uF to VBAT_PROT",
+    "C219 100nF to VBAT_IN",
     "C301 1uF to VBAT_PROT",
     "C302 2.2uF to VDDAU_AON_REG",
     "C303 100nF to VBAT_FILT",
@@ -8189,6 +8260,8 @@
     "C215 100nF to 3V3_MAIN",
     "C216 100nF to NTC_RSENSE",
     "C217 47uF to VBAT_FILT",
+    "C218 4.7uF to VBAT_PROT",
+    "C219 100nF to VBAT_IN",
     "C301 1uF to VBAT_PROT",
     "C302 2.2uF to VDDAU_AON_REG",
     "C303 100nF to VBAT_FILT",
@@ -8481,6 +8554,8 @@
     "C215 100nF to 3V3_MAIN",
     "C216 100nF to NTC_RSENSE",
     "C217 47uF to VBAT_FILT",
+    "C218 4.7uF to VBAT_PROT",
+    "C219 100nF to VBAT_IN",
     "C301 1uF to VBAT_PROT",
     "C302 2.2uF to VDDAU_AON_REG",
     "C303 100nF to VBAT_FILT",
@@ -9100,8 +9175,8 @@
     "RTS"
    ],
    "example": {
-    "TX": "B12",
-    "RX": "C12"
+    "TX": "M6",
+    "RX": "M7"
    },
    "blockedBy": {},
    "signals": {
@@ -9126,7 +9201,6 @@
       "LPUART1_RX"
      ],
      "free": [
-      "C12",
       "M7",
       "N15"
      ]
@@ -9136,7 +9210,6 @@
       "LPUART1_TX"
      ],
      "free": [
-      "B12",
       "M6",
       "N14"
      ]
@@ -9335,7 +9408,7 @@
     "RTS"
    ],
    "example": {
-    "TX": "A12",
+    "TX": "U8",
     "RX": "D6"
    },
    "blockedBy": {},
@@ -9355,7 +9428,6 @@
       "LPUART6_TX"
      ],
      "free": [
-      "A12",
       "U8",
       "U12"
      ]
@@ -9733,7 +9805,7 @@
     "SCK": "L4",
     "SIN": "N14",
     "SOUT": "P3",
-    "PCS": "A12"
+    "PCS": "A13"
    },
    "blockedBy": {},
    "signals": {
@@ -9749,11 +9821,8 @@
       "LPSPI0_PCS7"
      ],
      "free": [
-      "A12",
       "A13",
-      "B12",
       "B14",
-      "C12",
       "L2",
       "L10",
       "M16",
@@ -9810,7 +9879,7 @@
     "SCK": "J17",
     "SIN": "J16",
     "SOUT": "F16",
-    "PCS": "A12"
+    "PCS": "B7"
    },
    "blockedBy": {},
    "signals": {
@@ -9824,10 +9893,8 @@
       "LPSPI1_PCS5"
      ],
      "free": [
-      "A12",
       "B7",
       "C3",
-      "C12",
       "D1",
       "F17",
       "K14",
@@ -10054,7 +10121,6 @@
      ],
      "free": [
       "A8",
-      "A12",
       "A13",
       "B14",
       "D8",
@@ -10178,9 +10244,7 @@
      "signals": [
       "LPI2C0_HREQ"
      ],
-     "free": [
-      "B12"
-     ]
+     "free": []
     },
     "SCL": {
      "signals": [
@@ -10221,8 +10285,11 @@
   {
    "kind": "LPI2C",
    "name": "LPI2C1",
-   "status": "available",
-   "used": {},
+   "status": "used",
+   "used": {
+    "LPI2C1_SCL": "B12",
+    "LPI2C1_SDA": "C12"
+   },
    "required": [
     "SCL",
     "SDA"
@@ -10233,8 +10300,8 @@
     "HREQ"
    ],
    "example": {
-    "SCL": "B12",
-    "SDA": "C12"
+    "SCL": "C9",
+    "SDA": "D10"
    },
    "blockedBy": {},
    "signals": {
@@ -10251,7 +10318,6 @@
       "LPI2C1_SCL"
      ],
      "free": [
-      "B12",
       "C9",
       "P17",
       "U8",
@@ -10269,7 +10335,6 @@
       "LPI2C1_SDA"
      ],
      "free": [
-      "C12",
       "D10",
       "N16",
       "R8"
@@ -10386,7 +10451,6 @@
      ],
      "free": [
       "B8",
-      "C12",
       "L15",
       "R12",
       "T9"
@@ -10398,7 +10462,6 @@
      ],
      "free": [
       "A8",
-      "B12",
       "L16",
       "P12",
       "U9"
@@ -10764,7 +10827,6 @@
     "B14",
     "B15",
     "B17",
-    "C12",
     "E2",
     "F16",
     "F17",
@@ -10805,11 +10867,8 @@
     "ADC1_S10",
     "ADC1_S11",
     "ADC1_S12",
-    "ADC1_S13",
     "ADC1_S14",
     "ADC1_S15",
-    "ADC1_S16",
-    "ADC1_S18",
     "ADC1_S19",
     "ADC1_S20",
     "ADC1_S22",
@@ -10819,10 +10878,7 @@
     "ADC1_X[3]"
    ],
    "freeBalls": [
-    "A12",
     "B7",
-    "B12",
-    "C12",
     "C14",
     "D11",
     "D12",
@@ -10933,7 +10989,6 @@
     "eMIOS_0_CH[23]_X"
    ],
    "freeBalls": [
-    "A12",
     "A13",
     "B7",
     "B14",
@@ -11009,10 +11064,8 @@
     "A13",
     "B7",
     "B8",
-    "B12",
     "C3",
     "C10",
-    "C12",
     "C16",
     "D1",
     "D3",
@@ -11239,21 +11292,17 @@
     "FXIO_D26",
     "FXIO_D27",
     "FXIO_D28",
-    "FXIO_D29",
-    "FXIO_D30"
+    "FXIO_D29"
    ],
    "freeBalls": [
     "A2",
     "A8",
-    "A12",
     "A13",
     "B7",
-    "B12",
     "B14",
     "C3",
     "C7",
     "C9",
-    "C12",
     "C13",
     "D1",
     "D3",
@@ -11366,13 +11415,13 @@
     "EIRQ[0]",
     "EIRQ[1]",
     "EIRQ[2]",
+    "EIRQ[4]",
     "EIRQ[6]",
     "EIRQ[17]",
     "EIRQ[23]"
    ],
    "free": [
     "EIRQ[3]",
-    "EIRQ[4]",
     "EIRQ[5]",
     "EIRQ[7]",
     "EIRQ[8]",
@@ -11402,19 +11451,16 @@
     "A1",
     "A2",
     "A6",
-    "A12",
     "A13",
     "A17",
     "B6",
     "B7",
-    "B12",
     "B14",
     "B15",
     "B17",
     "C7",
     "C8",
     "C9",
-    "C12",
     "D1",
     "D6",
     "D7",
@@ -11507,8 +11553,6 @@
    "used": [],
    "free": [
     "WKPU[1]",
-    "WKPU[2]",
-    "WKPU[3]",
     "WKPU[5]",
     "WKPU[7]",
     "WKPU[8]",
@@ -11522,7 +11566,6 @@
     "WKPU[18]",
     "WKPU[23]",
     "WKPU[30]",
-    "WKPU[31]",
     "WKPU[32]",
     "WKPU[33]",
     "WKPU[34]",
@@ -11551,11 +11594,8 @@
    ],
    "freeBalls": [
     "A2",
-    "A12",
     "B8",
-    "B12",
     "B14",
-    "C12",
     "C13",
     "C14",
     "D8",
@@ -11660,7 +11700,6 @@
     "LCU0_OUT3",
     "LCU0_OUT4",
     "LCU0_OUT5",
-    "LCU0_OUT6",
     "LCU0_OUT7",
     "LCU0_OUT8",
     "LCU0_OUT9",
@@ -11669,9 +11708,7 @@
    ],
    "freeBalls": [
     "A13",
-    "B12",
     "B14",
-    "C12",
     "C13",
     "C14",
     "D13",

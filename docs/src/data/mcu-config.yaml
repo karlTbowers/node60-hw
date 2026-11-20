@@ -269,13 +269,32 @@ I2C0_TELEMETRY_SCL:
   group: i2c
   dir: od
   pull: none
-  note: INA228 (U202) and TMP175 (U203); R406 is the bus pull-up
+  note: INA228 (U202) alone on this bus since 2026-11-19; R406 is the bus pull-up
 I2C0_TELEMETRY_SDA:
   function: LPI2C0_SDA
   group: i2c
   dir: od
   pull: none
   note: R407 is the bus pull-up
+I2C1_TEMP_SCL:
+  function: LPI2C1_SCL
+  group: i2c
+  dir: od
+  pull: none
+  note: TMP175 (U203) alone on this bus (user, 2026-11-19); R419 is the bus pull-up
+I2C1_TEMP_SDA:
+  function: LPI2C1_SDA
+  group: i2c
+  dir: od
+  pull: none
+  note: R420 is the bus pull-up
+INA228_ALERT_L:
+  function: EIRQ[4]
+  group: irq
+  dir: in
+  pull: none
+  edge: falling
+  note: INA228 ALERT (U202), open-drain, active low by default; R213 pull-up (user, 2026-11-19)
 TMP175_ALERT_L:
   function: EIRQ[23]
   group: irq

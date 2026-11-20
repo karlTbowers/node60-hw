@@ -385,9 +385,9 @@
   function: Grade 1 digital NFET-bank / board-ambient temperature sensor
   subsystem: temperature
   status: plan-of-record
-  decision_note: "Plan of record. Shares INA228 I²C bus; optional ALERT to MCU"
+  decision_note: "Plan of record. On its own I²C bus, LPI2C1, since DEC-028 (Rev A shared the INA228 bus); ALERT to the MCU"
   supply_note: ≈$0.60–1.00 @1k estimate; verify at BOM lock
-  decisions: [DEC-010, DEC-019]
+  decisions: [DEC-010, DEC-019, DEC-028]
 
 - id: TBD-NTC-10K
   mpn: NCU18XH103F6SRB

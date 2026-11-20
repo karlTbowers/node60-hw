@@ -8642,7 +8642,7 @@
 	)
 	(rectangle
 		(start 173.99 381)
-		(end 471.17 406.4)
+		(end 513.08 406.4)
 		(stroke
 			(width 0.254)
 			(type dash)
@@ -8681,7 +8681,7 @@
 	)
 	(rectangle
 		(start 16.51 307.34)
-		(end 92.71 391.16)
+		(end 128.27 391.16)
 		(stroke
 			(width 0.254)
 			(type dash)
@@ -8718,7 +8718,7 @@
 		)
 		(uuid "f8950564-d9b6-51d1-bb18-33e1b1912057")
 	)
-	(text "Total-current monitor, I2C 0x40 (U202)"
+	(text "Total-current monitor, I2C0 0x40 (U202)"
 		(exclude_from_sim no)
 		(at 16.51 306.324 0)
 		(effects
@@ -8757,7 +8757,7 @@
 		)
 		(uuid "569cd9b0-eff1-5dd4-b3ab-4f4e888b0d91")
 	)
-	(text "FET-bank temperature, I2C 0x48 (U203)"
+	(text "FET-bank temperature, I2C1 0x48 (U203)"
 		(exclude_from_sim no)
 		(at 379.73 293.37 0)
 		(effects
@@ -9197,10 +9197,6 @@
 	(no_connect
 		(at 220.98 241.3)
 		(uuid "05e4ae0a-e5a2-504c-823c-6e7a3fb5ec55")
-	)
-	(no_connect
-		(at 64.77 356.87)
-		(uuid "391c6b15-f78c-5939-8a7e-d7f19acd8628")
 	)
 	(no_connect
 		(at 238.76 203.2)
@@ -11488,7 +11484,7 @@
 		)
 		(uuid "fb443b0b-55b9-5036-895b-e47e652c56d5")
 	)
-	(hierarchical_label "I2C0_TELEMETRY_SDA"
+	(hierarchical_label "I2C1_TEMP_SDA"
 		(shape bidirectional)
 		(at 422.91 337.82 0)
 		(effects
@@ -11609,7 +11605,7 @@
 		)
 		(uuid "99d303d1-c085-58bc-a4bd-89f98c36e717")
 	)
-	(hierarchical_label "I2C0_TELEMETRY_SCL"
+	(hierarchical_label "I2C1_TEMP_SCL"
 		(shape input)
 		(at 422.91 335.28 0)
 		(effects
@@ -23366,5 +23362,402 @@
 				)
 			)
 		)
+	)
+	(wire
+		(pts
+			(xy 59.69 320.04) (xy 102.87 320.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "34b9ea21-a7c2-5909-9b55-5cf6bcbec8d3")
+	)
+	(junction
+		(at 59.69 320.04)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9130fe4b-177d-5487-bf60-64a58e16d73e")
+	)
+	(symbol
+		(lib_id "DropOut_Resistor:AC0402JR-0710KL")
+		(at 102.87 326.39 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "89ed296b-a6be-58cf-aaa8-3286255387cb")
+		(property "Reference" "R213"
+			(at 105.41 323.163 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10k"
+			(at 105.41 324.941 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
+			(at 102.87 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+			(at 102.87 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Yageo AC thick film chip resistor, 10 kΩ ±5%, 1/16 W, 50 V, ±200 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+			(at 102.87 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 102.87 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "AC0402JR-0710KL"
+			(at 105.41 330.275 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "DigiKey_PN" "YAG3517CT-ND"
+			(at 102.87 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mouser_PN" "603-AC0402JR-0710KL"
+			(at 102.87 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+			(at 102.87 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Tolerance" "±5%"
+			(at 105.41 326.719 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Power" "1/16W"
+			(at 102.87 326.39 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Voltage" "50V"
+			(at 110.236 326.719 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Case" "0402"
+			(at 105.41 328.497 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "dc62c6db-b3f7-53d0-bff1-2b9447307622")
+		)
+		(pin "2"
+			(uuid "0cae5335-d38b-5d49-916b-74abf2126698")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/822dbac5-68ee-4519-a5d1-8bcf1992c5d9"
+					(reference "R213")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 102.87 320.04) (xy 102.87 322.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "046bbd27-e0ce-5daf-bfa2-add25507271b")
+	)
+	(wire
+		(pts
+			(xy 102.87 330.2) (xy 102.87 356.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fa194420-6ed2-55dc-b4d2-4d3695f383c2")
+	)
+	(wire
+		(pts
+			(xy 64.77 356.87) (xy 107.95 356.87)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b9623838-f642-5181-8f58-1c04dedffb13")
+	)
+	(junction
+		(at 102.87 356.87)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e459c087-9e3d-5440-b336-d11570b61324")
+	)
+	(hierarchical_label "INA228_ALERT_L"
+		(shape output)
+		(at 107.95 356.87 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "65eb3efc-435e-5e0a-8666-a4745e20ad3b")
+	)
+	(symbol
+		(lib_id "DropOut_Connector:TestPoint_Pad_D1.0mm")
+		(at 485.14 392.43 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "ee19099e-c05c-54da-b038-4e76e77472ee")
+		(property "Reference" "TP210"
+			(at 487.172 391.16 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint_Pad_D1.0mm"
+			(at 487.172 393.7 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
+			(at 485.14 392.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/TestPoint.py"
+			(at 485.14 392.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Test point, exposed copper pad, diameter 1.0mm, solder mask opening only; a PCB feature with nothing to buy or place (excluded from BOM and position files)"
+			(at 485.14 392.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "DropOut"
+			(at 485.14 392.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "TestPoint_Pad_D1.0mm"
+			(at 485.14 392.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DigiKey_PN" "-"
+			(at 485.14 392.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mouser_PN" "-"
+			(at 485.14 392.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Notes" "PCB copper only; nothing to order. Excluded from BOM and position files."
+			(at 485.14 392.43 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "1e6a3ee0-5268-57c1-9939-8678e52da2c0")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/822dbac5-68ee-4519-a5d1-8bcf1992c5d9"
+					(reference "TP210")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 485.14 392.43) (xy 485.14 394.97)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "db898dd4-6af4-5663-864d-012b3022c63e")
+	)
+	(hierarchical_label "INA228_ALERT_L"
+		(shape output)
+		(at 485.14 394.97 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "3715bd92-5fe5-5864-850d-eb92a1922ed2")
 	)
 )
