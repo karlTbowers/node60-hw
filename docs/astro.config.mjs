@@ -16,7 +16,7 @@ export default defineConfig({
 			social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/karlTbowers/node60-hw' }],
 			editLink: { baseUrl: 'https://github.com/karlTbowers/node60-hw/edit/main/docs/' },
 			lastUpdated: true,
-			customCss: ['./src/styles/custom.css'],
+			customCss: ['katex/dist/katex.min.css', './src/styles/custom.css'],
 			sidebar: [
 				{ label: 'Decision overview', link: '/' },
 				{ label: 'Purpose & design basis', slug: 'requirements' },
@@ -56,6 +56,10 @@ export default defineConfig({
 						{ label: 'Firmware & data contract', slug: 'subsystems/firmware' },
 						{ label: 'Safety, EMC & thermal', slug: 'subsystems/safety' },
 					],
+				},
+				{
+					label: 'Calculations',
+					items: [{ label: 'LM74910H-Q1 input protection', slug: 'calculations/lm74910h' }],
 				},
 				{ label: 'Decisions', slug: 'decisions' },
 				{ label: 'Component baseline', slug: 'components' },

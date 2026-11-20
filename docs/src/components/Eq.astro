@@ -1,0 +1,19 @@
+---
+// A display equation, typeset by KaTeX at build time (no script in the reader's browser).
+// `tex` is LaTeX; pages build it from src/lib values so a result is never typed by hand.
+// `from` names where the equation comes from, shown beside it: a data sheet equation number,
+// or "Node60" for one derived on this site. Bad LaTeX fails the build.
+import katex from 'katex';
+
+interface Props {
+	tex: string;
+	from?: string;
+}
+const { tex, from } = Astro.props;
+const html = katex.renderToString(tex, { displayMode: true, throwOnError: true, strict: 'error' });
+---
+
+<div class="eq not-content">
+	<div class="eq-body" set:html={html} />
+	{from && <span class="eq-from">{from}</span>}
+</div>
