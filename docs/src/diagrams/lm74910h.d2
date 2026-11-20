@@ -1,0 +1,51 @@
+# Node60 · LM74910H-Q1 input protection as built (schematic page 2, U201)
+# The thick line is the 60 A path, left to right; each block names the U201 pins on it.
+# The blocks off the path are the resistor ladder on SW and the pins that set or report something.
+# Every block links to its section of the calculations page (the D2Diagram component adds the base path).
+
+direction: right
+
+vars: {
+  d2-config: {
+    layout-engine: dagre
+  }
+}
+
+classes: {
+  external: {style: {fill: "#f1f4f6"; stroke: "#7d8f9b"; stroke-width: 2; border-radius: 8; font-color: "#13283a"}}
+  battery: {style: {fill: "#fff2d9"; stroke: "#bd6b00"; stroke-width: 2; border-radius: 8; font-color: "#13283a"}}
+  bus: {style: {fill: "#bd6b00"; stroke: "#bd6b00"; border-radius: 4; font-color: "#ffffff"; bold: true}}
+  aon: {style: {fill: "#e2f3f1"; stroke: "#087c77"; stroke-width: 2; border-radius: 8; font-color: "#13283a"}}
+  measure: {style: {fill: "#efe9f5"; stroke: "#735590"; stroke-width: 2; border-radius: 8; font-color: "#13283a"}}
+  group: {style: {fill: "#f7f9fa"; stroke: "#a8bac6"; stroke-dash: 4; border-radius: 10; font-color: "#536776"; font-size: 15}}
+  hi: {style: {stroke: "#bd6b00"; stroke-width: 6; font-color: "#bd6b00"}}
+  sense: {style: {stroke: "#735590"; stroke-width: 2; stroke-dash: 5; font-color: "#735590"}}
+  logic: {style: {stroke: "#087c77"; stroke-width: 2; stroke-dash: 2; font-color: "#087c77"}}
+}
+
+in: "VBAT_IN\nJ910 · J901 · busbar BB901\nTVS D201 to GND\npin 2 A · pin 3 SW (internal switch)" {class: external; link: "/calculations/lm74910h/#voltage-ratings-and-the-tvs"}
+q1: "Q201 ‖ Q202 · ideal diode\nsource VBAT_IN → drain VBAT_D\ngates ← pin 1 DGATE" {class: battery; link: "/calculations/lm74910h/#ideal-diode-and-reverse-battery-a-c-dgate"}
+d: "VBAT_D\npin 24 C · pin 22 VS · pin 6 EN\nC209 1 µF to pin 23 CAP" {class: bus; link: "/calculations/lm74910h/#charge-pump-cap"}
+rs: "R201 · 0.3 mΩ · 4-terminal\nRS_SENSE_P → R209 49.9 Ω → pin 20 CS+\nRS_SENSE_P → R210 383 Ω → pin 18 ISCP\nRS_SENSE_N → pin 19 CS−" {class: measure; link: "/calculations/lm74910h/#current-sense-front-end-cs-cs-rset"}
+q2: "Q203 ‖ Q204 · load disconnect\ndrain VBAT_Q2D → source VBAT_PROT\ngates ← R202 10 Ω ← pin 14 HGATE\nC202 10 nF, gates to GND" {class: battery; link: "/calculations/lm74910h/#load-disconnect-and-inrush-hgate-out"}
+out: "VBAT_PROT\npin 15 OUT · pin 16 SLEEP_OV" {class: bus; link: "/calculations/lm74910h/#sleep-mode-sleep-sleep_ov-en"}
+
+ladder: "Ladder from pin 3 SW, 118.97 kΩ\nR204 107 kΩ → pin 4 UVLO\nR205 2 kΩ → BATT_MON (C210 10 nF)\nR206 7.87 kΩ → pin 5 OV\nR207 2.1 kΩ → GND" {class: aon; link: "/calculations/lm74910h/#undervoltage-overvoltage-and-batt_mon-sw-uvlo-ov"}
+ilim: "pin 11 ILIM\nR208 26.7 kΩ to GND\n74.8 A breaker" {class: measure; link: "/calculations/lm74910h/#circuit-breaker-ilim-tmr"}
+tmr: "pin 9 TMR\nC211 68 nF to GND\n0.99 ms · retry 1.54 s" {class: measure; link: "/calculations/lm74910h/#circuit-breaker-ilim-tmr"}
+imon: "pin 10 IMON\nnot connected" {class: external; link: "/calculations/lm74910h/#if-we-fit-imon"}
+flt: "pin 12 FLT\nR203 10 kΩ to 3V3_MAIN\nLM_FLT_L → U401 EIRQ 6" {class: aon; link: "/calculations/lm74910h/#fault-output-flt"}
+slp: "pin 7 SLEEP ← INH\n(LAN8670, R515 10 kΩ to GND)\nlow = parked" {class: aon; link: "/calculations/lm74910h/#sleep-mode-sleep-sleep_ov-en"}
+
+in -> q1: "" {class: hi}
+q1 -> d: "" {class: hi}
+d -> rs: "" {class: hi}
+rs -> q2: "VBAT_Q2D" {class: hi}
+q2 -> out: "" {class: hi}
+
+in -> ladder: "SW follows A\nwhile awake" {class: logic}
+rs -> ilim: "sets the\nbreaker level" {class: sense}
+rs -> tmr: "runs above the\nbreaker level" {class: sense}
+rs -> imon: "0.9 × VSENSE / RSET" {class: sense}
+q2 -> flt: "off on UVLO, OV,\nOCP, SCP" {class: logic}
+d -> slp: "7 Ω bypass to OUT\nwhile parked" {class: logic}

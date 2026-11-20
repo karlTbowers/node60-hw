@@ -70,6 +70,8 @@ A single 60 A RSENSE cannot also resolve parked sleep current. Parked-drain veri
 
 ## Input overcurrent protection
 
+Every equation behind these settings, and each LM74910H-Q1 feature in use, is worked through on the [LM74910H-Q1 calculations page](../../calculations/lm74910h/).
+
 | Protection path | Setting (rev. B) | Implementation / test |
 |---|---|---|
 | Circuit breaker OCP | 74.8 A | R(ILIM) = 12 × RSET / (RSENSE × ILIM): R208 26.7 kΩ 1 %, RSET R209 49.9 Ω (50–100 Ω datasheet range) on 0.3 mΩ |

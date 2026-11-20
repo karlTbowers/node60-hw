@@ -8,6 +8,7 @@
   url: https://my.mouser.com/pdfDocs/EVB-LAN8670-RMII-Users-Guide-600017081.pdf
 - id: S3
   title: TI LM74910H-Q1 data sheet and product information
+  url: https://www.ti.com/lit/ds/symlink/lm74910h-q1.pdf
   verified: 2026-10-13
 - id: S4
   title: TI TPS2HCS08-Q1 data sheet

@@ -1,0 +1,748 @@
+---
+title: 'LM74910H-Q1 input protection: features and calculations'
+description: Every LM74910H-Q1 feature Node60 uses, why U201 is configured the way it is, and every equation behind its values, worked step by step from the parts on the schematic.
+---
+
+import { Aside } from '@astrojs/starlight/components';
+import D2Diagram from '../../../components/D2Diagram.astro';
+import Eq from '../../../components/Eq.astro';
+import Metrics from '../../../components/Metrics.astro';
+import Ref from '../../../components/Ref.astro';
+import * as c from '../../../lib/lm74910h';
+
+export const R = String.raw;
+export const { P, DS, FET, TVS, OP, COUT, si, tex: t, sig, fix, range, pct } = c;
+
+U201, an **LM74910HQRGERQ1**, guards Node60's battery input (<Ref id="DEC-001" />). It drives two banks of MOSFETs with the current shunt between them, and from that one position it blocks a reversed battery, disconnects on overvoltage and undervoltage, trips on overcurrent and on a short circuit, limits inrush, and keeps the always-on supply fed while the node is parked.
+
+This page lists every feature of the part that Node60 uses, why each pin is wired the way it is, and every equation behind the values, solved step by step. The [power-entry page](../../subsystems/power/) gives the summary; this is the working.
+
+<Metrics items={[
+  [si(c.breaker.iLim, 'A'), 'circuit breaker'],
+  [si(c.breaker.tOc, 's', 2, 'm'), 'breaker delay'],
+  [si(c.scp.iScp, 'A'), 'fast short-circuit trip, typical'],
+  [`${fix(c.ladder.ovRise, 1)} V`, 'overvoltage cut-off'],
+  [`${fix(c.ladder.uvFall, 2)} V`, 'undervoltage lockout, falling'],
+  [si(DS.iSleep.typ, 'A'), 'drawn while parked (SLEEP)'],
+]} />
+
+## How to read this page
+
+- **Sources.** Device figures and numbered equations come from TI's data sheet SNOSDE6C (December 2022, revised August 2025; <Ref id="S3" />), LM74910H-Q1 rows. MOSFET figures come from Infineon's IAUTN08S5N012L data sheet rev. 1.0, TVS figures from Vishay's XLD8A24CA data sheet. Part values come from schematic page 2 (`sheets/power-entry.kicad_sch`).
+- **Equation tags.** Each equation carries a tag on the right. "Data sheet eq. 3" is TI's equation with our values in it. "Node60" marks one derived here from Ohm's law or an RC time constant; TI does not vouch for those.
+- **Typical and limits.** Results use the data sheet's typical values unless a line says otherwise. Where limits are given, they combine the data sheet's minimum and maximum with the resistor tolerances.
+- **Computed, not typed.** The numbers on this page are calculated at build time from the part values in `docs/src/lib/lm74910h.ts`. Change a value there and every result follows.
+
+## The circuit as built
+
+<D2Diagram name="lm74910h" caption="U201 and the 60 A path. The thick line is the battery current; each block names the U201 pins on it. Click a block for its section." />
+
+The two MOSFET banks share their drains (the common-drain arrangement the data sheet asks for). Battery current enters at VBAT_IN, passes the ideal-diode FETs Q201 and Q202 from source to drain, crosses the shunt R201, passes the disconnect FETs Q203 and Q204 from drain to source, and leaves as VBAT_PROT. Everything Node60 powers hangs off VBAT_PROT, so the shunt sees the node's whole current.
+
+### Pin by pin
+
+| Pin | Name | Net | Connected to | Why |
+|---|---|---|---|---|
+| 1 | DGATE | DGATE | Gates of Q201, Q202 (both gates of each dual-gate FET) | Drives the ideal diode |
+| 2 | A | VBAT_IN | Sources of Q201, Q202 | Anode sense. On the board it has its own route to the VBAT_IN pour (decision D36) |
+| 3 | SW | LM_SW | Top of the ladder, R204 | Battery voltage for UVLO, OV and BATT_MON, through a switch that opens when parked |
+| 4 | UVLO | LM_UVLO | R204 / R205 tap | Undervoltage lockout |
+| 5 | OV | LM_OV | R206 / R207 tap | Overvoltage cut-off |
+| 6 | EN | VBAT_D | Tied to VS | Always enabled. Shutdown mode is not used |
+| 7 | SLEEP | INH | LAN8670 INH (R515 10 kΩ to GND) | The PHY decides whether the node is awake or parked |
+| 8, 17, 21 | NC | none | Not connected | |
+| 9 | TMR | LM_TMR | C211 {si(P.C211.v, 'F')} to GND | Breaker delay and retry time |
+| 10 | IMON | none | Not connected | Not used; see [If we fit IMON](#if-we-fit-imon) |
+| 11 | ILIM | LM_ILIM | R208 {si(P.R208.v, 'Ω')} to GND | Breaker threshold |
+| 12 | FLT | LM_FLT_L | R203 {si(P.R203.v, 'Ω')} to 3V3_MAIN, U401 ball B11 (EIRQ 6) | Fault report to the MCU |
+| 13 | GND | GND | Ground plane | |
+| 14 | HGATE | HGATE | R202 {si(P.R202.v, 'Ω')} to the gates of Q203, Q204; C202 {si(P.C202.v, 'F')} from the gates to GND | Drives the disconnect FETs, with a slow ramp at turn-on |
+| 15 | OUT | VBAT_PROT | Sources of Q203, Q204 | Output sense and the parked bypass path |
+| 16 | SLEEP_OV | VBAT_PROT | Tied to OUT | Clamp, not cut-off, on overvoltage while parked |
+| 18 | ISCP | LM_ISCP | R210 {si(P.R210.v, 'Ω')} to RS_SENSE_P; C213 (not fitted) to RS_SENSE_N | Short-circuit threshold |
+| 19 | CS− | RS_SENSE_N | R201 sense pad 3 | Current sense, load side |
+| 20 | CS+ | LM_CSP | R209 {si(P.R209.v, 'Ω')} to RS_SENSE_P (R201 sense pad 2); C212 {si(P.C212.v, 'F')} to CS− | Current sense, battery side, through RSET |
+| 22 | VS | VBAT_D | Common drain; C208 100 nF to GND | Supply. The data sheet asks for 100 nF here |
+| 23 | CAP | LM_CAP | C209 {si(P.C209.v, 'F')} to VS | Charge pump reservoir |
+| 24 | C | VBAT_D | Drains of Q201, Q202 | Cathode sense |
+| 25 | RTN | none | Exposed pad, not connected | The data sheet says to leave it floating and not join it to the ground plane |
+
+### Why this part
+
+<Ref id="DEC-001" /> records the choice. The LM74910H-Q1 is the "H" member of TI's LM749x0-Q1 family, and three of its differences matter here (data sheet section 4):
+
+| | LM74900-Q1 | LM74910-Q1 | LM74910H-Q1 |
+|---|---|---|---|
+| Overcurrent while in SLEEP | Latches off | Latches off | **Retries by itself** |
+| Absolute maximum input | 70 V | 70 V | **{DS.vAbsMax} V** |
+| IMON accuracy | ±12.5 % at 20 mV | ±12.5 % at 20 mV | **±2 % at 30 mV** |
+| Charge pump strength | 2.7 mA | 4.2 mA | 4.2 mA |
+
+The first row decides it. A parked Node60 has no MCU running, so nothing could reset a latched-off controller. See [SLEEP mode](#sleep-mode-sleep-sleep_ov-en).
+
+## Ideal diode and reverse battery (A, C, DGATE)
+
+**What it does.** DGATE drives Q201 and Q202 so the pair behaves like a diode with almost no forward drop. The controller watches the voltage from A (the sources) to C (the drains):
+
+- Forward, it holds A − C at {si(DS.vAcReg.typ, 'V')} by adjusting the gate voltage. Once the current is high enough that the fully-on FETs drop more than that, the gates sit at full drive ({DS.vDgate.typ} V typical, {DS.vDgate.min} V minimum above A).
+- If A − C reaches −{si(DS.vAcRev.typ, 'V')} (current flowing backwards), a comparator pulls DGATE to A within {si(DS.tDgateOff.typ, 's')} typical, sinking {DS.iDgateSink.typ} A.
+- After a turn-off, the body diodes conduct until A − C exceeds {si(DS.vAcFwd.typ, 'V')}, then the gates come back on.
+- With the battery reversed, DGATE stays tied to A, the FETs stay off and their body diodes block. The A pin is rated to −{DS.vRevMax} V.
+
+**Why we use it.** Reverse-battery protection is a requirement of the input (<Ref id="REQ-PWR-002" />), and a Schottky diode at 60 A would burn tens of watts. The same stage also stops VBAT_PROT's capacitors discharging back into the harness when the battery voltage dips.
+
+**Why two FETs, and both gates of each.** Each IAUTN08S5N012L holds two transistors, a small linear one (gate LIN) and the main one (gate ON). Its {si(FET.rds10.max, 'Ω', 3, 'm')} maximum on-resistance applies with both gates at 10 V, so the schematic ties both gates of each FET to DGATE. Two FETs in parallel halve the resistance and, since <Ref id="DEC-016" /> rev. C, let each battery terminal feed its own FET through mirrored copper.
+
+### On-resistance of the bank
+
+<Eq from="Node60" tex={R`\begin{aligned}
+R_{bank} &= \frac{R_{DS(on)}}{n} = \frac{${t(FET.rds10.max, 'Ω', 3, 'm')}}{${FET.n}} = ${t(c.diode.rBank.max, 'Ω', 3, 'm')} \quad \text{(maximum, 25 °C)} \\[4pt]
+R_{bank} &= \frac{${t(FET.rds10.typ, 'Ω', 3, 'm')}}{${FET.n}} = ${t(c.diode.rBank.typ, 'Ω', 3, 'm')} \quad \text{(typical, 25 °C)}
+\end{aligned}`} />
+
+These are 25 °C figures at 10 V gate drive. On-resistance rises with junction temperature (Infineon's diagram 8), and at DGATE's {DS.vDgate.min} V minimum the FET is a little short of its 10 V rating point (it is {si(FET.rds6.max, 'Ω', 3, 'm')} maximum at 6 V). The same figures apply to the disconnect bank.
+
+### Where regulation ends
+
+Below this current the controller holds {si(DS.vAcReg.typ, 'V')} across the bank by lowering the gate voltage. Above it the FETs are fully on and the drop is just current times resistance.
+
+<Eq from="Node60" tex={R`I_{REG} = \frac{V_{AC\_REG}}{R_{bank}} = \frac{${t(DS.vAcReg.typ, 'V')}}{${t(c.diode.rBank.max, 'Ω', 3, 'm')}} = ${t(c.diode.iReg.maxR, 'A')}`} />
+
+With typical on-resistance it is {si(c.diode.iReg.typR, 'A')}.
+
+### Drop and heat at {OP.iRated} A
+
+<Eq from="Node60" tex={R`\begin{aligned}
+V_{AC} &= I \times R_{bank} = ${OP.iRated}\,\mathrm{A} \times ${t(c.diode.rBank.max, 'Ω', 3, 'm')} = ${t(c.diode.vDrop.max, 'V')} \\[4pt]
+P_{bank} &= I^2 \times R_{bank} = (${OP.iRated}\,\mathrm{A})^2 \times ${t(c.diode.rBank.max, 'Ω', 3, 'm')} = ${t(c.diode.pBank.max, 'W')}
+\end{aligned}`} />
+
+That is about {fix(c.diode.pBank.max / FET.n, 2)} W in each FET, and the same again in each disconnect FET. The data sheet suggests a drop under 50 mV at full current as a starting point for the ideal-diode FET (section 9.2.4); {si(c.diode.vDrop.max, 'V')} meets it.
+
+### Reverse current needed to trip the fast comparator
+
+The comparator sees the same resistance, so a lower on-resistance means more reverse current flows before it trips. The worst case uses the typical on-resistance and the comparator's widest limit.
+
+<Eq from="Node60" tex={R`\begin{aligned}
+I_{REV} &= \frac{|V_{AC\_REV}|}{R_{bank}} = \frac{${t(DS.vAcRev.typ, 'V')}}{${t(c.diode.rBank.typ, 'Ω', 3, 'm')}} = ${t(c.diode.iRevTrip.typ, 'A')} \quad \text{(typical)} \\[4pt]
+I_{REV,max} &= \frac{${t(DS.vAcRev.max, 'V')}}{${t(c.diode.rBank.typ, 'Ω', 3, 'm')}} = ${t(c.diode.iRevTrip.max, 'A')}
+\end{aligned}`} />
+
+This is the fast path only. In a slow reversal the regulation loop has already lowered the gate voltage as the current fell, so no steady reverse current flows (data sheet section 8.3.2.1). The {si(DS.tDgateOff.typ, 's')} turn-off time is specified with 10 nF on DGATE; our two FETs present about {si(c.diode.gateLoad.typ, 'F')} ({si(c.diode.gateLoad.max, 'F')} maximum), so expect it to be somewhat longer.
+
+### Gate charge against ripple frequency
+
+When the battery voltage carries AC ripple (the ISO 16750-2 and LV124 E-06 test sweeps 2 V peak to peak up to {OP.fRipple / 1e3} kHz), the diode may turn off and on every cycle, and the charge pump has to refill the gates each time. The data sheet gives the largest gate-source charge it can refill per cycle, using the charge pump's minimum current:
+
+<Eq from="Data sheet eq. 16" tex={R`Q_{GS\_MAX} = \frac{${t(DS.iCap.min, 'A')}}{F_{AC\_RIPPLE}} = \frac{${t(DS.iCap.min, 'A')}}{${t(OP.fRipple, 'Hz')}} = ${t(c.diode.qgsMaxAtRipple, 'C')}`} />
+
+Our bank is two FETs at {si(FET.qgs.typ, 'C')} typical ({si(FET.qgs.max, 'C')} maximum) each:
+
+<Eq from="Node60" tex={R`\begin{aligned}
+Q_{GS,bank} &= n \times Q_{GS} = ${FET.n} \times ${t(FET.qgs.typ, 'C')} = ${t(c.diode.qgsBank.typ, 'C')} \\[4pt]
+F_{max} &= \frac{${t(DS.iCap.min, 'A')}}{Q_{GS,bank}} = \frac{${t(DS.iCap.min, 'A')}}{${t(c.diode.qgsBank.typ, 'C')}} = ${t(c.diode.fRectMax.typ, 'Hz')}
+\end{aligned}`} />
+
+<Aside type="caution" title="Above about 10 kHz the bank is over this limit">
+By equation 16 the two FETs can be fully switched every cycle only up to about {si(c.diode.fRectMax.typ, 'Hz')} ({si(c.diode.fRectMax.min, 'Hz')} with maximum gate charge), not {OP.fRipple / 1e3} kHz. Above that the gates are not fully recharged each cycle and the FETs carry the ripple current at a higher drop. It only matters when the diode actually switches each cycle, which needs the load light enough for VBAT_PROT's capacitors to hold the output above the ripple's troughs. Not tested, and no gate names it; see [Open items](#open-items).
+</Aside>
+
+## Charge pump (CAP)
+
+**What it does.** The charge pump lifts CAP above VS to supply both gate drivers. It runs until CAP − VS reaches {DS.vCapOff} V, stops, and restarts at {DS.vCapOn} V. Neither gate driver is enabled until CAP − VS has passed {DS.vCapUvlo.typ} V. In SLEEP it is off.
+
+### Size of C209
+
+The data sheet asks for at least 0.1 µF, and recommends ten times the total input capacitance of the FETs (section 9.2.3.2). Each FET is {si(FET.ciss.max, 'F', 4)} maximum with both gates driven, and there are four:
+
+<Eq from="Data sheet 9.2.3.2" tex={R`C_{CAP} \ge 10 \times \sum C_{ISS} = 10 \times 4 \times ${t(FET.ciss.max, 'F', 4)} = ${t(c.pump.cMin.max, 'F')}`} />
+
+The next standard value up is {si(P.C209.v, 'F')}. C209 is a 100 V X7R part in 1206; it only ever sees about {DS.vCapOff} V, so it keeps nearly all of its capacitance.
+
+### Delay before the gates can be driven
+
+The larger capacitor takes longer to charge at power-up and on every wake from SLEEP:
+
+<Eq from="Data sheet eq. 1" tex={R`\begin{aligned}
+T_{DRV\_EN} &= ${t(DS.tDrvEn0, 's')} + \frac{C_{CAP} \times V_{CAP\_UVLOR}}{${t(DS.iCap.typ, 'A')}} \\[4pt]
+&= ${t(DS.tDrvEn0, 's')} + \frac{${t(P.C209.v, 'F')} \times ${t(DS.vCapUvlo.typ, 'V')}}{${t(DS.iCap.typ, 'A')}} \\[4pt]
+&= ${t(DS.tDrvEn0, 's')} + ${t(c.pump.tChargeEq, 's', 3, 'm')} = ${t(c.pump.tDrvEn, 's', 3, 'm')}
+\end{aligned}`} />
+
+The equation is written with 2.7 mA. The data sheet's comparison table gives the LM74910H-Q1 a 4.2 mA charge pump; with that figure the same expression gives {si(c.pump.tDrvEnH, 's', 3, 'm')}. Either way it is several times the {si(c.pump.tDrvEn100n, 's', 2, 'm')} of the minimum 0.1 µF capacitor, and it is part of the wake time measured at <Ref id="GATE-NET-01" />.
+
+## Load disconnect and inrush (HGATE, OUT)
+
+**What it does.** HGATE drives Q203 and Q204. When it is on, it sits {DS.vHgate.typ} V typical above OUT. It turns the FETs off, by pulling HGATE to OUT with at least {si(DS.iHgateSink.min, 'A')}, on any of:
+
+- battery voltage under the UVLO threshold or over the OV threshold,
+- the circuit breaker timing out, or the fast short-circuit trip,
+- SLEEP going low (parked).
+
+**Why we use it.** The ideal diode alone cannot switch the load off: its body diodes conduct forward. The second bank, facing the other way, gives a true disconnect, and its slow turn-on limits the current that charges VBAT_PROT's capacitors.
+
+### Turn-on slope
+
+HGATE turns on with a {si(DS.iHgate.typ, 'A')} current source ({range(DS.iHgate.min, DS.iHgate.max, 'A')} over the limits). That current charges C202, so the gates, and with them VBAT_PROT, rise at a fixed slope:
+
+<Eq from="Node60" tex={R`\frac{dV}{dt} = \frac{I_{HGATE}}{C_{dVdT}} = \frac{${t(DS.iHgate.typ, 'A')}}{${t(P.C202.v, 'F')}} = ${fix(c.hgate.slew.typ / 1e3, 1)}\,\mathrm{V/ms}`} />
+
+Over the current source's limits it is {fix(c.hgate.slew.min / 1e3, 1)} to {fix(c.hgate.slew.max / 1e3, 1)} V/ms. The FETs' own gate-to-drain capacitance ({si(c.hgate.crssBank, 'F')} for the pair) adds under 2 % to C202.
+
+### Inrush current
+
+The capacitance the FETs charge is everything on VBAT_PROT plus, through L201, everything on VBAT_FILT. The outputs' loads are not included: the six output switches are off until firmware turns them on.
+
+| Net | Capacitors | Total (nominal) |
+|---|---|---|
+| VBAT_PROT | {Object.keys(COUT.VBAT_PROT).join(', ')} | {si(c.hgate.cProt, 'F')} |
+| VBAT_FILT | {Object.keys(COUT.VBAT_FILT).join(', ')} | {si(c.hgate.cFilt, 'F')} |
+| **C<sub>OUT</sub>** | | **{si(c.hgate.cOut, 'F')}** |
+
+The data sheet's equation sizes C<sub>dVdT</sub> for a wanted inrush current. Our capacitor is already chosen, so we solve it for the current:
+
+<Eq from="Data sheet eq. 2, rearranged" tex={R`\begin{aligned}
+C_{dVdT} &= C_{OUT} \times \frac{I_{HGATE\_DRV}}{I_{INRUSH}} \\[4pt]
+\Rightarrow\quad I_{INRUSH} &= C_{OUT} \times \frac{I_{HGATE\_DRV}}{C_{dVdT}} \\[4pt]
+&= ${t(c.hgate.cOut, 'F')} \times \frac{${t(DS.iHgate.typ, 'A')}}{${t(P.C202.v, 'F')}} = ${t(c.hgate.iInrush.typ, 'A', 3, '')}
+\end{aligned}`} />
+
+At the current source's {si(DS.iHgate.max, 'A')} maximum it is {si(c.hgate.iInrush.max, 'A', 3, '')}. The capacitances are nominal; the ceramics lose some under DC bias, so the real current is lower. It lasts for the time the output takes to reach the battery voltage:
+
+<Eq from="Data sheet eq. 17" tex={R`T_{INRUSH} = \frac{V_{IN} \times C_{OUT}}{I_{INRUSH}} = \frac{${t(OP.vBat, 'V')} \times ${t(c.hgate.cOut, 'F')}}{${t(c.hgate.iInrush.typ, 'A', 3, '')}} = ${t(c.hgate.tInrush, 's', 3, 'm')}`} />
+
+While the output ramps, the disconnect FETs drop the difference between input and output. With no load, the energy they absorb equals the energy stored in the capacitors:
+
+<Eq from="Node60" tex={R`E = \tfrac{1}{2} \times C_{OUT} \times V_{IN}^2 = \tfrac{1}{2} \times ${t(c.hgate.cOut, 'F')} \times (${t(OP.vBat, 'V')})^2 = ${t(c.hgate.eInrush, 'J')}`} />
+
+{si(c.hgate.eInrush, 'J')} over {si(c.hgate.tInrush, 's', 2, 'm')}, peaking at about {si(c.hgate.pPeak, 'W', 2)}, is far inside what two 80 V, 300 A FETs can take. An inrush of {si(c.hgate.iInrush.typ, 'A', 2, '')} is also nowhere near the {si(c.breaker.iLim, 'A')} breaker, so start-up cannot trip it. What can load the breaker at wake is the regulators and the outputs starting; that is what <Ref id="GATE-PWR-01" /> and <Ref id="GATE-NET-01" /> check.
+
+<Aside type="note" title="R202 sits in a different place from the data sheet's figure">
+The data sheet's figures 8-2 and 9-1 connect HGATE straight to the gate and put R<sub>G</sub> in series with C<sub>dVdT</sub>, on the branch to ground. It says the resistor "improves the turn off time", by keeping the capacitor's charge from holding the gate up. On our schematic R202 is in series between the HGATE pin and the gates, and C202 goes from the gates straight to ground. The turn-on slope is the same. At turn-off, HGATE has to remove the gates' charge (about {si(c.hgate.qGates, 'C')} for the pair) and C202's (about {si(c.hgate.qCdvdt, 'C')} from a {OP.vBat} V rail) through R202. At {si(P.R202.v, 'Ω')} against a {si(DS.iHgateSink.typ, 'A')} pull-down the difference between the two arrangements is small, but ours is not the one TI drew. See [Open items](#open-items).
+</Aside>
+
+## Current sense front end (CS+, CS−, RSET)
+
+**What it does.** The controller measures the voltage across R201 between CS+ and CS−. That one measurement feeds the circuit breaker, the short-circuit comparator and the IMON output.
+
+**How it is wired.** R201 is a 4-terminal shunt (Isabellenhütte BVR-Z-R0003-1.0, {si(P.R201.v, 'Ω', 3, 'm')} ±1 %; <Ref id="DEC-001" /> rev. B). Its two sense pads are their own nets, RS_SENSE_P on the battery side and RS_SENSE_N on the load side, so the controller reads the resistor itself and not the copper carrying 60 A.
+
+- **R209 (RSET), {si(P.R209.v, 'Ω')},** joins RS_SENSE_P to CS+. The data sheet asks for 50 Ω to 100 Ω; {si(P.R209.v, 'Ω')} is the standard 1 % value for the 50 Ω its example uses. RSET scales the breaker threshold and the IMON gain together.
+- **CS−** goes straight to RS_SENSE_N.
+- **C212, {si(P.C212.v, 'F')},** from CS+ to CS−, is the filter capacitor from the data sheet's figure 9-1.
+- **VS and C** stay on the 60 A net VBAT_D, not on the sense net, so the controller's supply current does not flow in the sense lines.
+- The INA228 (U202) takes its own pair of tracks from the same two sense pads (<Ref id="DEC-002" />).
+
+### Sense voltage and heat
+
+<Eq from="Node60" tex={R`\begin{aligned}
+V_{SENSE} &= I \times R_{SENSE} = ${OP.iRated}\,\mathrm{A} \times ${t(P.R201.v, 'Ω', 3, 'm')} = ${t(c.sense.vRated, 'V')} \\[4pt]
+P_{SENSE} &= I^2 \times R_{SENSE} = (${OP.iRated}\,\mathrm{A})^2 \times ${t(P.R201.v, 'Ω', 3, 'm')} = ${t(c.sense.pRated, 'W')}
+\end{aligned}`} />
+
+R201 is rated 5 W with its terminals above 100 °C. At the breaker threshold it dissipates {si(c.breaker.pShunt, 'W')}.
+
+### Input filter
+
+<Eq from="Node60" tex={R`\begin{aligned}
+\tau &= R_{SET} \times C_{212} = ${t(P.R209.v, 'Ω')} \times ${t(P.C212.v, 'F')} = ${t(c.sense.tauCs, 's')} \\[4pt]
+f_c &= \frac{1}{2\pi \times R_{SET} \times C_{212}} = ${t(c.sense.fcCs, 'Hz')}
+\end{aligned}`} />
+
+Half a microsecond is short against the short-circuit comparator's {si(DS.tScp.typ, 's')} response, so the filter does not slow the protection.
+
+### Limit of the sense inputs
+
+CS+ and ISCP may sit at most {DS.csAbsMax} V from CS− (absolute maximum). Across {si(P.R201.v, 'Ω', 3, 'm')} that is:
+
+<Eq from="Node60" tex={R`I = \frac{${t(DS.csAbsMax, 'V')}}{${t(P.R201.v, 'Ω', 3, 'm')}} = ${t(c.sense.iAbsMax, 'A', 3, '')}`} />
+
+The fast trip acts long before a fault current could reach that.
+
+## Circuit breaker (ILIM, TMR)
+
+**What it does.** When the sense voltage passes the level set at ILIM, a timer starts charging C211. If the overload ends first, the timer resets and nothing else happens. If the timer runs out, HGATE turns the disconnect FETs off. The controller then waits and tries again by itself.
+
+**Why we use it.** The architecture before the LM74910H had no overcurrent protection on the input at all (<Ref id="DEC-001" />). The breaker is set to {OP.iBreakerTarget} A, 25 % above the {OP.iRated} A the input is rated for, so normal load passes and a sustained overload does not. The delay lets short peaks through, such as capacitors and lamps on the outputs charging.
+
+### Threshold: choosing R208
+
+The data sheet gives the resistor for a wanted threshold. With RSET {si(P.R209.v, 'Ω')}, the {si(P.R201.v, 'Ω', 3, 'm')} shunt and a {OP.iBreakerTarget} A target:
+
+<Eq from="Data sheet eq. 3" tex={R`\begin{aligned}
+R_{ILIM} &= \frac{12 \times R_{SET}}{R_{SENSE} \times I_{LIM}} \\[4pt]
+&= \frac{12 \times ${t(P.R209.v, 'Ω')}}{${t(P.R201.v, 'Ω', 3, 'm')} \times ${OP.iBreakerTarget}\,\mathrm{A}} = \frac{${sig(DS.kIlim * P.R209.v, 4)}}{${sig(P.R201.v * OP.iBreakerTarget, 3)}}\,\mathrm{\Omega} = ${t(c.breaker.rIlimIdeal, 'Ω', 4)}
+\end{aligned}`} />
+
+The nearest standard 1 % value is {si(P.R208.v, 'Ω')} (R208). Putting that back gives the threshold we actually have:
+
+<Eq from="Data sheet eq. 3, rearranged" tex={R`\begin{aligned}
+I_{LIM} &= \frac{12 \times R_{SET}}{R_{SENSE} \times R_{ILIM}} \\[4pt]
+&= \frac{12 \times ${t(P.R209.v, 'Ω')}}{${t(P.R201.v, 'Ω', 3, 'm')} \times ${t(P.R208.v, 'Ω')}} = \frac{${sig(DS.kIlim * P.R209.v, 4)}}{${sig(P.R201.v * P.R208.v, 3)}}\,\mathrm{A} = ${t(c.breaker.iLim, 'A', 4)}
+\end{aligned}`} />
+
+The 12 in the equation carries volts. At that current the shunt drops:
+
+<Eq from="Node60" tex={R`V_{SENSE} = ${t(c.breaker.iLim, 'A', 4)} \times ${t(P.R201.v, 'Ω', 3, 'm')} = ${t(c.breaker.vSense, 'V')}`} />
+
+### How far the threshold can move
+
+The data sheet gives no tolerance for the breaker current itself. It does give the comparator threshold at the ILIM pin: {DS.vSnsTh.typ} V typical, {DS.vSnsTh.min} V to {DS.vSnsTh.max} V. Equation 3's constant of 12 V matches a {c.breaker.vIlimEq} V threshold at ILIM fed with a tenth of V<sub>SENSE</sub> / R<sub>SET</sub> (equation 7 sends the other nine tenths to IMON). That reading is ours; the data sheet does not state it. If it holds, the threshold scales with the comparator's limits:
+
+<Eq from="Node60, estimate" tex={R`\begin{aligned}
+I_{LIM,min} &= ${t(c.breaker.iLim, 'A')} \times \frac{${DS.vSnsTh.min}\,\mathrm{V}}{${c.breaker.vIlimEq}\,\mathrm{V}} = ${t(c.breaker.iLimMin, 'A')} \\[4pt]
+I_{LIM,max} &= ${t(c.breaker.iLim, 'A')} \times \frac{${DS.vSnsTh.max}\,\mathrm{V}}{${c.breaker.vIlimEq}\,\mathrm{V}} = ${t(c.breaker.iLimMax, 'A')}
+\end{aligned}`} />
+
+The three 1 % resistors (R201, R208, R209) add up to ±3 % on top. Even the low end stays above {OP.iRated} A. <Ref id="GATE-PWR-01" /> measures the real threshold.
+
+### Delay: C211
+
+The data sheet's timer equation, with its 82.3 µA (the {si(DS.iTmrSrc.typ, 'A')} charging current less the {si(DS.iTmrSink.typ, 'A')} pull-down) and the {DS.vTmrOc.typ} V level at which HGATE turns off:
+
+<Eq from="Data sheet eq. 4" tex={R`T_{OC} = ${DS.vTmrOc.typ} \times \frac{C_{TMR}}{${t(DS.iTmrEq, 'A')}} = ${DS.vTmrOc.typ}\,\mathrm{V} \times \frac{${t(P.C211.v, 'F')}}{${t(DS.iTmrEq, 'A')}} = ${t(c.breaker.tOc, 's', 3, 'm')}`} />
+
+Working backwards, a 1 ms delay needs {si(c.breaker.cTmrFor1ms, 'F')}; {si(P.C211.v, 'F')} is the standard value, the same one the data sheet's own 1 ms example picks. C211 is a C0G part, so the delay does not drift with temperature or voltage.
+
+Over the data sheet's limits (charging current {range(DS.iTmrSrc.min, DS.iTmrSrc.max, 'A')}, trip level {DS.vTmrOc.min} V to {DS.vTmrOc.max} V) and C211's ±5 %, the delay runs from about {si(c.breaker.tOcMin, 's', 2, 'm')} to {si(c.breaker.tOcMax, 's', 2, 'm')}.
+
+1 ms is a starting point (<Ref id="DEC-001" />). It is tuned against what the node really draws at start-up and when outputs switch on (<Ref id="GATE-PWR-01" />).
+
+### Warning before the trip
+
+FLT goes low when the timer reaches {DS.vTmrFlt.typ} V, a little before the {DS.vTmrOc.typ} V at which the FETs turn off:
+
+<Eq from="Node60, from eq. 4" tex={R`\begin{aligned}
+T_{FLT} &= ${DS.vTmrFlt.typ}\,\mathrm{V} \times \frac{${t(P.C211.v, 'F')}}{${t(DS.iTmrEq, 'A')}} = ${t(c.breaker.tFlt, 's', 3, 'm')} \\[4pt]
+T_{OC} - T_{FLT} &= ${t(c.breaker.tOc, 's', 3, 'm')} - ${t(c.breaker.tFlt, 's', 3, 'm')} = ${t(c.breaker.tWarn, 's')}
+\end{aligned}`} />
+
+So the MCU gets about {si(c.breaker.tWarn, 's', 2)} of warning. See [Fault output](#fault-output-flt) for what that is worth.
+
+### Retry
+
+After a trip the controller charges and discharges C211 {DS.retryCycles} times with {si(DS.iTmrSink.typ, 'A')}, then turns the FETs back on:
+
+<Eq from="Data sheet eq. 5" tex={R`T_{RETRY} = 22.7 \times 10^{6} \times C_{TMR} = 22.7 \times 10^{6}\,\mathrm{\tfrac{s}{F}} \times ${t(P.C211.v, 'F')} = ${t(c.breaker.tRetry, 's')}`} />
+
+As a check, the same equation gives {si(c.breaker.tRetry10n, 's')} for 10 nF, and the data sheet's table lists 230 ms typical for that capacitor.
+
+If the fault is still there, the breaker trips again after another {si(c.breaker.tOc, 's', 2, 'm')}. The FETs then conduct fault current for this fraction of the time:
+
+<Eq from="Node60" tex={R`\frac{T_{OC}}{T_{OC} + T_{RETRY}} = \frac{${t(c.breaker.tOc, 's', 3, 'm')}}{${t(c.breaker.tOc, 's', 3, 'm')} + ${t(c.breaker.tRetry, 's', 4, 'm')}} = ${fix(c.breaker.duty * 100, 3)}\,\%`} />
+
+**Why retry and not latch.** The data sheet offers latch-off by adding a 100 kΩ resistor across C211. We do not fit it. A latch is cleared by toggling EN or removing the supply, and Node60 has nothing that could do either: EN is tied high and the MCU is powered from behind the breaker. With retry, the node comes back by itself once the fault is gone.
+
+## Short-circuit protection (ISCP)
+
+**What it does.** A second, fast comparator watches the same sense voltage. When it passes the ISCP threshold, HGATE is pulled to OUT within {si(DS.tScp.typ, 's')} typical ({si(DS.tScp.max, 's')} maximum), with no timer, and FLT goes low at the same moment. The retry afterwards is the same as the breaker's.
+
+**Why we use it.** A hard short on VBAT_PROT would otherwise carry fault current for the breaker's full {si(c.breaker.tOc, 's', 2, 'm')}. The fast trip limits that to microseconds.
+
+### Why the default threshold is not enough
+
+With ISCP tied straight to the shunt, the threshold is a fixed {si(DS.vScp0.typ, 'V')} ({range(DS.vScp0.min, DS.vScp0.max, 'V', 4)}). The data sheet's equation for the current that corresponds to:
+
+<Eq from="Data sheet eq. 9, rearranged" tex={R`\begin{aligned}
+R_{SENSE} &= \frac{V_{SENSE}}{I_{SCP}} \\[4pt]
+\Rightarrow\quad I_{SCP} &= \frac{V_{SENSE}}{R_{SENSE}} = \frac{${t(DS.vScp0.typ, 'V')}}{${t(P.R201.v, 'Ω', 3, 'm')}} = ${t(c.scp.iDefault.typ, 'A')}
+\end{aligned}`} />
+
+Over the limits that is {range(c.scp.iDefault.min, c.scp.iDefault.max, 'A')}. Its low end is under the {OP.iRated} A rating and the whole window sits under the {OP.iBreakerTarget} A breaker, so the fast trip would act on overloads the breaker is meant to time. The threshold has to move up.
+
+### Raising it: choosing R210
+
+A resistor in series with ISCP raises the threshold, because the pin draws a {si(DS.iScp.typ, 'A')} bias current through it. For an {OP.iScpTarget} A trip the shunt drops {OP.iScpTarget} A × {si(P.R201.v, 'Ω', 3, 'm')} = {si(OP.iScpTarget * P.R201.v, 'V')}, so:
+
+<Eq from="Data sheet eq. 6, rearranged" tex={R`\begin{aligned}
+V_{SNS\_SCP} &= (${t(DS.iScp.typ, 'A')} \times R_{ISCP}) + ${t(DS.vScp0.typ, 'V')} \\[4pt]
+\Rightarrow\quad R_{ISCP} &= \frac{V_{SNS\_SCP} - ${t(DS.vScp0.typ, 'V')}}{${t(DS.iScp.typ, 'A')}} \\[4pt]
+&= \frac{${t(OP.iScpTarget * P.R201.v, 'V')} - ${t(DS.vScp0.typ, 'V')}}{${t(DS.iScp.typ, 'A')}} = \frac{${t(OP.iScpTarget * P.R201.v - DS.vScp0.typ, 'V')}}{${t(DS.iScp.typ, 'A')}} = ${t(c.scp.rIscpIdeal, 'Ω')}
+\end{aligned}`} />
+
+The nearest standard 1 % value is {si(P.R210.v, 'Ω')} (R210). With it:
+
+<Eq from="Data sheet eq. 6" tex={R`\begin{aligned}
+V_{SNS\_SCP} &= (${t(DS.iScp.typ, 'A')} \times ${t(P.R210.v, 'Ω')}) + ${t(DS.vScp0.typ, 'V')} \\[4pt]
+&= ${t(c.scp.vShift, 'V', 4)} + ${t(DS.vScp0.typ, 'V')} = ${t(c.scp.vScp, 'V', 4)} \\[4pt]
+I_{SCP} &= \frac{V_{SNS\_SCP}}{R_{SENSE}} = \frac{${t(c.scp.vScp, 'V', 4)}}{${t(P.R201.v, 'Ω', 3, 'm')}} = ${t(c.scp.iScp, 'A')}
+\end{aligned}`} />
+
+### The window
+
+The same equation at the data sheet's limits (bias current {range(DS.iScp.min, DS.iScp.max, 'A')}, base threshold {range(DS.vScp0.min, DS.vScp0.max, 'V', 4)}):
+
+<Eq from="Data sheet eq. 6, limits" tex={R`\begin{aligned}
+V_{min} &= (${t(DS.iScp.min, 'A')} \times ${t(P.R210.v, 'Ω')}) + ${t(DS.vScp0.min, 'V', 4)} = ${t(c.scp.vScpMin, 'V')} \\[4pt]
+I_{min} &= \frac{${t(c.scp.vScpMin, 'V')}}{${t(P.R201.v, 'Ω', 3, 'm')}} = ${t(c.scp.iScpMin, 'A')} \\[4pt]
+V_{max} &= (${t(DS.iScp.max, 'A')} \times ${t(P.R210.v, 'Ω')}) + ${t(DS.vScp0.max, 'V')} = ${t(c.scp.vScpMax, 'V')} \\[4pt]
+I_{max} &= \frac{${t(c.scp.vScpMax, 'V')}}{${t(P.R201.v, 'Ω', 3, 'm')}} = ${t(c.scp.iScpMax, 'A')}
+\end{aligned}`} />
+
+R201's and R210's 1 % widen it by about another 1 % each way. This is the same {range(c.scp.iScpMin, c.scp.iScpMax, 'A')} window rev. A had with no resistor on its 0.25 mΩ shunt, which is why {si(P.R210.v, 'Ω')} was picked when the shunt changed (<Ref id="DEC-001" /> rev. B). A 0.2 mΩ shunt was rejected for the same reason: even with no resistor its trip would sit at 100 A.
+
+<Aside type="caution" title="The fast trip's window overlaps the breaker">
+The breaker is {si(c.breaker.iLim, 'A')} typical and the fast trip can be as low as {si(c.scp.iScpMin, 'A')}. On a unit at the low end of the window, an overload between about {fix(c.scp.iScpMin, 0)} A and {fix(c.breaker.iLim, 0)} A trips at once, without the {si(c.breaker.tOc, 's', 2, 'm')} delay. The margin above the {OP.iRated} A rating is {pct(c.scp.iScpMin / OP.iRated - 1, 0)} at worst. This was accepted with the window in <Ref id="DEC-001" />; <Ref id="GATE-PWR-01" /> measures both thresholds.
+</Aside>
+
+### C213, not fitted
+
+The data sheet shows an optional capacitor from ISCP to CS− that, with R<sub>ISCP</sub>, filters out very short spikes so they do not trip the comparator. The footprint is on the board (C213, {si(P.C213.v, 'F')}) and left empty. If it were fitted:
+
+<Eq from="Node60" tex={R`\tau = R_{ISCP} \times C_{213} = ${t(P.R210.v, 'Ω')} \times ${t(P.C213.v, 'F')} = ${t(c.scp.tauDeglitch, 's')}`} />
+
+That would add a few microseconds to the fast trip's response. It stays empty unless testing shows false trips.
+
+## Undervoltage, overvoltage and BATT_MON (SW, UVLO, OV)
+
+**What it does.** Two comparators, each with a {DS.vOvR.typ} V rising and {DS.vOvF.typ} V falling threshold, watch a resistor ladder on the battery voltage. If the UVLO pin falls under its threshold or the OV pin rises over its threshold, HGATE turns the disconnect FETs off and FLT goes low. The ladder hangs from SW, which an internal switch connects to A (the battery side) only while the part is awake.
+
+**Why we use it.**
+
+- **Overvoltage cut-off** protects everything downstream. Node60's regulators are 40 V-class parts (<Ref id="REQ-PWR-002" />).
+- **Undervoltage lockout** switches the node off cleanly when the battery is too low to run it, with hysteresis so it does not chatter.
+- **The same ladder gives the MCU its battery voltage reading**, BATT_MON, on a third tap (<Ref id="REQ-MON-004" />). Because the ladder is on SW, it reads the battery side of the ideal diode, not VBAT_PROT.
+- **SW opens when parked**, so the ladder draws nothing from the battery then.
+
+**One ladder for all three.** The data sheet's example uses two separate dividers and says a single ladder also works (section 9.2.3.8, figure 8-9). Ours is one string of four resistors:
+
+| From | Resistor | To | Resistance below this tap |
+|---|---|---|---|
+| SW (pin 3) | R204, {si(P.R204.v, 'Ω')} | UVLO (pin 4) | {si(c.ladder.rUv, 'Ω', 4)} |
+| UVLO | R205, {si(P.R205.v, 'Ω')} | BATT_MON | {si(c.ladder.rMon, 'Ω', 4)} |
+| BATT_MON | R206, {si(P.R206.v, 'Ω')} | OV (pin 5) | {si(c.ladder.rOv, 'Ω', 4)} |
+| OV | R207, {si(P.R207.v, 'Ω')} | GND | |
+
+<Eq from="Node60" tex={R`R_{TOTAL} = ${t(P.R204.v, 'Ω')} + ${t(P.R205.v, 'Ω')} + ${t(P.R206.v, 'Ω', 3)} + ${t(P.R207.v, 'Ω')} = ${t(c.ladder.rTot, 'Ω', 5)}`} />
+
+### The general equation
+
+The data sheet's equations 14 and 15 are the voltage-divider rule written for its two dividers. For any tap on one ladder it is the same rule: the pin sees the battery voltage scaled by the resistance below the tap over the total. The threshold at the battery is where the pin reaches the comparator's level.
+
+<Eq from="Data sheet eq. 14 and 15, one ladder" tex={R`\begin{aligned}
+V_{PIN} &= V_{BAT} \times \frac{R_{BELOW}}{R_{TOTAL}} \\[4pt]
+\Rightarrow\quad V_{BAT} &= V_{TH} \times \frac{R_{TOTAL}}{R_{BELOW}}
+\end{aligned}`} />
+
+### Undervoltage lockout
+
+Below the UVLO tap sit R205, R206 and R207: {si(c.ladder.rUv, 'Ω', 4)}.
+
+<Eq from="Data sheet eq. 14" tex={R`\begin{aligned}
+V_{UVLO,falling} &= ${t(DS.vUvloF.typ, 'V')} \times \frac{${t(c.ladder.rTot, 'Ω', 5)}}{${t(c.ladder.rUv, 'Ω', 4)}} \\[4pt]
+&= ${DS.vUvloF.typ}\,\mathrm{V} \times ${sig(c.ladder.rTot / c.ladder.rUv, 4)} = ${fix(c.ladder.uvFall, 2)}\,\mathrm{V} \\[4pt]
+V_{UVLO,rising} &= ${t(DS.vUvloR.typ, 'V')} \times \frac{${t(c.ladder.rTot, 'Ω', 5)}}{${t(c.ladder.rUv, 'Ω', 4)}} \\[4pt]
+&= ${DS.vUvloR.typ}\,\mathrm{V} \times ${sig(c.ladder.rTot / c.ladder.rUv, 4)} = ${fix(c.ladder.uvRise, 2)}\,\mathrm{V}
+\end{aligned}`} />
+
+The node switches off when the battery falls under {fix(c.ladder.uvFall, 2)} V and back on when it recovers past {fix(c.ladder.uvRise, 2)} V, {fix(c.ladder.uvRise - c.ladder.uvFall, 2)} V of hysteresis. The data sheet's own example sets 5.5 V. Accepted at schematic review on 2026-10-28.
+
+### Overvoltage cut-off
+
+Below the OV tap sits R207 alone: {si(c.ladder.rOv, 'Ω')}.
+
+<Eq from="Data sheet eq. 15" tex={R`\begin{aligned}
+V_{OV,rising} &= ${t(DS.vOvR.typ, 'V')} \times \frac{${t(c.ladder.rTot, 'Ω', 5)}}{${t(c.ladder.rOv, 'Ω')}} \\[4pt]
+&= ${DS.vOvR.typ}\,\mathrm{V} \times ${sig(c.ladder.rTot / c.ladder.rOv, 4)} = ${fix(c.ladder.ovRise, 1)}\,\mathrm{V} \\[4pt]
+V_{OV,falling} &= ${t(DS.vOvF.typ, 'V')} \times \frac{${t(c.ladder.rTot, 'Ω', 5)}}{${t(c.ladder.rOv, 'Ω')}} \\[4pt]
+&= ${DS.vOvF.typ}\,\mathrm{V} \times ${sig(c.ladder.rTot / c.ladder.rOv, 4)} = ${fix(c.ladder.ovFall, 1)}\,\mathrm{V}
+\end{aligned}`} />
+
+The node disconnects above {fix(c.ladder.ovRise, 1)} V and reconnects under {fix(c.ladder.ovFall, 1)} V.
+
+**Why {fix(c.ladder.ovRise, 0)} V.** It is above a 24 V jump start, so the node keeps running through one. It is also above the top of the input TVS's breakdown range ({TVS.vbrMax} V for D201), so the cut-off only acts if the TVS is not holding the input down. And it leaves room under the 40 V-class regulators even at the top of its tolerance (below). Accepted at schematic review on 2026-10-28.
+
+This is cut-off, not clamping. Above the threshold the whole node loses power until the voltage comes back down. The data sheet also shows a clamp arrangement, with the ladder taken from the output (figure 9-16); we do not use it, because the ladder also has to report the battery-side voltage.
+
+### Tolerance of the thresholds
+
+The comparator limits are {DS.vOvR.min} V to {DS.vOvR.max} V rising and {DS.vOvF.min} V to {DS.vOvF.max} V falling. With 1 % resistors the divider ratio can be off by nearly 2 % in the worst case (one side high, the other low):
+
+<Eq from="Node60" tex={R`\begin{aligned}
+\frac{\Delta k}{k} &= 2 \times 1\,\% \times \left(1 - \frac{R_{BELOW}}{R_{TOTAL}}\right) \\[4pt]
+&= 2\,\% \times \left(1 - \frac{${t(c.ladder.rOv, 'Ω')}}{${t(c.ladder.rTot, 'Ω', 5)}}\right) = ${fix(c.ladder.tolOv * 100, 2)}\,\% \quad \text{(OV tap)}
+\end{aligned}`} />
+
+| Threshold | Typical | Worst-case range |
+|---|---|---|
+| Overvoltage, rising | {fix(c.ladder.ovRise, 1)} V | {fix(c.ladder.ovRiseMin, 1)} V to {fix(c.ladder.ovRiseMax, 1)} V |
+| Undervoltage, falling | {fix(c.ladder.uvFall, 2)} V | {fix(c.ladder.uvFallMin, 2)} V to {fix(c.ladder.uvFallMax, 2)} V |
+
+The SW switch itself is {DS.rSw.typ} Ω typical ({DS.rSw.max} Ω maximum) in series with the ladder; that shifts the thresholds by at most {fix(c.ladder.rSwErr * 100, 2)} %.
+
+### Why the ladder totals just under 120 kΩ
+
+A high-value ladder wastes less current, but the pins' leakage then becomes a larger share of the ladder current and shifts the thresholds. The data sheet's rule (section 9.2.3.8) is to keep the ladder current at least 100 times a 1 µA leakage, which at 12 V means:
+
+<Eq from="Data sheet 9.2.3.8" tex={R`R_{TOTAL} \le \frac{${t(OP.vBatNom, 'V')}}{100 \times ${t(DS.iOvRule, 'A')}} = ${t(c.ladder.rRule, 'Ω')}`} />
+
+Ours is {si(c.ladder.rTot, 'Ω', 5)}, just inside it:
+
+<Eq from="Node60" tex={R`I_{LADDER} = \frac{V_{BAT}}{R_{TOTAL}} = \frac{${t(OP.vBatNom, 'V')}}{${t(c.ladder.rTot, 'Ω', 5)}} = ${t(c.ladder.iLadder12, 'A')}`} />
+
+At {OP.vBat} V it is {si(c.ladder.iLadder, 'A')}. That flows only while the node is awake.
+
+R204 takes most of the voltage. At the {fix(c.ladder.ovRise, 0)} V cut-off it has {fix(c.ladder.vR204, 1)} V across it and dissipates {si(c.ladder.pR204, 'W')}, against its 75 V and 100 mW ratings.
+
+### BATT_MON, the battery voltage reading
+
+Below the BATT_MON tap sit R206 and R207: {si(c.ladder.rMon, 'Ω', 4)}.
+
+<Eq from="Node60" tex={R`\begin{aligned}
+V_{BATT\_MON} &= V_{BAT} \times \frac{${t(c.ladder.rMon, 'Ω', 4)}}{${t(c.ladder.rTot, 'Ω', 5)}} \\[4pt]
+&= V_{BAT} \times ${sig(c.ladder.kMon, 4)} = \frac{V_{BAT}}{${fix(c.ladder.ratio, 2)}} \\[4pt]
+V_{BATT\_MON}(${t(OP.vBat, 'V')}) &= ${t(OP.vBat, 'V')} \times ${sig(c.ladder.kMon, 4)} = ${t(c.ladder.vMonBat, 'V', 4)} \\[4pt]
+V_{BATT\_MON}(${fix(c.ladder.ovRise, 1)}\,\mathrm{V}) &= ${fix(c.ladder.ovRise, 1)}\,\mathrm{V} \times ${sig(c.ladder.kMon, 4)} = ${t(c.ladder.vMonOv, 'V', 3)}
+\end{aligned}`} />
+
+The ratio is the architecture's "1:12" (<Ref id="REQ-MON-004" />). The ADC's {OP.vAdc} V full scale corresponds to:
+
+<Eq from="Node60" tex={R`V_{BAT,full\ scale} = ${t(OP.vAdc, 'V')} \times ${fix(c.ladder.ratio, 2)} = ${t(c.ladder.vFullScale, 'V')}`} />
+
+So the reading stays in range through the whole span up to the cut-off, where BATT_MON is {si(c.ladder.vMonOv, 'V', 3)}. One count of the {OP.adcBits}-bit ADC is:
+
+<Eq from="Node60" tex={R`\begin{aligned}
+\frac{${t(OP.vAdc, 'V')}}{2^{${OP.adcBits}}} &= ${t(c.ladder.lsb, 'V')} \quad \text{(at the pin)} \\[4pt]
+${t(c.ladder.lsb, 'V')} \times ${fix(c.ladder.ratio, 2)} &= ${t(c.ladder.lsbBat, 'V')} \quad \text{(at the battery)}
+\end{aligned}`} />
+
+BATT_MON goes to U401's ADC2_P0. The reading is zero while the node is parked (SW is open), but the MCU is off then anyway.
+
+### Source resistance and filter
+
+Seen from the tap, the ladder looks like the upper part in parallel with the lower part. With C210 that sets how fast the reading settles, and so the ADC's sample time:
+
+<Eq from="Node60" tex={R`\begin{aligned}
+R_{TH} &= \frac{R_{ABOVE} \times R_{BELOW}}{R_{ABOVE} + R_{BELOW}} \\[4pt]
+&= \frac{${t(c.ladder.rTot - c.ladder.rMon, 'Ω')} \times ${t(c.ladder.rMon, 'Ω', 4)}}{${t(c.ladder.rTot, 'Ω', 5)}} = ${t(c.ladder.rTh, 'Ω')} \\[4pt]
+\tau &= R_{TH} \times C_{210} = ${t(c.ladder.rTh, 'Ω')} \times ${t(P.C210.v, 'F')} = ${t(c.ladder.tau, 's')} \\[4pt]
+f_c &= \frac{1}{2\pi\tau} = ${t(c.ladder.fc, 'Hz')}
+\end{aligned}`} />
+
+### C210 also slows the two comparators
+
+C210 is there for the ADC, but on a shared ladder it filters the comparator pins too. The OV pin is a fixed fraction of BATT_MON, so it follows the filtered voltage exactly. The UVLO pin sits one small resistor above BATT_MON; only {pct(c.ladder.uvPinDirect, 1)} of a sudden change at SW reaches it directly, the rest arrives with the {si(c.ladder.tau, 's', 2)} time constant.
+
+For a sudden step at the battery, the time for a pin to reach its threshold follows from the RC charging curve. Two examples from a {OP.vBat} V battery:
+
+<Eq from="Node60" tex={R`\begin{aligned}
+t_{OV} &= \tau \times \ln\frac{V_{STEP} - V_{START}}{V_{STEP} - V_{OV}} && \text{(step up to ${c.ladder.ovStepTo} V)} \\[4pt]
+&= ${t(c.ladder.tau, 's')} \times \ln\frac{${c.ladder.ovStepTo} - ${OP.vBat}}{${c.ladder.ovStepTo} - ${fix(c.ladder.ovRise, 1)}} = ${t(c.ladder.tOvStep, 's')} \\[8pt]
+t_{UVLO} &= \tau \times \ln\frac{V_{BATT\_MON,start}}{V_{BATT\_MON,trip}} && \text{(drop to 0 V)} \\[4pt]
+&= ${t(c.ladder.tau, 's')} \times \ln\frac{${t(c.ladder.vMonBat, 'V', 4)}}{${t((DS.vUvloF.typ * (c.ladder.rTot - c.ladder.rMon)) / P.R204.v, 'V', 4)}} = ${t(c.ladder.tUvDip, 's')}
+\end{aligned}`} />
+
+Without the capacitor the comparators answer in about 5 µs. With it, an overvoltage step takes on the order of 0.1 ms to cut off, and a complete input dropout shorter than about {si(c.ladder.tUvDip, 's', 2)} is ridden through with the FETs still on. The data sheet's example adds a much larger capacitor on its UVLO divider on purpose, to ignore fast dips. Neither figure has been checked against a requirement; see [Open items](#open-items).
+
+## SLEEP mode (SLEEP, SLEEP_OV, EN)
+
+**What it does.** With EN high and SLEEP low the part enters SLEEP mode:
+
+- the charge pump stops and both gate drives turn off,
+- the SW switch opens, so the ladder draws nothing,
+- an internal switch of about {DS.rBypass} Ω joins VS to OUT, so the output stays fed, for loads up to {si(DS.iBypassPeak, 'A', 3, 'm')} peak,
+- the part itself draws {si(DS.iSleep.typ, 'A')} typical, {si(DS.iSleep.max, 'A')} maximum, against {si(DS.iQ.typ, 'A')} when awake.
+
+Current to the output still passes the ideal-diode FETs' body diodes on its way to VS, so a reversed battery is still blocked while parked.
+
+**Why we use it.** A parked Node60 keeps exactly one thing alive: the LAN8670's wake detector, fed from VBAT_PROT through the always-on LDO U301 (<Ref id="REQ-PWR-003" />, <Ref id="REQ-PWR-001" />). SLEEP mode keeps VBAT_PROT up for it without running the charge pump. The parked budget for the whole node is about {si(OP.iParked, 'A')}.
+
+### How each pin is set, and why
+
+| Pin | Connection | Why |
+|---|---|---|
+| EN (6) | VS | Always on, as the data sheet describes for always-on use. EN low would give shutdown mode ({si(DS.iShdn.typ, 'A')}), but that cuts the output off completely, and the wake detector would lose power. |
+| SLEEP (7) | INH | The LAN8670 drives INH to its 3.3 V always-on supply while the node is awake and lets it float when parked; R515 (10 kΩ) then pulls it to ground. SLEEP reads high above {DS.vSleepHi.max} V at most. The same signal enables the 3.3 V regulator, so the protection and the supplies change state together. The node has no ignition input; the T1S bus is its only wake source (<Ref id="DEC-007" />). |
+| SLEEP_OV (16) | OUT | Selects **clamp** on overvoltage while parked (below). |
+
+### Voltage lost in the bypass switch
+
+<Eq from="Node60" tex={R`\begin{aligned}
+V &= I \times R_{BYPASS} = ${t(OP.iParked, 'A')} \times ${DS.rBypass}\,\mathrm{\Omega} = ${t(c.sleep.vDropParked, 'V')} \quad \text{(parked budget)} \\[4pt]
+V &= ${t(DS.iBypassPeak, 'A', 3, 'm')} \times ${DS.rBypass}\,\mathrm{\Omega} = ${t(c.sleep.vDropPeak, 'V')} \quad \text{(the switch's peak rating)}
+\end{aligned}`} />
+
+At the parked current the switch drops next to nothing. The body diodes ahead of it drop a diode voltage, which the LDO has ample room for at 12 V.
+
+### Overcurrent while parked, and why the "H" matters
+
+In SLEEP the bypass switch has its own overcurrent threshold, {si(DS.iSleepOc.typ, 'A', 3, 'm')} typical ({range(DS.iSleepOc.min, DS.iSleepOc.max, 'A', 3, 'm')}). The LM74900-Q1 and LM74910-Q1 latch off when it is crossed. The LM74910H-Q1 instead switches to normal operation for {DS.sleepRetryCycles} timer cycles, with charge pump and both FET banks on, so the external FETs carry the current, and then returns to SLEEP (data sheet section 8.4.2).
+
+This happens every time a battery is connected. INH is low then, so the part starts in SLEEP, and the bypass switch faces VBAT_PROT's empty capacitors:
+
+<Eq from="Node60" tex={R`I = \frac{V_{BAT}}{R_{BYPASS}} = \frac{${t(OP.vBat, 'V')}}{${DS.rBypass}\,\mathrm{\Omega}} = ${t(c.sleep.iChargeStart, 'A')}`} />
+
+That is well over the threshold. The LM74910H-Q1 hands over to the FETs, which charge the capacitors at the HGATE slope, and goes back to SLEEP. A part that latched would leave the node dead until the battery was disconnected again, with no MCU awake to notice. This is why <Ref id="DEC-001" /> rejected the LM74900-Q1.
+
+The data sheet does not give the length of a "timer cycle". If it is the same cycle as in the breaker's retry ({DS.retryCycles} cycles in {si(c.breaker.tRetry, 's')} with C211), {DS.sleepRetryCycles} cycles last about {si(c.sleep.tRetry64, 's', 2)}.
+
+The part also has a thermal shutdown in SLEEP (155 °C typical) that does latch; toggling SLEEP, which any wake does, clears it.
+
+### Overvoltage while parked: clamp, not cut-off
+
+The ladder is disconnected in SLEEP, so the {fix(c.ladder.ovRise, 0)} V cut-off does not exist then. In its place the part has a fixed threshold of {DS.vSleepOvR.typ} V typical ({DS.vSleepOvR.min} V to {DS.vSleepOvR.max} V), and SLEEP_OV picks what happens above it:
+
+| SLEEP_OV tied to | Behaviour above about {fix(DS.vSleepOvR.typ, 0)} V while parked |
+|---|---|
+| VS / C | Cut-off: the output is disconnected |
+| **OUT (ours)** | Clamp: the output is held at about the threshold |
+
+With clamp, VBAT_PROT stays up, limited to about {fix(DS.vSleepOvR.typ, 0)} V, so the wake detector keeps its supply through a 24 V jump start on a parked vehicle and the node can still be woken. With cut-off it would lose power for as long as the high voltage lasted. Accepted at schematic review on 2026-10-28. The data sheet also shows a Zener diode in series with SLEEP_OV to raise the threshold for 24 V and 48 V systems; a 12 V node does not need it.
+
+### Waking up
+
+When INH goes high the charge pump starts, and the gate drivers follow after T<sub>DRV_EN</sub>, {si(c.pump.tDrvEnH, 's', 2, 'm')} to {si(c.pump.tDrvEn, 's', 2, 'm')} from the [charge pump section](#charge-pump-cap). While disabled, HGATE is held at OUT, so C202 already sits at the rail voltage and the gates only have to rise by the FETs' {FET.vth.typ} V threshold before the disconnect FETs conduct. The 3.3 V regulator starts from the same INH edge, so for those first milliseconds it runs from VBAT_PROT's capacitors and whatever the bypass switch supplies. The data sheet does not say how long the bypass switch stays on after SLEEP goes high. The whole sequence has a 15 ms budget and is measured at <Ref id="GATE-NET-01" />.
+
+## Fault output (FLT)
+
+**What it does.** FLT is an open-drain output that pulls low on UVLO, overvoltage, the circuit breaker and the short-circuit trip (data sheet table 5-1).
+
+**How it is wired.** R203 ({si(P.R203.v, 'Ω')}) pulls it up to 3V3_MAIN, and it goes to U401 ball B11 as `LM_FLT_L`, an interrupt on the falling edge (EIRQ 6). The pull-up is on the switched 3.3 V rail, so it draws nothing while parked.
+
+<Eq from="Node60" tex={R`\begin{aligned}
+I_{FLT} &= \frac{${t(OP.vAdc, 'V')}}{R_{203} + R_{FLT}} = \frac{${t(OP.vAdc, 'V')}}{${t(P.R203.v, 'Ω')} + ${DS.rFlt.typ}\,\mathrm{\Omega}} = ${t(c.flt.iLow, 'A')} \\[4pt]
+V_{OL,max} &= ${t(OP.vAdc, 'V')} \times \frac{${DS.rFlt.max}\,\mathrm{\Omega}}{${t(P.R203.v, 'Ω')} + ${DS.rFlt.max}\,\mathrm{\Omega}} = ${t(c.flt.vLowMax, 'V')}
+\end{aligned}`} />
+
+The pin's pull-down is {DS.rFlt.typ} Ω typical ({DS.rFlt.max} Ω maximum), so the low level is about 20 mV at worst, and {si(c.flt.iLow, 'A')} is far under the pin's 10 mA limit.
+
+**What the MCU can do with it.** The MCU is powered from VBAT_PROT, behind the disconnect FETs. Every event that pulls FLT low also turns those FETs off, so the MCU loses its supply moments later and runs on the regulators' input capacitors until they drain.
+
+- On a breaker trip FLT leads the turn-off by about {si(c.breaker.tWarn, 's', 2)} ([above](#warning-before-the-trip)).
+- On a short-circuit, overvoltage or undervoltage trip it comes at the same moment.
+
+So FLT is a last-moment notice, enough to set a flag, and not a signal the firmware can act on at length. After a breaker or short-circuit trip the controller retries after {si(c.breaker.tRetry, 's')}, and the MCU boots from cold. How long the MCU keeps running after a trip has not been calculated.
+
+## Voltage ratings and the TVS
+
+| Rating | LM74910H-Q1 | Node60 |
+|---|---|---|
+| Operating input | 3 V to {DS.vOpMax} V | 12 V system; UVLO at {fix(c.ladder.uvFall, 2)} V, OV at {fix(c.ladder.ovRise, 1)} V |
+| Absolute maximum, battery pins | {DS.vAbsMax} V | D201 clamps the input (below) |
+| Reverse input at A | −{DS.vRevMax} V | D201 is bidirectional; reversed battery sits under its {TVS.vbrMin} V minimum breakdown |
+| Gate drive, DGATE and HGATE | up to {DS.vHgate.max} V; FETs need a V<sub>GS</sub> rating of 15 V or more | IAUTN08S5N012L: ±{FET.vgs} V |
+| C to A | {DS.vCaAbsMax} V absolute maximum | FETs: {FET.vds} V V<sub>DS</sub> |
+
+D201 is a Vishay XLD8A24CA (<Ref id="DEC-003" />): {TVS.vwm} V stand-off, {TVS.vbrMin} V to {TVS.vbrMax} V breakdown, {TVS.vcMax} V maximum clamp at {TVS.ipp} A. A 24 V jump start sits at its stand-off voltage.
+
+The data sheet's check for a negative pulse (ISO 7637-2 pulse 1, section 9.4.2): the ideal diode turns off, and the voltage from C to A becomes the TVS's clamp voltage plus whatever the output capacitors hold. With the output at its highest, {OP.vBatMaxRev} V:
+
+<Eq from="Data sheet 9.4.2" tex={R`V_{C-A} = V_{CLAMP} + V_{OUT} = ${t(TVS.vcMax, 'V')} + ${t(OP.vBatMaxRev, 'V')} = ${t(c.diode.vCaPulse1, 'V')}`} />
+
+That is inside both the FETs' {FET.vds} V and the controller's {DS.vCaAbsMax} V.
+
+Capacitors on the battery nets (C201 on VBAT_IN, C208 on VBAT_D, C203 to C205 on VBAT_PROT) are 100 V parts, more than twice the {fix(c.ladder.ovRise, 0)} V cut-off. The data sheet asks for at least 0.1 µF from A to ground, from VS to ground and from CAP to VS; C201, C208 and C209 are those.
+
+## Features we do not use
+
+| Feature | How it would be used | Why not |
+|---|---|---|
+| Analog current monitor (IMON) | Resistor from IMON to ground, read by an ADC | The INA228 on the same shunt is far more accurate (<Ref id="DEC-002" />). Pin left floating, as the data sheet allows. See the next section. |
+| Latch-off after overcurrent | 100 kΩ across C211 | Nothing on the node could clear a latch. See [Retry](#retry). |
+| Shutdown mode (EN low) | Drive EN from a controller | Cuts the output off entirely; the wake detector must stay powered. SLEEP is used instead. |
+| Overvoltage cut-off while parked | SLEEP_OV to VS | Would drop the wake detector's supply during a jump start. |
+| Raised overvoltage threshold while parked | Zener in series with SLEEP_OV | For 24 V and 48 V systems. |
+| Overvoltage clamp while awake | OV ladder taken from the output | The ladder must read the battery side for BATT_MON; cut-off at {fix(c.ladder.ovRise, 0)} V is used. |
+| Short-circuit deglitch | C213 from ISCP to CS− | Footprint on the board, not fitted. |
+| Undervoltage filter capacitor (C<sub>UV</sub>) | Capacitor across the lower UVLO resistor | Not fitted as such; C210 on the BATT_MON tap has some of the same effect. |
+| OR-ing and priority switching | A second controller on the common drain | One battery input. |
+
+## If we fit IMON
+
+IMON is not connected today. This section sets out what fitting it would take, so the choice can be made with the numbers in hand.
+
+**What IMON gives.** The pin sources a current proportional to the sense voltage, nine tenths of V<sub>SENSE</sub> / R<sub>SET</sub>. A resistor to ground turns it into a voltage for an ADC:
+
+<Eq from="Data sheet eq. 7" tex={R`V_{IMON} = \frac{0.9 \times V_{SENSE} \times R_{IMON}}{R_{SET}}`} />
+
+R<sub>SET</sub> is already fixed at {si(P.R209.v, 'Ω')} by the breaker, and R<sub>IMON</sub> does not affect the breaker (the ILIM pin has its own resistor), so R<sub>IMON</sub> alone sets the gain.
+
+### Step 1: pick the full scale
+
+The ADC reads up to {OP.vAdc} V, and the data sheet limits IMON to {DS.vImonMax} V. The largest current worth reading is the top of the fast trip's window, {si(c.scp.iScpMax, 'A')}, where the shunt drops {si(c.scp.vScpMax, 'V')}; anything beyond that has already tripped. Placing that point at {c.imon.target.v} V leaves 10 % of the ADC's range for the output's own error.
+
+### Step 2: solve for R<sub>IMON</sub>
+
+<Eq from="Data sheet eq. 7, rearranged" tex={R`\begin{aligned}
+R_{IMON} &= \frac{V_{IMON} \times R_{SET}}{0.9 \times V_{SENSE}} \\[4pt]
+&= \frac{${t(c.imon.target.v, 'V')} \times ${t(P.R209.v, 'Ω')}}{0.9 \times ${t(c.scp.vScpMax, 'V')}} = \frac{${sig(c.imon.target.v * P.R209.v, 4)}}{${sig(0.9 * c.scp.vScpMax, 4)}}\,\mathrm{\Omega} = ${t(c.imon.rImonIdeal, 'Ω', 4)}
+\end{aligned}`} />
+
+The nearest standard 1 % value is **{si(c.imon.rImon, 'Ω')}**. A 0.1 % part would keep the resistor out of the error budget.
+
+### Step 3: the resulting scale
+
+<Eq from="Data sheet eq. 7" tex={R`\begin{aligned}
+\frac{V_{IMON}}{I} &= \frac{0.9 \times R_{SENSE} \times R_{IMON}}{R_{SET}} \\[4pt]
+&= \frac{0.9 \times ${t(P.R201.v, 'Ω', 3, 'm')} \times ${t(c.imon.rImon, 'Ω')}}{${t(P.R209.v, 'Ω')}} = ${fix(c.imon.gain * 1e3, 2)}\,\mathrm{mV/A} \\[4pt]
+V_{IMON}(${OP.iRated}\,\mathrm{A}) &= \frac{0.9 \times ${t(c.sense.vRated, 'V')} \times ${t(c.imon.rImon, 'Ω')}}{${t(P.R209.v, 'Ω')}} = ${t(c.imon.vAt(OP.iRated), 'V')}
+\end{aligned}`} />
+
+<table>
+  <thead><tr><th>Current</th><th>Sense voltage</th><th>IMON</th></tr></thead>
+  <tbody>
+    {c.imon.points.map((p) => (
+      <tr>
+        <td>{si(p.i, 'A')}{c.imon.note(p.i)}</td>
+        <td>{si(p.vs, 'V')}</td>
+        <td>{fix(p.v, 2)} V</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+One count of the {OP.adcBits}-bit ADC would be:
+
+<Eq from="Node60" tex={R`\frac{${t(c.ladder.lsb, 'V')}}{${fix(c.imon.gain * 1e3, 2)}\,\mathrm{mV/A}} = ${t(c.imon.iPerCount, 'A')}`} />
+
+and the ADC's {OP.vAdc} V full scale would correspond to {si(c.imon.iFullScale, 'A')}.
+
+### Step 4: accuracy to expect
+
+The data sheet specifies the LM74910H-Q1's IMON at three sense voltages:
+
+<table>
+  <thead><tr><th>Sense voltage</th><th>Current on {si(P.R201.v, 'Ω', 3, 'm')}</th><th>IMON accuracy</th></tr></thead>
+  <tbody>
+    {c.imon.iAtAcc.map((a) => (
+      <tr>
+        <td>{si(a.vs, 'V')}</td>
+        <td>{si(a.i, 'A')}</td>
+        <td>±{a.acc * 100} %</td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+At the {OP.iRated} A rating ({si(c.sense.vRated, 'V')}) that is about ±3 %, and it gets worse toward low currents; nothing is specified under {si(DS.imonAcc[0].vs, 'V')} ({fix(c.imon.iAtAcc[0].i, 0)} A). On top come R201 (1 %), R209 (1 %) and R<sub>IMON</sub>. The INA228 on the same shunt is specified at ±0.05 % gain error and ±1 µV offset. IMON would not replace it for telemetry.
+
+### Step 5: the parts and the pin
+
+- **R<sub>IMON</sub>**, {si(c.imon.rImon, 'Ω')}, from pin 10 to GND, close to U201.
+- **A filter capacitor** across it. IMON is a current source, so the ADC sees R<sub>IMON</sub> as the source resistance; with {si(c.imon.cFilter, 'F')} the time constant is {si(c.imon.rImon, 'Ω')} × {si(c.imon.cFilter, 'F')} = {si(c.imon.tau, 's', 2)}, similar to BATT_MON's.
+- **A series resistor to the ADC pin.** During a short circuit the sense voltage goes far beyond full scale: at the sense inputs' {DS.csAbsMax} V limit, equation 7 would give {si(c.imon.vAtShort, 'V')}. The data sheet's block diagram shows a 6 V clamp on IMON, which is still above the MCU's 3.3 V supply. A series resistor limits the current pushed into the MCU pin's protection for the microseconds before the fast trip acts. Its value comes from the S32K344's injection-current limit, which has not been looked up for this page.
+- **A spare ADC input on U401.** That changes the MCU's pin plan, so GATE-MCU-01 would be run again.
+- **A route on a finished board.** Pin 10 sits between TMR (pin 9) and ILIM (pin 11), and the board is fully routed.
+
+### What it would be for
+
+- **A second, independent current reading.** IMON and the INA228 share the shunt but nothing else, so firmware could cross-check them.
+- **A reading that does not need the I²C bus.** An analog input can be sampled fast and compared in the ADC's own hardware.
+
+Against that: one ADC channel, three passives, a pin-plan change, and a reading of about ±3 % that the INA228 already gives at ±0.05 %.
+
+## Open items
+
+None of these is a change to the design. They are the places where this page's numbers are estimates, or where the working turned up something not yet checked.
+
+| Item | What is known | Checked by |
+|---|---|---|
+| Breaker threshold tolerance | {si(c.breaker.iLim, 'A')} from equation 3; {fix(c.breaker.iLimMin, 0)} A to {fix(c.breaker.iLimMax, 0)} A is our estimate from the comparator's limits | <Ref id="GATE-PWR-01" /> |
+| Fast trip overlaps the breaker | Fast trip {range(c.scp.iScpMin, c.scp.iScpMax, 'A')}, breaker {si(c.breaker.iLim, 'A')} typical | <Ref id="GATE-PWR-01" /> |
+| Breaker delay against real start-up current | {si(c.breaker.tOc, 's', 2, 'm')} is a starting point | <Ref id="GATE-PWR-01" />, <Ref id="GATE-NET-01" /> |
+| Wake from SLEEP | Gate drive after {si(c.pump.tDrvEnH, 's', 2, 'm')} to {si(c.pump.tDrvEn, 's', 2, 'm')}; the bypass switch's behaviour during it is not in the data sheet | <Ref id="GATE-NET-01" /> |
+| FET heat at 60 A and temperature | {si(c.diode.pBank.max, 'W')} per bank at 25 °C on-resistance; the FET count is marked unverified on the schematic | <Ref id="GATE-PWR-01" />, <Ref id="GATE-THM-02" /> |
+| AC ripple above about {fix(c.diode.fRectMax.min / 1e3, 0)} kHz | Two FETs' gate charge is over equation 16's limit for {OP.fRipple / 1e3} kHz | No gate names it |
+| R202's position | In series with the gates, not with C202 as the data sheet draws it | Not reviewed |
+| C210's effect on UVLO and OV | About {si(c.ladder.tOvStep, 's', 2)} to cut off on a step to {c.ladder.ovStepTo} V; dropouts under about {si(c.ladder.tUvDip, 's', 2)} ridden through | No gate names it |
+| MCU hold-up after a trip | FLT leads a breaker trip by {si(c.breaker.tWarn, 's', 2)}; run-on time not calculated | Not calculated |
