@@ -10,6 +10,8 @@ _autosave-*
 fp-info-cache
 *.lck
 ~*.lck
+# Folders KiCad leaves behind when it restores a project from its local history
+_restore_backup_*/
 
 # Per-user view state (layer visibility, open sheets, zoom)
 *.kicad_prl

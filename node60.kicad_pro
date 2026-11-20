@@ -902,7 +902,7 @@
         "uuid": "55f51841-30a3-4965-b848-b796f60054d0"
       }
     ],
-    "used_designators": "#PWR201-202,C218-219",
+    "used_designators": "#PWR201-202,C218-219,TP211",
     "variants": []
   },
   "sheets": [
