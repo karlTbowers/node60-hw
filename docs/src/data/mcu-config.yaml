@@ -309,6 +309,21 @@ LM_FLT_L:
   edge: falling
   note: LM74910H fault (U201)
 
+# Regulator power-good lines (DEC-029, 2026-11-25). Open drain, high = good; pull-ups R310/R311 10 kΩ to 3V3_MAIN
+# on the regulators sheet. Plain inputs here; each ball is on a free EIRQ line if firmware wants an edge.
+3V3_MAIN_PG:
+  function: GPIO
+  group: gpio
+  dir: in
+  pull: none
+  note: U302 (LMQ66430) PG, R310 pull-up, TP309. Low below 89-94.2 % or above 104-111 % of 3.3 V; U304 resets the MCU at 3.10 V, so firmware sees it low only on overvoltage or at start-up. EIRQ[8] is free on this ball
+1V5_CORE_PG:
+  function: GPIO
+  group: gpio
+  dir: in
+  pull: none
+  note: U303 (TPS628502) PG, R311 pull-up, TP310. Low below 87-93 % or above 107-113 % of 1.5 V, in soft start and in thermal shutdown. EIRQ[18] is free on this ball
+
 # Log flash (IS25LP032D, U402)
 SPI2_FLASH_SCK_MCU:
   function: LPSPI2_SCK

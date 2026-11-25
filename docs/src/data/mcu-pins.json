@@ -241,6 +241,7 @@
    "net": "TMP175_ALERT_L",
    "connects": [
     "R211 10k to 3V3_MAIN",
+    "TP211 test point",
     "U203 ALERT"
    ],
    "externalPull": "10k up to 3V3_MAIN (R211)",
@@ -2070,6 +2071,8 @@
     "R302 0R to 3V3_MAIN_REG",
     "R306 100k to 1V5_EN",
     "R308 4.7k to RESET_L",
+    "R310 10k to 3V3_MAIN_PG",
+    "R311 10k to 1V5_CORE_PG",
     "R401 10k to SPI2_FLASH_CS_L",
     "R402 10k to FLASH_WP_L",
     "R403 10k to FLASH_HOLD_L",
@@ -3055,6 +3058,8 @@
     "R302 0R to 3V3_MAIN_REG",
     "R306 100k to 1V5_EN",
     "R308 4.7k to RESET_L",
+    "R310 10k to 3V3_MAIN_PG",
+    "R311 10k to 1V5_CORE_PG",
     "R401 10k to SPI2_FLASH_CS_L",
     "R402 10k to FLASH_WP_L",
     "R403 10k to FLASH_HOLD_L",
@@ -3493,6 +3498,8 @@
     "R302 0R to 3V3_MAIN_REG",
     "R306 100k to 1V5_EN",
     "R308 4.7k to RESET_L",
+    "R310 10k to 3V3_MAIN_PG",
+    "R311 10k to 1V5_CORE_PG",
     "R401 10k to SPI2_FLASH_CS_L",
     "R402 10k to FLASH_WP_L",
     "R403 10k to FLASH_HOLD_L",
@@ -3575,6 +3582,8 @@
     "R302 0R to 3V3_MAIN_REG",
     "R306 100k to 1V5_EN",
     "R308 4.7k to RESET_L",
+    "R310 10k to 3V3_MAIN_PG",
+    "R311 10k to 1V5_CORE_PG",
     "R401 10k to SPI2_FLASH_CS_L",
     "R402 10k to FLASH_WP_L",
     "R403 10k to FLASH_HOLD_L",
@@ -5133,6 +5142,8 @@
     "R302 0R to 3V3_MAIN_REG",
     "R306 100k to 1V5_EN",
     "R308 4.7k to RESET_L",
+    "R310 10k to 3V3_MAIN_PG",
+    "R311 10k to 1V5_CORE_PG",
     "R401 10k to SPI2_FLASH_CS_L",
     "R402 10k to FLASH_WP_L",
     "R403 10k to FLASH_HOLD_L",
@@ -5607,6 +5618,8 @@
     "R302 0R to 3V3_MAIN_REG",
     "R306 100k to 1V5_EN",
     "R308 4.7k to RESET_L",
+    "R310 10k to 3V3_MAIN_PG",
+    "R311 10k to 1V5_CORE_PG",
     "R401 10k to SPI2_FLASH_CS_L",
     "R402 10k to FLASH_WP_L",
     "R403 10k to FLASH_HOLD_L",
@@ -6374,6 +6387,8 @@
     "R302 0R to 3V3_MAIN_REG",
     "R306 100k to 1V5_EN",
     "R308 4.7k to RESET_L",
+    "R310 10k to 3V3_MAIN_PG",
+    "R311 10k to 1V5_CORE_PG",
     "R401 10k to SPI2_FLASH_CS_L",
     "R402 10k to FLASH_WP_L",
     "R403 10k to FLASH_HOLD_L",
@@ -7383,6 +7398,8 @@
     "R302 0R to 3V3_MAIN_REG",
     "R306 100k to 1V5_EN",
     "R308 4.7k to RESET_L",
+    "R310 10k to 3V3_MAIN_PG",
+    "R311 10k to 1V5_CORE_PG",
     "R401 10k to SPI2_FLASH_CS_L",
     "R402 10k to FLASH_WP_L",
     "R403 10k to FLASH_HOLD_L",
@@ -7508,6 +7525,8 @@
     "R302 0R to 3V3_MAIN_REG",
     "R306 100k to 1V5_EN",
     "R308 4.7k to RESET_L",
+    "R310 10k to 3V3_MAIN_PG",
+    "R311 10k to 1V5_CORE_PG",
     "R401 10k to SPI2_FLASH_CS_L",
     "R402 10k to FLASH_WP_L",
     "R403 10k to FLASH_HOLD_L",
@@ -8734,10 +8753,14 @@
     "TRGMUX_IN11",
     "ADC1_X[3]"
    ],
-   "net": null,
-   "connects": [],
-   "externalPull": null,
-   "function": null
+   "net": "1V5_CORE_PG",
+   "connects": [
+    "R311 10k to 3V3_MAIN",
+    "TP310 test point",
+    "U303 PG"
+   ],
+   "externalPull": "10k up to 3V3_MAIN (R311)",
+   "function": "GPIO"
   },
   {
    "ball": "U1",
@@ -8755,10 +8778,14 @@
     "EIRQ[8]",
     "WKPU[39]"
    ],
-   "net": null,
-   "connects": [],
-   "externalPull": null,
-   "function": null
+   "net": "3V3_MAIN_PG",
+   "connects": [
+    "R310 10k to 3V3_MAIN",
+    "TP309 test point",
+    "U302 PG"
+   ],
+   "externalPull": "10k up to 3V3_MAIN (R310)",
+   "function": "GPIO"
   },
   {
    "ball": "U2",
@@ -9624,8 +9651,7 @@
       "LPUART11_TX"
      ],
      "free": [
-      "P13",
-      "T17"
+      "P13"
      ]
     }
    }
@@ -9734,8 +9760,7 @@
       "LPUART14_RX"
      ],
      "free": [
-      "K2",
-      "U1"
+      "K2"
      ]
     },
     "TX": {
@@ -9977,8 +10002,7 @@
       "P12",
       "R12",
       "T9",
-      "T12",
-      "T17"
+      "T12"
      ]
     },
     "SCK": {
@@ -10129,7 +10153,6 @@
       "P13",
       "R12",
       "R14",
-      "T17",
       "U16",
       "U17"
      ]
@@ -10586,8 +10609,7 @@
       "C7",
       "G3",
       "M1",
-      "R16",
-      "T17"
+      "R16"
      ]
     }
    }
@@ -10874,8 +10896,7 @@
     "ADC1_S22",
     "ADC1_S23",
     "ADC1_X[1]",
-    "ADC1_X[2]",
-    "ADC1_X[3]"
+    "ADC1_X[2]"
    ],
    "freeBalls": [
     "B7",
@@ -10906,8 +10927,7 @@
     "R16",
     "R17",
     "T11",
-    "T13",
-    "T17"
+    "T13"
    ]
   },
   {
@@ -11018,7 +11038,6 @@
     "T6",
     "T9",
     "T11",
-    "T17",
     "U2",
     "U3",
     "U5",
@@ -11146,8 +11165,6 @@
     "T6",
     "T9",
     "T15",
-    "T17",
-    "U1",
     "U2",
     "U3",
     "U16"
@@ -11252,7 +11269,6 @@
     "T1",
     "T12",
     "T13",
-    "U1",
     "U11",
     "U12",
     "U16"
@@ -11398,7 +11414,6 @@
     "T12",
     "T13",
     "T15",
-    "U1",
     "U5",
     "U8",
     "U10",
@@ -11535,8 +11550,6 @@
     "T13",
     "T14",
     "T15",
-    "T17",
-    "U1",
     "U2",
     "U3",
     "U5",
@@ -11573,7 +11586,6 @@
     "WKPU[36]",
     "WKPU[37]",
     "WKPU[38]",
-    "WKPU[39]",
     "WKPU[40]",
     "WKPU[41]",
     "WKPU[42]",
@@ -11629,7 +11641,6 @@
     "T11",
     "T13",
     "T15",
-    "U1",
     "U11",
     "U14"
    ]
@@ -11760,7 +11771,6 @@
     "T12",
     "T13",
     "T15",
-    "T17",
     "U9",
     "U10",
     "U11",
@@ -11784,7 +11794,6 @@
     "TRGMUX_IN8",
     "TRGMUX_IN9",
     "TRGMUX_IN10",
-    "TRGMUX_IN11",
     "TRGMUX_IN15",
     "TRGMUX_OUT0",
     "TRGMUX_OUT3",
@@ -11793,7 +11802,6 @@
     "TRGMUX_OUT9",
     "TRGMUX_OUT10",
     "TRGMUX_OUT11",
-    "TRGMUX_OUT12",
     "TRGMUX_OUT13",
     "TRGMUX_OUT14",
     "TRGMUX_OUT15"
@@ -11816,8 +11824,6 @@
     "T9",
     "T11",
     "T15",
-    "T17",
-    "U1",
     "U2",
     "U3",
     "U5",

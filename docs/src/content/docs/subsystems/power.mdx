@@ -99,10 +99,10 @@ LM74900-Q1 saves about $1 at 1,000 pieces but latches off after SLEEP-mode overc
     A TPS7B8133-Q1 nanopower LDO supplies only LAN8670 VDDAU while parked. Its 3.5 µA quiescent current is above the ≈1–2 µA Rev A target; no 40 V Grade 1 part met that target, and the ≈52 µA parked budget was accepted on 2026-10-28.
   </Card>
   <Card title="3V3_MAIN">
-    S32K344 I/O/analog, LAN8670 VDDA/VDDP, switch VDD, SPI NOR, clock, and the 1.5 V buck's input. U302, an LMQ66430-Q1 at 2.2 MHz on VBAT_FILT, is enabled directly by PHY INH.
+    S32K344 I/O/analog, LAN8670 VDDA/VDDP, switch VDD, SPI NOR, clock, and the 1.5 V buck's input. U302, an LMQ66430-Q1 at 2.2 MHz on VBAT_FILT, is enabled directly by PHY INH. Its power-good output goes to the MCU, and a 0 Ω link in its feedback line lets the control loop be measured (<Ref id="DEC-029" />).
   </Card>
   <Card title="1V5_CORE">
-    S32K344 V15 via a TPS628502-Q1 buck fed from 3V3_MAIN (<Ref id="DEC-026" />): fixed 2.25 MHz with spread spectrum, out of the AM band at any battery voltage. EN-pin chaining from 3V3_MAIN establishes the order and allows at least 250 mA transient margin.
+    S32K344 V15 via a TPS628502-Q1 buck fed from 3V3_MAIN (<Ref id="DEC-026" />): fixed 2.25 MHz with spread spectrum, out of the AM band at any battery voltage. EN-pin chaining from 3V3_MAIN establishes the order and allows at least 250 mA transient margin. Its power-good output goes to the MCU (<Ref id="DEC-029" />).
   </Card>
   <Card title="VBAT_PROT">
     VOUT after Q2 feeds the always-on LDO, all three TPS2HCS08A-Q1 devices, and, through the L201 EMI filter (VBAT_FILT), the 3.3 V buck, so shared RSENSE sees the complete downstream current.

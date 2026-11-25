@@ -2301,6 +2301,86 @@
 		)
 		(uuid "fdc10999-a2a2-4007-8cf4-ece18286f7fa")
 	)
+	(wire
+		(pts
+			(xy 236.22 55.88) (xy 238.76 55.88)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9a2d9bf3-9ed7-5611-97ec-9f8ce3894f9b")
+	)
+	(label "3V3_MAIN_PG"
+		(at 238.76 55.88 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "68d410e9-8d94-5c42-8ddd-2fd7fdf537b1")
+	)
+	(wire
+		(pts
+			(xy 236.22 58.42) (xy 238.76 58.42)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "480fcecb-2b3d-5013-892b-1796b309913f")
+	)
+	(label "1V5_CORE_PG"
+		(at 238.76 58.42 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "b850b3f4-afeb-557f-bd05-7d1726a60466")
+	)
+	(wire
+		(pts
+			(xy 309.88 114.3) (xy 307.34 114.3)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9338a672-1ca8-5595-9942-b43e708cdf07")
+	)
+	(label "3V3_MAIN_PG"
+		(at 307.34 114.3 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "89695d46-a781-5950-a349-d3a8bec0c88e")
+	)
+	(wire
+		(pts
+			(xy 309.88 116.84) (xy 307.34 116.84)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f9b1c3d5-7997-543d-8ebb-755568d6966b")
+	)
+	(label "1V5_CORE_PG"
+		(at 307.34 116.84 180)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right bottom)
+		)
+		(uuid "7d942324-a43f-5306-b1f6-be938ed43884")
+	)
 	(sheet
 		(at 309.88 50.8)
 		(size 60.96 68.58)
@@ -2789,6 +2869,26 @@
 				(justify right)
 			)
 		)
+		(pin "3V3_MAIN_PG" input
+			(at 309.88 114.3 180)
+			(uuid "f214c00c-0989-54b5-9180-d9883eb072b3")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "1V5_CORE_PG" input
+			(at 309.88 116.84 180)
+			(uuid "5c2193d5-defd-5382-890f-07855ce6f99b")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
 		(instances
 			(project "node60"
 				(path "/55f51841-30a3-4965-b848-b796f60054d0"
@@ -2848,6 +2948,26 @@
 		(pin "RESET_L" bidirectional
 			(at 236.22 53.34 0)
 			(uuid "2a810c3c-fc61-5d11-a9e0-50e491dffa00")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "3V3_MAIN_PG" output
+			(at 236.22 55.88 0)
+			(uuid "9e6502ba-5476-5366-93d7-c64b8072788f")
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(pin "1V5_CORE_PG" output
+			(at 236.22 58.42 0)
+			(uuid "decfb89b-40f4-5ddd-84b9-db58b9e8f0ec")
 			(effects
 				(font
 					(size 1.27 1.27)

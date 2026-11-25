@@ -5327,6 +5327,243 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "DropOut_Resistor:AC0402JR-0710KL"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(in_pos_files yes)
+			(duplicate_pin_numbers_are_jumpers no)
+			(property "Reference" "R"
+				(at 2.54 2.858 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "10k"
+				(at 2.54 0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Description" "Yageo AC thick film chip resistor, 10 kΩ ±5%, 1/16 W, 50 V, ±200 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Manufacturer" "Yageo"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "MPN" "AC0402JR-0710KL"
+				(at 2.54 -2.794 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1 1)
+					)
+					(justify left)
+				)
+			)
+			(property "DigiKey_PN" "YAG3517CT-ND"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Mouser_PN" "603-AC0402JR-0710KL"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Tolerance" "±5%"
+				(at 2.54 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Power" "1/16W"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Voltage" "50V"
+				(at 7.62 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Case" "0402"
+				(at 12.7 -0.953 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "ki_keywords" "resistor thick film automotive"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_fp_filters" "R?0402?1005Metric*"
+				(at 0 0 0)
+				(show_name no)
+				(do_not_autoplace no)
+				(hide yes)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(symbol "AC0402JR-0710KL_1_1"
+				(rectangle
+					(start -1.016 -2.54)
+					(end 1.016 2.54)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(pin passive line
+					(at 0 3.81 270)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 0 -3.81 90)
+					(length 1.27)
+					(name "~"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "DropOut_Resistor:AC0402JR-074K7L"
 			(pin_names
 				(offset 1.016)
@@ -6418,7 +6655,7 @@
 	)
 	(rectangle
 		(start 342.9 266.7)
-		(end 523.24 287.02)
+		(end 580.39 295.91)
 		(stroke
 			(width 0.254)
 			(type dash)
@@ -6431,7 +6668,7 @@
 	)
 	(rectangle
 		(start 39.37 129.54)
-		(end 257.81 223.52)
+		(end 266.7 223.52)
 		(stroke
 			(width 0.254)
 			(type dash)
@@ -6520,7 +6757,7 @@
 		)
 		(uuid "05003afa-56ff-5d8b-8ace-d484203f281c")
 	)
-	(text "DESIGN VALUES (LMQ66430-Q1 SNVSBV1F; TPS62850x-Q1 SLUSDM0N; TPS3702-Q1 SBVS261C; Node60 DEC-004, DEC-006, DEC-026). Values per D-45.\nPower-up order (DEC-004): VDDAU_AON always on -> LAN8670 INH high -> U302 3V3_MAIN -> 3V3_MAIN > 2.45-2.7 V\n  -> U303 1V5_CORE (U303 runs from 3V3_MAIN since DEC-026). VDDA <= VDDAU + 0.5 V holds because VDDAU is up first. No FS26, latch or MCU gate.\n0R debug links (project default: every regulator output): R on each *_REG -> rail, 0603 rated 2 A.\n  Feedback senses the regulator side, so opening the link leaves the regulator in regulation.\nU302 3V3_MAIN: LMQ66430MC3 fixed 3.3 V (VOUT/FB on the output), 2.2 MHz, MODE/SYNC = GND (auto PFM/PWM).\n  TI Table 8-4: L 2.2uH, COUT >= 40 uF effective -> 2 x 22uF 10V 1210 + 100nF; CIN 2 x 4.7uF 100V + 100nF 100V\n  (100 V = >= 2x the 34 V OV cut-off). CVCC 1uF. BOOT: internal 0.1 uF (TI: CBOOT DNP), so no-connect. PG unused.\nU303 1V5_CORE (DEC-026): TPS628502QDRLRQ1 on 3V3_MAIN. At 3.3 V in the duty is ~45 %, far above tON,min (50 ns max).\n  COMP/FSET = VIN: internal 2.25 MHz, compensation setting 2, spread spectrum on (Table 8-1; COUT >= 18 uF eff.).\n  MODE/SYNC = VIN: forced PWM, so no light-load PFM pulses fall into the AM band. PG unused.\n  VOUT = 0.6 V x (1 + 76.8k / 51k) = 1.504 V, CFF 10 pF C0G (TI Table 9-2). L 0.56 uH (Table 9-1 lists 0.56 uH):\n  dIL = 1.5 x (1 - 1.5/3.3) / (0.45 uH x 2.25 MHz) = 0.81 A pp at L -20 %. CIN 10uF 16V 1206 + 100nF (TI: 10 uF).\n  COUT 3 x 22uF + 100nF (max 200 uF). Until DEC-026 an LMQ66430 on VBAT_FILT: it folded back into the AM band.\nEN chain: 3V3_MAIN - 100k - 1V5_EN - 100k - GND. EN rises at 1.1 V (1.05-1.15 V), falls at 0.96-1.05 V, so EN is\n  high above 2.10-2.30 V; U303's own UVLO (2.45-2.7 V rising, 2.1-2.6 V falling) sets the start and stop.\nWake timing (GATE-NET-01, accepted 2026-10-23, to be measured): OPEN Alliance limit is supply ramp + PHY init\n  <= 15 ms (Sleep/Wake-Up Electrical Interface Spec v1.0 sec. 5.2); the LAN8670 \"1 ms\" is Microchip's allocation.\n  3V3_MAIN ~2.5 ms EN delay + 2-4.6 ms soft start, LAN8670 D0 ~2 ms POR + 0.9 ms init: ~10 ms expected.\nU304 TPS3702AX33, SET = GND: UV 3.10 V / OV 3.50 V (+/-6 % window, 0.55 % hysteresis, +/-0.9 %).\n  The SET-high +/-2 % window (3.23 / 3.37 V) is too tight for buck transients. UV and OV open drains are\n  wired-OR onto RESET_L with 4.7k to 3V3_MAIN. No internal reset delay: release timing comes from\n  the S32K344 reset sequence (GATE-SUP-02).\nU301 TPS7B8133QWDRVRQ1: 40 V, Iq 3.5 uA (above the 1-2 uA Rev A target). EN tied to IN (always on); DNC open;\n  thermal pad to GND. COUT 2.2uF 10V 0603 (datasheet: 1-200 uF effective, ESR 1 mOhm-5 Ohm), CIN 1uF 100V.\nInductors (user choice 2026-10-23): Wurth 74438356022HT 2.2 uH (Isat 7.6 A) and 744383560056HT 0.56 uH (Isat 9.55 A; DEC-026),\n  -55..+150 C. Check the 2.2 MHz core loss in Wurth REDEXPERT before release.\n"
+	(text "DESIGN VALUES (LMQ66430-Q1 SNVSBV1F; TPS62850x-Q1 SLUSDM0N; TPS3702-Q1 SBVS261C; Node60 DEC-004, DEC-006, DEC-026). Values per D-45.\nPower-up order (DEC-004): VDDAU_AON always on -> LAN8670 INH high -> U302 3V3_MAIN -> 3V3_MAIN > 2.45-2.7 V\n  -> U303 1V5_CORE (U303 runs from 3V3_MAIN since DEC-026). VDDA <= VDDAU + 0.5 V holds because VDDAU is up first. No FS26, latch or MCU gate.\n0R debug links (project default: every regulator output): R on each *_REG -> rail, 0603 rated 2 A.\n  Feedback senses the regulator side, so opening the link leaves the regulator in regulation.\nU302 3V3_MAIN: LMQ66430MC3 fixed 3.3 V (VOUT/FB on the output), 2.2 MHz, MODE/SYNC = GND (auto PFM/PWM).\n  TI Table 8-4: L 2.2uH, COUT >= 40 uF effective -> 2 x 22uF 10V 1210 + 100nF; CIN 2 x 4.7uF 100V + 100nF 100V\n  (100 V = >= 2x the 34 V OV cut-off). CVCC 1uF. BOOT: internal 0.1 uF (TI: CBOOT DNP), so no-connect.\n  Loop test link R309 (0R) between the output and VOUT/FB, the top of the internal divider: fit 10R and inject across it for a Bode\n  plot (TI 8.2.1.2.4: always check with one). On the fixed variant VOUT/FB also feeds the internal LDO (7.3.4), so with 10R fitted the\n  output sits high by 10R x that supply current. Measure in PWM: MODE/SYNC = GND is auto mode, so load it above the PFM range. Refit 0R.\nU303 1V5_CORE (DEC-026): TPS628502QDRLRQ1 on 3V3_MAIN. At 3.3 V in the duty is ~45 %, far above tON,min (50 ns max).\n  COMP/FSET = VIN: internal 2.25 MHz, compensation setting 2, spread spectrum on (Table 8-1; COUT >= 18 uF eff.).\n  MODE/SYNC = VIN: forced PWM, so no light-load PFM pulses fall into the AM band.\n  VOUT = 0.6 V x (1 + 76.8k / 51k) = 1.504 V, CFF 10 pF C0G (TI Table 9-2). L 0.56 uH (Table 9-1 lists 0.56 uH):\n  dIL = 1.5 x (1 - 1.5/3.3) / (0.45 uH x 2.25 MHz) = 0.81 A pp at L -20 %. CIN 10uF 16V 1206 + 100nF (TI: 10 uF).\n  COUT 3 x 22uF + 100nF (max 200 uF). Until DEC-026 an LMQ66430 on VBAT_FILT: it folded back into the AM band.\nEN chain: 3V3_MAIN - 100k - 1V5_EN - 100k - GND. EN rises at 1.1 V (1.05-1.15 V), falls at 0.96-1.05 V, so EN is\n  high above 2.10-2.30 V; U303's own UVLO (2.45-2.7 V rising, 2.1-2.6 V falling) sets the start and stop.\nWake timing (GATE-NET-01, accepted 2026-10-23, to be measured): OPEN Alliance limit is supply ramp + PHY init\n  <= 15 ms (Sleep/Wake-Up Electrical Interface Spec v1.0 sec. 5.2); the LAN8670 \"1 ms\" is Microchip's allocation.\n  3V3_MAIN ~2.5 ms EN delay + 2-4.6 ms soft start, LAN8670 D0 ~2 ms POR + 0.9 ms init: ~10 ms expected.\nU304 TPS3702AX33, SET = GND: UV 3.10 V / OV 3.50 V (+/-6 % window, 0.55 % hysteresis, +/-0.9 %).\n  The SET-high +/-2 % window (3.23 / 3.37 V) is too tight for buck transients. UV and OV open drains are\n  wired-OR onto RESET_L with 4.7k to 3V3_MAIN. No internal reset delay: release timing comes from\n  the S32K344 reset sequence (GATE-SUP-02).\nU301 TPS7B8133QWDRVRQ1: 40 V, Iq 3.5 uA (above the 1-2 uA Rev A target). EN tied to IN (always on); DNC open;\n  thermal pad to GND. COUT 2.2uF 10V 0603 (datasheet: 1-200 uF effective, ESR 1 mOhm-5 Ohm), CIN 1uF 100V.\nInductors (user choice 2026-10-23): Wurth 74438356022HT 2.2 uH (Isat 7.6 A) and 744383560056HT 0.56 uH (Isat 9.55 A; DEC-026),\n  -55..+150 C. Check the 2.2 MHz core loss in Wurth REDEXPERT before release.\nPower good (DEC-029): U302 PG -> 3V3_MAIN_PG (U401 U1), U303 PG -> 1V5_CORE_PG (U401 T17). Open drain, high = good, low = fault or off.\n  R310/R311 10k to 3V3_MAIN, the MCU pad supply and U303's VIN, so neither line can sit above its pad's supply or U303's PG limit (VIN + 0.3 V)\n  and nothing flows while parked (3V3_MAIN off). Low sinks 0.33 mA (U302 limit 4 mA, U303 2 mA). MCU pads are Hi-Z through reset.\n  U302: low under 89-94.2 % or over 104-111 %, high 2.5 ms after regulation. U303: low under 87-93 % or over 107-113 %, undefined at VIN < 2 V.\n  U304 resets the MCU at 3.10 V, at or before U302's PG falls: 3V3_MAIN_PG is a bring-up and overvoltage signal, not a brown-out warning.\n"
 		(exclude_from_sim no)
 		(at 330.2 40.64 0)
 		(effects
@@ -6788,10 +7025,6 @@
 		(uuid "1f4bb401-b13b-5d23-bc08-306c2acdea69")
 	)
 	(no_connect
-		(at 153.67 288.29)
-		(uuid "2001e970-f1c0-421e-9b81-17915a3c546e")
-	)
-	(no_connect
 		(at 83.82 81.28)
 		(uuid "21a06d95-a23f-5436-ab7a-e0bf0929425c")
 	)
@@ -6810,10 +7043,6 @@
 	(no_connect
 		(at 120.65 187.96)
 		(uuid "89d92954-7856-570e-bfe4-cf70730de401")
-	)
-	(no_connect
-		(at 156.21 180.34)
-		(uuid "aae276cc-6bfa-5be7-bfd4-e1cfda49b790")
 	)
 	(no_connect
 		(at 120.65 193.04)
@@ -7831,16 +8060,6 @@
 	)
 	(wire
 		(pts
-			(xy 156.21 175.26) (xy 181.61 175.26)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "d4be81b1-a68e-56ea-965f-6c36c6919d0b")
-	)
-	(wire
-		(pts
 			(xy 74.93 267.97) (xy 74.93 270.51)
 		)
 		(stroke
@@ -8182,6 +8401,1113 @@
 			(justify right)
 		)
 		(uuid "e732201b-4d7d-54a8-b561-0478a751f1e9")
+	)
+	(symbol
+		(lib_id "DropOut_Resistor:AC0402JR-070RL")
+		(at 175.26 175.26 90)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "ab3b08bc-ea28-5c47-9a69-fa8c60e73dff")
+		(property "Reference" "R309"
+			(at 175.26 170.307 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "0R"
+			(at 175.26 172.085 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
+			(at 175.26 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+			(at 175.26 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Yageo AC thick film chip jumper, 0 Ω, 1 A rated, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+			(at 175.26 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 175.26 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "AC0402JR-070RL"
+			(at 175.26 180.467 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+			)
+		)
+		(property "DigiKey_PN" "311-0.0LBCT-ND"
+			(at 175.26 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mouser_PN" "603-AC0402JR-070RL"
+			(at 175.26 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+			(at 175.26 175.26 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Case" "0402"
+			(at 175.26 178.689 90)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "2e8364cd-804b-5333-9a2c-e83e52444c7e")
+		)
+		(pin "2"
+			(uuid "072f5e26-95c2-5002-8abd-4c1246046498")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/0b1fdde0-4dcf-41c8-a0be-e22a76779263"
+					(reference "R309")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 156.21 175.26) (xy 171.45 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a4ee3792-52a3-56eb-83e2-463e76414a89")
+	)
+	(wire
+		(pts
+			(xy 179.07 175.26) (xy 181.61 175.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b9315d14-681d-5f58-ba41-5b40d8d8c0df")
+	)
+	(label "3V3_MAIN_FB"
+		(at 157.48 175.26 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "459ba755-0a28-5496-98da-60d894cefd07")
+	)
+	(wire
+		(pts
+			(xy 156.21 180.34) (xy 161.29 180.34)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "900cbeeb-a83d-5377-a94b-9a0916c300c4")
+	)
+	(wire
+		(pts
+			(xy 161.29 180.34) (xy 161.29 195.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bc9d8eef-5189-5e2c-9945-284b529409bb")
+	)
+	(wire
+		(pts
+			(xy 161.29 195.58) (xy 190.5 195.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "66d383e0-0a04-5b52-b123-43b8183a416d")
+	)
+	(wire
+		(pts
+			(xy 190.5 195.58) (xy 213.36 195.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "281484be-65e4-5636-a05d-334b4770df87")
+	)
+	(junction
+		(at 190.5 195.58)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "94f07046-e02f-58cc-8d8c-5e5789854a1a")
+	)
+	(hierarchical_label "3V3_MAIN_PG"
+		(shape output)
+		(at 213.36 195.58 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "127a27c3-750f-5da6-b32d-2aecc691ec4e")
+	)
+	(symbol
+		(lib_id "DropOut_Resistor:AC0402JR-0710KL")
+		(at 190.5 191.77 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "5d1edb84-be5a-59c6-a1ab-8a19a3b62bdc")
+		(property "Reference" "R310"
+			(at 193.04 187.273 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10k"
+			(at 193.04 189.051 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
+			(at 190.5 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+			(at 190.5 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Yageo AC thick film chip resistor, 10 kΩ ±5%, 1/16 W, 50 V, ±200 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+			(at 190.5 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 190.5 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "AC0402JR-0710KL"
+			(at 193.04 194.185 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "DigiKey_PN" "YAG3517CT-ND"
+			(at 190.5 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mouser_PN" "603-AC0402JR-0710KL"
+			(at 190.5 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+			(at 190.5 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Tolerance" "±5%"
+			(at 193.04 190.829 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Power" "1/16W"
+			(at 190.5 191.77 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Voltage" "50V"
+			(at 197.866 190.829 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Case" "0402"
+			(at 193.04 192.607 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "21a96ce1-730d-531d-b046-4743b45cc595")
+		)
+		(pin "2"
+			(uuid "2977f380-c74c-5a5b-979b-cc0aab28a594")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/0b1fdde0-4dcf-41c8-a0be-e22a76779263"
+					(reference "R310")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 190.5 187.96 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "ae1718b2-2804-51d1-a0c1-5a9df55a77ac")
+		(property "Reference" "#PWR03051"
+			(at 190.5 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "3V3_MAIN"
+			(at 190.5 183.56 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 190.5 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 190.5 187.96 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 190.5 187.96 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "933334a4-e3bf-545b-94bd-fd299264bbb9")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/0b1fdde0-4dcf-41c8-a0be-e22a76779263"
+					(reference "#PWR03051")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 153.67 288.29) (xy 156.21 288.29)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "564eb7d4-39b3-578d-9964-2d2f069578e6")
+	)
+	(wire
+		(pts
+			(xy 156.21 288.29) (xy 156.21 308.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4284cd71-d24a-578d-903c-c8c9139f203a")
+	)
+	(wire
+		(pts
+			(xy 156.21 308.61) (xy 170.18 308.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "13f2edde-dcfb-58af-9c23-feeba92ffa35")
+	)
+	(wire
+		(pts
+			(xy 170.18 308.61) (xy 187.96 308.61)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "52183695-5628-5d38-8d3b-e10a1afc6a1a")
+	)
+	(junction
+		(at 170.18 308.61)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6efbb4fa-548c-5136-9664-191a90b1ab87")
+	)
+	(hierarchical_label "1V5_CORE_PG"
+		(shape output)
+		(at 187.96 308.61 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "d191d2d4-ebbf-574f-ab38-5f4ce1ee98d8")
+	)
+	(symbol
+		(lib_id "DropOut_Resistor:AC0402JR-0710KL")
+		(at 170.18 304.8 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "7a8c0ad5-8328-5921-b790-f6c431cc309b")
+		(property "Reference" "R311"
+			(at 172.72 300.303 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "10k"
+			(at 172.72 302.081 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_Resistor_SMD:R_0402_1005Metric"
+			(at 170.18 304.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://yageogroup.com/content/datasheet/asset/file/PYU-AC_51_ROHS_L"
+			(at 170.18 304.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Yageo AC thick film chip resistor, 10 kΩ ±5%, 1/16 W, 50 V, ±200 ppm/K, AEC-Q200, -55 to +155 °C, 0402 (1005 metric)"
+			(at 170.18 304.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "Yageo"
+			(at 170.18 304.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "AC0402JR-0710KL"
+			(at 172.72 307.215 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 0.8 0.8)
+				)
+				(justify left)
+			)
+		)
+		(property "DigiKey_PN" "YAG3517CT-ND"
+			(at 170.18 304.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mouser_PN" "603-AC0402JR-0710KL"
+			(at 170.18 304.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Temperature_Grade" "AEC-Q200, -55 to +155 °C"
+			(at 170.18 304.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Tolerance" "±5%"
+			(at 172.72 303.859 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Power" "1/16W"
+			(at 170.18 304.8 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Voltage" "50V"
+			(at 177.546 303.859 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Case" "0402"
+			(at 172.72 305.637 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(pin "1"
+			(uuid "1cdabcb4-f52b-5f10-8825-75549859a78b")
+		)
+		(pin "2"
+			(uuid "8f7b9165-ba31-56f7-9bae-971f1b0c7d18")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/0b1fdde0-4dcf-41c8-a0be-e22a76779263"
+					(reference "R311")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:+3V3")
+		(at 170.18 300.99 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "24540913-7510-5141-ba34-d2db816b1aa0")
+		(property "Reference" "#PWR03052"
+			(at 170.18 300.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "3V3_MAIN"
+			(at 170.18 296.59 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 170.18 300.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" ""
+			(at 170.18 300.99 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" ""
+			(at 170.18 300.99 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "bd6b8009-1fec-516a-951f-68dbb5cd810c")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/0b1fdde0-4dcf-41c8-a0be-e22a76779263"
+					(reference "#PWR03052")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "DropOut_Connector:TestPoint_Pad_D1.0mm")
+		(at 530.86 274.32 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "f295000c-4b6f-5ace-b674-42336c747b94")
+		(property "Reference" "TP309"
+			(at 532.892 273.05 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint_Pad_D1.0mm"
+			(at 532.892 275.59 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
+			(at 530.86 274.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/TestPoint.py"
+			(at 530.86 274.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Test point, exposed copper pad, diameter 1.0mm, solder mask opening only; a PCB feature with nothing to buy or place (excluded from BOM and position files)"
+			(at 530.86 274.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "DropOut"
+			(at 530.86 274.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "TestPoint_Pad_D1.0mm"
+			(at 530.86 274.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DigiKey_PN" "-"
+			(at 530.86 274.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mouser_PN" "-"
+			(at 530.86 274.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Notes" "PCB copper only; nothing to order. Excluded from BOM and position files."
+			(at 530.86 274.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "5e8f5d6a-3ed1-5e9f-9f24-7b0df3b090f9")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/0b1fdde0-4dcf-41c8-a0be-e22a76779263"
+					(reference "TP309")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 530.86 274.32) (xy 530.86 276.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2c900769-c140-5a8a-905a-544db7c8f79e")
+	)
+	(hierarchical_label "3V3_MAIN_PG"
+		(shape output)
+		(at 530.86 276.86 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "bcd18496-0454-5413-a599-899366e36dd0")
+	)
+	(symbol
+		(lib_id "DropOut_Connector:TestPoint_Pad_D1.0mm")
+		(at 553.72 274.32 0)
+		(unit 1)
+		(body_style 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(in_pos_files yes)
+		(dnp no)
+		(uuid "71f145c8-4c69-5ecc-a397-cd2a9133c907")
+		(property "Reference" "TP310"
+			(at 555.752 273.05 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TestPoint_Pad_D1.0mm"
+			(at 555.752 275.59 0)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "DropOut_TestPoint:TestPoint_Pad_D1.0mm"
+			(at 553.72 274.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Datasheet" "https://github.com/karlTbowers/dropout-kicad-library/blob/main/generators/custom/TestPoint.py"
+			(at 553.72 274.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Description" "Test point, exposed copper pad, diameter 1.0mm, solder mask opening only; a PCB feature with nothing to buy or place (excluded from BOM and position files)"
+			(at 553.72 274.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Manufacturer" "DropOut"
+			(at 553.72 274.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "MPN" "TestPoint_Pad_D1.0mm"
+			(at 553.72 274.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "DigiKey_PN" "-"
+			(at 553.72 274.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Mouser_PN" "-"
+			(at 553.72 274.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Notes" "PCB copper only; nothing to order. Excluded from BOM and position files."
+			(at 553.72 274.32 0)
+			(hide yes)
+			(show_name no)
+			(do_not_autoplace no)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(pin "1"
+			(uuid "e7e930b4-8cb0-5fe1-9c77-7380d8b3b907")
+		)
+		(instances
+			(project "node60"
+				(path "/55f51841-30a3-4965-b848-b796f60054d0/0b1fdde0-4dcf-41c8-a0be-e22a76779263"
+					(reference "TP310")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(wire
+		(pts
+			(xy 553.72 274.32) (xy 553.72 276.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4b23b9f2-9460-5039-81cd-34c7c3d8eca6")
+	)
+	(hierarchical_label "1V5_CORE_PG"
+		(shape output)
+		(at 553.72 276.86 270)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify right)
+		)
+		(uuid "b751a3e0-87b7-503d-9bf2-1d327526a4f5")
 	)
 	(symbol
 		(lib_id "power:GND")
